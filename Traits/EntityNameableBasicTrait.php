@@ -2,8 +2,7 @@
 
 namespace Zakjakub\OswisResourcesBundle\Traits;
 
-
-use Zakjakub\OswisResourcesBundle\Entity\Type\Nameable;
+use Zakjakub\OswisResourcesBundle\Entity\Nameable;
 
 trait EntityNameableBasicTrait
 {

@@ -3,7 +3,7 @@
 namespace Zakjakub\OswisResourcesBundle\Traits;
 
 use Doctrine\ORM\Mapping as ORM;
-use Zakjakub\OswisResourcesBundle\Entity\Type\Address;
+use Zakjakub\OswisResourcesBundle\Entity\Address;
 
 /**
  * Trait adds address fields
