@@ -1,0 +1,58 @@
+{
+  "name": "zakjakub/oswis-resources-bundle",
+  "description": "Resources module for One Simple Web IS.",
+  "homepage": "https://github.com/zakjakub/oswis-resources-bundle",
+  "type": "symfony-bundle",
+  "minimum-stability": "stable",
+  "keywords": [
+    "php",
+    "information-system",
+    "is",
+    "oswis",
+    "zakjakub"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "zakjakub",
+      "email": "mail@jakubzak.eu",
+      "homepage": "https://jakubzak.cz",
+      "role": "author"
+    }
+  ],
+  "require": {
+    "php": "^7.1.3",
+    "symfony/framework-bundle": "^4.2.2",
+    "symfony/validator": "^4.2.2",
+    "adci/full-name-parser": "^0.2.2",
+    "api-platform/api-pack": "^1.1",
+    "doctrine/annotations": "1.7.*-dev",
+    "egulias/email-validator": "~2.1",
+    "symfony/monolog-bundle": "^3.1",
+    "doctrine/doctrine-bundle": "^1.9.1",
+    "doctrine/orm": "^2.6.3",
+    "doctrine/common": "^2.9.0",
+    "doctrine/collections": "^1.5.0",
+    "symfony/orm-pack": "^1.0.5",
+    "symfony/process": "^4.2",
+    "symfony/security-bundle": "^4.2",
+    "symfony/serializer-pack": "^1.0.2",
+    "symfony/swiftmailer-bundle": "^3.1",
+    "symfony/twig-bundle": "^4.2",
+    "symfony/web-link": "^4.2",
+    "symfony/yaml": "^4.2",
+    "gedmo/doctrine-extensions": "^2.4",
+    "zakjakub/oswis-resources": "^0.1"
+  },
+  "require-dev": {
+    "roave/security-advisories": "dev-master"
+  },
+  "autoload": {
+    "psr-4": {
+      "ZakJakub\\OswisResourcesBundle\\": ""
+    }
+  },
+  "config": {
+    "optimize-autoloader": true
+  }
+}
