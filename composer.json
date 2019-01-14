@@ -37,7 +37,8 @@
   "autoload": {
     "psr-4": {
       "ZakJakub\\OswisResourcesBundle\\": ""
-    }
+    },
+    "classmap": ["Traits/EntityUserTrait.php"]
   },
   "config": {
     "optimize-autoloader": true
