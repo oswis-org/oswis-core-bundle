@@ -42,7 +42,7 @@
       "ZakJakub\\OswisResourcesBundle\\Exceptions\\": "Exceptions",
       "ZakJakub\\OswisResourcesBundle\\Utils\\": "Utils"
     },
-    "classmap": ["Traits/", "Utils/", "Entity/", "Exceptions/"]
+    "classmap": ["/"]
   },
   "config": {
     "optimize-autoloader": true
