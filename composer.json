@@ -36,7 +36,11 @@
   },
   "autoload": {
     "psr-4": {
-      "ZakJakub\\OswisResourcesBundle\\": ""
+      "ZakJakub\\OswisResourcesBundle\\": "",
+      "ZakJakub\\OswisResourcesBundle\\Entity\\": "Entity",
+      "ZakJakub\\OswisResourcesBundle\\Traits\\": "Traits",
+      "ZakJakub\\OswisResourcesBundle\\Exceptions\\": "Exceptions",
+      "ZakJakub\\OswisResourcesBundle\\Utils\\": "Utils"
     },
     "classmap": ["Traits/EntityUserTrait.php"]
   },
