@@ -3,6 +3,10 @@
 namespace Zakjakub\OswisResourcesBundle\Traits;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Timestampable\Timestampable;
+
+// Dummy statement -> use not deleted as unused.
+\assert(Timestampable::class);
 
 /**
  * Trait adds createdDateTime and updatedDateTime fields
