@@ -1,4 +1,8 @@
 services:
+    Zakjakub\OswisResourcesBundle\Manager\:
+        resource: '../../Manager/*'
+        exclude:  '../../Manager/{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
+
     gedmo.listener.timestampable:
         class: Gedmo\Timestampable\TimestampableListener
         tags:
