@@ -2,10 +2,8 @@
 
 namespace Zakjakub\OswisResourcesBundle\Traits;
 
-use Doctrine\ORM\Mapping;
 use Doctrine\ORM\Mapping as ORM;
 
-\assert(Mapping\Annotation::class);
 \assert(ORM\Annotation::class);
 
 /**
@@ -17,9 +15,9 @@ trait EntityIdTrait
     /**
      * Unique (auto-incremented) numeric identifier.
      * @var int
-     * @Doctrine\ORM\Mapping\Id()
-     * @Doctrine\ORM\Mapping\GeneratedValue(strategy="AUTO")
-     * @Doctrine\ORM\Mapping\Column(type="integer")
+     * @ORM\Id()
+     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Column(type="integer")
      */
     protected $id;
 
