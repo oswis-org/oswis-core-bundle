@@ -3,7 +3,7 @@
 namespace Zakjakub\OswisResourcesBundle\Traits;
 
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Timestampable\Timestampable;
+use Gedmo\Mapping\Annotation\Timestampable;
 
 // Dummy statement -> use not deleted as unused.
 \assert(Timestampable::class);
