@@ -3,7 +3,6 @@
 namespace Zakjakub\OswisResourcesBundle\Traits;
 
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Trait adds createdDateTime and updatedDateTime fields
@@ -23,7 +22,7 @@ trait EntityTimestampableTrait
      *
      * @ORM\Column(type="datetime", nullable=true)
      *
-     * @Gedmo\Timestampable(on="create")
+     * @Gedmo\Mapping\Annotation\Timestampable(on="create")
      */
     protected $createdDateTime;
 
@@ -34,7 +33,7 @@ trait EntityTimestampableTrait
      *
      * @ORM\Column(type="datetime", nullable=true, options={"default" : null})
      *
-     * @Gedmo\Timestampable(on="update")
+     * @Gedmo\Mapping\Annotation\Timestampable(on="update")
      */
     protected $updatedDateTime;
 
