@@ -1,5 +1,5 @@
 
-App\Entity\Accommodation\PersonAgeRange:
+Zakjakub\OswisAccommodationBundle\Entity\PersonAgeRange:
     attributes:
         id:
             groups: ['accommodation_person_age_ranges_get', 'accommodation_person_age_range_get']

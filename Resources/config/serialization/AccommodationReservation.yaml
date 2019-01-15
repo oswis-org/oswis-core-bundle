@@ -1,4 +1,4 @@
-App\Entity\Accommodation\Reservation:
+Zakjakub\OswisAccommodationBundle\Entity\Reservation:
     attributes:
         id:
             groups: ['accommodation_reservations_get', 'accommodation_reservation_get']
@@ -29,7 +29,7 @@ App\Entity\Accommodation\Reservation:
         lastUpdateDateTime:
             groups: ['accommodation_reservations_get', 'accommodation_reservation_get']
 
-App\Entity\Accommodation\ReservationRev:
+Zakjakub\OswisAccommodationBundle\Entity\ReservationRev:
     attributes:
         id:
             groups: ['accommodation_reservation_get']

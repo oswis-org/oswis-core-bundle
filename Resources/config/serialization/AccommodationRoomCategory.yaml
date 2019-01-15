@@ -1,5 +1,5 @@
 
-App\Entity\Accommodation\RoomCategory:
+Zakjakub\OswisAccommodationBundle\Entity\RoomCategory:
     attributes:
         id:
             groups:
@@ -43,7 +43,7 @@ App\Entity\Accommodation\RoomCategory:
             groups:
                 - 'accommodation_room_category_get'
 
-App\Entity\Accommodation\Room:
+Zakjakub\OswisAccommodationBundle\Entity\Room:
     attributes:
         id:
             groups:

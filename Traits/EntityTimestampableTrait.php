@@ -16,7 +16,6 @@ use Gedmo\Mapping\Annotation as Gedmo;
 trait EntityTimestampableTrait
 {
 
-
     /**
      * Date and time of entity creation
      *

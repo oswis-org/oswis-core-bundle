@@ -1,5 +1,5 @@
 
-App\Entity\Accommodation\AccommodationUserCategory:
+Zakjakub\OswisAccommodationBundle\Entity\AccommodationUserCategory:
     attributes:
         id:
             groups: ['accommodation_user_categories_get', 'accommodation_user_category_get']
@@ -51,23 +51,23 @@ App\Entity\Accommodation\AccommodationUserCategory:
             groups:
                 - 'accommodation_user_category_get'
 
-App\Entity\Accommodation\AccommodationUser:
+Zakjakub\OswisAccommodationBundle\Entity\AccommodationUser:
     attributes:
         id:
             groups: ['accommodation_user_category_get']
         appUser:
             groups: ['accommodation_user_category_get']
-
-App\Entity\AppUser:
-    attributes:
-        id:
-            groups: ['accommodation_user_category_get']
-        username:
-            groups: ['accommodation_user_category_get']
-        fullName:
-            groups: ['accommodation_user_category_get']
-
-
+#
+#App\Entity\AppUser:
+#    attributes:
+#        id:
+#            groups: ['accommodation_user_category_get']
+#        username:
+#            groups: ['accommodation_user_category_get']
+#        fullName:
+#            groups: ['accommodation_user_category_get']
+#
+#
 
 
 

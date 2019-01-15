@@ -1,5 +1,5 @@
 
-App\Entity\Accommodation\Facility:
+Zakjakub\OswisAccommodationBundle\Entity\Facility:
     attributes:
         id:
             groups:
@@ -104,7 +104,7 @@ App\Entity\Accommodation\Facility:
                 - 'accommodation_facilities_get'
                 - 'accommodation_facility_get'
 
-App\Entity\Accommodation\Organization:
+Zakjakub\OswisAccommodationBundle\Entity\Organization:
     attributes:
         id:
             groups:
@@ -121,7 +121,7 @@ App\Entity\Accommodation\Organization:
                 - 'accommodation_facilities_get'
                 - 'accommodation_facility_get'
 
-App\Entity\Accommodation\Room:
+Zakjakub\OswisAccommodationBundle\Entity\Room:
     attributes:
         id:
             groups:
@@ -134,7 +134,7 @@ App\Entity\Accommodation\Room:
                 - 'accommodation_facilities_get'
                 - 'accommodation_facility_get'
 
-App\Entity\Accommodation\AccommodationUser:
+Zakjakub\OswisAccommodationBundle\Entity\AccommodationUser:
     attributes:
         id:
             groups:

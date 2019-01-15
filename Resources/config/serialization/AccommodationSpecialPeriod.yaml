@@ -1,5 +1,5 @@
 
-App\Entity\Accommodation\RoomCategory:
+Zakjakub\OswisAccommodationBundle\Entity\RoomCategory:
     attributes:
         id:
             groups:
@@ -72,7 +72,7 @@ App\Entity\Accommodation\RoomCategory:
                 - 'accommodation_special_period_get'
                 - 'accommodation_special_period_put'
 
-App\Entity\Accommodation\Room:
+Zakjakub\OswisAccommodationBundle\Entity\Room:
     attributes:
         id:
             groups:
@@ -81,7 +81,7 @@ App\Entity\Accommodation\Room:
             groups:
                 - 'accommodation_special_period_get'
 
-App\Entity\Accommodation\Facility:
+Zakjakub\OswisAccommodationBundle\Entity\Facility:
     attributes:
         id:
             groups:

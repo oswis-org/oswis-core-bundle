@@ -1,5 +1,5 @@
 
-App\Entity\Accommodation\PersonCategory:
+Zakjakub\OswisAccommodationBundle\Entity\PersonCategory:
     attributes:
         id:
             groups: ['person_categories_get', 'person_category_get']
@@ -18,7 +18,7 @@ App\Entity\Accommodation\PersonCategory:
         deleted:
             groups: ['person_categories_get', 'person_categories_post', 'person_category_get', 'person_category_put']
 
-App\Entity\Accommodation\RoomCategoryPrice:
+Zakjakub\OswisAccommodationBundle\Entity\RoomCategoryPrice:
     attributes:
         id:
             groups: ['person_category_get']

@@ -1,6 +1,5 @@
-# /config/serialization/AccommodationCashDeskTransfer.yaml
 
-App\Entity\Accommodation\CashDeskTransfer:
+Zakjakub\OswisAccommodationBundle\Entity\CashDeskTransfer:
     attributes:
         id:
             groups: ['cash_desk_transfers_get', 'cash_desk_transfer_get']
@@ -25,14 +24,14 @@ App\Entity\Accommodation\CashDeskTransfer:
         numericValue:
             groups: ['cash_desk_transfers_get', 'cash_desk_transfer_get']
 
-App\Entity\AppUser:
-    attributes:
-        id:
-            groups: ['cash_desk_transfers_get', 'cash_desk_transfer_get']
-        username:
-            groups: ['cash_desk_transfers_get', 'cash_desk_transfer_get']
-        fullName:
-            groups: ['cash_desk_transfers_get', 'cash_desk_transfer_get']
+#App\Entity\AppUser:
+#    attributes:
+#        id:
+#            groups: ['cash_desk_transfers_get', 'cash_desk_transfer_get']
+#        username:
+#            groups: ['cash_desk_transfers_get', 'cash_desk_transfer_get']
+#        fullName:
+#            groups: ['cash_desk_transfers_get', 'cash_desk_transfer_get']
 
 
 
