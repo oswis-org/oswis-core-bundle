@@ -1,0 +1,38 @@
+# /config/serialization/AccommodationCashDeskTransfer.yaml
+
+App\Entity\Accommodation\CashDeskTransfer:
+    attributes:
+        id:
+            groups: ['cash_desk_transfers_get', 'cash_desk_transfer_get']
+        singleNote:
+            groups: ['cash_desk_transfers_post', 'cash_desk_transfer_get', 'cash_desk_transfer_put']
+        dateTime:
+            groups: ['cash_desk_transfers_get', 'cash_desk_transfers_post', 'cash_desk_transfer_get']
+        createdDateTime:
+            groups: ['cash_desk_transfer_get']
+        updatedDateTime:
+            groups: ['cash_desk_transfer_get']
+        author:
+            groups: ['cash_desk_transfers_get', 'cash_desk_transfer_get']
+        payments:
+            groups: ['cash_desk_transfers_post', 'cash_desk_transfer_get']
+        organizationCashDesk:
+            groups: ['cash_desk_transfers_post', 'cash_desk_transfer_get']
+        temporaryCashDesk:
+            groups: ['cash_desk_transfers_post', 'cash_desk_transfer_get']
+        deleted:
+            groups: ['cash_desk_transfers_get', 'cash_desk_transfer_get', 'cash_desk_transfer_put']
+        numericValue:
+            groups: ['cash_desk_transfers_get', 'cash_desk_transfer_get']
+
+App\Entity\AppUser:
+    attributes:
+        id:
+            groups: ['cash_desk_transfers_get', 'cash_desk_transfer_get']
+        username:
+            groups: ['cash_desk_transfers_get', 'cash_desk_transfer_get']
+        fullName:
+            groups: ['cash_desk_transfers_get', 'cash_desk_transfer_get']
+
+
+

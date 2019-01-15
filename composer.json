@@ -23,26 +23,24 @@
   "require": {
     "php": "^7.1.3",
     "symfony/property-info": "^4.2",
-    "symfony/validator": "^4.2.2",
+    "symfony/validator": "^4.2",
+    "symfony/framework-bundle": "^4.2",
     "egulias/email-validator": "~2.1",
-    "adci/full-name-parser": "^0.2.2",
     "gedmo/doctrine-extensions": "^2.4",
+    "adci/full-name-parser": "^0.2.2",
     "ext-mbstring": "*"
   },
   "require-dev": {
     "roave/security-advisories": "dev-master",
     "doctrine/orm": "2.6.*",
-    "doctrine/common": "2.9.*"
+    "doctrine/common": "2.9.*",
+    "symfony/yaml": "^4.2"
   },
   "autoload": {
     "psr-4": {
-      "ZakJakub\\OswisResourcesBundle\\": "",
-      "ZakJakub\\OswisResourcesBundle\\Entity\\": "Entity",
-      "ZakJakub\\OswisResourcesBundle\\Traits\\": "Traits",
-      "ZakJakub\\OswisResourcesBundle\\Exceptions\\": "Exceptions",
-      "ZakJakub\\OswisResourcesBundle\\Utils\\": "Utils"
+      "ZakJakub\\OswisResourcesBundle\\": ""
     },
-    "classmap": ["/"]
+    "classmap": [""]
   },
   "config": {
     "optimize-autoloader": true
