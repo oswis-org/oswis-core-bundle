@@ -2,7 +2,7 @@
 
 namespace Zakjakub\OswisResourcesBundle\Traits;
 
-trait EntitySpecialPeriodTrait
+trait EntityMaintenancePeriodTrait
 {
     use EntityNameableBasicTrait;
     use EntityDateRangeTrait;
