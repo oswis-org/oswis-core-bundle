@@ -11,24 +11,24 @@ trait EntityPlainTextReasonTrait
 {
 
     /**
-     * Reason form this special period.
-     * @var string
-     * @ORM\Column(type="string")
+     * Reason in plain text.
+     * @var string|null
+     * @ORM\Column(type="string", nullable=true)
      */
     protected $reason;
 
     /**
-     * @return string
+     * @return string|null
      */
-    final public function getReason(): string
+    final public function getReason(): ?string
     {
-        return $this->reason ?? '';
+        return $this->reason;
     }
 
     /**
-     * @param mixed $reason
+     * @param string|null $reason
      */
-    final public function setReason(string $reason): void
+    final public function setReason(?string $reason): void
     {
         $this->reason = $reason;
     }
