@@ -1,0 +1,67 @@
+# /config/serialization/AppUser.yaml
+
+Zakjakub\OswisResourcesBundle\Entity\AppUser:
+    attributes:
+        id:
+            groups: ['app_users_get', 'app_user_get']
+        appUserType:
+            groups: ['app_users_get', 'app_user_get']
+        username:
+            groups: ['app_users_get', 'app_users_post', 'app_user_get', 'app_user_put']
+        email:
+            groups: ['app_users_get', 'app_users_post', 'app_user_get', 'app_user_put']
+        password:
+            groups: []
+        deleted:
+            groups: ['app_users_get', 'app_user_get']
+        active:
+            groups: ['app_users_get', 'app_users_post', 'app_user_get', 'app_user_put']
+        adminUser:
+            groups: ['app_users_get', 'app_users_post', 'app_user_get', 'app_user_put']
+        fullName:
+            groups: ['app_users_get', 'app_users_post', 'app_user_get', 'app_user_put']
+        createdDateTime:
+            groups: ['app_user_get']
+        updatedDateTime:
+            groups: ['app_user_get']
+        startDateTime:
+            groups: ['app_users_post', 'app_user_get', 'app_user_put']
+        endDateTime:
+            groups: ['app_users_post', 'app_user_get', 'app_user_put']
+        description:
+            groups: ['app_users_post', 'app_user_get', 'app_user_put']
+        singleNote:
+            groups: ['app_users_post', 'app_user_get', 'app_user_put']
+        accommodationUser:
+            groups: ['app_users_post', 'app_user_get', 'app_user_put']
+        roles:
+            groups: ['app_user_get']
+
+#App\Entity\Accommodation\AccommodationUser:
+#    attributes:
+#        id:
+#            groups: ['app_user_get']
+#        createdDateTime:
+#            groups: ['app_user_get']
+#        updatedDateTime:
+#            groups: ['app_user_get']
+#        accommodationUserCategory:
+#            groups: ['app_users_post', 'app_user_get', 'app_user_put']
+#        cashDeskTransfers:
+#            groups: ['app_user_get']
+#        reservationPayments:
+#            groups: ['app_user_get']
+#        managedFacilityRevisions:
+#            groups: ['app_user_get']
+#        facilityRevisionsWhereFacilityManager:
+#            groups: ['app_user_get']
+
+Zakjakub\OswisResourcesBundle\Entity\AppUserType:
+    attributes:
+        id:
+            groups: ['app_users_get', 'app_users_post', 'app_user_get', 'app_user_put']
+        name:
+            groups: ['app_users_get', 'app_user_get']
+        roleName:
+            groups: ['app_user_get']
+

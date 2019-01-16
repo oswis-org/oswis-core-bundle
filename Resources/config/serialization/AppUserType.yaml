@@ -1,0 +1,40 @@
+Zakjakub\OswisResourcesBundle\Entity\AppUserType:
+    attributes:
+        id:
+            groups: ['app_user_types_get', 'app_user_type_get']
+        name:
+            groups: ['app_user_types_get', 'app_user_types_post', 'app_user_type_get', 'app_user_type_put']
+        shortName:
+            groups: ['app_user_types_get', 'app_user_types_post', 'app_user_type_get', 'app_user_type_put']
+        adminUser:
+            groups: ['app_user_types_get', 'app_user_types_post', 'app_user_type_get', 'app_user_type_put']
+        createdDateTime:
+            groups: ['app_user_type_get']
+        updatedDateTime:
+            groups: ['app_user_type_get']
+        description:
+            groups: ['app_user_types_post', 'app_user_type_get', 'app_user_type_put']
+        note:
+            groups: ['app_user_types_post', 'app_user_type_get', 'app_user_type_put']
+        appUserRole:
+            groups: ['app_user_types_post', 'app_user_type_get', 'app_user_type_put']
+        roleName:
+            groups: ['app_user_types_get', 'app_user_type_get']
+
+Zakjakub\OswisResourcesBundle\Entity\AppUserRole:
+    attributes:
+        id:
+            groups: ['app_user_types_post', 'app_user_type_get', 'app_user_type_put']
+        name:
+            groups: ['app_user_type_get']
+        roleName:
+            groups: ['app_user_type_get']
+        roleString:
+            groups: ['app_user_type_get']
+        parent:
+            groups: ['app_user_type_get']
+
+
+
+
+
