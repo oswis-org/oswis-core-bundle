@@ -37,7 +37,9 @@ services:
 
     Zakjakub\OswisResourcesBundle\Manager\:
         resource: '../../Manager/*'
-        exclude:  '../../Manager/{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
+
+    Zakjakub\OswisResourcesBundle\Security\:
+        resource: '../../Security/*'
 
     gedmo.listener.timestampable:
         class: Gedmo\Timestampable\TimestampableListener
