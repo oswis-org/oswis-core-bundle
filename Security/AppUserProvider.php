@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Security;
+namespace Zakjakub\OswisResourcesBundle\Security;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
