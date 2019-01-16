@@ -2,9 +2,9 @@
 
 namespace Zakjakub\OswisResourcesBundle\Manager;
 
-use Zakjakub\OswisResourcesBundle\Entity\AppUserRole;
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\Log\LoggerInterface;
+use Zakjakub\OswisResourcesBundle\Entity\AppUserRole;
 use Zakjakub\OswisResourcesBundle\Entity\Nameable;
 
 class AppUserRoleManager

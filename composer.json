@@ -46,7 +46,9 @@
     "psr-4": {
       "ZakJakub\\OswisResourcesBundle\\": ""
     },
-    "classmap": [""]
+    "classmap": [
+      ""
+    ]
   },
   "config": {
     "optimize-autoloader": true

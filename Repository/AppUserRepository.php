@@ -2,9 +2,9 @@
 
 namespace Zakjakub\OswisResourcesBundle\Repository;
 
-use Zakjakub\OswisResourcesBundle\Entity\AppUser;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Security\User\UserLoaderInterface;
+use Zakjakub\OswisResourcesBundle\Entity\AppUser;
 
 /**
  * AppUserRepository

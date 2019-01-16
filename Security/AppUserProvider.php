@@ -2,13 +2,13 @@
 
 namespace App\Security;
 
-use App\Entity\AppUser;
-use App\Repository\AppUserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
+use Zakjakub\OswisResourcesBundle\Entity\AppUser;
+use Zakjakub\OswisResourcesBundle\Repository\AppUserRepository;
 
 class AppUserProvider implements UserProviderInterface
 {

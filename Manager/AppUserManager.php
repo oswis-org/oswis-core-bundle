@@ -2,11 +2,11 @@
 
 namespace Zakjakub\OswisResourcesBundle\Manager;
 
-use Zakjakub\OswisResourcesBundle\Entity\AppUser;
-use Zakjakub\OswisResourcesBundle\Entity\AppUserType;
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Zakjakub\OswisResourcesBundle\Entity\AppUser;
+use Zakjakub\OswisResourcesBundle\Entity\AppUserType;
 use Zakjakub\OswisResourcesBundle\Utils\StringUtils;
 
 /**

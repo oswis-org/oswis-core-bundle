@@ -3,7 +3,7 @@
 namespace Zakjakub\OswisResourcesBundle\Api\EventSubscriber;
 
 use ApiPlatform\Core\EventListener\EventPriorities;
-use App\Manager\AppUserManager;
+use Zakjakub\OswisResourcesBundle\Manager\AppUserManager;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
