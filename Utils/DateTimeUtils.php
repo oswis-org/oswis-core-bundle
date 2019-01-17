@@ -10,6 +10,9 @@ namespace Zakjakub\OswisCoreBundle\Utils;
 class DateTimeUtils
 {
 
+    const MIN_DATE_TIME_STRING = '1970-01-01 00:00:00';
+    const MAX_DATE_TIME_STRING = '2038-01-19 00:00:00';
+
     /**
      * @param \DateInterval $dateInterval
      *
@@ -55,8 +58,8 @@ class DateTimeUtils
      */
     public static function isDateTimeInRange(?\DateTime $start, ?\DateTime $end, ?\DateTime $dateTime = null): bool
     {
-        $start = $start ?? new \DateTime('1990-01-01');
-        $end = $end ?? new \DateTime('2025-01-01');
+        $start = $start ?? new \DateTime(self::MIN_DATE_TIME_STRING);
+        $end = $end ?? new \DateTime(self::MAX_DATE_TIME_STRING);
 
         return $dateTime >= $start && $dateTime <= $end;
     }

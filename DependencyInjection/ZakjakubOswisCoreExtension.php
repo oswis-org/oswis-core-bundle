@@ -8,7 +8,7 @@ use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
-class ZakjakubOswisCoreBundleExtension extends Extension implements PrependExtensionInterface
+class ZakjakubOswisCoreExtension extends Extension implements PrependExtensionInterface
 {
 
     /**
