@@ -6,4 +6,7 @@ gesdinet_jwt_refresh_token:
     path:     /api/token/refresh
     defaults: { _controller: gesdinet.jwtrefreshtoken:refresh }
 
-
+api_platform:
+    resource: .
+    type: api_platform
+    prefix: /api
