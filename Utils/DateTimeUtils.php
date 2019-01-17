@@ -4,7 +4,7 @@ namespace Zakjakub\OswisCoreBundle\Utils;
 
 /**
  * Class DateTimeUtils
- * @package OswisResources
+ * @package OswisCoreBundle
  * @author  Jakub Zak <mail@jakubzak.eu>
  */
 class DateTimeUtils

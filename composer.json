@@ -1,6 +1,6 @@
 {
-  "name": "zakjakub/oswis-resources-bundle",
-  "description": "Resources module for One Simple Web IS.",
+  "name": "zakjakub/oswis-core-bundle",
+  "description": "Core module for One Simple Web IS.",
   "homepage": "https://github.com/zakjakub/oswis-resources-bundle",
   "type": "symfony-bundle",
   "minimum-stability": "stable",
@@ -35,13 +35,13 @@
     "symfony/security-bundle": "^4.2",
     "sensio/framework-extra-bundle": "^5.1",
     "api-platform/api-pack": "^1.2",
-    "nelmio/cors-bundle": "^1.5"
-  },
-  "require-dev": {
-    "roave/security-advisories": "dev-master",
+    "nelmio/cors-bundle": "^1.5",
     "doctrine/orm": "2.6.*",
     "doctrine/common": "2.9.*",
     "symfony/yaml": "^4.2"
+  },
+  "require-dev": {
+    "roave/security-advisories": "dev-master"
   },
   "autoload": {
     "psr-4": {

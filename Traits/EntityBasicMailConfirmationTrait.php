@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Trait EntityBasicMailConfirmationTrait
- * @package OswisResources
+ * @package OswisCoreBundle
  */
 trait EntityBasicMailConfirmationTrait
 {

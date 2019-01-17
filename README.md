@@ -1,6 +1,6 @@
-# Resources module for OSWIS
+# Core module for OSWIS
 
-Resources module for One Simple Web IS.
+Core module for One Simple Web IS.
 
 ## Installation
 

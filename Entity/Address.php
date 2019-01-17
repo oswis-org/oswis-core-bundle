@@ -4,7 +4,7 @@ namespace Zakjakub\OswisCoreBundle\Entity;
 
 /**
  * Class Address
- * @package OswisResources
+ * @package OswisCoreBundle
  */
 class Address
 {

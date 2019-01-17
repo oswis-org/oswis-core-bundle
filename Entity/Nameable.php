@@ -5,7 +5,7 @@ namespace Zakjakub\OswisCoreBundle\Entity;
 
 /**
  * Class Nameable
- * @package OswisResources
+ * @package OswisCoreBundle
  */
 class Nameable
 {

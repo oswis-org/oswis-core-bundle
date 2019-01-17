@@ -4,7 +4,19 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="" />
+    <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../oswis-core-bundle/.idea/oswis-core-bundle.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../oswis-core-bundle/.idea/oswis-core-bundle.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oswis-core-bundle/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../oswis-core-bundle/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oswis-core-bundle/Entity/Address.php" beforeDir="false" afterPath="$PROJECT_DIR$/../oswis-core-bundle/Entity/Address.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oswis-core-bundle/Entity/Nameable.php" beforeDir="false" afterPath="$PROJECT_DIR$/../oswis-core-bundle/Entity/Nameable.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oswis-core-bundle/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../oswis-core-bundle/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oswis-core-bundle/Traits/EntityBasicMailConfirmationTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/../oswis-core-bundle/Traits/EntityBasicMailConfirmationTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oswis-core-bundle/Utils/AgeUtils.php" beforeDir="false" afterPath="$PROJECT_DIR$/../oswis-core-bundle/Utils/AgeUtils.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oswis-core-bundle/Utils/DateTimeUtils.php" beforeDir="false" afterPath="$PROJECT_DIR$/../oswis-core-bundle/Utils/DateTimeUtils.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oswis-core-bundle/ZakjakubOswisResourcesBundle.php" beforeDir="false" afterPath="$PROJECT_DIR$/../oswis-core-bundle/ZakjakubOswisCoreBundle.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oswis-core-bundle/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/../oswis-core-bundle/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oswis-core-bundle/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../oswis-core-bundle/composer.lock" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.github/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
     <ignored path="$PROJECT_DIR$/vendor/adci/full-name-parser/" />
@@ -100,7 +112,20 @@
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../oswis-core-bundle/Manager/AppUserManager.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="69">
+              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+              <folding>
+                <element signature="e#52#92#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -112,14 +137,20 @@
       <find>App\Entity\Accommodation\</find>
       <find>@Doctrine\ORM\Mapping\</find>
       <find>nelmi</find>
+      <find>OswisResourcesBundle</find>
+      <find>orm</find>
+      <find>OswisResources</find>
+      <find>Resources</find>
     </findStrings>
     <replaceStrings>
       <replace>Zakjakub\OswisResourcesBundle\</replace>
       <replace>Zakjakub\OswisAccommodationBundle\Entity\</replace>
       <replace>@ORM\</replace>
+      <replace>OswisCoreBundle</replace>
     </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$</dir>
+      <dir>$PROJECT_DIR$/../oswis-core-bundle</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -171,6 +202,9 @@
         <option value="$PROJECT_DIR$/Resources/config/routes.yaml" />
         <option value="$PROJECT_DIR$/Resources/config/packages/doctrine.yaml" />
         <option value="$PROJECT_DIR$/DependencyInjection/ZakjakubOswisResourcesBundleExtension.php" />
+        <option value="$PROJECT_DIR$/../oswis-core-bundle/composer.json" />
+        <option value="$PROJECT_DIR$/../oswis-core-bundle/README.md" />
+        <option value="$PROJECT_DIR$/../oswis-core-bundle/Manager/AppUserManager.php" />
       </list>
     </option>
   </component>
@@ -271,6 +305,11 @@
               <item name="oswis-core-bundle" type="b2602c69:ProjectViewProjectNode" />
               <item name="oswis-core-bundle" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="oswis-core-bundle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oswis-core-bundle" type="462c0819:PsiDirectoryNode" />
+              <item name="Manager" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -325,7 +364,7 @@
       <workItem from="1547547406022" duration="20561000" />
       <workItem from="1547630296282" duration="10844000" />
       <workItem from="1547681387589" duration="882000" />
-      <workItem from="1547726758318" duration="12705000" />
+      <workItem from="1547726758318" duration="13362000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit.">
       <created>1547503750158</created>
@@ -537,14 +576,22 @@
       <option name="project" value="LOCAL" />
       <updated>1547758845158</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Renamed to OswisCoreBundle.">
+      <created>1547759274901</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1547759274901</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="50169000" />
+    <option name="totallyTimeSpent" value="50826000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="0" width="1368" height="741" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23413897" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -557,10 +604,10 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" visible="true" weight="0.22110553" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.16247906" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Statistic" order="10" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.3792735" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.37855947" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
       <window_info anchor="bottom" id="Inspection Results" order="13" weight="0.32663316" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -630,7 +677,8 @@
     <MESSAGE value="Renamed from Special period to Maintenance period." />
     <MESSAGE value="Allowed null." />
     <MESSAGE value="Moving common to resources bundle." />
-    <option name="LAST_COMMIT_MESSAGE" value="Moving common to resources bundle." />
+    <MESSAGE value="Renamed to OswisCoreBundle." />
+    <option name="LAST_COMMIT_MESSAGE" value="Renamed to OswisCoreBundle." />
   </component>
   <component name="editorHistoryManager">
     <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/Core/Core_c.php">
@@ -750,13 +798,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../oswis-core-bundle/ZakjakubOswisResourcesBundle.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Resources/config/serialization/AccommodationCashDeskTransfer.yaml" />
     <entry file="file://$PROJECT_DIR$/Resources/config/serialization/AccommodationFacility.yaml" />
     <entry file="file://$PROJECT_DIR$/Resources/config/serialization/AccommodationOrganization.yaml" />
@@ -767,16 +808,6 @@
     <entry file="file://$PROJECT_DIR$/Resources/config/serialization/AccommodationRoomCategory.yaml" />
     <entry file="file://$PROJECT_DIR$/Resources/config/serialization/AccommodationSpecialPeriod.yaml" />
     <entry file="file://$PROJECT_DIR$/Resources/config/serialization/AccommodationUserCategory.yaml" />
-    <entry file="file://$PROJECT_DIR$/../oswis-core-bundle/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="713">
-            <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../oswis-core-bundle/vendor/gedmo/doctrine-extensions/lib/Gedmo/Mapping/Annotation/Timestampable.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="246">
@@ -953,16 +984,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../oswis-core-bundle/Manager/AppUserManager.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="39" column="31" lean-forward="true" selection-start-line="39" selection-start-column="31" selection-end-line="39" selection-end-column="31" />
-          <folding>
-            <element signature="e#57#97#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../oswis-core-bundle/vendor/symfony/security-core/Encoder/UserPasswordEncoderInterface.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="276">
@@ -1013,13 +1034,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Resources/config/routes/api_platform.yaml">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../oswis-core-bundle/composer.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="31" column="24" selection-start-line="31" selection-start-column="24" selection-end-line="31" selection-end-column="24" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../oswis-core-bundle/Resources/config/routes.yaml">
       <provider selected="true" editor-type-id="text-editor">
@@ -1084,6 +1098,43 @@
           <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
           <folding>
             <element signature="e#147#188#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../oswis-core-bundle/composer.lock">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../oswis-core-bundle/ZakjakubOswisCoreBundle.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../oswis-core-bundle/composer.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="57" lean-forward="true" selection-start-line="57" selection-end-line="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../oswis-core-bundle/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor>
+            <caret column="6" selection-start-column="6" selection-end-column="6" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../oswis-core-bundle/Manager/AppUserManager.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+          <folding>
+            <element signature="e#52#92#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
