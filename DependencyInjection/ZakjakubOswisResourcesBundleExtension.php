@@ -1,19 +1,14 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: zakj
- * Date: 17.1.19
- * Time: 18:28
- */
 
 namespace ZakJakub\OswisResourcesBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
+use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
-class ZakjakubOswisResourcesBundleExtension extends Extension
+class ZakjakubOswisResourcesBundleExtension extends Extension implements PrependExtensionInterface
 {
 
     /**
@@ -30,4 +25,10 @@ class ZakjakubOswisResourcesBundleExtension extends Extension
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yaml');
     }
+
+    final public function prepend(ContainerBuilder $container): void
+    {
+        /// TODO: Implement.
+    }
+
 }
