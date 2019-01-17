@@ -17,25 +17,25 @@ services:
 
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
-    Zakjakub\OswisResourcesBundle\ZakjakubOswisResourcesBundle\:
+    Zakjakub\OswisCoreBundle\ZakjakubOswisCoreBundle\:
         resource: '../../*'
         exclude: '../{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
 
-    Zakjakub\OswisResourcesBundle\Filter\SearchFilter:
-        class: Zakjakub\OswisResourcesBundle\Filter\SearchFilter
+    Zakjakub\OswisCoreBundle\Filter\SearchFilter:
+        class: Zakjakub\OswisCoreBundle\Filter\SearchFilter
         autowire: true
         tags: [ { name: 'api_platform.filter', id: 'search' } ]
 
-    Zakjakub\OswisResourcesBundle\Manager\:
+    Zakjakub\OswisCoreBundle\Manager\:
         resource: '../../Manager/*'
 
-    Zakjakub\OswisResourcesBundle\Security\:
+    Zakjakub\OswisCoreBundle\Security\:
         resource: '../../Security/*'
 
-    Zakjakub\OswisResourcesBundle\Security\AppUserProvider:
+    Zakjakub\OswisCoreBundle\Security\AppUserProvider:
         resource: '../../Security'
         exclude: '../{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
 

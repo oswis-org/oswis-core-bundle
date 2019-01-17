@@ -1,6 +1,6 @@
 <?php
 
-namespace Zakjakub\OswisResourcesBundle\Traits;
+namespace Zakjakub\OswisCoreBundle\Traits;
 
 trait EntityPersonAdvancedTrait
 {

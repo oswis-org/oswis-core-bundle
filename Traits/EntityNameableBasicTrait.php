@@ -1,8 +1,8 @@
 <?php
 
-namespace Zakjakub\OswisResourcesBundle\Traits;
+namespace Zakjakub\OswisCoreBundle\Traits;
 
-use Zakjakub\OswisResourcesBundle\Entity\Nameable;
+use Zakjakub\OswisCoreBundle\Entity\Nameable;
 
 trait EntityNameableBasicTrait
 {

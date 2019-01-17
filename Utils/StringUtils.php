@@ -1,6 +1,6 @@
 <?php
 
-namespace Zakjakub\OswisResourcesBundle\Utils;
+namespace Zakjakub\OswisCoreBundle\Utils;
 
 class StringUtils
 {

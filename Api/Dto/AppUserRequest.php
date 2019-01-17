@@ -1,6 +1,6 @@
 <?php
 
-namespace Zakjakub\OswisResourcesBundle\Api\Dto;
+namespace Zakjakub\OswisCoreBundle\Api\Dto;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 

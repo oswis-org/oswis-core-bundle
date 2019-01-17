@@ -1,9 +1,9 @@
 <?php
 
-namespace Zakjakub\OswisResourcesBundle\Traits;
+namespace Zakjakub\OswisCoreBundle\Traits;
 
 use Doctrine\ORM\Mapping as ORM;
-use Zakjakub\OswisResourcesBundle\Entity\Address;
+use Zakjakub\OswisCoreBundle\Entity\Address;
 
 /**
  * Trait adds address fields

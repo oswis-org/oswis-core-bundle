@@ -1,9 +1,9 @@
 <?php
 
-namespace Zakjakub\OswisResourcesBundle\Traits;
+namespace Zakjakub\OswisCoreBundle\Traits;
 
 use Doctrine\ORM\Mapping as ORM;
-use Zakjakub\OswisResourcesBundle\Utils\StringUtils;
+use Zakjakub\OswisCoreBundle\Utils\StringUtils;
 
 /**
  * Trait adds fields for password reset.

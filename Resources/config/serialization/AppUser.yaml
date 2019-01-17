@@ -1,6 +1,6 @@
 # /config/serialization/AppUser.yaml
 
-Zakjakub\OswisResourcesBundle\Entity\AppUser:
+Zakjakub\OswisCoreBundle\Entity\AppUser:
     attributes:
         id:
             groups: ['app_users_get', 'app_user_get']
@@ -56,7 +56,7 @@ Zakjakub\OswisResourcesBundle\Entity\AppUser:
 #        facilityRevisionsWhereFacilityManager:
 #            groups: ['app_user_get']
 
-Zakjakub\OswisResourcesBundle\Entity\AppUserType:
+Zakjakub\OswisCoreBundle\Entity\AppUserType:
     attributes:
         id:
             groups: ['app_users_get', 'app_users_post', 'app_user_get', 'app_user_put']

@@ -1,6 +1,6 @@
 <?php
 
-namespace Zakjakub\OswisResourcesBundle\Exceptions;
+namespace Zakjakub\OswisCoreBundle\Exceptions;
 
 use InvalidArgumentException;
 

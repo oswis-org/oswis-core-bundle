@@ -3,9 +3,9 @@
 
 /** @noinspection PhpUndefinedMethodInspection */
 
-namespace Zakjakub\OswisResourcesBundle\Traits;
+namespace Zakjakub\OswisCoreBundle\Traits;
 
-use Zakjakub\OswisResourcesBundle\Exceptions\RevisionMissingException;
+use Zakjakub\OswisCoreBundle\Exceptions\RevisionMissingException;
 
 /**
  * Trait adds getters and setters for container of entity with address fields.

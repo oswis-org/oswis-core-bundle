@@ -1,6 +1,6 @@
 <?php
 
-namespace Zakjakub\OswisResourcesBundle\Entity;
+namespace Zakjakub\OswisCoreBundle\Entity;
 
 /**
  * Class Address

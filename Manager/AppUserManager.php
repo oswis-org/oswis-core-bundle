@@ -1,17 +1,17 @@
 <?php
 
-namespace Zakjakub\OswisResourcesBundle\Manager;
+namespace Zakjakub\OswisCoreBundle\Manager;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use Zakjakub\OswisResourcesBundle\Entity\AppUser;
-use Zakjakub\OswisResourcesBundle\Entity\AppUserType;
-use Zakjakub\OswisResourcesBundle\Utils\StringUtils;
+use Zakjakub\OswisCoreBundle\Entity\AppUser;
+use Zakjakub\OswisCoreBundle\Entity\AppUserType;
+use Zakjakub\OswisCoreBundle\Utils\StringUtils;
 
 /**
  * Class AppUserManager
- * @package Zakjakub\OswisResourcesBundle\Manager
+ * @package Zakjakub\OswisCoreBundle\Manager
  */
 class AppUserManager
 {

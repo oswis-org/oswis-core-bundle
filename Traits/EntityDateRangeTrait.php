@@ -1,9 +1,9 @@
 <?php
 
-namespace Zakjakub\OswisResourcesBundle\Traits;
+namespace Zakjakub\OswisCoreBundle\Traits;
 
 use Doctrine\ORM\Mapping as ORM;
-use Zakjakub\OswisResourcesBundle\Utils\DateTimeUtils;
+use Zakjakub\OswisCoreBundle\Utils\DateTimeUtils;
 
 /**
  * Trait adds createdDateTime and updatedDateTime fields

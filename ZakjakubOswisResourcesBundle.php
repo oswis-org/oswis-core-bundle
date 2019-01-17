@@ -1,10 +1,10 @@
 <?php
 
-namespace Zakjakub\OswisResourcesBundle;
+namespace Zakjakub\OswisCoreBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class ZakjakubOswisResourcesBundle extends Bundle
+class ZakjakubOswisCoreBundle extends Bundle
 {
 
 }

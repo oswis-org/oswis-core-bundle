@@ -1,6 +1,6 @@
 <?php
 
-namespace Zakjakub\OswisResourcesBundle\Traits;
+namespace Zakjakub\OswisCoreBundle\Traits;
 
 use ADCI\FullNameParser\Exception\NameParsingException;
 use ADCI\FullNameParser\Parser as FullNameParser;

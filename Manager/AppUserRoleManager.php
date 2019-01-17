@@ -1,11 +1,11 @@
 <?php
 
-namespace Zakjakub\OswisResourcesBundle\Manager;
+namespace Zakjakub\OswisCoreBundle\Manager;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\Log\LoggerInterface;
-use Zakjakub\OswisResourcesBundle\Entity\AppUserRole;
-use Zakjakub\OswisResourcesBundle\Entity\Nameable;
+use Zakjakub\OswisCoreBundle\Entity\AppUserRole;
+use Zakjakub\OswisCoreBundle\Entity\Nameable;
 
 class AppUserRoleManager
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Zakjakub\OswisResourcesBundle\Api\EventSubscriber;
+namespace Zakjakub\OswisCoreBundle\Api\EventSubscriber;
 
 use ApiPlatform\Core\EventListener\EventPriorities;
 use Psr\Container\ContainerInterface;
@@ -8,7 +8,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpKernel\Event\GetResponseForControllerResultEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
-use Zakjakub\OswisResourcesBundle\Manager\AppUserManager;
+use Zakjakub\OswisCoreBundle\Manager\AppUserManager;
 
 final class AppUserSubscriber implements EventSubscriberInterface
 {

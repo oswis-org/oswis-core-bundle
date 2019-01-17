@@ -1,6 +1,6 @@
 <?php
 
-namespace Zakjakub\OswisResourcesBundle\Entity;
+namespace Zakjakub\OswisCoreBundle\Entity;
 
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
@@ -10,8 +10,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation\Timestampable;
-use Zakjakub\OswisResourcesBundle\Filter\SearchAnnotation as Searchable;
-use Zakjakub\OswisResourcesBundle\Traits\EntityNameableBasicTrait;
+use Zakjakub\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
+use Zakjakub\OswisCoreBundle\Traits\EntityNameableBasicTrait;
 
 // Dummy statement -> use not deleted as unused.
 \assert(Timestampable::class);
@@ -67,14 +67,14 @@ class AppUserType
     /**
      * App users using this role.
      * @var Collection
-     * @ORM\OneToMany(targetEntity="Zakjakub\OswisResourcesBundle\Entity\AppUser", mappedBy="appUserType")
+     * @ORM\OneToMany(targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUser", mappedBy="appUserType")
      */
     protected $appUsers;
 
     /**
      * App user ROLE string, without ROLE_ (EVERYBODY, CUSTOMER, USER, USER_ADVANCED, FACILITY_MANAGER, MANAGER, ADMIN, ROOT).
      * @var AppUserRole
-     * @ORM\ManyToOne(targetEntity="Zakjakub\OswisResourcesBundle\Entity\AppUserRole", inversedBy="appUserTypes", fetch="EAGER")
+     * @ORM\ManyToOne(targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUserRole", inversedBy="appUserTypes", fetch="EAGER")
      * @ORM\JoinColumn(name="user_role_id", referencedColumnName="id")
      */
     protected $appUserRole;

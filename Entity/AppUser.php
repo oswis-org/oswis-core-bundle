@@ -1,6 +1,6 @@
 <?php
 
-namespace Zakjakub\OswisResourcesBundle\Entity;
+namespace Zakjakub\OswisCoreBundle\Entity;
 
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
@@ -8,15 +8,15 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\ExistsFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation\Timestampable;
-use Zakjakub\OswisResourcesBundle\Entity\AbstractClass\AbstractAppUser;
-use Zakjakub\OswisResourcesBundle\Filter\SearchAnnotation as Searchable;
+use Zakjakub\OswisCoreBundle\Entity\AbstractClass\AbstractAppUser;
+use Zakjakub\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
 
 // Dummy statement -> use not deleted as unused.
 \assert(Timestampable::class);
 
 /**
  * Class AppUser
- * @ORM\Entity(repositoryClass="Zakjakub\OswisResourcesBundle\Repository\AppUserRepository")
+ * @ORM\Entity(repositoryClass="Zakjakub\OswisCoreBundle\Repository\AppUserRepository")
  * @ORM\Table(name="app_user")
  * @ApiResource(
  *   attributes={
@@ -70,7 +70,7 @@ class AppUser extends AbstractAppUser
 
     /**
      * @var AppUserType
-     * @ORM\ManyToOne(targetEntity="Zakjakub\OswisResourcesBundle\Entity\AppUserType", inversedBy="appUsers", fetch="EAGER")
+     * @ORM\ManyToOne(targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUserType", inversedBy="appUsers", fetch="EAGER")
      * @ORM\JoinColumn(name="app_user_type_id", referencedColumnName="id")
      */
     protected $appUserType;

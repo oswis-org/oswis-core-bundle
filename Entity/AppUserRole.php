@@ -1,6 +1,6 @@
 <?php
 
-namespace Zakjakub\OswisResourcesBundle\Entity;
+namespace Zakjakub\OswisCoreBundle\Entity;
 
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
@@ -9,8 +9,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation\Timestampable;
-use Zakjakub\OswisResourcesBundle\Filter\SearchAnnotation as Searchable;
-use Zakjakub\OswisResourcesBundle\Traits\EntityNameableBasicTrait;
+use Zakjakub\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
+use Zakjakub\OswisCoreBundle\Traits\EntityNameableBasicTrait;
 
 // Dummy statement -> use not deleted as unused.
 \assert(Timestampable::class);
@@ -70,20 +70,20 @@ class AppUserRole
 
     /**
      * @var AppUserRole|null
-     * @ORM\ManyToOne(targetEntity="Zakjakub\OswisResourcesBundle\Entity\AppUserRole", inversedBy="children", fetch="EAGER")
+     * @ORM\ManyToOne(targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUserRole", inversedBy="children", fetch="EAGER")
      * @ORM\JoinColumn(name="parent_id", referencedColumnName="id")
      */
     protected $parent;
 
     /**
      * @var Collection
-     * @ORM\OneToMany(targetEntity="Zakjakub\OswisResourcesBundle\Entity\AppUserRole", mappedBy="parent")
+     * @ORM\OneToMany(targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUserRole", mappedBy="parent")
      */
     protected $children;
 
     /**
      * @var Collection
-     * @ORM\OneToMany(targetEntity="Zakjakub\OswisResourcesBundle\Entity\AppUserType", mappedBy="appUserRole")
+     * @ORM\OneToMany(targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUserType", mappedBy="appUserRole")
      */
     protected $appUserTypes;
 
