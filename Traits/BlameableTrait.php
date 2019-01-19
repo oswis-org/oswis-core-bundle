@@ -11,7 +11,7 @@ trait BlameableTrait
      * Author of first update.
      * @var AppUser
      * @Gedmo\Mapping\Annotation\Blameable(on="create")
-     * @ORM\ManyToOne(targetEntity="Zakjakub\OswisAccommodationBundle\Entity\AppUser")
+     * @ORM\ManyToOne(targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUser")
      * @ORM\JoinColumn(name="created_author_id", referencedColumnName="id")
      */
     protected $createdAuthor;
@@ -20,7 +20,7 @@ trait BlameableTrait
      * Author of last update.
      * @var AppUser
      * @Gedmo\Mapping\Annotation\Blameable(on="update")
-     * @ORM\ManyToOne(targetEntity="Zakjakub\OswisAccommodationBundle\Entity\AppUser")
+     * @ORM\ManyToOne(targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUser")
      * @ORM\JoinColumn(name="updated_author_id", referencedColumnName="id")
      */
     protected $updatedAuthor;
