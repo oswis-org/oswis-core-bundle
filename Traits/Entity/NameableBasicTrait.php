@@ -6,11 +6,10 @@ use Zakjakub\OswisCoreBundle\Entity\Nameable;
 
 trait NameableBasicTrait
 {
-    use IdTrait;
+    use BasicEntityTrait;
     use NameTrait;
     use DescriptionTrait;
     use SingleNoteTrait;
-    use TimestampableTrait;
 
     final public function setFieldsFromNameable(?Nameable $nameable = null): void
     {

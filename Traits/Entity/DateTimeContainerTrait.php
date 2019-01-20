@@ -5,7 +5,6 @@
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
-
 use Zakjakub\OswisCoreBundle\Exceptions\RevisionMissingException;
 
 /**

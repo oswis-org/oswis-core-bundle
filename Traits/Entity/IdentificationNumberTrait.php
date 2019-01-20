@@ -16,6 +16,12 @@ trait IdentificationNumberTrait
      * @var string|null
      *
      * @ORM\Column(type="string", nullable=true)
+     * @Symfony\Component\Validator\Constraints\Length(
+     *      min = 6,
+     *      max = 10,
+     *      minMessage = "IČ {{ value }} je příliš krátké, musí obsahovat nejméně {{ limit }} znaků.",
+     *      maxMessage = "IČ {{ value }} je příliš dlouhé, musí obsahovat nejvíce {{ limit }} znaků.",
+     * )
      */
     protected $identificationNumber;
 

@@ -11,5 +11,6 @@ trait BasicEntityTrait
     use IdTrait;
     use TimestampableTrait;
     use BlameableTrait;
+    use IpTraceableTrait;
 
 }

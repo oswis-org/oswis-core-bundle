@@ -4,8 +4,6 @@ namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-\assert(ORM\Annotation::class);
-
 /**
  * Trait adds id field
  */
