@@ -14,23 +14,17 @@ trait TimestampableTrait
 {
 
     /**
-     * Date and time of entity creation
-     *
+     * Date and time of entity creation.
      * @var \DateTime
-     *
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true)
-     *
      * @Gedmo\Mapping\Annotation\Timestampable(on="create")
      */
     protected $createdDateTime;
 
     /**
-     * Date and time of entity update
-     *
+     * Date and time of entity update.
      * @var \DateTime
-     *
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true, options={"default" : null})
-     *
      * @Gedmo\Mapping\Annotation\Timestampable(on="update")
      */
     protected $updatedDateTime;

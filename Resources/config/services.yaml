@@ -37,7 +37,11 @@ services:
 
     Zakjakub\OswisCoreBundle\Security\AppUserProvider:
         resource: '../../Security'
+        public: true
+        alias: AppUserProvider
         exclude: '../{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
+        arguments:
+          ['@doctrine.orm.entity_manager.abstract']
 
     gedmo.listener.timestampable:
         class: Gedmo\Timestampable\TimestampableListener
