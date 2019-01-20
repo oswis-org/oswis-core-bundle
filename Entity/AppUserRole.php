@@ -10,7 +10,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation\Timestampable;
 use Zakjakub\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
-use Zakjakub\OswisCoreBundle\Traits\NameableBasicTrait;
+use Zakjakub\OswisCoreBundle\Traits\Entity\NameableBasicTrait;
 
 // Dummy statement -> use not deleted as unused.
 \assert(Timestampable::class);

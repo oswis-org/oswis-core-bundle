@@ -2,8 +2,8 @@
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
-use Zakjakub\OswisCoreBundle\Entity\AppUser;
 use Doctrine\ORM\Mapping as ORM;
+use Zakjakub\OswisCoreBundle\Entity\AppUser;
 
 trait BlameableTrait
 {
@@ -35,8 +35,6 @@ trait BlameableTrait
     {
         return $this->createdAuthor;
     }
-
-
 
 
 }

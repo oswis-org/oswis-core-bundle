@@ -5,7 +5,7 @@ namespace Zakjakub\OswisCoreBundle\Entity\AbstractClass;
 use Gedmo\Mapping\Annotation\Timestampable;
 use Symfony\Component\Security\Core\User\EquatableInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
-use Zakjakub\OswisCoreBundle\Traits\UserTrait;
+use Zakjakub\OswisCoreBundle\Traits\Entity\UserTrait;
 
 // Dummy statement -> use not deleted as unused.
 \assert(Timestampable::class);

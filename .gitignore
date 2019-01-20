@@ -1,8 +1,4 @@
 
-###> zakjakub/information-system-utils ###
-/vendor/
-###< zakjakub/information-system-utils ###
-
 
 ###> symfony/framework-bundle ###
 /.env.local
