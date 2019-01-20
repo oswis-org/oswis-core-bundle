@@ -26,7 +26,7 @@
     "ext-iconv": "*",
     "ext-openssl": "*",
     "ext-mbstring": "*",
-    "api-platform/api-pack": "^1.2",
+    "api-platform/core": "^2.3",
     "sensio/framework-extra-bundle": "^5.2",
     "symfony/flex": "^1.1",
     "symfony/monolog-bundle": "^3.3",
