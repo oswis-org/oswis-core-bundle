@@ -1,6 +1,6 @@
 <?php
 
-namespace Zakjakub\OswisCoreBundle\Entity\Traits;
+namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
 trait PriceListTrait
 {

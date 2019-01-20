@@ -3,7 +3,7 @@
 
 /** @noinspection PhpUndefinedMethodInspection */
 
-namespace Zakjakub\OswisCoreBundle\Entity\Traits;
+namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
 /**
  * Trait adds getters and setters for container of entity with room fields.

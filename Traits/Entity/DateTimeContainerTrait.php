@@ -3,7 +3,7 @@
 
 /** @noinspection PhpUndefinedMethodInspection */
 
-namespace Zakjakub\OswisCoreBundle\Entity\Traits;
+namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
 
 use Zakjakub\OswisCoreBundle\Exceptions\RevisionMissingException;

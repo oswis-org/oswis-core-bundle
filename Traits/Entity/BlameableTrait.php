@@ -1,6 +1,6 @@
 <?php
 
-namespace Zakjakub\OswisCoreBundle\Entity\Traits;
+namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
 use Zakjakub\OswisCoreBundle\Entity\AppUser;
 use Doctrine\ORM\Mapping as ORM;
