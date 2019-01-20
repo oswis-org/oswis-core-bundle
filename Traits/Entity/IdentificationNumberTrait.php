@@ -2,8 +2,6 @@
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Trait adds company identification number.
  */
@@ -15,7 +13,7 @@ trait IdentificationNumberTrait
      *
      * @var string|null
      *
-     * @ORM\Column(type="string", nullable=true)
+     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      * @Symfony\Component\Validator\Constraints\Length(
      *      min = 6,
      *      max = 10,

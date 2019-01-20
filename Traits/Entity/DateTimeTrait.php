@@ -2,8 +2,6 @@
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Trait adds dateTime field
  *
@@ -16,7 +14,7 @@ trait DateTimeTrait
      *
      * @var \DateTime
      *
-     * @ORM\Column(type="datetime", nullable=true, options={"default" : null})
+     * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true, options={"default" : null})
      */
     protected $dateTime;
 

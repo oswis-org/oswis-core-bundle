@@ -2,8 +2,6 @@
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Trait adds note field
  *
@@ -17,7 +15,7 @@ trait SingleNoteTrait
      *
      * @var string|null
      *
-     * @ORM\Column(nullable=true)
+     * @Doctrine\ORM\Mapping\Column(nullable=true)
      */
     protected $note;
 

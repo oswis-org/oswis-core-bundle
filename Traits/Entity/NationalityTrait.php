@@ -2,8 +2,6 @@
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Trait adds description field
  */
@@ -14,7 +12,7 @@ trait NationalityTrait
     /**
      * Nationality (as national string).
      * @var string
-     * @ORM\Column(type="string")
+     * @Doctrine\ORM\Mapping\Column(type="string")
      */
     protected $nationality;
 

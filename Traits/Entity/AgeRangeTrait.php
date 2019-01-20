@@ -2,7 +2,6 @@
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
 use Zakjakub\OswisCoreBundle\Utils\AgeUtils;
 
 /**
@@ -20,7 +19,7 @@ trait AgeRangeTrait
      * Minimal age of person in this group
      *
      * @var int
-     * @ORM\Column(type="smallint", nullable=true)
+     * @Doctrine\ORM\Mapping\Column(type="smallint", nullable=true)
      */
     protected $minAge;
 
@@ -28,7 +27,7 @@ trait AgeRangeTrait
      * Maximal age of person in this group
      *
      * @var int
-     * @ORM\Column(type="smallint", nullable=true)
+     * @Doctrine\ORM\Mapping\Column(type="smallint", nullable=true)
      */
     protected $maxAge;
 

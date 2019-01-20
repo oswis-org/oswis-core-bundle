@@ -2,8 +2,6 @@
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Trait adds name field and __toString()
  *
@@ -17,7 +15,7 @@ trait NameTrait
      *
      * @var string|null
      *
-     * @ORM\Column(type="string", nullable=true)
+     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
     protected $name;
 
@@ -25,7 +23,7 @@ trait NameTrait
      * Short name/shortcut.
      * @var string|null
      *
-     * @ORM\Column(type="string", nullable=true)
+     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
     protected $shortName;
 

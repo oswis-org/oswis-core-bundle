@@ -2,7 +2,6 @@
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
 use Zakjakub\OswisCoreBundle\Entity\Address;
 
 /**
@@ -15,7 +14,7 @@ trait AddressTrait
      * First line of street
      *
      * @var string|null $street First line of street
-     * @ORM\Column(type="string", nullable=true)
+     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
     protected $street;
 
@@ -23,7 +22,7 @@ trait AddressTrait
      * Second line of street
      *
      * @var string|null $street2 Second line of street
-     * @ORM\Column(type="string", nullable=true)
+     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
     protected $street2;
 
@@ -31,7 +30,7 @@ trait AddressTrait
      * City
      *
      * @var string|null $city City
-     * @ORM\Column(type="string", nullable=true)
+     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
     protected $city;
 
@@ -39,7 +38,7 @@ trait AddressTrait
      * Postal code
      *
      * @var string|null $postalCode Postal code
-     * @ORM\Column(type="string", nullable=true)
+     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
     protected $postalCode;
 
@@ -47,7 +46,7 @@ trait AddressTrait
      * House number
      *
      * @var int|null $houseNumber House number
-     * @ORM\Column(type="integer", nullable=true)
+     * @Doctrine\ORM\Mapping\Column(type="integer", nullable=true)
      */
     protected $houseNumber;
 
@@ -55,7 +54,7 @@ trait AddressTrait
      * Door number
      *
      * @var int|null $doorNumber Door number
-     * @ORM\Column(type="integer", nullable=true)
+     * @Doctrine\ORM\Mapping\Column(type="integer", nullable=true)
      */
     protected $doorNumber;
 
@@ -63,7 +62,7 @@ trait AddressTrait
      * Orientation number
      *
      * @var int|null $doorNumber Door number
-     * @ORM\Column(type="integer", nullable=true)
+     * @Doctrine\ORM\Mapping\Column(type="integer", nullable=true)
      */
     protected $orientationNumber;
 

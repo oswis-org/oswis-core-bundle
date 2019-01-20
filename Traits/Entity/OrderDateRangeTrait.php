@@ -2,7 +2,6 @@
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
 use Zakjakub\OswisCoreBundle\Utils\DateTimeUtils;
 
 /**
@@ -21,7 +20,7 @@ trait OrderDateRangeTrait
      *
      * @var \DateTime
      *
-     * @ORM\Column(type="datetime", nullable=true, options={"default": null})
+     * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true, options={"default": null})
      */
     protected $startOrderDateTime;
 
@@ -30,7 +29,7 @@ trait OrderDateRangeTrait
      *
      * @var \DateTime
      *
-     * @ORM\Column(type="datetime", nullable=true, options={"default": null})
+     * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true, options={"default": null})
      */
     protected $endOrderDateTime;
 

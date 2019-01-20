@@ -2,8 +2,6 @@
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Trait adds phone number field.
  */
@@ -13,7 +11,7 @@ trait PhoneTrait
     /**
      * Phone number.
      * @var string|null
-     * @ORM\Column(type="string", unique=true, length=60, nullable=true)
+     * @Doctrine\ORM\Mapping\Column(type="string", unique=true, length=60, nullable=true)
      * @Symfony\Component\Validator\Constraints\NotBlank()
      * @Symfony\Component\Validator\Constraints\Regex(
      *     pattern="/^(\+420|\+421)? ?[1-9][0-9]{2} ?[0-9]{3} ?[0-9]{3}$/",

@@ -7,7 +7,6 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation\Timestampable;
 use Zakjakub\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
 use Zakjakub\OswisCoreBundle\Traits\Entity\NameableBasicTrait;
@@ -17,8 +16,8 @@ use Zakjakub\OswisCoreBundle\Traits\Entity\NameableBasicTrait;
 
 /**
  * Class AppUserRole
- * @ORM\Entity()
- * @ORM\Table(name="app_user_role")
+ * @Doctrine\ORM\Mapping\Entity()
+ * @Doctrine\ORM\Mapping\Table(name="app_user_role")
  * @ApiResource(
  *   attributes={
  *     "access_control"="is_granted('ROLE_MANAGER')",
@@ -64,26 +63,26 @@ class AppUserRole
 
     /**
      * @var string|null
-     * @ORM\Column(type="string", nullable=true)
+     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
     protected $roleString;
 
     /**
      * @var AppUserRole|null
-     * @ORM\ManyToOne(targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUserRole", inversedBy="children", fetch="EAGER")
-     * @ORM\JoinColumn(name="parent_id", referencedColumnName="id")
+     * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUserRole", inversedBy="children", fetch="EAGER")
+     * @Doctrine\ORM\Mapping\JoinColumn(name="parent_id", referencedColumnName="id")
      */
     protected $parent;
 
     /**
      * @var Collection
-     * @ORM\OneToMany(targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUserRole", mappedBy="parent")
+     * @Doctrine\ORM\Mapping\OneToMany(targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUserRole", mappedBy="parent")
      */
     protected $children;
 
     /**
      * @var Collection
-     * @ORM\OneToMany(targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUserType", mappedBy="appUserRole")
+     * @Doctrine\ORM\Mapping\OneToMany(targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUserType", mappedBy="appUserRole")
      */
     protected $appUserTypes;
 

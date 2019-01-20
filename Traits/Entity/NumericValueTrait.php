@@ -2,8 +2,6 @@
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Trait adds numericValue field
  */
@@ -15,7 +13,7 @@ trait NumericValueTrait
      *
      * @var int|null
      *
-     * @ORM\Column(nullable=false, options={"default": 0})
+     * @Doctrine\ORM\Mapping\Column(nullable=false, options={"default": 0})
      */
     private $numericValue;
 

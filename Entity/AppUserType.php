@@ -8,7 +8,6 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\ExistsFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation\Timestampable;
 use Zakjakub\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
 use Zakjakub\OswisCoreBundle\Traits\Entity\NameableBasicTrait;
@@ -18,8 +17,8 @@ use Zakjakub\OswisCoreBundle\Traits\Entity\NameableBasicTrait;
 
 /**
  * Class AppUserType (customer, manager, admin etc.)
- * @ORM\Entity
- * @ORM\Table(name="app_user_type")
+ * @Doctrine\ORM\Mapping\Entity
+ * @Doctrine\ORM\Mapping\Table(name="app_user_type")
  * @ApiResource(
  *   attributes={
  *     "access_control"="is_granted('ROLE_MANAGER')",
@@ -67,22 +66,22 @@ class AppUserType
     /**
      * App users using this role.
      * @var Collection
-     * @ORM\OneToMany(targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUser", mappedBy="appUserType")
+     * @Doctrine\ORM\Mapping\OneToMany(targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUser", mappedBy="appUserType")
      */
     protected $appUsers;
 
     /**
      * App user ROLE string, without ROLE_ (EVERYBODY, CUSTOMER, USER, USER_ADVANCED, FACILITY_MANAGER, MANAGER, ADMIN, ROOT).
      * @var AppUserRole
-     * @ORM\ManyToOne(targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUserRole", inversedBy="appUserTypes", fetch="EAGER")
-     * @ORM\JoinColumn(name="user_role_id", referencedColumnName="id")
+     * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUserRole", inversedBy="appUserTypes", fetch="EAGER")
+     * @Doctrine\ORM\Mapping\JoinColumn(name="user_role_id", referencedColumnName="id")
      */
     protected $appUserRole;
 
     /**
      * True if user has access to administration (IS).
      * @var bool|null
-     * @ORM\Column(type="boolean", nullable=true)
+     * @Doctrine\ORM\Mapping\Column(type="boolean", nullable=true)
      */
     protected $adminUser;
 

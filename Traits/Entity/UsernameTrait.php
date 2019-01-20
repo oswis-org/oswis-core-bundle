@@ -2,8 +2,6 @@
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Trait adds username field.
  */
@@ -13,7 +11,7 @@ trait UsernameTrait
     /**
      * Username.
      * @var string|null
-     * @ORM\Column(name="username", type="string", length=50, unique=true, nullable=true)
+     * @Doctrine\ORM\Mapping\Column(name="username", type="string", length=50, unique=true, nullable=true)
      */
     protected $username;
 

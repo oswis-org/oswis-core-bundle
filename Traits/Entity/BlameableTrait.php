@@ -2,7 +2,6 @@
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
 use Zakjakub\OswisCoreBundle\Entity\AppUser;
 
 trait BlameableTrait
@@ -12,8 +11,8 @@ trait BlameableTrait
      * Author of first update.
      * @var AppUser
      * @Gedmo\Mapping\Annotation\Blameable(on="create")
-     * @ORM\ManyToOne(targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUser")
-     * @ORM\JoinColumn(name="created_author_id", referencedColumnName="id")
+     * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUser")
+     * @Doctrine\ORM\Mapping\JoinColumn(name="created_author_id", referencedColumnName="id")
      */
     protected $createdAuthor;
 
@@ -21,8 +20,8 @@ trait BlameableTrait
      * Author of last update.
      * @var AppUser
      * @Gedmo\Mapping\Annotation\Blameable(on="update")
-     * @ORM\ManyToOne(targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUser")
-     * @ORM\JoinColumn(name="updated_author_id", referencedColumnName="id")
+     * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUser")
+     * @Doctrine\ORM\Mapping\JoinColumn(name="updated_author_id", referencedColumnName="id")
      */
     protected $updatedAuthor;
 

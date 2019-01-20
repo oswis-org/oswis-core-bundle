@@ -2,8 +2,6 @@
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Trait EntityDiscountTrait
  */
@@ -17,21 +15,21 @@ trait DiscountTrait
     /**
      * Maximal amount of persons to use this discount.
      * @var int
-     * @ORM\Column(type="integer")
+     * @Doctrine\ORM\Mapping\Column(type="integer")
      */
     protected $maximalPersonsAmount;
 
     /**
      * Maximal amount of nights to use this discount.
      * @var int
-     * @ORM\Column(type="integer")
+     * @Doctrine\ORM\Mapping\Column(type="integer")
      */
     protected $maximalNightsAmount;
 
     /**
      * Amount of discounts available (negative is infinity, 1 is not reusable, 0 is not usable).
      * @var int
-     * @ORM\Column(type="integer")
+     * @Doctrine\ORM\Mapping\Column(type="integer")
      */
     protected $amountAvailable;
 

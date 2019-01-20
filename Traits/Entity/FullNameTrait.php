@@ -4,7 +4,6 @@ namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
 use ADCI\FullNameParser\Exception\NameParsingException;
 use ADCI\FullNameParser\Parser as FullNameParser;
-use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Trait adds name field and __toString()
@@ -18,42 +17,42 @@ trait FullNameTrait
     /**
      * Nickname.
      * @var string|null $nickname
-     * @ORM\Column(type="string", nullable=true)
+     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
     protected $nickname;
 
     /**
      * First (given) name.
      * @var string|null $givenName
-     * @ORM\Column(type="string", nullable=true)
+     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
     protected $givenName;
 
     /**
      * Middle (additional) name.
      * @var string|null $additionalName
-     * @ORM\Column(type="string", nullable=true)
+     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
     protected $additionalName;
 
     /**
      * Last (family) name.
      * @var string|null $familyName
-     * @ORM\Column(type="string", nullable=true)
+     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
     protected $familyName;
 
     /**
      * Prefix (title before name).
      * @var string|null $honorificPrefix
-     * @ORM\Column(type="string", nullable=true)
+     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
     protected $honorificPrefix;
 
     /**
      * Suffix (title after name).
      * @var string|null $honorificSuffix
-     * @ORM\Column(type="string", nullable=true)
+     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
     protected $honorificSuffix;
 

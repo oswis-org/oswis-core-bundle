@@ -2,7 +2,6 @@
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
 use Zakjakub\OswisCoreBundle\Utils\StringUtils;
 
 /**
@@ -14,14 +13,14 @@ trait PasswordResetTrait
     /**
      * Token for password reset.
      * @var string|null
-     * @ORM\Column(type="string", nullable=true)
+     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
     protected $passwordResetRequestToken;
 
     /**
      * Date and time of password reset request (and token generation).
      * @var \DateTime|null
-     * @ORM\Column(type="datetime", nullable=true)
+     * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true)
      */
     protected $passwordResetRequestDateTime;
 

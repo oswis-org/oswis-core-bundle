@@ -2,8 +2,6 @@
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 trait UserTrait
 {
     use PersonAdvancedTrait;
@@ -16,7 +14,7 @@ trait UserTrait
     /**
      * Salt that was originally used to encode the password.
      * @var string|null
-     * @ORM\Column(type="string", nullable=true)
+     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
     protected $salt;
 

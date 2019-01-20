@@ -2,8 +2,6 @@
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 trait IpTraceableTrait
 {
 
@@ -11,7 +9,7 @@ trait IpTraceableTrait
      * @var string|null $createdIp
      *
      * @Gedmo\Mapping\Annotation\IpTraceable(on="create")
-     * @ORM\Column(length=45, nullable=true)
+     * @Doctrine\ORM\Mapping\Column(length=45, nullable=true)
      * @Symfony\Component\Validator\Constraints\Ip(
      *     message = "Zadaná IP adresa ({{ value }}) není platná.",
      *     version = "all"
@@ -23,7 +21,7 @@ trait IpTraceableTrait
      * @var string|null $updatedIp
      *
      * @Gedmo\Mapping\Annotation\IpTraceable(on="update")
-     * @ORM\Column(length=45, nullable=true)
+     * @Doctrine\ORM\Mapping\Column(length=45, nullable=true)
      * @Symfony\Component\Validator\Constraints\Ip(
      *     message = "Zadaná IP adresa ({{ value }}) není platná.",
      *     version = "all"

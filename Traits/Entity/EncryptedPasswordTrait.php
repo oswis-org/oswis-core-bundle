@@ -2,8 +2,6 @@
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Trait adds encrypted password field.
  */
@@ -13,7 +11,7 @@ trait EncryptedPasswordTrait
     /**
      * Encrypted password.
      * @var string|null
-     * @ORM\Column(name="password", type="string", length=64, nullable=true)
+     * @Doctrine\ORM\Mapping\Column(name="password", type="string", length=64, nullable=true)
      */
     protected $password;
 

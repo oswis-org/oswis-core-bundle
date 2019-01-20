@@ -2,8 +2,6 @@
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Trait adds description field
  */
@@ -13,21 +11,21 @@ trait ZtpOrPetTrait
     /**
      * Person is ZTP(P).
      * @var bool
-     * @ORM\Column(type="boolean")
+     * @Doctrine\ORM\Mapping\Column(type="boolean")
      */
     protected $ztp;
 
     /**
      * Person is ZTP(P) accompaniment.
      * @var bool
-     * @ORM\Column(type="boolean")
+     * @Doctrine\ORM\Mapping\Column(type="boolean")
      */
     protected $ztpAccompaniment;
 
     /**
      * Pet, not person.
      * @var bool
-     * @ORM\Column(type="boolean")
+     * @Doctrine\ORM\Mapping\Column(type="boolean")
      */
     protected $pet;
 

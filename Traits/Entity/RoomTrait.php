@@ -2,8 +2,6 @@
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Trait adds room fields.
  */
@@ -15,28 +13,28 @@ trait RoomTrait
     /**
      * Floor number.
      * @var int
-     * @ORM\Column(type="smallint", nullable=true)
+     * @Doctrine\ORM\Mapping\Column(type="smallint", nullable=true)
      */
     protected $floor;
 
     /**
      * Number of regular beds.
      * @var int
-     * @ORM\Column(type="smallint", nullable=true)
+     * @Doctrine\ORM\Mapping\Column(type="smallint", nullable=true)
      */
     protected $numberOfBeds;
 
     /**
      * Number of extra beds.
      * @var int
-     * @ORM\Column(type="smallint", nullable=true)
+     * @Doctrine\ORM\Mapping\Column(type="smallint", nullable=true)
      */
     protected $numberOfExtraBeds;
 
     /**
      * Number of animals.
      * @var int
-     * @ORM\Column(type="smallint", nullable=true)
+     * @Doctrine\ORM\Mapping\Column(type="smallint", nullable=true)
      */
     protected $numberOfAnimals;
 

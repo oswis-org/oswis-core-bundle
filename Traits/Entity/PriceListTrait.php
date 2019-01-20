@@ -10,35 +10,35 @@ trait PriceListTrait
     /**
      * Percentage from reservation charge (excludes resort fees) needed as deposit.
      * @var int
-     * @ORM\Column(type="integer", nullable=true)
+     * @Doctrine\ORM\Mapping\Column(type="integer", nullable=true)
      */
     protected $depositPercentage;
 
     /**
      * Percentage from reservation charge (excludes resort fees) needed as cancel fee.
      * @var int
-     * @ORM\Column(type="integer", nullable=true)
+     * @Doctrine\ORM\Mapping\Column(type="integer", nullable=true)
      */
     protected $cancelFeePercentage;
 
     /**
      * Working days available for payment of deposit.
      * @var int
-     * @ORM\Column(type="integer", nullable=true)
+     * @Doctrine\ORM\Mapping\Column(type="integer", nullable=true)
      */
     protected $depositDaysAfterOrder;
 
     /**
      * Minimal amount of working days before reservation start for complete payment.
      * @var int
-     * @ORM\Column(type="integer", nullable=true)
+     * @Doctrine\ORM\Mapping\Column(type="integer", nullable=true)
      */
     protected $restDaysBeforeReservation;
 
     /**
      * Minimal length of stay in nights
      * @var int
-     * @ORM\Column(type="integer", nullable=true)
+     * @Doctrine\ORM\Mapping\Column(type="integer", nullable=true)
      */
     protected $minLength;
 

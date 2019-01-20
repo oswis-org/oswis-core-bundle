@@ -2,8 +2,6 @@
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Trait adds description field
  */
@@ -13,14 +11,14 @@ trait IdCardTrait
     /**
      * ID card type (as string)
      * @var string
-     * @ORM\Column(type="string")
+     * @Doctrine\ORM\Mapping\Column(type="string")
      */
     protected $idCardType;
 
     /**
      * ID card number (as string).
      * @var string
-     * @ORM\Column(type="string")
+     * @Doctrine\ORM\Mapping\Column(type="string")
      */
     protected $idCardNumber;
 

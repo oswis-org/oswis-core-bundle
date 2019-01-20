@@ -2,8 +2,6 @@
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Trait EntityBasicMailConfirmationTrait
  * @package OswisCoreBundle
@@ -14,21 +12,21 @@ trait BasicMailConfirmationTrait
     /**
      * Date and time of last confirmation e-mail.
      * @var \DateTime|null
-     * @ORM\Column(type="datetime", nullable=true)
+     * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true)
      */
     protected $eMailConfirmationDateTime;
 
     /**
      * Number of confirmation e-mails sent.
      * @var int
-     * @ORM\Column(type="integer")
+     * @Doctrine\ORM\Mapping\Column(type="integer")
      */
     protected $eMailConfirmationCount;
 
     /**
      * Source/reason/author of last e-mail confirmation (cron, manual...).
      * @var string|null
-     * @ORM\Column(type="string", nullable=true)
+     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
     protected $eMailConfirmationSource;
 

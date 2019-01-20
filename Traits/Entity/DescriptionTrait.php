@@ -2,8 +2,6 @@
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Trait adds description field
  */
@@ -15,7 +13,7 @@ trait DescriptionTrait
      *
      * @var string|null
      *
-     * @ORM\Column(nullable=true)
+     * @Doctrine\ORM\Mapping\Column(nullable=true)
      */
     protected $description;
 
