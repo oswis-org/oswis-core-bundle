@@ -11,7 +11,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation\Timestampable;
 use Zakjakub\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
-use Zakjakub\OswisCoreBundle\Traits\EntityNameableBasicTrait;
+use Zakjakub\OswisCoreBundle\Traits\NameableBasicTrait;
 
 // Dummy statement -> use not deleted as unused.
 \assert(Timestampable::class);
@@ -62,7 +62,7 @@ use Zakjakub\OswisCoreBundle\Traits\EntityNameableBasicTrait;
  */
 class AppUserType
 {
-    use EntityNameableBasicTrait;
+    use NameableBasicTrait;
 
     /**
      * App users using this role.

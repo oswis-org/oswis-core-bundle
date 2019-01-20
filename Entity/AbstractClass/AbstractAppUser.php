@@ -5,14 +5,14 @@ namespace Zakjakub\OswisCoreBundle\Entity\AbstractClass;
 use Gedmo\Mapping\Annotation\Timestampable;
 use Symfony\Component\Security\Core\User\EquatableInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
-use Zakjakub\OswisCoreBundle\Traits\EntityUserTrait;
+use Zakjakub\OswisCoreBundle\Traits\UserTrait;
 
 // Dummy statement -> use not deleted as unused.
 \assert(Timestampable::class);
 
 abstract class AbstractAppUser implements UserInterface, \Serializable, EquatableInterface
 {
-    use EntityUserTrait;
+    use UserTrait;
 
     /** @see \Serializable::serialize() */
     final public function serialize(): string

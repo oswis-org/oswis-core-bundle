@@ -5,9 +5,55 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Traits/IpTraceableTrait.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractAppUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractAppUser.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AppUserRole.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUserRole.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AppUserType.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUserType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/BasicEntityTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/BasicEntityTrait.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Traits/BlameableTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/BlameableTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/EntityActiveTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/ActiveTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/EntityAddressContainerTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/AddressContainerTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/EntityAddressTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/AddressTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/EntityAgeRangeContainerTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/AgeRangeContainerTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/EntityAgeRangeTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/AgeRangeTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/EntityBasicMailConfirmationTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/BasicMailConfirmationTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/EntityBirthDateTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/BirthDateTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/EntityDateRangeTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/DateRangeTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/EntityDateTimeContainerTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/DateTimeContainerTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/EntityDateTimeTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/DateTimeTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/EntityDeletedTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/DeletedTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/EntityDescriptionTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/DescriptionTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/EntityDiscountTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/DiscountTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/EntityEmailTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/EmailTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/EntityEncryptedPasswordTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/EncryptedPasswordTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/EntityFullNameTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/FullNameTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/EntityIdCardTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/IdCardTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/EntityIdTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/IdTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/EntityIdentificationNumberTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/IdentificationNumberTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/EntityMaintenancePeriodTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/MaintenancePeriodTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/EntityNameTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/NameTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/EntityNameableBasicContainerTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/NameableBasicContainerTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/EntityNameableBasicTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/NameableBasicTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/EntityNationalityTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/NationalityTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/EntityNumericValueTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/NumericValueTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/EntityOrderDateRangeTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/OrderDateRangeTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/EntityPasswordResetTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/PasswordResetTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/EntityPersonAdvancedTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/PersonAdvancedTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/EntityPersonBasicTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/PersonBasicTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/EntityPhoneTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/PhoneTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/EntityPlainTextReasonTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/PlainTextReasonTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/EntityPriceListTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/PriceListTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/EntityPriorityTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/PriorityTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/EntityReservationDateRangeTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/ReservationDateRangeTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/EntityRoomContainerTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/RoomContainerTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/EntityRoomTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/RoomTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/EntitySingleNoteTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/SingleNoteTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/EntityTaxRateTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/TaxRateTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/EntityTimestampableTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/TimestampableTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/EntityUserTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/UserTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/EntityUsernameTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/UsernameTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/EntityZtpOrPetTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/ZtpOrPetTrait.php" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.github/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -106,10 +152,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Traits/BasicEntityTrait.php">
+        <entry file="file://$PROJECT_DIR$/Traits/EmailTrait.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="12" column="19" lean-forward="true" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
+            <state relative-caret-position="483">
+              <caret line="21" selection-start-line="17" selection-end-line="21" />
             </state>
           </provider>
         </entry>
@@ -117,8 +163,29 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Traits/BlameableTrait.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+            <state relative-caret-position="239">
+              <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+              <folding>
+                <element signature="e#51#95#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Traits/PhoneTrait.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="115">
+              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Traits/IpTraceableTrait.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="10">
+              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
             </state>
           </provider>
         </entry>
@@ -217,6 +284,20 @@
         <option value="$PROJECT_DIR$/composer.json" />
         <option value="$PROJECT_DIR$/composer.json" />
         <option value="$PROJECT_DIR$/Traits/BlameableTrait.php" />
+        <option value="$PROJECT_DIR$/Traits/TimestampableTrait.php" />
+        <option value="$PROJECT_DIR$/Traits/PersonBasicTrait.php" />
+        <option value="$PROJECT_DIR$/Traits/AddressContainerTrait.php" />
+        <option value="$PROJECT_DIR$/Traits/AddressTrait.php" />
+        <option value="$PROJECT_DIR$/Traits/BasicMailConfirmationTrait.php" />
+        <option value="$PROJECT_DIR$/Traits/BirthDateTrait.php" />
+        <option value="$PROJECT_DIR$/Traits/DateRangeTrait.php" />
+        <option value="$PROJECT_DIR$/Traits/DateTimeTrait.php" />
+        <option value="$PROJECT_DIR$/Traits/DeletedTrait.php" />
+        <option value="$PROJECT_DIR$/Traits/DescriptionTrait.php" />
+        <option value="$PROJECT_DIR$/Traits/EncryptedPasswordTrait.php" />
+        <option value="$PROJECT_DIR$/Traits/PhoneTrait.php" />
+        <option value="$PROJECT_DIR$/Traits/EmailTrait.php" />
+        <option value="$PROJECT_DIR$/Traits/IpTraceableTrait.php" />
       </list>
     </option>
   </component>
@@ -322,6 +403,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -338,14 +420,13 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="editor.config.ad.shown" value="true" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
+    <property name="settings.editor.selected.configurable" value="MTConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -389,7 +470,8 @@
       <workItem from="1547630296282" duration="10844000" />
       <workItem from="1547681387589" duration="882000" />
       <workItem from="1547726758318" duration="17271000" />
-      <workItem from="1547907160008" duration="5729000" />
+      <workItem from="1547907160008" duration="6611000" />
+      <workItem from="1547987420209" duration="2197000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit.">
       <created>1547503750158</created>
@@ -643,17 +725,31 @@
       <option name="project" value="LOCAL" />
       <updated>1547913214718</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Fixed AppUser's namespace.">
+      <created>1547915173868</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1547915173868</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Some changes.">
+      <created>1547915196495</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1547915196495</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="60464000" />
+    <option name="totallyTimeSpent" value="63543000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="0" width="1922" height="1080" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20607029" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17412141" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -664,11 +760,11 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" visible="true" weight="0.30448717" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49903288" visible="true" weight="0.18910256" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Statistic" order="10" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.37820512" />
-      <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.50096714" side_tool="true" visible="true" weight="0.18910256" />
       <window_info anchor="bottom" id="Inspection Results" order="13" weight="0.32663316" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -740,9 +836,10 @@
     <MESSAGE value="Renamed to OswisCoreBundle." />
     <MESSAGE value="Added MIN_DATE_TIME_STRING and MAX_DATE_TIME_STRING." />
     <MESSAGE value="Updated requirements." />
-    <MESSAGE value="Some changes." />
     <MESSAGE value="Added blameable." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added blameable." />
+    <MESSAGE value="Fixed AppUser's namespace." />
+    <MESSAGE value="Some changes." />
+    <option name="LAST_COMMIT_MESSAGE" value="Some changes." />
   </component>
   <component name="editorHistoryManager">
     <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/Core/Core_c.php">
@@ -752,17 +849,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Traits/EntityDateRangeTrait.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
-          <folding>
-            <element signature="e#56#88#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Traits/EntityAgeRangeContainerTrait.php">
+    <entry file="file://$PROJECT_DIR$/Traits/AgeRangeContainerTrait.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="138">
           <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
@@ -807,17 +894,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Traits/EntityAddressTrait.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
-          <folding>
-            <element signature="e#56#88#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Traits/EntityNameableBasicTrait.php">
+    <entry file="file://$PROJECT_DIR$/Traits/NameableBasicTrait.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="69">
           <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
@@ -851,41 +928,28 @@
     <entry file="file://$PROJECT_DIR$/Resources/config/serialization/AccommodationSpecialPeriod.yaml" />
     <entry file="file://$PROJECT_DIR$/Resources/config/serialization/AccommodationUserCategory.yaml" />
     <entry file="file://$PROJECT_DIR$/vendor/gedmo/doctrine-extensions/lib/Gedmo/Mapping/Annotation/Timestampable.php" />
-    <entry file="file://$PROJECT_DIR$/Traits/EntityPersonBasicTrait.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Traits/EntityTimestampableTrait.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1413">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
-          <folding>
-            <element signature="e#56#88#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Traits/EntityMaintenancePeriodTrait.php">
+    <entry file="file://$PROJECT_DIR$/Traits/MaintenancePeriodTrait.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="207">
           <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Traits/EntityPlainTextReasonTrait.php">
+    <entry file="file://$PROJECT_DIR$/Traits/PlainTextReasonTrait.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="115">
           <caret line="5" selection-start-line="5" selection-end-line="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Traits/EntityRoomContainerTrait.php">
+    <entry file="file://$PROJECT_DIR$/Traits/RoomContainerTrait.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="322">
           <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Traits/EntityRoomTrait.php">
+    <entry file="file://$PROJECT_DIR$/Traits/RoomTrait.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="161">
           <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
@@ -1078,14 +1142,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Traits/EntityActiveTrait.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Traits/EntityIdentificationNumberTrait.php">
+    <entry file="file://$PROJECT_DIR$/Traits/IdentificationNumberTrait.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-552" />
       </provider>
@@ -1117,7 +1174,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Traits/EntityIdTrait.php">
+    <entry file="file://$PROJECT_DIR$/Traits/IdTrait.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="299">
           <caret line="13" selection-start-line="13" selection-end-line="13" />
@@ -1199,14 +1256,109 @@
     <entry file="file://$PROJECT_DIR$/Traits/BasicEntityTrait.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="276">
-          <caret line="12" column="19" lean-forward="true" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
+          <caret line="12" column="19" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Traits/ActiveTrait.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="4" column="28" selection-start-line="4" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Traits/TimestampableTrait.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Traits/PersonBasicTrait.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="5" column="1" lean-forward="true" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Traits/AddressContainerTrait.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Traits/AddressTrait.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Traits/BasicMailConfirmationTrait.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2231">
+          <caret line="97" column="9" lean-forward="true" selection-start-line="97" selection-start-column="9" selection-end-line="97" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Traits/BirthDateTrait.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Traits/DateRangeTrait.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Traits/DateTimeTrait.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Traits/DeletedTrait.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Traits/DescriptionTrait.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Traits/EncryptedPasswordTrait.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/symfony/validator/Constraints/NotBlank.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="21" column="6" selection-start-line="21" selection-start-column="6" selection-end-line="21" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Traits/PhoneTrait.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Traits/EmailTrait.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="21" selection-start-line="17" selection-end-line="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Traits/IpTraceableTrait.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="10">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Traits/BlameableTrait.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+        <state relative-caret-position="239">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+          <folding>
+            <element signature="e#51#95#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
