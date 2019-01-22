@@ -1,0 +1,8 @@
+Zakjakub\OswisCoreBundle\Entity\ClientLogRecord:
+    attributes:
+        title:
+            groups: ['client_log_records_post']
+        message:
+            groups: ['client_log_records_post']
+
+

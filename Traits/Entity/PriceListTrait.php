@@ -8,14 +8,14 @@ trait PriceListTrait
     use DateTimeTrait;
 
     /**
-     * Percentage from reservation charge (excludes resort fees) needed as deposit.
+     * Percentage (as decimal 0.01-1.00) from reservation charge (excludes resort fees) needed as deposit.
      * @var int
      * @Doctrine\ORM\Mapping\Column(type="integer", nullable=true)
      */
     protected $depositPercentage;
 
     /**
-     * Percentage from reservation charge (excludes resort fees) needed as cancel fee.
+     * Percentage (as decimal 0.01-1.00) from reservation charge (excludes resort fees) needed as cancel fee.
      * @var int
      * @Doctrine\ORM\Mapping\Column(type="integer", nullable=true)
      */

@@ -7,10 +7,8 @@ namespace Zakjakub\OswisCoreBundle\Traits\Entity;
  */
 trait BasicEntityTrait
 {
-
     use IdTrait;
     use TimestampableTrait;
     use BlameableTrait;
     use IpTraceableTrait;
-
 }
