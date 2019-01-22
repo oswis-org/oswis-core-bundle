@@ -21,7 +21,12 @@ use Zakjakub\OswisCoreBundle\Traits\Entity\BasicEntityTrait;
  *       "denormalization_context"={"groups"={"client_log_records_post"}}
  *     }
  *   },
- *   itemOperations={}
+ *   itemOperations={
+ *     "post"={
+ *       "access_control"="is_granted('IS_AUTHENTICATED_ANONYMOUSLY')",
+ *       "denormalization_context"={"groups"={"client_log_record_post"}}
+ *     }
+ *   }
  * )
  */
 class ClientLogRecord
