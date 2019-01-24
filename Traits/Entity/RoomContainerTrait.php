@@ -13,6 +13,11 @@ trait RoomContainerTrait
     use NameableBasicContainerTrait;
     use DateTimeContainerTrait;
 
+    /**
+     * @param int|null $floor
+     *
+     * @throws \Exception
+     */
     final public function setFloor(?int $floor): void
     {
         if ($this->getFloor() !== $floor) {
@@ -33,6 +38,11 @@ trait RoomContainerTrait
         return $this->getRevisionByDate($dateTime)->getFloor();
     }
 
+    /**
+     * @param int|null $numberOfBeds
+     *
+     * @throws \Exception
+     */
     final public function setNumberOfBeds(?int $numberOfBeds): void
     {
         if ($this->getNumberOfBeds() !== $numberOfBeds) {
@@ -54,7 +64,7 @@ trait RoomContainerTrait
     }
 
     /**
-     * @param string|null $numberOfExtraBeds
+     * @param int|null $numberOfExtraBeds
      *
      * @throws \Exception
      */
@@ -79,7 +89,7 @@ trait RoomContainerTrait
     }
 
     /**
-     * @param string|null $numberOfAnimals
+     * @param int|null $numberOfAnimals
      *
      * @throws \Exception
      */
