@@ -1,6 +1,6 @@
 Zakjakub\OswisCoreBundle\Entity\ClientLogRecord:
     attributes:
-        type:
+        level:
             groups: ['client_log_records_post']
         message:
             groups: ['client_log_records_post']

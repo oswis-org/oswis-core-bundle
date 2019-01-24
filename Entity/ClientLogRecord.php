@@ -37,7 +37,7 @@ class ClientLogRecord
      * @var string|null
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
-    public $type;
+    public $level;
 
     /**
      * @var string|null
@@ -49,7 +49,7 @@ class ClientLogRecord
         ?string $type = null,
         ?string $message = null
     ) {
-        $this->type = $type;
+        $this->level = $type;
         $this->message = $message;
     }
 
