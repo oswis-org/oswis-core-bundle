@@ -13,12 +13,7 @@ trait RoomContainerTrait
     use NameableBasicContainerTrait;
     use DateTimeContainerTrait;
 
-    /**
-     * @param string|null $floor
-     *
-     * @throws \Exception
-     */
-    final public function setFloor(?string $floor): void
+    final public function setFloor(?int $floor): void
     {
         if ($this->getFloor() !== $floor) {
             $newRevision = clone $this->getRevisionByDate();
@@ -33,17 +28,12 @@ trait RoomContainerTrait
      * @return int
      * @throws \Exception
      */
-    final public function getFloor(?\DateTime $dateTime = null): int
+    final public function getFloor(?\DateTime $dateTime = null): ?int
     {
         return $this->getRevisionByDate($dateTime)->getFloor();
     }
 
-    /**
-     * @param string|null $numberOfBeds
-     *
-     * @throws \Exception
-     */
-    final public function setNumberOfBeds(?string $numberOfBeds): void
+    final public function setNumberOfBeds(?int $numberOfBeds): void
     {
         if ($this->getNumberOfBeds() !== $numberOfBeds) {
             $newRevision = clone $this->getRevisionByDate();
@@ -68,7 +58,7 @@ trait RoomContainerTrait
      *
      * @throws \Exception
      */
-    final public function setNumberOfExtraBeds(?string $numberOfExtraBeds): void
+    final public function setNumberOfExtraBeds(?int $numberOfExtraBeds): void
     {
         if ($this->getNumberOfExtraBeds() !== $numberOfExtraBeds) {
             $newRevision = clone $this->getRevisionByDate();
@@ -93,7 +83,7 @@ trait RoomContainerTrait
      *
      * @throws \Exception
      */
-    final public function setNumberOfAnimals(?string $numberOfAnimals): void
+    final public function setNumberOfAnimals(?int $numberOfAnimals): void
     {
         if ($this->getNumberOfAnimals() !== $numberOfAnimals) {
             $newRevision = clone $this->getRevisionByDate();
