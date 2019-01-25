@@ -8,7 +8,6 @@ namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 trait NationalityTrait
 {
 
-
     /**
      * Nationality (as national string).
      * @var string
