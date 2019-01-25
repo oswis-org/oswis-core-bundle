@@ -45,7 +45,8 @@ trait ConfirmedByManagerTrait
     /**
      * @throws \Exception
      */
-    final public function confirmByManager(): void {
+    final public function confirmByManager(): void
+    {
         if (!$this->confirmedByManager) {
             $this->confirmedByManager = new \DateTime();
         }

@@ -44,7 +44,8 @@ trait ConfirmedByUserTrait
     /**
      * @throws \Exception
      */
-    final public function confirmByUser(): void {
+    final public function confirmByUser(): void
+    {
         if (!$this->confirmedByUser) {
             $this->confirmedByUser = new \DateTime();
         }

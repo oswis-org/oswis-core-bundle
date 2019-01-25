@@ -90,6 +90,12 @@ abstract class AbstractAppUser implements UserInterface, \Serializable, Equatabl
     {
     }
 
+    final public function containsRole(string $roleName): bool
+    {
+        $roles = new ArrayCollection($this->getRoles());
+
+        return $roles->contains($roleName);
+    }
 
     /**
      * Returns the roles granted to the user.
@@ -106,10 +112,5 @@ abstract class AbstractAppUser implements UserInterface, \Serializable, Equatabl
      * @return array (Role|string)[] The user roles
      */
     abstract public function getRoles(): array;
-
-    final public function containsRole(string $roleName): bool {
-        $roles = new ArrayCollection($this->getRoles());
-        return $roles->contains($roleName);
-    }
 
 }
