@@ -2,6 +2,7 @@
 
 namespace Zakjakub\OswisCoreBundle\Entity\AbstractClass;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Gedmo\Mapping\Annotation\Timestampable;
 use Symfony\Component\Security\Core\User\EquatableInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -106,5 +107,9 @@ abstract class AbstractAppUser implements UserInterface, \Serializable, Equatabl
      */
     abstract public function getRoles(): array;
 
+    final public function containsRole(string $roleName): bool {
+        $roles = new ArrayCollection($this->getRoles());
+        return $roles->contains($roleName);
+    }
 
 }
