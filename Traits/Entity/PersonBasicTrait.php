@@ -7,6 +7,6 @@ trait PersonBasicTrait
     use BasicEntityTrait;
     use FullNameTrait;
     use BirthDateTrait;
-    use SingleNoteTrait;
+    use NoteTrait;
     use DescriptionTrait;
 }

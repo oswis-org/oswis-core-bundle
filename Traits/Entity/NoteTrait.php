@@ -3,11 +3,11 @@
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
 /**
- * Trait adds note field
+ * Trait adds note field.
  *
  * Trait adds field *note* that contains some note for entity and allows access to it.
  */
-trait SingleNoteTrait
+trait NoteTrait
 {
 
     /**

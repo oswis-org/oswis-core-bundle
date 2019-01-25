@@ -9,7 +9,7 @@ trait NameableBasicTrait
     use BasicEntityTrait;
     use NameTrait;
     use DescriptionTrait;
-    use SingleNoteTrait;
+    use NoteTrait;
 
     final public function setFieldsFromNameable(?Nameable $nameable = null): void
     {
