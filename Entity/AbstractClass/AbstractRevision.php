@@ -44,7 +44,7 @@ abstract class AbstractRevision implements RevisionInterface
      */
     abstract public function getCreatedDateTime(): ?\DateTime;
 
-    public static function cmpId(int $a, int $b): int
+    public static function cmpId(?int $a, ?int $b): int
     {
         if ($a === $b) {
             return 0;

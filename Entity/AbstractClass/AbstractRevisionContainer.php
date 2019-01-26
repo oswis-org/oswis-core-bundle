@@ -105,5 +105,4 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
         }
     }
 
-
 }
