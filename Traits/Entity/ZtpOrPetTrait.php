@@ -11,21 +11,21 @@ trait ZtpOrPetTrait
     /**
      * Person is ZTP(P).
      * @var bool
-     * @Doctrine\ORM\Mapping\Column(type="boolean")
+     * @Doctrine\ORM\Mapping\Column(type="boolean", nullable=true)
      */
     protected $ztp;
 
     /**
      * Person is ZTP(P) accompaniment.
      * @var bool
-     * @Doctrine\ORM\Mapping\Column(type="boolean")
+     * @Doctrine\ORM\Mapping\Column(type="boolean", nullable=true)
      */
     protected $ztpAccompaniment;
 
     /**
      * Pet, not person.
      * @var bool
-     * @Doctrine\ORM\Mapping\Column(type="boolean")
+     * @Doctrine\ORM\Mapping\Column(type="boolean", nullable=true)
      */
     protected $pet;
 
