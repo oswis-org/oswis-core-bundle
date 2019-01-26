@@ -13,7 +13,7 @@ trait ConfirmedByManagerTrait
     /**
      * Confirmed by manager.
      * @var \DateTime|null
-     * @Doctrine\ORM\Mapping\Column(type="datetime")
+     * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true)
      */
     protected $confirmedByManager;
 

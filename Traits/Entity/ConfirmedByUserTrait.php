@@ -12,7 +12,7 @@ trait ConfirmedByUserTrait
     /**
      * Confirmed by user.
      * @var \DateTime|null
-     * @Doctrine\ORM\Mapping\Column(type="datetime")
+     * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true)
      */
     protected $confirmedByUser;
 
