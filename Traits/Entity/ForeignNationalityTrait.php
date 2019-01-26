@@ -11,7 +11,7 @@ trait ForeignNationalityTrait
     /**
      * Foreign nationality.
      * @var boolean
-     * @Doctrine\ORM\Mapping\Column(type="boolean")
+     * @Doctrine\ORM\Mapping\Column(type="boolean", nullable=true)
      */
     protected $foreignNationality;
 
