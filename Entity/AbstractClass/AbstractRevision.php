@@ -53,7 +53,7 @@ abstract class AbstractRevision implements RevisionInterface
         return $a < $b ? -1 : 1;
     }
 
-    abstract public function getId(): int;
+    abstract public function getId(): ?int;
 
     /**
      * @return AbstractRevisionContainer|null
