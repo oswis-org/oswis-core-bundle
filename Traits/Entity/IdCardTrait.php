@@ -11,14 +11,14 @@ trait IdCardTrait
     /**
      * ID card type (as string)
      * @var string
-     * @Doctrine\ORM\Mapping\Column(type="string")
+     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
     protected $idCardType;
 
     /**
      * ID card number (as string).
      * @var string
-     * @Doctrine\ORM\Mapping\Column(type="string")
+     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
     protected $idCardNumber;
 
