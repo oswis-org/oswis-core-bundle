@@ -50,9 +50,11 @@ trait BirthDateTrait
      */
     final public function getBirthDate(): ?\DateTime
     {
-        $this->birthDate->setTime(0, 0);
+        if ($this->birthDate) {
+            $this->birthDate->setTime(0, 0);
+        }
 
-        return $this->birthDate;
+        return $this->birthDate ?? null;
     }
 
     /**
