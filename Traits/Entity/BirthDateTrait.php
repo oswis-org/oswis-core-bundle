@@ -67,7 +67,6 @@ trait BirthDateTrait
     final public function setBirthDate(?\DateTime $birthDate): void
     {
         if ($birthDate) {
-            $birthDate = new \DateTime($birthDate->getTimestamp());
             $birthDate->setTime(0, 0);
         }
         $this->birthDate = $birthDate;
