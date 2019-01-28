@@ -57,9 +57,7 @@ class AgeUtils
     public static function getAgeDecimalFromBirthDate(\DateTime $birthDate, ?\DateTime $referenceDateTime = null): int
     {
         $referenceDateTime = $referenceDateTime ?? new \DateTime();
-        $referenceDateTime = new \DateTime($referenceDateTime->getTimestamp());
         $referenceDateTime->setTime(0, 0);
-        $birthDate = new \DateTime($birthDate->getTimestamp());
         $birthDate->setTime(0, 0);
 
         return $birthDate->diff($referenceDateTime);
