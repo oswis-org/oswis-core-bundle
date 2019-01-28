@@ -85,7 +85,7 @@ trait PriceListTrait
     /**
      * @param int $depositDaysAfterOrder
      */
-    final public function setDepositDaysAfterOrder(int $depositDaysAfterOrder): void
+    final public function setDepositDaysAfterOrder(?int $depositDaysAfterOrder): void
     {
         $this->depositDaysAfterOrder = $depositDaysAfterOrder;
     }
