@@ -60,6 +60,7 @@ class AgeUtils
         $referenceDateTime->setTime(0, 0);
         $birthDate->setTime(0, 0);
 
-        return $birthDate->diff($referenceDateTime);
+        /// TODO: Return decimal!
+        return $birthDate->diff($referenceDateTime)->y;
     }
 }
