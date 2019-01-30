@@ -4,8 +4,8 @@ namespace Zakjakub\OswisAccommodationBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Zakjakub\OswisCoreBundle\Interfaces\RevisionContainerInterface;
 use Zakjakub\OswisCoreBundle\Exceptions\RevisionMissingException;
+use Zakjakub\OswisCoreBundle\Interfaces\RevisionContainerInterface;
 
 /**
  * Class AbstractRevisionContainer

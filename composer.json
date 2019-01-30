@@ -40,7 +40,8 @@
     "adci/full-name-parser": "^0.2",
     "gesdinet/jwt-refresh-token-bundle": "^0.5",
     "lexik/jwt-authentication-bundle": "^2.6",
-    "stof/doctrine-extensions-bundle": "^1.3"
+    "stof/doctrine-extensions-bundle": "^1.3",
+    "ext-calendar": "*"
   },
   "require-dev": {
     "roave/security-advisories": "dev-master",
