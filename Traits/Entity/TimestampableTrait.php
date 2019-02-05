@@ -30,8 +30,11 @@ trait TimestampableTrait
     protected $updatedDateTime;
 
 
-    final public function getCreatedDaysAgo(?bool $decimal = false): int
+    final public function getCreatedDaysAgo(?bool $decimal = false): ?int
     {
+        if (!$this->getCreatedDateTime()) {
+            return null;
+        }
         $ago = $this->getCreatedDateTime()->diff(\date_create());
 
         return $decimal ? $ago : \floor($ago);
@@ -42,13 +45,16 @@ trait TimestampableTrait
      *
      * @return \DateTime
      */
-    final public function getCreatedDateTime(): \DateTime
+    final public function getCreatedDateTime(): ?\DateTime
     {
         return $this->createdDateTime;
     }
 
-    final public function getUpdatedDaysAgo(?bool $decimal = false): int
+    final public function getUpdatedDaysAgo(?bool $decimal = false): ?int
     {
+        if (!$this->getUpdatedDateTime()) {
+            return null;
+        }
         $ago = $this->getUpdatedDateTime()->diff(\date_create());
 
         return $decimal ? $ago : \floor($ago);
@@ -59,7 +65,7 @@ trait TimestampableTrait
      *
      * @return \DateTime
      */
-    final public function getUpdatedDateTime(): \DateTime
+    final public function getUpdatedDateTime(): ?\DateTime
     {
         return $this->updatedDateTime;
     }
