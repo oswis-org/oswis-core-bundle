@@ -19,7 +19,7 @@ trait BasicMailConfirmationTrait
     /**
      * Number of confirmation e-mails sent.
      * @var int
-     * @Doctrine\ORM\Mapping\Column(type="integer")
+     * @Doctrine\ORM\Mapping\Column(type="integer", nullable="true")
      */
     protected $eMailConfirmationCount;
 

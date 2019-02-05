@@ -13,7 +13,7 @@ trait NumericValueTrait
      *
      * @var int|null
      *
-     * @Doctrine\ORM\Mapping\Column(nullable=false, options={"default": 0})
+     * @Doctrine\ORM\Mapping\Column(type="integer", nullable=false, options={"default": 0})
      */
     private $numericValue;
 
