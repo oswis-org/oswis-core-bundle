@@ -7,7 +7,6 @@ use Psr\Log\LoggerInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Zakjakub\OswisCoreBundle\Entity\AppUser;
 use Zakjakub\OswisCoreBundle\Entity\AppUserType;
-use Zakjakub\OswisCoreBundle\Entity\Nameable;
 use Zakjakub\OswisCoreBundle\Utils\StringUtils;
 
 /**
@@ -66,6 +65,7 @@ class AppUserManager
     }
 
     /**
+     * @param string|null      $fullName
      * @param AppUserType|null $appUserType
      * @param string|null      $username
      * @param string|null      $password
@@ -75,7 +75,7 @@ class AppUserManager
      * @throws \Exception
      */
     final public function create(
-        ?string $fullName = null,
+        ?string $fullName,
         AppUserType $appUserType,
         string $username = null,
         string $password = null,
