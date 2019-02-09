@@ -75,12 +75,14 @@ class AppUser extends AbstractAppUser
     protected $appUserType;
 
     public function __construct(
+        ?string $fullName = null,
         ?string $username = null,
         ?string $email = null,
         ?Address $address = null,
         ?\DateTime $deleted = null,
         ?string $encryptedPassword = null
     ) {
+        $this->setFullName($fullName);
         $this->setUsername($username);
         $this->setEmail($email);
         $this->setFieldsFromAddress($address);

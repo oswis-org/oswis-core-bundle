@@ -34,8 +34,8 @@ class ClientLogRecord
     use BasicEntityTrait;
 
     /**
-     * @var string|null
-     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
+     * @var int|null
+     * @Doctrine\ORM\Mapping\Column(type="integer", nullable=true)
      */
     public $level;
 
@@ -46,10 +46,10 @@ class ClientLogRecord
     public $message;
 
     public function __construct(
-        ?string $type = null,
+        ?int $level = null,
         ?string $message = null
     ) {
-        $this->level = $type;
+        $this->level = $level;
         $this->message = $message;
     }
 

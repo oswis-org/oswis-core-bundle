@@ -35,18 +35,17 @@ services:
         resource: '../../Manager/*'
         public: true
 
-    Zakjakub\OswisCoreBundle\Security\:
-        resource: '../../Security/*'
-        public: true
-
     Zakjakub\OswisCoreBundle\Security\AppUserProvider:
         class: Zakjakub\OswisCoreBundle\Security\AppUserProvider
         public: true
         alias: AppUserProvider
-        exclude: '../{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
         arguments:
           ['@doctrine.orm.entity_manager.abstract']
 
+
+    Zakjakub\OswisCoreBundle\Security\:
+        resource: '../../Security/*'
+        public: true
 
     gedmo.listener.timestampable:
         class: Gedmo\Timestampable\TimestampableListener

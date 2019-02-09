@@ -7,6 +7,7 @@ use Psr\Log\LoggerInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Zakjakub\OswisCoreBundle\Entity\AppUser;
 use Zakjakub\OswisCoreBundle\Entity\AppUserType;
+use Zakjakub\OswisCoreBundle\Entity\Nameable;
 use Zakjakub\OswisCoreBundle\Utils\StringUtils;
 
 /**
@@ -74,6 +75,7 @@ class AppUserManager
      * @throws \Exception
      */
     final public function create(
+        ?string $fullName = null,
         AppUserType $appUserType,
         string $username = null,
         string $password = null,
@@ -92,7 +94,7 @@ class AppUserManager
         $username = $username ?? 'user'.\random_int(1, 9999);
         $password = $password ?? $username.'pass9';
         $email = $email ?? $username.'@jakubzak.eu';
-        $user = new AppUser($username, $email, null, null, $password);
+        $user = new AppUser($fullName, $username, $email, null, null, $password);
         $user->setPassword($this->encoder->encodePassword($user, $password));
         $user->setAppUserType($appUserType);
         $em->persist($user);
