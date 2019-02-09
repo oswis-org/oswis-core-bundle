@@ -33,6 +33,25 @@ trait NameableBasicContainerTrait
     }
 
     /**
+     * @param string|null $shortName
+     *
+     * @throws RevisionMissingException
+     */
+    final public function setShortName(?string $shortName): void
+    {
+        if ($this->getShortName() !== $shortName) {
+            $newRevision = clone $this->getRevision();
+            $newRevision->setShortName($shortName);
+            $this->addRevision($newRevision);
+        }
+    }
+
+    final public function getShortName(?\DateTime $dateTime = null): ?string
+    {
+        return $this->getRevisionByDate($dateTime)->getName();
+    }
+
+    /**
      * @param string|null $description
      *
      * @throws RevisionMissingException
