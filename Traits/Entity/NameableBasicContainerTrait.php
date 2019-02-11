@@ -48,7 +48,7 @@ trait NameableBasicContainerTrait
 
     final public function getShortName(?\DateTime $dateTime = null): ?string
     {
-        return $this->getRevisionByDate($dateTime)->getName();
+        return $this->getRevisionByDate($dateTime)->getShortName();
     }
 
     /**
