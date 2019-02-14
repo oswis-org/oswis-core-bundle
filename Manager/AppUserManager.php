@@ -7,6 +7,7 @@ use Psr\Log\LoggerInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Zakjakub\OswisCoreBundle\Entity\AppUser;
 use Zakjakub\OswisCoreBundle\Entity\AppUserType;
+use Zakjakub\OswisCoreBundle\Utils\EmailUtils;
 use Zakjakub\OswisCoreBundle\Utils\StringUtils;
 
 /**
@@ -144,16 +145,117 @@ class AppUserManager
         }
     }
 
-    final public function sendPasswordChangedEmail(AppUser $appUser, ?string $password = null): void
-    {
-    }
-
     final public function requestPasswordReset(AppUser $appUser): void
     {
         $this->sendPasswordResetRequestEmail($appUser, $appUser->generatePasswordRequestToken());
     }
 
+    final public function sendPasswordChangedEmail(AppUser $appUser, ?string $password = null): void
+    {
+        try {
+
+            if (!$appUser) {
+                throw new \Exception('Uživatel nenalezen.');
+            }
+            if (!$password) {
+                throw new \Exception('Heslo nenalezeno.');
+            }
+
+            $em = $this->em;
+
+            $title = 'Změna hesla';
+
+            $message = new \Swift_Message(EmailUtils::mime_header_encode($title));
+
+            $message->setTo(array($appUser->getFullName() ?? $appUser->getUsername() => $appUser->getEmail()))
+                ->setCharset('UTF-8');
+
+            $message->setBody(
+                $this->templating->render(
+                    '@ZakjakubOswisCore/e-mail/password.html.twig',
+                    array(
+                        'appUser'     => $appUser,
+                        'token'       => null,
+                        'newPassword' => $password,
+                    )
+                ),
+                'text/html'
+            );
+
+            $message->addPart(
+                $this->templating->render(
+                    '@ZakjakubOswisCore/e-mail/password.txt.twig',
+                    array(
+                        'appUser'     => $appUser,
+                        'token'       => null,
+                        'newPassword' => $password,
+                    )
+                ),
+                'text/plain'
+            );
+
+            if ($this->mailer->send($message)) {
+                return;
+            }
+
+            throw new \Exception();
+        } catch (\Exception $e) {
+            throw new \Exception('Problém s odesláním zprávy o změně hesla.  '.$e->getMessage());
+        }
+
+    }
+
     final public function sendPasswordResetRequestEmail(AppUser $appUser, ?string $token = null): void
     {
+        try {
+
+            if (!$appUser) {
+                throw new \Exception('Uživatel nenalezen.');
+            }
+            if (!$token) {
+                throw new \Exception('Token nenalezen.');
+            }
+
+            $em = $this->em;
+
+            $title = 'Reset hesla';
+
+            $message = new \Swift_Message(EmailUtils::mime_header_encode($title));
+
+            $message->setTo(array($appUser->getFullName() ?? $appUser->getUsername() => $appUser->getEmail()))
+                ->setCharset('UTF-8');
+
+            $message->setBody(
+                $this->templating->render(
+                    '@ZakjakubOswisCore/e-mail/password.html.twig',
+                    array(
+                        'appUser'     => $appUser,
+                        'token'       => $token,
+                        'newPassword' => null,
+                    )
+                ),
+                'text/html'
+            );
+
+            $message->addPart(
+                $this->templating->render(
+                    '@ZakjakubOswisCore/e-mail/password.txt.twig',
+                    array(
+                        'appUser'     => $appUser,
+                        'token'       => $token,
+                        'newPassword' => null,
+                    )
+                ),
+                'text/plain'
+            );
+
+            if ($this->mailer->send($message)) {
+                return;
+            }
+
+            throw new \Exception();
+        } catch (\Exception $e) {
+            throw new \Exception('Problém s odesláním zprávy o resetu hesla.  '.$e->getMessage());
+        }
     }
 }

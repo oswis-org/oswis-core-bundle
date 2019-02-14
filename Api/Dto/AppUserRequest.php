@@ -16,9 +16,23 @@ use ApiPlatform\Core\Annotation\ApiResource;
  */
 final class AppUserRequest
 {
+    /**
+     * @var int|null
+     */
     public $uid;
 
+    /**
+     * @var string|null
+     */
+    public $token;
+
+    /**
+     * @var string|null
+     */
     public $password;
 
+    /**
+     * @var string|null
+     */
     public $type;
 }

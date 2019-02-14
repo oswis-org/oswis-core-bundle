@@ -14,15 +14,10 @@ final class AppUserSubscriber implements EventSubscriberInterface
 {
     private $appUserManager;
 
-    private $container;
-
     public function __construct(
-        AppUserManager $appUserManager,
-        ContainerInterface $container
+        AppUserManager $appUserManager
     ) {
         $this->appUserManager = $appUserManager;
-        /** @noinspection UnusedConstructorDependenciesInspection */
-        $this->container = $container;
     }
 
     public static function getSubscribedEvents(): array
