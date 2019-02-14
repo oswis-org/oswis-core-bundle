@@ -3,6 +3,7 @@
 namespace Zakjakub\OswisCoreBundle\Api\Dto;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use Zakjakub\OswisCoreBundle\Entity\AppUser;
 
 /**
  * @ApiResource(
@@ -35,4 +36,9 @@ final class AppUserRequest
      * @var string|null
      */
     public $type;
+
+    /**
+     * @var AppUser|null
+     */
+    public $appUser;
 }

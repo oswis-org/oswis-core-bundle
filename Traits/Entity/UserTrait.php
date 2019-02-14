@@ -8,6 +8,7 @@ trait UserTrait
     use UsernameTrait;
     use EncryptedPasswordTrait;
     use PasswordResetTrait;
+    use AccountActivationTrait;
     use DeletedTrait;
     use DateRangeTrait;
 

@@ -3,21 +3,39 @@
 namespace Zakjakub\OswisCoreBundle\Api\EventSubscriber;
 
 use ApiPlatform\Core\EventListener\EventPriorities;
+use Doctrine\ORM\EntityManagerInterface;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpKernel\Event\GetResponseForControllerResultEvent;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\KernelEvents;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use Zakjakub\OswisCoreBundle\Entity\AppUser;
 use Zakjakub\OswisCoreBundle\Manager\AppUserManager;
 
 final class AppUserSubscriber implements EventSubscriberInterface
 {
     private $appUserManager;
 
+    /**
+     * @var EntityManagerInterface
+     */
+    private $em;
+
+    /**
+     * @var TokenStorageInterface
+     */
+    private $tokenStorage;
+
     public function __construct(
-        AppUserManager $appUserManager
+        EntityManagerInterface $em,
+        AppUserManager $appUserManager,
+        TokenStorageInterface $tokenStorage
     ) {
         $this->appUserManager = $appUserManager;
+        $this->em = $em;
+        $this->tokenStorage = $tokenStorage;
     }
 
     public static function getSubscribedEvents(): array
@@ -27,7 +45,7 @@ final class AppUserSubscriber implements EventSubscriberInterface
         ];
     }
 
-    public function changePassword(GetResponseForControllerResultEvent $event): void
+    public function appUserAction(GetResponseForControllerResultEvent $event): void
     {
         $request = $event->getRequest();
 
@@ -35,35 +53,72 @@ final class AppUserSubscriber implements EventSubscriberInterface
             return;
         }
 
-        $changePasswordRequest = $event->getControllerResult();
+        $controllerResult = $event->getControllerResult();
+        $uid = $controllerResult->uid;
+        $type = $controllerResult->type;
+        $token = $controllerResult->token;
+        $password = $controllerResult->password;
+        $appUser = $controllerResult->appUser;
 
-        // $registration = $this->registrationRepository->findOneBy(['id' => $changePasswordRequest->ident]);
-        // $count = $changePasswordRequest->count;
+        $em = $this->em;
+        \assert($em instanceof EntityManagerInterface);
+        $appUserRepository = $em->getRepository(AppUser::class);
 
-        // We do nothing if the user does not exist in the database
-        // $this->registrationRepository->findByNothingSendInformationEmail($registration);
-        $out = $this->appUserManager->changePassword(
-            $changePasswordRequest->uid,
-            $changePasswordRequest->password
-        );
-        // $url = "../" . $out;
-        // $data = ["download" => $url];
-        /*
-        $response = new Response(
-            $out,
-            Response::HTTP_CREATED,
-            array('content-type' => 'application/pdf; charset=utf-8')
-        );
-        $response->setCharset('UTF-8');
-        */
+        if (!$appUser) {
+            $appUser = $appUserRepository->findOneBy(['id'=>$uid]);
+        }
+
+        if (!$appUser) {
+            throw new NotFoundHttpException('Uživatel nenalezen.');
+        }
+
+        \assert($appUser instanceof AppUser);
+        if ($type === 'change-password') {
+            $out = $this->appUserManager->changePassword(
+                $appUser,
+                true,
+                $password
+            );
+        }
+
+
 
         $data = ['data' => chunk_split(base64_encode($out))];
 
         $event->setResponse(new JsonResponse($data, 201));
-
-        $event->setResponse(new JsonResponse(null, 204));
-
-
-        // $event->setResponse($response);
     }
+
+
+    final public function changePassword() {
+
+    }
+
+
+    /**
+     * @return AppUser
+     * @throws \Exception
+     */
+    public function getCurrentAppUser(): AppUser
+    {
+        $token = $this->tokenStorage->getToken();
+        if (!$token) {
+            return null;
+        }
+        $appUser = $token->getUser();
+        if (!$appUser instanceof AppUser) {
+            return null;
+        }
+        if (!$appUser) {
+            throw new AccessDeniedException('Neznámý uživatel.');
+        }
+        $accommodationUserRepo = $this->em->getRepository(AccommodationUser::class);
+        $accommodationUser = $accommodationUserRepo->findOneBy(['appUser' => $appUser->getId()]);
+        \assert($accommodationUser instanceof AccommodationUser);
+        if (!$accommodationUser) {
+            throw new AccessDeniedException('Neznámý uživatel ubytovacího systému.');
+        }
+
+        return $accommodationUser;
+    }
+
 }

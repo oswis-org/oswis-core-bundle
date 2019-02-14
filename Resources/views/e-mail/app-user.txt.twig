@@ -1,0 +1,38 @@
+{% extends '@ZakjakubOswisAccommodation/e-mail/message.txt.twig' %}
+{% block title %}
+    {% if type == 'new' %}Účet vytvořen{% else %}Změna účtu{% endif %}
+{% endblock %}
+{% block description %}
+    {% if type == 'new' %}Vytvoření uživatelského účtu{% else %}Změna uživatelského účtu{% endif %}
+{% endblock %}
+{% block content %}
+
+Dobrý den,
+
+{% if type == 'new' %}
+byl vytvořen nový uživatelský účet v informačním systému.
+{% else %}
+došlo ke změně u Vašeho uživatelského účtu v informačním systému.
+{% endif %}
+
+{% if type == 'new' and token %}
+Ještě je nutné provés aktivaci uživatelského účtu. Aktivaci provedete na následujícím odkazu:
+Nové heslo nastavíte na adrese:
+{{ tokenUrl }}
+Odkaz je platný {{ validHours || 12 }} hodin od vygenerování.
+{% endif %}
+
+Uživatelské jméno u uživatelského účtu je {{ appUser.username }}
+a hlavní e-mail je nastaven na {{ appUser.email }}.
+{% if appUser.password %}
+Heslo bylo nastaveno při registraci.
+{% else %}
+Heslo si nastavíte při aktivaci účtu.
+{% endif %}
+
+
+Tento e-mail byl vygenerován a zaslán automaticky informačním systémem.
+
+{% endblock %}
+
+
