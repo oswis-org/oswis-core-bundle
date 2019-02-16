@@ -128,7 +128,7 @@ class AppUserManager
         $this->logger->info($infoMessage);
 
         if ($sendMail) {
-            $this->sendAppUserAccountRequestEmail($appUser, $token, $password, 'new');
+            $this->sendActivationRequestEmail($appUser, $token, $password, 'new');
         }
 
         return $appUser;
@@ -155,6 +155,8 @@ class AppUserManager
      *
      * @param string|null $token
      *
+     * @param bool|null   $withoutToken
+     *
      * @return bool
      * @throws \Exception
      */
@@ -162,13 +164,14 @@ class AppUserManager
         AppUser $appUser,
         bool $sendConfirmation = true,
         string $password = null,
-        ?string $token = null
+        ?string $token = null,
+        ?bool $withoutToken = false
     ): bool {
-        if (!$token) {
+        if (!$withoutToken && !$token) {
             throw new \Exception('Token nenalezen.');
         }
         try {
-            if (!$appUser->checkAndDestroyPasswordResetRequestToken($token)) {
+            if (!$withoutToken && !$appUser->checkAndDestroyPasswordResetRequestToken($token)) {
                 throw new \Exception('Špatný token.');
             }
             $random = $password ? false : true;
@@ -206,7 +209,6 @@ class AppUserManager
     final public function sendPasswordChangedEmail(AppUser $appUser, ?string $password = null): void
     {
         try {
-
             if (!$appUser) {
                 throw new \Exception('Uživatel nenalezen.');
             }
@@ -264,8 +266,10 @@ class AppUserManager
      *
      * @throws \Exception
      */
-    final public function sendPasswordResetRequestEmail(AppUser $appUser, ?string $token = null): void
-    {
+    final public function sendPasswordResetRequestEmail(
+        AppUser $appUser,
+        ?string $token = null
+    ): void {
         try {
 
             if (!$appUser) {
@@ -318,6 +322,11 @@ class AppUserManager
         }
     }
 
+    final public function requestUserActivation(AppUser $appUser): void {
+
+
+    }
+
     /**
      * @param AppUser     $appUser
      * @param string|null $token
@@ -326,7 +335,7 @@ class AppUserManager
      *
      * @throws \Exception
      */
-    final public function sendAppUserAccountRequestEmail(
+    final public function sendActivationRequestEmail(
         AppUser $appUser,
         ?string $token = null,
         ?string $password = null,
