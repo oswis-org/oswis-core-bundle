@@ -186,7 +186,7 @@ class AppUserManager
             return true;
         } catch (\Exception $e) {
             $this->logger->info($e->getMessage());
-            throw new \Exception('Nastal problém při změně hesla (' . $e->getMessage() . ').');
+            throw new \Exception('Nastal problém při změně hesla ('.$e->getMessage().').');
         }
     }
 
@@ -322,9 +322,10 @@ class AppUserManager
         }
     }
 
-    final public function requestUserActivation(AppUser $appUser): void {
-
-
+    final public function requestUserActivation(AppUser $appUser): void
+    {
+        $token = $appUser->generateAccountActivationRequestToken();
+        $this->sendActivationRequestEmail($appUser, $token, 'new');
     }
 
     /**
@@ -338,7 +339,6 @@ class AppUserManager
     final public function sendActivationRequestEmail(
         AppUser $appUser,
         ?string $token = null,
-        ?string $password = null,
         ?string $type = 'change'
     ): void {
         try {
@@ -363,9 +363,8 @@ class AppUserManager
                 $this->templating->render(
                     '@ZakjakubOswisCore/e-mail/app-user.html.twig',
                     array(
-                        'appUser'  => $appUser,
-                        'token'    => $token,
-                        'password' => $password,
+                        'appUser' => $appUser,
+                        'token'   => $token,
                     )
                 ),
                 'text/html'
@@ -375,9 +374,8 @@ class AppUserManager
                 $this->templating->render(
                     '@ZakjakubOswisCore/e-mail/app-user.txt.twig',
                     array(
-                        'appUser'  => $appUser,
-                        'token'    => $token,
-                        'password' => $password,
+                        'appUser' => $appUser,
+                        'token'   => $token,
                     )
                 ),
                 'text/plain'

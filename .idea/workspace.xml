@@ -129,10 +129,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Manager/AppUserManager.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="134">
-              <caret line="388" lean-forward="true" selection-start-line="388" selection-end-line="388" />
+            <state relative-caret-position="295">
+              <caret line="393" selection-start-line="393" selection-end-line="393" />
               <folding>
                 <element signature="e#52#92#0#PHP" expanded="true" />
+                <element signature="e#10830#10876#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -141,8 +142,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Resources/views/e-mail/app-user.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="23">
-              <caret line="1" column="17" selection-start-line="1" selection-start-column="17" selection-end-line="1" selection-end-column="17" />
+            <state relative-caret-position="249">
+              <caret line="55" lean-forward="true" selection-start-line="55" selection-end-line="55" />
               <folding>
                 <element signature="e#12#55#0#Twig" expanded="true" />
               </folding>
@@ -327,13 +328,13 @@
         <option value="$PROJECT_DIR$/Resources/views/e-mail/message.txt.twig" />
         <option value="$PROJECT_DIR$/Resources/views/e-mail/message.html.twig" />
         <option value="$PROJECT_DIR$/Resources/views/e-mail/password.html.twig" />
-        <option value="$PROJECT_DIR$/Resources/views/e-mail/app-user.html.twig" />
         <option value="$PROJECT_DIR$/Resources/views/e-mail/app-user.txt.twig" />
         <option value="$PROJECT_DIR$/Traits/Entity/UserTrait.php" />
         <option value="$PROJECT_DIR$/Traits/Entity/AccountActivationTrait.php" />
         <option value="$PROJECT_DIR$/Api/Dto/AppUserRequest.php" />
         <option value="$PROJECT_DIR$/Api/EventSubscriber/AppUserSubscriber.php" />
         <option value="$PROJECT_DIR$/Manager/AppUserManager.php" />
+        <option value="$PROJECT_DIR$/Resources/views/e-mail/app-user.html.twig" />
         <option value="$PROJECT_DIR$/Manager/AppUserManager.php" />
       </list>
     </option>
@@ -430,7 +431,7 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-1" />
+    <option name="x" value="1919" />
     <option name="width" value="1368" />
     <option name="height" value="741" />
   </component>
@@ -537,14 +538,7 @@
       <workItem from="1549920633513" duration="1129000" />
       <workItem from="1550079502946" duration="16599000" />
       <workItem from="1550234596864" duration="35000" />
-      <workItem from="1550234706320" duration="2920000" />
-    </task>
-    <task id="LOCAL-00035" summary="Some changes.">
-      <created>1547913198639</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1547913198639</updated>
+      <workItem from="1550234706320" duration="4213000" />
     </task>
     <task id="LOCAL-00036" summary="Added blameable.">
       <created>1547913214718</created>
@@ -882,14 +876,21 @@
       <option name="project" value="LOCAL" />
       <updated>1550159532248</updated>
     </task>
-    <option name="localTasksCounter" value="84" />
+    <task id="LOCAL-00084" summary="Some changes.">
+      <created>1550331511491</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1550331511492</updated>
+    </task>
+    <option name="localTasksCounter" value="85" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="152229000" />
+    <option name="totallyTimeSpent" value="153522000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="0" width="1368" height="741" extended-state="6" />
+    <frame x="1919" y="0" width="1368" height="741" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19108762" />
@@ -1833,16 +1834,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Resources/views/e-mail/app-user.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="1" column="17" selection-start-line="1" selection-start-column="17" selection-end-line="1" selection-end-column="17" />
-          <folding>
-            <element signature="e#12#55#0#Twig" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Utils/EmailUtils.php">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -1850,12 +1841,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/views/e-mail/app-user.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="249">
+          <caret line="55" lean-forward="true" selection-start-line="55" selection-end-line="55" />
+          <folding>
+            <element signature="e#12#55#0#Twig" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Manager/AppUserManager.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="388" lean-forward="true" selection-start-line="388" selection-end-line="388" />
+        <state relative-caret-position="295">
+          <caret line="393" selection-start-line="393" selection-end-line="393" />
           <folding>
             <element signature="e#52#92#0#PHP" expanded="true" />
+            <element signature="e#10830#10876#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
