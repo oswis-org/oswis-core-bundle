@@ -128,7 +128,7 @@ class AppUserManager
         $this->logger->info($infoMessage);
 
         if ($sendMail) {
-            $this->sendActivationRequestEmail($appUser, $token, $password, 'new');
+            $this->sendActivationRequestEmail($appUser, $token,  'new');
         }
 
         return $appUser;
@@ -187,6 +187,46 @@ class AppUserManager
         } catch (\Exception $e) {
             $this->logger->info($e->getMessage());
             throw new \Exception('Nastal problém při změně hesla ('.$e->getMessage().').');
+        }
+    }
+
+    /**
+     * @param AppUser     $appUser
+     * @param bool        $sendConfirmation
+     * @param string|null $password
+     * @param string|null $token
+     * @param bool|null   $withoutToken
+     *
+     * @return bool
+     * @throws \Exception
+     */
+    final public function activateAccount(
+        AppUser $appUser,
+        bool $sendConfirmation = true,
+        string $password = null,
+        ?string $token = null,
+        ?bool $withoutToken = false
+    ): bool {
+        if (!$withoutToken && !$token) {
+            throw new \Exception('Token nenalezen.');
+        }
+        try {
+            if (!$withoutToken && !$appUser->checkAndDestroyAccountActivationRequestToken($token)) {
+                throw new \Exception('Špatný token.');
+            }
+            $random = $password ? false : true;
+            $password = $password ?? StringUtils::generatePassword();
+            $appUser->setPassword($this->encoder->encodePassword($appUser, $password));
+            if ($sendConfirmation) {
+                $this->sendActivationEmail($appUser, $random ? $password : null);
+            }
+            $this->em->persist($appUser);
+            $this->em->flush();
+
+            return true;
+        } catch (\Exception $e) {
+            $this->logger->info($e->getMessage());
+            throw new \Exception('Nastal problém při aktivaci účtu ('.$e->getMessage().').');
         }
     }
 
@@ -322,6 +362,11 @@ class AppUserManager
         }
     }
 
+    /**
+     * @param AppUser $appUser
+     *
+     * @throws \Exception
+     */
     final public function requestUserActivation(AppUser $appUser): void
     {
         $token = $appUser->generateAccountActivationRequestToken();
@@ -331,7 +376,6 @@ class AppUserManager
     /**
      * @param AppUser     $appUser
      * @param string|null $token
-     * @param string|null $password
      * @param string|null $type
      *
      * @throws \Exception
@@ -364,6 +408,7 @@ class AppUserManager
                     '@ZakjakubOswisCore/e-mail/app-user.html.twig',
                     array(
                         'appUser' => $appUser,
+                        'type' => $type,
                         'token'   => $token,
                     )
                 ),
@@ -375,6 +420,7 @@ class AppUserManager
                     '@ZakjakubOswisCore/e-mail/app-user.txt.twig',
                     array(
                         'appUser' => $appUser,
+                        'type' => $type,
                         'token'   => $token,
                     )
                 ),
@@ -390,4 +436,72 @@ class AppUserManager
             throw new \Exception('Problém s odesláním zprávy o změně účtu.  '.$e->getMessage());
         }
     }
+
+
+    /**
+     * @param AppUser     $appUser
+     * @param string|null $password
+     * @param string|null $token
+     * @param string|null $type
+     *
+     * @throws \Exception
+     */
+    final public function sendActivationEmail(
+        AppUser $appUser,
+        ?string $password = null,
+        ?string $token = null,
+        ?string $type = 'activation'
+    ): void {
+        try {
+
+            if (!$appUser) {
+                throw new \Exception('Uživatel nenalezen.');
+            }
+
+            $em = $this->em;
+
+            $title = 'Účet aktivován';
+
+            $message = new \Swift_Message(EmailUtils::mime_header_encode($title));
+
+            $message->setTo(array($appUser->getFullName() ?? $appUser->getUsername() => $appUser->getEmail()))
+                ->setCharset('UTF-8');
+
+            $message->setBody(
+                $this->templating->render(
+                    '@ZakjakubOswisCore/e-mail/app-user.html.twig',
+                    array(
+                        'appUser' => $appUser,
+                        'type' => $type,
+                        'token'   => $token,
+                        'password' => $password,
+                    )
+                ),
+                'text/html'
+            );
+
+            $message->addPart(
+                $this->templating->render(
+                    '@ZakjakubOswisCore/e-mail/app-user.txt.twig',
+                    array(
+                        'appUser' => $appUser,
+                        'type' => $type,
+                        'token'   => $token,
+                        'password' => $password,
+                    )
+                ),
+                'text/plain'
+            );
+
+            if ($this->mailer->send($message)) {
+                return;
+            }
+
+            throw new \Exception();
+        } catch (\Exception $e) {
+            throw new \Exception('Problém s odesláním zprávy o aktivaci účtu.  '.$e->getMessage());
+        }
+    }
+
+
 }

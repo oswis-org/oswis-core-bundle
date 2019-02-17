@@ -14,6 +14,8 @@
 
                     {% if type == 'new' %}
                         byl vytvořen nový uživatelský účet v informačním systému.<br>
+                    {% elseif type == 'activation' %}
+                        Váš uživatelský účet byl aktivován.<br>
                     {% else %}
                         došlo ke změně u Vašeho uživatelského účtu v informačním systému.
                     {% endif %}
@@ -31,7 +33,9 @@
                 <p>
                     Uživatelské jméno u uživatelského účtu je <strong>{{ appUser.username }}</strong>
                     a hlavní e-mail je nastaven na <strong>{{ appUser.email }}</strong>.
-                    {% if appUser.password %}
+                    {% if password %}
+                        Bylo nastaveno náhodně vygenerované heslo <strong>{{ password }}</strong>.
+                    {% elseif appUser.password %}
                         Heslo bylo nastaveno při registraci.
                     {% else %}
                         Heslo si nastavíte při aktivaci účtu.

@@ -24,6 +24,14 @@ trait AccountActivationTrait
      */
     protected $accountActivationRequestDateTime;
 
+
+    /**
+     * Date and time of account activation.
+     * @var \DateTime|null
+     * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true)
+     */
+    protected $accountActivationDateTime;
+
     final public function checkAndDestroyAccountActivationRequestToken(?string $token, int $validHours = 12): bool
     {
         try {
@@ -35,11 +43,11 @@ trait AccountActivationTrait
             }
             if ($this->checkAccountActivationRequestToken($token)) {
                 $this->destroyAccountActivationRequestToken();
+                $this->setAccountActivationDateTime(new \DateTime());
 
                 return true;
             }
-        } catch (\Exception $e) {
-        }
+        } catch (\Exception $e) {}
 
         return false;
     }
@@ -99,6 +107,22 @@ trait AccountActivationTrait
 
             return null;
         }
+    }
+
+    /**
+     * @return \DateTime|null
+     */
+    final public function getAccountActivationDateTime(): ?\DateTime
+    {
+        return $this->accountActivationDateTime;
+    }
+
+    /**
+     * @param \DateTime|null $accountActivationDateTime
+     */
+    final public function setAccountActivationDateTime(?\DateTime $accountActivationDateTime): void
+    {
+        $this->accountActivationDateTime = $accountActivationDateTime;
     }
 
 }

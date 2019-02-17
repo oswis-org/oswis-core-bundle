@@ -4,7 +4,6 @@ namespace Zakjakub\OswisCoreBundle\Api\EventSubscriber;
 
 use ApiPlatform\Core\EventListener\EventPriorities;
 use Doctrine\ORM\EntityManagerInterface;
-use Psr\Container\ContainerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpKernel\Event\GetResponseForControllerResultEvent;
@@ -41,12 +40,20 @@ final class AppUserSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents(): array
     {
         return [
-            KernelEvents::VIEW => ['changePassword', EventPriorities::POST_VALIDATE],
+            KernelEvents::VIEW => ['appUserAction', EventPriorities::POST_VALIDATE],
         ];
     }
 
+    /**
+     * @param GetResponseForControllerResultEvent $event
+     *
+     * @throws NotFoundHttpException
+     * @throws \InvalidArgumentException
+     * @throws \Exception
+     */
     public function appUserAction(GetResponseForControllerResultEvent $event): void
     {
+        $out = null;
         $request = $event->getRequest();
 
         if ('api_app_user_action_requests_post_collection' !== $request->attributes->get('_route')) {
@@ -74,23 +81,20 @@ final class AppUserSubscriber implements EventSubscriberInterface
 
         \assert($appUser instanceof AppUser);
         if ($type === 'change-password') {
-            $out = $this->appUserManager->changePassword(
-                $appUser,
-                true,
-                $password
-            );
+            if (!$appUser || !$token || !$password) {
+                throw new \InvalidArgumentException('Chybějící položky v požadavku pro změnu hesla.');
+            }
+            $out = $this->appUserManager->changePassword($appUser, true, $password);
+        } elseif ($type === 'activation') {
+            if (!$appUser || !$token || !$password) {
+                throw new \InvalidArgumentException('Chybějící položky v požadavku na aktivaci.');
+            }
+            $out = $this->appUserManager->activateAccount($appUser, true, $password, $token);
         }
-
-
 
         $data = ['data' => chunk_split(base64_encode($out))];
 
         $event->setResponse(new JsonResponse($data, 201));
-    }
-
-
-    final public function changePassword() {
-
     }
 
 
