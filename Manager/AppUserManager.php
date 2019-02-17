@@ -417,6 +417,7 @@ class AppUserManager
                         'appUser' => $appUser,
                         'type' => $type,
                         'token'   => $token,
+                        'tokenUrl'   => $token,
                     )
                 ),
                 'text/html'
@@ -429,6 +430,7 @@ class AppUserManager
                         'appUser' => $appUser,
                         'type' => $type,
                         'token'   => $token,
+                        'tokenUrl'   => $token,
                     )
                 ),
                 'text/plain'

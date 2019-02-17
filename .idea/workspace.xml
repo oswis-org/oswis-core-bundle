@@ -8,7 +8,6 @@
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Manager/AppUserManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/Manager/AppUserManager.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/e-mail/app-user.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/e-mail/app-user.html.twig" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.github/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -130,11 +129,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Manager/AppUserManager.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="402" column="20" lean-forward="true" selection-start-line="402" selection-start-column="20" selection-end-line="402" selection-end-column="20" />
+            <state relative-caret-position="157">
+              <caret line="428" selection-start-line="428" selection-end-line="428" />
               <folding>
                 <element signature="e#52#92#0#PHP" expanded="true" />
                 <element signature="e#10830#10876#0#PHP" expanded="true" />
@@ -144,11 +143,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Resources/views/e-mail/app-user.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="203">
-              <caret line="28" selection-start-line="28" selection-end-line="28" />
+            <state relative-caret-position="246">
+              <caret line="27" column="38" lean-forward="true" selection-start-line="27" selection-start-column="38" selection-end-line="27" selection-end-column="38" />
               <folding>
                 <element signature="e#12#55#0#Twig" expanded="true" />
               </folding>
@@ -169,7 +168,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>RecursiveDirectoryItera</find>
       <find>must not be</find>
       <find>not be e</find>
       <find>App\Entity\Accommodation\</find>
@@ -199,6 +197,7 @@
       <find>changePass</find>
       <find>activa</find>
       <find>generateToke</find>
+      <find>\|</find>
     </findStrings>
     <replaceStrings>
       <replace>Zakjakub\OswisResourcesBundle\</replace>
@@ -341,9 +340,9 @@
         <option value="$PROJECT_DIR$/Traits/Entity/AccountActivationTrait.php" />
         <option value="$PROJECT_DIR$/Api/EventSubscriber/AppUserSubscriber.php" />
         <option value="$PROJECT_DIR$/Utils/StringUtils.php" />
-        <option value="$PROJECT_DIR$/Manager/AppUserManager.php" />
-        <option value="$PROJECT_DIR$/Manager/AppUserManager.php" />
         <option value="$PROJECT_DIR$/Resources/views/e-mail/app-user.html.twig" />
+        <option value="$PROJECT_DIR$/Manager/AppUserManager.php" />
+        <option value="$PROJECT_DIR$/Manager/AppUserManager.php" />
       </list>
     </option>
   </component>
@@ -581,14 +580,7 @@
       <workItem from="1549920633513" duration="1129000" />
       <workItem from="1550079502946" duration="16599000" />
       <workItem from="1550234596864" duration="35000" />
-      <workItem from="1550234706320" duration="14974000" />
-    </task>
-    <task id="LOCAL-00039" summary="Changed traits, their names and namespaces.">
-      <created>1547989770773</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1547989770773</updated>
+      <workItem from="1550234706320" duration="15260000" />
     </task>
     <task id="LOCAL-00040" summary="Fixed namespace.">
       <created>1547991234499</created>
@@ -926,17 +918,24 @@
       <option name="project" value="LOCAL" />
       <updated>1550436654185</updated>
     </task>
-    <option name="localTasksCounter" value="88" />
+    <task id="LOCAL-00088" summary="Some changes.">
+      <created>1550439200304</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1550439200306</updated>
+    </task>
+    <option name="localTasksCounter" value="89" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="164283000" />
+    <option name="totallyTimeSpent" value="164569000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="0" width="1368" height="741" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19108762" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19108762" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -947,7 +946,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49424183" visible="true" weight="0.32998326" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="8" sideWeight="0.49424183" visible="true" weight="0.32998326" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Statistic" order="10" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.21047008" />
@@ -1887,24 +1886,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Manager/AppUserManager.php">
+    <entry file="file://$PROJECT_DIR$/Resources/views/e-mail/app-user.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="402" column="20" lean-forward="true" selection-start-line="402" selection-start-column="20" selection-end-line="402" selection-end-column="20" />
+        <state relative-caret-position="246">
+          <caret line="27" column="38" lean-forward="true" selection-start-line="27" selection-start-column="38" selection-end-line="27" selection-end-column="38" />
           <folding>
-            <element signature="e#52#92#0#PHP" expanded="true" />
-            <element signature="e#10830#10876#0#PHP" expanded="true" />
-            <element signature="e#13712#13758#0#PHP" expanded="true" />
+            <element signature="e#12#55#0#Twig" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Resources/views/e-mail/app-user.html.twig">
+    <entry file="file://$PROJECT_DIR$/Manager/AppUserManager.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="28" selection-start-line="28" selection-end-line="28" />
+        <state relative-caret-position="157">
+          <caret line="428" selection-start-line="428" selection-end-line="428" />
           <folding>
-            <element signature="e#12#55#0#Twig" expanded="true" />
+            <element signature="e#52#92#0#PHP" expanded="true" />
+            <element signature="e#10830#10876#0#PHP" expanded="true" />
+            <element signature="e#13712#13758#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
