@@ -400,7 +400,14 @@ class AppUserManager
 
             $message = new \Swift_Message(EmailUtils::mime_header_encode($title));
 
-            $message->setTo(array($appUser->getFullName() ?? $appUser->getUsername() => $appUser->getEmail()))
+            $message
+                ->setTo([$appUser->getEmail() ?? '' => $appUser->getFullName() ?? $appUser->getUsername() ?? ''])
+                ->setFrom(
+                    array(
+                        'dagmar.petrzelova@upol.cz' => EmailUtils::mime_header_encode('Mgr. Dagmar Petrželová'),
+                    )
+                )
+                ->setSender('dagmar.petrzelova@upol.cz')
                 ->setCharset('UTF-8');
 
             $message->setBody(
