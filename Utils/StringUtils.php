@@ -306,7 +306,7 @@ class StringUtils
      * @return string Random string from required chars
      * @throws \Exception
      */
-    private static function randomString(int $from, int $to, int $length): string
+    private static function randomString(string $from, string $to, int $length): string
     {
         $str = '';
         if ($length > 1) {
