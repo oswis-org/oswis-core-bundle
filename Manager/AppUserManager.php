@@ -128,7 +128,7 @@ class AppUserManager
         $this->logger->info($infoMessage);
 
         if ($sendMail) {
-            $this->sendActivationRequestEmail($appUser, $token,  'new');
+            $this->sendActivationRequestEmail($appUser, $token, 'new');
         }
 
         return $appUser;
@@ -414,10 +414,11 @@ class AppUserManager
                 $this->templating->render(
                     '@ZakjakubOswisCore/e-mail/app-user.html.twig',
                     array(
-                        'appUser' => $appUser,
-                        'type' => $type,
-                        'token'   => $token,
-                        'tokenUrl'   => $token,
+                        'appUser'  => $appUser,
+                        'type'     => $type,
+                        'token'    => $token,
+                        'tokenUrl' => $token,
+                        'password' => null,
                     )
                 ),
                 'text/html'
@@ -427,10 +428,11 @@ class AppUserManager
                 $this->templating->render(
                     '@ZakjakubOswisCore/e-mail/app-user.txt.twig',
                     array(
-                        'appUser' => $appUser,
-                        'type' => $type,
-                        'token'   => $token,
-                        'tokenUrl'   => $token,
+                        'appUser'  => $appUser,
+                        'type'     => $type,
+                        'token'    => $token,
+                        'tokenUrl' => $token,
+                        'password' => null,
                     )
                 ),
                 'text/plain'
@@ -480,9 +482,9 @@ class AppUserManager
                 $this->templating->render(
                     '@ZakjakubOswisCore/e-mail/app-user.html.twig',
                     array(
-                        'appUser' => $appUser,
-                        'type' => $type,
-                        'token'   => $token,
+                        'appUser'  => $appUser,
+                        'type'     => $type,
+                        'token'    => $token,
                         'password' => $password,
                     )
                 ),
@@ -493,9 +495,9 @@ class AppUserManager
                 $this->templating->render(
                     '@ZakjakubOswisCore/e-mail/app-user.txt.twig',
                     array(
-                        'appUser' => $appUser,
-                        'type' => $type,
-                        'token'   => $token,
+                        'appUser'  => $appUser,
+                        'type'     => $type,
+                        'token'    => $token,
                         'password' => $password,
                     )
                 ),
