@@ -78,22 +78,20 @@ final class AppUserSubscriber implements EventSubscriberInterface
         if (!$appUser) {
             throw new NotFoundHttpException('Uživatel nenalezen.');
         }
-
         \assert($appUser instanceof AppUser);
-        if ($type === 'change-password') {
-            if (!$appUser || !$token || !$password) {
-                throw new \InvalidArgumentException('Chybějící položky v požadavku pro změnu hesla.');
-            }
-            $out = $this->appUserManager->changePassword($appUser, true, $password);
+        if ($type === 'reset') {
+            $this->appUserManager->appUserAction($appUser, 'reset', $password, $token);
         } elseif ($type === 'activation') {
-            if (!$appUser || !$token || !$password) {
-                throw new \InvalidArgumentException('Chybějící položky v požadavku na aktivaci.');
-            }
-            $out = $this->appUserManager->activateAccount($appUser, true, $password, $token);
+            $this->appUserManager->appUserAction($appUser, 'activation', $password, $token);
+        } elseif ($type === 'reset-request') {
+            $this->appUserManager->appUserAction($appUser, 'reset-request');
+        } elseif ($type === 'activation-request') {
+            $this->appUserManager->appUserAction($appUser, 'activation');
+        } else {
+            throw new \InvalidArgumentException('Akce "'.$type.'" není u uživatelských účtů implementována.');
         }
 
-        $data = ['data' => chunk_split(base64_encode($out))];
-
+        $data = [];
         $event->setResponse(new JsonResponse($data, 201));
     }
 
@@ -113,7 +111,7 @@ final class AppUserSubscriber implements EventSubscriberInterface
             return null;
         }
         if (!$appUser) {
-            throw new AccessDeniedException('Neznámý uživatel.');
+            return null;
         }
         $accommodationUserRepo = $this->em->getRepository(AccommodationUser::class);
         $accommodationUser = $accommodationUserRepo->findOneBy(['appUser' => $appUser->getId()]);

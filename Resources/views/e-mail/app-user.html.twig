@@ -1,9 +1,13 @@
 {% extends '@ZakjakubOswisCore/e-mail/message.html.twig' %}
-{% block title %}
-    {% if type == 'new' %}Účet vytvořen{% else %}Změna účtu{% endif %}
-{% endblock %}
+{% block title %}{{ title }}{% endblock %}
 {% block description %}
-    {% if type == 'new' %}Vytvoření uživatelského účtu{% else %}Změna uživatelského účtu{% endif %}
+    {% if type == 'activation-request' %}
+    Vytvoření uživatelského účtu
+    {% if type == 'activation' %}
+        Aktivace uživatelského účtu
+    {% else %}
+        Změna uživatelského účtu
+    {% endif %}
 {% endblock %}
 {% block content %}
     <table style="width:90%; min-width:300px; max-width:800px; margin:10px auto; text-align:justify;">
@@ -12,7 +16,7 @@
                 <p>
                     Dobrý den,
 
-                    {% if type == 'new' %}
+                    {% if type == 'activation-request' %}
                         byl vytvořen nový uživatelský účet v informačním systému.<br>
                     {% elseif type == 'activation' %}
                         Váš uživatelský účet byl aktivován.<br>
@@ -21,12 +25,10 @@
                     {% endif %}
                 </p>
 
-                {% if type == 'new' and token %}
+                {% if type == 'activation-request' and token %}
                     Ještě je nutné provés aktivaci uživatelského účtu. Aktivaci provedete na následujícím odkazu:
                     Nové heslo nastavíte na adrese:
-                    <a href="{{ tokenUrl }}" title="Odkaz pro aktivaci účtu" target="_blank">
-                        {{ tokenUrl }}
-                    </a>.
+                    <a href="{{ tokenUrl }}" title="Odkaz pro aktivaci účtu" target="_blank">{{ tokenUrl }}</a>.
                     Odkaz je platný 12 hodin od vygenerování.
                 {% endif %}
 
@@ -34,11 +36,12 @@
                     Uživatelské jméno u uživatelského účtu je <strong>{{ appUser.username }}</strong>
                     a hlavní e-mail je nastaven na <strong>{{ appUser.email }}</strong>.
                     {% if password %}
-                        Bylo nastaveno náhodně vygenerované heslo <strong>{{ password }}</strong>.
+                        Bylo nastaveno nové náhodně vygenerované heslo <strong>{{ password }}</strong>.
                     {% elseif appUser.password %}
                         Heslo bylo nastaveno při registraci.
                     {% else %}
                         Heslo si nastavíte při aktivaci účtu.
+                        Pokud heslo zapomenete, můžete jej obnovit pomocí tlačítka na přihlašovací stránce aplikace.
                     {% endif %}
                 </p>
             </td>
@@ -48,7 +51,7 @@
                 <div>
                     <hr color='#EB6D25' style='color:#EB6D25;'>
                     <small color="#eb6d25" style="font-size:0.7em;color:#eb6d25;">
-                        Tento e-mail byl vygenerován a zaslán automaticky informačním systémem.
+                        Tento e-mail byl vygenerován a zaslán automaticky aplikací OSWIS.
                     </small>
                 </div>
             </td>

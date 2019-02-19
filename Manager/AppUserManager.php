@@ -71,15 +71,12 @@ class AppUserManager
      * @param string|null      $username
      * @param string|null      $password
      * @param string|null      $email
-     *
-     * @param bool|null        $active
-     *
+     * @param bool|null        $activate
      * @param bool|null        $sendMail
-     *
      * @param bool|null        $errorWhenExist
      *
      * @return AppUser
-     * @throws \Exception
+     * @throws \ErrorException
      */
     final public function create(
         ?string $fullName,
@@ -87,7 +84,7 @@ class AppUserManager
         ?string $username = null,
         ?string $password = null,
         ?string $email = null,
-        ?bool $active = false,
+        ?bool $activate = false,
         ?bool $sendMail = false,
         ?bool $errorWhenExist = true
     ): AppUser {
@@ -103,175 +100,144 @@ class AppUserManager
         }
 
         if ($appUser && $errorWhenExist) {
-            throw new \Exception('User: '.$appUser->getUsername().' already exist.');
+            throw new \ErrorException('User: '.$appUser->getUsername().' already exist.');
         }
 
         $username = $username ?? 'user'.\random_int(1, 9999);
-        $password = $password ?? $username.'pass9';
         $email = $email ?? $username.'@jakubzak.eu';
-        $appUser = new AppUser($fullName, $username, $email, null, null, $password);
-        if ($password) {
-            $appUser->setPassword($this->encoder->encodePassword($appUser, $password));
-        }
-        if ($active === false) {
-            $token = $appUser->generateAccountActivationRequestToken();
-        }
+        $appUser = new AppUser($fullName, $username, $email, null, null);
         $appUser->setAppUserType($appUserType);
+        if ($activate) {
+            $password = $password ?? StringUtils::generatePassword();
+            $appUser->setPassword($this->encoder->encodePassword($appUser, $password));
+            $this->appUserAction($appUser, 'activation', $password, null, $sendMail, true);
+        } else {
+            $this->appUserAction($appUser, 'activation-request', null, null, $sendMail);
+        }
         $em->persist($appUser);
         $em->flush();
-        $infoMessage = 'Created user: '.$appUser->getUsername().', type: '.$appUserType->getName().'\n All roles: [';
-
-        foreach ($appUser->getRoles() as $oneRole) {
-            $infoMessage .= $oneRole.',';
-        }
-        $infoMessage .= ']';
+        $infoMessage = 'Created user: '.$appUser->getUsername().', type: '.($appUserType ? $appUserType->getName() : null);
         $this->logger->info($infoMessage);
-
-        if ($sendMail) {
-            $this->sendActivationRequestEmail($appUser, $token, 'new');
-        }
 
         return $appUser;
     }
 
     /**
-     * @param AppUser $appUser
-     * @param string  $token
-     *
-     * @return bool
-     * @throws \Exception
-     */
-    final public function resetPassword(AppUser $appUser, string $token): bool
-    {
-        $this->logger->info('Requesting password reset (user id '.($appUser->getId() ?? '?').').');
-
-        return $appUser->checkAndDestroyPasswordResetRequestToken($token) ? $this->changePassword($appUser) : false;
-    }
-
-    /**
      * @param AppUser     $appUser
-     * @param bool        $sendConfirmation
+     * @param string      $type
      * @param string|null $password
-     *
      * @param string|null $token
-     *
+     * @param bool|null   $sendConfirmation
      * @param bool|null   $withoutToken
      *
      * @return bool
-     * @throws \Exception
+     * @throws \ErrorException
      */
-    final public function changePassword(
+    final public function appUserAction(
         AppUser $appUser,
-        bool $sendConfirmation = true,
-        string $password = null,
+        string $type,
+        ?string $password = null,
         ?string $token = null,
+        ?bool $sendConfirmation = true,
         ?bool $withoutToken = false
     ): bool {
-        if (!$withoutToken && !$token) {
-            throw new \Exception('Token nenalezen.');
-        }
         try {
-            if (!$withoutToken && !$appUser->checkAndDestroyPasswordResetRequestToken($token)) {
-                throw new \Exception('Špatný token.');
-            }
-            $random = $password ? false : true;
-            $password = $password ?? StringUtils::generatePassword();
-            $appUser->setPassword($this->encoder->encodePassword($appUser, $password));
-            if ($sendConfirmation) {
-                $this->sendPasswordChangedEmail($appUser, $random ? $password : null);
+            if ($type === 'reset-request') {
+                // Create token for password reset/change and send it to user by e-mail.
+                $token = $appUser->generatePasswordRequestToken();
+                if ($sendConfirmation) {
+                    $this->sendPasswordEmail($appUser, 'reset-request', $token);
+                }
+            } elseif ($type === 'reset') {
+                // Check token for password reset/change and change password for user.
+                if (!$withoutToken && !$token) {
+                    throw new \InvalidArgumentException('Token nenalezen.');
+                }
+                if (!$withoutToken && !$appUser->checkAndDestroyPasswordResetRequestToken($token)) {
+                    throw new \InvalidArgumentException('Špatný token.');
+                }
+                $random = $password ? false : true;
+                $password = $password ?? StringUtils::generatePassword();
+                $appUser->setPassword($this->encoder->encodePassword($appUser, $password));
+                if ($sendConfirmation) {
+                    $this->sendPasswordEmail($appUser, 'reset', null, $random ? $password : null);
+                }
+            } elseif ($type === 'activation-request') {
+                // Generate token for account activation and send it to user by e-mail.
+                $this->sendAppUserEmail($appUser, 'activation-request', $appUser->generateAccountActivationRequestToken());
+            } elseif ($type === 'activation') {
+                // Check activation token and activate account.
+                if (!$withoutToken && !$token) {
+                    throw new \InvalidArgumentException('Token nenalezen.');
+                }
+                if (!$withoutToken && !$appUser->checkAndDestroyAccountActivationRequestToken($token)) {
+                    throw new \InvalidArgumentException('Špatný token.');
+                }
+                $random = $password ? false : true;
+                $password = $password ?? StringUtils::generatePassword();
+                $appUser->setPassword($this->encoder->encodePassword($appUser, $password));
+                if ($sendConfirmation) {
+                    $this->sendAppUserEmail($appUser, 'activation', $token, $random ? $password : null);
+                }
+            } else {
+                // Type is not recognized.
+                throw new \InvalidArgumentException('Akce "'.$type.'" není u uživatelských účtů implementována.');
             }
             $this->em->persist($appUser);
             $this->em->flush();
 
             return true;
         } catch (\Exception $e) {
-            $this->logger->info($e->getMessage());
-            throw new \Exception('Nastal problém při změně hesla ('.$e->getMessage().').');
+            $this->logger->error($e->getMessage());
+            throw new \ErrorException('Nastal problém při změně uživatelského účtu ('.$e->getMessage().').');
         }
     }
 
     /**
      * @param AppUser     $appUser
-     * @param bool        $sendConfirmation
-     * @param string|null $password
+     * @param string      $type
      * @param string|null $token
-     * @param bool|null   $withoutToken
-     *
-     * @return bool
-     * @throws \Exception
-     */
-    final public function activateAccount(
-        AppUser $appUser,
-        bool $sendConfirmation = true,
-        string $password = null,
-        ?string $token = null,
-        ?bool $withoutToken = false
-    ): bool {
-        if (!$withoutToken && !$token) {
-            throw new \Exception('Token nenalezen.');
-        }
-        try {
-            if (!$withoutToken && !$appUser->checkAndDestroyAccountActivationRequestToken($token)) {
-                throw new \Exception('Špatný token.');
-            }
-            $random = $password ? false : true;
-            $password = $password ?? StringUtils::generatePassword();
-            $appUser->setPassword($this->encoder->encodePassword($appUser, $password));
-            if ($sendConfirmation) {
-                $this->sendActivationEmail($appUser, $random ? $password : null);
-            }
-            $this->em->persist($appUser);
-            $this->em->flush();
-
-            return true;
-        } catch (\Exception $e) {
-            $this->logger->info($e->getMessage());
-            throw new \Exception('Nastal problém při aktivaci účtu ('.$e->getMessage().').');
-        }
-    }
-
-    /**
-     * @param AppUser $appUser
-     *
-     * @throws \Exception
-     */
-    final public function requestPasswordReset(AppUser $appUser): void
-    {
-        $this->sendPasswordResetRequestEmail($appUser, $appUser->generatePasswordRequestToken());
-    }
-
-    /**
-     * @param AppUser     $appUser
      * @param string|null $password
      *
-     * @throws \Exception
+     * @throws \ErrorException
      */
-    final public function sendPasswordChangedEmail(AppUser $appUser, ?string $password = null): void
-    {
+    final public function sendPasswordEmail(
+        AppUser $appUser,
+        string $type,
+        ?string $token = null,
+        string $password = null
+    ): void {
         try {
+
             if (!$appUser) {
-                throw new \Exception('Uživatel nenalezen.');
-            }
-            if (!$password) {
-                throw new \Exception('Heslo nenalezeno.');
+                throw new \InvalidArgumentException('Uživatel nenalezen.');
             }
 
-            $em = $this->em;
+            $title = null;
 
-            $title = 'Změna hesla';
+            if ('reset' === $type) {
+                // Send e-mail about password change. Include password if present (it means that it's generated randomly).
+                $title = 'Heslo změněno';
+                $token = null;
+            } elseif ('reset-request' === $type) {
+                // Send e-mail about password reset request. Include token for change.
+                $title = 'Požadavek na změnu hesla';
+                $password = null;
+            } else {
+                throw new \InvalidArgumentException('Akce "'.$type.'" není u změny hesla implementována.');
+            }
 
             $message = new \Swift_Message(EmailUtils::mime_header_encode($title));
-
             $message->setTo(array($appUser->getFullName() ?? $appUser->getUsername() => $appUser->getEmail()))
                 ->setCharset('UTF-8');
-
             $message->setBody(
                 $this->templating->render(
                     '@ZakjakubOswisCore/e-mail/password.html.twig',
                     array(
-                        'appUser'     => $appUser,
-                        'token'       => null,
-                        'newPassword' => $password,
+                        'title'    => $title,
+                        'appUser'  => $appUser,
+                        'token'    => $token,
+                        'password' => $password,
                     )
                 ),
                 'text/html'
@@ -281,9 +247,10 @@ class AppUserManager
                 $this->templating->render(
                     '@ZakjakubOswisCore/e-mail/password.txt.twig',
                     array(
-                        'appUser'     => $appUser,
-                        'token'       => null,
-                        'newPassword' => $password,
+                        'title'    => $title,
+                        'appUser'  => $appUser,
+                        'token'    => $token,
+                        'password' => $password,
                     )
                 ),
                 'text/plain'
@@ -293,109 +260,40 @@ class AppUserManager
                 return;
             }
 
-            throw new \Exception();
+            throw new \ErrorException();
         } catch (\Exception $e) {
-            throw new \Exception('Problém s odesláním zprávy o změně hesla.  '.$e->getMessage());
-        }
-
-    }
-
-    /**
-     * @param AppUser     $appUser
-     * @param string|null $token
-     *
-     * @throws \Exception
-     */
-    final public function sendPasswordResetRequestEmail(
-        AppUser $appUser,
-        ?string $token = null
-    ): void {
-        try {
-
-            if (!$appUser) {
-                throw new \Exception('Uživatel nenalezen.');
-            }
-            if (!$token) {
-                throw new \Exception('Token nenalezen.');
-            }
-
-            $em = $this->em;
-
-            $title = 'Reset hesla';
-
-            $message = new \Swift_Message(EmailUtils::mime_header_encode($title));
-
-            $message->setTo(array($appUser->getFullName() ?? $appUser->getUsername() => $appUser->getEmail()))
-                ->setCharset('UTF-8');
-
-            $message->setBody(
-                $this->templating->render(
-                    '@ZakjakubOswisCore/e-mail/password.html.twig',
-                    array(
-                        'appUser'     => $appUser,
-                        'token'       => $token,
-                        'newPassword' => null,
-                    )
-                ),
-                'text/html'
-            );
-
-            $message->addPart(
-                $this->templating->render(
-                    '@ZakjakubOswisCore/e-mail/password.txt.twig',
-                    array(
-                        'appUser'     => $appUser,
-                        'token'       => $token,
-                        'newPassword' => null,
-                    )
-                ),
-                'text/plain'
-            );
-
-            if ($this->mailer->send($message)) {
-                return;
-            }
-
-            throw new \Exception();
-        } catch (\Exception $e) {
-            throw new \Exception('Problém s odesláním zprávy o resetu hesla.  '.$e->getMessage());
+            $this->logger->error($e->getMessage());
+            throw new \ErrorException('Problém s odesláním zprávy o změně hesla.  '.$e->getMessage());
         }
     }
 
     /**
-     * @param AppUser $appUser
-     *
-     * @throws \Exception
-     */
-    final public function requestUserActivation(AppUser $appUser): void
-    {
-        $token = $appUser->generateAccountActivationRequestToken();
-        $this->sendActivationRequestEmail($appUser, $token, 'new');
-    }
-
-    /**
      * @param AppUser     $appUser
+     * @param string      $type
      * @param string|null $token
-     * @param string|null $type
+     * @param string|null $password
      *
-     * @throws \Exception
+     * @throws \ErrorException
      */
-    final public function sendActivationRequestEmail(
+    final public function sendAppUserEmail(
         AppUser $appUser,
+        string $type,
         ?string $token = null,
-        ?string $type = 'change'
+        ?string $password = null
     ): void {
         try {
-
             if (!$appUser) {
-                throw new \Exception('Uživatel nenalezen.');
+                throw new \ErrorException('Uživatel nenalezen.');
             }
 
-            $em = $this->em;
-
-            $title = 'Změna v uživatelském účtu';
-            if ($type === 'new') {
-                $title = 'Vytvořen nový uživatelský účet';
+            if ('activation-request' === $type) {
+                // Send e-mail about activation request. Include token for activation.
+                $title = 'Požadavek na aktivaci účtu';
+            } elseif ('activation' === $type) {
+                // Send e-mail about account activation. Include password if present (it means that it's generated randomly).
+                $title = 'Účet byl aktivován';
+            } else {
+                throw new \InvalidArgumentException('Akce "'.$type.'" není u uživatelských účtů implementována.');
             }
 
             $message = new \Swift_Message(EmailUtils::mime_header_encode($title));
@@ -418,7 +316,7 @@ class AppUserManager
                         'type'     => $type,
                         'token'    => $token,
                         'tokenUrl' => $token,
-                        'password' => null,
+                        'password' => $password,
                     )
                 ),
                 'text/html'
@@ -432,85 +330,17 @@ class AppUserManager
                         'type'     => $type,
                         'token'    => $token,
                         'tokenUrl' => $token,
-                        'password' => null,
-                    )
-                ),
-                'text/plain'
-            );
-
-            if ($this->mailer->send($message)) {
-                return;
-            }
-
-            throw new \Exception();
-        } catch (\Exception $e) {
-            throw new \Exception('Problém s odesláním zprávy o změně účtu.  '.$e->getMessage());
-        }
-    }
-
-
-    /**
-     * @param AppUser     $appUser
-     * @param string|null $password
-     * @param string|null $token
-     * @param string|null $type
-     *
-     * @throws \Exception
-     */
-    final public function sendActivationEmail(
-        AppUser $appUser,
-        ?string $password = null,
-        ?string $token = null,
-        ?string $type = 'activation'
-    ): void {
-        try {
-
-            if (!$appUser) {
-                throw new \Exception('Uživatel nenalezen.');
-            }
-
-            $em = $this->em;
-
-            $title = 'Účet aktivován';
-
-            $message = new \Swift_Message(EmailUtils::mime_header_encode($title));
-
-            $message->setTo(array($appUser->getFullName() ?? $appUser->getUsername() => $appUser->getEmail()))
-                ->setCharset('UTF-8');
-
-            $message->setBody(
-                $this->templating->render(
-                    '@ZakjakubOswisCore/e-mail/app-user.html.twig',
-                    array(
-                        'appUser'  => $appUser,
-                        'type'     => $type,
-                        'token'    => $token,
-                        'password' => $password,
-                    )
-                ),
-                'text/html'
-            );
-
-            $message->addPart(
-                $this->templating->render(
-                    '@ZakjakubOswisCore/e-mail/app-user.txt.twig',
-                    array(
-                        'appUser'  => $appUser,
-                        'type'     => $type,
-                        'token'    => $token,
                         'password' => $password,
                     )
                 ),
                 'text/plain'
             );
-
             if ($this->mailer->send($message)) {
                 return;
             }
-
-            throw new \Exception();
+            throw new \ErrorException();
         } catch (\Exception $e) {
-            throw new \Exception('Problém s odesláním zprávy o aktivaci účtu.  '.$e->getMessage());
+            throw new \ErrorException('Problém s odesláním zprávy o změně účtu.  '.$e->getMessage());
         }
     }
 
