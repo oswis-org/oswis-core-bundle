@@ -2,7 +2,7 @@
 
 namespace Zakjakub\OswisCoreBundle\Interfaces;
 
-use Zakjakub\OswisAccommodationBundle\Entity\AbstractRevisionContainer;
+use Zakjakub\OswisCoreBundle\Entity\AbstractRevisionContainer;
 
 interface RevisionInterface
 {
