@@ -72,7 +72,7 @@ final class AppUserSubscriber implements EventSubscriberInterface
         $appUserRepository = $em->getRepository(AppUser::class);
 
         if (!$appUser) {
-            $appUser = $appUserRepository->findOneBy(['id'=>$uid]);
+            $appUser = $appUserRepository->findOneBy(['id' => $uid]);
         }
 
         if (!$appUser) {

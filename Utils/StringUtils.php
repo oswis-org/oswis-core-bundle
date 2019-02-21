@@ -299,9 +299,9 @@ class StringUtils
     }
 
     /**
-     * @param int $from   Start char
-     * @param int $to     End char
-     * @param int $length Length
+     * @param string $from   Start char
+     * @param string $to     End char
+     * @param int    $length Length
      *
      * @return string Random string from required chars
      * @throws \Exception
