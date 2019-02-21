@@ -1,6 +1,6 @@
 <?php
 
-namespace Zakjakub\OswisAccommodationBundle\Entity;
+namespace Zakjakub\OswisCoreBundle\Entity;
 
 use Zakjakub\OswisCoreBundle\Interfaces\RevisionInterface;
 use Zakjakub\OswisCoreBundle\Utils\DateTimeUtils;
