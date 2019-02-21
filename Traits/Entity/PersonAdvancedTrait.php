@@ -7,5 +7,6 @@ trait PersonAdvancedTrait
     use PersonBasicTrait;
     use EmailTrait;
     use PhoneTrait;
+    use UrlTrait;
     use AddressTrait;
 }

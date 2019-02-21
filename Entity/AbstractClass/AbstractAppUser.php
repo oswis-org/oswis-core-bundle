@@ -90,6 +90,10 @@ abstract class AbstractAppUser implements UserInterface, \Serializable, Equatabl
     {
     }
 
+    final public function hasRole(string $roleName): bool {
+        return $this->containsRole($roleName);
+    }
+
     final public function containsRole(string $roleName): bool
     {
         $roles = new ArrayCollection($this->getRoles());
