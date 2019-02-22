@@ -6,12 +6,8 @@ use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\ExistsFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
-use Gedmo\Mapping\Annotation\Timestampable;
 use Zakjakub\OswisCoreBundle\Entity\AbstractClass\AbstractAppUser;
 use Zakjakub\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
-
-// Dummy statement -> use not deleted as unused.
-\assert(Timestampable::class);
 
 /**
  * Class AppUser

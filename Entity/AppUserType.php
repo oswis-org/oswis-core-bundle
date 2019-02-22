@@ -8,12 +8,8 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\ExistsFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Gedmo\Mapping\Annotation\Timestampable;
 use Zakjakub\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
 use Zakjakub\OswisCoreBundle\Traits\Entity\NameableBasicTrait;
-
-// Dummy statement -> use not deleted as unused.
-\assert(Timestampable::class);
 
 /**
  * Class AppUserType (customer, manager, admin etc.)
