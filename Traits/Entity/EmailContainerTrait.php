@@ -20,7 +20,7 @@ trait EmailContainerTrait
         }
     }
 
-    final public function getNote(?\DateTime $dateTime = null): ?string
+    final public function getEmail(?\DateTime $dateTime = null): ?string
     {
         return $this->getRevisionByDate($dateTime)->getEmail();
     }
