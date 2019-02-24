@@ -6,7 +6,6 @@ use Zakjakub\OswisCoreBundle\Entity\Nameable;
 
 trait NameableBasicTrait
 {
-    use BasicEntityTrait;
     use NameTrait;
     use DescriptionTrait;
     use NoteTrait;
