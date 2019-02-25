@@ -19,7 +19,7 @@ services:
     # this creates a service per class whose id is the fully-qualified class name
     Zakjakub\OswisCoreBundle\:
         resource: '../../*'
-        exclude: '../{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
+        exclude: '../../{DependencyInjection,Entity,Migrations,Repository,Filter,Tests,Kernel.php}'
         public: true
 
     # add more service definitions when explicit configuration is needed
@@ -37,11 +37,10 @@ services:
 
     Zakjakub\OswisCoreBundle\Security\AppUserProvider:
         class: Zakjakub\OswisCoreBundle\Security\AppUserProvider
+        autowire: true
         public: true
-        alias: AppUserProvider
         arguments:
           ['@doctrine.orm.entity_manager.abstract']
-
 
     Zakjakub\OswisCoreBundle\Security\:
         resource: '../../Security/*'
