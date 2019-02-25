@@ -28,7 +28,7 @@ Nové heslo nastavíte na adrese:
 Odkaz je platný 12 hodin od vygenerování.
 {% endif %}
 
-Uživatelské jméno u uživatelského účtu je {{ appUser.username }} a hlavní e-mail je nastaven na {{ appUser.email }}.
+Uživatelské jméno u uživatelského účtu je {{ appUser.username ? appUser.username : appUser.email }} a hlavní e-mail je nastaven na {{ appUser.email }}.
 {% if password %}
 Bylo nastaveno nové náhodně vygenerované heslo <strong>{{ password }}</strong>.
 {% elseif appUser.password %}

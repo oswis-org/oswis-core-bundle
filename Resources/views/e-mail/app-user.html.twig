@@ -33,7 +33,8 @@
                 {% endif %}
 
                 <p>
-                    Uživatelské jméno u uživatelského účtu je <strong>{{ appUser.username }}</strong>
+                    Uživatelské jméno u uživatelského účtu je
+                    <strong>{{ appUser.username ? appUser.username : appUser.email }}</strong>
                     a hlavní e-mail je nastaven na <strong>{{ appUser.email }}</strong>.
                     {% if password %}
                         Bylo nastaveno nové náhodně vygenerované heslo <strong>{{ password }}</strong>.
