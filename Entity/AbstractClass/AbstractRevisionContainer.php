@@ -1,6 +1,6 @@
 <?php
 
-namespace Zakjakub\OswisCoreBundle\Entity;
+namespace Zakjakub\OswisCoreBundle\Entity\AbstractClass;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;

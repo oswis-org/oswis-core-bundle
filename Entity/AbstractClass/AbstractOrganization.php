@@ -1,6 +1,6 @@
 <?php
 
-namespace Zakjakub\OswisCoreBundle\Entity;
+namespace Zakjakub\OswisCoreBundle\Entity\AbstractClass;
 
 use Zakjakub\OswisCoreBundle\Traits\Entity\AddressTrait;
 use Zakjakub\OswisCoreBundle\Traits\Entity\BasicEntityTrait;
