@@ -126,7 +126,7 @@ class DateTimeUtils
         return self::getEaster($dateTime) ? true : false;
     }
 
-    public static function cmpDate(\DateTime $a, \DateTime $b): int
+    public static function cmpDate(?\DateTime $a, ?\DateTime $b): int
     {
         if ($a == $b) {
             return 0;
