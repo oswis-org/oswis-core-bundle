@@ -1,6 +1,6 @@
 <?php
 
-namespace ZakJakub\OswisCoreBundle\DependencyInjection;
+namespace Zakjakub\OswisCoreBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
