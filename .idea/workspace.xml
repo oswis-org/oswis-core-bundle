@@ -6,8 +6,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractBundleUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractBundleUser.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/config/services.yaml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.github/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -110,9 +110,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="23">
               <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
-              <folding>
-                <element signature="e#60#104#0#PHP" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -527,14 +524,7 @@
       <workItem from="1550569700778" duration="3994000" />
       <workItem from="1550641716057" duration="11679000" />
       <workItem from="1550780403344" duration="7521000" />
-      <workItem from="1551086751815" duration="1288000" />
-    </task>
-    <task id="LOCAL-00057" summary="Some changes.">
-      <created>1548421137238</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1548421137240</updated>
+      <workItem from="1551086751815" duration="1417000" />
     </task>
     <task id="LOCAL-00058" summary="Some changes.">
       <created>1548424525943</created>
@@ -872,11 +862,18 @@
       <option name="project" value="LOCAL" />
       <updated>1551089987241</updated>
     </task>
-    <option name="localTasksCounter" value="106" />
+    <task id="LOCAL-00106" summary="Some changes.">
+      <created>1551091451462</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1551091451462</updated>
+    </task>
+    <option name="localTasksCounter" value="107" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="203792000" />
+    <option name="totallyTimeSpent" value="203921000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="0" width="1922" height="1080" extended-state="6" />
@@ -1990,9 +1987,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="23">
           <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
-          <folding>
-            <element signature="e#60#104#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
