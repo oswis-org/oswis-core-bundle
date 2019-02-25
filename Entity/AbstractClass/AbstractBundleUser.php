@@ -1,6 +1,6 @@
 <?php
 
-namespace Zakjakub\OswisAccommodationBundle\Entity;
+namespace Zakjakub\OswisCoreBundle\Entity;
 
 use Zakjakub\OswisCoreBundle\Entity\AppUser;
 use Zakjakub\OswisCoreBundle\Traits\Entity\BasicEntityTrait;
