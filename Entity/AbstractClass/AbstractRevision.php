@@ -5,10 +5,6 @@ namespace Zakjakub\OswisCoreBundle\Entity;
 use Zakjakub\OswisCoreBundle\Interfaces\RevisionInterface;
 use Zakjakub\OswisCoreBundle\Utils\DateTimeUtils;
 
-/**
- * Class AbstractRevision
- * @package App\Entity\AbstractClass
- */
 abstract class AbstractRevision implements RevisionInterface
 {
 

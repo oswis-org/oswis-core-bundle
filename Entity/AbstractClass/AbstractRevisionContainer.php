@@ -7,10 +7,6 @@ use Doctrine\Common\Collections\Collection;
 use Zakjakub\OswisCoreBundle\Exceptions\RevisionMissingException;
 use Zakjakub\OswisCoreBundle\Interfaces\RevisionContainerInterface;
 
-/**
- * Class AbstractRevisionContainer
- * @package App\Entity\AbstractClass
- */
 abstract class AbstractRevisionContainer implements RevisionContainerInterface
 {
 
