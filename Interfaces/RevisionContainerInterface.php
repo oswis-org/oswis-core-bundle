@@ -3,7 +3,7 @@
 namespace Zakjakub\OswisCoreBundle\Interfaces;
 
 use Doctrine\Common\Collections\Collection;
-use Zakjakub\OswisCoreBundle\Entity\AbstractRevision;
+use Zakjakub\OswisCoreBundle\Entity\AbstractClass\AbstractRevision;
 
 interface RevisionContainerInterface
 {
