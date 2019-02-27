@@ -1,9 +1,17 @@
 {% extends '@ZakjakubOswisCore/e-mail/message.html.twig' %}
-{% block title %}{{ title }}{% endblock %}
+{% block title %}
+    {% if type == 'activation-request' %}
+        Vytvoření uživatelského účtu
+    {% elseif type == 'activation' %}
+        Aktivace uživatelského účtu
+    {% else %}
+        Změna uživatelského účtu
+    {% endif %}
+{% endblock %}
 {% block description %}
     {% if type == 'activation-request' %}
-    Vytvoření uživatelského účtu
-    {% if type == 'activation' %}
+        Vytvoření uživatelského účtu
+    {% elseif type == 'activation' %}
         Aktivace uživatelského účtu
     {% else %}
         Změna uživatelského účtu

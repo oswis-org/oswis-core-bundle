@@ -11,7 +11,7 @@ trait UrlTrait
     /**
      * URL of website.
      * @var string|null
-     * @Doctrine\ORM\Mapping\Column(type="string", unique=true, length=255, nullable=true)
+     * @Doctrine\ORM\Mapping\Column(type="string", unique=false, length=255, nullable=true)
      * @Symfony\Component\Validator\Constraints\Length(
      *      min = 4,
      *      max = 254
@@ -23,9 +23,9 @@ trait UrlTrait
      * Get url.
      * @return string
      */
-    final public function getUrl(): string
+    final public function getUrl(): ?string
     {
-        return $this->url ?? '';
+        return $this->url;
     }
 
     /**

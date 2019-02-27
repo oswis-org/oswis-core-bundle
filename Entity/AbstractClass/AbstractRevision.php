@@ -25,6 +25,7 @@ abstract class AbstractRevision implements RevisionInterface
      */
     public static function sortByCreatedDateTime(array &$revisions): void
     {
+        $revisions = \array_reverse($revisions);
         \usort(
             $revisions,
             function (self $arg1, self $arg2) {
