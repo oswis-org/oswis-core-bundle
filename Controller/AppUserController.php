@@ -38,10 +38,14 @@ class AppUserController extends AbstractController
         try {
 
             if (!$token) {
-                return new Response(
-                    'Nebyl zadán token. 
+                return $this->render(
+                    '@ZakjakubOswisCore/web/pages/app-user.html.twig',
+                    [
+                        'title'   => 'Token nezadán',
+                        'message' => 'Nebyl zadán token. 
                     Zkuste odkaz otevřít znovu nebo jej zkopírovat celý do adresního řádku prohlížeče.
-                    Pokud se to nepodaří, kontaktujte nás a společně to vyřešíme.'
+                    Pokud se to nepodaří, kontaktujte nás a společně to vyřešíme.',
+                    ]
                 );
             }
 
@@ -50,11 +54,16 @@ class AppUserController extends AbstractController
                 ->findOneBy(['accountActivationRequestToken' => $token]);
 
             if (!$appUser) {
-                return new Response(
-                    'Token nebyl nalezen u žádné z registrací. 
-                    Je možné, že již vypršena jeho platnost, zkuste se registrovat znovu se stejným e-mailem.
-                    Pokud se to nepodaří, kontaktujte nás.'
+                return $this->render(
+                    '@ZakjakubOswisCore/web/pages/app-user.html.twig',
+                    [
+                        'title'   => 'Token nenalezen',
+                        'message' => 'Token nebyl nalezen u žádné z registrací. 
+                        Je možné, že již vypršena jeho platnost, zkuste se registrovat znovu se stejným e-mailem.
+                        Pokud se to nepodaří, kontaktujte nás.',
+                    ]
                 );
+
             }
 
             \assert($appUser instanceof AppUser);
@@ -65,8 +74,12 @@ class AppUserController extends AbstractController
 
             $em->flush();
 
-            return new Response(
-                'Registrace byla úspěšně potvrzena.'
+            return $this->render(
+                '@ZakjakubOswisCore/web/pages/app-user.html.twig',
+                [
+                    'title'   => 'Účet aktivován!',
+                    'message' => 'Účet byl úspěšně aktivován.',
+                ]
             );
 
         } catch (\Exception $e) {
@@ -74,8 +87,12 @@ class AppUserController extends AbstractController
                 'App user activation error: '.$e->getMessage()
             );
 
-            return new Response(
-                'Registraci se nepodařilo potvrdit. Kontaktujte nás a společně to vyřešíme.'
+            return $this->render(
+                '@ZakjakubOswisCore/web/pages/app-user.html.twig',
+                [
+                    'title'   => 'Nastala chyba!',
+                    'message' => 'Registraci se nepodařilo potvrdit. Kontaktujte nás a společně to vyřešíme.',
+                ]
             );
 
         }
