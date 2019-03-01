@@ -7,6 +7,48 @@
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/public/favicon/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/public/favicons/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/public/favicon/android-chrome-144x144.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/public/favicons/android-chrome-144x144.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/public/favicon/android-chrome-192x192.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/public/favicons/android-chrome-192x192.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/public/favicon/android-chrome-256x256.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/public/favicons/android-chrome-256x256.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/public/favicon/android-chrome-36x36.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/public/favicons/android-chrome-36x36.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/public/favicon/android-chrome-384x384.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/public/favicons/android-chrome-384x384.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/public/favicon/android-chrome-48x48.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/public/favicons/android-chrome-48x48.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/public/favicon/android-chrome-72x72.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/public/favicons/android-chrome-72x72.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/public/favicon/android-chrome-96x96.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/public/favicons/android-chrome-96x96.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/public/favicon/apple-touch-icon-114x114-precomposed.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/public/favicons/apple-touch-icon-114x114-precomposed.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/public/favicon/apple-touch-icon-114x114.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/public/favicons/apple-touch-icon-114x114.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/public/favicon/apple-touch-icon-120x120-precomposed.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/public/favicons/apple-touch-icon-120x120-precomposed.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/public/favicon/apple-touch-icon-120x120.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/public/favicons/apple-touch-icon-120x120.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/public/favicon/apple-touch-icon-144x144-precomposed.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/public/favicons/apple-touch-icon-144x144-precomposed.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/public/favicon/apple-touch-icon-144x144.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/public/favicons/apple-touch-icon-144x144.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/public/favicon/apple-touch-icon-152x152-precomposed.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/public/favicons/apple-touch-icon-152x152-precomposed.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/public/favicon/apple-touch-icon-152x152.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/public/favicons/apple-touch-icon-152x152.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/public/favicon/apple-touch-icon-180x180-precomposed.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/public/favicons/apple-touch-icon-180x180-precomposed.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/public/favicon/apple-touch-icon-180x180.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/public/favicons/apple-touch-icon-180x180.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/public/favicon/apple-touch-icon-57x57-precomposed.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/public/favicons/apple-touch-icon-57x57-precomposed.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/public/favicon/apple-touch-icon-57x57.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/public/favicons/apple-touch-icon-57x57.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/public/favicon/apple-touch-icon-60x60-precomposed.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/public/favicons/apple-touch-icon-60x60-precomposed.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/public/favicon/apple-touch-icon-60x60.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/public/favicons/apple-touch-icon-60x60.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/public/favicon/apple-touch-icon-72x72-precomposed.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/public/favicons/apple-touch-icon-72x72-precomposed.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/public/favicon/apple-touch-icon-72x72.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/public/favicons/apple-touch-icon-72x72.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/public/favicon/apple-touch-icon-76x76-precomposed.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/public/favicons/apple-touch-icon-76x76-precomposed.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/public/favicon/apple-touch-icon-76x76.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/public/favicons/apple-touch-icon-76x76.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/public/favicon/apple-touch-icon-precomposed.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/public/favicons/apple-touch-icon-precomposed.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/public/favicon/apple-touch-icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/public/favicons/apple-touch-icon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/public/favicon/browserconfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/public/favicons/browserconfig.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/public/favicon/favicon-16x16.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/public/favicons/favicon-16x16.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/public/favicon/favicon-194x194.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/public/favicons/favicon-194x194.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/public/favicon/favicon-32x32.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/public/favicons/favicon-32x32.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/public/favicon/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/public/favicons/favicon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/public/favicon/html_code.html" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/public/favicons/html_code.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/public/favicon/mstile-144x144.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/public/favicons/mstile-144x144.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/public/favicon/mstile-150x150.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/public/favicons/mstile-150x150.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/public/favicon/mstile-310x150.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/public/favicons/mstile-310x150.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/public/favicon/mstile-310x310.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/public/favicons/mstile-310x310.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/public/favicon/mstile-70x70.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/public/favicons/mstile-70x70.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/public/favicon/safari-pinned-tab.svg" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/public/favicons/safari-pinned-tab.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/public/favicon/site.webmanifest" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/public/favicons/site.webmanifest" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Resources/views/web/html-skeleton-default.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/html-skeleton-default.html.twig" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.github/" />
@@ -109,7 +151,7 @@
         <entry file="file://$PROJECT_DIR$/Controller/AppUserController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="161">
-              <caret line="7" column="46" lean-forward="true" selection-start-line="7" selection-start-column="46" selection-end-line="7" selection-end-column="46" />
+              <caret line="7" column="46" selection-start-line="7" selection-start-column="46" selection-end-line="7" selection-end-column="46" />
               <folding>
                 <element signature="e#1355#1404#0#PHP" expanded="true" />
                 <element signature="e#1849#1898#0#PHP" expanded="true" />
@@ -124,7 +166,6 @@
         <entry file="file://$PROJECT_DIR$/Resources/views/web/page-skeleton-default.html.twig">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret lean-forward="true" />
               <folding>
                 <element signature="e#12#66#0#Twig" expanded="true" />
                 <element signature="e#323#368#0#Twig" expanded="true" />
@@ -136,8 +177,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Resources/views/web/html-skeleton-default.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="309">
-              <caret line="25" selection-start-line="25" selection-end-line="25" />
+            <state relative-caret-position="240">
+              <caret line="22" column="54" lean-forward="true" selection-start-line="22" selection-start-column="54" selection-end-line="22" selection-end-column="54" />
             </state>
           </provider>
         </entry>
@@ -465,24 +506,6 @@
               <item name="oswis-core-bundle" type="b2602c69:ProjectViewProjectNode" />
               <item name="oswis-core-bundle" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="oswis-core-bundle" type="b2602c69:ProjectViewProjectNode" />
-              <item name="oswis-core-bundle" type="462c0819:PsiDirectoryNode" />
-              <item name="Resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="oswis-core-bundle" type="b2602c69:ProjectViewProjectNode" />
-              <item name="oswis-core-bundle" type="462c0819:PsiDirectoryNode" />
-              <item name="Resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="oswis-core-bundle" type="b2602c69:ProjectViewProjectNode" />
-              <item name="oswis-core-bundle" type="462c0819:PsiDirectoryNode" />
-              <item name="Resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -575,14 +598,7 @@
       <workItem from="1551086751815" duration="12154000" />
       <workItem from="1551254919363" duration="2910000" />
       <workItem from="1551341101964" duration="5527000" />
-      <workItem from="1551446909902" duration="9269000" />
-    </task>
-    <task id="LOCAL-00073" summary="Some changes.">
-      <created>1548715767762</created>
-      <option name="number" value="00073" />
-      <option name="presentableId" value="LOCAL-00073" />
-      <option name="project" value="LOCAL" />
-      <updated>1548715767762</updated>
+      <workItem from="1551446909902" duration="9558000" />
     </task>
     <task id="LOCAL-00074" summary="Some changes.">
       <created>1548868665805</created>
@@ -920,11 +936,18 @@
       <option name="project" value="LOCAL" />
       <updated>1551473356670</updated>
     </task>
-    <option name="localTasksCounter" value="122" />
+    <task id="LOCAL-00122" summary="Some changes.">
+      <created>1551474516245</created>
+      <option name="number" value="00122" />
+      <option name="presentableId" value="LOCAL-00122" />
+      <option name="project" value="LOCAL" />
+      <updated>1551474516245</updated>
+    </task>
+    <option name="localTasksCounter" value="123" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="232364000" />
+    <option name="totallyTimeSpent" value="232653000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="0" width="1368" height="741" extended-state="6" />
@@ -941,7 +964,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49447513" visible="true" weight="0.22948074" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49447513" weight="0.22948074" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Statistic" order="10" />
       <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49626866" weight="0.2512563" />
@@ -2056,7 +2079,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Resources/public/favicon/README.md">
+    <entry file="file://$PROJECT_DIR$/Resources/public/favicons/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor />
@@ -2086,13 +2109,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Resources/public/favicon/safari-pinned-tab.svg">
+    <entry file="file://$PROJECT_DIR$/Resources/public/favicons/safari-pinned-tab.svg">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/Controller/AppUserController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="161">
-          <caret line="7" column="46" lean-forward="true" selection-start-line="7" selection-start-column="46" selection-end-line="7" selection-end-column="46" />
+          <caret line="7" column="46" selection-start-line="7" selection-start-column="46" selection-end-line="7" selection-end-column="46" />
           <folding>
             <element signature="e#1355#1404#0#PHP" expanded="true" />
             <element signature="e#1849#1898#0#PHP" expanded="true" />
@@ -2105,7 +2128,6 @@
     <entry file="file://$PROJECT_DIR$/Resources/views/web/page-skeleton-default.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret lean-forward="true" />
           <folding>
             <element signature="e#12#66#0#Twig" expanded="true" />
             <element signature="e#323#368#0#Twig" expanded="true" />
@@ -2115,8 +2137,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Resources/views/web/html-skeleton-default.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="309">
-          <caret line="25" selection-start-line="25" selection-end-line="25" />
+        <state relative-caret-position="240">
+          <caret line="22" column="54" lean-forward="true" selection-start-line="22" selection-start-column="54" selection-end-line="22" selection-end-column="54" />
         </state>
       </provider>
     </entry>
