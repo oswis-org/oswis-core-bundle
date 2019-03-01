@@ -5,6 +5,10 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>{% block html_title %}OSWIS{% endblock %}</title>
+
+    {% block tag_manager_script %}
+    {% endblock %}
+
     <meta name="description" content="{% block html_description %}One Simple Web IS{% endblock %}">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!--<link rel="manifest" href="site.webmanifest">-->
@@ -31,6 +35,8 @@
 </head>
 
 <body>
+{% block tag_manager_noscript %}
+{% endblock %}
 {% block old_browser_notice %}
     <!--[if IE]>
     <p class="browserupgrade">
