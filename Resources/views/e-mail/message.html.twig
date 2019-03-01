@@ -63,6 +63,8 @@
                 padding: 0;
             }
         }
+        {% block additional_css %}
+        {% endblock %}
     </style>
 </head>
 <body color='#5D5E60' style='font-size: 14px;color: #5D5E60;box-sizing: content-box;width: 100%;margin: 0 0; padding: 0;'>
@@ -72,23 +74,59 @@
     <tr style="box-sizing: content-box;width: 100%;height: 100%; margin: 0; padding: 0;">
         <td style="box-sizing: content-box;width: 100%;height: 100%; margin: 0; padding: 0;">
             {% block content %}
-                Nastala chyba. Obsah zprávy nebyl načten. Kontaktujte nás, prosím.
+                <table style="width:90%; min-width:300px; max-width:800px; margin:10px auto; text-align:justify;">
+                    {% block content_logo %}
+                        <tr>
+                            <td colspan="2" style="text-align: center;">
+                                <a target='_blank' href='{{ absolute_url() }}' style="display: block; width: 60%; min-width: 140px; max-width: 280px; margin: 0 auto;">
+                                    <img id='logo' border=0 alt='OSWIS'
+                                         src='{{ asset('bundles/zakjakuboswiscore/favicons/apple-touch-icon-180x180.png') }}'
+                                         style='border:0 none; text-align:center; width: 100%; margin: 0 auto;'>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endblock %}
+                    {% block content_content %}
+                        <tr>
+                            <td colspan="2">
+                                Nastala chyba. Obsah zprávy nebyl načten. Kontaktujte nás, prosím.
+                            </td>
+                        </tr>
+                    {% endblock %}
+                    {% block content_foot %}
+                        <tr>
+                            <td colspan="2">
+                                <div>
+                                    <hr color='#EB6D25' style='color:#EB6D25;'>
+                                    <small color="#eb6d25" style="font-size:0.7em;color:#eb6d25;">
+                                        Tento e-mail byl vygenerován a zaslán automaticky aplikací OSWIS.
+                                    </small>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endblock %}
+                </table>
             {% endblock %}
+            {% block app_footer %}
             <br>
-            <table style="text-align:center;font-size:8.5px;margin-top:30px;margin-bottom:0;padding-bottom:0;color:#006FAD;">
+            <table style="text-align:center;font-size:8.5px;margin-top:30px;margin-bottom:0;padding-bottom:0;color:#eb6d25;">
                 <tr style="margin-bottom:0;padding-bottom:0;">
                     <td style="font-size:8.5px;margin-bottom:0;padding-bottom:0;">
+                        {% block app_footer_inner %}
                         <small>
-                            Autorem aplikace je
+                            Autorem aplikace
+                            <a href="https://oswis.org" title="One Simple Web IS" target="_blank" color="#eb6d25" style="color:#eb6d25;">OSWIS</a>.
+                            je
                             <a href="https://jakubzak.cz" title="Jakub Žák" target="_blank" color="#eb6d25" style="color:#eb6d25;">Jakub Žák</a>.
                         </small>
+                        {% endblock %}
                     </td>
                 </tr>
             </table>
+            {% endblock %}
         </td>
     </tr>
 </table>
-
 
 <!-- Jakub Zak, https://jakubzak.cz -->
 </body>

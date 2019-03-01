@@ -1,24 +1,10 @@
 {% extends '@ZakjakubOswisCore/e-mail/message.txt.twig' %}
-{% block title %}
-{% if type == 'activation-request' %}
-Vytvoření uživatelského účtu
-{% elseif type == 'activation' %}
-Aktivace uživatelského účtu
-{% else %}
-Změna uživatelského účtu
-{% endif %}
-{% endblock %}
-{% block description %}
-{% if type == 'activation-request' %}
-Vytvoření uživatelského účtu
-{% elseif type == 'activation' %}
-Aktivace uživatelského účtu
-{% else %}
-Změna uživatelského účtu
-{% endif %}
-{% endblock %}
-{% block content %}
 
+{% block title %}{% if type == 'activation-request' %}Vytvoření uživatelského účtu{% elseif type == 'activation' %}Aktivace uživatelského účtu{% else %}Změna uživatelského účtu{% endif %}{% endblock %}
+
+{% block description %}{% if type == 'activation-request' %}Vytvoření uživatelského účtu{% elseif type == 'activation' %}Aktivace uživatelského účtu{% else %}Změna uživatelského účtu{% endif %}{% endblock %}
+
+{% block content_content %}
 Dobrý den,
 
 {% if type == 'activation-request' %}
@@ -44,9 +30,6 @@ Heslo bylo nastaveno při registraci.
 Heslo si nastavíte při aktivaci účtu.
 Pokud heslo zapomenete, můžete jej obnovit pomocí tlačítka na přihlašovací stránce aplikace.
 {% endif %}
-
-
-Tento e-mail byl vygenerován a zaslán automaticky informačním systémem.
 
 {% endblock %}
 

@@ -1,5 +1,17 @@
 {% block content %}
-Nastala chyba. Text obsah zprávy nebyl načten. Kontaktujte nás, prosím.
+
+{% block content_content %}
+Nastala chyba. Obsah zprávy nebyl načten. Kontaktujte nás, prosím.
 {% endblock %}
 
-Informační systém OSWIS (One Simple Web IS).
+{% block content_foot %}
+Tento e-mail byl vygenerován a zaslán automaticky aplikací OSWIS.
+{% endblock %}
+
+{% endblock %}
+
+{% block app_footer %}
+{% block app_footer_inner %}
+Autorem aplikace OSWIS (One Simple Web IS - https://oswis.org) je Jakub Žák (https://jakubzak.cz).
+{% endblock %}
+{% endblock %}

@@ -1,6 +1,5 @@
 <!doctype html>
 <html class="no-js" lang="cs-cz">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -8,8 +7,6 @@
     {% block tag_manager_script %}{% endblock %}
     <meta name="description" content="{% block html_description %}One Simple Web IS{% endblock %}">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!--<link rel="manifest" href="site.webmanifest">-->
-
     {% block meta_tags %}
         <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('bundles/zakjakuboswiscore/favicons/apple-touch-icon.png') }}">
         <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('bundles/zakjakuboswiscore/favicons/favicons-32x32.png') }}">
@@ -20,8 +17,8 @@
         <link rel="mask-icon" href="{{ asset('bundles/zakjakuboswiscore/favicons/safari-pinned-tab.svg') }}" color="#3498d0">
         <link rel="shortcut icon" href="{{ asset('bundles/zakjakuboswiscore/favicons/favicons.ico') }}">
         <meta name="msapplication-config" content="{{ asset('bundles/zakjakuboswiscore/favicons/browserconfig.xml') }}">
-        <meta name="apple-mobile-web-app-title" content="OSWIS">
-        <meta name="application-name" content="OSWIS">
+        <meta name="apple-mobile-web-app-title" content="OSWIS"> <!-- TODO: VAR -->
+        <meta name="application-name" content="OSWIS"> <!-- TODO: VAR -->
         <meta name="msapplication-TileColor" content="#3498d0">
         <meta name="msapplication-TileImage" content="{{ asset('bundles/zakjakuboswiscore/favicons/mstile-144x144.png') }}">
         <meta name="theme-color" content="#3498d0">
@@ -30,7 +27,6 @@
         {{ encore_entry_link_tags('app') }}
     {% endblock %}
 </head>
-
 <body>
 {% block tag_manager_noscript %}{% endblock %}
 {% block old_browser_notice %}
@@ -53,12 +49,10 @@
     </div>
 {% endblock %}
 
-
 <!-- <script src="https://www.openlayers.org/api/OpenLayers.js"></script> -->
 {% block javascripts %}
     {{ encore_entry_script_tags('app') }}
 {% endblock %}
 
 </body>
-
 </html>
