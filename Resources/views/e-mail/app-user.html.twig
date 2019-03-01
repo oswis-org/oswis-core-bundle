@@ -35,8 +35,8 @@
 
                 {% if type == 'activation-request' and token %}
                     Ještě je nutné provés aktivaci uživatelského účtu. Aktivaci provedete na následujícím odkazu:
-                    Nové heslo nastavíte na adrese:
-                    <a href="{{ tokenUrl }}" title="Odkaz pro aktivaci účtu" target="_blank">{{ tokenUrl }}</a>.
+                    <a href="{{ absolute_url(path('app-user-activation', {'token': token})) }}" title="Odkaz pro aktivaci účtu"
+                       target="_blank">{{ absolute_url(path('app-user-activation', {'token': token})) }}</a>.
                     Odkaz je platný 12 hodin od vygenerování.
                 {% endif %}
 

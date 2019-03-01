@@ -315,7 +315,6 @@ class AppUserManager
                         'appUser'  => $appUser,
                         'type'     => $type,
                         'token'    => $token,
-                        'tokenUrl' => $token,
                         'password' => $password,
                     )
                 ),
@@ -329,7 +328,6 @@ class AppUserManager
                         'appUser'  => $appUser,
                         'type'     => $type,
                         'token'    => $token,
-                        'tokenUrl' => $token,
                         'password' => $password,
                     )
                 ),

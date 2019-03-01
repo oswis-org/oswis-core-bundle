@@ -21,24 +21,23 @@ Změna uživatelského účtu
 
 Dobrý den,
 
-{% if type == 'new' %}
+{% if type == 'activation-request' %}
 byl vytvořen nový uživatelský účet v informačním systému.
 {% elseif type == 'activation' %}
-Váš uživatelský účet byl úspěšně aktivován.
+Váš uživatelský účet byl aktivován.
 {% else %}
 došlo ke změně u Vašeho uživatelského účtu v informačním systému.
 {% endif %}
 
-{% if type == 'new' and tokenUrl %}
+{% if type == 'activation-request' and token %}
 Ještě je nutné provés aktivaci uživatelského účtu. Aktivaci provedete na následujícím odkazu:
-Nové heslo nastavíte na adrese:
-{{ tokenUrl }}
+{{ absolute_url(path('app-user-activation', {'token': token})) }}
 Odkaz je platný 12 hodin od vygenerování.
 {% endif %}
 
 Uživatelské jméno u uživatelského účtu je {{ appUser.username ? appUser.username : appUser.email }} a hlavní e-mail je nastaven na {{ appUser.email }}.
 {% if password %}
-Bylo nastaveno nové náhodně vygenerované heslo <strong>{{ password }}</strong>.
+Bylo nastaveno nové náhodně vygenerované heslo {{ password }}.
 {% elseif appUser.password %}
 Heslo bylo nastaveno při registraci.
 {% else %}
