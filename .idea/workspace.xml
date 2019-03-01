@@ -7,20 +7,7 @@
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/AppUserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/AppUserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/documents/accommodation-decree.css.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/documents/accommodation-decree.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/documents/cash-receipt.css.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/documents/cash-receipt.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/e-mail/app-user.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/e-mail/app-user.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/e-mail/app-user.txt.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/e-mail/app-user.txt.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/e-mail/message.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/e-mail/message.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/e-mail/message.txt.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/e-mail/message.txt.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/e-mail/password.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/e-mail/password.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/e-mail/password.txt.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/e-mail/password.txt.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/web/html-skeleton-default.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/html-skeleton-default.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/web/pages/app-user.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/pages/message.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/web/parts/app-user.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/parts/message.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/config/routes.yaml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.github/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -119,22 +106,31 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Resources/views/web/html-skeleton-default.html.twig">
+        <entry file="file://$PROJECT_DIR$/Controller/AppUserController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret lean-forward="true" />
+            <state relative-caret-position="230">
+              <caret line="25" column="6" lean-forward="true" selection-start-line="25" selection-start-column="6" selection-end-line="25" selection-end-column="6" />
+              <folding>
+                <element signature="e#55#95#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Resources/config/services.yaml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="161">
+              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Resources/views/web/page-skeleton-default.html.twig">
+        <entry file="file://$PROJECT_DIR$/Resources/config/routes.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="23">
-              <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
-              <folding>
-                <element signature="e#12#66#0#Twig" expanded="true" />
-              </folding>
+            <state relative-caret-position="276">
+              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
             </state>
           </provider>
         </entry>
@@ -234,7 +230,6 @@
         <option value="$PROJECT_DIR$/Security/AppUserProvider.php" />
         <option value="$PROJECT_DIR$/Resources/config/packages/security.yaml" />
         <option value="$PROJECT_DIR$/Resources/config/routes/api_platform.yaml" />
-        <option value="$PROJECT_DIR$/Resources/config/routes.yaml" />
         <option value="$PROJECT_DIR$/Resources/config/packages/doctrine.yaml" />
         <option value="$PROJECT_DIR$/DependencyInjection/ZakjakubOswisResourcesBundleExtension.php" />
         <option value="$PROJECT_DIR$/README.md" />
@@ -338,7 +333,6 @@
         <option value="$PROJECT_DIR$/Manager/AppUserManager.php" />
         <option value="$PROJECT_DIR$/Resources/views/web/parts/homepage-description.html.twig" />
         <option value="$PROJECT_DIR$/Resources/views/web/pages/app-user.html.twig" />
-        <option value="$PROJECT_DIR$/Controller/AppUserController.php" />
         <option value="$PROJECT_DIR$/Resources/views/web/page-skeleton-default.html.twig" />
         <option value="$PROJECT_DIR$/Resources/views/web/parts/footer.html.twig" />
         <option value="$PROJECT_DIR$/Resources/views/web/parts/app-user.html.twig" />
@@ -352,6 +346,8 @@
         <option value="$PROJECT_DIR$/Resources/views/e-mail/message.html.twig" />
         <option value="$PROJECT_DIR$/Resources/views/e-mail/app-user.html.twig" />
         <option value="$PROJECT_DIR$/Resources/views/web/html-skeleton-default.html.twig" />
+        <option value="$PROJECT_DIR$/Controller/AppUserController.php" />
+        <option value="$PROJECT_DIR$/Resources/config/routes.yaml" />
       </list>
     </option>
   </component>
@@ -468,7 +464,18 @@
             <path>
               <item name="oswis-core-bundle" type="b2602c69:ProjectViewProjectNode" />
               <item name="oswis-core-bundle" type="462c0819:PsiDirectoryNode" />
+              <item name="Controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oswis-core-bundle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oswis-core-bundle" type="462c0819:PsiDirectoryNode" />
               <item name="Resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oswis-core-bundle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oswis-core-bundle" type="462c0819:PsiDirectoryNode" />
+              <item name="Resources" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="oswis-core-bundle" type="b2602c69:ProjectViewProjectNode" />
@@ -575,14 +582,7 @@
       <workItem from="1551086751815" duration="12154000" />
       <workItem from="1551254919363" duration="2910000" />
       <workItem from="1551341101964" duration="5527000" />
-      <workItem from="1551446909902" duration="15346000" />
-    </task>
-    <task id="LOCAL-00079" summary="Some changes.">
-      <created>1549730344220</created>
-      <option name="number" value="00079" />
-      <option name="presentableId" value="LOCAL-00079" />
-      <option name="project" value="LOCAL" />
-      <updated>1549730344220</updated>
+      <workItem from="1551446909902" duration="16632000" />
     </task>
     <task id="LOCAL-00080" summary="Some changes.">
       <created>1549731044511</created>
@@ -920,11 +920,18 @@
       <option name="project" value="LOCAL" />
       <updated>1551477199634</updated>
     </task>
-    <option name="localTasksCounter" value="128" />
+    <task id="LOCAL-00128" summary="Some changes.">
+      <created>1551480657991</created>
+      <option name="number" value="00128" />
+      <option name="presentableId" value="LOCAL-00128" />
+      <option name="project" value="LOCAL" />
+      <updated>1551480657991</updated>
+    </task>
+    <option name="localTasksCounter" value="129" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="238441000" />
+    <option name="totallyTimeSpent" value="239727000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="0" width="1368" height="741" extended-state="6" />
@@ -941,7 +948,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49447513" weight="0.22948074" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49447513" visible="true" weight="0.22948074" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Statistic" order="10" />
       <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49626866" weight="0.2512563" />
@@ -1349,13 +1356,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-345">
           <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Resources/config/routes.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
         </state>
       </provider>
     </entry>
@@ -1983,13 +1983,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Resources/config/services.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="19" column="30" lean-forward="true" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Resources/public/favicons/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -2006,19 +1999,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Resources/public/favicons/safari-pinned-tab.svg">
       <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Controller/AppUserController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="7" column="46" selection-start-line="7" selection-start-column="46" selection-end-line="7" selection-end-column="46" />
-          <folding>
-            <element signature="e#1355#1404#0#PHP" expanded="true" />
-            <element signature="e#1849#1898#0#PHP" expanded="true" />
-            <element signature="e#2799#2848#0#PHP" expanded="true" />
-            <element signature="e#3202#3251#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Resources/views/web/parts/footer.html.twig">
       <provider selected="true" editor-type-id="text-editor">
@@ -2127,13 +2107,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Resources/views/web/html-skeleton-default.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret lean-forward="true" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Resources/views/web/page-skeleton-default.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="23">
@@ -2141,6 +2114,37 @@
           <folding>
             <element signature="e#12#66#0#Twig" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/views/web/html-skeleton-default.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret lean-forward="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controller/AppUserController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="25" column="6" lean-forward="true" selection-start-line="25" selection-start-column="6" selection-end-line="25" selection-end-column="6" />
+          <folding>
+            <element signature="e#55#95#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/config/services.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/config/routes.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
         </state>
       </provider>
     </entry>
