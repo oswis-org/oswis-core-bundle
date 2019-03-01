@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: zakj
- * Date: 1.3.19
- * Time: 14:33
- */
 
-namespace Zakjakub\OswisAddressBookBundle\Controller;
-
+namespace Zakjakub\OsvisCoreBundle\Controller;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\Log\LoggerInterface;
