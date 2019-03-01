@@ -1,6 +1,6 @@
 <?php
 
-namespace Zakjakub\OsvisCoreBundle\Controller;
+namespace Zakjakub\OswisCoreBundle\Controller;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\Log\LoggerInterface;
