@@ -68,7 +68,7 @@ class AppUserController extends AbstractController
 
             $appUserManager = new AppUserManager($encoder, $em, $mailer, $logger, $templating);
 
-            $appUserManager->appUserAction($appUser, 'activation', null, $token, true, false);
+            $appUserManager->appUserAction($appUser, 'activation', null, $token);
 
             $em->flush();
 

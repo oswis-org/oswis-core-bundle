@@ -77,6 +77,7 @@ class AppUserManager
      *
      * @return AppUser
      * @throws \ErrorException
+     * @throws \Exception
      */
     final public function create(
         ?string $fullName,
