@@ -34,7 +34,7 @@
 
             {% if type == 'activation-request' and token %}
                 Ještě je nutné provés aktivaci uživatelského účtu. Aktivaci provedete na následujícím odkazu:
-                <a href="{{ absolute_url(path('app-user-activation', {'token': token})) }}" title="Odkaz pro aktivaci účtu"
+                <a href="{{ absolute_url(path('zakjakub_oswis_core_app_user_activation', {'token': token})) }}" title="Odkaz pro aktivaci účtu"
                    target="_blank">{{ absolute_url(path('app-user-activation', {'token': token})) }}</a>.
                 Odkaz je platný 12 hodin od vygenerování.
             {% endif %}
