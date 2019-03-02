@@ -15,7 +15,7 @@ class AppUserController extends AbstractController
 {
 
     /**
-     * @Route("/app-user-activation/{token}", name="app-user-activation")
+     * @Route("/app-user-activation/{token}", name="oswis_core_app_user_activation")
      * @param string                       $token
      * @param UserPasswordEncoderInterface $encoder
      * @param EntityManagerInterface       $em

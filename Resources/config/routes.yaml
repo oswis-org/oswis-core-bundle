@@ -11,6 +11,9 @@ api_platform:
     type: api_platform
     prefix: /api
 
+
 controllers:
-    resource: ../../src/Controller/
+    resource: ../../Controller/
     type: annotation
+
+
