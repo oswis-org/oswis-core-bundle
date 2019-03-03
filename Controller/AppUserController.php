@@ -39,7 +39,7 @@ class AppUserController extends AbstractController
 
             if (!$token) {
                 return $this->render(
-                    'message.html.twig',
+                    '@ZakjakubOswisCore/web/pages/message.html.twig',
                     [
                         'title'   => 'Token nezadán',
                         'message' => 'Nebyl zadán token. 
@@ -55,7 +55,7 @@ class AppUserController extends AbstractController
 
             if (!$appUser) {
                 return $this->render(
-                    'message.html.twig',
+                    '@ZakjakubOswisCore/web/pages/message.html.twig',
                     [
                         'title'   => 'Token nenalezen',
                         'message' => 'Token nebyl nalezen u žádné z registrací. 
@@ -75,7 +75,7 @@ class AppUserController extends AbstractController
             $em->flush();
 
             return $this->render(
-                'message.html.twig',
+                '@ZakjakubOswisCore/web/pages/message.html.twig',
                 [
                     'title'   => 'Účet aktivován!',
                     'message' => 'Účet byl úspěšně aktivován.',
@@ -88,7 +88,7 @@ class AppUserController extends AbstractController
             );
 
             return $this->render(
-                'message.html.twig',
+                '@ZakjakubOswisCore/web/pages/message.html.twig',
                 [
                     'title'   => 'Nastala chyba!',
                     'message' => 'Registraci se nepodařilo potvrdit. Kontaktujte nás a společně to vyřešíme.',
