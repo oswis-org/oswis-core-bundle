@@ -61,5 +61,4 @@ class Address
         $this->orientationNumber = $orientationNumber;
         $this->doorNumber = $doorNumber;
     }
-
 }

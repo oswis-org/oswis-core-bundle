@@ -122,5 +122,4 @@ final class AppUserSubscriber implements EventSubscriberInterface
 
         return $accommodationUser;
     }
-
 }

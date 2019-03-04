@@ -36,7 +36,6 @@ class AppUserController extends AbstractController
         \Twig_Environment $templating
     ): Response {
         try {
-
             if (!$token) {
                 return $this->render(
                     '@ZakjakubOswisCore/web/pages/message.html.twig',
@@ -63,7 +62,6 @@ class AppUserController extends AbstractController
                         Pokud se to nepodaří, kontaktujte nás.',
                     ]
                 );
-
             }
 
             \assert($appUser instanceof AppUser);
@@ -81,7 +79,6 @@ class AppUserController extends AbstractController
                     'message' => 'Účet byl úspěšně aktivován.',
                 ]
             );
-
         } catch (\Exception $e) {
             $logger->notice(
                 'App user activation error: '.$e->getMessage()
@@ -94,9 +91,6 @@ class AppUserController extends AbstractController
                     'message' => 'Registraci se nepodařilo potvrdit. Kontaktujte nás a společně to vyřešíme.',
                 ]
             );
-
         }
     }
-
-
 }

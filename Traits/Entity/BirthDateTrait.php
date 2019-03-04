@@ -4,7 +4,6 @@ namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
 use Zakjakub\OswisCoreBundle\Utils\AgeUtils;
 
-
 /**
  * Trait adds birthDate field
  *

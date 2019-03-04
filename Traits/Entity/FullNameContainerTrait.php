@@ -29,5 +29,4 @@ trait FullNameContainerTrait
     {
         return $this->getRevisionByDate($dateTime)->getNickname();
     }
-
 }

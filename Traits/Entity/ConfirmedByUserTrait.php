@@ -50,5 +50,4 @@ trait ConfirmedByUserTrait
             $this->confirmedByUser = new \DateTime();
         }
     }
-
 }

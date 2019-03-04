@@ -19,11 +19,6 @@ class SpamDateTimeEncoder
         return base64_encode(openssl_encrypt($string, 'AES-256-CBC', hash('sha256', $this->secret_key)));
     }
 
-    final public function decrypt(string $string): string
-    {
-        return openssl_decrypt(base64_decode($string), 'AES-256-CBC', hash('sha256', $this->secret_key));
-    }
-
     final public function isSpam(string $string, LoggerInterface $logger): bool
     {
         $time_till_unlock = 7;
@@ -38,4 +33,8 @@ class SpamDateTimeEncoder
         return false;
     }
 
+    final public function decrypt(string $string): string
+    {
+        return openssl_decrypt(base64_decode($string), 'AES-256-CBC', hash('sha256', $this->secret_key));
+    }
 }

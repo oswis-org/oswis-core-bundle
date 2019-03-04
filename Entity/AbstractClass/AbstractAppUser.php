@@ -115,5 +115,4 @@ abstract class AbstractAppUser implements UserInterface, \Serializable, Equatabl
      * @return array (Role|string)[] The user roles
      */
     abstract public function getRoles(): array;
-
 }

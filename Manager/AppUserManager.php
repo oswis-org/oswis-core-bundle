@@ -209,7 +209,6 @@ class AppUserManager
         string $password = null
     ): void {
         try {
-
             if (!$appUser) {
                 throw new \InvalidArgumentException('Uživatel nenalezen.');
             }
@@ -342,6 +341,4 @@ class AppUserManager
             throw new \ErrorException('Problém s odesláním zprávy o změně účtu.  '.$e->getMessage());
         }
     }
-
-
 }

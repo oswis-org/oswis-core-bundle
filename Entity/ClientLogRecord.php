@@ -52,5 +52,4 @@ class ClientLogRecord
         $this->level = $level;
         $this->message = $message;
     }
-
 }

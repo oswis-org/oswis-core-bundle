@@ -2,7 +2,6 @@
 
 namespace Zakjakub\OswisCoreBundle\Interfaces;
 
-
 use Zakjakub\OswisCoreBundle\Entity\AbstractClass\AbstractRevisionContainer;
 
 interface RevisionInterface

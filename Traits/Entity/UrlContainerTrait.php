@@ -24,5 +24,4 @@ trait UrlContainerTrait
     {
         return $this->getRevisionByDate($dateTime)->getUrl();
     }
-
 }

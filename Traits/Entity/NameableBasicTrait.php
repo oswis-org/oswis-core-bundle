@@ -19,5 +19,4 @@ trait NameableBasicTrait
             $this->setNote($nameable->note);
         }
     }
-
 }

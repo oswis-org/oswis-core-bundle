@@ -29,6 +29,4 @@ trait ColorContainerTrait
     {
         return $this->getRevisionByDate($dateTime)->isForegroundWhite();
     }
-
-
 }

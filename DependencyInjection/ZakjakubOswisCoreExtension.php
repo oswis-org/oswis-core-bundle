@@ -30,5 +30,4 @@ class ZakjakubOswisCoreExtension extends Extension implements PrependExtensionIn
     {
         /// TODO: Implement.
     }
-
 }

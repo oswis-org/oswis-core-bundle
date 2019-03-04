@@ -73,5 +73,4 @@ trait ReservationDateRangeTrait
     {
         $this->endReservationDateTime = $endReservationDateTime;
     }
-
 }

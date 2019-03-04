@@ -24,5 +24,4 @@ trait PhoneContainerTrait
     {
         return $this->getRevisionByDate($dateTime)->getPhone();
     }
-
 }

@@ -38,6 +38,4 @@ trait IpTraceableTrait
     {
         return $this->updatedIp;
     }
-
-
 }

@@ -24,5 +24,4 @@ trait DescriptionContainerTrait
     {
         return $this->getRevisionByDate($dateTime)->getDescription();
     }
-
 }

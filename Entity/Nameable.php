@@ -2,7 +2,6 @@
 
 namespace Zakjakub\OswisCoreBundle\Entity;
 
-
 /**
  * Class Nameable
  * @package OswisCoreBundle
@@ -45,6 +44,4 @@ class Nameable
         $this->description = $description;
         $this->note = $note;
     }
-
-
 }

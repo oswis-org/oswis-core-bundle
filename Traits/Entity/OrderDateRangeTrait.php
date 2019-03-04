@@ -77,5 +77,4 @@ trait OrderDateRangeTrait
     {
         $this->endOrderDateTime = $endOrderDateTime;
     }
-
 }

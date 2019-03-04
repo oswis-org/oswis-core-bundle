@@ -125,6 +125,4 @@ trait AccountActivationTrait
     {
         $this->accountActivationDateTime = $accountActivationDateTime;
     }
-
 }
-

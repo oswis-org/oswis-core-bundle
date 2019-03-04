@@ -24,5 +24,4 @@ trait InternalNoteContainerTrait
     {
         return $this->getRevisionByDate($dateTime)->getInternalNote();
     }
-
 }

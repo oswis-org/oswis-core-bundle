@@ -31,5 +31,4 @@ trait IdentificationNumberContainerTrait
             return null;
         }
     }
-
 }

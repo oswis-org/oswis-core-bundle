@@ -47,5 +47,4 @@ trait BirthDateContainerTrait
     {
         return $this->getRevisionByDate($dateTime)->getAge($referenceDateTime);
     }
-
 }

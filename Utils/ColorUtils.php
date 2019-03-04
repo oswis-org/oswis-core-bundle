@@ -7,7 +7,6 @@ namespace Zakjakub\OswisCoreBundle\Utils;
  */
 class ColorUtils
 {
-
     final public function isOppositeWhite(string $color): string
     {
         if (strlen($color) === 4) {
@@ -18,5 +17,4 @@ class ColorUtils
 
         return ($r * 0.299 + $g * 0.587 + $b * 0.114) > 186;
     }
-
 }

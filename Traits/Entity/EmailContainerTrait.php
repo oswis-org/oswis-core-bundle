@@ -24,5 +24,4 @@ trait EmailContainerTrait
     {
         return $this->getRevisionByDate($dateTime)->getEmail();
     }
-
 }

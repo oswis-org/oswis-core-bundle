@@ -7,7 +7,55 @@
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/Dto/AppUserRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/Api/Dto/AppUserRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/EventSubscriber/AppUserSubscriber.php" beforeDir="false" afterPath="$PROJECT_DIR$/Api/EventSubscriber/AppUserSubscriber.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controller/AppUserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/AppUserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DependencyInjection/ZakjakubOswisCoreExtension.php" beforeDir="false" afterPath="$PROJECT_DIR$/DependencyInjection/ZakjakubOswisCoreExtension.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractAppUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractAppUser.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractBundleUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractBundleUser.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractOrganization.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractOrganization.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractPerson.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractPerson.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractRevisionContainer.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractRevisionContainer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/Address.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Address.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AppUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUser.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AppUserRole.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUserRole.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AppUserType.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUserType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/ClientLogRecord.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/ClientLogRecord.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/Nameable.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Nameable.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Exceptions/BirthDateMissingException.php" beforeDir="false" afterPath="$PROJECT_DIR$/Exceptions/BirthDateMissingException.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interfaces/RevisionContainerInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/Interfaces/RevisionContainerInterface.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interfaces/RevisionInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/Interfaces/RevisionInterface.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Manager/AppUserManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/Manager/AppUserManager.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/public/favicons/html_code.html" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/public/favicons/html_code.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Security/AppUserProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/Security/AppUserProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/AccountActivationTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/AccountActivationTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/AddressTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/AddressTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/BirthDateContainerTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/BirthDateContainerTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/BirthDateTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/BirthDateTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/BlameableTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/BlameableTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/ColorContainerTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/ColorContainerTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/ColorTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/ColorTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/ConfirmedByManagerTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/ConfirmedByManagerTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/ConfirmedByUserTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/ConfirmedByUserTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/DescriptionContainerTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/DescriptionContainerTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/EmailContainerTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/EmailContainerTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/FullNameContainerTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/FullNameContainerTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/FullNameTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/FullNameTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/IdentificationNumberContainerTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/IdentificationNumberContainerTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/InternalNoteContainerTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/InternalNoteContainerTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/IpTraceableTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/IpTraceableTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/NameableBasicTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/NameableBasicTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/NoteContainerTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/NoteContainerTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/OrderDateRangeTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/OrderDateRangeTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/PhoneContainerTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/PhoneContainerTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/ReservationDateRangeTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/ReservationDateRangeTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/TextValueTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/TextValueTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/UrlContainerTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/UrlContainerTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Utils/ColorUtils.php" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/ColorUtils.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Utils/DateTimeUtils.php" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/DateTimeUtils.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Utils/EmailUtils.php" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/EmailUtils.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Utils/SpamDateTimeEncoder.php" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/SpamDateTimeEncoder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZakjakubOswisCoreBundle.php" beforeDir="false" afterPath="$PROJECT_DIR$/ZakjakubOswisCoreBundle.php" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.github/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -105,98 +153,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Resources/views/web/page-skeleton-default.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="23">
-              <caret line="1" selection-start-line="1" selection-end-line="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Resources/views/web/html-skeleton-default.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="5" column="60" selection-start-line="5" selection-start-column="60" selection-end-line="5" selection-end-column="60" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Utils/SpamDateTimeEncoder.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Utils/EmailUtils.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="69">
-              <caret line="3" lean-forward="true" selection-start-line="2" selection-end-line="3" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Resources/views/web/pages/message.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="23">
-              <caret line="1" selection-start-line="1" selection-end-line="1" />
-              <folding>
-                <element signature="e#12#66#0#Twig" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Resources/views/web/parts/message.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="5" column="21" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Resources/views/web/parts/footer.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="46">
-              <caret line="2" column="31" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Resources/views/e-mail/message.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1771">
-              <caret line="79" column="28" selection-start-line="79" selection-start-column="28" selection-end-line="79" selection-end-column="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Controller/AppUserController.php">
+        <entry file="file://$PROJECT_DIR$/Resources/public/favicons/html_code.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="16" selection-start-line="16" selection-end-line="16" />
-              <folding>
-                <element signature="e#2047#2095#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Resources/views/e-mail/message.txt.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="9" selection-start-line="9" selection-end-line="9" />
+            <state>
+              <caret lean-forward="true" />
             </state>
           </provider>
         </entry>
@@ -409,12 +370,13 @@
         <option value="$PROJECT_DIR$/Resources/views/e-mail/password.txt.twig" />
         <option value="$PROJECT_DIR$/Resources/views/web/html-skeleton-default.html.twig" />
         <option value="$PROJECT_DIR$/Resources/config/routes.yaml" />
-        <option value="$PROJECT_DIR$/Resources/views/e-mail/app-user.html.twig" />
         <option value="$PROJECT_DIR$/Resources/views/e-mail/app-user.txt.twig" />
-        <option value="$PROJECT_DIR$/Resources/views/e-mail/message.html.twig" />
         <option value="$PROJECT_DIR$/Resources/views/web/pages/message.html.twig" />
         <option value="$PROJECT_DIR$/Utils/SpamDateTimeEncoder.php" />
         <option value="$PROJECT_DIR$/Controller/AppUserController.php" />
+        <option value="$PROJECT_DIR$/Resources/views/e-mail/app-user.html.twig" />
+        <option value="$PROJECT_DIR$/Resources/views/e-mail/message.html.twig" />
+        <option value="$PROJECT_DIR$/Resources/public/favicons/html_code.html" />
       </list>
     </option>
   </component>
@@ -510,9 +472,9 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1919" />
-    <option name="width" value="1368" />
-    <option name="height" value="741" />
+    <option name="x" value="-1" />
+    <option name="width" value="1922" />
+    <option name="height" value="1080" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -526,16 +488,6 @@
             <path>
               <item name="oswis-core-bundle" type="b2602c69:ProjectViewProjectNode" />
               <item name="oswis-core-bundle" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="oswis-core-bundle" type="b2602c69:ProjectViewProjectNode" />
-              <item name="oswis-core-bundle" type="462c0819:PsiDirectoryNode" />
-              <item name="Controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="oswis-core-bundle" type="b2602c69:ProjectViewProjectNode" />
-              <item name="oswis-core-bundle" type="462c0819:PsiDirectoryNode" />
-              <item name="Utils" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -633,21 +585,7 @@
       <workItem from="1551446909902" duration="17521000" />
       <workItem from="1551521373515" duration="1859000" />
       <workItem from="1551527625730" duration="2225000" />
-      <workItem from="1551650217745" duration="2367000" />
-    </task>
-    <task id="LOCAL-00086" summary="Some changes.">
-      <created>1550433416630</created>
-      <option name="number" value="00086" />
-      <option name="presentableId" value="LOCAL-00086" />
-      <option name="project" value="LOCAL" />
-      <updated>1550433416631</updated>
-    </task>
-    <task id="LOCAL-00087" summary="Some changes.">
-      <created>1550436654185</created>
-      <option name="number" value="00087" />
-      <option name="presentableId" value="LOCAL-00087" />
-      <option name="project" value="LOCAL" />
-      <updated>1550436654185</updated>
+      <workItem from="1551650217745" duration="4902000" />
     </task>
     <task id="LOCAL-00088" summary="Some changes.">
       <created>1550439200304</created>
@@ -978,33 +916,47 @@
       <option name="project" value="LOCAL" />
       <updated>1551653758319</updated>
     </task>
-    <option name="localTasksCounter" value="135" />
+    <task id="LOCAL-00135" summary="Some changes.">
+      <created>1551706777307</created>
+      <option name="number" value="00135" />
+      <option name="presentableId" value="LOCAL-00135" />
+      <option name="project" value="LOCAL" />
+      <updated>1551706777307</updated>
+    </task>
+    <task id="LOCAL-00136" summary="Some changes.">
+      <created>1551706893823</created>
+      <option name="number" value="00136" />
+      <option name="presentableId" value="LOCAL-00136" />
+      <option name="project" value="LOCAL" />
+      <updated>1551706893823</updated>
+    </task>
+    <option name="localTasksCounter" value="137" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="247067000" />
+    <option name="totallyTimeSpent" value="249602000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1919" y="0" width="1368" height="741" extended-state="6" />
+    <frame x="-1" y="0" width="1368" height="741" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2545317" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2545317" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32663316" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32905984" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49447513" visible="true" weight="0.24120604" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49447513" weight="0.15384616" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Statistic" order="10" />
       <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49626866" weight="0.2512563" />
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.5055249" side_tool="true" weight="0.22948074" />
-      <window_info anchor="bottom" id="Inspection Results" order="13" weight="0.32160804" />
+      <window_info active="true" anchor="bottom" id="Inspection Results" order="13" visible="true" weight="0.32160804" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -2028,28 +1980,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Resources/views/web/pages/place.html.twig" />
     <entry file="file://$PROJECT_DIR$/Resources/views/web/parts/main-menu.html.twig" />
-    <entry file="file://$PROJECT_DIR$/Resources/public/favicons/safari-pinned-tab.svg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/Resources/views/documents/accommodation-decree.css.twig" />
     <entry file="file://$PROJECT_DIR$/Resources/views/documents/accommodation-decree.html.twig" />
     <entry file="file://$PROJECT_DIR$/Resources/views/documents/pdf-document.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="92">
           <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Resources/views/e-mail/password.txt.twig">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Resources/views/e-mail/password.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-          <folding>
-            <element signature="e#12#55#0#Twig" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2064,20 +2000,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="276">
           <caret line="12" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Resources/views/e-mail/app-user.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="782">
-          <caret line="34" column="59" selection-start-line="34" selection-start-column="59" selection-end-line="34" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Resources/views/e-mail/app-user.txt.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
         </state>
       </provider>
     </entry>
@@ -2112,13 +2034,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Resources/views/e-mail/message.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1771">
-          <caret line="79" column="28" selection-start-line="79" selection-start-column="28" selection-end-line="79" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Resources/views/e-mail/message.txt.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="207">
@@ -2126,24 +2041,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Resources/views/web/html-skeleton-default.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="5" column="60" selection-start-line="5" selection-start-column="60" selection-end-line="5" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Utils/EmailUtils.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="69">
-          <caret line="3" lean-forward="true" selection-start-line="2" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Utils/SpamDateTimeEncoder.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+          <caret line="3" selection-start-line="2" selection-end-line="3" />
         </state>
       </provider>
     </entry>
@@ -2151,9 +2052,70 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="207">
           <caret line="16" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/views/e-mail/password.txt.twig">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/views/e-mail/password.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
           <folding>
-            <element signature="e#2047#2095#0#PHP" expanded="true" />
+            <element signature="e#12#55#0#Twig" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/views/e-mail/app-user.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#1294#1333#0#Twig" expanded="true" />
+            <element signature="e#1448#1487#0#Twig" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/views/e-mail/app-user.txt.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+          <folding>
+            <element signature="e#932#971#0#Twig" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Utils/SpamDateTimeEncoder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/public/favicons/safari-pinned-tab.svg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/views/web/html-skeleton-default.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="18" column="61" selection-start-line="18" selection-start-column="61" selection-end-line="18" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/views/e-mail/message.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="99">
+          <caret line="83" selection-start-line="83" selection-end-line="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/public/favicons/html_code.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret lean-forward="true" />
         </state>
       </provider>
     </entry>

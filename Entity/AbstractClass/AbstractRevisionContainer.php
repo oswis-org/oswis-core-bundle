@@ -100,5 +100,4 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
             $revision->setContainer(null);
         }
     }
-
 }

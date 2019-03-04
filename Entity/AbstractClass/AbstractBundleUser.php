@@ -83,5 +83,4 @@ abstract class AbstractBundleUser
     {
         return $this->getAppUser() ? $this->getAppUser()->getPhone() : null;
     }
-
 }

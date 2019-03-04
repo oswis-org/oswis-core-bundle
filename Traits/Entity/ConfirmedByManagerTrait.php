@@ -51,6 +51,4 @@ trait ConfirmedByManagerTrait
             $this->confirmedByManager = new \DateTime();
         }
     }
-
-
 }

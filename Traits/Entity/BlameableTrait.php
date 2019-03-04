@@ -34,6 +34,4 @@ trait BlameableTrait
     {
         return $this->createdAuthor;
     }
-
-
 }

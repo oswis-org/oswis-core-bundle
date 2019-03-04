@@ -202,6 +202,4 @@ trait AddressTrait
             $this->setPostalCode($address->postalCode);
         }
     }
-
-
 }

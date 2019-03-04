@@ -7,7 +7,6 @@ use Zakjakub\OswisCoreBundle\Entity\AbstractClass\AbstractRevision;
 
 interface RevisionContainerInterface
 {
-
     public function getRevision(\DateTime $dateTime = null): AbstractRevision;
 
     public function getRevisions(): Collection;

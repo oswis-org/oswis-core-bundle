@@ -36,5 +36,4 @@ trait TextValueTrait
     {
         $this->textValue = $textValue;
     }
-
 }

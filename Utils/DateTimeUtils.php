@@ -9,7 +9,6 @@ namespace Zakjakub\OswisCoreBundle\Utils;
  */
 class DateTimeUtils
 {
-
     public const MIN_DATE_TIME_STRING = '1970-01-01 00:00:00';
     public const MAX_DATE_TIME_STRING = '2038-01-19 00:00:00';
 
@@ -134,6 +133,4 @@ class DateTimeUtils
 
         return $a < $b ? -1 : 1;
     }
-
-
 }
