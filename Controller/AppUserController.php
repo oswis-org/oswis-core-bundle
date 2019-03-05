@@ -24,6 +24,8 @@ class AppUserController extends AbstractController
      *
      * @param \Twig_Environment            $templating
      *
+     * @param string                       $logoPath
+     *
      * @return Response
      * @throws \LogicException
      */
@@ -33,7 +35,8 @@ class AppUserController extends AbstractController
         EntityManagerInterface $em,
         \Swift_Mailer $mailer,
         LoggerInterface $logger,
-        \Twig_Environment $templating
+        \Twig_Environment $templating,
+        string $logoPath
     ): Response {
         try {
             if (!$token) {
@@ -66,7 +69,7 @@ class AppUserController extends AbstractController
 
             \assert($appUser instanceof AppUser);
 
-            $appUserManager = new AppUserManager($encoder, $em, $mailer, $logger, $templating);
+            $appUserManager = new AppUserManager($encoder, $em, $mailer, $logger, $templating, $logoPath);
 
             $appUserManager->appUserAction($appUser, 'activation', null, $token);
 

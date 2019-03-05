@@ -88,7 +88,7 @@
                         <tr>
                             <td colspan="2"></td>
                             <td colspan="8" style="text-align: center;">
-                                <a target='_blank' href='{{ base_url }}'
+                                <a target='_blank' href='{{ logo is defined and logo ? logo : base_url }}'
                                    style="display: block; width: 190px; width: 60%; min-width: 140px; max-width: 280px; margin: 0 auto;">
                                     {% block logo_img %}
                                         <img id='logo' border=0 alt='OSWIS'

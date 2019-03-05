@@ -43,6 +43,11 @@ class AppUserManager
     private $encoder;
 
     /**
+     * @var string
+     */
+    private $logoPath;
+
+    /**
      * AppUserManager constructor.
      *
      * @param UserPasswordEncoderInterface $encoder
@@ -50,19 +55,22 @@ class AppUserManager
      * @param \Swift_Mailer                $mailer
      * @param LoggerInterface              $logger
      * @param \Twig_Environment            $templating
+     * @param string                       $logoPath
      */
     public function __construct(
         UserPasswordEncoderInterface $encoder,
         EntityManagerInterface $em,
         \Swift_Mailer $mailer,
         LoggerInterface $logger,
-        \Twig_Environment $templating
+        \Twig_Environment $templating,
+        string $logoPath = null
     ) {
         $this->encoder = $encoder;
         $this->em = $em;
         $this->mailer = $mailer;
         $this->logger = $logger;
         $this->templating = $templating;
+        $this->logoPath = $logoPath;
     }
 
     /**
@@ -308,6 +316,8 @@ class AppUserManager
                 ->setSender('oknodopraxe@upol.cz')
                 ->setCharset('UTF-8');
 
+            $cidLogo = $message->embed(\Swift_Image::fromPath('../public/img/web/logo-whitebg.png'));
+
             $message->setBody(
                 $this->templating->render(
                     '@ZakjakubOswisCore/e-mail/app-user.html.twig',
@@ -316,6 +326,7 @@ class AppUserManager
                         'type'     => $type,
                         'token'    => $token,
                         'password' => $password,
+                        'logo'     => $cidLogo,
                     )
                 ),
                 'text/html'
@@ -329,6 +340,7 @@ class AppUserManager
                         'type'     => $type,
                         'token'    => $token,
                         'password' => $password,
+                        'logo'     => $cidLogo,
                     )
                 ),
                 'text/plain'
