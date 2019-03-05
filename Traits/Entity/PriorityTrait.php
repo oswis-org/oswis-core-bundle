@@ -13,7 +13,7 @@ trait PriorityTrait
      *
      * @var int|null
      *
-     * @Doctrine\ORM\Mapping\Column(nullable=false, options={"default": 0})
+     * @Doctrine\ORM\Mapping\Column(nullable=true, options={"default": 0})
      */
     private $priority;
 
@@ -32,7 +32,7 @@ trait PriorityTrait
      *
      * @param int $priority
      */
-    final public function setPriority(int $priority): void
+    final public function setPriority(?int $priority): void
     {
         $this->priority = $priority ?? 0;
     }
