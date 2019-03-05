@@ -288,7 +288,7 @@ class AppUserManager
 
             if ('activation-request' === $type) {
                 // Send e-mail about activation request. Include token for activation.
-                $title = 'Požadavek na aktivaci účtu';
+                $title = 'Aktivace uživatelského účtu';
             } elseif ('activation' === $type) {
                 // Send e-mail about account activation. Include password if present (it means that it's generated randomly).
                 $title = 'Účet byl aktivován';
