@@ -24,7 +24,7 @@ trait PasswordResetTrait
      */
     protected $passwordResetRequestDateTime;
 
-    final public function checkAndDestroyPasswordResetRequestToken(?string $token, int $validHours = 12): bool
+    final public function checkAndDestroyPasswordResetRequestToken(?string $token, int $validHours = 24): bool
     {
         try {
             $diff = (new \DateTime())->diff($this->getPasswordResetRequestDateTime());

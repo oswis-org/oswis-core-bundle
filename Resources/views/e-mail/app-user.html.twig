@@ -19,7 +19,7 @@
 {% endblock %}
 {% block content_content %}
     <tr>
-        <td colspan="2">
+        <td colspan="12">
             <p>
                 Dobrý den,
 
@@ -33,10 +33,10 @@
             </p>
 
             {% if type == 'activation-request' and token %}
-                Ještě je nutné provés aktivaci uživatelského účtu. Aktivaci provedete na následujícím odkazu:
+                Ještě je nutné provést aktivaci uživatelského účtu. Aktivaci provedete na následujícím odkazu:<br>
                 <a href="{{ absolute_url(path('zakjakub_oswis_core_app_user_activation', {'token': token})) }}" title="Odkaz pro aktivaci účtu"
-                   target="_blank">{{ absolute_url(path('zakjakub_oswis_core_app_user_activation', {'token': token})) }}</a>.
-                Odkaz je platný 12 hodin od vygenerování.
+                   target="_blank">{{ absolute_url(path('zakjakub_oswis_core_app_user_activation', {'token': token})) }}</a>.<br>
+                <small>Odkaz je platný 24 hodin od vygenerování.</small>
             {% endif %}
 
             <p>

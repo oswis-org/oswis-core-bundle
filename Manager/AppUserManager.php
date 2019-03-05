@@ -302,10 +302,10 @@ class AppUserManager
                 ->setTo([$appUser->getEmail() ?? '' => $appUser->getFullName() ?? $appUser->getUsername() ?? ''])
                 ->setFrom(
                     array(
-                        'dagmar.petrzelova@upol.cz' => EmailUtils::mime_header_encode('Mgr. Dagmar Petrželová'),
+                        'oknodopraxe@upol.cz' => EmailUtils::mime_header_encode('Okno do praxe'),
                     )
                 )
-                ->setSender('dagmar.petrzelova@upol.cz')
+                ->setSender('oknodopraxe@upol.cz')
                 ->setCharset('UTF-8');
 
             $message->setBody(

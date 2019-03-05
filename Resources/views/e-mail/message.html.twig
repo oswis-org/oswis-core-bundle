@@ -1,3 +1,5 @@
+{% set base_url = 'https://oswis.org' %}
+
 <!DOCTYPE html>
 <html lang='cs-CZ' dir="ltr" style="width: 100%; margin: 0; padding: 0; min-height: 100%;">
 <!-- Jakub Zak, https://jakubzak.cz -->
@@ -26,14 +28,14 @@
         }
 
         a {
-            color: #5D5E60;
+            color: #FFFFFF;
             text-decoration: none !important;
             padding: 0;
             margin: 0;
         }
 
         h1, h2, h3 {
-            color: #eb6d25;
+            color: #FFFFFF;
         }
 
         @media print {
@@ -44,7 +46,7 @@
 
             #logo {
                 width: 60%;
-                max-width: 7cm;
+                max-width: 250px;
             }
 
             div, p, li {
@@ -68,39 +70,44 @@
         {% endblock %}
     </style>
 </head>
-<body color='#5D5E60' style='font-size: 14px;color: #5D5E60;box-sizing: content-box;width: 100%;margin: 0 0; padding: 0;'>
+<body color='#006FAD' style='font-size: 14px;color: #006FAD;box-sizing: content-box;width: 100%;margin: 0 0; padding: 0;'>
 
-<table color='#5D5E60' style='background-color: rgba(235, 109, 37, 0.1);font-size: 14px;
-       color: #5D5E60;box-sizing: content-box;width: 100%;height: 100%; margin: 0; padding: 0; '>
+<table color='#006FAD' style='background-color: transparent;font-size: 14px;
+       color: #006FAD;box-sizing: content-box;width: 100%;height: 100%; margin: 0; padding: 0; '>
     <tr style="box-sizing: content-box;width: 100%;height: 100%; margin: 0; padding: 0;">
         <td style="box-sizing: content-box;width: 100%;height: 100%; margin: 0; padding: 0;">
             {% block content %}
-                <table style="width:90%; min-width:300px; max-width:800px; margin:10px auto; text-align:justify;">
+                <table bgcolor="#006FAD" color="#FFFFFF"
+                       style="width: 600px; width:90%; min-width:300px; max-width:800px; margin:10px auto; text-align:justify;background-color: #006FAD; color: #FFFFFF;">
                     {% block content_logo %}
                         <tr>
-                            <td colspan="2" style="text-align: center;">
-                                <a target='_blank' href='https://oswis.org'
-                                   style="display: block; width: 60%; min-width: 140px; max-width: 280px; margin: 0 auto;">
-                                    <img id='logo' border=0 alt='OSWIS'
-                                         src='{{ absolute_url(asset('bundles/zakjakuboswiscore/favicons/apple-touch-icon-180x180.png')) }}'
-                                         style='border:0 none; text-align:center; width: 100%; margin: 0 auto;'>
+                            <td colspan="2"></td>
+                            <td colspan="8" style="text-align: center;">
+                                <a target='_blank' href='{{ base_url }}'
+                                   style="display: block; width: 190px; width: 60%; min-width: 140px; max-width: 280px; margin: 0 auto;">
+                                    {% block logo_img %}
+                                        <img id='logo' border=0 alt='OSWIS'
+                                             src='{{ absolute_url(asset('bundles/zakjakuboswiscore/favicons/apple-touch-icon-180x180.png')) }}'
+                                             style='border:0 none; text-align:center; width: 100%; margin: 0 auto; max-width: 280px;'>
+                                    {% endblock %}
                                 </a>
                             </td>
+                            <td colspan="2"></td>
                         </tr>
                     {% endblock %}
                     {% block content_content %}
                         <tr>
-                            <td colspan="2">
+                            <td colspan="12">
                                 Nastala chyba. Obsah zprávy nebyl načten. Kontaktujte nás, prosím.
                             </td>
                         </tr>
                     {% endblock %}
                     {% block content_foot %}
                         <tr>
-                            <td colspan="2">
+                            <td colspan="12">
                                 <div>
-                                    <hr color='#EB6D25' style='color:#EB6D25;'>
-                                    <small color="#eb6d25" style="font-size:0.7em;color:#eb6d25;">
+                                    <hr color='#FFFFFF' style='color:#FFFFFF;'>
+                                    <small color="#FFFFFF" style="font-size:0.7em;color:#FFFFFF;">
                                         Tento e-mail byl vygenerován a zaslán automaticky aplikací OSWIS.
                                     </small>
                                 </div>
@@ -111,15 +118,15 @@
             {% endblock %}
             {% block app_footer %}
                 <br>
-                <table style="text-align:center;font-size:8.5px;margin-top:30px;margin-bottom:0;padding-bottom:0;color:#eb6d25;">
+                <table style="text-align:center;font-size:8.5px;margin-top:30px;margin-bottom:0;padding-bottom:0;color:#006FAD;background-color: transparentD;">
                     <tr style="margin-bottom:0;padding-bottom:0;">
                         <td style="font-size:8.5px;margin-bottom:0;padding-bottom:0;">
                             {% block app_footer_inner %}
                                 <small>
                                     Autorem aplikace
-                                    <a href="https://oswis.org" title="One Simple Web IS" target="_blank" color="#eb6d25" style="color:#eb6d25;">OSWIS</a>.
+                                    <a href="https://oswis.org" title="One Simple Web IS" target="_blank" color="#006FAD" style="color:#006FAD;">OSWIS</a>.
                                     je
-                                    <a href="https://jakubzak.cz" title="Jakub Žák" target="_blank" color="#eb6d25" style="color:#eb6d25;">Jakub Žák</a>.
+                                    <a href="https://jakubzak.cz" title="Jakub Žák" target="_blank" color="#006FAD" style="color:#006FAD;">Jakub Žák</a>.
                                 </small>
                             {% endblock %}
                         </td>

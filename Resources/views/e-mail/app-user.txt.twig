@@ -16,7 +16,7 @@ došlo ke změně u Vašeho uživatelského účtu v informačním systému.
 {% endif %}
 
 {% if type == 'activation-request' and token %}
-Ještě je nutné provés aktivaci uživatelského účtu. Aktivaci provedete na následujícím odkazu:
+Ještě je nutné provést aktivaci uživatelského účtu. Aktivaci provedete na následujícím odkazu:
 {{ absolute_url(path('zakjakub_oswis_core_app_user_activation', {'token': token})) }}
 Odkaz je platný 12 hodin od vygenerování.
 {% endif %}

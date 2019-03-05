@@ -32,7 +32,7 @@ trait AccountActivationTrait
      */
     protected $accountActivationDateTime;
 
-    final public function checkAndDestroyAccountActivationRequestToken(?string $token, int $validHours = 12): bool
+    final public function checkAndDestroyAccountActivationRequestToken(?string $token, int $validHours = 24): bool
     {
         try {
             $diff = (new \DateTime())->diff($this->getAccountActivationRequestDateTime());
