@@ -238,6 +238,10 @@ class AppUserManager
             $message = new \Swift_Message(EmailUtils::mime_header_encode($title));
             $message->setTo(array($appUser->getFullName() ?? $appUser->getUsername() => $appUser->getEmail()))
                 ->setCharset('UTF-8');
+
+            $cidLogo = $message->embed(\Swift_Image::fromPath($this->logoPath));
+
+
             $message->setBody(
                 $this->templating->render(
                     '@ZakjakubOswisCore/e-mail/password.html.twig',
@@ -246,6 +250,7 @@ class AppUserManager
                         'appUser'  => $appUser,
                         'token'    => $token,
                         'password' => $password,
+                        'logo'     => $cidLogo,
                     )
                 ),
                 'text/html'
@@ -259,6 +264,7 @@ class AppUserManager
                         'appUser'  => $appUser,
                         'token'    => $token,
                         'password' => $password,
+                        'logo'     => $cidLogo,
                     )
                 ),
                 'text/plain'
@@ -316,7 +322,7 @@ class AppUserManager
                 ->setSender('oknodopraxe@upol.cz')
                 ->setCharset('UTF-8');
 
-            $cidLogo = $message->embed(\Swift_Image::fromPath('../public/img/web/logo-whitebg.png'));
+            $cidLogo = $message->embed(\Swift_Image::fromPath($this->logoPath));
 
             $message->setBody(
                 $this->templating->render(
