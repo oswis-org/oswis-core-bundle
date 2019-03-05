@@ -23,7 +23,7 @@ Odkaz je platný 12 hodin od vygenerování.
 
 Uživatelské jméno u uživatelského účtu je {{ appUser.username ? appUser.username : appUser.email }} a hlavní e-mail je nastaven na {{ appUser.email }}.
 {% if password %}
-Bylo nastaveno nové náhodně vygenerované heslo {{ password }}.
+Bylo nastaveno nové, náhodně vygenerované, heslo {{ password }}.
 {% elseif appUser.password %}
 Heslo bylo nastaveno při registraci.
 {% else %}
