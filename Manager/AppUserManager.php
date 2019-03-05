@@ -55,22 +55,19 @@ class AppUserManager
      * @param \Swift_Mailer                $mailer
      * @param LoggerInterface              $logger
      * @param \Twig_Environment            $templating
-     * @param string                       $logoPath
      */
     public function __construct(
         UserPasswordEncoderInterface $encoder,
         EntityManagerInterface $em,
         \Swift_Mailer $mailer,
         LoggerInterface $logger,
-        \Twig_Environment $templating,
-        string $logoPath = null
+        \Twig_Environment $templating
     ) {
         $this->encoder = $encoder;
         $this->em = $em;
         $this->mailer = $mailer;
         $this->logger = $logger;
         $this->templating = $templating;
-        $this->logoPath = $logoPath;
     }
 
     /**
@@ -239,7 +236,7 @@ class AppUserManager
             $message->setTo(array($appUser->getFullName() ?? $appUser->getUsername() => $appUser->getEmail()))
                 ->setCharset('UTF-8');
 
-            $cidLogo = $message->embed(\Swift_Image::fromPath($this->logoPath));
+            $cidLogo = $message->embed(\Swift_Image::fromPath('../assets/assets/images/logo.png'));
 
 
             $message->setBody(
@@ -322,7 +319,7 @@ class AppUserManager
                 ->setSender('oknodopraxe@upol.cz')
                 ->setCharset('UTF-8');
 
-            $cidLogo = $message->embed(\Swift_Image::fromPath($this->logoPath));
+            $cidLogo = $message->embed(\Swift_Image::fromPath('../assets/assets/images/logo.png'));
 
             $message->setBody(
                 $this->templating->render(

@@ -21,10 +21,7 @@ class AppUserController extends AbstractController
      * @param EntityManagerInterface       $em
      * @param \Swift_Mailer                $mailer
      * @param LoggerInterface              $logger
-     *
      * @param \Twig_Environment            $templating
-     *
-     * @param string                       $logoPath
      *
      * @return Response
      * @throws \LogicException
@@ -35,8 +32,7 @@ class AppUserController extends AbstractController
         EntityManagerInterface $em,
         \Swift_Mailer $mailer,
         LoggerInterface $logger,
-        \Twig_Environment $templating,
-        string $logoPath
+        \Twig_Environment $templating
     ): Response {
         try {
             if (!$token) {
@@ -55,6 +51,8 @@ class AppUserController extends AbstractController
                 ->getRepository(AppUser::class)
                 ->findOneBy(['accountActivationRequestToken' => $token]);
 
+
+
             if (!$appUser) {
                 return $this->render(
                     '@ZakjakubOswisCore/web/pages/message.html.twig',
@@ -69,7 +67,7 @@ class AppUserController extends AbstractController
 
             \assert($appUser instanceof AppUser);
 
-            $appUserManager = new AppUserManager($encoder, $em, $mailer, $logger, $templating, $logoPath);
+            $appUserManager = new AppUserManager($encoder, $em, $mailer, $logger, $templating);
 
             $appUserManager->appUserAction($appUser, 'activation', null, $token);
 
