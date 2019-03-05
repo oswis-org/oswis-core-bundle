@@ -30,18 +30,30 @@ class Nameable
     public $note;
 
     /**
+     * @var string|null
+     */
+    public $slug;
+
+    /**
      * Nameable constructor.
      *
      * @param string|null $name
      * @param string|null $shortName
      * @param string|null $description
      * @param string|null $note
+     * @param string|null $slug
      */
-    public function __construct(?string $name = null, ?string $shortName = null, ?string $description = null, ?string $note = null)
-    {
+    public function __construct(
+        ?string $name = null,
+        ?string $shortName = null,
+        ?string $description = null,
+        ?string $note = null,
+        ?string $slug = null
+    ) {
         $this->name = $name;
         $this->shortName = $shortName;
         $this->description = $description;
         $this->note = $note;
+        $this->slug = $slug;
     }
 }

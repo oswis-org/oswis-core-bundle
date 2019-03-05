@@ -43,11 +43,6 @@ class AppUserManager
     private $encoder;
 
     /**
-     * @var string
-     */
-    private $logoPath;
-
-    /**
      * AppUserManager constructor.
      *
      * @param UserPasswordEncoderInterface $encoder

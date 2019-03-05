@@ -52,7 +52,6 @@ class AppUserController extends AbstractController
                 ->findOneBy(['accountActivationRequestToken' => $token]);
 
 
-
             if (!$appUser) {
                 return $this->render(
                     '@ZakjakubOswisCore/web/pages/message.html.twig',

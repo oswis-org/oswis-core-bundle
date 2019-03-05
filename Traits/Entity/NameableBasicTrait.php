@@ -9,6 +9,7 @@ trait NameableBasicTrait
     use NameTrait;
     use DescriptionTrait;
     use NoteTrait;
+    use SlugTrait;
 
     final public function setFieldsFromNameable(?Nameable $nameable = null): void
     {
@@ -17,6 +18,7 @@ trait NameableBasicTrait
             $this->setDescription($nameable->description);
             $this->setShortName($nameable->shortName);
             $this->setNote($nameable->note);
+            $this->setSlug($nameable->slug);
         }
     }
 }

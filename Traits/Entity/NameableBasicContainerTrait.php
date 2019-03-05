@@ -12,6 +12,7 @@ use Zakjakub\OswisCoreBundle\Exceptions\RevisionMissingException;
  */
 trait NameableBasicContainerTrait
 {
+    use SlugContainerTrait;
 
     /**
      * @param string|null $name
