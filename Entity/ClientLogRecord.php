@@ -23,7 +23,7 @@ use Zakjakub\OswisCoreBundle\Traits\Entity\BasicEntityTrait;
  *   },
  *   itemOperations={
  *     "get"={
- *       "access_control"="is_granted('IS_AUTHENTICATED_ANONYMOUSLY')",
+ *       "access_control"="is_granted('ROLE_MANAGER')",
  *       "denormalization_context"={"groups"={"client_log_record_get"}}
  *     }
  *   }
