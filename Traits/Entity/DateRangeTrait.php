@@ -79,4 +79,37 @@ trait DateRangeTrait
     {
         $this->endDateTime = $endDateTime ?? null;
     }
+
+    /**
+     * @return \DateTime|null
+     */
+    final public function getStartDate(): ?\DateTime
+    {
+        return $this->getStartDateTime();
+    }
+
+    /**
+     * @return \DateTime|null
+     */
+    final public function getEndDate(): ?\DateTime
+    {
+        return $this->getStartDateTime();
+    }
+
+    /**
+     * @param \DateTime|null $dateTime
+     */
+    final public function setStartDate(?\DateTime $dateTime): void
+    {
+        $this->setStartDateTime($dateTime);
+    }
+
+    /**
+     * @param \DateTime|null $dateTime
+     */
+    final public function setEndDate(?\DateTime $dateTime): void
+    {
+        $this->setEndDateTime($dateTime);
+    }
+
 }

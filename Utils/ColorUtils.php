@@ -7,7 +7,7 @@ namespace Zakjakub\OswisCoreBundle\Utils;
  */
 class ColorUtils
 {
-    final public function isOppositeWhite(string $color): string
+    final public static function isOppositeWhite(string $color): string
     {
         if (strlen($color) === 4) {
             [$r, $g, $b] = sscanf($color, '#%1x%1x%1x');
