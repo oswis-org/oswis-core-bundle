@@ -27,7 +27,7 @@ trait ColorTrait
         $this->color = $color;
     }
 
-    final public function isForegroundWhite(): string
+    final public function isForegroundWhite(): bool
     {
         if (strlen($this->color) === 4) {
             [$r, $g, $b] = sscanf($this->color, '#%1x%1x%1x');

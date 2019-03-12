@@ -35,7 +35,7 @@ class AppUserTypeManager
     ): AppUserType {
         $em = $this->em;
         $appUserTypeRepo = $em->getRepository(AppUserType::class);
-        $type = $appUserTypeRepo->findOneBy(['name' => $nameable ? $nameable->name : null]);
+        $type = $appUserTypeRepo->findOneBy(['slug' => $nameable ? $nameable->slug : null]);
         if (!$type) {
             $type = new AppUserType($nameable, $role, $adminUser);
             $em->persist($type);
