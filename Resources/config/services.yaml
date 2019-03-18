@@ -35,7 +35,7 @@ services:
         resource: '../../Manager/*'
         public: true
 
-    ZakJakub\OswisCoreBundle\EventSubscriber\:
+    Zakjakub\OswisCoreBundle\EventSubscriber\:
         resource: '../../EventSubscriber/*'
         tags: [ { name: 'kernel.view'} ]
         arguments:

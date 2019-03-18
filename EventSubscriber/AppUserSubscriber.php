@@ -1,6 +1,6 @@
 <?php /** @noinspection ForgottenDebugOutputInspection */
 
-namespace ZakJakub\OswisCoreBundle\EventSubscriber;
+namespace Zakjakub\OswisCoreBundle\EventSubscriber;
 
 use ApiPlatform\Core\EventListener\EventPriorities;
 use Doctrine\ORM\EntityManagerInterface;
