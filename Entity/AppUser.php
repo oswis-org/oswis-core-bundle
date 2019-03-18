@@ -115,10 +115,10 @@ class AppUser extends AbstractAppUser
         if ($this->appUserType && $appUserType !== $this->appUserType) {
             $this->appUserType->removeAppUser($this);
         }
-        if ($appUserType) {
+        $this->appUserType = $appUserType;
+        if ($appUserType && $this->appUserType !== $appUserType) {
             $appUserType->addAppUser($this);
         }
-        $this->appUserType = $appUserType;
     }
 
     /**
