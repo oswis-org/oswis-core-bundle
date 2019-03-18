@@ -98,7 +98,7 @@ final class AppUserSubscriber implements EventSubscriberInterface
         }
         \assert($appUser instanceof AppUser);
         $appUserManager = new AppUserManager($this->encoder, $this->em, $this->mailer, $this->logger, $this->templating);
-        $appUserManager->appUserAction($appUser, 'activation');
+        $appUserManager->appUserAction($appUser, 'activation-request');
     }
 
 }
