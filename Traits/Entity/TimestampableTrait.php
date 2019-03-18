@@ -35,7 +35,11 @@ trait TimestampableTrait
         if (!$this->getCreatedDateTime()) {
             return null;
         }
-        $ago = $this->getCreatedDateTime()->diff(\date_create());
+        $ago = $this->getCreatedDateTime()->diff(\date_create())->days;
+
+        if (!$ago) {
+            return null;
+        }
 
         return $decimal ? $ago : \floor($ago);
     }
@@ -55,7 +59,11 @@ trait TimestampableTrait
         if (!$this->getUpdatedDateTime()) {
             return null;
         }
-        $ago = $this->getUpdatedDateTime()->diff(\date_create());
+        $ago = $this->getUpdatedDateTime()->diff(\date_create())->days;
+
+        if (!$ago) {
+            return null;
+        }
 
         return $decimal ? $ago : \floor($ago);
     }

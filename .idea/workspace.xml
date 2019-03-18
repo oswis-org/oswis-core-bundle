@@ -6,8 +6,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/EventSubscriber/AppUserSubscriber.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/e-mail/message.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/e-mail/message.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/Dto/AppUserRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/Api/Dto/AppUserRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controller/DummyHomepageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/DummyHomepageController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DependencyInjection/ZakjakubOswisCoreExtension.php" beforeDir="false" afterPath="$PROJECT_DIR$/DependencyInjection/ZakjakubOswisCoreExtension.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractAppUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractAppUser.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractOrganization.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractOrganization.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractPerson.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractPerson.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Exceptions/BirthDateMissingException.php" beforeDir="false" afterPath="$PROJECT_DIR$/Exceptions/BirthDateMissingException.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Exceptions/RevisionMissingException.php" beforeDir="false" afterPath="$PROJECT_DIR$/Exceptions/RevisionMissingException.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Filter/SearchAnnotation.php" beforeDir="false" afterPath="$PROJECT_DIR$/Filter/SearchAnnotation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interfaces/RevisionInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/Interfaces/RevisionInterface.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Security/AppUserProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/Security/AppUserProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/AgeRangeContainerTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/AgeRangeContainerTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/BlameableTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/BlameableTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/FullNameTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/FullNameTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/OrderDateRangeTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/OrderDateRangeTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/ReservationDateRangeTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/ReservationDateRangeTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/TimestampableTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/TimestampableTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZakjakubOswisCoreBundle.php" beforeDir="false" afterPath="$PROJECT_DIR$/ZakjakubOswisCoreBundle.php" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.github/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -106,16 +124,12 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Resources/views/e-mail/message.html.twig">
+        <entry file="file://$PROJECT_DIR$/EventSubscriber/AppUserSubscriber.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="290">
-              <caret line="145" column="66" lean-forward="true" selection-start-line="145" selection-start-column="66" selection-end-line="145" selection-end-column="66" />
+            <state relative-caret-position="213">
+              <caret line="85" lean-forward="true" selection-start-line="85" selection-end-line="85" />
               <folding>
-                <element signature="n#style#0;n#table#1;n#td#0;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#tr#0;n#table#1;n#td#0;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#0;n#tr#0;n#table#1;n#td#0;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#0;n#small#0;n#td#0;n#tr#0;n#table#1;n#td#0;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#1;n#small#0;n#td#0;n#tr#0;n#table#1;n#td#0;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="e#112#163#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -344,6 +358,7 @@
         <option value="$PROJECT_DIR$/Traits/Entity/ColorTrait.php" />
         <option value="$PROJECT_DIR$/Resources/views/web/html-skeleton-default.html.twig" />
         <option value="$PROJECT_DIR$/Resources/views/e-mail/message.html.twig" />
+        <option value="$PROJECT_DIR$/EventSubscriber/AppUserSubscriber.php" />
       </list>
     </option>
   </component>
@@ -493,19 +508,19 @@
     <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.spelling" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/Traits/Entity" />
-      <recent name="$PROJECT_DIR$/Utils" />
-      <recent name="$PROJECT_DIR$/Resources/views/web" />
-      <recent name="$PROJECT_DIR$/Resources/public" />
-      <recent name="$PROJECT_DIR$/Entity/AbstractClass" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Controller" />
       <recent name="$PROJECT_DIR$/Interfaces" />
       <recent name="$PROJECT_DIR$/Entity/AbstractClass" />
       <recent name="$PROJECT_DIR$/Resources/config" />
       <recent name="$PROJECT_DIR$/Resources" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/EventSubscriber" />
+      <recent name="$PROJECT_DIR$/Traits/Entity" />
+      <recent name="$PROJECT_DIR$/Utils" />
+      <recent name="$PROJECT_DIR$/Resources/views/web" />
+      <recent name="$PROJECT_DIR$/Resources/public" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -583,14 +598,8 @@
       <workItem from="1552251509232" duration="1495000" />
       <workItem from="1552340920934" duration="3985000" />
       <workItem from="1552399664795" duration="46000" />
-      <workItem from="1552839935913" duration="53000" />
-    </task>
-    <task id="LOCAL-00103" summary="Some changes.">
-      <created>1551047002621</created>
-      <option name="number" value="00103" />
-      <option name="presentableId" value="LOCAL-00103" />
-      <option name="project" value="LOCAL" />
-      <updated>1551047002621</updated>
+      <workItem from="1552839935913" duration="736000" />
+      <workItem from="1552941942135" duration="779000" />
     </task>
     <task id="LOCAL-00104" summary="Some changes.">
       <created>1551083328158</created>
@@ -928,17 +937,24 @@
       <option name="project" value="LOCAL" />
       <updated>1552397445254</updated>
     </task>
-    <option name="localTasksCounter" value="152" />
+    <task id="LOCAL-00152" summary="Some changes.">
+      <created>1552840038009</created>
+      <option name="number" value="00152" />
+      <option name="presentableId" value="LOCAL-00152" />
+      <option name="project" value="LOCAL" />
+      <updated>1552840038009</updated>
+    </task>
+    <option name="localTasksCounter" value="153" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="272087000" />
+    <option name="totallyTimeSpent" value="273549000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="0" width="1922" height="1080" extended-state="6" />
+    <frame x="-1" y="0" width="1368" height="741" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12673056" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12613294" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -949,11 +965,11 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49268293" visible="true" weight="0.13461539" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49268293" weight="0.15912898" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Statistic" order="10" />
       <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49626866" weight="0.24958123" />
-      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.50731707" side_tool="true" visible="true" weight="0.13461539" />
+      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.50731707" side_tool="true" weight="0.13461539" />
       <window_info anchor="bottom" id="Inspection Results" order="13" weight="0.31825796" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -2120,16 +2136,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Manager/AppUserManager.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1081">
-          <caret line="53" column="32" selection-start-line="53" selection-start-column="32" selection-end-line="53" selection-end-column="32" />
-          <folding>
-            <element signature="e#52#92#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Resources/config/services.yaml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="452">
@@ -2139,14 +2145,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Resources/views/e-mail/message.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="145" column="66" lean-forward="true" selection-start-line="145" selection-start-column="66" selection-end-line="145" selection-end-column="66" />
+        <state relative-caret-position="397">
+          <caret line="142" column="34" selection-start-line="142" selection-start-column="34" selection-end-line="142" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Manager/AppUserManager.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="136" column="26" selection-start-line="136" selection-start-column="26" selection-end-line="136" selection-end-column="26" />
           <folding>
-            <element signature="n#style#0;n#table#1;n#td#0;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#tr#0;n#table#1;n#td#0;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#tr#0;n#table#1;n#td#0;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#small#0;n#td#0;n#tr#0;n#table#1;n#td#0;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#1;n#small#0;n#td#0;n#tr#0;n#table#1;n#td#0;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#52#92#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EventSubscriber/AppUserSubscriber.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="213">
+          <caret line="85" lean-forward="true" selection-start-line="85" selection-end-line="85" />
+          <folding>
+            <element signature="e#112#163#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
