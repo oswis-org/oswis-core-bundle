@@ -21,7 +21,7 @@ trait SlugTrait
      * Get slug.
      * @return string
      */
-    final public function getSlug(): string
+    final public function getSlug(): ?string
     {
         return $this->slug;
     }
