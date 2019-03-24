@@ -64,14 +64,21 @@ class AppUserType
     /**
      * App users using this role.
      * @var Collection
-     * @Doctrine\ORM\Mapping\OneToMany(targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUser", mappedBy="appUserType")
+     * @Doctrine\ORM\Mapping\OneToMany(
+     *     targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUser",
+     *     mappedBy="appUserType"
+     * )
      */
     protected $appUsers;
 
     /**
      * App user ROLE string, without ROLE_ (EVERYBODY, CUSTOMER, USER, USER_ADVANCED, FACILITY_MANAGER, MANAGER, ADMIN, ROOT).
      * @var AppUserRole
-     * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUserRole", inversedBy="appUserTypes", fetch="EAGER")
+     * @Doctrine\ORM\Mapping\ManyToOne(
+     *     targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUserRole",
+     *     inversedBy="appUserTypes",
+     *     fetch="EAGER"
+     * )
      * @Doctrine\ORM\Mapping\JoinColumn(name="user_role_id", referencedColumnName="id")
      */
     protected $appUserRole;

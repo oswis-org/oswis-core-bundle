@@ -22,7 +22,7 @@ trait DateTimeTrait
     {
         try {
             if ($this->getDateTime()) {
-                $ago = $this->getDateTime()->diff(\date_create());
+                $ago = $this->getDateTime()->diff(\date_create())->days;
 
                 return $decimal ? $ago : \floor($ago);
             }

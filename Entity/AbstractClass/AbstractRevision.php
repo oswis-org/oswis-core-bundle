@@ -2,6 +2,7 @@
 
 namespace Zakjakub\OswisCoreBundle\Entity\AbstractClass;
 
+use Zakjakub\OswisCoreBundle\Exceptions\RevisionMissingException;
 use Zakjakub\OswisCoreBundle\Interfaces\RevisionInterface;
 use Zakjakub\OswisCoreBundle\Utils\DateTimeUtils;
 
@@ -86,7 +87,7 @@ abstract class AbstractRevision implements RevisionInterface
     {
         try {
             return $this === $this->container->getRevision($dateTime);
-        } catch (\Exception $e) {
+        } catch (RevisionMissingException $e) {
             return false;
         }
     }
