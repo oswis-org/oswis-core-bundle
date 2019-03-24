@@ -28,6 +28,7 @@ class AppUserProvider implements UserProviderInterface
      * @return AppUser|null
      * @throws UnsupportedUserException
      * @throws UsernameNotFoundException
+     * @throws \Doctrine\ORM\NonUniqueResultException
      */
     final public function refreshUser(UserInterface $user): ?AppUser
     {
@@ -45,6 +46,7 @@ class AppUserProvider implements UserProviderInterface
      *
      * @return AppUser|null
      * @throws UsernameNotFoundException
+     * @throws \Doctrine\ORM\NonUniqueResultException
      */
     final public function loadUserByUsername(
         /** @noinspection MissingParameterTypeDeclarationInspection */
