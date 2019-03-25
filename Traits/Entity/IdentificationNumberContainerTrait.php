@@ -25,10 +25,6 @@ trait IdentificationNumberContainerTrait
         if ($this->getRevisionByDate($dateTime)->getIdentificationNumber()) {
             return $this->getRevisionByDate($dateTime)->getIdentificationNumber();
         }
-        try {
-            return $this->getIdentificationNumberFromParents();
-        } catch (\Exception $exception) {
-            return null;
-        }
+        return null;
     }
 }
