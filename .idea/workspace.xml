@@ -6,8 +6,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Utils/FileUtils.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/views/documents/pdf-document.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/documents/pdf-document.html.twig" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.github/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -105,11 +105,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Utils/FileUtils.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="69">
+            <state relative-caret-position="-1242">
               <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Resources/views/documents/pdf-document.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="23">
+              <caret line="1" selection-start-line="1" selection-end-line="1" />
             </state>
           </provider>
         </entry>
@@ -341,6 +350,7 @@
         <option value="$PROJECT_DIR$/Repository/AppUserRepository.php" />
         <option value="$PROJECT_DIR$/Security/AppUserProvider.php" />
         <option value="$PROJECT_DIR$/Utils/FileUtils.php" />
+        <option value="$PROJECT_DIR$/Resources/views/documents/pdf-document.html.twig" />
       </list>
     </option>
   </component>
@@ -441,7 +451,7 @@
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="1919" />
     <option name="width" value="1368" />
-    <option name="height" value="768" />
+    <option name="height" value="741" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -455,6 +465,24 @@
             <path>
               <item name="oswis-core-bundle" type="b2602c69:ProjectViewProjectNode" />
               <item name="oswis-core-bundle" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oswis-core-bundle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oswis-core-bundle" type="462c0819:PsiDirectoryNode" />
+              <item name="Resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oswis-core-bundle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oswis-core-bundle" type="462c0819:PsiDirectoryNode" />
+              <item name="Resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oswis-core-bundle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oswis-core-bundle" type="462c0819:PsiDirectoryNode" />
+              <item name="Resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="documents" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="oswis-core-bundle" type="b2602c69:ProjectViewProjectNode" />
@@ -571,14 +599,7 @@
       <workItem from="1552941942135" duration="6184000" />
       <workItem from="1553156626805" duration="3833000" />
       <workItem from="1553418719021" duration="599000" />
-      <workItem from="1553441858830" duration="5391000" />
-    </task>
-    <task id="LOCAL-00113" summary="Some changes.">
-      <created>1551257901673</created>
-      <option name="number" value="00113" />
-      <option name="presentableId" value="LOCAL-00113" />
-      <option name="project" value="LOCAL" />
-      <updated>1551257901674</updated>
+      <workItem from="1553441858830" duration="6063000" />
     </task>
     <task id="LOCAL-00114" summary="Some changes.">
       <created>1551266575479</created>
@@ -916,11 +937,18 @@
       <option name="project" value="LOCAL" />
       <updated>1553458390854</updated>
     </task>
-    <option name="localTasksCounter" value="162" />
+    <task id="LOCAL-00162" summary="Some changes.">
+      <created>1553489404270</created>
+      <option name="number" value="00162" />
+      <option name="presentableId" value="LOCAL-00162" />
+      <option name="project" value="LOCAL" />
+      <updated>1553489404271</updated>
+    </task>
+    <option name="localTasksCounter" value="163" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="288777000" />
+    <option name="totallyTimeSpent" value="289449000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1919" y="0" width="1368" height="741" extended-state="6" />
@@ -1706,13 +1734,6 @@
     <entry file="file://$PROJECT_DIR$/Resources/views/web/parts/main-menu.html.twig" />
     <entry file="file://$PROJECT_DIR$/Resources/views/documents/accommodation-decree.css.twig" />
     <entry file="file://$PROJECT_DIR$/Resources/views/documents/accommodation-decree.html.twig" />
-    <entry file="file://$PROJECT_DIR$/Resources/views/documents/pdf-document.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Resources/views/web/page-skeleton-default.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="23">
@@ -2148,8 +2169,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Utils/FileUtils.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
+        <state relative-caret-position="-1242">
           <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/views/documents/pdf-document.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>
