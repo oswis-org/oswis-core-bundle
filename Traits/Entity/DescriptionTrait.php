@@ -13,7 +13,7 @@ trait DescriptionTrait
      *
      * @var string|null
      *
-     * @Doctrine\ORM\Mapping\Column(nullable=true)
+     * @Doctrine\ORM\Mapping\Column(type="text", nullable=true)
      */
     protected $description;
 
