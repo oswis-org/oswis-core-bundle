@@ -22,73 +22,20 @@
     <meta name="msapplication-TileColor" content="#006FAD">
     <meta name="theme-color" content="#006FAD">
     <style type='text/css'>
-        table, td, tr, div, p, span {
-            font-size: 14px;
-            text-align: justify;
-        }
-
-        a, a:focus, a:visited, a:active {
-            color: #FFFFFF !important;
-            text-decoration: none !important;
-            padding: 0;
-            margin: 0;
-        }
-
-        a:hover {
-            color: #CCCCCC !important;
-            text-decoration: underline !important;
-        }
-
-        h1, h2, h3 {
-            color: #FFFFFF;
-        }
-
-        td {
-            width: 8.33%;
-            padding: 1em;
-        }
-
-        @media print {
-            body {
-                font-size: 11px;
-                color: black;
-            }
-
-            #logo {
-                width: 60%;
-                max-width: 250px;
-            }
-
-            div, p, li {
-                text-align: justify;
-                margin-top: 0.5em;
-                margin-bottom: 0.2em;
-            }
-
-            @page {
-                size: portrait;
-                margin: 10mm 10mm;
-            }
-
-            * {
-                margin: 0;
-                padding: 0;
-            }
-        }
-
+        {% include '@ZakjakubOswisCore/e-mail/message.css.twig' %}
         {% block additional_css %}
         {% endblock %}
     </style>
 </head>
-<body color='#006FAD' style='font-size: 14px;color: #006FAD;box-sizing: content-box;width: 100%;margin: 0 0; padding: 0;'>
+<body style='font-size: 14px;color: #006FAD;box-sizing: content-box;width: 100%;margin: 0 0; padding: 0;'>
 
-<table color='#006FAD' style='background-color: transparent;font-size: 14px;
+<table style='background-color: transparent;font-size: 14px;
        color: #006FAD;box-sizing: content-box;width: 100%;height: 100%; margin: 0; padding: 0; '>
     <tr style="box-sizing: content-box;width: 100%;height: 100%; margin: 0; padding: 0;">
         <td style="box-sizing: content-box;width: 100%;height: 100%; margin: 0; padding: 0;">
             {% block content %}
-                <table bgcolor="#006FAD" color="#FFFFFF"
-                       style="width: 600px; width:90%; min-width:300px; max-width:800px; margin:10px auto; text-align:justify;background-color: #006FAD; color: #FFFFFF;">
+                <table bgcolor="#006FAD" color="#FFFFFF" class="blue-white"
+                       style="width: 600px; width:90%; min-width:300px; max-width:800px; margin:10px auto; text-align:justify;background-color: #006FAD; color: #FFFFFF !important;">
                     {% block content_logo %}
                         <tr>
                             <td colspan="2"></td>
@@ -130,8 +77,8 @@
                         <tr>
                             <td colspan="12">
                                 <div>
-                                    <hr color='#FFFFFF' style='color:#FFFFFF;'>
-                                    <small color="#FFFFFF" style="font-size:0.7em;color:#FFFFFF;">
+                                    <hr color='#FFFFFF' style='color:#FFFFFF !important;'>
+                                    <small color="#FFFFFF" style="font-size:0.7em;color:#FFFFFF !important;">
                                         Tento e-mail byl vygenerován a zaslán automaticky aplikací OSWIS.
                                     </small>
                                 </div>
