@@ -11,6 +11,7 @@ use Zakjakub\OswisCoreBundle\Traits\Entity\BasicEntityTrait;
  * @Doctrine\ORM\Mapping\Table(name="client_log_record")
  * @ApiResource(
  *   attributes={
+ *     "filters"={"search"},
  *     "access_control"="is_granted('IS_AUTHENTICATED_ANONYMOUSLY')",
  *     "normalization_context"={"groups"={"client_log_records_get"}},
  *     "denormalization_context"={"groups"={"client_log_records_post"}}

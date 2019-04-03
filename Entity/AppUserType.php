@@ -18,6 +18,7 @@ use Zakjakub\OswisCoreBundle\Traits\Entity\NameableBasicTrait;
  * @Doctrine\ORM\Mapping\Table(name="app_user_type")
  * @ApiResource(
  *   attributes={
+ *     "filters"={"search"},
  *     "access_control"="is_granted('ROLE_MANAGER')",
  *     "normalization_context"={"groups"={"app_user_types_get"}},
  *     "denormalization_context"={"groups"={"app_user_types_post"}}

@@ -15,6 +15,7 @@ use Zakjakub\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
  * @Doctrine\ORM\Mapping\Table(name="app_user")
  * @ApiResource(
  *   attributes={
+ *     "filters"={"search"},
  *     "access_control"="is_granted('ROLE_USER')",
  *     "normalization_context"={"groups"={"app_users_get"}},
  *     "denormalization_context"={"groups"={"app_users_post"}}
