@@ -4,6 +4,8 @@ namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
 use ADCI\FullNameParser\Exception\NameParsingException;
 use ADCI\FullNameParser\Parser as FullNameParser;
+use function implode;
+use function trim;
 
 /**
  * Trait adds name field and __toString()
@@ -68,7 +70,7 @@ trait FullNameTrait
                 $this->setAdditionalName($nameObject->getMiddleName() ?? '');
                 $this->setFamilyName($nameObject->getLastName() ?? '');
                 $this->setHonorificSuffix($nameObject->getSuffix() ?? '');
-                $this->setNickname(\implode([', '], $nameObject->getNicknames()) ?? '');
+                $this->setNickname(implode([', '], $nameObject->getNicknames()) ?? '');
             } catch (NameParsingException $e) {
                 // Name not recognized.
             } finally {
@@ -84,7 +86,7 @@ trait FullNameTrait
     {
         $fullName = $this->getHonorificPrefix().' '.$this->getGivenName().' '.$this->getAdditionalName()
             .' '.$this->getFamilyName().' '.$this->getHonorificSuffix();
-        $fullName = \trim($fullName);
+        $fullName = trim($fullName);
         $fullName = preg_replace('!\s+!', ' ', $fullName);
 
         return $fullName ?? '';

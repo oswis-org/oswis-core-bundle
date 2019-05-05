@@ -2,6 +2,8 @@
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
+use DateTime;
+use Exception;
 use Zakjakub\OswisCoreBundle\Utils\DateTimeUtils;
 
 /**
@@ -14,7 +16,7 @@ trait ReservationDateRangeTrait
     /**
      * Date and time of range start
      *
-     * @var \DateTime
+     * @var DateTime
      *
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true, options={"default": null})
      */
@@ -23,24 +25,24 @@ trait ReservationDateRangeTrait
     /**
      * Date and time of range end
      *
-     * @var \DateTime
+     * @var DateTime
      *
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true, options={"default": null})
      */
     protected $endReservationDateTime;
 
     /**
-     * @return \DateTime
+     * @return DateTime
      */
-    final public function getStartReservationDateTime(): ?\DateTime
+    final public function getStartReservationDateTime(): ?DateTime
     {
         return $this->startReservationDateTime;
     }
 
     /**
-     * @param \DateTime $startReservationDateTime
+     * @param DateTime $startReservationDateTime
      */
-    final public function setStartReservationDateTime(?\DateTime $startReservationDateTime): void
+    final public function setStartReservationDateTime(?DateTime $startReservationDateTime): void
     {
         $this->startReservationDateTime = $startReservationDateTime;
     }
@@ -48,28 +50,28 @@ trait ReservationDateRangeTrait
     /**
      * True if datetime belongs to this datetime range.
      *
-     * @param \DateTime $dateTime Checked date and time
+     * @param DateTime $dateTime Checked date and time
      *
      * @return bool True if belongs to date range
-     * @throws \Exception
+     * @throws Exception
      */
-    final public function containsReservationDateTime(\DateTime $dateTime): bool
+    final public function containsReservationDateTime(DateTime $dateTime): bool
     {
         return DateTimeUtils::isDateTimeInRange($this->startReservationDateTime, $this->getEndReservationDateTime(), $dateTime);
     }
 
     /**
-     * @return \DateTime
+     * @return DateTime
      */
-    final public function getEndReservationDateTime(): ?\DateTime
+    final public function getEndReservationDateTime(): ?DateTime
     {
         return $this->endReservationDateTime;
     }
 
     /**
-     * @param \DateTime $endReservationDateTime
+     * @param DateTime $endReservationDateTime
      */
-    final public function setEndReservationDateTime(?\DateTime $endReservationDateTime): void
+    final public function setEndReservationDateTime(?DateTime $endReservationDateTime): void
     {
         $this->endReservationDateTime = $endReservationDateTime;
     }

@@ -2,6 +2,11 @@
 
 namespace Zakjakub\OswisCoreBundle\Utils;
 
+use DateTime;
+use Exception;
+use function floor;
+use const PHP_INT_MAX;
+
 /**
  * Class AgeUtils
  * @package OswisCoreBundle
@@ -13,50 +18,50 @@ class AgeUtils
     /**
      * True if person belongs to age range (at some moment - referenceDateTime).
      *
-     * @param \DateTime      $birthDate         BirthDate for age calculation
-     * @param int            $minAge            Minimal age, included (default is 0)
-     * @param int            $maxAge            maximal age, included (default is infinity)
-     * @param \DateTime|null $referenceDateTime Reference date, default is _now_
+     * @param DateTime      $birthDate         BirthDate for age calculation
+     * @param int           $minAge            Minimal age, included (default is 0)
+     * @param int           $maxAge            maximal age, included (default is infinity)
+     * @param DateTime|null $referenceDateTime Reference date, default is _now_
      *
      * @return bool True if belongs to age range
-     * @throws \Exception
+     * @throws Exception
      */
     public static function isBirthDateInRange(
-        \DateTime $birthDate,
+        DateTime $birthDate,
         int $minAge = null,
         int $maxAge = null,
-        \DateTime $referenceDateTime = null
+        DateTime $referenceDateTime = null
     ): bool {
-        $referenceDateTime = $referenceDateTime ?? new \DateTime();
+        $referenceDateTime = $referenceDateTime ?? new DateTime();
         $age = self::getAgeFromBirthDate($birthDate, $referenceDateTime);
         $min = $minAge ?? 0;
-        $max = $maxAge ?? \PHP_INT_MAX;
+        $max = $maxAge ?? PHP_INT_MAX;
 
         return $age >= $min && $age <= $max;
     }
 
     /**
-     * @param \DateTime      $birthDate
-     * @param \DateTime|null $referenceDateTime
+     * @param DateTime      $birthDate
+     * @param DateTime|null $referenceDateTime
      *
      * @return int
-     * @throws \Exception
+     * @throws Exception
      */
-    public static function getAgeFromBirthDate(\DateTime $birthDate, \DateTime $referenceDateTime = null): int
+    public static function getAgeFromBirthDate(DateTime $birthDate, DateTime $referenceDateTime = null): int
     {
-        return \floor(self::getAgeDecimalFromBirthDate($birthDate, $referenceDateTime));
+        return floor(self::getAgeDecimalFromBirthDate($birthDate, $referenceDateTime));
     }
 
     /**
-     * @param \DateTime      $birthDate
-     * @param \DateTime|null $referenceDateTime
+     * @param DateTime      $birthDate
+     * @param DateTime|null $referenceDateTime
      *
      * @return int
-     * @throws \Exception
+     * @throws Exception
      */
-    public static function getAgeDecimalFromBirthDate(\DateTime $birthDate, ?\DateTime $referenceDateTime = null): int
+    public static function getAgeDecimalFromBirthDate(DateTime $birthDate, ?DateTime $referenceDateTime = null): int
     {
-        $referenceDateTime = $referenceDateTime ?? new \DateTime();
+        $referenceDateTime = $referenceDateTime ?? new DateTime();
         $referenceDateTime->setTime(0, 0);
         $birthDate->setTime(0, 0);
 

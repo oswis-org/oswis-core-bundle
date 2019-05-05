@@ -2,6 +2,8 @@
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
+use DateTime;
+use Exception;
 use Zakjakub\OswisCoreBundle\Utils\StringUtils;
 
 /**
@@ -19,7 +21,7 @@ trait AccountActivationTrait
 
     /**
      * Date and time of password reset request (and token generation).
-     * @var \DateTime|null
+     * @var DateTime|null
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true)
      */
     protected $accountActivationRequestDateTime;
@@ -27,7 +29,7 @@ trait AccountActivationTrait
 
     /**
      * Date and time of account activation.
-     * @var \DateTime|null
+     * @var DateTime|null
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true)
      */
     protected $accountActivationDateTime;
@@ -36,8 +38,8 @@ trait AccountActivationTrait
     {
         $diff = null;
         try {
-            $diff = (new \DateTime())->diff($this->getAccountActivationRequestDateTime());
-        } catch (\Exception $e) {
+            $diff = (new DateTime())->diff($this->getAccountActivationRequestDateTime());
+        } catch (Exception $e) {
         }
         if ($diff && $validHours < $diff->h) {
             $this->destroyAccountActivationRequestToken();
@@ -47,8 +49,8 @@ trait AccountActivationTrait
         if ($this->checkAccountActivationRequestToken($token)) {
             $this->destroyAccountActivationRequestToken();
             try {
-                $this->setAccountActivationDateTime(new \DateTime());
-            } catch (\Exception $e) {
+                $this->setAccountActivationDateTime(new DateTime());
+            } catch (Exception $e) {
             }
 
             return true;
@@ -58,17 +60,17 @@ trait AccountActivationTrait
     }
 
     /**
-     * @return \DateTime|null
+     * @return DateTime|null
      */
-    final public function getAccountActivationRequestDateTime(): ?\DateTime
+    final public function getAccountActivationRequestDateTime(): ?DateTime
     {
         return $this->accountActivationRequestDateTime;
     }
 
     /**
-     * @param \DateTime|null $accountActivationRequestDateTime
+     * @param DateTime|null $accountActivationRequestDateTime
      */
-    final public function setAccountActivationRequestDateTime(?\DateTime $accountActivationRequestDateTime): void
+    final public function setAccountActivationRequestDateTime(?DateTime $accountActivationRequestDateTime): void
     {
         $this->accountActivationRequestDateTime = $accountActivationRequestDateTime;
     }
@@ -104,10 +106,10 @@ trait AccountActivationTrait
     {
         try {
             $this->setAccountActivationRequestToken(StringUtils::generateToken());
-            $this->setAccountActivationRequestDateTime(new \DateTime());
+            $this->setAccountActivationRequestDateTime(new DateTime());
 
             return $this->getAccountActivationRequestToken();
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->destroyAccountActivationRequestToken();
 
             return null;
@@ -115,17 +117,17 @@ trait AccountActivationTrait
     }
 
     /**
-     * @return \DateTime|null
+     * @return DateTime|null
      */
-    final public function getAccountActivationDateTime(): ?\DateTime
+    final public function getAccountActivationDateTime(): ?DateTime
     {
         return $this->accountActivationDateTime;
     }
 
     /**
-     * @param \DateTime|null $accountActivationDateTime
+     * @param DateTime|null $accountActivationDateTime
      */
-    final public function setAccountActivationDateTime(?\DateTime $accountActivationDateTime): void
+    final public function setAccountActivationDateTime(?DateTime $accountActivationDateTime): void
     {
         $this->accountActivationDateTime = $accountActivationDateTime;
     }

@@ -2,6 +2,9 @@
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
+use DateTime;
+use function date_create;
+
 /**
  * Trait EntityBasicMailConfirmationTrait
  * @package OswisCoreBundle
@@ -11,7 +14,7 @@ trait BasicMailConfirmationTrait
 
     /**
      * Date and time of last confirmation e-mail.
-     * @var \DateTime|null
+     * @var DateTime|null
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true)
      */
     protected $eMailConfirmationDateTime;
@@ -32,9 +35,9 @@ trait BasicMailConfirmationTrait
 
     /**
      * Get date and time of last confirmation e-mail.
-     * @return \DateTime|null
+     * @return DateTime|null
      */
-    final public function getEMailConfirmationDateTime(): ?\DateTime
+    final public function getEMailConfirmationDateTime(): ?DateTime
     {
         return $this->eMailConfirmationDateTime;
     }
@@ -42,9 +45,9 @@ trait BasicMailConfirmationTrait
     /**
      * (DO NOT USE!) Set last confirmation date and time.
      *
-     * @param \DateTime|null $eMailConfirmationDateTime
+     * @param DateTime|null $eMailConfirmationDateTime
      */
-    final public function setEMailConfirmationDateTime(?\DateTime $eMailConfirmationDateTime): void
+    final public function setEMailConfirmationDateTime(?DateTime $eMailConfirmationDateTime): void
     {
         $this->eMailConfirmationDateTime = $eMailConfirmationDateTime;
     }
@@ -94,7 +97,7 @@ trait BasicMailConfirmationTrait
         } else {
             $this->eMailConfirmationCount = 1;
         }
-        $this->eMailConfirmationDateTime = \date_create();
+        $this->eMailConfirmationDateTime = date_create();
         $this->eMailConfirmationSource = $source;
     }
 }

@@ -73,7 +73,7 @@ class AppUserType
     protected $appUsers;
 
     /**
-     * App user ROLE string, without ROLE_ (EVERYBODY, CUSTOMER, USER, USER_ADVANCED, FACILITY_MANAGER, MANAGER, ADMIN, ROOT).
+     * App user role. TODO: Refactor to multiple roles!
      * @var AppUserRole
      * @Doctrine\ORM\Mapping\ManyToOne(
      *     targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUserRole",

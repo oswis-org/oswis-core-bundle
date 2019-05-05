@@ -2,6 +2,7 @@
 
 namespace Zakjakub\OswisCoreBundle\DependencyInjection;
 
+use Exception;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
@@ -17,7 +18,7 @@ class ZakjakubOswisCoreExtension extends Extension implements PrependExtensionIn
      * @param array            $configs
      * @param ContainerBuilder $container
      *
-     * @throws \Exception
+     * @throws Exception
      */
     final public function load(array $configs, ContainerBuilder $container): void
     {

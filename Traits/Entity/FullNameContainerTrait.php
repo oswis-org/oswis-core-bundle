@@ -3,6 +3,8 @@
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
+use DateTime;
+
 trait FullNameContainerTrait
 {
 
@@ -20,12 +22,12 @@ trait FullNameContainerTrait
         }
     }
 
-    final public function getFullName(?\DateTime $dateTime = null): ?string
+    final public function getFullName(?DateTime $dateTime = null): ?string
     {
         return $this->getRevisionByDate($dateTime)->getFullName();
     }
 
-    final public function getNickname(?\DateTime $dateTime = null): ?string
+    final public function getNickname(?DateTime $dateTime = null): ?string
     {
         return $this->getRevisionByDate($dateTime)->getNickname();
     }

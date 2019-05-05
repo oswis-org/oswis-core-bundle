@@ -6,6 +6,9 @@ use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\ExistsFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
+use DateTime;
+use Doctrine\Common\Collections\ArrayCollection;
+use Exception;
 use Zakjakub\OswisCoreBundle\Entity\AbstractClass\AbstractAppUser;
 use Zakjakub\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
 
@@ -65,7 +68,19 @@ class AppUser extends AbstractAppUser
 {
 
     /**
-     * @var AppUserType
+     * @var Collection|null
+     * @Doctrine\ORM\Mapping\OneToMany(
+     *     targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUserFlagConnection",
+     *     cascade={"all"},
+     *     mappedBy="appUser",
+     *     fetch="EAGER"
+     * )
+     */
+    protected $appUserFlags;
+
+
+    /**
+     * @var AppUserType|null
      * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUserType", inversedBy="appUsers", fetch="EAGER")
      * @Doctrine\ORM\Mapping\JoinColumn(name="app_user_type_id", referencedColumnName="id")
      */
@@ -76,7 +91,7 @@ class AppUser extends AbstractAppUser
         ?string $username = null,
         ?string $email = null,
         ?Address $address = null,
-        ?\DateTime $deleted = null,
+        ?DateTime $deleted = null,
         ?string $encryptedPassword = null
     ) {
         $this->setFullName($fullName);
@@ -85,6 +100,7 @@ class AppUser extends AbstractAppUser
         $this->setFieldsFromAddress($address);
         $this->setPassword($encryptedPassword);
         $this->setDeleted($deleted);
+        $this->appUserFlags = new ArrayCollection();
     }
 
     /**
@@ -105,7 +121,7 @@ class AppUser extends AbstractAppUser
      */
     final public function getAppUserType(): ?AppUserType
     {
-        return $this->appUserType ?? null;
+        return $this->appUserType;
     }
 
     /**
@@ -125,12 +141,12 @@ class AppUser extends AbstractAppUser
     /**
      * True if user is active.
      *
-     * @param \DateTime|null $referenceDateTime
+     * @param DateTime|null $referenceDateTime
      *
      * @return bool
-     * @throws \Exception
+     * @throws Exception
      */
-    final public function isActive(?\DateTime $referenceDateTime = null): bool
+    final public function isActive(?DateTime $referenceDateTime = null): bool
     {
         return $this->containsDateTimeInRange($referenceDateTime);
     }
@@ -179,4 +195,30 @@ class AppUser extends AbstractAppUser
     {
         return $this->getAppUserType() ? $this->getAppUserType()->getAllRoleNames()->toArray() : [];
     }
+
+
+    final public function getAppUserFlags(): Collection
+    {
+        return $this->appUserFlags;
+    }
+
+    final public function addAppUserFlag(?AppUserFlagConnection $flagInJobFairUser): void
+    {
+        if ($flagInJobFairUser && !$this->appUserFlags->contains($flagInJobFairUser)) {
+            $this->appUserFlags->add($flagInJobFairUser);
+            $flagInJobFairUser->setAppUser($this);
+        }
+    }
+
+    final public function removeAppUserFlag(?AppUserFlagConnection $flagInEmployer): void
+    {
+        if (!$flagInEmployer) {
+            return;
+        }
+        if ($this->appUserFlags->removeElement($flagInEmployer)) {
+            $flagInEmployer->setAppUser(null);
+        }
+    }
+
+
 }

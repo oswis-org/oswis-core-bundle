@@ -2,9 +2,12 @@
 
 namespace Zakjakub\OswisCoreBundle\Entity\AbstractClass;
 
+use DateTime;
 use Zakjakub\OswisCoreBundle\Exceptions\RevisionMissingException;
 use Zakjakub\OswisCoreBundle\Interfaces\RevisionInterface;
 use Zakjakub\OswisCoreBundle\Utils\DateTimeUtils;
+use function array_reverse;
+use function usort;
 
 abstract class AbstractRevision implements RevisionInterface
 {
@@ -26,10 +29,10 @@ abstract class AbstractRevision implements RevisionInterface
      */
     public static function sortByCreatedDateTime(array &$revisions): void
     {
-        $revisions = \array_reverse($revisions);
-        \usort(
+        $revisions = array_reverse($revisions);
+        usort(
             $revisions,
-            function (self $arg1, self $arg2) {
+            static function (self $arg1, self $arg2) {
                 $cmpResult = DateTimeUtils::cmpDate($arg2->getCreatedDateTime(), $arg1->getCreatedDateTime());
 
                 return $cmpResult === 0 ? self::cmpId($arg2->getId(), $arg1->getId()) : $cmpResult;
@@ -38,9 +41,9 @@ abstract class AbstractRevision implements RevisionInterface
     }
 
     /**
-     * @return \DateTime|null
+     * @return DateTime|null
      */
-    abstract public function getCreatedDateTime(): ?\DateTime;
+    abstract public function getCreatedDateTime(): ?DateTime;
 
     public static function cmpId(?int $a, ?int $b): int
     {
@@ -83,7 +86,7 @@ abstract class AbstractRevision implements RevisionInterface
      */
     abstract public static function checkRevisionContainer(?AbstractRevisionContainer $revision): void;
 
-    final public function isActive(?\DateTime $dateTime = null): bool
+    final public function isActive(?DateTime $dateTime = null): bool
     {
         try {
             return $this === $this->container->getRevision($dateTime);

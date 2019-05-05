@@ -3,12 +3,20 @@
 namespace Zakjakub\OswisCoreBundle\Manager;
 
 use Doctrine\ORM\EntityManagerInterface;
+use ErrorException;
+use Exception;
+use InvalidArgumentException;
 use Psr\Log\LoggerInterface;
+use Swift_Image;
+use Swift_Mailer;
+use Swift_Message;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Twig\Environment;
 use Zakjakub\OswisCoreBundle\Entity\AppUser;
 use Zakjakub\OswisCoreBundle\Entity\AppUserType;
 use Zakjakub\OswisCoreBundle\Utils\EmailUtils;
 use Zakjakub\OswisCoreBundle\Utils\StringUtils;
+use function random_int;
 
 /**
  * Class AppUserManager
@@ -23,7 +31,7 @@ class AppUserManager
     protected $em;
 
     /**
-     * @var \Swift_Mailer
+     * @var Swift_Mailer
      */
     protected $mailer;
 
@@ -33,7 +41,7 @@ class AppUserManager
     protected $logger;
 
     /**
-     * @var \Twig_Environment
+     * @var Twig_Environment
      */
     protected $templating;
 
@@ -47,16 +55,16 @@ class AppUserManager
      *
      * @param UserPasswordEncoderInterface $encoder
      * @param EntityManagerInterface       $em
-     * @param \Swift_Mailer                $mailer
+     * @param Swift_Mailer                 $mailer
      * @param LoggerInterface              $logger
-     * @param \Twig_Environment            $templating
+     * @param Environment                  $templating
      */
     public function __construct(
         UserPasswordEncoderInterface $encoder,
         EntityManagerInterface $em,
-        \Swift_Mailer $mailer,
+        Swift_Mailer $mailer,
         LoggerInterface $logger,
-        \Twig_Environment $templating
+        Environment $templating
     ) {
         $this->encoder = $encoder;
         $this->em = $em;
@@ -76,8 +84,8 @@ class AppUserManager
      * @param bool|null        $errorWhenExist
      *
      * @return AppUser
-     * @throws \ErrorException
-     * @throws \Exception
+     * @throws ErrorException
+     * @throws Exception
      */
     final public function create(
         ?string $fullName,
@@ -101,10 +109,10 @@ class AppUserManager
         }
 
         if ($appUser && $errorWhenExist) {
-            throw new \ErrorException('User: '.$appUser->getUsername().' already exist.');
+            throw new ErrorException('User: '.$appUser->getUsername().' already exist.');
         }
 
-        $username = $username ?? 'user'.\random_int(1, 9999);
+        $username = $username ?? 'user'.random_int(1, 9999);
         $email = $email ?? $username.'@jakubzak.eu';
         $appUser = new AppUser($fullName, $username, $email, null, null);
         $appUser->setAppUserType($appUserType);
@@ -132,7 +140,7 @@ class AppUserManager
      * @param bool|null   $withoutToken
      *
      * @return bool
-     * @throws \ErrorException
+     * @throws ErrorException
      */
     final public function appUserAction(
         AppUser $appUser,
@@ -152,10 +160,10 @@ class AppUserManager
             } elseif ($type === 'reset') {
                 // Check token for password reset/change and change password for user.
                 if (!$withoutToken && !$token) {
-                    throw new \InvalidArgumentException('Token nenalezen.');
+                    throw new InvalidArgumentException('Token nenalezen.');
                 }
                 if (!$withoutToken && !$appUser->checkAndDestroyPasswordResetRequestToken($token)) {
-                    throw new \InvalidArgumentException('Špatný token.');
+                    throw new InvalidArgumentException('Špatný token.');
                 }
                 $random = $password ? false : true;
                 $password = $password ?? StringUtils::generatePassword();
@@ -169,10 +177,10 @@ class AppUserManager
             } elseif ($type === 'activation') {
                 // Check activation token and activate account.
                 if (!$withoutToken && !$token) {
-                    throw new \InvalidArgumentException('Token nenalezen.');
+                    throw new InvalidArgumentException('Token nenalezen.');
                 }
                 if (!$withoutToken && !$appUser->checkAndDestroyAccountActivationRequestToken($token)) {
-                    throw new \InvalidArgumentException('Špatný token.');
+                    throw new InvalidArgumentException('Špatný token.');
                 }
                 $random = $password ? false : true;
                 $password = $password ?? StringUtils::generatePassword();
@@ -182,15 +190,15 @@ class AppUserManager
                 }
             } else {
                 // Type is not recognized.
-                throw new \InvalidArgumentException('Akce "'.$type.'" není u uživatelských účtů implementována.');
+                throw new InvalidArgumentException('Akce "'.$type.'" není u uživatelských účtů implementována.');
             }
             $this->em->persist($appUser);
             $this->em->flush();
 
             return true;
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->logger->error($e->getMessage());
-            throw new \ErrorException('Nastal problém při změně uživatelského účtu ('.$e->getMessage().').');
+            throw new ErrorException('Nastal problém při změně uživatelského účtu ('.$e->getMessage().').');
         }
     }
 
@@ -200,7 +208,7 @@ class AppUserManager
      * @param string|null $token
      * @param string|null $password
      *
-     * @throws \ErrorException
+     * @throws ErrorException
      */
     final public function sendPasswordEmail(
         AppUser $appUser,
@@ -210,7 +218,7 @@ class AppUserManager
     ): void {
         try {
             if (!$appUser) {
-                throw new \InvalidArgumentException('Uživatel nenalezen.');
+                throw new InvalidArgumentException('Uživatel nenalezen.');
             }
 
             $title = null;
@@ -224,14 +232,14 @@ class AppUserManager
                 $title = 'Požadavek na změnu hesla';
                 $password = null;
             } else {
-                throw new \InvalidArgumentException('Akce "'.$type.'" není u změny hesla implementována.');
+                throw new InvalidArgumentException('Akce "'.$type.'" není u změny hesla implementována.');
             }
 
-            $message = new \Swift_Message(EmailUtils::mime_header_encode($title));
+            $message = new Swift_Message(EmailUtils::mime_header_encode($title));
             $message->setTo(array($appUser->getFullName() ?? $appUser->getUsername() => $appUser->getEmail()))
                 ->setCharset('UTF-8');
 
-            $cidLogo = $message->embed(\Swift_Image::fromPath('../assets/assets/images/logo.png'));
+            $cidLogo = $message->embed(Swift_Image::fromPath('../assets/assets/images/logo.png'));
 
 
             $message->setBody(
@@ -266,10 +274,10 @@ class AppUserManager
                 return;
             }
 
-            throw new \ErrorException();
-        } catch (\Exception $e) {
+            throw new ErrorException();
+        } catch (Exception $e) {
             $this->logger->error($e->getMessage());
-            throw new \ErrorException('Problém s odesláním zprávy o změně hesla.  '.$e->getMessage());
+            throw new ErrorException('Problém s odesláním zprávy o změně hesla.  '.$e->getMessage());
         }
     }
 
@@ -279,7 +287,7 @@ class AppUserManager
      * @param string|null $token
      * @param string|null $password
      *
-     * @throws \ErrorException
+     * @throws ErrorException
      */
     final public function sendAppUserEmail(
         AppUser $appUser,
@@ -289,7 +297,7 @@ class AppUserManager
     ): void {
         try {
             if (!$appUser) {
-                throw new \ErrorException('Uživatel nenalezen.');
+                throw new ErrorException('Uživatel nenalezen.');
             }
 
             if ('activation-request' === $type) {
@@ -299,10 +307,10 @@ class AppUserManager
                 // Send e-mail about account activation. Include password if present (it means that it's generated randomly).
                 $title = 'Účet byl aktivován';
             } else {
-                throw new \InvalidArgumentException('Akce "'.$type.'" není u uživatelských účtů implementována.');
+                throw new InvalidArgumentException('Akce "'.$type.'" není u uživatelských účtů implementována.');
             }
 
-            $message = new \Swift_Message(EmailUtils::mime_header_encode($title));
+            $message = new Swift_Message(EmailUtils::mime_header_encode($title));
 
             $message
                 ->setTo([$appUser->getEmail() ?? '' => $appUser->getFullName() ?? $appUser->getUsername() ?? ''])
@@ -314,7 +322,7 @@ class AppUserManager
                 ->setSender('oknodopraxe@upol.cz')
                 ->setCharset('UTF-8');
 
-            $cidLogo = $message->embed(\Swift_Image::fromPath('../assets/assets/images/logo.png'));
+            $cidLogo = $message->embed(Swift_Image::fromPath('../assets/assets/images/logo.png'));
 
             $message->setBody(
                 $this->templating->render(
@@ -346,9 +354,9 @@ class AppUserManager
             if ($this->mailer->send($message)) {
                 return;
             }
-            throw new \ErrorException();
-        } catch (\Exception $e) {
-            throw new \ErrorException('Problém s odesláním zprávy o změně účtu.  '.$e->getMessage());
+            throw new ErrorException();
+        } catch (Exception $e) {
+            throw new ErrorException('Problém s odesláním zprávy o změně účtu.  '.$e->getMessage());
         }
     }
 }

@@ -2,6 +2,11 @@
 
 namespace Zakjakub\OswisCoreBundle\Utils;
 
+use DateInterval;
+use DateTime;
+use Exception;
+use function array_key_exists;
+
 /**
  * Class DateTimeUtils
  * @package OswisCoreBundle
@@ -13,11 +18,11 @@ class DateTimeUtils
     public const MAX_DATE_TIME_STRING = '2038-01-19 00:00:00';
 
     /**
-     * @param \DateInterval $dateInterval
+     * @param DateInterval $dateInterval
      *
      * @return string
      */
-    public static function formatIntervalToReadable(?\DateInterval $dateInterval): string
+    public static function formatIntervalToReadable(?DateInterval $dateInterval): string
     {
         $result = '';
         if (!$dateInterval) {
@@ -48,37 +53,37 @@ class DateTimeUtils
     /**
      * True if datetime belongs to this datetime range.
      *
-     * @param \DateTime      $start    Start of range
-     * @param \DateTime      $end      End of range
-     * @param \DateTime|null $dateTime Checked date and time
+     * @param DateTime      $start    Start of range
+     * @param DateTime      $end      End of range
+     * @param DateTime|null $dateTime Checked date and time
      *
      * @return bool True if belongs to date range
-     * @throws \Exception
+     * @throws Exception
      */
-    public static function isDateTimeInRange(?\DateTime $start, ?\DateTime $end, ?\DateTime $dateTime = null): bool
+    public static function isDateTimeInRange(?DateTime $start, ?DateTime $end, ?DateTime $dateTime = null): bool
     {
-        $start = $start ?? new \DateTime(self::MIN_DATE_TIME_STRING);
-        $end = $end ?? new \DateTime(self::MAX_DATE_TIME_STRING);
+        $start = $start ?? new DateTime(self::MIN_DATE_TIME_STRING);
+        $end = $end ?? new DateTime(self::MAX_DATE_TIME_STRING);
 
         return $dateTime >= $start && $dateTime <= $end;
     }
 
     /**
-     * @param \DateTime $dateTime
+     * @param DateTime $dateTime
      *
      * @return bool
      */
-    public static function isWeekend(\DateTime $dateTime): bool
+    public static function isWeekend(DateTime $dateTime): bool
     {
         return $dateTime->format('N') > 6;
     }
 
-    public static function isPublicHolidays(\DateTime $dateTime): bool
+    public static function isPublicHolidays(DateTime $dateTime): bool
     {
         return self::getPublicHolidays($dateTime) ? true : false;
     }
 
-    public static function getPublicHolidays(\DateTime $dateTime): ?string
+    public static function getPublicHolidays(DateTime $dateTime): ?string
     {
         $publicHolidays = [];
         $publicHolidays[1][1] = 'Den obnovy samostatného českého státu';
@@ -100,14 +105,14 @@ class DateTimeUtils
         // Public holidays in array [month][day].
         $m = (int)$dateTime->format('n');
         $d = (int)$dateTime->format('j');
-        if (\array_key_exists($m, $publicHolidays) && \array_key_exists($d, $publicHolidays[$m])) {
+        if (array_key_exists($m, $publicHolidays) && array_key_exists($d, $publicHolidays[$m])) {
             return $publicHolidays[$m][$d] ?? null;
         }
 
         return null;
     }
 
-    public static function getEaster(\DateTime $dateTime): string
+    public static function getEaster(DateTime $dateTime): string
     {
         $y = (int)$dateTime->format('Y');
         if ($dateTime === strtotime('+1 day', easter_date($y))) {
@@ -120,12 +125,12 @@ class DateTimeUtils
         return null;
     }
 
-    public static function isEaster(\DateTime $dateTime): bool
+    public static function isEaster(DateTime $dateTime): bool
     {
         return self::getEaster($dateTime) ? true : false;
     }
 
-    public static function cmpDate(?\DateTime $a, ?\DateTime $b): int
+    public static function cmpDate(?DateTime $a, ?DateTime $b): int
     {
         if ($a == $b) {
             return 0;

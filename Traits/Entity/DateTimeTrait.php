@@ -2,6 +2,11 @@
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
+use DateTime;
+use Exception;
+use function date_create;
+use function floor;
+
 /**
  * Trait adds dateTime field
  *
@@ -12,7 +17,7 @@ trait DateTimeTrait
     /**
      * Date and time.
      *
-     * @var \DateTime
+     * @var DateTime
      *
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true, options={"default" : null})
      */
@@ -22,13 +27,13 @@ trait DateTimeTrait
     {
         try {
             if ($this->getDateTime()) {
-                $ago = $this->getDateTime()->diff(\date_create())->days;
+                $ago = $this->getDateTime()->diff(date_create())->days;
 
-                return $decimal ? $ago : \floor($ago);
+                return $decimal ? $ago : floor($ago);
             }
 
             return null;
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return null;
         }
     }
@@ -36,19 +41,19 @@ trait DateTimeTrait
     /**
      * Get date and time.
      *
-     * @return \DateTime
+     * @return DateTime
      */
-    final public function getDateTime(): ?\DateTime
+    final public function getDateTime(): ?DateTime
     {
-        return $this->dateTime ?? null;
+        return $this->dateTime;
     }
 
     /**
      * Set date and time.
      *
-     * @param \DateTime $dateTime
+     * @param DateTime $dateTime
      */
-    final public function setDateTime(?\DateTime $dateTime = null): void
+    final public function setDateTime(?DateTime $dateTime = null): void
     {
         $this->dateTime = $dateTime ? clone $dateTime : null;
     }

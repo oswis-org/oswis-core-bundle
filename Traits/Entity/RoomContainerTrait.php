@@ -5,6 +5,9 @@
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
+use DateTime;
+use Exception;
+
 /**
  * Trait adds getters and setters for container of entity with room fields.
  */
@@ -16,7 +19,7 @@ trait RoomContainerTrait
     /**
      * @param int|null $floor
      *
-     * @throws \Exception
+     * @throws Exception
      */
     final public function setFloor(?int $floor): void
     {
@@ -28,12 +31,12 @@ trait RoomContainerTrait
     }
 
     /**
-     * @param \DateTime|null $dateTime
+     * @param DateTime|null $dateTime
      *
      * @return int
-     * @throws \Exception
+     * @throws Exception
      */
-    final public function getFloor(?\DateTime $dateTime = null): ?int
+    final public function getFloor(?DateTime $dateTime = null): ?int
     {
         return $this->getRevisionByDate($dateTime)->getFloor();
     }
@@ -41,7 +44,7 @@ trait RoomContainerTrait
     /**
      * @param int|null $numberOfBeds
      *
-     * @throws \Exception
+     * @throws Exception
      */
     final public function setNumberOfBeds(?int $numberOfBeds): void
     {
@@ -53,12 +56,12 @@ trait RoomContainerTrait
     }
 
     /**
-     * @param \DateTime|null $dateTime
+     * @param DateTime|null $dateTime
      *
      * @return int
-     * @throws \Exception
+     * @throws Exception
      */
-    final public function getNumberOfBeds(?\DateTime $dateTime = null): int
+    final public function getNumberOfBeds(?DateTime $dateTime = null): int
     {
         return $this->getRevisionByDate($dateTime)->getNumberOfBeds();
     }
@@ -66,7 +69,7 @@ trait RoomContainerTrait
     /**
      * @param int|null $numberOfExtraBeds
      *
-     * @throws \Exception
+     * @throws Exception
      */
     final public function setNumberOfExtraBeds(?int $numberOfExtraBeds): void
     {
@@ -78,12 +81,12 @@ trait RoomContainerTrait
     }
 
     /**
-     * @param \DateTime|null $dateTime
+     * @param DateTime|null $dateTime
      *
      * @return int
-     * @throws \Exception
+     * @throws Exception
      */
-    final public function getNumberOfExtraBeds(?\DateTime $dateTime = null): int
+    final public function getNumberOfExtraBeds(?DateTime $dateTime = null): int
     {
         return $this->getRevisionByDate($dateTime)->getNumberOfExtraBeds();
     }
@@ -91,7 +94,7 @@ trait RoomContainerTrait
     /**
      * @param int|null $numberOfAnimals
      *
-     * @throws \Exception
+     * @throws Exception
      */
     final public function setNumberOfAnimals(?int $numberOfAnimals): void
     {
@@ -103,23 +106,23 @@ trait RoomContainerTrait
     }
 
     /**
-     * @param \DateTime|null $dateTime
+     * @param DateTime|null $dateTime
      *
      * @return int
-     * @throws \Exception
+     * @throws Exception
      */
-    final public function getNumberOfAnimals(?\DateTime $dateTime = null): int
+    final public function getNumberOfAnimals(?DateTime $dateTime = null): int
     {
         return $this->getRevisionByDate($dateTime)->getNumberOfAnimals();
     }
 
     /**
-     * @param \DateTime|null $dateTime
+     * @param DateTime|null $dateTime
      *
      * @return string
-     * @throws \Exception
+     * @throws Exception
      */
-    final public function getCapacity(?\DateTime $dateTime = null): string
+    final public function getCapacity(?DateTime $dateTime = null): string
     {
         $revision = $this->getRevisionByDate($dateTime);
         $output = $revision->getNumberOfBeds().'/';

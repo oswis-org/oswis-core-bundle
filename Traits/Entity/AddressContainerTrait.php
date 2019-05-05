@@ -5,6 +5,7 @@
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
+use DateTime;
 use Zakjakub\OswisCoreBundle\Exceptions\RevisionMissingException;
 
 /**
@@ -14,23 +15,23 @@ trait AddressContainerTrait
 {
 
     /**
-     * @param \DateTime|null $dateTime
+     * @param DateTime|null $dateTime
      *
      * @return string|null
      * @throws RevisionMissingException
      */
-    final public function getCity(?\DateTime $dateTime = null): ?string
+    final public function getCity(?DateTime $dateTime = null): ?string
     {
         return $this->getRevisionByDate($dateTime)->getCity();
     }
 
     /**
-     * @param \DateTime|null $dateTime
+     * @param DateTime|null $dateTime
      *
      * @return int|null
      * @throws RevisionMissingException
      */
-    final public function getDoorNumber(?\DateTime $dateTime = null): ?int
+    final public function getDoorNumber(?DateTime $dateTime = null): ?int
     {
         return $this->getRevisionByDate($dateTime)->getDoorNumber();
     }
@@ -50,12 +51,12 @@ trait AddressContainerTrait
     }
 
     /**
-     * @param \DateTime|null $dateTime
+     * @param DateTime|null $dateTime
      *
      * @return string|null
      * @throws RevisionMissingException
      */
-    final public function getStreet(?\DateTime $dateTime = null): ?string
+    final public function getStreet(?DateTime $dateTime = null): ?string
     {
         return $this->getRevisionByDate($dateTime)->getStreet();
     }
@@ -75,12 +76,12 @@ trait AddressContainerTrait
     }
 
     /**
-     * @param \DateTime|null $dateTime
+     * @param DateTime|null $dateTime
      *
      * @return string|null
      * @throws RevisionMissingException
      */
-    final public function getStreet2(?\DateTime $dateTime = null): ?string
+    final public function getStreet2(?DateTime $dateTime = null): ?string
     {
         return $this->getRevisionByDate($dateTime)->getStreet2();
     }
@@ -100,12 +101,12 @@ trait AddressContainerTrait
     }
 
     /**
-     * @param \DateTime|null $dateTime
+     * @param DateTime|null $dateTime
      *
      * @return int|null
      * @throws RevisionMissingException
      */
-    final public function getHouseNumber(?\DateTime $dateTime = null): ?int
+    final public function getHouseNumber(?DateTime $dateTime = null): ?int
     {
         return $this->getRevisionByDate($dateTime)->getHouseNumber();
     }
@@ -139,12 +140,12 @@ trait AddressContainerTrait
     }
 
     /**
-     * @param \DateTime|null $dateTime
+     * @param DateTime|null $dateTime
      *
      * @return string|null
      * @throws RevisionMissingException
      */
-    final public function getPostalCode(?\DateTime $dateTime = null): ?string
+    final public function getPostalCode(?DateTime $dateTime = null): ?string
     {
         return $this->getRevisionByDate($dateTime)->getPostalCode();
     }

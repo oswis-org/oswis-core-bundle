@@ -3,6 +3,8 @@
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
+use DateTime;
+
 trait PhoneContainerTrait
 {
 
@@ -20,7 +22,7 @@ trait PhoneContainerTrait
         }
     }
 
-    final public function getPhone(?\DateTime $dateTime = null): ?string
+    final public function getPhone(?DateTime $dateTime = null): ?string
     {
         return $this->getRevisionByDate($dateTime)->getPhone();
     }

@@ -13,7 +13,7 @@ trait TextValueTrait
      *
      * @var string|null
      *
-     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
+     * @Doctrine\ORM\Mapping\Column(type="text", nullable=true)
      */
     private $textValue;
 

@@ -5,6 +5,7 @@
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
+use DateTime;
 use Zakjakub\OswisCoreBundle\Exceptions\RevisionMissingException;
 
 /**
@@ -14,11 +15,11 @@ trait DateTimeContainerTrait
 {
 
     /**
-     * @param \DateTime|null $dateTime
+     * @param DateTime|null $dateTime
      *
      * @throws RevisionMissingException
      */
-    final public function setDateTime(?\DateTime $dateTime): void
+    final public function setDateTime(?DateTime $dateTime): void
     {
         if ($this->getDateTime() != $dateTime) {
             $newRevision = clone $this->getRevisionByDate();
@@ -28,12 +29,12 @@ trait DateTimeContainerTrait
     }
 
     /**
-     * @param \DateTime|null $dateTime
+     * @param DateTime|null $dateTime
      *
-     * @return \DateTime|null
+     * @return DateTime|null
      * @throws RevisionMissingException
      */
-    final public function getDateTime(?\DateTime $dateTime = null): ?\DateTime
+    final public function getDateTime(?DateTime $dateTime = null): ?DateTime
     {
         return $this->getRevisionByDate($dateTime)->getDateTime();
     }

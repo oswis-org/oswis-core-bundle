@@ -4,6 +4,8 @@ namespace Zakjakub\OswisCoreBundle\Api\EventSubscriber;
 
 use ApiPlatform\Core\EventListener\EventPriorities;
 use Doctrine\ORM\EntityManagerInterface;
+use Exception;
+use InvalidArgumentException;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpKernel\Event\GetResponseForControllerResultEvent;
@@ -12,6 +14,7 @@ use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Zakjakub\OswisCoreBundle\Entity\AppUser;
 use Zakjakub\OswisCoreBundle\Manager\AppUserManager;
+use function assert;
 
 final class AppUserSubscriber implements EventSubscriberInterface
 {
@@ -48,8 +51,8 @@ final class AppUserSubscriber implements EventSubscriberInterface
      * @param GetResponseForControllerResultEvent $event
      *
      * @throws NotFoundHttpException
-     * @throws \InvalidArgumentException
-     * @throws \Exception
+     * @throws InvalidArgumentException
+     * @throws Exception
      */
     public function appUserAction(GetResponseForControllerResultEvent $event): void
     {
@@ -68,7 +71,7 @@ final class AppUserSubscriber implements EventSubscriberInterface
         $appUser = $controllerResult->appUser;
 
         $em = $this->em;
-        \assert($em instanceof EntityManagerInterface);
+        assert($em instanceof EntityManagerInterface);
         $appUserRepository = $em->getRepository(AppUser::class);
 
         if (!$appUser) {
@@ -78,7 +81,7 @@ final class AppUserSubscriber implements EventSubscriberInterface
         if (!$appUser) {
             throw new NotFoundHttpException('Uživatel nenalezen.');
         }
-        \assert($appUser instanceof AppUser);
+        assert($appUser instanceof AppUser);
         if ($type === 'reset') {
             $this->appUserManager->appUserAction($appUser, 'reset', $password, $token);
         } elseif ($type === 'activation') {
@@ -88,7 +91,7 @@ final class AppUserSubscriber implements EventSubscriberInterface
         } elseif ($type === 'activation-request') {
             $this->appUserManager->appUserAction($appUser, 'activation');
         } else {
-            throw new \InvalidArgumentException('Akce "'.$type.'" není u uživatelských účtů implementována.');
+            throw new InvalidArgumentException('Akce "'.$type.'" není u uživatelských účtů implementována.');
         }
 
         $data = [];
@@ -98,7 +101,7 @@ final class AppUserSubscriber implements EventSubscriberInterface
 
     /**
      * @return AppUser
-     * @throws \Exception
+     * @throws Exception
      */
     public function getCurrentAppUser(): AppUser
     {
@@ -115,7 +118,7 @@ final class AppUserSubscriber implements EventSubscriberInterface
         }
         $accommodationUserRepo = $this->em->getRepository(AccommodationUser::class);
         $accommodationUser = $accommodationUserRepo->findOneBy(['appUser' => $appUser->getId()]);
-        \assert($accommodationUser instanceof AccommodationUser);
+        assert($accommodationUser instanceof AccommodationUser);
         if (!$accommodationUser) {
             throw new AccessDeniedException('Neznámý uživatel ubytovacího systému.');
         }

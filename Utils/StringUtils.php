@@ -2,6 +2,8 @@
 
 namespace Zakjakub\OswisCoreBundle\Utils;
 
+use Exception;
+
 class StringUtils
 {
     public static function startsWith(string $haystack, string $needle): string
@@ -282,7 +284,7 @@ class StringUtils
      * @param bool $addSpecialChar
      *
      * @return string
-     * @throws \Exception
+     * @throws Exception
      */
     public static function generatePassword(bool $addSpecialChar = false): string
     {
@@ -304,7 +306,7 @@ class StringUtils
      * @param int    $length Length
      *
      * @return string Random string from required chars
-     * @throws \Exception
+     * @throws Exception
      */
     private static function randomString(string $from, string $to, int $length): string
     {
@@ -318,7 +320,7 @@ class StringUtils
 
     /**
      * @return string
-     * @throws \Exception
+     * @throws Exception
      */
     public static function generateToken(): string
     {

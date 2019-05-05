@@ -5,6 +5,7 @@
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
+use DateTime;
 use Zakjakub\OswisCoreBundle\Exceptions\RevisionMissingException;
 
 /**
@@ -28,7 +29,7 @@ trait NameableBasicContainerTrait
         }
     }
 
-    final public function getName(?\DateTime $dateTime = null): ?string
+    final public function getName(?DateTime $dateTime = null): ?string
     {
         return $this->getRevisionByDate($dateTime)->getName();
     }
@@ -47,7 +48,7 @@ trait NameableBasicContainerTrait
         }
     }
 
-    final public function getShortName(?\DateTime $dateTime = null): ?string
+    final public function getShortName(?DateTime $dateTime = null): ?string
     {
         return $this->getRevisionByDate($dateTime)->getShortName();
     }
@@ -66,7 +67,7 @@ trait NameableBasicContainerTrait
         }
     }
 
-    final public function getDescription(?\DateTime $dateTime = null): ?string
+    final public function getDescription(?DateTime $dateTime = null): ?string
     {
         return $this->getRevisionByDate($dateTime)->getDescription();
     }
@@ -85,7 +86,7 @@ trait NameableBasicContainerTrait
         }
     }
 
-    final public function getNote(?\DateTime $dateTime = null): ?string
+    final public function getNote(?DateTime $dateTime = null): ?string
     {
         return $this->getRevisionByDate($dateTime)->getNote();
     }

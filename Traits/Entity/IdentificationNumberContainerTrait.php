@@ -3,6 +3,8 @@
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
+use DateTime;
+
 trait IdentificationNumberContainerTrait
 {
 
@@ -20,11 +22,12 @@ trait IdentificationNumberContainerTrait
         }
     }
 
-    final public function getIdentificationNumber(?\DateTime $dateTime = null): ?string
+    final public function getIdentificationNumber(?DateTime $dateTime = null): ?string
     {
         if ($this->getRevisionByDate($dateTime)->getIdentificationNumber()) {
             return $this->getRevisionByDate($dateTime)->getIdentificationNumber();
         }
+
         return null;
     }
 }

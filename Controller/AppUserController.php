@@ -3,13 +3,18 @@
 namespace Zakjakub\OswisCoreBundle\Controller;
 
 use Doctrine\ORM\EntityManagerInterface;
+use Exception;
+use LogicException;
 use Psr\Log\LoggerInterface;
+use Swift_Mailer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Twig\Environment;
 use Zakjakub\OswisCoreBundle\Entity\AppUser;
 use Zakjakub\OswisCoreBundle\Manager\AppUserManager;
+use function assert;
 
 class AppUserController extends AbstractController
 {
@@ -19,20 +24,20 @@ class AppUserController extends AbstractController
      * @param string                       $token
      * @param UserPasswordEncoderInterface $encoder
      * @param EntityManagerInterface       $em
-     * @param \Swift_Mailer                $mailer
+     * @param Swift_Mailer                 $mailer
      * @param LoggerInterface              $logger
-     * @param \Twig_Environment            $templating
+     * @param Environment                  $templating
      *
      * @return Response
-     * @throws \LogicException
+     * @throws LogicException
      */
     final public function appUserActivationAction(
         string $token,
         UserPasswordEncoderInterface $encoder,
         EntityManagerInterface $em,
-        \Swift_Mailer $mailer,
+        Swift_Mailer $mailer,
         LoggerInterface $logger,
-        \Twig_Environment $templating
+        Environment $templating
     ): Response {
         try {
             if (!$token) {
@@ -64,7 +69,7 @@ class AppUserController extends AbstractController
                 );
             }
 
-            \assert($appUser instanceof AppUser);
+            assert($appUser instanceof AppUser);
 
             $appUserManager = new AppUserManager($encoder, $em, $mailer, $logger, $templating);
 
@@ -79,7 +84,7 @@ class AppUserController extends AbstractController
                     'message' => 'Účet byl úspěšně aktivován.',
                 ]
             );
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $logger->notice(
                 'App user activation error: '.$e->getMessage()
             );

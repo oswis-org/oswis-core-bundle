@@ -2,6 +2,9 @@
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
+use DateTime;
+use Exception;
+
 /**
  * Trait ConfirmedByManagerTrait
  * @package Zakjakub\OswisCoreBundle\Traits\Entity
@@ -12,7 +15,7 @@ trait ConfirmedByManagerTrait
 
     /**
      * Confirmed by manager.
-     * @var \DateTime|null
+     * @var DateTime|null
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true)
      */
     protected $confirmedByManager;
@@ -27,28 +30,28 @@ trait ConfirmedByManagerTrait
     }
 
     /**
-     * @return \DateTime|null
+     * @return DateTime|null
      */
-    final public function getConfirmedByManager(): ?\DateTime
+    final public function getConfirmedByManager(): ?DateTime
     {
         return $this->confirmedByManager;
     }
 
     /**
-     * @param \DateTime|null $confirmedByUser
+     * @param DateTime|null $confirmedByUser
      */
-    final public function setConfirmedByManager(?\DateTime $confirmedByUser): void
+    final public function setConfirmedByManager(?DateTime $confirmedByUser): void
     {
         $this->confirmedByManager = $confirmedByUser;
     }
 
     /**
-     * @throws \Exception
+     * @throws Exception
      */
     final public function confirmByManager(): void
     {
         if (!$this->confirmedByManager) {
-            $this->confirmedByManager = new \DateTime();
+            $this->confirmedByManager = new DateTime();
         }
     }
 }

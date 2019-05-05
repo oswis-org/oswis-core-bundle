@@ -3,6 +3,8 @@
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
+use DateTime;
+
 trait SlugContainerTrait
 {
 
@@ -20,7 +22,7 @@ trait SlugContainerTrait
         }
     }
 
-    final public function getSlug(?\DateTime $dateTime = null): ?string
+    final public function getSlug(?DateTime $dateTime = null): ?string
     {
         return $this->getRevisionByDate($dateTime)->getSlug();
     }

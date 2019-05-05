@@ -3,6 +3,8 @@
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
+use DateTime;
+
 trait DescriptionContainerTrait
 {
 
@@ -20,7 +22,7 @@ trait DescriptionContainerTrait
         }
     }
 
-    final public function getDescription(?\DateTime $dateTime = null): ?string
+    final public function getDescription(?DateTime $dateTime = null): ?string
     {
         return $this->getRevisionByDate($dateTime)->getDescription();
     }

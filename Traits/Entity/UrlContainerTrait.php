@@ -3,6 +3,8 @@
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
+use DateTime;
+
 trait UrlContainerTrait
 {
 
@@ -20,7 +22,7 @@ trait UrlContainerTrait
         }
     }
 
-    final public function getUrl(?\DateTime $dateTime = null): ?string
+    final public function getUrl(?DateTime $dateTime = null): ?string
     {
         return $this->getRevisionByDate($dateTime)->getUrl();
     }

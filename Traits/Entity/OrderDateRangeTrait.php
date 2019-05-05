@@ -2,6 +2,8 @@
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
+use DateTime;
+use Exception;
 use Zakjakub\OswisCoreBundle\Utils\DateTimeUtils;
 
 /**
@@ -18,7 +20,7 @@ trait OrderDateRangeTrait
     /**
      * Date and time of range start
      *
-     * @var \DateTime
+     * @var DateTime
      *
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true, options={"default": null})
      */
@@ -27,24 +29,24 @@ trait OrderDateRangeTrait
     /**
      * Date and time of range end
      *
-     * @var \DateTime
+     * @var DateTime
      *
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true, options={"default": null})
      */
     protected $endOrderDateTime;
 
     /**
-     * @return \DateTime
+     * @return DateTime
      */
-    final public function getStartOrderDateTime(): ?\DateTime
+    final public function getStartOrderDateTime(): ?DateTime
     {
         return $this->startOrderDateTime;
     }
 
     /**
-     * @param \DateTime $startOrderDateTime
+     * @param DateTime $startOrderDateTime
      */
-    final public function setStartOrderDateTime(?\DateTime $startOrderDateTime): void
+    final public function setStartOrderDateTime(?DateTime $startOrderDateTime): void
     {
         $this->startOrderDateTime = $startOrderDateTime;
     }
@@ -52,28 +54,28 @@ trait OrderDateRangeTrait
     /**
      * True if datetime belongs to this datetime range.
      *
-     * @param \DateTime $dateTime Checked date and time
+     * @param DateTime $dateTime Checked date and time
      *
      * @return bool True if belongs to date range
-     * @throws \Exception
+     * @throws Exception
      */
-    final public function containsOrderDateTime(\DateTime $dateTime): bool
+    final public function containsOrderDateTime(DateTime $dateTime): bool
     {
         return DateTimeUtils::isDateTimeInRange($this->startOrderDateTime, $this->getEndOrderDateTime(), $dateTime);
     }
 
     /**
-     * @return \DateTime
+     * @return DateTime
      */
-    final public function getEndOrderDateTime(): ?\DateTime
+    final public function getEndOrderDateTime(): ?DateTime
     {
         return $this->endOrderDateTime;
     }
 
     /**
-     * @param \DateTime $endOrderDateTime
+     * @param DateTime $endOrderDateTime
      */
-    final public function setEndOrderDateTime(?\DateTime $endOrderDateTime): void
+    final public function setEndOrderDateTime(?DateTime $endOrderDateTime): void
     {
         $this->endOrderDateTime = $endOrderDateTime;
     }

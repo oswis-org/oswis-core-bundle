@@ -2,6 +2,8 @@
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
+use DateTime;
+use Exception;
 use Zakjakub\OswisCoreBundle\Utils\AgeUtils;
 
 /**
@@ -66,13 +68,13 @@ trait AgeRangeTrait
     /**
      * True if person belongs to this age range (at some moment - referenceDateTime).
      *
-     * @param \DateTime      $birthDate         BirthDate for age calculation
-     * @param \DateTime|null $referenceDateTime Reference date, default is _now_
+     * @param DateTime      $birthDate         BirthDate for age calculation
+     * @param DateTime|null $referenceDateTime Reference date, default is _now_
      *
      * @return bool True if belongs to age range
-     * @throws \Exception
+     * @throws Exception
      */
-    final public function containsBirthDate(\DateTime $birthDate, \DateTime $referenceDateTime = null): bool
+    final public function containsBirthDate(DateTime $birthDate, DateTime $referenceDateTime = null): bool
     {
         return AgeUtils::isBirthDateInRange($birthDate, $this->minAge, $this->maxAge, $referenceDateTime);
     }

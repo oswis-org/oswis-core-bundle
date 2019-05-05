@@ -3,6 +3,8 @@
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
+use DateTime;
+
 trait ColorContainerTrait
 {
 
@@ -20,12 +22,12 @@ trait ColorContainerTrait
         }
     }
 
-    final public function getColor(?\DateTime $dateTime = null): ?string
+    final public function getColor(?DateTime $dateTime = null): ?string
     {
         return $this->getRevisionByDate($dateTime)->getColor();
     }
 
-    final public function isForegroundWhite(?\DateTime $dateTime = null): string
+    final public function isForegroundWhite(?DateTime $dateTime = null): string
     {
         return $this->getRevisionByDate($dateTime)->isForegroundWhite();
     }

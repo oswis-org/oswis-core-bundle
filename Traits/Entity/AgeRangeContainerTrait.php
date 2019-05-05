@@ -5,6 +5,8 @@
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
+use DateTime;
+use Exception;
 use Zakjakub\OswisCoreBundle\Exceptions\BirthDateMissingException;
 use Zakjakub\OswisCoreBundle\Exceptions\RevisionMissingException;
 
@@ -15,53 +17,53 @@ trait AgeRangeContainerTrait
 {
 
     /**
-     * @param \DateTime $birthDate
-     * @param \DateTime $referenceDateTime
+     * @param DateTime $birthDate
+     * @param DateTime $referenceDateTime
      *
      * @return bool
-     * @throws \Exception
+     * @throws Exception
      */
-    final public function containsBirthDate(?\DateTime $birthDate, ?\DateTime $referenceDateTime): bool
+    final public function containsBirthDate(?DateTime $birthDate, ?DateTime $referenceDateTime): bool
     {
         if (!$birthDate) {
             throw new BirthDateMissingException();
         }
         if (!$referenceDateTime) {
-            $referenceDateTime = new \DateTime();
+            $referenceDateTime = new DateTime();
         }
 
         return $this->getRevisionByDate($referenceDateTime)->containsBirthDate($birthDate, $referenceDateTime);
     }
 
     /**
-     * @param \DateTime|null $dateTime
+     * @param DateTime|null $dateTime
      *
      * @return int
-     * @throws \Exception
+     * @throws Exception
      */
-    final public function agesDiff(?\DateTime $dateTime = null): int
+    final public function agesDiff(?DateTime $dateTime = null): int
     {
         return $this->getMaxAge($dateTime) - $this->getMinAge($dateTime);
     }
 
     /**
-     * @param \DateTime|null $dateTime
+     * @param DateTime|null $dateTime
      *
      * @return int|null
      * @throws RevisionMissingException
      */
-    final public function getMaxAge(?\DateTime $dateTime = null): ?int
+    final public function getMaxAge(?DateTime $dateTime = null): ?int
     {
         return $this->getRevisionByDate($dateTime)->getMaxAge();
     }
 
     /**
-     * @param \DateTime|null $dateTime
+     * @param DateTime|null $dateTime
      *
      * @return int|null
      * @throws RevisionMissingException
      */
-    final public function getMinAge(?\DateTime $dateTime = null): ?int
+    final public function getMinAge(?DateTime $dateTime = null): ?int
     {
         return $this->getRevisionByDate($dateTime)->getMinAge();
     }

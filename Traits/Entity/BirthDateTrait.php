@@ -2,6 +2,8 @@
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
+use DateTime;
+use Exception;
 use Zakjakub\OswisCoreBundle\Utils\AgeUtils;
 
 /**
@@ -14,30 +16,30 @@ trait BirthDateTrait
     /**
      * Birth date
      *
-     * @var \DateTime
+     * @var DateTime
      *
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true, options={"default" : null})
      */
     protected $birthDate;
 
     /**
-     * @param \DateTime|null $referenceDateTime
+     * @param DateTime|null $referenceDateTime
      *
      * @return int|null
-     * @throws \Exception
+     * @throws Exception
      */
-    final public function getAge(\DateTime $referenceDateTime = null): ?int
+    final public function getAge(DateTime $referenceDateTime = null): ?int
     {
         return AgeUtils::getAgeFromBirthDate($this->birthDate, $referenceDateTime);
     }
 
     /**
-     * @param \DateTime|null $referenceDateTime
+     * @param DateTime|null $referenceDateTime
      *
      * @return int|null
-     * @throws \Exception
+     * @throws Exception
      */
-    final public function getAgeDecimal(\DateTime $referenceDateTime = null): ?int
+    final public function getAgeDecimal(DateTime $referenceDateTime = null): ?int
     {
         return AgeUtils::getAgeDecimalFromBirthDate($this->birthDate, $referenceDateTime);
     }
@@ -45,25 +47,25 @@ trait BirthDateTrait
     /**
      * Get birth date.
      *
-     * @return \DateTime|null
+     * @return DateTime|null
      */
-    final public function getBirthDate(): ?\DateTime
+    final public function getBirthDate(): ?DateTime
     {
         if ($this->birthDate) {
             $this->birthDate->setTime(0, 0);
         }
 
-        return $this->birthDate ?? null;
+        return $this->birthDate;
     }
 
     /**
      * Set date and time of entity update
      *
-     * @param \DateTime $birthDate
+     * @param DateTime $birthDate
      *
-     * @throws \Exception
+     * @throws Exception
      */
-    final public function setBirthDate(?\DateTime $birthDate): void
+    final public function setBirthDate(?DateTime $birthDate): void
     {
         if ($birthDate) {
             $birthDate->setTime(0, 0);

@@ -3,8 +3,11 @@
 namespace Zakjakub\OswisCoreBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\NonUniqueResultException;
+use Exception;
 use Symfony\Bridge\Doctrine\Security\User\UserLoaderInterface;
 use Zakjakub\OswisCoreBundle\Entity\AppUser;
+use function assert;
 
 /**
  * AppUserRepository
@@ -16,8 +19,8 @@ class AppUserRepository extends EntityRepository implements UserLoaderInterface
      * @param string $username
      *
      * @return AppUser|null
-     * @throws \Doctrine\ORM\NonUniqueResultException
-     * @throws \Exception
+     * @throws NonUniqueResultException
+     * @throws Exception
      */
     final public function loadUserByUsername(
         /** @noinspection MissingParameterTypeDeclarationInspection */
@@ -32,7 +35,7 @@ class AppUserRepository extends EntityRepository implements UserLoaderInterface
         if (!$appUser) {
             return null;
         }
-        \assert($appUser instanceof AppUser);
+        assert($appUser instanceof AppUser);
 
         return $appUser->isActive() ? $appUser : null;
     }

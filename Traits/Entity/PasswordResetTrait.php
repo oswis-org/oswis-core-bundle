@@ -2,6 +2,8 @@
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
+use DateTime;
+use Exception;
 use Zakjakub\OswisCoreBundle\Utils\StringUtils;
 
 /**
@@ -19,7 +21,7 @@ trait PasswordResetTrait
 
     /**
      * Date and time of password reset request (and token generation).
-     * @var \DateTime|null
+     * @var DateTime|null
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true)
      */
     protected $passwordResetRequestDateTime;
@@ -27,7 +29,7 @@ trait PasswordResetTrait
     final public function checkAndDestroyPasswordResetRequestToken(?string $token, int $validHours = 24): bool
     {
         try {
-            $diff = (new \DateTime())->diff($this->getPasswordResetRequestDateTime());
+            $diff = (new DateTime())->diff($this->getPasswordResetRequestDateTime());
             if ($validHours < $diff->h) {
                 $this->destroyPasswordResetRequestToken();
 
@@ -38,24 +40,24 @@ trait PasswordResetTrait
 
                 return true;
             }
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
         }
 
         return false;
     }
 
     /**
-     * @return \DateTime|null
+     * @return DateTime|null
      */
-    final public function getPasswordResetRequestDateTime(): ?\DateTime
+    final public function getPasswordResetRequestDateTime(): ?DateTime
     {
         return $this->passwordResetRequestDateTime;
     }
 
     /**
-     * @param \DateTime|null $passwordResetRequestDateTime
+     * @param DateTime|null $passwordResetRequestDateTime
      */
-    final public function setPasswordResetRequestDateTime(?\DateTime $passwordResetRequestDateTime): void
+    final public function setPasswordResetRequestDateTime(?DateTime $passwordResetRequestDateTime): void
     {
         $this->passwordResetRequestDateTime = $passwordResetRequestDateTime;
     }
@@ -91,10 +93,10 @@ trait PasswordResetTrait
     {
         try {
             $this->setPasswordResetRequestToken(StringUtils::generateToken());
-            $this->setPasswordResetRequestDateTime(new \DateTime());
+            $this->setPasswordResetRequestDateTime(new DateTime());
 
             return $this->getPasswordResetRequestToken();
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->destroyPasswordResetRequestToken();
 
             return null;

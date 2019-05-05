@@ -3,12 +3,13 @@
 namespace Zakjakub\OswisCoreBundle\Entity\AbstractClass;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Serializable;
 use Symfony\Component\Security\Core\User\EquatableInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Zakjakub\OswisCoreBundle\Traits\Entity\BasicEntityTrait;
 use Zakjakub\OswisCoreBundle\Traits\Entity\UserTrait;
 
-abstract class AbstractAppUser implements UserInterface, \Serializable, EquatableInterface
+abstract class AbstractAppUser implements UserInterface, Serializable, EquatableInterface
 {
     use BasicEntityTrait;
     use UserTrait;
@@ -28,11 +29,11 @@ abstract class AbstractAppUser implements UserInterface, \Serializable, Equatabl
     }
 
     /**
-     * @see \Serializable::unserialize()
-     *
      * @param string $serialized
      *
      * @return void
+     * @see \Serializable::unserialize()
+     *
      */
     final public function unserialize(
         /** @noinspection MissingParameterTypeDeclarationInspection */

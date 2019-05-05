@@ -2,29 +2,31 @@
 
 namespace Zakjakub\OswisCoreBundle\Interfaces;
 
+use DateTime;
+
 interface TimestampableInterface
 {
 
     /**
      * Get date and time of entity creation
      *
-     * @return \DateTime
+     * @return DateTime
      */
-    public function getCreatedDateTime(): \DateTime;
+    public function getCreatedDateTime(): DateTime;
 
     /**
      * Get date and time of entity update
      *
-     * @return \DateTime
+     * @return DateTime
      */
-    public function getUpdatedDateTime(): \DateTime;
+    public function getUpdatedDateTime(): DateTime;
 
     /**
      * Set date and time of entity update
      *
-     * @param \DateTime $updatedDateTime
+     * @param DateTime $updatedDateTime
      */
-    public function setUpdatedDateTime(\DateTime $updatedDateTime): void;
+    public function setUpdatedDateTime(DateTime $updatedDateTime): void;
 
     public function getCreatedDaysAgo(?bool $decimal = false): int;
 

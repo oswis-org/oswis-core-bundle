@@ -2,6 +2,10 @@
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
+use DateTime;
+use function date_create;
+use function floor;
+
 /**
  * Trait adds createdDateTime and updatedDateTime fields
  *
@@ -15,7 +19,7 @@ trait TimestampableTrait
 
     /**
      * Date and time of entity creation.
-     * @var \DateTime
+     * @var DateTime
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true)
      * @Gedmo\Mapping\Annotation\Timestampable(on="create")
      */
@@ -23,7 +27,7 @@ trait TimestampableTrait
 
     /**
      * Date and time of entity update.
-     * @var \DateTime
+     * @var DateTime
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true, options={"default" : null})
      * @Gedmo\Mapping\Annotation\Timestampable(on="update")
      */
@@ -35,21 +39,21 @@ trait TimestampableTrait
         if (!$this->getCreatedDateTime()) {
             return null;
         }
-        $ago = $this->getCreatedDateTime()->diff(\date_create())->days;
+        $ago = $this->getCreatedDateTime()->diff(date_create())->days;
 
         if (!$ago) {
             return null;
         }
 
-        return $decimal ? $ago : \floor($ago);
+        return $decimal ? $ago : floor($ago);
     }
 
     /**
      * Get date and time of entity creation
      *
-     * @return \DateTime
+     * @return DateTime
      */
-    final public function getCreatedDateTime(): ?\DateTime
+    final public function getCreatedDateTime(): ?DateTime
     {
         return $this->createdDateTime;
     }
@@ -59,21 +63,21 @@ trait TimestampableTrait
         if (!$this->getUpdatedDateTime()) {
             return null;
         }
-        $ago = $this->getUpdatedDateTime()->diff(\date_create())->days;
+        $ago = $this->getUpdatedDateTime()->diff(date_create())->days;
 
         if (!$ago) {
             return null;
         }
 
-        return $decimal ? $ago : \floor($ago);
+        return $decimal ? $ago : floor($ago);
     }
 
     /**
      * Get date and time of entity update
      *
-     * @return \DateTime
+     * @return DateTime
      */
-    final public function getUpdatedDateTime(): ?\DateTime
+    final public function getUpdatedDateTime(): ?DateTime
     {
         return $this->updatedDateTime;
     }

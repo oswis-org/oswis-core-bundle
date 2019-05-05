@@ -2,8 +2,10 @@
 
 namespace Zakjakub\OswisCoreBundle\Entity\AbstractClass;
 
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Exception;
 use Zakjakub\OswisCoreBundle\Exceptions\RevisionMissingException;
 use Zakjakub\OswisCoreBundle\Interfaces\RevisionContainerInterface;
 
@@ -16,12 +18,12 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
     protected $revisions;
 
     /**
-     * @param \DateTime|null $dateTime
+     * @param DateTime|null $dateTime
      *
      * @return AbstractRevision
      * @throws RevisionMissingException
      */
-    final public function getRevision(\DateTime $dateTime = null): AbstractRevision
+    final public function getRevision(DateTime $dateTime = null): AbstractRevision
     {
         $revisions = $this->getRevisionsOlderThanDateTime($dateTime);
         if (!$revisions || !$revisions[0]) {
@@ -34,18 +36,18 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
     }
 
     /**
-     * @param \DateTime|null $dateTime
+     * @param DateTime|null $dateTime
      *
      * @return array
      */
-    final public function getRevisionsOlderThanDateTime(\DateTime $dateTime = null): array
+    final public function getRevisionsOlderThanDateTime(DateTime $dateTime = null): array
     {
         try {
-            $dateTime = $dateTime ?? new \DateTime();
-        } catch (\Exception $e) {
+            $dateTime = $dateTime ?? new DateTime();
+        } catch (Exception $e) {
         }
         $revisions = $this->getRevisions()->filter(
-            function (AbstractRevision $revision) use ($dateTime) {
+            static function (AbstractRevision $revision) use ($dateTime) {
                 return $dateTime >= $revision->getCreatedDateTime();
             }
         )->toArray();

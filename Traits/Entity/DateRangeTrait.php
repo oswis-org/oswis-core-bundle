@@ -2,6 +2,8 @@
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
+use DateTime;
+use Exception;
 use Zakjakub\OswisCoreBundle\Utils\DateTimeUtils;
 
 /**
@@ -18,7 +20,7 @@ trait DateRangeTrait
     /**
      * Date and time of range start
      *
-     * @var \DateTime
+     * @var DateTime
      *
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true, options={"default": null})
      */
@@ -27,7 +29,7 @@ trait DateRangeTrait
     /**
      * Date and time of range end
      *
-     * @var \DateTime
+     * @var DateTime
      *
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true, options={"default": null})
      */
@@ -36,78 +38,78 @@ trait DateRangeTrait
     /**
      * True if datetime belongs to this datetime range.
      *
-     * @param \DateTime $dateTime Checked date and time
+     * @param DateTime $dateTime Checked date and time
      *
      * @return bool True if belongs to date range
-     * @throws \Exception
+     * @throws Exception
      */
-    final public function containsDateTimeInRange(?\DateTime $dateTime = null): bool
+    final public function containsDateTimeInRange(?DateTime $dateTime = null): bool
     {
-        $dateTime = $dateTime ?? new \DateTime();
+        $dateTime = $dateTime ?? new DateTime();
 
         return DateTimeUtils::isDateTimeInRange($this->getStartDateTime(), $this->getEndDateTime(), $dateTime);
     }
 
     /**
-     * @return \DateTime
+     * @return DateTime
      */
-    final public function getStartDateTime(): ?\DateTime
+    final public function getStartDateTime(): ?DateTime
     {
-        return $this->startDateTime ?? null;
+        return $this->startDateTime;
     }
 
     /**
-     * @param \DateTime $startDateTime
+     * @param DateTime $startDateTime
      */
-    final public function setStartDateTime(?\DateTime $startDateTime): void
+    final public function setStartDateTime(?DateTime $startDateTime): void
     {
         $this->startDateTime = $startDateTime ?? null;
     }
 
     /**
-     * @return \DateTime
+     * @return DateTime
      */
-    final public function getEndDateTime(): ?\DateTime
+    final public function getEndDateTime(): ?DateTime
     {
-        return $this->endDateTime ?? null;
+        return $this->endDateTime;
     }
 
     /**
-     * @param \DateTime $endDateTime
+     * @param DateTime $endDateTime
      */
-    final public function setEndDateTime(?\DateTime $endDateTime): void
+    final public function setEndDateTime(?DateTime $endDateTime): void
     {
         $this->endDateTime = $endDateTime ?? null;
     }
 
     /**
-     * @return \DateTime|null
+     * @return DateTime|null
      */
-    final public function getStartDate(): ?\DateTime
+    final public function getStartDate(): ?DateTime
     {
         return $this->getStartDateTime();
     }
 
     /**
-     * @return \DateTime|null
+     * @return DateTime|null
      */
-    final public function getEndDate(): ?\DateTime
+    final public function getEndDate(): ?DateTime
     {
         return $this->getStartDateTime();
     }
 
     /**
-     * @param \DateTime|null $dateTime
+     * @param DateTime|null $dateTime
      */
-    final public function setStartDate(?\DateTime $dateTime): void
+    final public function setStartDate(?DateTime $dateTime): void
     {
         $this->setStartDateTime($dateTime);
     }
 
     /**
-     * @param \DateTime|null $dateTime
+     * @param DateTime|null $dateTime
      */
-    final public function setEndDate(?\DateTime $dateTime): void
+    final public function setEndDate(?DateTime $dateTime): void
     {
         $this->setEndDateTime($dateTime);
     }

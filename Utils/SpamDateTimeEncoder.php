@@ -2,6 +2,7 @@
 
 namespace Zakjakub\OswisCoreBundle\Utils;
 
+use Exception;
 use Psr\Log\LoggerInterface;
 
 class SpamDateTimeEncoder
@@ -12,7 +13,7 @@ class SpamDateTimeEncoder
      * @param string $string
      *
      * @return string
-     * @throws \Exception
+     * @throws Exception
      */
     final public function encrypt(string $string): string
     {

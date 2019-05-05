@@ -3,6 +3,8 @@
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
+use DateTime;
+
 trait EmailContainerTrait
 {
 
@@ -20,7 +22,7 @@ trait EmailContainerTrait
         }
     }
 
-    final public function getEmail(?\DateTime $dateTime = null): ?string
+    final public function getEmail(?DateTime $dateTime = null): ?string
     {
         return $this->getRevisionByDate($dateTime)->getEmail();
     }

@@ -2,6 +2,11 @@
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
+use DateTime;
+use Exception;
+use function date_create;
+use function floor;
+
 /**
  * Trait adds deleted dateTime field
  *
@@ -12,7 +17,7 @@ trait DeletedTrait
     /**
      * Date and time.
      *
-     * @var \DateTime
+     * @var DateTime
      *
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true, options={"default" : null})
      */
@@ -28,50 +33,50 @@ trait DeletedTrait
         if (!$this->deleted) {
             return null;
         }
-        $ago = $this->deleted->diff(\date_create());
+        $ago = $this->deleted->diff(date_create());
 
-        return $decimal ? $ago : \floor($ago);
+        return $decimal ? $ago : floor($ago);
     }
 
     /**
      * Get date and time.
      *
-     * @return \DateTime
+     * @return DateTime
      */
-    final public function getDeleted(): ?\DateTime
+    final public function getDeleted(): ?DateTime
     {
-        return $this->deleted ?? null;
+        return $this->deleted;
     }
 
     /**
      * Set date and time of delete.
      *
-     * @param \DateTime|null $deleted
+     * @param DateTime|null $deleted
      */
-    final public function setDeleted(?\DateTime $deleted = null): void
+    final public function setDeleted(?DateTime $deleted = null): void
     {
-        $this->deleted = $deleted ? \date_create($deleted->getTimestamp()) : null;
+        $this->deleted = $deleted ? date_create($deleted->getTimestamp()) : null;
     }
 
     /**
-     * @param \DateTime|null $dateTime
+     * @param DateTime|null $dateTime
      *
-     * @throws \Exception
+     * @throws Exception
      */
-    final public function delete(?\DateTime $dateTime = null): void
+    final public function delete(?DateTime $dateTime = null): void
     {
-        $dateTime = $dateTime ?? new \DateTime();
-        $this->deleted = \date_create($dateTime->getTimestamp());
+        $dateTime = $dateTime ?? new DateTime();
+        $this->deleted = date_create($dateTime->getTimestamp());
     }
 
     /**
      * True if user is deleted (at some moment).
      *
-     * @param \DateTime|null $dateTime Reference date and time.
+     * @param DateTime|null $dateTime Reference date and time.
      *
      * @return bool
      */
-    final public function isDeleted(?\DateTime $dateTime = null): bool
+    final public function isDeleted(?DateTime $dateTime = null): bool
     {
         if ($dateTime) {
             return $dateTime > $this->deleted;
