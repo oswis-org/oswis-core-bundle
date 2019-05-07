@@ -26,9 +26,9 @@ class ZakjakubOswisCoreExtension extends Extension implements PrependExtensionIn
         $loader->load('services.yaml');
         $configuration = $this->getConfiguration($configs, $container);
         $config = $this->processConfiguration($configuration, $configs);
-//        $definition = $container->getDefinition('zakjakub_oswis.search_filter');
-//        $definition->setArgument(0, $config['dummy_parameter_boolean']);
-//        $definition->setArgument(1, $config['dummy_parameter_integer']);
+        $definition = $container->getDefinition('zakjakub_oswis.email_sender');
+        $definition->setArgument(0, $config['dummy_parameter_boolean']);
+        $definition->setArgument(1, $config['dummy_parameter_integer']);
 
     }
 

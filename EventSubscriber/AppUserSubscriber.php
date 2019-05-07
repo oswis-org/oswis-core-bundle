@@ -1,4 +1,4 @@
-<?php /** @noinspection ForgottenDebugOutputInspection */
+<?php
 
 namespace Zakjakub\OswisCoreBundle\EventSubscriber;
 
@@ -6,16 +6,15 @@ use ApiPlatform\Core\EventListener\EventPriorities;
 use Doctrine\ORM\EntityManagerInterface;
 use ErrorException;
 use Psr\Log\LoggerInterface;
-use Swift_Mailer;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Symfony\Component\HttpFoundation\Exception\SuspiciousOperationException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\GetResponseForControllerResultEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use Twig\Environment;
 use Zakjakub\OswisCoreBundle\Entity\AppUser;
 use Zakjakub\OswisCoreBundle\Manager\AppUserManager;
+use Zakjakub\OswisCoreBundle\Service\EmailSender;
 use function assert;
 
 final class AppUserSubscriber implements EventSubscriberInterface
@@ -27,19 +26,9 @@ final class AppUserSubscriber implements EventSubscriberInterface
     private $em;
 
     /**
-     * @var Swift_Mailer
-     */
-    private $mailer;
-
-    /**
      * @var LoggerInterface
      */
     private $logger;
-
-    /**
-     * @var Environment
-     */
-    private $templating;
 
     /**
      * @var UserPasswordEncoderInterface
@@ -47,35 +36,29 @@ final class AppUserSubscriber implements EventSubscriberInterface
     private $encoder;
 
     /**
-     * @var TokenStorageInterface
+     * @var EmailSender
      */
-    private $tokenStorage;
+    private $emailSender;
 
     /**
      * ReservationSubscriber constructor.
      *
      * @param UserPasswordEncoderInterface $encoder
      * @param EntityManagerInterface       $em
-     * @param Swift_Mailer                 $mailer
      * @param LoggerInterface              $logger
-     * @param Environment                  $templating
-     * @param TokenStorageInterface        $tokenStorage
+     * @param EmailSender                  $emailSender
      */
     public function __construct(
         UserPasswordEncoderInterface $encoder,
         EntityManagerInterface $em,
-        Swift_Mailer $mailer,
         LoggerInterface $logger,
-        Environment $templating,
-        TokenStorageInterface $tokenStorage
+        EmailSender $emailSender
     ) {
         // \error_log('Constructing ReservationSubscriber.');
         $this->encoder = $encoder;
         $this->em = $em;
-        $this->mailer = $mailer;
         $this->logger = $logger;
-        $this->templating = $templating;
-        $this->tokenStorage = $tokenStorage;
+        $this->emailSender = $emailSender;
     }
 
     /**
@@ -92,7 +75,7 @@ final class AppUserSubscriber implements EventSubscriberInterface
      * @param GetResponseForControllerResultEvent $event
      *
      * @throws ErrorException
-     * @throws \Symfony\Component\HttpFoundation\Exception\SuspiciousOperationException
+     * @throws SuspiciousOperationException
      */
     public function makeAppUser(GetResponseForControllerResultEvent $event): void
     {
@@ -102,7 +85,7 @@ final class AppUserSubscriber implements EventSubscriberInterface
             return;
         }
         assert($appUser instanceof AppUser);
-        $appUserManager = new AppUserManager($this->encoder, $this->em, $this->mailer, $this->logger, $this->templating);
+        $appUserManager = new AppUserManager($this->encoder, $this->em, $this->logger, $this->emailSender);
         $appUserManager->appUserAction($appUser, 'activation-request');
     }
 

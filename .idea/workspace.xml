@@ -6,7 +6,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Controller/OswisController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Provider/OswisCoreSettingsProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Service/EmailSender.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/zakj.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/zakj.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controller/AppUserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/AppUserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DependencyInjection/ZakjakubOswisCoreExtension.php" beforeDir="false" afterPath="$PROJECT_DIR$/DependencyInjection/ZakjakubOswisCoreExtension.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EventSubscriber/AppUserSubscriber.php" beforeDir="false" afterPath="$PROJECT_DIR$/EventSubscriber/AppUserSubscriber.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Manager/AppUserManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/Manager/AppUserManager.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/config/routes.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Resources/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/config/services.yaml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.github/" />
@@ -105,11 +114,65 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Controller/AppUserController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="88">
+              <caret line="39" column="21" lean-forward="true" selection-start-line="39" selection-start-column="21" selection-end-line="39" selection-end-column="21" />
+              <folding>
+                <element signature="e#55#69#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/EventSubscriber/AppUserSubscriber.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="168">
+              <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
+              <folding>
+                <element signature="e#112#163#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vendor/symfony/security-core/Encoder/UserPasswordEncoderInterface.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="294">
+              <caret line="21" column="1" lean-forward="true" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Resources/config/services.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="148">
-              <caret line="41" selection-start-line="41" selection-end-line="41" />
+            <state relative-caret-position="207">
+              <caret line="81" selection-start-line="81" selection-end-line="81" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Resources/config/routes.yaml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="123">
+              <caret line="17" selection-start-line="17" selection-end-line="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Manager/AppUserManager.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1813">
+              <caret line="51" column="7" lean-forward="true" selection-start-line="51" selection-start-column="7" selection-end-line="51" selection-end-column="7" />
+              <folding>
+                <element signature="e#52#92#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -294,7 +357,6 @@
         <option value="$PROJECT_DIR$/Resources/views/documents/accommodation-decree.html.twig" />
         <option value="$PROJECT_DIR$/Resources/views/e-mail/message.txt.twig" />
         <option value="$PROJECT_DIR$/Resources/views/e-mail/password.txt.twig" />
-        <option value="$PROJECT_DIR$/Resources/config/routes.yaml" />
         <option value="$PROJECT_DIR$/Utils/SpamDateTimeEncoder.php" />
         <option value="$PROJECT_DIR$/Resources/public/favicons/html_code.html" />
         <option value="$PROJECT_DIR$/Traits/Entity/PasswordResetTrait.php" />
@@ -339,22 +401,27 @@
         <option value="$PROJECT_DIR$/composer.json" />
         <option value="$PROJECT_DIR$/Form/AbstractClass/AbstractImageType.php" />
         <option value="$PROJECT_DIR$/Controller/AbstractClass/AbstractImageAction.php" />
-        <option value="$PROJECT_DIR$/Controller/AppUserController.php" />
-        <option value="$PROJECT_DIR$/Manager/AppUserManager.php" />
-        <option value="$PROJECT_DIR$/Manager/AppUserManager.php" />
-        <option value="$PROJECT_DIR$/EventSubscriber/AppUserSubscriber.php" />
         <option value="$PROJECT_DIR$/Entity/JobFairUserFlag.php" />
         <option value="$PROJECT_DIR$/Entity/JobFairUserFlagConnection.php" />
         <option value="$PROJECT_DIR$/Entity/AppUserFlag.php" />
         <option value="$PROJECT_DIR$/Entity/AppUser.php" />
         <option value="$PROJECT_DIR$/Entity/AppUserType.php" />
-        <option value="$PROJECT_DIR$/DependencyInjection/ZakjakubOswisCoreExtension.php" />
-        <option value="$PROJECT_DIR$/DependencyInjection/Configuration.php" />
         <option value="$PROJECT_DIR$/Filter/SearchFilter.php" />
         <option value="$PROJECT_DIR$/Entity/AbstractClass/AbstractImage.php" />
         <option value="$PROJECT_DIR$/Utils/SourceCodeUtils.php" />
         <option value="$PROJECT_DIR$/Entity/AppUserFlagConnection.php" />
+        <option value="$PROJECT_DIR$/DependencyInjection/Configuration.php" />
+        <option value="$PROJECT_DIR$/Service/AppUserManager.php" />
+        <option value="$PROJECT_DIR$/Manager/AppUserManager.php" />
+        <option value="$PROJECT_DIR$/Manager/AppUserManager.php" />
+        <option value="$PROJECT_DIR$/Service/EmailSender.php" />
+        <option value="$PROJECT_DIR$/DependencyInjection/ZakjakubOswisCoreExtension.php" />
+        <option value="$PROJECT_DIR$/Provider/OswisCoreSettingsProvider.php" />
+        <option value="$PROJECT_DIR$/Controller/OswisController.php" />
+        <option value="$PROJECT_DIR$/Resources/config/routes.yaml" />
         <option value="$PROJECT_DIR$/Resources/config/services.yaml" />
+        <option value="$PROJECT_DIR$/Controller/AppUserController.php" />
+        <option value="$PROJECT_DIR$/EventSubscriber/AppUserSubscriber.php" />
       </list>
     </option>
   </component>
@@ -488,6 +555,16 @@
             <path>
               <item name="oswis-core-bundle" type="b2602c69:ProjectViewProjectNode" />
               <item name="oswis-core-bundle" type="462c0819:PsiDirectoryNode" />
+              <item name="DependencyInjection" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oswis-core-bundle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oswis-core-bundle" type="462c0819:PsiDirectoryNode" />
+              <item name="Manager" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oswis-core-bundle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oswis-core-bundle" type="462c0819:PsiDirectoryNode" />
               <item name="Resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -506,7 +583,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="editor.config.ad.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Form" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Service" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -515,19 +592,19 @@
     <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/Form" />
-      <recent name="$PROJECT_DIR$/Utils" />
-      <recent name="$PROJECT_DIR$/EventSubscriber" />
-      <recent name="$PROJECT_DIR$/Traits/Entity" />
-      <recent name="$PROJECT_DIR$/Resources/views/web" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Entity" />
       <recent name="$PROJECT_DIR$/Entity/AbstractClass" />
       <recent name="$PROJECT_DIR$/Controller" />
       <recent name="$PROJECT_DIR$/Interfaces" />
       <recent name="$PROJECT_DIR$/Resources/config" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Service" />
+      <recent name="$PROJECT_DIR$/Form" />
+      <recent name="$PROJECT_DIR$/Utils" />
+      <recent name="$PROJECT_DIR$/EventSubscriber" />
+      <recent name="$PROJECT_DIR$/Traits/Entity" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -634,21 +711,7 @@
       <workItem from="1555514118887" duration="9254000" />
       <workItem from="1557076800680" duration="4845000" />
       <workItem from="1557153074407" duration="598000" />
-      <workItem from="1557240505369" duration="7674000" />
-    </task>
-    <task id="LOCAL-00123" summary="Some changes.">
-      <created>1551474814476</created>
-      <option name="number" value="00123" />
-      <option name="presentableId" value="LOCAL-00123" />
-      <option name="project" value="LOCAL" />
-      <updated>1551474814477</updated>
-    </task>
-    <task id="LOCAL-00124" summary="Some changes.">
-      <created>1551476191480</created>
-      <option name="number" value="00124" />
-      <option name="presentableId" value="LOCAL-00124" />
-      <option name="project" value="LOCAL" />
-      <updated>1551476191480</updated>
+      <workItem from="1557240505369" duration="13996000" />
     </task>
     <task id="LOCAL-00125" summary="Some changes.">
       <created>1551476489111</created>
@@ -979,17 +1042,31 @@
       <option name="project" value="LOCAL" />
       <updated>1557249372380</updated>
     </task>
-    <option name="localTasksCounter" value="172" />
+    <task id="LOCAL-00172" summary="Some changes.">
+      <created>1557249470350</created>
+      <option name="number" value="00172" />
+      <option name="presentableId" value="LOCAL-00172" />
+      <option name="project" value="LOCAL" />
+      <updated>1557249470350</updated>
+    </task>
+    <task id="LOCAL-00173" summary="Some changes.">
+      <created>1557249749875</created>
+      <option name="number" value="00173" />
+      <option name="presentableId" value="LOCAL-00173" />
+      <option name="project" value="LOCAL" />
+      <updated>1557249749875</updated>
+    </task>
+    <option name="localTasksCounter" value="174" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="330390000" />
+    <option name="totallyTimeSpent" value="336712000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1919" y="0" width="1368" height="741" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1691843" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1691843" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -1000,12 +1077,12 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49268293" visible="true" weight="0.30653265" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49268293" weight="0.17755444" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Statistic" order="10" weight="0.32998326" />
       <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49626866" weight="0.18055555" />
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.50731707" side_tool="true" weight="0.13461539" />
-      <window_info anchor="bottom" id="Inspection Results" order="13" weight="0.35343385" />
+      <window_info active="true" anchor="bottom" id="Inspection Results" order="13" visible="true" weight="0.40536013" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -1164,7 +1241,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/symfony/security-core/Encoder/UserPasswordEncoderInterface.php" />
     <entry file="file://$PROJECT_DIR$/../oswis-karlov/config/packages/nelmio_cors.yaml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="276">
@@ -1970,13 +2046,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Resources/config/routes.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="2" column="20" lean-forward="true" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Resources/views/documents/pdf-document.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="23">
@@ -2137,36 +2206,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Manager/AppUserManager.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-125">
-          <caret line="74" lean-forward="true" selection-start-line="74" selection-end-line="74" />
-          <folding>
-            <element signature="e#52#92#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Controller/AppUserController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-314">
-          <caret line="29" selection-start-line="29" selection-end-line="29" />
-          <folding>
-            <element signature="e#55#95#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EventSubscriber/AppUserSubscriber.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="77" column="8" selection-start-line="77" selection-start-column="8" selection-end-line="77" selection-end-column="8" />
-          <folding>
-            <element signature="e#112#163#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Entity/AbstractClass/AbstractAppUser.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
@@ -2250,32 +2289,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DependencyInjection/Configuration.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
-          <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
-          <folding>
-            <element signature="e#64#85#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Entity/AbstractClass/AbstractImage.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="328">
           <caret line="65" column="5" lean-forward="true" selection-start-line="65" selection-start-column="5" selection-end-line="65" selection-end-column="5" />
           <folding>
             <element signature="e#66#110#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DependencyInjection/ZakjakubOswisCoreExtension.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="109">
-          <caret line="27" column="8" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="8" />
-          <folding>
-            <element signature="e#64#78#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2313,18 +2332,109 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Entity/AppUser.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="66" column="6" selection-start-line="66" selection-start-column="6" selection-end-line="66" selection-end-column="6" />
+        <state relative-caret-position="550">
+          <caret line="92" column="33" lean-forward="true" selection-start-line="92" selection-start-column="33" selection-end-line="92" selection-end-column="33" />
           <folding>
             <element signature="e#51#93#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Service/EmailSender.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="87" lean-forward="true" selection-start-line="87" selection-end-line="87" />
+          <folding>
+            <element signature="e#52#92#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DependencyInjection/Configuration.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="25" column="19" lean-forward="true" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="19" />
+          <folding>
+            <element signature="e#64#85#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DependencyInjection/ZakjakubOswisCoreExtension.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="67">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+          <folding>
+            <element signature="e#64#78#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Provider/OswisCoreSettingsProvider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controller/OswisController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
+          <folding>
+            <element signature="e#56#121#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/config/routes.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="123">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Resources/config/services.yaml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="41" selection-start-line="41" selection-end-line="41" />
+        <state relative-caret-position="207">
+          <caret line="81" selection-start-line="81" selection-end-line="81" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controller/AppUserController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="39" column="21" lean-forward="true" selection-start-line="39" selection-start-column="21" selection-end-line="39" selection-end-column="21" />
+          <folding>
+            <element signature="e#55#69#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Manager/AppUserManager.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1813">
+          <caret line="51" column="7" lean-forward="true" selection-start-line="51" selection-start-column="7" selection-end-line="51" selection-end-column="7" />
+          <folding>
+            <element signature="e#52#92#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/symfony/security-core/Encoder/UserPasswordEncoderInterface.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="21" column="1" lean-forward="true" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EventSubscriber/AppUserSubscriber.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
+          <folding>
+            <element signature="e#112#163#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

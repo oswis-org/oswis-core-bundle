@@ -42,6 +42,52 @@ services:
         public: true
 
 
+    zakjakub_oswis_core.email_sender:
+        class: Zakjakub\OswisCoreBundle\Service\EmailSender
+        autowire: true
+        public: true
+
+    Zakjakub\OswisCoreBundle\Service\EmailSender:
+        alias: zakjakub_oswis_core.email_sender
+        public: true
+
+
+    zakjakub_oswis_core.oswis_core_settings_provider:
+        class: Zakjakub\OswisCoreBundle\Provider\OswisCoreSettingsProvider
+        autowire: true
+        public: true
+
+    Zakjakub\OswisCoreBundle\Provider\OswisCoreSettingsProvider:
+        alias: zakjakub_oswis_core.oswis_core_settings_provider
+        public: true
+
+
+    zakjakub_oswis_core.oswis_controller:
+        class: Zakjakub\OswisCoreBundle\Controller\OswisController
+        autowire: true
+        public: true
+        arguments: ["@zakjakub_oswis_core.oswis_core_settings_provider"]
+
+    Zakjakub\OswisCoreBundle\Controller\OswisController:
+        alias: zakjakub_oswis_core.oswis_controller
+        public: true
+
+
+    zakjakub_oswis_core.app_user_controller:
+        class: Zakjakub\OswisCoreBundle\Controller\AppUserController
+        autowire: true
+        public: true
+        arguments: [
+            - '@service_container'
+            - '@zakjakub_oswis_core.oswis_core_settings_provider'
+        ]
+
+    Zakjakub\OswisCoreBundle\Controller\AppUserController:
+        alias: zakjakub_oswis_core.app_user_controller
+        public: true
+
+
+
     Zakjakub\OswisCoreBundle\Manager\:
         resource: '../../Manager/*'
         public: true

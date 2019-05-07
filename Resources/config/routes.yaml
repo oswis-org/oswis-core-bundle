@@ -16,4 +16,11 @@ controllers:
     resource: ../../Controller/
     type: annotation
 
+oswis_controller:
+    controller: zakjakub_oswis_core::oswis_core_controller::index
+    path: /oswis_index
+
+zakjakub_oswis_core_app_user_activation:
+    controller: zakjakub_oswis_core::app_user_controller::appUserActivation
+    path: "/app-user-activation/{token}"
 

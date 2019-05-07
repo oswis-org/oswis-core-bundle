@@ -7,13 +7,10 @@ use ErrorException;
 use Exception;
 use InvalidArgumentException;
 use Psr\Log\LoggerInterface;
-use Swift_Image;
-use Swift_Mailer;
-use Swift_Message;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use Twig\Environment;
 use Zakjakub\OswisCoreBundle\Entity\AppUser;
 use Zakjakub\OswisCoreBundle\Entity\AppUserType;
+use Zakjakub\OswisCoreBundle\Service\EmailSender;
 use Zakjakub\OswisCoreBundle\Utils\EmailUtils;
 use Zakjakub\OswisCoreBundle\Utils\StringUtils;
 use function random_int;
@@ -31,19 +28,9 @@ class AppUserManager
     protected $em;
 
     /**
-     * @var Swift_Mailer
-     */
-    protected $mailer;
-
-    /**
      * @var LoggerInterface
      */
     protected $logger;
-
-    /**
-     * @var Twig_Environment
-     */
-    protected $templating;
 
     /**
      * @var UserPasswordEncoderInterface
@@ -51,26 +38,28 @@ class AppUserManager
     private $encoder;
 
     /**
+     * @var EmailSender
+     */
+    private $emailSender;
+
+    /**
      * AppUserManager constructor.
      *
      * @param UserPasswordEncoderInterface $encoder
      * @param EntityManagerInterface       $em
-     * @param Swift_Mailer                 $mailer
      * @param LoggerInterface              $logger
-     * @param Environment                  $templating
+     * @param EmailSender                  $emailSender
      */
     public function __construct(
         UserPasswordEncoderInterface $encoder,
         EntityManagerInterface $em,
-        Swift_Mailer $mailer,
         LoggerInterface $logger,
-        Environment $templating
+        EmailSender $emailSender
     ) {
         $this->encoder = $encoder;
         $this->em = $em;
-        $this->mailer = $mailer;
         $this->logger = $logger;
-        $this->templating = $templating;
+        $this->emailSender = $emailSender;
     }
 
     /**
@@ -235,49 +224,23 @@ class AppUserManager
                 throw new InvalidArgumentException('Akce "'.$type.'" není u změny hesla implementována.');
             }
 
-            $message = new Swift_Message(EmailUtils::mime_header_encode($title));
-            $message->setTo(array($appUser->getFullName() ?? $appUser->getUsername() => $appUser->getEmail()))
-                ->setCharset('UTF-8');
-
-            $cidLogo = $message->embed(Swift_Image::fromPath('../assets/assets/images/logo.png'));
-
-
-            $message->setBody(
-                $this->templating->render(
-                    '@ZakjakubOswisCore/e-mail/password.html.twig',
-                    array(
-                        'title'    => $title,
-                        'appUser'  => $appUser,
-                        'token'    => $token,
-                        'password' => $password,
-                        'logo'     => $cidLogo,
-                    )
-                ),
-                'text/html'
+            $message = $this->emailSender->getPreparedMessage(
+                [EmailUtils::mime_header_encode($appUser->getFullName() ?? $appUser->getUsername()) => $appUser->getEmail()],
+                EmailUtils::mime_header_encode($title)
             );
 
-            $message->addPart(
-                $this->templating->render(
-                    '@ZakjakubOswisCore/e-mail/password.txt.twig',
-                    array(
-                        'title'    => $title,
-                        'appUser'  => $appUser,
-                        'token'    => $token,
-                        'password' => $password,
-                        'logo'     => $cidLogo,
-                    )
-                ),
-                'text/plain'
+            $data = array(
+                'appUser'  => $appUser,
+                'token'    => $token,
+                'password' => $password,
             );
 
-            if ($this->mailer->send($message)) {
-                return;
-            }
+            $this->emailSender->sendMessage($message, '@ZakjakubOswisCore/e-mail/password', $data);
 
-            throw new ErrorException();
+            throw new ErrorException('Problém s odesláním zprávy o změně hesla.');
         } catch (Exception $e) {
             $this->logger->error($e->getMessage());
-            throw new ErrorException('Problém s odesláním zprávy o změně hesla.  '.$e->getMessage());
+            throw new ErrorException('Problém s odesláním zprávy o změně hesla:  '.$e->getMessage());
         }
     }
 
@@ -310,53 +273,23 @@ class AppUserManager
                 throw new InvalidArgumentException('Akce "'.$type.'" není u uživatelských účtů implementována.');
             }
 
-            $message = new Swift_Message(EmailUtils::mime_header_encode($title));
-
-            $message
-                ->setTo([$appUser->getEmail() ?? '' => $appUser->getFullName() ?? $appUser->getUsername() ?? ''])
-                ->setFrom(
-                    array(
-                        'oknodopraxe@upol.cz' => EmailUtils::mime_header_encode('Okno do praxe'),
-                    )
-                )
-                ->setSender('oknodopraxe@upol.cz')
-                ->setCharset('UTF-8');
-
-            $cidLogo = $message->embed(Swift_Image::fromPath('../assets/assets/images/logo.png'));
-
-            $message->setBody(
-                $this->templating->render(
-                    '@ZakjakubOswisCore/e-mail/app-user.html.twig',
-                    array(
-                        'appUser'  => $appUser,
-                        'type'     => $type,
-                        'token'    => $token,
-                        'password' => $password,
-                        'logo'     => $cidLogo,
-                    )
-                ),
-                'text/html'
+            $message = $this->emailSender->getPreparedMessage(
+                [$appUser->getEmail() ?? '' => $appUser->getFullName() ?? $appUser->getUsername() ?? ''],
+                EmailUtils::mime_header_encode($title)
             );
 
-            $message->addPart(
-                $this->templating->render(
-                    '@ZakjakubOswisCore/e-mail/app-user.txt.twig',
-                    array(
-                        'appUser'  => $appUser,
-                        'type'     => $type,
-                        'token'    => $token,
-                        'password' => $password,
-                        'logo'     => $cidLogo,
-                    )
-                ),
-                'text/plain'
+            $data = array(
+                'appUser'  => $appUser,
+                'type'     => $type,
+                'token'    => $token,
+                'password' => $password,
             );
-            if ($this->mailer->send($message)) {
-                return;
-            }
-            throw new ErrorException();
+
+            $this->emailSender->sendMessage($message, '@ZakjakubOswisCore/e-mail/app-user', $data);
+
+            throw new ErrorException('Problém s odesláním zprávy o změně účtu.');
         } catch (Exception $e) {
-            throw new ErrorException('Problém s odesláním zprávy o změně účtu.  '.$e->getMessage());
+            throw new ErrorException('Problém s odesláním zprávy o změně účtu:  '.$e->getMessage());
         }
     }
 }
