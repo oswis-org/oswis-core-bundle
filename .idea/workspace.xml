@@ -6,39 +6,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/DependencyInjection/Configuration.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api/Dto/AppUserRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/Api/Dto/AppUserRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/AppUserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/AppUserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/DummyHomepageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/DummyHomepageController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DependencyInjection/ZakjakubOswisCoreExtension.php" beforeDir="false" afterPath="$PROJECT_DIR$/DependencyInjection/ZakjakubOswisCoreExtension.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractImage.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractImage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractOrganization.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractOrganization.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractPerson.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractPerson.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractRevision.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractRevision.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AppUserFlagConnection.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUserFlagConnection.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventSubscriber/AppUserSubscriber.php" beforeDir="false" afterPath="$PROJECT_DIR$/EventSubscriber/AppUserSubscriber.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Exceptions/BirthDateMissingException.php" beforeDir="false" afterPath="$PROJECT_DIR$/Exceptions/BirthDateMissingException.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Filter/SearchAnnotation.php" beforeDir="false" afterPath="$PROJECT_DIR$/Filter/SearchAnnotation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Filter/SearchFilter.php" beforeDir="false" afterPath="$PROJECT_DIR$/Filter/SearchFilter.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Form/AbstractClass/AbstractImageType.php" beforeDir="false" afterPath="$PROJECT_DIR$/Form/AbstractClass/AbstractImageType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Interfaces/AgeRangeInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/Interfaces/AgeRangeInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Interfaces/BasicMailConfirmationInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/Interfaces/BasicMailConfirmationInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Interfaces/DateTimeInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/Interfaces/DateTimeInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Interfaces/RevisionInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/Interfaces/RevisionInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Manager/AppUserManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/Manager/AppUserManager.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Manager/AppUserRoleManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/Manager/AppUserRoleManager.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Repository/AppUserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/Repository/AppUserRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Resources/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/config/services.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Security/AppUserProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/Security/AppUserProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/AccountActivationTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/AccountActivationTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/BlameableTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/BlameableTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/ConfirmedByManagerTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/ConfirmedByManagerTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/FullNameTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/FullNameTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/OrderDateRangeTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/OrderDateRangeTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/ReservationDateRangeTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/ReservationDateRangeTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZakjakubOswisCoreBundle.php" beforeDir="false" afterPath="$PROJECT_DIR$/ZakjakubOswisCoreBundle.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.github/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -135,7 +104,17 @@
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Resources/config/services.yaml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="148">
+              <caret line="41" selection-start-line="41" selection-end-line="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -366,16 +345,16 @@
         <option value="$PROJECT_DIR$/EventSubscriber/AppUserSubscriber.php" />
         <option value="$PROJECT_DIR$/Entity/JobFairUserFlag.php" />
         <option value="$PROJECT_DIR$/Entity/JobFairUserFlagConnection.php" />
-        <option value="$PROJECT_DIR$/Entity/AppUserFlagConnection.php" />
         <option value="$PROJECT_DIR$/Entity/AppUserFlag.php" />
         <option value="$PROJECT_DIR$/Entity/AppUser.php" />
         <option value="$PROJECT_DIR$/Entity/AppUserType.php" />
-        <option value="$PROJECT_DIR$/Resources/config/services.yaml" />
         <option value="$PROJECT_DIR$/DependencyInjection/ZakjakubOswisCoreExtension.php" />
         <option value="$PROJECT_DIR$/DependencyInjection/Configuration.php" />
         <option value="$PROJECT_DIR$/Filter/SearchFilter.php" />
         <option value="$PROJECT_DIR$/Entity/AbstractClass/AbstractImage.php" />
         <option value="$PROJECT_DIR$/Utils/SourceCodeUtils.php" />
+        <option value="$PROJECT_DIR$/Entity/AppUserFlagConnection.php" />
+        <option value="$PROJECT_DIR$/Resources/config/services.yaml" />
       </list>
     </option>
   </component>
@@ -505,6 +484,17 @@
             <path>
               <item name="oswis-core-bundle" type="b2602c69:ProjectViewProjectNode" />
               <item name="oswis-core-bundle" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oswis-core-bundle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oswis-core-bundle" type="462c0819:PsiDirectoryNode" />
+              <item name="Resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oswis-core-bundle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oswis-core-bundle" type="462c0819:PsiDirectoryNode" />
+              <item name="Resources" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -644,21 +634,7 @@
       <workItem from="1555514118887" duration="9254000" />
       <workItem from="1557076800680" duration="4845000" />
       <workItem from="1557153074407" duration="598000" />
-      <workItem from="1557240505369" duration="7069000" />
-    </task>
-    <task id="LOCAL-00121" summary="Some changes.">
-      <created>1551473356670</created>
-      <option name="number" value="00121" />
-      <option name="presentableId" value="LOCAL-00121" />
-      <option name="project" value="LOCAL" />
-      <updated>1551473356670</updated>
-    </task>
-    <task id="LOCAL-00122" summary="Some changes.">
-      <created>1551474516245</created>
-      <option name="number" value="00122" />
-      <option name="presentableId" value="LOCAL-00122" />
-      <option name="project" value="LOCAL" />
-      <updated>1551474516245</updated>
+      <workItem from="1557240505369" duration="7674000" />
     </task>
     <task id="LOCAL-00123" summary="Some changes.">
       <created>1551474814476</created>
@@ -989,14 +965,29 @@
       <option name="project" value="LOCAL" />
       <updated>1554282435653</updated>
     </task>
-    <option name="localTasksCounter" value="170" />
+    <task id="LOCAL-00170" summary="Some changes.">
+      <created>1557248904325</created>
+      <option name="number" value="00170" />
+      <option name="presentableId" value="LOCAL-00170" />
+      <option name="project" value="LOCAL" />
+      <updated>1557248904326</updated>
+    </task>
+    <task id="LOCAL-00171" summary="Some changes.">
+      <created>1557249372380</created>
+      <option name="number" value="00171" />
+      <option name="presentableId" value="LOCAL-00171" />
+      <option name="project" value="LOCAL" />
+      <updated>1557249372380</updated>
+    </task>
+    <option name="localTasksCounter" value="172" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="329785000" />
+    <option name="totallyTimeSpent" value="330390000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1919" y="0" width="1368" height="741" extended-state="7" />
+    <frame x="1919" y="0" width="1368" height="741" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1691843" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -1009,7 +1000,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49268293" weight="0.12562814" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49268293" visible="true" weight="0.30653265" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Statistic" order="10" weight="0.32998326" />
       <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49626866" weight="0.18055555" />
@@ -2197,16 +2188,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Entity/AppUserFlagConnection.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
-          <folding>
-            <element signature="e#51#93#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Entity/AppUserType.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="290">
@@ -2234,23 +2215,6 @@
           <folding>
             <element signature="e#51#93#0#PHP" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Entity/AppUser.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-26">
-          <caret line="187" lean-forward="true" selection-start-line="187" selection-end-line="187" />
-          <folding>
-            <element signature="e#51#93#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Resources/config/services.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="32" selection-start-line="32" selection-end-line="32" />
         </state>
       </provider>
     </entry>
@@ -2334,6 +2298,33 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="305">
           <caret line="19" column="73" lean-forward="true" selection-start-line="19" selection-start-column="73" selection-end-line="19" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Entity/AppUserFlagConnection.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="123">
+          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+          <folding>
+            <element signature="e#51#93#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Entity/AppUser.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="66" column="6" selection-start-line="66" selection-start-column="6" selection-end-line="66" selection-end-column="6" />
+          <folding>
+            <element signature="e#51#93#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/config/services.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="41" selection-start-line="41" selection-end-line="41" />
         </state>
       </provider>
     </entry>

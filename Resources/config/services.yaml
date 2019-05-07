@@ -39,7 +39,6 @@ services:
 
     Zakjakub\OswisCoreBundle\Filter\SearchFilter:
         alias: zakjakub_oswis_core.search_filter
-        autowire: true
         public: true
 
 
