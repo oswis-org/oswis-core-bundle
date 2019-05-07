@@ -34,8 +34,8 @@ class AppUserFlagConnection
      * Flag.
      * @var AppUserFlag|null
      * @Doctrine\ORM\Mapping\ManyToOne(
-     *     targetEntity="Zakjakub\OswisJobFairBundle\Entity\JobFairUserFlag",
-     *     inversedBy="jobFairUserFlagConnections",
+     *     targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUserFlag",
+     *     inversedBy="appUserFlagConnections",
      *     fetch="EAGER"
      * )
      * @Doctrine\ORM\Mapping\JoinColumn(nullable=true)
