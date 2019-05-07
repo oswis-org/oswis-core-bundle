@@ -77,10 +77,9 @@ services:
         class: Zakjakub\OswisCoreBundle\Controller\AppUserController
         autowire: true
         public: true
-        arguments: [
+        arguments:
             - '@service_container'
             - '@zakjakub_oswis_core.oswis_core_settings_provider'
-        ]
 
     Zakjakub\OswisCoreBundle\Controller\AppUserController:
         alias: zakjakub_oswis_core.app_user_controller
