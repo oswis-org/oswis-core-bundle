@@ -69,10 +69,11 @@ class EmailSender
     final public function getPreparedMessage(
         array $recipients,
         string $title = 'Systémová zpráva',
-        array $sender = array('oknodopraxe@upol.cz' => EmailUtils::mime_header_encode('Okno do praxe')),
+        array $sender = null,
         string $senderAccountEmail = 'oswis@oswis.org'
     ): Swift_Message {
         try {
+            $sender = $sender ?? array('oswis@oswis.org' => EmailUtils::mime_header_encode('OSWIS'));
             $message = new Swift_Message(EmailUtils::mime_header_encode($title));
             $message->setTo($recipients);
             $message->setCharset('UTF-8');
