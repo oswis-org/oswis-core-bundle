@@ -61,6 +61,7 @@ abstract class AbstractImage
      */
     public $contentDimensionsHeight;
 
+    /** @noinspection MethodShouldBeFinalInspection */
     public function __toString(): string
     {
         return $this->contentUrl ?? '';
