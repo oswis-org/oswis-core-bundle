@@ -33,7 +33,6 @@ class Configuration implements ConfigurationInterface
 
             ->arrayNode('app')
             ->info('General settings.')
-            ->defaultValue([])
             ->addDefaultsIfNotSet()
             ->children()
             ->scalarNode('name')
@@ -60,7 +59,6 @@ class Configuration implements ConfigurationInterface
 
             ->arrayNode('admin')
             ->info('Info about main administrator.')
-            ->defaultValue([])
             ->addDefaultsIfNotSet()
             ->children()
             ->scalarNode('name')
@@ -87,7 +85,6 @@ class Configuration implements ConfigurationInterface
 
             ->arrayNode('email')
             ->info('Sender of system e-mails.')
-            ->defaultValue([])
             ->addDefaultsIfNotSet()
             ->children()
             ->scalarNode('address')

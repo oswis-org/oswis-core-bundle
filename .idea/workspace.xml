@@ -138,8 +138,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Service/EmailSender.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="45" selection-start-line="45" selection-end-line="45" />
+            <state relative-caret-position="357">
+              <caret line="84" selection-start-line="84" selection-end-line="84" />
+              <folding>
+                <element signature="e#52#92#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -165,8 +168,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/DependencyInjection/Configuration.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="588">
-              <caret line="37" selection-start-line="37" selection-end-line="37" />
+            <state relative-caret-position="708">
+              <caret line="61" selection-start-line="61" selection-end-line="61" />
               <folding>
                 <element signature="e#64#85#0#PHP" expanded="true" />
               </folding>
@@ -186,7 +189,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Manager/AppUserManager.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="840">
+            <state relative-caret-position="729">
               <caret line="51" column="7" selection-start-line="51" selection-start-column="7" selection-end-line="51" selection-end-column="7" />
             </state>
           </provider>
@@ -434,9 +437,9 @@
         <option value="$PROJECT_DIR$/EventSubscriber/AppUserSubscriber.php" />
         <option value="$PROJECT_DIR$/Resources/config/routes.yaml" />
         <option value="$PROJECT_DIR$/Resources/config/services.yaml" />
-        <option value="$PROJECT_DIR$/Service/EmailSender.php" />
         <option value="$PROJECT_DIR$/Provider/OswisCoreSettingsProvider.php" />
         <option value="$PROJECT_DIR$/DependencyInjection/ZakjakubOswisCoreExtension.php" />
+        <option value="$PROJECT_DIR$/Service/EmailSender.php" />
         <option value="$PROJECT_DIR$/DependencyInjection/Configuration.php" />
       </list>
     </option>
@@ -728,21 +731,7 @@
       <workItem from="1557153074407" duration="598000" />
       <workItem from="1557240505369" duration="16349000" />
       <workItem from="1557305665671" duration="20000" />
-      <workItem from="1557305747980" duration="6618000" />
-    </task>
-    <task id="LOCAL-00131" summary="Some changes.">
-      <created>1551522723068</created>
-      <option name="number" value="00131" />
-      <option name="presentableId" value="LOCAL-00131" />
-      <option name="project" value="LOCAL" />
-      <updated>1551522723068</updated>
-    </task>
-    <task id="LOCAL-00132" summary="Some changes.">
-      <created>1551653538514</created>
-      <option name="number" value="00132" />
-      <option name="presentableId" value="LOCAL-00132" />
-      <option name="project" value="LOCAL" />
-      <updated>1551653538514</updated>
+      <workItem from="1557305747980" duration="8236000" />
     </task>
     <task id="LOCAL-00133" summary="Some changes.">
       <created>1551653628154</created>
@@ -1073,11 +1062,25 @@
       <option name="project" value="LOCAL" />
       <updated>1557315318372</updated>
     </task>
-    <option name="localTasksCounter" value="180" />
+    <task id="LOCAL-00180" summary="Some changes.">
+      <created>1557316269550</created>
+      <option name="number" value="00180" />
+      <option name="presentableId" value="LOCAL-00180" />
+      <option name="project" value="LOCAL" />
+      <updated>1557316269550</updated>
+    </task>
+    <task id="LOCAL-00181" summary="Some changes.">
+      <created>1557317972560</created>
+      <option name="number" value="00181" />
+      <option name="presentableId" value="LOCAL-00181" />
+      <option name="project" value="LOCAL" />
+      <updated>1557317972560</updated>
+    </task>
+    <option name="localTasksCounter" value="182" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="345703000" />
+    <option name="totallyTimeSpent" value="347321000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="0" width="1922" height="1080" extended-state="6" />
@@ -2371,20 +2374,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Resources/config/routes.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Manager/AppUserManager.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="840">
-          <caret line="51" column="7" selection-start-line="51" selection-start-column="7" selection-end-line="51" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Resources/public/favicons/apple-touch-icon-76x76.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -2408,13 +2397,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Resources/public/favicons/android-chrome-384x384.png">
       <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Service/EmailSender.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="45" selection-start-line="45" selection-end-line="45" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Controller/AppUserController.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -2447,13 +2429,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Resources/config/services.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-735">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/DependencyInjection/ZakjakubOswisCoreExtension.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="483">
@@ -2461,10 +2436,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/config/routes.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Manager/AppUserManager.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="729">
+          <caret line="51" column="7" selection-start-line="51" selection-start-column="7" selection-end-line="51" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Service/EmailSender.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="84" selection-start-line="84" selection-end-line="84" />
+          <folding>
+            <element signature="e#52#92#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/config/services.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-735">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/DependencyInjection/Configuration.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="588">
-          <caret line="37" selection-start-line="37" selection-end-line="37" />
+        <state relative-caret-position="708">
+          <caret line="61" selection-start-line="61" selection-end-line="61" />
           <folding>
             <element signature="e#64#85#0#PHP" expanded="true" />
           </folding>
