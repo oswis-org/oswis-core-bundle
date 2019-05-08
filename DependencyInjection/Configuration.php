@@ -20,17 +20,15 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->info('Default configuration for core module of OSWIS (One Simple Web IS).')
             ->children()
-
             ->booleanNode('dummy_parameter_boolean')
             ->defaultFalse()
             ->info('Dummy parameter for testing (boolean).')
             ->end()
-
             ->integerNode('dummy_parameter_integer')
             ->defaultValue(3)
             ->info('Dummy parameter for testing (integer).')
             ->end()
-
+            /// App general.
             ->arrayNode('app')
             ->info('General settings.')
             ->addDefaultsIfNotSet()
@@ -56,7 +54,8 @@ class Configuration implements ConfigurationInterface
             ->example(['@ZakjakubOswisCore/Resources/public/logo.png', '../assets/assets/images/logo.png'])
             ->end()
             ->end()
-
+            ->end()
+            /// Admin info.
             ->arrayNode('admin')
             ->info('Info about main administrator.')
             ->addDefaultsIfNotSet()
@@ -82,7 +81,8 @@ class Configuration implements ConfigurationInterface
             ->example(['+000 000 000 000'])
             ->end()
             ->end()
-
+            ->end()
+            /// System e-mails settings.
             ->arrayNode('email')
             ->info('Sender of system e-mails.')
             ->addDefaultsIfNotSet()
@@ -113,7 +113,7 @@ class Configuration implements ConfigurationInterface
             ->example('Message')
             ->end()
             ->end()
-
+            ->end()
             ->end();
 
         return $treeBuilder;
