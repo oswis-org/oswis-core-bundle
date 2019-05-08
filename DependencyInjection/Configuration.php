@@ -33,6 +33,8 @@ class Configuration implements ConfigurationInterface
 
             ->arrayNode('email_sender')
             ->info('Sender of system e-mails.')
+            ->defaultValue([])
+            ->addDefaultsIfNotSet()
             ->children()
             ->scalarNode('address')->info('E-mail address of sender.')->defaultValue('oswis@oswis.org')->end()
             ->scalarNode('name')->info('Name of sender.')->defaultValue('OSWIS')->end()
