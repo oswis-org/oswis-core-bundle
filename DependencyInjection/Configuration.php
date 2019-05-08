@@ -78,7 +78,7 @@ class Configuration implements ConfigurationInterface
             ->scalarNode('phone')
             ->info('Phone of administrator.')
             ->defaultValue(null)
-            ->example(['+000 000 000 000'])
+            ->example('+000 000 000 000')
             ->end()
             ->end()
             ->end()

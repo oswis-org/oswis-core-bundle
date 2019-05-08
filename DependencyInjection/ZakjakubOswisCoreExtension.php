@@ -5,6 +5,7 @@ namespace Zakjakub\OswisCoreBundle\DependencyInjection;
 use Exception;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
@@ -26,18 +27,33 @@ class ZakjakubOswisCoreExtension extends Extension implements PrependExtensionIn
         $loader->load('services.yaml');
         $configuration = $this->getConfiguration($configs, $container);
         $config = $this->processConfiguration($configuration, $configs);
+        $this->oswisCoreSettingsProvider($container, $config);
+    }
+
+    /**
+     * @param ContainerBuilder $container
+     *
+     * @param array            $config
+     *
+     * @throws ServiceNotFoundException
+     */
+    private function oswisCoreSettingsProvider(ContainerBuilder $container, array $config): void {
         $definition = $container->getDefinition('zakjakub_oswis_core.oswis_core_settings_provider');
         $definition->setArgument(0, $config['dummy_parameter_integer']);
         $definition->setArgument(1, $config['dummy_parameter_boolean']);
-        $definition->setArgument(2, $config['email_sender']['address']);
-        $definition->setArgument(3, $config['email_sender']['name']);
+        $definition->setArgument(2, $config['app']);
+        $definition->setArgument(3, $config['admin']);
+        $definition->setArgument(3, $config['email']);
     }
+
+
 
     final public function prepend(ContainerBuilder $container): void
     {
 
 
     }
+
 
 
 }

@@ -10,74 +10,59 @@ class OswisCoreSettingsProvider
 {
 
     /**
-     * @var int
+     * @var array
      */
-    protected $dummyParameterInteger;
+    protected $app;
 
     /**
-     * @var boolean
+     * @var array
      */
-    protected $dummyParameterBoolean;
+    protected $admin;
 
     /**
-     * @var string
+     * @var array
      */
-    protected $coreAppName = 'OSWIS';
-
-    /**
-     * @var string
-     */
-    protected $coreAppNameShort = 'OSWIS';
-
-    /**
-     * @var string
-     */
-    protected $coreAppNameLong = 'One Simple Web IS';
-
-    /**
-     * @var string
-     */
-    protected $emailSenderName;
-
-    /**
-     * @var string
-     */
-    protected $emailSenderAddress;
+    protected $email;
 
     /**
      * OswisCoreSettingsProvider constructor.
      *
-     * @param int|null    $dummyParameterInteger
-     * @param bool|null   $dummyParameterBoolean
-     * @param string|null $emailSenderAddress
-     * @param string|null $emailSenderName
+     * @param array|null $app
+     * @param array|null $admin
+     * @param array|null $email
      */
     public function __construct(
-        ?int $dummyParameterInteger,
-        ?bool $dummyParameterBoolean,
-        ?string $emailSenderAddress,
-        ?string $emailSenderName
+        ?array $app,
+        ?array $admin,
+        ?array $email
     ) {
-        $this->dummyParameterInteger = $dummyParameterInteger;
-        $this->dummyParameterBoolean = $dummyParameterBoolean;
-        $this->emailSenderAddress = $emailSenderAddress;
-        $this->emailSenderName = $emailSenderName;
+        $this->app = $app;
+        $this->admin = $admin;
+        $this->email = $email;
     }
 
     /**
-     * @return int
+     * @return array
      */
-    final public function getDummyParameterInteger(): int
+    final public function getApp(): array
     {
-        return $this->dummyParameterInteger;
+        return $this->app;
     }
 
     /**
-     * @return bool
+     * @return array
      */
-    final public function isDummyParameterBoolean(): bool
+    final public function getAdmin(): array
     {
-        return $this->dummyParameterBoolean;
+        return $this->admin;
+    }
+
+    /**
+     * @return array
+     */
+    final public function getEmail(): array
+    {
+        return $this->email;
     }
 
     /**
@@ -85,7 +70,7 @@ class OswisCoreSettingsProvider
      */
     final public function getCoreAppName(): string
     {
-        return $this->coreAppName;
+        return 'OSWIS';
     }
 
     /**
@@ -93,7 +78,7 @@ class OswisCoreSettingsProvider
      */
     final public function getCoreAppNameShort(): string
     {
-        return $this->coreAppNameShort;
+        return 'OSWIS';
     }
 
     /**
@@ -101,7 +86,7 @@ class OswisCoreSettingsProvider
      */
     final public function getCoreAppNameLong(): string
     {
-        return $this->coreAppNameLong;
+        return 'One Simple Web IS';
     }
 
 

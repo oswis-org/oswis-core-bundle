@@ -225,7 +225,7 @@ class AppUserManager
             }
 
             $message = $this->emailSender->getPreparedMessage(
-                [EmailUtils::mime_header_encode($appUser->getFullName() ?? $appUser->getUsername()) => $appUser->getEmail()],
+                [$appUser->getEmail() => EmailUtils::mime_header_encode($appUser->getFullName() ?? $appUser->getUsername())],
                 EmailUtils::mime_header_encode($title)
             );
 
@@ -274,7 +274,7 @@ class AppUserManager
             }
 
             $message = $this->emailSender->getPreparedMessage(
-                [$appUser->getEmail() ?? '' => $appUser->getFullName() ?? $appUser->getUsername() ?? ''],
+                [$appUser->getEmail() ?? '' => EmailUtils::mime_header_encode($appUser->getFullName() ?? $appUser->getUsername() ?? '')],
                 EmailUtils::mime_header_encode($title)
             );
 

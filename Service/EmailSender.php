@@ -79,10 +79,10 @@ class EmailSender
         array $recipients,
         string $title = 'Systémová zpráva',
         array $sender = null,
-        string $senderAccountEmail = 'oswis@oswis.org'
+        ?string $senderAccountEmail = null
     ): Swift_Message {
         try {
-            $sender = $sender ?? array('oswis@oswis.org' => EmailUtils::mime_header_encode('OSWIS'));
+            $sender = $sender ?? array($this->oswisCoreSettings->getEmail()['address'] => EmailUtils::mime_header_encode($this->oswisCoreSettings->getEmail()['name']));
             $message = new Swift_Message(EmailUtils::mime_header_encode($title));
             $message->setTo($recipients);
             $message->setCharset('UTF-8');

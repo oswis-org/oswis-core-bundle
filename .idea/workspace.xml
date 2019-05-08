@@ -6,8 +6,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Service/PdfGenerator.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controller/DummyHomepageController.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/DependencyInjection/Configuration.php" beforeDir="false" afterPath="$PROJECT_DIR$/DependencyInjection/Configuration.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DependencyInjection/ZakjakubOswisCoreExtension.php" beforeDir="false" afterPath="$PROJECT_DIR$/DependencyInjection/ZakjakubOswisCoreExtension.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Manager/AppUserManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/Manager/AppUserManager.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Provider/OswisCoreSettingsProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/Provider/OswisCoreSettingsProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/config/services.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/views/documents/pdf-document.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/documents/pdf-document.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Service/EmailSender.php" beforeDir="false" afterPath="$PROJECT_DIR$/Service/EmailSender.php" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.github/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -106,19 +114,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Controller/AppUserController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="441">
-              <caret line="30" column="32" selection-start-line="30" selection-start-column="32" selection-end-line="30" selection-end-column="32" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Controller/OswisController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="14" column="45" lean-forward="true" selection-start-line="14" selection-start-column="45" selection-end-line="14" selection-end-column="45" />
+            <state relative-caret-position="130">
+              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
               <folding>
                 <element signature="e#56#121#0#PHP" expanded="true" />
               </folding>
@@ -126,71 +125,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DependencyInjection/ZakjakubOswisCoreExtension.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="483">
-              <caret line="31" column="72" lean-forward="true" selection-start-line="31" selection-start-column="72" selection-end-line="31" selection-end-column="72" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Service/EmailSender.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="84" selection-start-line="84" selection-end-line="84" />
-              <folding>
-                <element signature="e#52#92#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Provider/OswisCoreSettingsProvider.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Resources/config/services.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-735">
-              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/DependencyInjection/Configuration.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="708">
-              <caret line="61" selection-start-line="61" selection-end-line="61" />
-              <folding>
-                <element signature="e#64#85#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Resources/config/routes.yaml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="17" selection-start-line="17" selection-end-line="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Manager/AppUserManager.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="729">
-              <caret line="51" column="7" selection-start-line="51" selection-start-column="7" selection-end-line="51" selection-end-column="7" />
+            <state relative-caret-position="147">
+              <caret line="82" selection-start-line="82" selection-end-line="82" />
             </state>
           </provider>
         </entry>
@@ -398,7 +337,6 @@
         <option value="$PROJECT_DIR$/Traits/Entity/AccountActivationTrait.php" />
         <option value="$PROJECT_DIR$/Repository/AppUserRepository.php" />
         <option value="$PROJECT_DIR$/Security/AppUserProvider.php" />
-        <option value="$PROJECT_DIR$/Resources/views/documents/pdf-document.html.twig" />
         <option value="$PROJECT_DIR$/Traits/Entity/IdentificationNumberContainerTrait.php" />
         <option value="$PROJECT_DIR$/Traits/Entity/DescriptionTrait.php" />
         <option value="$PROJECT_DIR$/Traits/Entity/NoteTrait.php" />
@@ -430,17 +368,19 @@
         <option value="$PROJECT_DIR$/Utils/SourceCodeUtils.php" />
         <option value="$PROJECT_DIR$/Entity/AppUserFlagConnection.php" />
         <option value="$PROJECT_DIR$/Service/AppUserManager.php" />
-        <option value="$PROJECT_DIR$/Manager/AppUserManager.php" />
-        <option value="$PROJECT_DIR$/Manager/AppUserManager.php" />
         <option value="$PROJECT_DIR$/Controller/OswisController.php" />
         <option value="$PROJECT_DIR$/Controller/AppUserController.php" />
         <option value="$PROJECT_DIR$/EventSubscriber/AppUserSubscriber.php" />
         <option value="$PROJECT_DIR$/Resources/config/routes.yaml" />
-        <option value="$PROJECT_DIR$/Resources/config/services.yaml" />
-        <option value="$PROJECT_DIR$/Provider/OswisCoreSettingsProvider.php" />
-        <option value="$PROJECT_DIR$/DependencyInjection/ZakjakubOswisCoreExtension.php" />
-        <option value="$PROJECT_DIR$/Service/EmailSender.php" />
         <option value="$PROJECT_DIR$/DependencyInjection/Configuration.php" />
+        <option value="$PROJECT_DIR$/DependencyInjection/ZakjakubOswisCoreExtension.php" />
+        <option value="$PROJECT_DIR$/Provider/OswisCoreSettingsProvider.php" />
+        <option value="$PROJECT_DIR$/Service/EmailSender.php" />
+        <option value="$PROJECT_DIR$/Manager/AppUserManager.php" />
+        <option value="$PROJECT_DIR$/Manager/AppUserManager.php" />
+        <option value="$PROJECT_DIR$/Service/PdfGenerator.php" />
+        <option value="$PROJECT_DIR$/Resources/views/documents/pdf-document.html.twig" />
+        <option value="$PROJECT_DIR$/Resources/config/services.yaml" />
       </list>
     </option>
   </component>
@@ -583,6 +523,11 @@
             <path>
               <item name="oswis-core-bundle" type="b2602c69:ProjectViewProjectNode" />
               <item name="oswis-core-bundle" type="462c0819:PsiDirectoryNode" />
+              <item name="Manager" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oswis-core-bundle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oswis-core-bundle" type="462c0819:PsiDirectoryNode" />
               <item name="Resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -590,6 +535,24 @@
               <item name="oswis-core-bundle" type="462c0819:PsiDirectoryNode" />
               <item name="Resources" type="462c0819:PsiDirectoryNode" />
               <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oswis-core-bundle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oswis-core-bundle" type="462c0819:PsiDirectoryNode" />
+              <item name="Resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oswis-core-bundle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oswis-core-bundle" type="462c0819:PsiDirectoryNode" />
+              <item name="Resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="documents" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oswis-core-bundle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oswis-core-bundle" type="462c0819:PsiDirectoryNode" />
+              <item name="Service" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -601,7 +564,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="editor.config.ad.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Resources/public" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Service" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -611,8 +574,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/Resources/public/" />
       <recent name="$PROJECT_DIR$/Service" />
+      <recent name="$PROJECT_DIR$/Resources/public/" />
       <recent name="$PROJECT_DIR$/Form" />
       <recent name="$PROJECT_DIR$/Utils" />
       <recent name="$PROJECT_DIR$/EventSubscriber" />
@@ -731,21 +694,8 @@
       <workItem from="1557153074407" duration="598000" />
       <workItem from="1557240505369" duration="16349000" />
       <workItem from="1557305665671" duration="20000" />
-      <workItem from="1557305747980" duration="8236000" />
-    </task>
-    <task id="LOCAL-00133" summary="Some changes.">
-      <created>1551653628154</created>
-      <option name="number" value="00133" />
-      <option name="presentableId" value="LOCAL-00133" />
-      <option name="project" value="LOCAL" />
-      <updated>1551653628154</updated>
-    </task>
-    <task id="LOCAL-00134" summary="Some changes.">
-      <created>1551653758319</created>
-      <option name="number" value="00134" />
-      <option name="presentableId" value="LOCAL-00134" />
-      <option name="project" value="LOCAL" />
-      <updated>1551653758319</updated>
+      <workItem from="1557305747980" duration="14081000" />
+      <workItem from="1557346898624" duration="1408000" />
     </task>
     <task id="LOCAL-00135" summary="Some changes.">
       <created>1551706777307</created>
@@ -1076,17 +1026,31 @@
       <option name="project" value="LOCAL" />
       <updated>1557317972560</updated>
     </task>
-    <option name="localTasksCounter" value="182" />
+    <task id="LOCAL-00182" summary="Some changes.">
+      <created>1557318030141</created>
+      <option name="number" value="00182" />
+      <option name="presentableId" value="LOCAL-00182" />
+      <option name="project" value="LOCAL" />
+      <updated>1557318030141</updated>
+    </task>
+    <task id="LOCAL-00183" summary="Some changes.">
+      <created>1557318262591</created>
+      <option name="number" value="00183" />
+      <option name="presentableId" value="LOCAL-00183" />
+      <option name="project" value="LOCAL" />
+      <updated>1557318262591</updated>
+    </task>
+    <option name="localTasksCounter" value="184" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="347321000" />
+    <option name="totallyTimeSpent" value="354574000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="0" width="1922" height="1080" extended-state="6" />
+    <frame x="-1" y="0" width="1368" height="741" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17891374" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25377643" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -1097,7 +1061,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="8" sideWeight="0.49268293" visible="true" weight="0.113247864" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49268293" visible="true" weight="0.17755444" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Statistic" order="10" weight="0.32998326" />
       <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49626866" weight="0.18055555" />
@@ -1848,13 +1812,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Controller/DummyHomepageController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Resources/views/web/parts/header.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="23">
@@ -2063,13 +2020,6 @@
           <folding>
             <element signature="e#53#93#0#PHP" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Resources/views/documents/pdf-document.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>
@@ -2398,41 +2348,10 @@
     <entry file="file://$PROJECT_DIR$/Resources/public/favicons/android-chrome-384x384.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Controller/AppUserController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="30" column="32" selection-start-line="30" selection-start-column="32" selection-end-line="30" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Controller/OswisController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="14" column="45" lean-forward="true" selection-start-line="14" selection-start-column="45" selection-end-line="14" selection-end-column="45" />
-          <folding>
-            <element signature="e#56#121#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/symfony/config/Definition/Builder/NodeBuilder.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2037">
           <caret line="24" column="5" lean-forward="true" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Provider/OswisCoreSettingsProvider.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DependencyInjection/ZakjakubOswisCoreExtension.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="31" column="72" lean-forward="true" selection-start-line="31" selection-start-column="72" selection-end-line="31" selection-end-column="72" />
         </state>
       </provider>
     </entry>
@@ -2443,37 +2362,95 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Manager/AppUserManager.php">
+    <entry file="file://$PROJECT_DIR$/DependencyInjection/Configuration.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="729">
-          <caret line="51" column="7" selection-start-line="51" selection-start-column="7" selection-end-line="51" selection-end-column="7" />
+        <state relative-caret-position="126">
+          <caret line="83" column="19" lean-forward="true" selection-start-line="83" selection-start-column="19" selection-end-line="83" selection-end-column="19" />
+          <folding>
+            <element signature="e#64#85#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controller/AppUserController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="441">
+          <caret line="30" column="32" selection-start-line="30" selection-start-column="32" selection-end-line="30" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DependencyInjection/ZakjakubOswisCoreExtension.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="372">
+          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Provider/OswisCoreSettingsProvider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="24" column="21" lean-forward="true" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Service/EmailSender.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="84" selection-start-line="84" selection-end-line="84" />
+        <state relative-caret-position="372">
+          <caret line="83" column="13" lean-forward="true" selection-start-line="83" selection-start-column="13" selection-end-line="83" selection-end-column="13" />
           <folding>
             <element signature="e#52#92#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Resources/config/services.yaml">
+    <entry file="file://$PROJECT_DIR$/Manager/AppUserManager.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-735">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        <state relative-caret-position="1422">
+          <caret line="245" lean-forward="true" selection-start-line="245" selection-end-line="245" />
+          <folding>
+            <element signature="e#52#92#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DependencyInjection/Configuration.php">
+    <entry file="file://$PROJECT_DIR$/Resources/views/documents/pdf-document.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="708">
-          <caret line="61" selection-start-line="61" selection-end-line="61" />
+        <state relative-caret-position="84">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Service/PdfGenerator.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="246">
+          <caret line="81" selection-start-line="81" selection-end-line="81" />
           <folding>
-            <element signature="e#64#85#0#PHP" expanded="true" />
+            <element signature="e#52#66#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controller/DummyHomepageController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controller/OswisController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+          <folding>
+            <element signature="e#56#121#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/config/services.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="82" selection-start-line="82" selection-end-line="82" />
         </state>
       </provider>
     </entry>

@@ -42,16 +42,6 @@ services:
         public: true
 
 
-    zakjakub_oswis_core.email_sender:
-        class: Zakjakub\OswisCoreBundle\Service\EmailSender
-        autowire: true
-        public: true
-
-    Zakjakub\OswisCoreBundle\Service\EmailSender:
-        alias: zakjakub_oswis_core.email_sender
-        public: true
-
-
     zakjakub_oswis_core.oswis_core_settings_provider:
         class: Zakjakub\OswisCoreBundle\Provider\OswisCoreSettingsProvider
         autowire: true
@@ -83,6 +73,21 @@ services:
 
     Zakjakub\OswisCoreBundle\Controller\AppUserController:
         alias: zakjakub_oswis_core.app_user_controller
+        public: true
+
+
+    zakjakub_oswis_core.email_sender:
+        class: Zakjakub\OswisCoreBundle\Service\EmailSender
+        autowire: true
+        public: true
+        arguments:
+            - '@swiftmailer.mailer.abstract'
+            - '@monolog.logger'
+            - '@twig'
+            - '@zakjakub_oswis_core.oswis_core_settings_provider'
+
+    Zakjakub\OswisCoreBundle\Service\EmailSender:
+        alias: zakjakub_oswis_core.email_sender
         public: true
 
 
