@@ -10,6 +10,7 @@ use Swift_Image;
 use Swift_Mailer;
 use Swift_Message;
 use Twig\Environment;
+use Zakjakub\OswisCoreBundle\Provider\OswisCoreSettingsProvider;
 use Zakjakub\OswisCoreBundle\Utils\EmailUtils;
 
 /**
@@ -39,20 +40,28 @@ class EmailSender
     protected $templating;
 
     /**
+     * @var OswisCoreSettingsProvider
+     */
+    protected $oswisCoreSettings;
+
+    /**
      * E-mail sender constructor.
      *
-     * @param Swift_Mailer    $mailer
-     * @param LoggerInterface $logger
-     * @param Environment     $templating
+     * @param Swift_Mailer              $mailer
+     * @param LoggerInterface           $logger
+     * @param Environment               $templating
+     * @param OswisCoreSettingsProvider $oswisCoreSettings
      */
     public function __construct(
         Swift_Mailer $mailer,
         LoggerInterface $logger,
-        Environment $templating
+        Environment $templating,
+        OswisCoreSettingsProvider $oswisCoreSettings
     ) {
         $this->mailer = $mailer;
         $this->logger = $logger;
         $this->templating = $templating;
+        $this->oswisCoreSettings = $oswisCoreSettings;
     }
 
     /**
@@ -99,7 +108,7 @@ class EmailSender
         Swift_Message $message,
         string $templateName = '@ZakjakubOswisCore/e-mail/message',
         array $data = [],
-        string $logoPath = '../assets/assets/images/logo.png'
+        string $logoPath = '@ZakjakubOswisCore/Resources/public/logo.png'
     ): void {
         try {
             /// TODO: Check template!!!
