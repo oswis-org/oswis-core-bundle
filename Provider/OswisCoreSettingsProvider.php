@@ -37,25 +37,31 @@ class OswisCoreSettingsProvider
     /**
      * @var string
      */
-    protected $emailSenderName = 'One Simple Web IS';
+    protected $emailSenderName;
 
     /**
      * @var string
      */
-    protected $emailSenderAddress = 'oswis@oswis.org';
+    protected $emailSenderAddress;
 
     /**
      * OswisCoreSettingsProvider constructor.
      *
-     * @param int|null  $dummyParameterInteger
-     * @param bool|null $dummyParameterBoolean
+     * @param int|null    $dummyParameterInteger
+     * @param bool|null   $dummyParameterBoolean
+     * @param string|null $emailSenderAddress
+     * @param string|null $emailSenderName
      */
     public function __construct(
         ?int $dummyParameterInteger,
-        ?bool $dummyParameterBoolean
+        ?bool $dummyParameterBoolean,
+        ?string $emailSenderAddress,
+        ?string $emailSenderName
     ) {
         $this->dummyParameterInteger = $dummyParameterInteger;
         $this->dummyParameterBoolean = $dummyParameterBoolean;
+        $this->emailSenderAddress = $emailSenderAddress;
+        $this->emailSenderName = $emailSenderName;
     }
 
     /**

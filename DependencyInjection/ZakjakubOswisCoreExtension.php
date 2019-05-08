@@ -29,6 +29,8 @@ class ZakjakubOswisCoreExtension extends Extension implements PrependExtensionIn
         $definition = $container->getDefinition('zakjakub_oswis_core.oswis_core_settings_provider');
         $definition->setArgument(0, $config['dummy_parameter_integer']);
         $definition->setArgument(1, $config['dummy_parameter_boolean']);
+        $definition->setArgument(2, $config['email_sender']['address']);
+        $definition->setArgument(3, $config['email_sender']['name']);
     }
 
     final public function prepend(ContainerBuilder $container): void
