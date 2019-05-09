@@ -81,7 +81,7 @@ services:
         autowire: true
         public: true
         arguments:
-            - '@swiftmailer.mailer.abstract'
+            - '@swiftmailer.mailer.default'
             - '@monolog.logger'
             - '@twig'
             - '@zakjakub_oswis_core.oswis_core_settings_provider'
