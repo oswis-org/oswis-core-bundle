@@ -21,8 +21,7 @@ class OswisController extends AbstractController
     {
         return $this->json(
             [
-                'dummyParameterInteger' => $this->oswisCoreSettingsProvider->dummyParameterInteger,
-                'dummyParameterBoolean' => $this->oswisCoreSettingsProvider->dummyParameterBoolean,
+                'appName' => $this->oswisCoreSettingsProvider->getApp()['name'],
             ]
         );
     }
