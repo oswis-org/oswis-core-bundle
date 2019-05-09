@@ -25,20 +25,28 @@ class OswisCoreSettingsProvider
     protected $email;
 
     /**
+     * @var array
+     */
+    protected $web;
+
+    /**
      * OswisCoreSettingsProvider constructor.
      *
      * @param array|null $app
      * @param array|null $admin
      * @param array|null $email
+     * @param array|null $web
      */
     public function __construct(
         ?array $app,
         ?array $admin,
-        ?array $email
+        ?array $email,
+        ?array $web
     ) {
         $this->app = $app;
         $this->admin = $admin;
         $this->email = $email;
+        $this->web = $web;
     }
 
     /**

@@ -27,6 +27,7 @@ class ZakjakubOswisCoreExtension extends Extension implements PrependExtensionIn
         $loader->load('services.yaml');
         $configuration = $this->getConfiguration($configs, $container);
         $config = $this->processConfiguration($configuration, $configs);
+        $config['twig']['globals']['oswis_core_settings'] = '@zakjakub_oswis_core.oswis_core_settings_provider';
         $this->oswisCoreSettingsProvider($container, $config);
     }
 
@@ -37,21 +38,19 @@ class ZakjakubOswisCoreExtension extends Extension implements PrependExtensionIn
      *
      * @throws ServiceNotFoundException
      */
-    private function oswisCoreSettingsProvider(ContainerBuilder $container, array $config): void {
+    private function oswisCoreSettingsProvider(ContainerBuilder $container, array $config): void
+    {
         $definition = $container->getDefinition('zakjakub_oswis_core.oswis_core_settings_provider');
         $definition->setArgument(0, $config['app']);
         $definition->setArgument(1, $config['admin']);
         $definition->setArgument(2, $config['email']);
+        $definition->setArgument(3, $config['web']);
     }
-
-
 
     final public function prepend(ContainerBuilder $container): void
     {
 
-
     }
-
 
 
 }

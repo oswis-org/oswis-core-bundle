@@ -3,25 +3,29 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>{% block html_title %}OSWIS{% endblock %}</title>
+    <title>{% block html_title %}{{ oswis_core_settings.app.name }}{% endblock %}</title>
     {% block tag_manager_script %}{% endblock %}
-    <meta name="description" content="{% block html_description %}One Simple Web IS{% endblock %}">
+    <meta name="description" content="{% block html_description %}{{ oswis_core_settings.app.name }}{% endblock %}">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     {% block meta_tags %}
-        <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('bundles/zakjakuboswiscore/favicons/apple-touch-icon.png') }}">
-        <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('bundles/zakjakuboswiscore/favicons/favicons-32x32.png') }}">
-        <link rel="icon" type="image/png" sizes="194x194" href="{{ asset('bundles/zakjakuboswiscore/favicons/favicons-194x194.png') }}">
-        <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('bundles/zakjakuboswiscore/favicons/android-chrome-192x192.png') }}">
-        <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('bundles/zakjakuboswiscore/favicons/favicons-16x16.png') }}">
-        <link rel="manifest" href="{{ asset('bundles/zakjakuboswiscore/favicons/site.webmanifest') }}">
-        <link rel="mask-icon" href="{{ asset('bundles/zakjakuboswiscore/favicons/safari-pinned-tab.svg') }}" color="#3498d0">
-        <link rel="shortcut icon" href="{{ asset('bundles/zakjakuboswiscore/favicons/favicons.ico') }}">
-        <meta name="msapplication-config" content="{{ asset('bundles/zakjakuboswiscore/favicons/browserconfig.xml') }}">
-        <meta name="apple-mobile-web-app-title" content="OSWIS"> <!-- TODO: VAR -->
-        <meta name="application-name" content="OSWIS"> <!-- TODO: VAR -->
-        <meta name="msapplication-TileColor" content="#3498d0">
-        <meta name="msapplication-TileImage" content="{{ asset('bundles/zakjakuboswiscore/favicons/mstile-144x144.png') }}">
-        <meta name="theme-color" content="#3498d0">
+        {% block meta_tags_app %}
+            <meta name="apple-mobile-web-app-title" content="{{ oswis_core_settings.app.name }}">
+            <meta name="application-name" content="{{ oswis_core_settings.app.name }}">
+        {% endblock %}
+        {% block meta_tags_icons %}
+            <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('bundles/zakjakuboswiscore/favicons/apple-touch-icon.png') }}">
+            <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('bundles/zakjakuboswiscore/favicons/favicons-32x32.png') }}">
+            <link rel="icon" type="image/png" sizes="194x194" href="{{ asset('bundles/zakjakuboswiscore/favicons/favicons-194x194.png') }}">
+            <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('bundles/zakjakuboswiscore/favicons/android-chrome-192x192.png') }}">
+            <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('bundles/zakjakuboswiscore/favicons/favicons-16x16.png') }}">
+            <link rel="manifest" href="{{ asset('bundles/zakjakuboswiscore/favicons/site.webmanifest') }}">
+            <link rel="mask-icon" href="{{ asset('bundles/zakjakuboswiscore/favicons/safari-pinned-tab.svg') }}" color="#3498d0">
+            <link rel="shortcut icon" href="{{ asset('bundles/zakjakuboswiscore/favicons/favicons.ico') }}">
+            <meta name="msapplication-config" content="{{ asset('bundles/zakjakuboswiscore/favicons/browserconfig.xml') }}">
+            <meta name="msapplication-TileColor" content="#3498d0">
+            <meta name="msapplication-TileImage" content="{{ asset('bundles/zakjakuboswiscore/favicons/mstile-144x144.png') }}">
+            <meta name="theme-color" content="#3498d0">
+        {% endblock %}
     {% endblock %}
     {% block stylesheets %}
         {{ encore_entry_link_tags('app') }}
