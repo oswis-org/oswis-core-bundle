@@ -150,8 +150,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/composer.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="36" selection-start-line="36" selection-end-line="36" />
+            <state relative-caret-position="177">
+              <caret line="48" selection-start-line="48" selection-end-line="48" />
             </state>
           </provider>
         </entry>
@@ -680,14 +680,7 @@
       <workItem from="1557240505369" duration="16349000" />
       <workItem from="1557305665671" duration="20000" />
       <workItem from="1557305747980" duration="14081000" />
-      <workItem from="1557346898624" duration="7710000" />
-    </task>
-    <task id="LOCAL-00138" summary="Some changes.">
-      <created>1551780141190</created>
-      <option name="number" value="00138" />
-      <option name="presentableId" value="LOCAL-00138" />
-      <option name="project" value="LOCAL" />
-      <updated>1551780141190</updated>
+      <workItem from="1557346898624" duration="8475000" />
     </task>
     <task id="LOCAL-00139" summary="Some changes.">
       <created>1551781850541</created>
@@ -1025,11 +1018,18 @@
       <option name="project" value="LOCAL" />
       <updated>1557396295204</updated>
     </task>
-    <option name="localTasksCounter" value="187" />
+    <task id="LOCAL-00187" summary="Some changes.">
+      <created>1557400213516</created>
+      <option name="number" value="00187" />
+      <option name="presentableId" value="LOCAL-00187" />
+      <option name="project" value="LOCAL" />
+      <updated>1557400213516</updated>
+    </task>
+    <option name="localTasksCounter" value="188" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="360876000" />
+    <option name="totallyTimeSpent" value="361641000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="0" width="1368" height="741" extended-state="6" />
@@ -1046,11 +1046,11 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49268293" weight="0.27805695" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="8" sideWeight="0.4918919" visible="true" weight="0.27805695" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Statistic" order="10" weight="0.32998326" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49626866" visible="true" weight="0.26633167" />
-      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.50731707" side_tool="true" weight="0.13461539" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49626866" weight="0.5443886" />
+      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.5081081" side_tool="true" weight="0.27805695" />
       <window_info anchor="bottom" id="Inspection Results" order="13" weight="0.40536013" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -2443,8 +2443,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/composer.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="36" selection-start-line="36" selection-end-line="36" />
+        <state relative-caret-position="177">
+          <caret line="48" selection-start-line="48" selection-end-line="48" />
         </state>
       </provider>
     </entry>
