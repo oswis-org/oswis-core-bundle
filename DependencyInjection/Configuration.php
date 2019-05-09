@@ -20,14 +20,6 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->info('Default configuration for core module of OSWIS (One Simple Web IS).')
             ->children()
-            ->booleanNode('dummy_parameter_boolean')
-            ->defaultFalse()
-            ->info('Dummy parameter for testing (boolean).')
-            ->end()
-            ->integerNode('dummy_parameter_integer')
-            ->defaultValue(3)
-            ->info('Dummy parameter for testing (integer).')
-            ->end()
             /// App general.
             ->arrayNode('app')
             ->info('General settings.')
