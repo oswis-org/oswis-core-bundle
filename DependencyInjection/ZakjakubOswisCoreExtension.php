@@ -53,7 +53,7 @@ class ZakjakubOswisCoreExtension extends Extension implements PrependExtensionIn
     {
         $twigGlobals = [
             'globals' => [
-                'oswis_core_settings' => '@Zakjakub\OswisCoreBundle\Service\OswisCoreSettingsProvider',
+                'oswis_core_settings' => '@zakjakub_oswis_core.oswis_core_settings_provider',
             ],
         ];
         $container->prependExtensionConfig('twig', $twigGlobals);
