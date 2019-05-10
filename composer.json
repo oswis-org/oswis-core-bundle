@@ -1,7 +1,7 @@
 {
   "name": "zakjakub/oswis-core-bundle",
   "description": "Core module for One Simple Web IS.",
-  "homepage": "https://github.com/zakjakub/oswis-resources-bundle",
+  "homepage": "https://oswis.org",
   "type": "symfony-bundle",
   "minimum-stability": "beta",
   "keywords": [
