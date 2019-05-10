@@ -27,7 +27,6 @@ class ZakjakubOswisCoreExtension extends Extension implements PrependExtensionIn
         $loader->load('services.yaml');
         $configuration = $this->getConfiguration($configs, $container);
         $config = $this->processConfiguration($configuration, $configs);
-        $config['twig']['globals']['oswis_core_settings'] = '@Zakjakub\OswisCoreBundle\Service\OswisCoreSettingsProvider';
         $this->oswisCoreSettingsProvider($container, $config);
     }
 
@@ -47,10 +46,17 @@ class ZakjakubOswisCoreExtension extends Extension implements PrependExtensionIn
         $definition->setArgument(3, $config['web']);
     }
 
+    /**
+     * @param ContainerBuilder $container
+     */
     final public function prepend(ContainerBuilder $container): void
     {
-
+        $twigGlobals = [
+            'globals' => [
+                'oswis_core_settings' => '@Zakjakub\OswisCoreBundle\Service\OswisCoreSettingsProvider',
+            ],
+        ];
+        $container->prependExtensionConfig('twig', $twigGlobals);
     }
-
 
 }
