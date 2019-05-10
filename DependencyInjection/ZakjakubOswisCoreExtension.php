@@ -51,6 +51,10 @@ class ZakjakubOswisCoreExtension extends Extension implements PrependExtensionIn
      */
     final public function prepend(ContainerBuilder $container): void
     {
+        $this->prependTwig($container);
+    }
+
+    private function prependTwig(ContainerBuilder $container): void {
         $twigGlobals = [
             'globals' => [
                 'oswis_core_settings' => '@zakjakub_oswis_core.oswis_core_settings_provider',
