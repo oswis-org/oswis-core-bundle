@@ -13,17 +13,17 @@
             <meta name="application-name" content="{{ oswis_core_settings.app.name }}">
         {% endblock %}
         {% block meta_tags_icons %}
-            <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('bundles/zakjakuboswiscore/favicons/apple-touch-icon.png') }}">
-            <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('bundles/zakjakuboswiscore/favicons/favicons-32x32.png') }}">
-            <link rel="icon" type="image/png" sizes="194x194" href="{{ asset('bundles/zakjakuboswiscore/favicons/favicons-194x194.png') }}">
-            <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('bundles/zakjakuboswiscore/favicons/android-chrome-192x192.png') }}">
-            <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('bundles/zakjakuboswiscore/favicons/favicons-16x16.png') }}">
-            <link rel="manifest" href="{{ asset('bundles/zakjakuboswiscore/favicons/site.webmanifest') }}">
-            <link rel="mask-icon" href="{{ asset('bundles/zakjakuboswiscore/favicons/safari-pinned-tab.svg') }}" color="#3498d0">
-            <link rel="shortcut icon" href="{{ asset('bundles/zakjakuboswiscore/favicons/favicons.ico') }}">
-            <meta name="msapplication-config" content="{{ asset('bundles/zakjakuboswiscore/favicons/browserconfig.xml') }}">
+            <link rel="apple-touch-icon" sizes="180x180" href="{{ preload(asset('bundles/zakjakuboswiscore/favicons/apple-touch-icon.png')) }}">
+            <link rel="icon" type="image/png" sizes="32x32" href="{{ preload(asset('bundles/zakjakuboswiscore/favicons/favicons-32x32.png')) }}">
+            <link rel="icon" type="image/png" sizes="194x194" href="{{ preload(asset('bundles/zakjakuboswiscore/favicons/favicons-194x194.png')) }}">
+            <link rel="icon" type="image/png" sizes="192x192" href="{{ preload(asset('bundles/zakjakuboswiscore/favicons/android-chrome-192x192.png')) }}">
+            <link rel="icon" type="image/png" sizes="16x16" href="{{ preload(asset('bundles/zakjakuboswiscore/favicons/favicons-16x16.png')) }}">
+            <link rel="manifest" href="{{ preload(asset('bundles/zakjakuboswiscore/favicons/site.webmanifest')) }}">
+            <link rel="mask-icon" href="{{ preload(asset('bundles/zakjakuboswiscore/favicons/safari-pinned-tab.svg')) }}" color="#3498d0">
+            <link rel="shortcut icon" href="{{ preload(asset('bundles/zakjakuboswiscore/favicons/favicons.ico')) }}">
+            <meta name="msapplication-config" content="{{ preload(asset('bundles/zakjakuboswiscore/favicons/browserconfig.xml')) }}">
             <meta name="msapplication-TileColor" content="#3498d0">
-            <meta name="msapplication-TileImage" content="{{ asset('bundles/zakjakuboswiscore/favicons/mstile-144x144.png') }}">
+            <meta name="msapplication-TileImage" content="{{ preload(asset('bundles/zakjakuboswiscore/favicons/mstile-144x144.png')) }}">
             <meta name="theme-color" content="#3498d0">
         {% endblock %}
     {% endblock %}
