@@ -15,6 +15,14 @@ trait EntityPublicTrait
      */
     protected $publicOnWeb;
 
+
+    /**
+     * Entity is visible on automatically generated route (only of it's visible on website).
+     * @var bool
+     * @Doctrine\ORM\Mapping\Column(type="boolean", nullable=true)
+     */
+    protected $publicOnWebRoute;
+
     /**
      * Entity is visible in IS.
      * @var bool
@@ -43,6 +51,22 @@ trait EntityPublicTrait
     final public function setPublicOnWeb(bool $publicOnWeb): void
     {
         $this->publicOnWeb = $publicOnWeb;
+    }
+
+    /**
+     * @return bool
+     */
+    final public function isPublicOnWebRoute(): bool
+    {
+        return $this->publicOnWebRoute ?? false;
+    }
+
+    /**
+     * @param bool $publicOnWebRoute
+     */
+    final public function setPublicOnWebRoute(bool $publicOnWebRoute): void
+    {
+        $this->publicOnWebRoute = $publicOnWebRoute;
     }
 
     /**
