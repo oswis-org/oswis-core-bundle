@@ -10,6 +10,7 @@ trait NameableBasicTrait
     use DescriptionTrait;
     use NoteTrait;
     use SlugTrait;
+    use InternalNoteTrait;
 
     final public function setFieldsFromNameable(?Nameable $nameable = null): void
     {
