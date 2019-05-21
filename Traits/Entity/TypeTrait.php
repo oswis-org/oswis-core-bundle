@@ -36,7 +36,7 @@ trait TypeTrait
     /**
      * Type of this event.
      * @var string|null $type
-     * @ORM\Column(type="string", nullable=true)
+     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
     private $type;
 

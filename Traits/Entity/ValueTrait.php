@@ -7,13 +7,13 @@ trait ValueTrait
 
     /**
      * @var bool
-     * @ORM\Column(type="boolean", nullable=true)
+     * @Doctrine\ORM\Mapping\Column(type="boolean", nullable=true)
      */
     protected $valueAllowed;
 
     /**
      * @var string
-     * @ORM\Column(type="text", nullable=true)
+     * @Doctrine\ORM\Mapping\Column(type="text", nullable=true)
      */
     protected $valueRegex;
 
@@ -35,7 +35,7 @@ trait ValueTrait
 
     /**
      * @var string
-     * @ORM\Column(type="string", nullable=true)
+     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
     protected $valueLabel;
 
