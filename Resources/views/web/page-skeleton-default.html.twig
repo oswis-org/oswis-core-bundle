@@ -1,6 +1,9 @@
 {% extends '@ZakjakubOswisCore/web/html-skeleton-default.html.twig' %}
 
 {% block body %}
+    {% block header %}
+        {% include '@ZakjakubOswisCore/web/parts/header.html.twig' %}
+    {% endblock %}
     {% block content %}
         <div class="container">
             <div class="col-12">

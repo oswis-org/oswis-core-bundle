@@ -35,15 +35,8 @@
 </head>
 <body>
 {% block tag_manager_noscript %}{% endblock %}
-{% block old_browser_notice %}
-    <!--[if IE]>
-    <p class="browserupgrade">
-        You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and
-        security.<br>
-        Používáte <strong>příliš zastaralý</strong> prohlížeč. <a href="https://browsehappy.com/">Aktualizujte jej</a>, prosím.<br>
-    </p>
-    <![endif]-->
-{% endblock %}
+
+{% block body_start %}{% endblock %}
 
 {% block body %}
     <div class="container">
@@ -55,10 +48,8 @@
     </div>
 {% endblock %}
 
-{% block body_end %}
-{% endblock %}
+{% block body_end %}{% endblock %}
 
-<!-- <script src="https://www.openlayers.org/api/OpenLayers.js"></script> -->
 {% block javascripts %}
     {{ encore_entry_script_tags('app') }}
 {% endblock %}
