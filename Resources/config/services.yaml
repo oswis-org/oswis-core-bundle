@@ -133,10 +133,6 @@ services:
 
 
 
-
-
-
-
     zakjakub_oswis_core.oswis_controller:
         class: Zakjakub\OswisCoreBundle\Controller\OswisController
         autowire: true

@@ -31,4 +31,16 @@ trait FullNameContainerTrait
     {
         return $this->getRevisionByDate($dateTime)->getNickname();
     }
+
+    final public function getGivenName(?DateTime $dateTime = null): ?string
+    {
+        return $this->getRevisionByDate($dateTime)->getGivenName();
+    }
+
+    final public function getFamilyName(?DateTime $dateTime = null): ?string
+    {
+        return $this->getRevisionByDate($dateTime)->getFamilyName();
+    }
+
+
 }

@@ -39,6 +39,6 @@ trait PhoneTrait
      */
     final public function setPhone(?string $phone): void
     {
-        $this->phone = $phone;
+        $this->phone = preg_replace('/\s+/', '', $phone);
     }
 }
