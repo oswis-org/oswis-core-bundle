@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0f079e7753ca3ccd4b6cef9cc64e31ff",
+    "content-hash": "5ba453a0eaa1f1d5515691b7ebd452fb",
     "packages": [
         {
             "name": "adci/full-name-parser",
@@ -235,6 +235,45 @@
                 "transliterator"
             ],
             "time": "2017-04-04T11:38:05+00:00"
+        },
+        {
+            "name": "bigit/vokativ",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "git@gitlab.com:bigit/vokativ.git",
+                "reference": "acba8b099ac3f40ea380b9921d6c11f2843df6a8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://gitlab.com/api/v3/projects/bigit%2Fvokativ/repository/archive.zip?sha=acba8b099ac3f40ea380b9921d6c11f2843df6a8",
+                "reference": "acba8b099ac3f40ea380b9921d6c11f2843df6a8",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.5 || ^7.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Vokativ\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Petr Joachim",
+                    "email": "petr@joachim.cz"
+                }
+            ],
+            "description": "Knihovna pro skloňování českých jmen do 5. pádu pro účely generování oslovení.",
+            "time": "2016-07-11T14:04:26+00:00"
         },
         {
             "name": "doctrine/annotations",
@@ -6873,6 +6912,7 @@
     "minimum-stability": "beta",
     "stability-flags": {
         "symfony/web-link": 10,
+        "bigit/vokativ": 20,
         "roave/security-advisories": 20
     },
     "prefer-stable": false,

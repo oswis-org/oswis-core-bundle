@@ -6,6 +6,7 @@ use ADCI\FullNameParser\Exception\NameParsingException;
 use ADCI\FullNameParser\Parser as FullNameParser;
 use function implode;
 use function trim;
+use Vokativ\Name as VokativName;
 
 /**
  * Trait adds name field and __toString()
@@ -187,4 +188,16 @@ trait FullNameTrait
     {
         $this->nickname = $nickname;
     }
+
+    final public function getSalutationName(): ?string {
+        if (!$this->getGivenName()) {
+            return null;
+        }
+        $vokativName = new VokativName();
+        $salutationName = $vokativName->vokativ($this->getGivenName(), null, false);
+        $salutationName = ucfirst($salutationName);
+        $a = $vokativName->isMale($contact->getGivenName()) ? '' : 'a';
+
+    }
+
 }
