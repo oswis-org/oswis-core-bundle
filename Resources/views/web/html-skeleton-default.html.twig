@@ -3,14 +3,14 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>{% block html_title %}{{ oswis_core_settings.app.name }}{% endblock %}</title>
+    <title>{% block html_title %}{{ oswis_core_settings.web.name }}{% endblock %}</title>
     {% block tag_manager_script %}{% endblock %}
-    <meta name="description" content="{% block html_description %}{{ oswis_core_settings.app.name }}{% endblock %}">
+    <meta name="description" content="{% block html_description %}{{ oswis_core_settings.web.description }}{% endblock %}">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     {% block meta_tags %}
         {% block meta_tags_app %}
-            <meta name="apple-mobile-web-app-title" content="{{ oswis_core_settings.app.name }}">
-            <meta name="application-name" content="{{ oswis_core_settings.app.name }}">
+            <meta name="apple-mobile-web-app-title" content="{{ oswis_core_settings.web.name }}">
+            <meta name="application-name" content="{{ oswis_core_settings.web.name }}">
         {% endblock %}
         {% block meta_tags_icons %}
             <link rel="apple-touch-icon" sizes="180x180" href="{{ preload(asset('bundles/zakjakuboswiscore/favicons/apple-touch-icon.png')) }}">
