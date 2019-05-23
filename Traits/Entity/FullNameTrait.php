@@ -4,7 +4,9 @@ namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
 use ADCI\FullNameParser\Exception\NameParsingException;
 use ADCI\FullNameParser\Parser as FullNameParser;
+use Exception;
 use function implode;
+use InvalidArgumentException;
 use function trim;
 use Vokativ\Name as VokativName;
 
@@ -189,15 +191,32 @@ trait FullNameTrait
         $this->nickname = $nickname;
     }
 
+    /**
+     * @return string|null
+     */
     final public function getSalutationName(): ?string {
         if (!$this->getGivenName()) {
             return null;
         }
-        $vokativName = new VokativName();
-        $salutationName = $vokativName->vokativ($this->getGivenName(), null, false);
-        $salutationName = ucfirst($salutationName);
-        $a = $vokativName->isMale($contact->getGivenName()) ? '' : 'a';
+        try {
+            $vokativName = new VokativName();
+            $salutationName = $vokativName->vokativ($this->getGivenName(), null, false);
+            return ucfirst($salutationName);
+        } catch (Exception $e) {
+            return $this->getGivenName();
+        }
+    }
 
+    /**
+     * @return string
+     */
+    final public function getCzechSuffixA(): string {
+        try {
+            $vokativName = new VokativName();
+            return $vokativName->isMale($this->getGivenName()) ? '' : 'a';
+        } catch (Exception $e) {
+            return '';
+        }
     }
 
 }
