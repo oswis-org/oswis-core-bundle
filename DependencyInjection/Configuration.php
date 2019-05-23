@@ -126,7 +126,7 @@ class Configuration implements ConfigurationInterface
             ->defaultValue('OSWIS')
             ->example('John\'s web')
             ->end()
-            ->scalarNode('name_long')
+            ->scalarNode('title_long')
             ->info('Long (full) title of application.')
             ->defaultValue('One Simple Web IS')
             ->example('John\'s personal website')
