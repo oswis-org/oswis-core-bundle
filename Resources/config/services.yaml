@@ -52,6 +52,91 @@ services:
         public: true
 
 
+    ### AGE UTILS
+    zakjakub_oswis_core.oswis_core_age_utils:
+        class: Zakjakub\OswisCoreBundle\Utils\AgeUtils
+        autowire: true
+        public: true
+    Zakjakub\OswisCoreBundle\Utils\AgeUtils:
+        alias: zakjakub_oswis_core.oswis_core_age_utils
+        public: true
+
+
+    ### COLOR UTILS
+    zakjakub_oswis_core.oswis_core_color_utils:
+        class: Zakjakub\OswisCoreBundle\Utils\ColorUtils
+        autowire: true
+        public: true
+    Zakjakub\OswisCoreBundle\Utils\ColorUtils:
+        alias: zakjakub_oswis_core.oswis_core_color_utils
+        public: true
+
+
+    ### DateTime UTILS
+    zakjakub_oswis_core.oswis_core_date_time_utils:
+        class: Zakjakub\OswisCoreBundle\Utils\DateTimeUtils
+        autowire: true
+        public: true
+    Zakjakub\OswisCoreBundle\Utils\DateTimeUtils:
+        alias: zakjakub_oswis_core.oswis_core_date_time_utils
+        public: true
+
+
+    ### Email UTILS
+    zakjakub_oswis_core.oswis_core_email_utils:
+        class: Zakjakub\OswisCoreBundle\Utils\EmailUtils
+        autowire: true
+        public: true
+    Zakjakub\OswisCoreBundle\Utils\EmailUtils:
+        alias: zakjakub_oswis_core.oswis_core_email_utils
+        public: true
+
+
+    ### File UTILS
+    zakjakub_oswis_core.oswis_core_file_utils:
+        class: Zakjakub\OswisCoreBundle\Utils\FileUtils
+        autowire: true
+        public: true
+    Zakjakub\OswisCoreBundle\Utils\FileUtils:
+        alias: zakjakub_oswis_core.oswis_core_file_utils
+        public: true
+
+
+    ### SourceCode UTILS
+    zakjakub_oswis_core.oswis_core_source_code_utils:
+        class: Zakjakub\OswisCoreBundle\Utils\SourceCodeUtils
+        autowire: true
+        public: true
+    Zakjakub\OswisCoreBundle\Utils\SourceCodeUtils:
+        alias: zakjakub_oswis_core.oswis_core_source_code_utils
+        public: true
+
+
+    ### AGE UTILS
+    zakjakub_oswis_core.oswis_core_spam_date_time_encoder:
+        class: Zakjakub\OswisCoreBundle\Utils\SpamDateTimeEncoder
+        autowire: true
+        public: true
+    Zakjakub\OswisCoreBundle\Utils\SpamDateTimeEncoder:
+        alias: zakjakub_oswis_core.oswis_core_spam_date_time_encoder
+        public: true
+
+
+    ### String UTILS
+    zakjakub_oswis_core.oswis_core_source_string_utils:
+        class: Zakjakub\OswisCoreBundle\Utils\StringUtils
+        autowire: true
+        public: true
+    Zakjakub\OswisCoreBundle\Utils\StringUtils:
+        alias: zakjakub_oswis_core.oswis_core_source_string_utils
+        public: true
+
+
+
+
+
+
+
     zakjakub_oswis_core.oswis_controller:
         class: Zakjakub\OswisCoreBundle\Controller\OswisController
         autowire: true

@@ -68,6 +68,14 @@ class OswisCoreSettingsProvider
     /**
      * @return array
      */
+    final public function getWeb(): array
+    {
+        return $this->web;
+    }
+
+    /**
+     * @return array
+     */
     final public function getEmail(): array
     {
         return $this->email;
