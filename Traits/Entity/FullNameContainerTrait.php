@@ -4,8 +4,6 @@
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
 use DateTime;
-use InvalidArgumentException;
-use Vokativ\Name as VokativName;
 
 trait FullNameContainerTrait
 {
@@ -44,11 +42,13 @@ trait FullNameContainerTrait
         return $this->getRevisionByDate($dateTime)->getFamilyName();
     }
 
-    final public function getSalutationName(?DateTime $dateTime = null): ?string {
+    final public function getSalutationName(?DateTime $dateTime = null): ?string
+    {
         return $this->getRevisionByDate($dateTime)->getSalutationName();
     }
 
-    final public function getCzechSuffixA(?DateTime $dateTime = null): string {
+    final public function getCzechSuffixA(?DateTime $dateTime = null): string
+    {
         return $this->getRevisionByDate($dateTime)->getCzechSuffixA();
     }
 

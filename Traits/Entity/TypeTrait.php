@@ -10,11 +10,33 @@ use InvalidArgumentException;
 trait TypeTrait
 {
 
-    abstract public static function getAllowedTypesDefault(): array;
-    abstract public static function getAllowedTypesCustom(): array;
+    /**
+     * Type of this event.
+     * @var string|null $type
+     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
+     */
+    private $type;
 
-    final public static function getAllowedTypes(): array {
-        return array_merge(self::getAllowedTypesDefault(), self::getAllowedTypesCustom());
+    /**
+     * @return string|null
+     * @throws InvalidArgumentException
+     */
+    final public function getType(): ?string
+    {
+        self::checkType($this->type);
+
+        return $this->type;
+    }
+
+    /**
+     * @param string|null $type
+     *
+     * @throws InvalidArgumentException
+     */
+    final public function setType(?string $type): void
+    {
+        self::checkType($type);
+        $this->type = $type;
     }
 
     /**
@@ -31,37 +53,14 @@ trait TypeTrait
         throw new InvalidArgumentException('Typ příznaku kontaktu "'.$typeName.'" v události není povolen.');
     }
 
-
-
-    /**
-     * Type of this event.
-     * @var string|null $type
-     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
-     */
-    private $type;
-
-    /**
-     * @return string|null
-     * @throws InvalidArgumentException
-     */
-    final public function getType(): ?string
+    final public static function getAllowedTypes(): array
     {
-        self::checkType($this->type);
-        return $this->type;
+        return array_merge(self::getAllowedTypesDefault(), self::getAllowedTypesCustom());
     }
 
-    /**
-     * @param string|null $type
-     *
-     * @throws InvalidArgumentException
-     */
-    final public function setType(?string $type): void
-    {
-        self::checkType($type);
-        $this->type = $type;
-    }
+    abstract public static function getAllowedTypesDefault(): array;
 
-
+    abstract public static function getAllowedTypesCustom(): array;
 
 
 }

@@ -4,11 +4,12 @@ namespace Zakjakub\OswisCoreBundle\Api\EventSubscriber;
 
 use ApiPlatform\Core\EventListener\EventPriorities;
 use Doctrine\ORM\EntityManagerInterface;
+use ErrorException;
 use Exception;
 use InvalidArgumentException;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpKernel\Event\GetResponseForControllerResultEvent;
+use Symfony\Component\HttpKernel\Event\ViewEvent;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
@@ -48,13 +49,13 @@ final class AppUserSubscriber implements EventSubscriberInterface
     }
 
     /**
-     * @param GetResponseForControllerResultEvent $event
+     * @param ViewEvent $event
      *
-     * @throws NotFoundHttpException
      * @throws InvalidArgumentException
-     * @throws Exception
+     * @throws NotFoundHttpException
+     * @throws ErrorException
      */
-    public function appUserAction(GetResponseForControllerResultEvent $event): void
+    public function appUserAction(ViewEvent $event): void
     {
         $out = null;
         $request = $event->getRequest();

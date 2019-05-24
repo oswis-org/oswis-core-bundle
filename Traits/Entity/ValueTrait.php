@@ -18,6 +18,12 @@ trait ValueTrait
     protected $valueRegex;
 
     /**
+     * @var string
+     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
+     */
+    protected $valueLabel;
+
+    /**
      * @return string
      */
     final public function getValueRegex(): string
@@ -32,13 +38,6 @@ trait ValueTrait
     {
         $this->valueRegex = $valueRegex;
     }
-
-    /**
-     * @var string
-     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
-     */
-    protected $valueLabel;
-
 
     /**
      * @return string

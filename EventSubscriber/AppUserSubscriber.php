@@ -9,7 +9,7 @@ use Psr\Log\LoggerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Exception\SuspiciousOperationException;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpKernel\Event\GetResponseForControllerResultEvent;
+use Symfony\Component\HttpKernel\Event\ViewEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Zakjakub\OswisCoreBundle\Entity\AppUser;
@@ -72,12 +72,12 @@ final class AppUserSubscriber implements EventSubscriberInterface
     }
 
     /**
-     * @param GetResponseForControllerResultEvent $event
+     * @param ViewEvent $event
      *
      * @throws ErrorException
      * @throws SuspiciousOperationException
      */
-    public function makeAppUser(GetResponseForControllerResultEvent $event): void
+    public function makeAppUser(ViewEvent $event): void
     {
         $appUser = $event->getControllerResult();
         $method = $event->getRequest()->getMethod();

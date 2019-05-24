@@ -9,16 +9,6 @@ trait ValueContainerTrait
 {
 
     /**
-     * @param DateTime|null $referenceDateTime
-     *
-     * @return string
-     */
-    final public function getValueRegex(?DateTime $referenceDateTime = null): string
-    {
-        return $this->getRevisionByDate($referenceDateTime)->getValueRegex();
-    }
-
-    /**
      * @param string $valueRegex
      */
     final public function setValueRegex(string $valueRegex): void
@@ -35,9 +25,9 @@ trait ValueContainerTrait
      *
      * @return string
      */
-    final public function getValueLabel(?DateTime $referenceDateTime = null): ?string
+    final public function getValueRegex(?DateTime $referenceDateTime = null): string
     {
-        return $this->getRevisionByDate($referenceDateTime)->getValueLabel();
+        return $this->getRevisionByDate($referenceDateTime)->getValueRegex();
     }
 
     /**
@@ -50,6 +40,16 @@ trait ValueContainerTrait
             $newRevision->setValueLabel($valueLabel);
             $this->addRevision($newRevision);
         }
+    }
+
+    /**
+     * @param DateTime|null $referenceDateTime
+     *
+     * @return string
+     */
+    final public function getValueLabel(?DateTime $referenceDateTime = null): ?string
+    {
+        return $this->getRevisionByDate($referenceDateTime)->getValueLabel();
     }
 
     /**
