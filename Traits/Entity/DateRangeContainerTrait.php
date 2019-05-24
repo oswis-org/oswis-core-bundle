@@ -35,23 +35,12 @@ trait DateRangeContainerTrait
 
     /**
      * @param DateTime|null $referenceDateTime
+     *
      * @return DateTime
      */
     final public function getStartDateTime(?DateTime $referenceDateTime = null): ?DateTime
     {
         return $this->getRevisionByDate($referenceDateTime)->getStartDateTime();
-    }
-
-    /**
-     * @param DateTime $startDateTime
-     */
-    final public function setStartDateTime(?DateTime $startDateTime): void
-    {
-        if ($this->getStartDateTime() != $startDateTime) {
-            $newRevision = clone $this->getRevisionByDate();
-            $newRevision->setStartDateTime($startDateTime);
-            $this->addRevision($newRevision);
-        }
     }
 
     /**
@@ -62,18 +51,6 @@ trait DateRangeContainerTrait
     final public function getEndDateTime(?DateTime $referenceDateTime = null): ?DateTime
     {
         return $this->getRevisionByDate($referenceDateTime)->getEndDateTime();
-    }
-
-    /**
-     * @param DateTime $endDateTime
-     */
-    final public function setEndDateTime(?DateTime $endDateTime): void
-    {
-        if ($this->getEndDateTime() != $endDateTime) {
-            $newRevision = clone $this->getRevisionByDate();
-            $newRevision->setEndDateTime($endDateTime);
-            $this->addRevision($newRevision);
-        }
     }
 
     /**
@@ -105,11 +82,35 @@ trait DateRangeContainerTrait
     }
 
     /**
+     * @param DateTime $startDateTime
+     */
+    final public function setStartDateTime(?DateTime $startDateTime): void
+    {
+        if ($this->getStartDateTime() != $startDateTime) {
+            $newRevision = clone $this->getRevisionByDate();
+            $newRevision->setStartDateTime($startDateTime);
+            $this->addRevision($newRevision);
+        }
+    }
+
+    /**
      * @param DateTime|null $dateTime
      */
     final public function setEndDate(?DateTime $dateTime): void
     {
         $this->setEndDateTime($dateTime);
+    }
+
+    /**
+     * @param DateTime $endDateTime
+     */
+    final public function setEndDateTime(?DateTime $endDateTime): void
+    {
+        if ($this->getEndDateTime() != $endDateTime) {
+            $newRevision = clone $this->getRevisionByDate();
+            $newRevision->setEndDateTime($endDateTime);
+            $this->addRevision($newRevision);
+        }
     }
 
 }

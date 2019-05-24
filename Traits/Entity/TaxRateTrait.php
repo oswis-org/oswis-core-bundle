@@ -23,7 +23,6 @@ trait TaxRateTrait
      * Get tax rate (in percents).
      *
      * Only positive or zero tax rates are allowed. Value -1 means that tax is not defined.
-
      * @return int
      */
     final public function getTaxRate(): ?int
