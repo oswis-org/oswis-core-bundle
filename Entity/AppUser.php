@@ -15,7 +15,7 @@ use Zakjakub\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
 /**
  * Class AppUser
  * @Doctrine\ORM\Mapping\Entity(repositoryClass="Zakjakub\OswisCoreBundle\Repository\AppUserRepository")
- * @Doctrine\ORM\Mapping\Table(name="app_user")
+ * @Doctrine\ORM\Mapping\Table(name="core_app_user")
  * @ApiResource(
  *   attributes={
  *     "filters"={"search"},

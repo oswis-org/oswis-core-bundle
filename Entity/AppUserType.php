@@ -15,7 +15,7 @@ use Zakjakub\OswisCoreBundle\Traits\Entity\NameableBasicTrait;
 /**
  * Class AppUserType (customer, manager, admin etc.)
  * @Doctrine\ORM\Mapping\Entity
- * @Doctrine\ORM\Mapping\Table(name="app_user_type")
+ * @Doctrine\ORM\Mapping\Table(name="core_app_user_type")
  * @ApiResource(
  *   attributes={
  *     "filters"={"search"},

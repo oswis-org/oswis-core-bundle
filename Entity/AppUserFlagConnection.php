@@ -10,7 +10,7 @@ use Zakjakub\OswisCoreBundle\Traits\Entity\BasicEntityTrait;
 
 /**
  * @Doctrine\ORM\Mapping\Entity()
- * @Doctrine\ORM\Mapping\Table(name="job_fair_flag_in_job_fair_user")
+ * @Doctrine\ORM\Mapping\Table(name="core_app_user_flag_connection")
  * @ApiResource()
  * @ApiFilter(OrderFilter::class)
  * @Searchable({

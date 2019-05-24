@@ -8,7 +8,7 @@ use Zakjakub\OswisCoreBundle\Traits\Entity\BasicEntityTrait;
 /**
  * Log record from client.
  * @Doctrine\ORM\Mapping\Entity()
- * @Doctrine\ORM\Mapping\Table(name="client_log_record")
+ * @Doctrine\ORM\Mapping\Table(name="core_client_log_record")
  * @ApiResource(
  *   attributes={
  *     "filters"={"search"},
