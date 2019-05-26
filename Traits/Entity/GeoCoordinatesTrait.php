@@ -46,34 +46,34 @@ trait GeoCoordinatesTrait
     }
 
     /**
-     * @return int
+     * @return float|null
      */
-    final public function getGeoLatitude(): ?int
+    final public function getGeoLatitude(): ?float
     {
         return $this->geoLatitude;
     }
 
     /**
-     * @param int $geoLatitude
+     * @param float|null $geoLatitude
      */
-    final public function setGeoLatitude(?int $geoLatitude): void
+    final public function setGeoLatitude(?float $geoLatitude): void
     {
         $this->geoLatitude = $geoLatitude;
     }
 
 
     /**
-     * @return int
+     * @return float|null
      */
-    final public function getGeoElevation(): ?int
+    final public function getGeoElevation(): ?float
     {
         return $this->geoElevation;
     }
 
     /**
-     * @param int $geoElevation
+     * @param float|null $geoElevation
      */
-    final public function setGeoElevation(?int $geoElevation): void
+    final public function setGeoElevation(?float $geoElevation): void
     {
         $this->geoElevation = $geoElevation;
     }
