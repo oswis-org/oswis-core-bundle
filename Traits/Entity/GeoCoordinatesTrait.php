@@ -7,16 +7,16 @@ trait GeoCoordinatesTrait
 
     /**
      * Geo latitude (WGS 84).
-     * @var int|null
-     * @Doctrine\ORM\Mapping\Column(type="integer", nullable=true)
+     * @var float|null
+     * @Doctrine\ORM\Mapping\Column(type="decimal", precision=10, scale=7, nullable=true)
      * @example 37.42242
      */
     protected $geoLatitude;
 
     /**
      * Geo longitude (WGS 84).
-     * @var int|null
-     * @Doctrine\ORM\Mapping\Column(type="integer", nullable=true)
+     * @var float|null
+     * @Doctrine\ORM\Mapping\Column(type="decimal", precision=10, scale=7, nullable=true)
      * @example -122.08585
      */
     protected $geoLongitude;

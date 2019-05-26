@@ -7,6 +7,7 @@
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/GeoCoordinatesTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/GeoCoordinatesTrait.php" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.github/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -108,8 +109,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Traits/Entity/GeoCoordinatesTrait.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
-              <caret line="13" column="7" lean-forward="true" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
+            <state relative-caret-position="42">
+              <caret line="7" column="7" lean-forward="true" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -340,8 +341,6 @@
         <option value="$PROJECT_DIR$/Resources/views/documents/pdf-document.html.twig" />
         <option value="$PROJECT_DIR$/Controller/OswisController.php" />
         <option value="$PROJECT_DIR$/DependencyInjection/ZakjakubOswisCoreExtension.php" />
-        <option value="$PROJECT_DIR$/composer.json" />
-        <option value="$PROJECT_DIR$/composer.json" />
         <option value="$PROJECT_DIR$/Traits/Entity/DateRangeTrait.php" />
         <option value="$PROJECT_DIR$/Traits/Entity/DateTimeContainerTrait.php" />
         <option value="$PROJECT_DIR$/Traits/Entity/DateRangeContainerTrait.php" />
@@ -378,6 +377,8 @@
         <option value="$PROJECT_DIR$/Entity/AppUserType.php" />
         <option value="$PROJECT_DIR$/Entity/ClientLogRecord.php" />
         <option value="$PROJECT_DIR$/Traits/Entity/NumericRangeTrait.php" />
+        <option value="$PROJECT_DIR$/composer.json" />
+        <option value="$PROJECT_DIR$/composer.json" />
         <option value="$PROJECT_DIR$/Traits/Entity/GeoCoordinatesTrait.php" />
       </list>
     </option>
@@ -675,21 +676,7 @@
       <workItem from="1558513232669" duration="2906000" />
       <workItem from="1558518949233" duration="2259000" />
       <workItem from="1558624479897" duration="5923000" />
-      <workItem from="1558702174214" duration="9670000" />
-    </task>
-    <task id="LOCAL-00175" summary="Some changes.">
-      <created>1557256401830</created>
-      <option name="number" value="00175" />
-      <option name="presentableId" value="LOCAL-00175" />
-      <option name="project" value="LOCAL" />
-      <updated>1557256401830</updated>
-    </task>
-    <task id="LOCAL-00176" summary="Some changes.">
-      <created>1557256674416</created>
-      <option name="number" value="00176" />
-      <option name="presentableId" value="LOCAL-00176" />
-      <option name="project" value="LOCAL" />
-      <updated>1557256674416</updated>
+      <workItem from="1558702174214" duration="11885000" />
     </task>
     <task id="LOCAL-00177" summary="Some changes.">
       <created>1557256857287</created>
@@ -1020,17 +1007,31 @@
       <option name="project" value="LOCAL" />
       <updated>1558859720918</updated>
     </task>
-    <option name="localTasksCounter" value="224" />
+    <task id="LOCAL-00224" summary="Some changes.">
+      <created>1558860901367</created>
+      <option name="number" value="00224" />
+      <option name="presentableId" value="LOCAL-00224" />
+      <option name="project" value="LOCAL" />
+      <updated>1558860901368</updated>
+    </task>
+    <task id="LOCAL-00225" summary="Some changes.">
+      <created>1558861025915</created>
+      <option name="number" value="00225" />
+      <option name="presentableId" value="LOCAL-00225" />
+      <option name="project" value="LOCAL" />
+      <updated>1558861025915</updated>
+    </task>
+    <option name="localTasksCounter" value="226" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="439750000" />
+    <option name="totallyTimeSpent" value="441965000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="0" width="1368" height="741" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15861027" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15861027" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -1041,7 +1042,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="8" sideWeight="0.49056605" visible="true" weight="0.239531" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49056605" visible="true" weight="0.239531" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Statistic" order="10" weight="0.32998326" />
       <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.4918919" weight="0.3048576" />
@@ -2250,13 +2251,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Resources/config/packages/stof_doctrine_extensions.yaml" />
     <entry file="file://$PROJECT_DIR$/Resources/config/packages/prod/monolog.yaml" />
-    <entry file="file://$PROJECT_DIR$/composer.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="47" column="35" lean-forward="true" selection-start-line="47" selection-start-column="35" selection-end-line="47" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Entity/AbstractClass/AbstractOrganization.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="147">
@@ -2624,10 +2618,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/composer.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="305">
+          <caret line="50" selection-start-line="50" selection-end-line="50" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Traits/Entity/GeoCoordinatesTrait.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="13" column="7" lean-forward="true" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
+        <state relative-caret-position="42">
+          <caret line="7" column="7" lean-forward="true" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
         </state>
       </provider>
     </entry>
