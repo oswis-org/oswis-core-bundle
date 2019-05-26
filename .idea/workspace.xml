@@ -6,8 +6,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Traits/Entity/NumericRangeTrait.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.github/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -109,8 +109,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Traits/Entity/NumericRangeTrait.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="548">
-              <caret line="56" selection-start-line="56" selection-end-line="56" />
+            <state relative-caret-position="328">
+              <caret line="52" selection-start-line="52" selection-end-line="52" />
             </state>
           </provider>
         </entry>
@@ -494,8 +494,8 @@
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-1" />
-    <option name="width" value="1922" />
-    <option name="height" value="1080" />
+    <option name="width" value="1368" />
+    <option name="height" value="768" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -674,14 +674,7 @@
       <workItem from="1558513232669" duration="2906000" />
       <workItem from="1558518949233" duration="2259000" />
       <workItem from="1558624479897" duration="5923000" />
-      <workItem from="1558702174214" duration="6545000" />
-    </task>
-    <task id="LOCAL-00172" summary="Some changes.">
-      <created>1557249470350</created>
-      <option name="number" value="00172" />
-      <option name="presentableId" value="LOCAL-00172" />
-      <option name="project" value="LOCAL" />
-      <updated>1557249470350</updated>
+      <workItem from="1558702174214" duration="7233000" />
     </task>
     <task id="LOCAL-00173" summary="Some changes.">
       <created>1557249749875</created>
@@ -1019,17 +1012,23 @@
       <option name="project" value="LOCAL" />
       <updated>1558712339740</updated>
     </task>
-    <option name="localTasksCounter" value="221" />
+    <task id="LOCAL-00221" summary="Some changes.">
+      <created>1558775533451</created>
+      <option name="number" value="00221" />
+      <option name="presentableId" value="LOCAL-00221" />
+      <option name="project" value="LOCAL" />
+      <updated>1558775533451</updated>
+    </task>
+    <option name="localTasksCounter" value="222" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="436625000" />
+    <option name="totallyTimeSpent" value="437313000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="0" width="1922" height="1080" extended-state="6" />
-    <editor active="true" />
+    <frame x="-1" y="0" width="1368" height="741" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.111821085" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15861027" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -1040,10 +1039,10 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49056605" visible="true" weight="0.12713675" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="8" sideWeight="0.49056605" visible="true" weight="0.239531" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Statistic" order="10" weight="0.32998326" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.4918919" weight="0.30555555" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.4918919" weight="0.3048576" />
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.509434" side_tool="true" weight="0.19262981" />
       <window_info anchor="bottom" id="Inspection Results" order="13" weight="0.40491453" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -2618,8 +2617,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Traits/Entity/NumericRangeTrait.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="548">
-          <caret line="56" selection-start-line="56" selection-end-line="56" />
+        <state relative-caret-position="328">
+          <caret line="52" selection-start-line="52" selection-end-line="52" />
         </state>
       </provider>
     </entry>
