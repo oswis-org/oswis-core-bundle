@@ -6,12 +6,6 @@ trait GeoCoordinatesTrait
 {
 
     /**
-     * @var int|null
-     * @Doctrine\ORM\Mapping\Column(type="integer", nullable=true)
-     */
-    protected $geoCoordinatesLength;
-
-    /**
      * Geo latitude (WGS 84).
      * @var int|null
      * @Doctrine\ORM\Mapping\Column(type="integer", nullable=true)
