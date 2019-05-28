@@ -36,7 +36,7 @@ trait EntityPublicContainerTrait
     /**
      * @param bool $publicOnWebRoute
      */
-    final public function setPublicOnWebRoute(bool $publicOnWebRoute): void
+    final public function setPublicOnWebRoute(?bool $publicOnWebRoute): void
     {
         if ($this->isPublicOnWebRoute() !== $publicOnWebRoute) {
             $newRevision = clone $this->getRevision();
@@ -58,7 +58,7 @@ trait EntityPublicContainerTrait
     /**
      * @param bool $publicInIS
      */
-    final public function setPublicInIS(bool $publicInIS): void
+    final public function setPublicInIS(?bool $publicInIS): void
     {
         if ($this->isPublicInIS() !== $publicInIS) {
             $newRevision = clone $this->getRevision();
@@ -80,7 +80,7 @@ trait EntityPublicContainerTrait
     /**
      * @param bool $publicInPortal
      */
-    final public function setPublicInPortal(bool $publicInPortal): void
+    final public function setPublicInPortal(?bool $publicInPortal): void
     {
         if ($this->isPublicInPortal() !== $publicInPortal) {
             $newRevision = clone $this->getRevision();
