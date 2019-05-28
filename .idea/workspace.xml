@@ -7,10 +7,7 @@
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/e-mail/app-user.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/e-mail/app-user.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/e-mail/app-user.txt.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/e-mail/app-user.txt.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/e-mail/password.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/e-mail/password.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/e-mail/password.txt.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/e-mail/password.txt.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Manager/AppUserManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/Manager/AppUserManager.php" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.github/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -109,23 +106,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Traits/Entity/GeoCoordinatesTrait.php">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Manager/AppUserManager.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="559">
-              <caret line="79" selection-start-line="79" selection-end-line="79" />
+            <state relative-caret-position="292">
+              <caret line="236" lean-forward="true" selection-start-line="236" selection-end-line="236" />
+              <folding>
+                <element signature="e#52#92#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Service/EmailSender.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="202">
-              <caret line="113" column="39" lean-forward="true" selection-start-line="113" selection-start-column="39" selection-end-line="113" selection-end-column="39" />
-              <folding>
-                <element signature="e#52#92#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="2163">
+              <caret line="112" column="13" selection-start-line="112" selection-start-column="13" selection-end-line="112" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -377,8 +374,6 @@
         <option value="$PROJECT_DIR$/Traits/Entity/PhoneTrait.php" />
         <option value="$PROJECT_DIR$/Traits/Entity/FullNameTrait.php" />
         <option value="$PROJECT_DIR$/Traits/Entity/FullNameContainerTrait.php" />
-        <option value="$PROJECT_DIR$/Manager/AppUserManager.php" />
-        <option value="$PROJECT_DIR$/Manager/AppUserManager.php" />
         <option value="$PROJECT_DIR$/Api/EventSubscriber/AppUserSubscriber.php" />
         <option value="$PROJECT_DIR$/EventSubscriber/AppUserSubscriber.php" />
         <option value="$PROJECT_DIR$/Entity/AppUser.php" />
@@ -396,6 +391,8 @@
         <option value="$PROJECT_DIR$/Resources/views/e-mail/app-user.txt.twig" />
         <option value="$PROJECT_DIR$/Resources/views/e-mail/password.html.twig" />
         <option value="$PROJECT_DIR$/Resources/views/e-mail/password.txt.twig" />
+        <option value="$PROJECT_DIR$/Manager/AppUserManager.php" />
+        <option value="$PROJECT_DIR$/Manager/AppUserManager.php" />
       </list>
     </option>
   </component>
@@ -527,6 +524,11 @@
             <path>
               <item name="oswis-core-bundle" type="b2602c69:ProjectViewProjectNode" />
               <item name="oswis-core-bundle" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oswis-core-bundle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oswis-core-bundle" type="462c0819:PsiDirectoryNode" />
+              <item name="Manager" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="oswis-core-bundle" type="b2602c69:ProjectViewProjectNode" />
@@ -699,14 +701,8 @@
       <workItem from="1558513232669" duration="2906000" />
       <workItem from="1558518949233" duration="2259000" />
       <workItem from="1558624479897" duration="5923000" />
-      <workItem from="1558702174214" duration="14400000" />
-    </task>
-    <task id="LOCAL-00180" summary="Some changes.">
-      <created>1557316269550</created>
-      <option name="number" value="00180" />
-      <option name="presentableId" value="LOCAL-00180" />
-      <option name="project" value="LOCAL" />
-      <updated>1557316269550</updated>
+      <workItem from="1558702174214" duration="15175000" />
+      <workItem from="1559048709697" duration="836000" />
     </task>
     <task id="LOCAL-00181" summary="Some changes.">
       <created>1557317972560</created>
@@ -1044,17 +1040,24 @@
       <option name="project" value="LOCAL" />
       <updated>1559046410675</updated>
     </task>
-    <option name="localTasksCounter" value="229" />
+    <task id="LOCAL-00229" summary="Some changes.">
+      <created>1559047697830</created>
+      <option name="number" value="00229" />
+      <option name="presentableId" value="LOCAL-00229" />
+      <option name="project" value="LOCAL" />
+      <updated>1559047697830</updated>
+    </task>
+    <option name="localTasksCounter" value="230" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="444480000" />
+    <option name="totallyTimeSpent" value="446091000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="0" width="1922" height="1080" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.111821085" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.111821085" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -1065,12 +1068,12 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49056605" visible="true" weight="0.15392895" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="8" sideWeight="0.49056605" visible="true" weight="0.15384616" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Statistic" order="10" weight="0.32998326" />
       <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.4918919" weight="0.3048576" />
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.509434" side_tool="true" weight="0.19262981" />
-      <window_info anchor="bottom" id="Inspection Results" order="13" weight="0.40491453" />
+      <window_info anchor="bottom" id="Inspection Results" order="13" weight="0.40473628" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -2460,13 +2463,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Manager/AppUserManager.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="443">
-          <caret line="286" selection-start-line="286" selection-end-line="286" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Provider/OswisCoreSettingsProvider.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
@@ -2649,13 +2645,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Service/EmailSender.php">
+    <entry file="file://$PROJECT_DIR$/Manager/AppUserManager.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="113" column="39" lean-forward="true" selection-start-line="113" selection-start-column="39" selection-end-line="113" selection-end-column="39" />
+        <state relative-caret-position="292">
+          <caret line="236" lean-forward="true" selection-start-line="236" selection-end-line="236" />
           <folding>
             <element signature="e#52#92#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Service/EmailSender.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2163">
+          <caret line="112" column="13" selection-start-line="112" selection-start-column="13" selection-end-line="112" selection-end-column="13" />
         </state>
       </provider>
     </entry>
