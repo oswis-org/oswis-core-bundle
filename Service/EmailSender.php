@@ -89,7 +89,7 @@ class EmailSender
             $message->setFrom($sender);
             $message->setSender($senderAccountEmail);
 
-            throw new ErrorException();
+            return $message;
         } catch (Exception $e) {
             $this->logger->error($e->getMessage());
             throw new ErrorException('Problém s přípravou zprávy.  '.$e->getMessage());
