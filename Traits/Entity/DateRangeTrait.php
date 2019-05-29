@@ -78,22 +78,6 @@ trait DateRangeTrait
     }
 
     /**
-     * @return DateTime|null
-     */
-    final public function getStartDate(): ?DateTime
-    {
-        return $this->getStartDateTime();
-    }
-
-    /**
-     * @return DateTime|null
-     */
-    final public function getEndDate(): ?DateTime
-    {
-        return $this->getStartDateTime();
-    }
-
-    /**
      * @param DateTime|null $dateTime
      */
     final public function setStartDate(?DateTime $dateTime): void
@@ -107,6 +91,32 @@ trait DateRangeTrait
     final public function setEndDate(?DateTime $dateTime): void
     {
         $this->setEndDateTime($dateTime);
+    }
+
+    final public function getLengthInHours(): ?int
+    {
+        if (!$this->getStartDate() || !$this->getEndDate()) {
+            return null;
+        }
+        $interval = $this->getEndDate() - $this->getStartDate();
+
+        return (int)$interval->format('H');
+    }
+
+    /**
+     * @return DateTime|null
+     */
+    final public function getStartDate(): ?DateTime
+    {
+        return $this->getStartDateTime();
+    }
+
+    /**
+     * @return DateTime|null
+     */
+    final public function getEndDate(): ?DateTime
+    {
+        return $this->getStartDateTime();
     }
 
 }

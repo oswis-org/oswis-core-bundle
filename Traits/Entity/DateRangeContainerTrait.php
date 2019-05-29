@@ -113,4 +113,9 @@ trait DateRangeContainerTrait
         }
     }
 
+    final public function getLengthInHours(?DateTime $referenceDateTime): ?int
+    {
+        return $this->getRevisionByDate($referenceDateTime)->getLengthInHours();
+    }
+
 }
