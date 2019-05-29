@@ -98,9 +98,7 @@ trait DateRangeTrait
         if (!$this->getStartDate() || !$this->getEndDate()) {
             return null;
         }
-        $interval = $this->getEndDate() - $this->getStartDate();
-
-        return (int)$interval->format('H');
+        return $this->getEndDate()->diff($this->getStartDate())->h;
     }
 
     /**
