@@ -6,6 +6,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Traits/Entity/DateRangeTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/DateRangeTrait.php" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.github/" />
@@ -120,8 +121,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Traits/Entity/DateRangeContainerTrait.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="328">
-              <caret line="117" column="70" selection-start-line="117" selection-start-column="70" selection-end-line="117" selection-end-column="70" />
+            <state relative-caret-position="265">
+              <caret line="114" selection-start-line="114" selection-end-line="114" />
               <folding>
                 <element signature="e#162#175#0#PHP" expanded="true" />
               </folding>
@@ -682,21 +683,7 @@
       <workItem from="1558702174214" duration="15175000" />
       <workItem from="1559048709697" duration="1449000" />
       <workItem from="1559055377775" duration="2607000" />
-      <workItem from="1559158851347" duration="1595000" />
-    </task>
-    <task id="LOCAL-00185" summary="Some changes.">
-      <created>1557394089901</created>
-      <option name="number" value="00185" />
-      <option name="presentableId" value="LOCAL-00185" />
-      <option name="project" value="LOCAL" />
-      <updated>1557394089901</updated>
-    </task>
-    <task id="LOCAL-00186" summary="Some changes.">
-      <created>1557396295204</created>
-      <option name="number" value="00186" />
-      <option name="presentableId" value="LOCAL-00186" />
-      <option name="project" value="LOCAL" />
-      <updated>1557396295204</updated>
+      <workItem from="1559158851347" duration="2453000" />
     </task>
     <task id="LOCAL-00187" summary="Some changes.">
       <created>1557400213516</created>
@@ -1027,17 +1014,30 @@
       <option name="project" value="LOCAL" />
       <updated>1559160438016</updated>
     </task>
-    <option name="localTasksCounter" value="234" />
+    <task id="LOCAL-00234" summary="Some changes.">
+      <created>1559160680506</created>
+      <option name="number" value="00234" />
+      <option name="presentableId" value="LOCAL-00234" />
+      <option name="project" value="LOCAL" />
+      <updated>1559160680506</updated>
+    </task>
+    <task id="LOCAL-00235" summary="Some changes.">
+      <created>1559160689771</created>
+      <option name="number" value="00235" />
+      <option name="presentableId" value="LOCAL-00235" />
+      <option name="project" value="LOCAL" />
+      <updated>1559160689771</updated>
+    </task>
+    <option name="localTasksCounter" value="236" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="450906000" />
+    <option name="totallyTimeSpent" value="451764000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="0" width="1368" height="741" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1570997" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1570997" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -1048,7 +1048,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="8" sideWeight="0.49056605" visible="true" weight="0.239531" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49056605" visible="true" weight="0.239531" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Statistic" order="10" weight="0.32998326" />
       <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.4918919" weight="0.3048576" />
@@ -2624,8 +2624,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Traits/Entity/DateRangeContainerTrait.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
-          <caret line="117" column="70" selection-start-line="117" selection-start-column="70" selection-end-line="117" selection-end-column="70" />
+        <state relative-caret-position="265">
+          <caret line="114" selection-start-line="114" selection-end-line="114" />
           <folding>
             <element signature="e#162#175#0#PHP" expanded="true" />
           </folding>

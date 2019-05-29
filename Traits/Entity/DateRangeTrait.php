@@ -98,7 +98,8 @@ trait DateRangeTrait
         if (!$this->getStartDate() || !$this->getEndDate()) {
             return null;
         }
-        return $this->getEndDate()->diff($this->getStartDate())->h;
+
+        return (int)$this->getEndDate()->diff($this->getStartDate())->h;
     }
 
     /**
