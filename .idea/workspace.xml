@@ -7,7 +7,7 @@
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/DateRangeTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/DateRangeTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/views/web/html-skeleton-default.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/html-skeleton-default.html.twig" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.github/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -106,14 +106,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Traits/Entity/DateRangeTrait.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="99" selection-start-line="99" selection-end-line="99" />
+            <state relative-caret-position="273">
+              <caret line="101" column="46" selection-start-line="101" selection-start-column="46" selection-end-line="101" selection-end-column="46" />
               <folding>
                 <element signature="e#58#71#0#PHP" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Resources/views/web/html-skeleton-default.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="42">
+              <caret line="2" column="6" lean-forward="true" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -123,9 +132,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="265">
               <caret line="114" selection-start-line="114" selection-end-line="114" />
-              <folding>
-                <element signature="e#162#175#0#PHP" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -366,7 +372,6 @@
         <option value="$PROJECT_DIR$/Resources/views/web/parts/header.html.twig" />
         <option value="$PROJECT_DIR$/Resources/views/web/pages/homepage.html.twig" />
         <option value="$PROJECT_DIR$/Resources/views/web/page-skeleton-default.html.twig" />
-        <option value="$PROJECT_DIR$/Resources/views/web/html-skeleton-default.html.twig" />
         <option value="$PROJECT_DIR$/DependencyInjection/Configuration.php" />
         <option value="$PROJECT_DIR$/Provider/OswisCoreSettingsProvider.php" />
         <option value="$PROJECT_DIR$/Resources/config/services.yaml" />
@@ -396,6 +401,7 @@
         <option value="$PROJECT_DIR$/Traits/Entity/EntityPublicTrait.php" />
         <option value="$PROJECT_DIR$/Traits/Entity/DateRangeContainerTrait.php" />
         <option value="$PROJECT_DIR$/Traits/Entity/DateRangeTrait.php" />
+        <option value="$PROJECT_DIR$/Resources/views/web/html-skeleton-default.html.twig" />
       </list>
     </option>
   </component>
@@ -526,6 +532,24 @@
             <path>
               <item name="oswis-core-bundle" type="b2602c69:ProjectViewProjectNode" />
               <item name="oswis-core-bundle" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oswis-core-bundle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oswis-core-bundle" type="462c0819:PsiDirectoryNode" />
+              <item name="Resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oswis-core-bundle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oswis-core-bundle" type="462c0819:PsiDirectoryNode" />
+              <item name="Resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oswis-core-bundle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oswis-core-bundle" type="462c0819:PsiDirectoryNode" />
+              <item name="Resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -683,14 +707,7 @@
       <workItem from="1558702174214" duration="15175000" />
       <workItem from="1559048709697" duration="1449000" />
       <workItem from="1559055377775" duration="2607000" />
-      <workItem from="1559158851347" duration="2453000" />
-    </task>
-    <task id="LOCAL-00187" summary="Some changes.">
-      <created>1557400213516</created>
-      <option name="number" value="00187" />
-      <option name="presentableId" value="LOCAL-00187" />
-      <option name="project" value="LOCAL" />
-      <updated>1557400213516</updated>
+      <workItem from="1559158851347" duration="3105000" />
     </task>
     <task id="LOCAL-00188" summary="Some changes.">
       <created>1557401787699</created>
@@ -1028,14 +1045,22 @@
       <option name="project" value="LOCAL" />
       <updated>1559160689771</updated>
     </task>
-    <option name="localTasksCounter" value="236" />
+    <task id="LOCAL-00236" summary="Some changes.">
+      <created>1559162003687</created>
+      <option name="number" value="00236" />
+      <option name="presentableId" value="LOCAL-00236" />
+      <option name="project" value="LOCAL" />
+      <updated>1559162003687</updated>
+    </task>
+    <option name="localTasksCounter" value="237" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="451764000" />
+    <option name="totallyTimeSpent" value="452416000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="0" width="1368" height="741" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1570997" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -2351,13 +2376,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Resources/views/web/html-skeleton-default.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="14" column="35" lean-forward="true" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Utils/SpamDateTimeEncoder.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -2626,19 +2644,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="265">
           <caret line="114" selection-start-line="114" selection-end-line="114" />
-          <folding>
-            <element signature="e#162#175#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Traits/Entity/DateRangeTrait.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="99" selection-start-line="99" selection-end-line="99" />
+        <state relative-caret-position="273">
+          <caret line="101" column="46" selection-start-line="101" selection-start-column="46" selection-end-line="101" selection-end-column="46" />
           <folding>
             <element signature="e#58#71#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/views/web/html-skeleton-default.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="2" column="6" lean-forward="true" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
         </state>
       </provider>
     </entry>
