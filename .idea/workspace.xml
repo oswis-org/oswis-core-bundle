@@ -7,8 +7,7 @@
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractRevisionContainer.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractRevisionContainer.php" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.github/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -108,10 +107,10 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/composer.json">
+        <entry file="file://$PROJECT_DIR$/Entity/AbstractClass/AbstractRevisionContainer.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="10" column="12" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
+            <state relative-caret-position="251">
+              <caret line="115" column="1" lean-forward="true" selection-start-line="115" selection-start-column="1" selection-end-line="115" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -319,7 +318,6 @@
         <option value="$PROJECT_DIR$/Traits/Entity/DateTimeTrait.php" />
         <option value="$PROJECT_DIR$/Traits/Entity/DeletedTrait.php" />
         <option value="$PROJECT_DIR$/Entity/AbstractClass/AbstractRevision.php" />
-        <option value="$PROJECT_DIR$/Entity/AbstractClass/AbstractRevisionContainer.php" />
         <option value="$PROJECT_DIR$/Utils/FileUtils.php" />
         <option value="$PROJECT_DIR$/vojta.html" />
         <option value="$PROJECT_DIR$/Traits/Entity/TextValueTrait.php" />
@@ -382,6 +380,7 @@
         <option value="$PROJECT_DIR$/Traits/Entity/DateRangeContainerTrait.php" />
         <option value="$PROJECT_DIR$/composer.json" />
         <option value="$PROJECT_DIR$/composer.json" />
+        <option value="$PROJECT_DIR$/Entity/AbstractClass/AbstractRevisionContainer.php" />
       </list>
     </option>
   </component>
@@ -516,6 +515,17 @@
             <path>
               <item name="oswis-core-bundle" type="b2602c69:ProjectViewProjectNode" />
               <item name="oswis-core-bundle" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oswis-core-bundle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oswis-core-bundle" type="462c0819:PsiDirectoryNode" />
+              <item name="Entity" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oswis-core-bundle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oswis-core-bundle" type="462c0819:PsiDirectoryNode" />
+              <item name="Entity" type="462c0819:PsiDirectoryNode" />
+              <item name="AbstractClass" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -673,14 +683,7 @@
       <workItem from="1558702174214" duration="15175000" />
       <workItem from="1559048709697" duration="1449000" />
       <workItem from="1559055377775" duration="2607000" />
-      <workItem from="1559158851347" duration="7809000" />
-    </task>
-    <task id="LOCAL-00191" summary="Some changes.">
-      <created>1557412800199</created>
-      <option name="number" value="00191" />
-      <option name="presentableId" value="LOCAL-00191" />
-      <option name="project" value="LOCAL" />
-      <updated>1557412800199</updated>
+      <workItem from="1559158851347" duration="9063000" />
     </task>
     <task id="LOCAL-00192" summary="Some changes.">
       <created>1557429980229</created>
@@ -1018,17 +1021,24 @@
       <option name="project" value="LOCAL" />
       <updated>1559220168604</updated>
     </task>
-    <option name="localTasksCounter" value="240" />
+    <task id="LOCAL-00240" summary="Some changes.">
+      <created>1559228846342</created>
+      <option name="number" value="00240" />
+      <option name="presentableId" value="LOCAL-00240" />
+      <option name="project" value="LOCAL" />
+      <updated>1559228846342</updated>
+    </task>
+    <option name="localTasksCounter" value="241" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="457120000" />
+    <option name="totallyTimeSpent" value="458374000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="0" width="1922" height="1080" extended-state="6" />
+    <frame x="-1" y="0" width="1368" height="741" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.11075612" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1570997" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -1039,10 +1049,10 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49056605" weight="0.23931624" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49056605" visible="true" weight="0.3752094" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Statistic" order="10" weight="0.32998326" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.4918919" visible="true" weight="0.19444445" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.4918919" weight="0.19444445" />
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.509434" side_tool="true" weight="0.19262981" />
       <window_info anchor="bottom" id="Inspection Results" order="13" weight="0.4036851" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -1876,13 +1886,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Traits/Entity/BasicEntityTrait.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="10" column="20" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Traits/Entity/TimestampableTrait.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
@@ -1923,13 +1926,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="11" column="15" selection-start-line="11" selection-start-column="15" selection-end-line="11" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Entity/AbstractClass/AbstractRevisionContainer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="19" column="7" lean-forward="true" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
         </state>
       </provider>
     </entry>
@@ -2629,8 +2625,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/composer.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="10" column="12" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
+        <state>
+          <caret line="21" column="4" lean-forward="true" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Traits/Entity/BasicEntityTrait.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="11" column="23" lean-forward="true" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Entity/AbstractClass/AbstractRevisionContainer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="115" column="1" lean-forward="true" selection-start-line="115" selection-start-column="1" selection-end-line="115" selection-end-column="1" />
         </state>
       </provider>
     </entry>

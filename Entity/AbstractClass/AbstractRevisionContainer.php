@@ -102,4 +102,15 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
             $revision->setContainer(null);
         }
     }
+
+    /**
+     * @param DateTime|null $referenceDateTime
+     *
+     * @return DateTime|null
+     * @throws RevisionMissingException
+     */
+    final public function getLastRevisionDateTime(?DateTime $referenceDateTime = null): ?DateTime {
+        return $this->getRevision()->getCreatedDateTime();
+    }
+
 }
