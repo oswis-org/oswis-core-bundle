@@ -188,6 +188,9 @@
     "symfony/cache": {
         "version": "v4.2.2"
     },
+    "symfony/cache-contracts": {
+        "version": "v1.1.1"
+    },
     "symfony/config": {
         "version": "v4.2.2"
     },
@@ -200,9 +203,6 @@
             "ref": "0fa049c19069a65f52c1c181d64be3de672c1504"
         }
     },
-    "symfony/contracts": {
-        "version": "v1.0.2"
-    },
     "symfony/debug": {
         "version": "v4.2.2"
     },
@@ -214,6 +214,9 @@
     },
     "symfony/event-dispatcher": {
         "version": "v4.2.2"
+    },
+    "symfony/event-dispatcher-contracts": {
+        "version": "v1.1.1"
     },
     "symfony/filesystem": {
         "version": "v4.2.2"
@@ -347,6 +350,9 @@
     "symfony/serializer-pack": {
         "version": "v1.0.2"
     },
+    "symfony/service-contracts": {
+        "version": "v1.1.2"
+    },
     "symfony/stopwatch": {
         "version": "v4.2.2"
     },
@@ -361,6 +367,9 @@
     },
     "symfony/templating": {
         "version": "v4.2.8"
+    },
+    "symfony/translation-contracts": {
+        "version": "v1.1.2"
     },
     "symfony/twig-bridge": {
         "version": "v4.2.2"

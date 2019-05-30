@@ -70,7 +70,7 @@ trait DateRangeContainerTrait
      */
     final public function getEndDate(?DateTime $referenceDateTime = null): ?DateTime
     {
-        return $this->getStartDateTime($referenceDateTime);
+        return $this->getEndDateTime($referenceDateTime);
     }
 
     /**
