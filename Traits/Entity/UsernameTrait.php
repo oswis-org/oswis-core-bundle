@@ -19,9 +19,9 @@ trait UsernameTrait
      * Get username.
      * @return null|string
      */
-    final public function getUsername(): string
+    final public function getUsername(): ?string
     {
-        return $this->username ?? '';
+        return $this->username ?? null;
     }
 
     /**
@@ -31,6 +31,6 @@ trait UsernameTrait
      */
     final public function setUsername(?string $username): void
     {
-        $this->username = $username ?? '';
+        $this->username = $username ?? null;
     }
 }

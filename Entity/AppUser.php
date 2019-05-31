@@ -78,7 +78,6 @@ class AppUser extends AbstractAppUser
      */
     protected $appUserFlags;
 
-
     /**
      * @var AppUserType|null
      * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUserType", inversedBy="appUsers", fetch="EAGER")
