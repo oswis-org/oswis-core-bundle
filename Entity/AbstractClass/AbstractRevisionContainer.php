@@ -18,6 +18,51 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
     protected $revisions;
 
     /**
+     * @param AbstractRevision|null $revision
+     */
+    final public function addRevision(?AbstractRevision $revision): void
+    {
+        static::checkRevision($revision);
+        if (!$revision) {
+            return;
+        }
+        if (!$this->revisions->contains($revision)) {
+            $this->revisions->add($revision);
+            $revision->setContainer($this);
+        }
+    }
+
+    /**
+     * @param AbstractRevision|null $revision
+     */
+    abstract public static function checkRevision(?AbstractRevision $revision): void;
+
+    /**
+     * @param AbstractRevision|null $revision
+     */
+    final public function removeRevision(?AbstractRevision $revision): void
+    {
+        static::checkRevision($revision);
+        if (!$revision) {
+            return;
+        }
+        if ($this->revisions->removeElement($revision)) {
+            $revision->setContainer(null);
+        }
+    }
+
+    /**
+     * @param DateTime|null $referenceDateTime
+     *
+     * @return DateTime|null
+     * @throws RevisionMissingException
+     */
+    final public function getLastRevisionDateTime(?DateTime $referenceDateTime = null): ?DateTime
+    {
+        return $this->getRevision()->getCreatedDateTime();
+    }
+
+    /**
      * @param DateTime|null $dateTime
      *
      * @return AbstractRevision
@@ -68,49 +113,5 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
      * @return string
      */
     abstract public static function getRevisionClassName(): string;
-
-    /**
-     * @param AbstractRevision|null $revision
-     */
-    abstract public static function checkRevision(?AbstractRevision $revision): void;
-
-    /**
-     * @param AbstractRevision|null $revision
-     */
-    final public function addRevision(?AbstractRevision $revision): void
-    {
-        static::checkRevision($revision);
-        if (!$revision) {
-            return;
-        }
-        if (!$this->revisions->contains($revision)) {
-            $this->revisions->add($revision);
-            $revision->setContainer($this);
-        }
-    }
-
-    /**
-     * @param AbstractRevision|null $revision
-     */
-    final public function removeRevision(?AbstractRevision $revision): void
-    {
-        static::checkRevision($revision);
-        if (!$revision) {
-            return;
-        }
-        if ($this->revisions->removeElement($revision)) {
-            $revision->setContainer(null);
-        }
-    }
-
-    /**
-     * @param DateTime|null $referenceDateTime
-     *
-     * @return DateTime|null
-     * @throws RevisionMissingException
-     */
-    final public function getLastRevisionDateTime(?DateTime $referenceDateTime = null): ?DateTime {
-        return $this->getRevision()->getCreatedDateTime();
-    }
 
 }
