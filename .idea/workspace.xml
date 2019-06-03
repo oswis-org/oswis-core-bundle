@@ -7,7 +7,8 @@
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/EncryptedPasswordTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/EncryptedPasswordTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Utils/FileUtils.php" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/FileUtils.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.github/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -105,12 +106,30 @@
     <executablePath>composer</executablePath>
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Traits/Entity/EncryptedPasswordTrait.php">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Resources/views/web/page-skeleton-default.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="20" column="7" lean-forward="true" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
+            <state relative-caret-position="273">
+              <caret line="13" column="22" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Resources/views/web/html-skeleton-default.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="168">
+              <caret line="14" selection-start-line="14" selection-end-line="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Utils/FileUtils.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="336">
+              <caret line="43" column="39" selection-start-line="43" selection-start-column="39" selection-end-line="43" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -318,7 +337,6 @@
         <option value="$PROJECT_DIR$/Traits/Entity/DateTimeTrait.php" />
         <option value="$PROJECT_DIR$/Traits/Entity/DeletedTrait.php" />
         <option value="$PROJECT_DIR$/Entity/AbstractClass/AbstractRevision.php" />
-        <option value="$PROJECT_DIR$/Utils/FileUtils.php" />
         <option value="$PROJECT_DIR$/vojta.html" />
         <option value="$PROJECT_DIR$/Traits/Entity/TextValueTrait.php" />
         <option value="$PROJECT_DIR$/Traits/Entity/TimestampableTrait.php" />
@@ -375,7 +393,6 @@
         <option value="$PROJECT_DIR$/Traits/Entity/EntityPublicContainerTrait.php" />
         <option value="$PROJECT_DIR$/Traits/Entity/EntityPublicTrait.php" />
         <option value="$PROJECT_DIR$/Traits/Entity/DateRangeTrait.php" />
-        <option value="$PROJECT_DIR$/Resources/views/web/html-skeleton-default.html.twig" />
         <option value="$PROJECT_DIR$/Traits/Entity/DateRangeContainerTrait.php" />
         <option value="$PROJECT_DIR$/composer.json" />
         <option value="$PROJECT_DIR$/composer.json" />
@@ -383,6 +400,8 @@
         <option value="$PROJECT_DIR$/Entity/AppUser.php" />
         <option value="$PROJECT_DIR$/Traits/Entity/UsernameTrait.php" />
         <option value="$PROJECT_DIR$/Traits/Entity/EncryptedPasswordTrait.php" />
+        <option value="$PROJECT_DIR$/Resources/views/web/html-skeleton-default.html.twig" />
+        <option value="$PROJECT_DIR$/Utils/FileUtils.php" />
       </list>
     </option>
   </component>
@@ -501,9 +520,8 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="6" />
-    <option name="width" value="1360" />
-    <option name="height" value="737" />
+    <option name="width" value="1352" />
+    <option name="height" value="733" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -521,13 +539,7 @@
             <path>
               <item name="oswis-core-bundle" type="b2602c69:ProjectViewProjectNode" />
               <item name="oswis-core-bundle" type="462c0819:PsiDirectoryNode" />
-              <item name="Traits" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="oswis-core-bundle" type="b2602c69:ProjectViewProjectNode" />
-              <item name="oswis-core-bundle" type="462c0819:PsiDirectoryNode" />
-              <item name="Traits" type="462c0819:PsiDirectoryNode" />
-              <item name="Entity" type="462c0819:PsiDirectoryNode" />
+              <item name="Utils" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -685,14 +697,10 @@
       <workItem from="1558702174214" duration="15175000" />
       <workItem from="1559048709697" duration="1449000" />
       <workItem from="1559055377775" duration="2607000" />
-      <workItem from="1559158851347" duration="14837000" />
-    </task>
-    <task id="LOCAL-00195" summary="Some changes.">
-      <created>1557469973530</created>
-      <option name="number" value="00195" />
-      <option name="presentableId" value="LOCAL-00195" />
-      <option name="project" value="LOCAL" />
-      <updated>1557469973531</updated>
+      <workItem from="1559158851347" duration="16031000" />
+      <workItem from="1559401338148" duration="1350000" />
+      <workItem from="1559426090431" duration="590000" />
+      <workItem from="1559465680357" duration="1185000" />
     </task>
     <task id="LOCAL-00196" summary="Some changes.">
       <created>1557472804252</created>
@@ -1030,17 +1038,24 @@
       <option name="project" value="LOCAL" />
       <updated>1559324193003</updated>
     </task>
-    <option name="localTasksCounter" value="244" />
+    <task id="LOCAL-00244" summary="Some changes.">
+      <created>1559327937075</created>
+      <option name="number" value="00244" />
+      <option name="presentableId" value="LOCAL-00244" />
+      <option name="project" value="LOCAL" />
+      <updated>1559327937076</updated>
+    </task>
+    <option name="localTasksCounter" value="245" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="464148000" />
+    <option name="totallyTimeSpent" value="468467000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="0" width="1368" height="741" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1570997" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15332326" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -1051,10 +1066,10 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49056605" weight="0.3752094" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49056605" weight="0.1524288" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Statistic" order="10" weight="0.32998326" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.4918919" visible="true" weight="0.19430485" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.4918919" visible="true" weight="0.19430485" />
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.509434" side_tool="true" weight="0.19262981" />
       <window_info anchor="bottom" id="Inspection Results" order="13" weight="0.4036851" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -1886,13 +1901,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/vojta.html" />
-    <entry file="file://$PROJECT_DIR$/Utils/FileUtils.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="69" column="36" selection-start-line="69" selection-start-column="36" selection-end-line="69" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Entity/AbstractClass/AbstractRevision.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
@@ -2295,13 +2303,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Resources/views/web/page-skeleton-default.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="13" column="22" lean-forward="true" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Resources/views/web/parts/header.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="42">
@@ -2532,13 +2533,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Resources/views/web/html-skeleton-default.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="32" column="18" lean-forward="true" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/symfony.lock">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="63">
@@ -2643,7 +2637,28 @@
     <entry file="file://$PROJECT_DIR$/Traits/Entity/EncryptedPasswordTrait.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="231">
-          <caret line="20" column="7" lean-forward="true" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
+          <caret line="20" column="7" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/views/web/page-skeleton-default.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="13" column="22" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/views/web/html-skeleton-default.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Utils/FileUtils.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="43" column="39" selection-start-line="43" selection-start-column="39" selection-end-line="43" selection-end-column="39" />
         </state>
       </provider>
     </entry>

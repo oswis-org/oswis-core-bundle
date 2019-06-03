@@ -41,7 +41,7 @@ class FileUtils
 
         $factor = floor((strlen($bytes) - 1) / 3);
 
-        return sprintf("%.{$decimals}f%s", $bytes / ($mod ** $factor), $units[$system][$factor]);
+        return sprintf("%.{$decimals}f %s", $bytes / ($mod ** $factor), $units[$system][$factor]);
     }
 
     final public static function fileUploadMaxSize(): int
