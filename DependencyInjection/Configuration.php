@@ -17,10 +17,11 @@ class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder('zakjakub_oswis_core');
         $rootNode = $treeBuilder->getRootNode();
-        $rootNode->info('Default configuration for core module of OSWIS (One Simple Web IS).')
-            ->children();
-        /// App general.
-        $rootNode->arrayNode('app')
+        $rootNode
+            ->info('Default configuration for core module of OSWIS (One Simple Web IS).')
+            ->children()
+            /// App general.
+            ->arrayNode('app')
             ->info('General settings.')
             ->addDefaultsIfNotSet()
             ->children()
@@ -50,9 +51,9 @@ class Configuration implements ConfigurationInterface
             ->example(['@ZakjakubOswisCore/Resources/public/logo.png', '../assets/assets/images/logo.png'])
             ->end()
             ->end()
-            ->end();
-        /// Admin info.
-        $rootNode->arrayNode('admin')
+            ->end()
+            /// Admin info.
+            ->arrayNode('admin')
             ->info('Info about main administrator.')
             ->addDefaultsIfNotSet()
             ->children()
@@ -77,9 +78,9 @@ class Configuration implements ConfigurationInterface
             ->example('+000 000 000 000')
             ->end()
             ->end()
-            ->end();
-        /// System e-mails settings.
-        $rootNode->arrayNode('email')
+            ->end()
+            /// System e-mails settings.
+            ->arrayNode('email')
             ->info('Sender of system e-mails.')
             ->addDefaultsIfNotSet()
             ->children()
@@ -109,9 +110,9 @@ class Configuration implements ConfigurationInterface
             ->example('Message')
             ->end()
             ->end()
-            ->end();
-        /// App general.
-        $rootNode->arrayNode('web')
+            ->end()
+            /// App general.
+            ->arrayNode('web')
             ->info('Website settings.')
             ->addDefaultsIfNotSet()
             ->children()
@@ -146,9 +147,9 @@ class Configuration implements ConfigurationInterface
             ->example(['@ZakjakubOswisCore/Resources/public/logo.png', '../assets/assets/images/logo.png'])
             ->end()
             ->end()
+            ->end()
+            // end
             ->end();
-        // end
-        $rootNode->end();
 
         return $treeBuilder;
     }
