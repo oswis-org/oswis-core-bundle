@@ -19,7 +19,7 @@ abstract class AbstractImage
      *     mapping="abstract_image",
      *     fileNameProperty="contentUrl",
      *     dimensions={"contentDimensionsWidth", "contentDimensionsHeight"},
-     *     mimeType="contentDimensionsMimeType"
+     *     mimeType="contentMimeType"
      * )
      */
     public $file;
