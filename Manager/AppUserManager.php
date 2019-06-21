@@ -22,6 +22,11 @@ use function random_int;
 class AppUserManager
 {
 
+    public const RESET = 'reset';
+    public const RESET_REQUEST = 'reset-request';
+    public const ACTIVATION = 'activation';
+    public const ACTIVATION_REQUEST = 'activation-request';
+
     /**
      * @var EntityManagerInterface
      */
@@ -108,9 +113,9 @@ class AppUserManager
         if ($activate) {
             $password = $password ?? StringUtils::generatePassword();
             $appUser->setPassword($this->encoder->encodePassword($appUser, $password));
-            $this->appUserAction($appUser, 'activation', $password, null, $sendMail, true);
+            $this->appUserAction($appUser, self::ACTIVATION, $password, null, $sendMail, true);
         } else {
-            $this->appUserAction($appUser, 'activation-request', null, null, $sendMail);
+            $this->appUserAction($appUser, self::ACTIVATION_REQUEST, null, null, $sendMail);
         }
         $em->persist($appUser);
         $em->flush();
@@ -140,13 +145,13 @@ class AppUserManager
         ?bool $withoutToken = false
     ): bool {
         try {
-            if ($type === 'reset-request') {
+            if ($type === self::RESET_REQUEST) {
                 // Create token for password reset/change and send it to user by e-mail.
                 $token = $appUser->generatePasswordRequestToken();
                 if ($sendConfirmation) {
-                    $this->sendPasswordEmail($appUser, 'reset-request', $token);
+                    $this->sendPasswordEmail($appUser, self::RESET_REQUEST, $token);
                 }
-            } elseif ($type === 'reset') {
+            } elseif ($type === self::RESET) {
                 // Check token for password reset/change and change password for user.
                 if (!$withoutToken && !$token) {
                     throw new InvalidArgumentException('Token nenalezen.');
@@ -158,12 +163,12 @@ class AppUserManager
                 $password = $password ?? StringUtils::generatePassword();
                 $appUser->setPassword($this->encoder->encodePassword($appUser, $password));
                 if ($sendConfirmation) {
-                    $this->sendPasswordEmail($appUser, 'reset', null, $random ? $password : null);
+                    $this->sendPasswordEmail($appUser, self::RESET, null, $random ? $password : null);
                 }
-            } elseif ($type === 'activation-request') {
+            } elseif ($type === self::ACTIVATION_REQUEST) {
                 // Generate token for account activation and send it to user by e-mail.
-                $this->sendAppUserEmail($appUser, 'activation-request', $appUser->generateAccountActivationRequestToken());
-            } elseif ($type === 'activation') {
+                $this->sendAppUserEmail($appUser, self::ACTIVATION_REQUEST, $appUser->generateAccountActivationRequestToken());
+            } elseif ($type === self::ACTIVATION) {
                 // Check activation token and activate account.
                 if (!$withoutToken && !$token) {
                     throw new InvalidArgumentException('Token nenalezen.');
@@ -175,7 +180,7 @@ class AppUserManager
                 $password = $password ?? StringUtils::generatePassword();
                 $appUser->setPassword($this->encoder->encodePassword($appUser, $password));
                 if ($sendConfirmation) {
-                    $this->sendAppUserEmail($appUser, 'activation', $token, $random ? $password : null);
+                    $this->sendAppUserEmail($appUser, self::ACTIVATION, $token, $random ? $password : null);
                 }
             } else {
                 // Type is not recognized.
@@ -212,11 +217,11 @@ class AppUserManager
 
             $title = null;
 
-            if ('reset' === $type) {
+            if (self::RESET === $type) {
                 // Send e-mail about password change. Include password if present (it means that it's generated randomly).
                 $title = 'Heslo změněno';
                 $token = null;
-            } elseif ('reset-request' === $type) {
+            } elseif (self::RESET_REQUEST === $type) {
                 // Send e-mail about password reset request. Include token for change.
                 $title = 'Požadavek na změnu hesla';
                 $password = null;
@@ -236,6 +241,8 @@ class AppUserManager
             );
 
             $this->emailSender->sendMessage($message, '@ZakjakubOswisCore/e-mail/password', $data);
+
+            throw new ErrorException('Problém s odesláním zprávy o změně hesla.');
         } catch (Exception $e) {
             $this->logger->error($e->getMessage());
             throw new ErrorException('Problém s odesláním zprávy o změně hesla:  '.$e->getMessage());
@@ -261,10 +268,10 @@ class AppUserManager
                 throw new ErrorException('Uživatel nenalezen.');
             }
 
-            if ('activation-request' === $type) {
+            if (self::ACTIVATION_REQUEST === $type) {
                 // Send e-mail about activation request. Include token for activation.
                 $title = 'Aktivace uživatelského účtu';
-            } elseif ('activation' === $type) {
+            } elseif (self::ACTIVATION === $type) {
                 // Send e-mail about account activation. Include password if present (it means that it's generated randomly).
                 $title = 'Účet byl aktivován';
             } else {
@@ -284,6 +291,8 @@ class AppUserManager
             );
 
             $this->emailSender->sendMessage($message, '@ZakjakubOswisCore/e-mail/app-user', $data);
+
+            throw new ErrorException('Problém s odesláním zprávy o změně účtu.');
         } catch (Exception $e) {
             throw new ErrorException('Problém s odesláním zprávy o změně účtu:  '.$e->getMessage());
         }
