@@ -21,12 +21,11 @@ use function random_int;
  */
 class AppUserManager
 {
-
     public const RESET = 'reset';
     public const RESET_REQUEST = 'reset-request';
     public const ACTIVATION = 'activation';
     public const ACTIVATION_REQUEST = 'activation-request';
-
+    
     /**
      * @var EntityManagerInterface
      */
@@ -241,8 +240,6 @@ class AppUserManager
             );
 
             $this->emailSender->sendMessage($message, '@ZakjakubOswisCore/e-mail/password', $data);
-
-            throw new ErrorException('Problém s odesláním zprávy o změně hesla.');
         } catch (Exception $e) {
             $this->logger->error($e->getMessage());
             throw new ErrorException('Problém s odesláním zprávy o změně hesla:  '.$e->getMessage());
@@ -291,8 +288,6 @@ class AppUserManager
             );
 
             $this->emailSender->sendMessage($message, '@ZakjakubOswisCore/e-mail/app-user', $data);
-
-            throw new ErrorException('Problém s odesláním zprávy o změně účtu.');
         } catch (Exception $e) {
             throw new ErrorException('Problém s odesláním zprávy o změně účtu:  '.$e->getMessage());
         }
