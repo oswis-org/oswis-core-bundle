@@ -25,7 +25,7 @@ class AppUserManager
     public const RESET_REQUEST = 'reset-request';
     public const ACTIVATION = 'activation';
     public const ACTIVATION_REQUEST = 'activation-request';
-    
+
     /**
      * @var EntityManagerInterface
      */

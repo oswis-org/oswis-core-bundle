@@ -8,6 +8,7 @@
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Manager/AppUserManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/Manager/AppUserManager.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/TypeTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/TypeTrait.php" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.github/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -102,18 +103,17 @@
   </component>
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
-    <executablePath>composer</executablePath>
+    <execution>
+      <executable path="composer" />
+    </execution>
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Manager/AppUserManager.php">
+        <entry file="file://$PROJECT_DIR$/Traits/Entity/TypeTrait.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="241" lean-forward="true" selection-start-line="241" selection-end-line="241" />
-              <folding>
-                <element signature="e#52#92#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="294">
+              <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
             </state>
           </provider>
         </entry>
@@ -122,7 +122,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>stra</find>
       <find>SingleNoteTrait</find>
       <find>Assert</find>
       <find>container</find>
@@ -152,6 +151,7 @@
       <find>getUs</find>
       <find>getUser(</find>
       <find>twig</find>
+      <find>'activation'</find>
     </findStrings>
     <replaceStrings>
       <replace>Zakjakub\OswisResourcesBundle\</replace>
@@ -173,6 +173,7 @@
       <replace>web.title</replace>
       <replace>eoLongitude</replace>
       <replace>data.type</replace>
+      <replace>self::ACTIVATION</replace>
     </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/Interfaces</dir>
@@ -341,7 +342,6 @@
         <option value="$PROJECT_DIR$/Traits/Entity/RegistrationsTrait.php" />
         <option value="$PROJECT_DIR$/Traits/Entity/ValueTrait.php" />
         <option value="$PROJECT_DIR$/Traits/Entity/ValueContainerTrait.php" />
-        <option value="$PROJECT_DIR$/Traits/Entity/TypeTrait.php" />
         <option value="$PROJECT_DIR$/Traits/Entity/NumericValueTrait.php" />
         <option value="$PROJECT_DIR$/Traits/Entity/DepositValueTrait.php" />
         <option value="$PROJECT_DIR$/Traits/Entity/TaxRateTrait.php" />
@@ -387,6 +387,7 @@
         <option value="$PROJECT_DIR$/Utils/SourceCodeUtils.php" />
         <option value="$PROJECT_DIR$/Manager/AppUserManager.php" />
         <option value="$PROJECT_DIR$/Manager/AppUserManager.php" />
+        <option value="$PROJECT_DIR$/Traits/Entity/TypeTrait.php" />
       </list>
     </option>
   </component>
@@ -505,8 +506,10 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="width" value="1360" />
-    <option name="height" value="741" />
+    <option name="x" value="170" />
+    <option name="y" value="92" />
+    <option name="width" value="1026" />
+    <option name="height" value="557" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -514,6 +517,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -521,16 +525,10 @@
               <item name="oswis-core-bundle" type="b2602c69:ProjectViewProjectNode" />
               <item name="oswis-core-bundle" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="oswis-core-bundle" type="b2602c69:ProjectViewProjectNode" />
-              <item name="oswis-core-bundle" type="462c0819:PsiDirectoryNode" />
-              <item name="Manager" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -694,21 +692,8 @@
       <workItem from="1560447571702" duration="2146000" />
       <workItem from="1560697627537" duration="979000" />
       <workItem from="1560932398992" duration="1972000" />
-      <workItem from="1561106199333" duration="205000" />
-    </task>
-    <task id="LOCAL-00202" summary="Some changes.">
-      <created>1557747685344</created>
-      <option name="number" value="00202" />
-      <option name="presentableId" value="LOCAL-00202" />
-      <option name="project" value="LOCAL" />
-      <updated>1557747685344</updated>
-    </task>
-    <task id="LOCAL-00203" summary="Added ValueTrait and ValueContainerTrait.">
-      <created>1557763515323</created>
-      <option name="number" value="00203" />
-      <option name="presentableId" value="LOCAL-00203" />
-      <option name="project" value="LOCAL" />
-      <updated>1557763515323</updated>
+      <workItem from="1561106199333" duration="2064000" />
+      <workItem from="1561555725517" duration="967000" />
     </task>
     <task id="LOCAL-00204" summary="Some changes.">
       <created>1557764335639</created>
@@ -1039,17 +1024,31 @@
       <option name="project" value="LOCAL" />
       <updated>1560698017128</updated>
     </task>
-    <option name="localTasksCounter" value="251" />
+    <task id="LOCAL-00251" summary="Some changes.">
+      <created>1561106480621</created>
+      <option name="number" value="00251" />
+      <option name="presentableId" value="LOCAL-00251" />
+      <option name="project" value="LOCAL" />
+      <updated>1561106480622</updated>
+    </task>
+    <task id="LOCAL-00252" summary="Some changes.">
+      <created>1561111341654</created>
+      <option name="number" value="00252" />
+      <option name="presentableId" value="LOCAL-00252" />
+      <option name="project" value="LOCAL" />
+      <updated>1561111341654</updated>
+    </task>
+    <option name="localTasksCounter" value="253" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="480261000" />
+    <option name="totallyTimeSpent" value="483087000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="0" width="1368" height="741" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.11102719" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.11102719" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -2169,13 +2168,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Traits/Entity/TypeTrait.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="31">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Traits/Entity/NumericValueTrait.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="21">
@@ -2452,13 +2444,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/composer.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="21" column="4" lean-forward="true" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Traits/Entity/BasicEntityTrait.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="196">
@@ -2649,11 +2634,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Manager/AppUserManager.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="241" lean-forward="true" selection-start-line="241" selection-end-line="241" />
+        <state relative-caret-position="4721">
+          <caret line="281" lean-forward="true" selection-start-line="281" selection-end-line="281" />
           <folding>
             <element signature="e#52#92#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/composer.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="27" column="24" lean-forward="true" selection-start-line="27" selection-start-column="24" selection-end-line="27" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Traits/Entity/TypeTrait.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
         </state>
       </provider>
     </entry>

@@ -35,6 +35,7 @@ trait TypeTrait
      */
     final public function setType(?string $type): void
     {
+        $type = '' === $type ? null : $type;
         self::checkType($type);
         $this->type = $type;
     }
@@ -47,7 +48,7 @@ trait TypeTrait
      */
     final public static function checkType(?string $typeName): bool
     {
-        if (in_array($typeName, self::getAllowedTypes(), true)) {
+        if (!$typeName || '' === $typeName || in_array($typeName, self::getAllowedTypes(), true)) {
             return true;
         }
         throw new InvalidArgumentException('Typ příznaku kontaktu "'.$typeName.'" v události není povolen.');
@@ -61,6 +62,5 @@ trait TypeTrait
     abstract public static function getAllowedTypesDefault(): array;
 
     abstract public static function getAllowedTypesCustom(): array;
-
 
 }
