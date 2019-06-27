@@ -17,14 +17,14 @@ trait EntityDeletedContainerTrait
         }
     }
 
-    final public function getDeleted(?DateTime $referenceDateTime = null): bool
+    final public function getDeleted(?DateTime $referenceDateTime = null): ?DateTime
     {
         return $this->getRevisionByDate($referenceDateTime)->getDeleted();
     }
 
     final public function isDeleted(?DateTime $referenceDateTime = null): bool
     {
-        return (bool)$this->getRevisionByDate($referenceDateTime)->getDeleted();
+        return $this->getRevisionByDate($referenceDateTime)->isDeleted();
     }
 
 }

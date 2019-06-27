@@ -66,7 +66,7 @@ trait DeletedTrait
     final public function delete(?DateTime $dateTime = null): void
     {
         $dateTime = $dateTime ?? new DateTime();
-        $this->deleted = date_create($dateTime->getTimestamp());
+        $this->deleted = $dateTime;
     }
 
     /**
@@ -82,6 +82,6 @@ trait DeletedTrait
             return $dateTime > $this->deleted;
         }
 
-        return (bool)$this->deleted;
+        return $this->deleted ? true : false;
     }
 }
