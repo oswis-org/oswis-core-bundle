@@ -27,4 +27,5 @@ trait EntityDeletedContainerTrait
         return $this->getRevisionByDate($referenceDateTime)->isDeleted();
     }
 
+
 }

@@ -55,7 +55,7 @@ trait DeletedTrait
      */
     final public function setDeleted(?DateTime $deleted = null): void
     {
-        $this->deleted = $deleted ? date_create($deleted->getTimestamp()) : null;
+        $this->deleted = $deleted;
     }
 
     /**
