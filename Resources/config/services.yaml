@@ -149,8 +149,10 @@ services:
         autowire: true
         public: true
         arguments:
-            - '@service_container'
             - '@zakjakub_oswis_core.oswis_core_settings_provider'
+            - 'doctrine.orm.entity_manager.abstract'
+            - 'security.password_encoder'
+            - 'monolog.logger'
 
     Zakjakub\OswisCoreBundle\Controller\AppUserController:
         alias: zakjakub_oswis_core.app_user_controller
@@ -162,7 +164,7 @@ services:
         autowire: true
         public: true
         arguments:
-            - '@swiftmailer.mailer.default'
+            - '@mailer.mailer'
             - '@monolog.logger'
             - '@twig'
             - '@zakjakub_oswis_core.oswis_core_settings_provider'

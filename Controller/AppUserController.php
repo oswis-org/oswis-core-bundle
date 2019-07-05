@@ -2,12 +2,14 @@
 
 namespace Zakjakub\OswisCoreBundle\Controller;
 
+use Doctrine\ORM\EntityManagerInterface;
 use Exception;
 use LogicException;
+use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Zakjakub\OswisCoreBundle\Entity\AppUser;
 use Zakjakub\OswisCoreBundle\Manager\AppUserManager;
 use Zakjakub\OswisCoreBundle\Service\EmailSender;
@@ -17,23 +19,24 @@ class AppUserController extends AbstractController
 {
 
     /**
-     * @param string             $token
-     * @param ContainerInterface $container
-     * @param EmailSender        $emailSender
+     * @param string                       $token
+     * @param EmailSender                  $emailSender
+     *
+     * @param EntityManagerInterface       $em
+     * @param UserPasswordEncoderInterface $encoder
+     * @param LoggerInterface              $logger
      *
      * @return Response
      * @throws LogicException
-     * @throws ServiceCircularReferenceException
      */
     final public function appUserActivationAction(
         string $token,
-        ContainerInterface $container,
-        EmailSender $emailSender
+        EmailSender $emailSender,
+        EntityManagerInterface $em,
+        UserPasswordEncoderInterface $encoder,
+        LoggerInterface $logger
     ): Response {
         try {
-            $em = $container->get('doctrine.orm.entity_manager.abstract');
-            $encoder = $container->get('security.password_encoder');
-            $logger = $container->get('monolog.logger_prototype');
             if (!$token) {
                 return $this->render(
                     '@ZakjakubOswisCore/web/pages/message.html.twig',
@@ -79,7 +82,6 @@ class AppUserController extends AbstractController
                 ]
             );
         } catch (Exception $e) {
-            $logger = $container->get('monolog.logger_prototype');
 
             $logger->notice(
                 'App user activation error: '.$e->getMessage()
