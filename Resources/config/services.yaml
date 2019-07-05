@@ -164,7 +164,7 @@ services:
         autowire: true
         public: true
         arguments:
-            - '@mailer.mailer'
+            - '@swiftmailer.mailer'
             - '@monolog.logger'
             - '@twig'
             - '@zakjakub_oswis_core.oswis_core_settings_provider'
@@ -172,7 +172,6 @@ services:
     Zakjakub\OswisCoreBundle\Service\EmailSender:
         alias: zakjakub_oswis_core.email_sender
         public: true
-
 
 
     Zakjakub\OswisCoreBundle\Manager\:

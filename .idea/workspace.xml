@@ -6,8 +6,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/zakj.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/zakj.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/config/services.yaml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.github/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -150,8 +150,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Resources/config/services.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="262">
-              <caret line="174" lean-forward="true" selection-start-line="174" selection-end-line="174" />
+            <state relative-caret-position="105">
+              <caret line="166" selection-start-line="166" selection-end-line="166" />
             </state>
           </provider>
         </entry>
@@ -803,14 +803,7 @@
       <workItem from="1561905855424" duration="1198000" />
       <workItem from="1561957315483" duration="1197000" />
       <workItem from="1562130605246" duration="6758000" />
-      <workItem from="1562337463875" duration="4822000" />
-    </task>
-    <task id="LOCAL-00209" summary="Added DepositValueTrait.">
-      <created>1558508028320</created>
-      <option name="number" value="00209" />
-      <option name="presentableId" value="LOCAL-00209" />
-      <option name="project" value="LOCAL" />
-      <updated>1558508028320</updated>
+      <workItem from="1562337463875" duration="5850000" />
     </task>
     <task id="LOCAL-00210" summary="Added DepositValueTrait.">
       <created>1558534180634</created>
@@ -1148,16 +1141,24 @@
       <option name="project" value="LOCAL" />
       <updated>1562340444225</updated>
     </task>
-    <option name="localTasksCounter" value="258" />
+    <task id="LOCAL-00258" summary="Some changes.">
+      <created>1562345004392</created>
+      <option name="number" value="00258" />
+      <option name="presentableId" value="LOCAL-00258" />
+      <option name="project" value="LOCAL" />
+      <updated>1562345004392</updated>
+    </task>
+    <option name="localTasksCounter" value="259" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="502492000" />
+    <option name="totallyTimeSpent" value="503520000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="0" width="1922" height="1080" extended-state="6" />
+    <frame x="-1" y="0" width="1368" height="741" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15601704" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17371601" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -1168,10 +1169,10 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49022081" weight="0.20833333" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="8" sideWeight="0.49022081" visible="true" weight="0.19262981" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Statistic" order="10" weight="0.32998326" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.4918919" visible="true" weight="0.18162394" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.4918919" weight="0.18162394" />
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.50977916" side_tool="true" weight="0.20833333" />
       <window_info anchor="bottom" id="Inspection Results" order="13" weight="0.4027778" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -2781,8 +2782,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Resources/config/services.yaml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="174" lean-forward="true" selection-start-line="174" selection-end-line="174" />
+        <state relative-caret-position="105">
+          <caret line="166" selection-start-line="166" selection-end-line="166" />
         </state>
       </provider>
     </entry>
