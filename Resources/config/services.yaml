@@ -168,6 +168,7 @@ services:
             - '@monolog.logger'
             - '@twig'
             - '@zakjakub_oswis_core.oswis_core_settings_provider'
+            - '@mailer.mailer'
 
     Zakjakub\OswisCoreBundle\Service\EmailSender:
         alias: zakjakub_oswis_core.email_sender
@@ -181,6 +182,12 @@ services:
     Zakjakub\OswisCoreBundle\EventSubscriber\:
         resource: '../../EventSubscriber/*'
         tags: [ { name: 'kernel.view'} ]
+        # arguments:
+        #   ['@security.user_password_encoder.generic', '@doctrine.orm.entity_manager.abstract', '@swiftmailer.mailer.abstract', '@monolog.logger_prototype', '@twig', '@security.token_storage']
+        public: true
+
+    Zakjakub\OswisCoreBundle\EventListener\:
+        resource: '../../EventListener/*'
         # arguments:
         #   ['@security.user_password_encoder.generic', '@doctrine.orm.entity_manager.abstract', '@swiftmailer.mailer.abstract', '@monolog.logger_prototype', '@twig', '@security.token_storage']
         public: true

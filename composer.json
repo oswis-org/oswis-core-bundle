@@ -49,7 +49,12 @@
     "hirak/prestissimo": "^0.3",
     "bigit/vokativ": "dev-master",
     "symfony/mailer": "^4.3",
-    "symfony/mime": "^4.3"
+    "symfony/mime": "^4.3",
+    "twig/inky-extension": "^2.0",
+    "twig/markdown-extension": "^1.0",
+    "league/commonmark": "^1.0",
+    "league/html-to-markdown": "^4.8",
+    "twig/cssinliner-extension": "^2.0"
   },
   "require-dev": {
     "roave/security-advisories": "dev-master",

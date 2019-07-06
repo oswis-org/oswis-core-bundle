@@ -11,6 +11,8 @@ use Symfony\Component\HttpFoundation\Exception\SuspiciousOperationException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\ViewEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
+use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Zakjakub\OswisCoreBundle\Entity\AppUser;
 use Zakjakub\OswisCoreBundle\Manager\AppUserManager;
@@ -41,24 +43,32 @@ final class AppUserSubscriber implements EventSubscriberInterface
     private $emailSender;
 
     /**
+     * @var MailerInterface
+     */
+    private $newMailer;
+
+    /**
      * ReservationSubscriber constructor.
      *
      * @param UserPasswordEncoderInterface $encoder
      * @param EntityManagerInterface       $em
      * @param LoggerInterface              $logger
      * @param EmailSender                  $emailSender
+     * @param MailerInterface              $newMailer
      */
     public function __construct(
         UserPasswordEncoderInterface $encoder,
         EntityManagerInterface $em,
         LoggerInterface $logger,
-        EmailSender $emailSender
+        EmailSender $emailSender,
+        MailerInterface $newMailer
     ) {
         // \error_log('Constructing ReservationSubscriber.');
         $this->encoder = $encoder;
         $this->em = $em;
         $this->logger = $logger;
         $this->emailSender = $emailSender;
+        $this->newMailer = $newMailer;
     }
 
     /**
@@ -76,16 +86,17 @@ final class AppUserSubscriber implements EventSubscriberInterface
      *
      * @throws ErrorException
      * @throws SuspiciousOperationException
+     * @throws TransportExceptionInterface
      */
     public function makeAppUser(ViewEvent $event): void
     {
         $appUser = $event->getControllerResult();
         $method = $event->getRequest()->getMethod();
-        if (!$appUser instanceof AppUser || Request::METHOD_POST !== $method) {
+        if (!($appUser instanceof AppUser) || Request::METHOD_POST !== $method) {
             return;
         }
         assert($appUser instanceof AppUser);
-        $appUserManager = new AppUserManager($this->encoder, $this->em, $this->logger, $this->emailSender);
+        $appUserManager = new AppUserManager($this->encoder, $this->em, $this->logger, $this->emailSender, $this->newMailer);
         $appUserManager->appUserAction($appUser, 'activation-request');
     }
 

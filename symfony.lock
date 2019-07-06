@@ -107,6 +107,12 @@
     "lcobucci/jwt": {
         "version": "3.2.5"
     },
+    "league/commonmark": {
+        "version": "1.0.0"
+    },
+    "league/html-to-markdown": {
+        "version": "4.8.1"
+    },
     "lexik/jwt-authentication-bundle": {
         "version": "2.5",
         "recipe": {
@@ -115,6 +121,9 @@
             "version": "2.5",
             "ref": "509b1542f3180a1cfe248ade8b7bf5092c2d4127"
         }
+    },
+    "lorenzo/pinky": {
+        "version": "1.0.4"
     },
     "monolog/monolog": {
         "version": "1.24.0"
@@ -202,6 +211,9 @@
             "version": "3.3",
             "ref": "0fa049c19069a65f52c1c181d64be3de672c1504"
         }
+    },
+    "symfony/css-selector": {
+        "version": "v4.3.2"
     },
     "symfony/debug": {
         "version": "v4.2.2"
@@ -409,6 +421,36 @@
     },
     "symfony/web-link": {
         "version": "v4.2.5"
+    },
+    "tijsverkoyen/css-to-inline-styles": {
+        "version": "2.2.1"
+    },
+    "twig/cssinliner-extension": {
+        "version": "1.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "1.0",
+            "ref": "3460ba58f2609c9f1a38c6e9f2a416ff911f0861"
+        }
+    },
+    "twig/inky-extension": {
+        "version": "1.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "1.0",
+            "ref": "98aa25792ca5b18aebbac6644a150ac90867408d"
+        }
+    },
+    "twig/markdown-extension": {
+        "version": "1.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "1.0",
+            "ref": "709b663eeb863ec3011db883d795c1122d85be85"
+        }
     },
     "twig/twig": {
         "version": "v2.6.2"

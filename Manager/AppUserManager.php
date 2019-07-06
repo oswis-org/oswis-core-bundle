@@ -7,6 +7,9 @@ use ErrorException;
 use Exception;
 use InvalidArgumentException;
 use Psr\Log\LoggerInterface;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
+use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Zakjakub\OswisCoreBundle\Entity\AppUser;
 use Zakjakub\OswisCoreBundle\Entity\AppUserType;
@@ -47,23 +50,31 @@ class AppUserManager
     private $emailSender;
 
     /**
+     * @var MailerInterface
+     */
+    private $newMailer;
+
+    /**
      * AppUserManager constructor.
      *
      * @param UserPasswordEncoderInterface $encoder
      * @param EntityManagerInterface       $em
      * @param LoggerInterface              $logger
      * @param EmailSender                  $emailSender
+     * @param MailerInterface              $newMailer
      */
     public function __construct(
         UserPasswordEncoderInterface $encoder,
         EntityManagerInterface $em,
         LoggerInterface $logger,
-        EmailSender $emailSender
+        EmailSender $emailSender,
+        MailerInterface $newMailer
     ) {
         $this->encoder = $encoder;
         $this->em = $em;
         $this->logger = $logger;
         $this->emailSender = $emailSender;
+        $this->newMailer = $newMailer;
     }
 
     /**
@@ -79,6 +90,7 @@ class AppUserManager
      * @return AppUser
      * @throws ErrorException
      * @throws Exception
+     * @throws TransportExceptionInterface
      */
     final public function create(
         ?string $fullName,
@@ -134,6 +146,7 @@ class AppUserManager
      *
      * @return bool
      * @throws ErrorException
+     * @throws TransportExceptionInterface
      */
     final public function appUserAction(
         AppUser $appUser,
@@ -253,6 +266,7 @@ class AppUserManager
      * @param string|null $password
      *
      * @throws ErrorException
+     * @throws TransportExceptionInterface
      */
     final public function sendAppUserEmail(
         AppUser $appUser,
@@ -275,19 +289,25 @@ class AppUserManager
                 throw new InvalidArgumentException('Akce "'.$type.'" není u uživatelských účtů implementována.');
             }
 
-            $message = $this->emailSender->getPreparedMessage(
-                [$appUser->getEmail() ?? '' => EmailUtils::mime_header_encode($appUser->getFullName() ?? $appUser->getUsername() ?? '')],
-                EmailUtils::mime_header_encode($title)
-            );
-
             $data = array(
-                'appUser'  => $appUser,
-                'type'     => $type,
-                'token'    => $token,
-                'password' => $password,
+                'logo'         => '@ZakjakubOswisCore/Resources/public/logo.png',
+                'title'        => $title,
+                'appNameShort' => 'OSWIS',
+                'appNameLong'  => 'One Simple Web IS',
+                'appUser'      => $appUser,
+                'type'         => $type,
+                'token'        => $token,
+                'password'     => $password,
             );
 
-            $this->emailSender->sendMessage($message, '@ZakjakubOswisCore/e-mail/app-user', $data);
+            $email = (new TemplatedEmail())
+                ->to(new NamedAddress($appUser->getEmail() ?? '', EmailUtils::mime_header_encode($appUser->getFullName() ?? $appUser->getUsername() ?? '')))
+                ->subject(EmailUtils::mime_header_encode($title))
+                ->htmlTemplate('@ZakjakubOswisCore/e-mail/app-user.html.twig')
+                ->context($data);
+            $this->newMailer->send($email);
+
+
         } catch (Exception $e) {
             throw new ErrorException('Problém s odesláním zprávy o změně účtu:  '.$e->getMessage());
         }

@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpKernel\Event\ViewEvent;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\KernelEvents;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Zakjakub\OswisCoreBundle\Entity\AppUser;
 use Zakjakub\OswisCoreBundle\Manager\AppUserManager;
@@ -51,9 +52,10 @@ final class AppUserSubscriber implements EventSubscriberInterface
     /**
      * @param ViewEvent $event
      *
+     * @throws ErrorException
      * @throws InvalidArgumentException
      * @throws NotFoundHttpException
-     * @throws ErrorException
+     * @throws TransportExceptionInterface
      */
     public function appUserAction(ViewEvent $event): void
     {

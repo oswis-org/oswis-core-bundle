@@ -7,8 +7,9 @@ use Exception;
 use LogicException;
 use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
+use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Zakjakub\OswisCoreBundle\Entity\AppUser;
 use Zakjakub\OswisCoreBundle\Manager\AppUserManager;
@@ -26,15 +27,19 @@ class AppUserController extends AbstractController
      * @param UserPasswordEncoderInterface $encoder
      * @param LoggerInterface              $logger
      *
+     * @param MailerInterface              $newMailer
+     *
      * @return Response
      * @throws LogicException
+     * @throws TransportExceptionInterface
      */
     final public function appUserActivationAction(
         string $token,
         EmailSender $emailSender,
         EntityManagerInterface $em,
         UserPasswordEncoderInterface $encoder,
-        LoggerInterface $logger
+        LoggerInterface $logger,
+        MailerInterface $newMailer
     ): Response {
         try {
             if (!$token) {
@@ -68,7 +73,7 @@ class AppUserController extends AbstractController
 
             assert($appUser instanceof AppUser);
 
-            $appUserManager = new AppUserManager($encoder, $em, $logger, $emailSender);
+            $appUserManager = new AppUserManager($encoder, $em, $logger, $emailSender, $newMailer);
 
             $appUserManager->appUserAction($appUser, 'activation', null, $token);
 

@@ -22,11 +22,14 @@
     <meta name="msapplication-TileColor" content="#006FAD">
     <meta name="theme-color" content="#006FAD">
     <style type='text/css'>
-        {% include '@ZakjakubOswisCore/e-mail/message.css.twig' %}
+        {# {% include '@ZakjakubOswisCore/e-mail/message.css.twig' %} #}
         {% block additional_css %}
         {% endblock %}
     </style>
 </head>
+
+{% apply inline_css(source('@ZakjakubOswisCore/e-mail/message.css.twig' )) %}
+
 <body style='font-size: 14px;color: #006FAD;box-sizing: content-box;width: 100%;margin: 0 0; padding: 0;'>
 
 <table style='background-color: transparent;font-size: 14px;
@@ -107,6 +110,8 @@
         </td>
     </tr>
 </table>
+
+{% endapply %}
 
 <!-- Jakub Zak, https://jakubzak.cz -->
 </body>
