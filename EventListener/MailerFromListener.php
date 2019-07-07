@@ -37,7 +37,7 @@ class MailerFromListener implements EventSubscriberInterface
         if (!$message->getFrom() && $oswisCoreSettings->getEmail()['address']) {
             $message->from(
                 new NamedAddress(
-                    EmailUtils::mime_header_encode($oswisCoreSettings->getEmail()['address'] ?? null),
+                    $oswisCoreSettings->getEmail()['address'] ?? null,
                     EmailUtils::mime_header_encode($oswisCoreSettings->getEmail()['name'] ?? null)
                 )
             );
