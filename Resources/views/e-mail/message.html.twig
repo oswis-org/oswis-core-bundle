@@ -1,118 +1,163 @@
 {% set base_url = 'https://oswis.org' %}
-
-<!DOCTYPE html>
-<html lang='cs-CZ' dir="ltr" style="width: 100%; margin: 0; padding: 0; min-height: 100%;">
-<!-- Jakub Zak, https://jakubzak.cz -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- OSWIS (One Simple Web IS), Jakub Zak (https://jakubzak.cz) -->
+<!--suppress HtmlUnknownTag -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang='cs-CZ' dir="ltr">
 <head>
-    <meta charset='UTF-8'>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width"/>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <meta name='format-detection' content='telephone=yes'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0'>
-    <meta name='author' content='Jakub Žák'>
-    <meta property='copyright' content='Jakub Žák'>
+    <meta name='author' content='{% block meta_author %}Jakub Zak (https://jakubzak.cz){% endblock %}'>
+    <meta name='copyright' content='{% block meta_copyright %}Jakub Zak (https://jakubzak.cz){% endblock %}'>
     <meta name='generator' content='OSWIS - One Simple Web IS'>
-    <meta name='Description' content='{% block description %}Zpráva z OSWIS - One Simple Web IS{% endblock %}'>
-    <meta name='Keywords' content='oswis,informační,systém,simple,web,is'>
-    <meta name='Designer' content='Jakub Žák'>
+    <meta name='Description' content='{% block description %}Zpráva z OSWIS (One Simple Web IS){% endblock %}'>
+    <meta name='Designer' content='Jakub Zak (https://jakubzak.cz)'>
     <meta name='Revisit-After' content='1 day'>
-    <meta name='geo.position' content='49.5922829,17.2633168'>
-    <meta name='ICBM' content='49.5922829,17.2633168'>
+    <meta name='geo.position' content='{% block meta_geo_position %}49.5922829,17.2633168{% endblock %}'>
+    <meta name='ICBM' content='{% block meta_icbm %}49.5922829,17.2633168{% endblock %}'>
     <meta name='DC.Language' content='cs-cz'>
-    <title>{% block title %}Rezervační systém PřF UP{% endblock %}</title>
-    <meta name="msapplication-TileColor" content="#006FAD">
-    <meta name="theme-color" content="#006FAD">
+    <title>{% block title %}Zpráva z OSWIS (One Simple Web IS){% endblock %}</title>
+    <meta name="msapplication-TileColor" content="{% block meta_tile_color %}#006FAD{% endblock %}">
+    <meta name="theme-color" content="{% block meta_theme_color %}#006FAD{% endblock %}">
+</head>
+
+{% apply inky|inline_css(source('@ZakjakubOswisCore/e-mail/message.css.twig' )) %}
+
     <style type='text/css'>
-        {# {% include '@ZakjakubOswisCore/e-mail/message.css.twig' %} #}
         {% block additional_css %}
         {% endblock %}
     </style>
-</head>
 
-{% apply inline_css(source('@ZakjakubOswisCore/e-mail/message.css.twig' )) %}
+    <body>
 
-<body style='font-size: 14px;color: #006FAD;box-sizing: content-box;width: 100%;margin: 0 0; padding: 0;'>
+    <wrapper class="wrapper">
 
-<table style='background-color: transparent;font-size: 14px;
-       color: #006FAD;box-sizing: content-box;width: 100%;height: 100%; margin: 0; padding: 0; '>
-    <tr style="box-sizing: content-box;width: 100%;height: 100%; margin: 0; padding: 0;">
-        <td style="box-sizing: content-box;width: 100%;height: 100%; margin: 0; padding: 0;">
-            {% block content %}
-                <table bgcolor="#006FAD" color="#FFFFFF" class="blue-white"
-                       style="width: 600px; width:90%; min-width:300px; max-width:800px; margin:10px auto; text-align:justify;background-color: #006FAD; color: #FFFFFF !important;">
-                    {% block content_logo %}
-                        <tr>
-                            <td colspan="2"></td>
-                            <td colspan="8" style="text-align: center;">
-                                <a target='_blank' href='{{ base_url }}'
-                                   style="display: block; width: 190px; width: 60%; min-width: 140px; max-width: 280px; margin: 0 auto;">
-                                    {% block logo_img %}
-                                        <img id='logo' border=0 alt='OSWIS'
-                                             src='{{ logo is defined and logo ? logo : absolute_url(asset('bundles/zakjakuboswiscore/favicons/apple-touch-icon-180x180.png')) }}'
-                                             style='border:0 none; text-align:center; width: 100%; margin: 0 auto; max-width: 280px;'>
-                                    {% endblock %}
-                                </a>
-                            </td>
-                            <td colspan="2"></td>
-                        </tr>
-                    {% endblock %}
+        <container class="header">
+            <row>
+                <columns>
+                    <a target='_blank' href='{{ base_url }}'>
+                        <img alt='OSWIS' src='{{ logo is defined and logo ? logo : absolute_url(asset('bundles/zakjakuboswiscore/favicons/apple-touch-icon-180x180.png')) }}'>
+                    </a>
+                </columns>
+            </row>
+        </container>
+
+        <container class="content">
+            <row>
+                <columns>
                     {% block content_content %}
-                        <tr>
-                            <td colspan="12">
-                                Nastala chyba. Obsah zprávy nebyl načten. Kontaktujte nás, prosím.
-                            </td>
-                        </tr>
+                        Nastala chyba. Obsah zprávy nebyl načten. Kontaktujte nás, prosím.
                     {% endblock %}
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    {% block content_foot %}
-                        <tr>
-                            <td colspan="12">
-                                <div>
-                                    <hr color='#FFFFFF' style='color:#FFFFFF !important;'>
-                                    <small color="#FFFFFF" style="font-size:0.7em;color:#FFFFFF !important;">
-                                        Tento e-mail byl vygenerován a zaslán automaticky aplikací OSWIS.
-                                    </small>
-                                </div>
-                            </td>
-                        </tr>
-                    {% endblock %}
-                </table>
-            {% endblock %}
-            {% block app_footer %}
-                <br>
-                <table style="text-align:center;font-size:8.5px;margin-top:30px;margin-bottom:0;padding-bottom:0;color:#006FAD;background-color: transparent;">
-                    <tr style="margin-bottom:0;padding-bottom:0;">
-                        <td style="font-size:8.5px;margin-bottom:0;padding-bottom:0;">
-                            {% block app_footer_inner %}
-                                <small>
-                                    Autorem aplikace
-                                    <a href="https://oswis.org" title="One Simple Web IS" target="_blank" color="#006FAD" style="color:#006FAD!important;">OSWIS</a>.
-                                    je
-                                    <a href="https://jakubzak.cz" title="Jakub Žák" target="_blank" color="#006FAD" style="color:#006FAD!important;">Jakub Žák</a>.
-                                </small>
-                            {% endblock %}
-                        </td>
-                    </tr>
-                </table>
-            {% endblock %}
-        </td>
-    </tr>
-</table>
+                </columns>
+            </row>
+        </container>
 
+        <container>
+            <row>
+                <columns>
+                    <hr color='#FFFFFF' style='color:#FFFFFF !important;'>
+                    <small color="#FFFFFF" style="font-size:0.7em;color:#FFFFFF !important;">
+                        Tento e-mail byl vygenerován a zaslán automaticky aplikací OSWIS.
+                    </small>
+                </columns>
+            </row>
+        </container>
+
+    </wrapper>
+
+
+    </body>
+
+
+
+
+
+    <!-- <body style='font-size: 14px;color: #006FAD;box-sizing: content-box;width: 100%;margin: 0 0; padding: 0;'> -->
+    <!--
+    <table style='background-color: transparent;font-size: 14px;
+       color: #006FAD;box-sizing: content-box;width: 100%;height: 100%; margin: 0; padding: 0; '>
+        <tr style="box-sizing: content-box;width: 100%;height: 100%; margin: 0; padding: 0;">
+            <td style="box-sizing: content-box;width: 100%;height: 100%; margin: 0; padding: 0;">
+                {% block content %}
+                    <table bgcolor="#006FAD" color="#FFFFFF" class="blue-white"
+                           style="width: 600px; width:90%; min-width:300px; max-width:800px; margin:10px auto; text-align:justify;background-color: #006FAD; color: #FFFFFF !important;">
+                        {% block content_logo %}
+                            <tr>
+                                <td colspan="2"></td>
+                                <td colspan="8" style="text-align: center;">
+                                    <a target='_blank' href='{{ base_url }}'
+                                       style="display: block; width: 190px; width: 60%; min-width: 140px; max-width: 280px; margin: 0 auto;">
+                                        {% block logo_img %}
+                                            <img id='logo' border=0 alt='OSWIS'
+                                                 src='{{ logo is defined and logo ? logo : absolute_url(asset('bundles/zakjakuboswiscore/favicons/apple-touch-icon-180x180.png')) }}'
+                                                 style='border:0 none; text-align:center; width: 100%; margin: 0 auto; max-width: 280px;'>
+                                        {% endblock %}
+                                    </a>
+                                </td>
+                                <td colspan="2"></td>
+                            </tr>
+                        {% endblock %}
+                        {% block content_content %}
+                            <tr>
+                                <td colspan="12">
+                                    Nastala chyba. Obsah zprávy nebyl načten. Kontaktujte nás, prosím.
+                                </td>
+                            </tr>
+                        {% endblock %}
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        {% block content_foot %}
+                            <tr>
+                                <td colspan="12">
+                                    <div>
+                                        <hr color='#FFFFFF' style='color:#FFFFFF !important;'>
+                                        <small color="#FFFFFF" style="font-size:0.7em;color:#FFFFFF !important;">
+                                            Tento e-mail byl vygenerován a zaslán automaticky aplikací OSWIS.
+                                        </small>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endblock %}
+                    </table>
+                {% endblock %}
+                {% block app_footer %}
+                    <br>
+                    <table style="text-align:center;font-size:8.5px;margin-top:30px;margin-bottom:0;padding-bottom:0;color:#006FAD;background-color: transparent;">
+                        <tr style="margin-bottom:0;padding-bottom:0;">
+                            <td style="font-size:8.5px;margin-bottom:0;padding-bottom:0;">
+                                {% block app_footer_inner %}
+                                    <small>
+                                        Autorem aplikace
+                                        <a href="https://oswis.org" title="One Simple Web IS" target="_blank" color="#006FAD" style="color:#006FAD!important;">OSWIS</a>.
+                                        je
+                                        <a href="https://jakubzak.cz" title="Jakub Žák" target="_blank" color="#006FAD" style="color:#006FAD!important;">Jakub Žák</a>.
+                                    </small>
+                                {% endblock %}
+                            </td>
+                        </tr>
+                    </table>
+                {% endblock %}
+            </td>
+        </tr>
+    </table>
+
+    -->
 {% endapply %}
 
-<!-- Jakub Zak, https://jakubzak.cz -->
-</body>
+<!-- </body> -->
 </html>
+<!-- OSWIS (One Simple Web IS), Jakub Zak (https://jakubzak.cz) -->
