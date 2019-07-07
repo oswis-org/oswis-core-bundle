@@ -10,14 +10,24 @@ use Zakjakub\OswisCoreBundle\Provider\OswisCoreSettingsProvider;
 
 class MailerFromListener implements EventSubscriberInterface
 {
+
+    protected $oswisCoreSettings;
+
+    public function __construct(OswisCoreSettingsProvider $oswisCoreSettings)
+    {
+        $this->oswisCoreSettings = $oswisCoreSettings;
+    }
+
+
     final public static function getSubscribedEvents(): array
     {
         return [MessageEvent::class => 'onMessageSend'];
     }
 
-    final public function onMessageSend(MessageEvent $event, OswisCoreSettingsProvider $oswisCoreSettings): void
+    final public function onMessageSend(MessageEvent $event): void
     {
         $message = $event->getMessage();
+        $oswisCoreSettings = $this->oswisCoreSettings;
 
         if (!$message instanceof Email) {
             return;

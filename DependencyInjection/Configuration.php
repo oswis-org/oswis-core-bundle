@@ -6,6 +6,8 @@ use RuntimeException;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
+/** @noinspection ClassNameCollisionInspection */
+
 class Configuration implements ConfigurationInterface
 {
 
@@ -17,6 +19,8 @@ class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder('zakjakub_oswis_core');
         $rootNode = $treeBuilder->getRootNode();
+        /** @noinspection PhpUndefinedMethodInspection */
+        /** @noinspection NullPointerExceptionInspection */
         $rootNode
             ->info('Default configuration for core module of OSWIS (One Simple Web IS).')
             ->children()
