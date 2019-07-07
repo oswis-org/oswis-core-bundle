@@ -1,62 +1,93 @@
 <!doctype html>
-<html class="no-js" lang="cs-cz">
+<html class="no-js" lang="{% block html_lang %}cs-cz{% endblock %}">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>{% block html_title %}{{ oswis_core_settings.web.title }}{% endblock %}</title>
-    {% block tag_manager_script %}{% endblock %}
-    <meta name="description" content="{% block html_description %}{{ oswis_core_settings.web.description }}{% endblock %}">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    {% block meta_tags %}
-        {% block meta_tags_app %}
-            <meta name="apple-mobile-web-app-title" content="{{ oswis_core_settings.web.title }}">
-            <meta name="application-name" content="{{ oswis_core_settings.web.title }}">
+    {% block meta_tags_outer %}
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name='DC.Language' content='{{ block('html_lang') }}'>
+        <title>{% block html_title %}{{ oswis_core_settings.web.title }}{% endblock %}</title>
+        {% block tag_manager_script %}{% endblock %}
+        <meta name="description" content="{% block html_description %}{{ oswis_core_settings.web.description }}{% endblock %}">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+        <meta name='format-detection' content='telephone=yes'>
+        <meta name='author' content='{% block meta_author %}Jakub Zak (https://jakubzak.cz){% endblock %}'>
+        <meta name='copyright' content='{% block meta_copyright %}Jakub Zak (https://jakubzak.cz){% endblock %}'>
+        <meta name='generator' content='{% block meta_generator %}OSWIS (One Simple Web IS){% endblock %}'>
+        <meta name='Designer' content='{% block meta_designer %}Jakub Zak (https://jakubzak.cz){% endblock %}'>
+        <meta name='Revisit-After' content='{% block meta_revisit_after %}1 day{% endblock %}'>
+        {% block meta_tags_inner %}
+            {% block meta_dns_prefetch %}
+                <link rel="dns-prefetch" href="//www.googletagmanager.com">
+                <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+                <link rel="dns-prefetch" href="//piwik.dwarf.jakubzak.cz">
+                <link rel="dns-prefetch" href="//www.google-analytics.com">
+                <link rel="dns-prefetch" href="//facebook.com">
+                <link rel="dns-prefetch" href="//fb.com">
+                <link rel="dns-prefetch" href="//youtube.com">
+                <link rel="dns-prefetch" href="//upol.cz">
+                <link rel="dns-prefetch" href="//www.youtube-nocookie.com">
+            {% endblock meta_dns_prefetch %}
+            {% block meta_geo %}
+                <meta name='geo.position' content='{% block meta_geo_position %}49.5922829,17.2633168{% endblock %}'>
+                <meta name='ICBM' content='{{ block('meta_geo_position') }}'>
+            {% endblock %}
+            {% block meta_tags_app %}
+                <meta name="application-name" content="{% block meta_app_name %}{{ block('html_title') }}{% endblock %}">
+                <meta name="apple-mobile-web-app-title" content="{% block meta_app_title_apple %}{{ block('meta_app_name') }}{% endblock %}">
+            {% endblock %}
+            {% block meta_tags_color %}
+                <meta name="theme-color" content="{% block meta_theme_color %}#3498d0{% endblock %}">
+                <meta name="msapplication-TileColor" content="{% block meta_tile_color %}{{ block('meta_theme_color') }}{% endblock %}">
+            {% endblock %}
+            {% block meta_tags_icons %}
+                <link rel="apple-touch-icon" sizes="180x180" href="{{ preload(asset('bundles/zakjakuboswiscore/favicons/apple-touch-icon.png')) }}">
+                <link rel="icon" type="image/png" sizes="32x32" href="{{ preload(asset('bundles/zakjakuboswiscore/favicons/favicons-32x32.png')) }}">
+                <link rel="icon" type="image/png" sizes="194x194" href="{{ preload(asset('bundles/zakjakuboswiscore/favicons/favicons-194x194.png')) }}">
+                <link rel="icon" type="image/png" sizes="192x192" href="{{ preload(asset('bundles/zakjakuboswiscore/favicons/android-chrome-192x192.png')) }}">
+                <link rel="icon" type="image/png" sizes="16x16" href="{{ preload(asset('bundles/zakjakuboswiscore/favicons/favicons-16x16.png')) }}">
+                <link rel="manifest" href="{{ preload(asset('bundles/zakjakuboswiscore/favicons/site.webmanifest')) }}">
+                <link rel="mask-icon" href="{{ preload(asset('bundles/zakjakuboswiscore/favicons/safari-pinned-tab.svg')) }}" color="#3498d0">
+                <link rel="shortcut icon" href="{{ preload(asset('bundles/zakjakuboswiscore/favicons/favicons.ico')) }}">
+                <meta name="msapplication-config" content="{{ preload(asset('bundles/zakjakuboswiscore/favicons/browserconfig.xml')) }}">
+                <meta name="msapplication-TileImage" content="{{ preload(asset('bundles/zakjakuboswiscore/favicons/mstile-144x144.png')) }}">
+            {% endblock %}
+            {% block meta_tags_canonical %}
+            {% endblock meta_tags_cannonical %}
+        {% endblock meta_tags_inner %}
+        {% block meta_og %}
         {% endblock %}
-        {% block meta_tags_icons %}
-            <link rel="apple-touch-icon" sizes="180x180" href="{{ preload(asset('bundles/zakjakuboswiscore/favicons/apple-touch-icon.png')) }}">
-            <link rel="icon" type="image/png" sizes="32x32" href="{{ preload(asset('bundles/zakjakuboswiscore/favicons/favicons-32x32.png')) }}">
-            <link rel="icon" type="image/png" sizes="194x194" href="{{ preload(asset('bundles/zakjakuboswiscore/favicons/favicons-194x194.png')) }}">
-            <link rel="icon" type="image/png" sizes="192x192" href="{{ preload(asset('bundles/zakjakuboswiscore/favicons/android-chrome-192x192.png')) }}">
-            <link rel="icon" type="image/png" sizes="16x16" href="{{ preload(asset('bundles/zakjakuboswiscore/favicons/favicons-16x16.png')) }}">
-            <link rel="manifest" href="{{ preload(asset('bundles/zakjakuboswiscore/favicons/site.webmanifest')) }}">
-            <link rel="mask-icon" href="{{ preload(asset('bundles/zakjakuboswiscore/favicons/safari-pinned-tab.svg')) }}" color="#3498d0">
-            <link rel="shortcut icon" href="{{ preload(asset('bundles/zakjakuboswiscore/favicons/favicons.ico')) }}">
-            <meta name="msapplication-config" content="{{ preload(asset('bundles/zakjakuboswiscore/favicons/browserconfig.xml')) }}">
-            <meta name="msapplication-TileColor" content="#3498d0">
-            <meta name="msapplication-TileImage" content="{{ preload(asset('bundles/zakjakuboswiscore/favicons/mstile-144x144.png')) }}">
-            <meta name="theme-color" content="#3498d0">
-        {% endblock %}
-        {% block meta_tags_canonical %}
-        {% endblock %}
-    {% endblock %}
-    {% block og %}
-    {% endblock %}
+    {% endblock meta_tags_outer %}
     {% block stylesheets %}
         {{ encore_entry_link_tags('app') }}
     {% endblock %}
 </head>
-<body>
-{% block tag_manager_noscript %}{% endblock %}
+{% block html_inner %}
+    <body>
+    {% block body_outer %}
+        {% block tag_manager_noscript %}{% endblock %}
 
-{% block body_start %}{% endblock %}
+        {% block body_start %}{% endblock %}
 
-{% block body %}
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <p>
-                    Obsah stránky nebyl načten.
-                </p>
+        {% block body_inner %}
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <p>
+                            Obsah stránky nebyl načten.
+                        </p>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-{% endblock %}
+        {% endblock %}
 
-{% block body_end %}{% endblock %}
+        {% block body_end %}{% endblock %}
 
-{% block javascripts %}
-    {{ encore_entry_script_tags('app') }}
-{% endblock %}
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
 
-</body>
+    {% endblock body_outer %}
+    </body>
+{% endblock html_inner %}
 </html>

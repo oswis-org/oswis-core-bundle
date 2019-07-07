@@ -1,21 +1,21 @@
 {% extends '@ZakjakubOswisCore/web/html-skeleton-default.html.twig' %}
 
-{% block body %}
-    {% block header %}
+{% block body_inner %}
+    {% block body_header %}
         {% include '@ZakjakubOswisCore/web/parts/header.html.twig' %}
     {% endblock %}
-    {% block content %}
+    {% block body_content %}
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <p>
-                        Tělo nenačteno.
+                        Obsah stránky nebyl načten.
                     </p>
                 </div>
             </div>
         </div>
     {% endblock %}
-    {% block footer %}
+    {% block body_footer %}
         {% include '@ZakjakubOswisCore/web/parts/footer.html.twig' %}
     {% endblock %}
 {% endblock %}

@@ -216,6 +216,7 @@ class AppUserManager
      * @param string|null $password
      *
      * @throws ErrorException
+     * @throws TransportExceptionInterface
      */
     final public function sendPasswordEmail(
         AppUser $appUser,
@@ -242,18 +243,24 @@ class AppUserManager
                 throw new InvalidArgumentException('Akce "'.$type.'" není u změny hesla implementována.');
             }
 
-            $message = $this->emailSender->getPreparedMessage(
-                [$appUser->getEmail() => EmailUtils::mime_header_encode($appUser->getFullName() ?? $appUser->getUsername())],
-                EmailUtils::mime_header_encode($title)
-            );
-
             $data = array(
-                'appUser'  => $appUser,
-                'token'    => $token,
-                'password' => $password,
+                'type'         => $type,
+                'appUser'      => $appUser,
+                'token'        => $token,
+                'password'     => $password,
+                'logo'         => 'cid:logo',
+                'title'        => EmailUtils::mime_header_encode($title),
+                'appNameShort' => 'OSWIS',
+                'appNameLong'  => 'One Simple Web IS',
             );
 
-            $this->emailSender->sendMessage($message, '@ZakjakubOswisCore/e-mail/password', $data);
+            $email = (new TemplatedEmail())
+                ->to(new NamedAddress($appUser->getEmail() ?? '', EmailUtils::mime_header_encode($appUser->getFullName() ?? $appUser->getUsername() ?? '')))
+                ->subject(EmailUtils::mime_header_encode($title))
+                ->htmlTemplate('@ZakjakubOswisCore/e-mail/password.html.twig')
+                ->embedFromPath('../assets/assets/images/logo.png', 'logo')
+                ->context($data);
+            $this->newMailer->send($email);
         } catch (Exception $e) {
             $this->logger->error($e->getMessage());
             throw new ErrorException('Problém s odesláním zprávy o změně hesla:  '.$e->getMessage());
@@ -292,7 +299,7 @@ class AppUserManager
 
             $data = array(
                 'logo'         => 'cid:logo',
-                'title'        => $title,
+                'title'        => EmailUtils::mime_header_encode($title),
                 'appNameShort' => 'OSWIS',
                 'appNameLong'  => 'One Simple Web IS',
                 'appUser'      => $appUser,
@@ -308,7 +315,6 @@ class AppUserManager
                 ->embedFromPath('../assets/assets/images/logo.png', 'logo')
                 ->context($data);
             $this->newMailer->send($email);
-
         } catch (Exception $e) {
             throw new ErrorException('Problém s odesláním zprávy o změně účtu:  '.$e->getMessage());
         }

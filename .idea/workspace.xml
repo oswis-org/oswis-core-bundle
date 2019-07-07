@@ -6,9 +6,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Resources/views/e-mail/foundation-emails.css.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/zakj.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/zakj.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Manager/AppUserManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/Manager/AppUserManager.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/views/e-mail/app-user.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/e-mail/app-user.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Resources/views/e-mail/message.css.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/e-mail/message.css.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Resources/views/e-mail/message.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/e-mail/message.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/views/e-mail/password.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/e-mail/password.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/views/web/html-skeleton-default.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/html-skeleton-default.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/views/web/page-skeleton-default.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/page-skeleton-default.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/views/web/pages/homepage.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/pages/homepage.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/views/web/pages/message.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/pages/message.html.twig" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.github/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -110,23 +119,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Resources/views/e-mail/message.html.twig">
+        <entry file="file://$PROJECT_DIR$/Resources/views/documents/pdf-document.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="651">
-              <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
-              <folding>
-                <element signature="n#style#0;n#hr#0;n#columns#0;n#row#0;n#container#2;n#wrapper#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#small#0;n#columns#0;n#row#0;n#container#2;n#wrapper#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Resources/views/e-mail/message.css.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+            <state relative-caret-position="84">
+              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
             </state>
           </provider>
         </entry>
@@ -135,7 +131,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>activat</find>
       <find>changePass</find>
       <find>activa</find>
       <find>generateToke</find>
@@ -165,6 +160,7 @@
       <find>app_user_controller</find>
       <find>prot</find>
       <find>data\.</find>
+      <find>og</find>
     </findStrings>
     <replaceStrings>
       <replace>Zakjakub\OswisResourcesBundle\</replace>
@@ -354,7 +350,6 @@
         <option value="$PROJECT_DIR$/Traits/Entity/TaxRateTrait.php" />
         <option value="$PROJECT_DIR$/Traits/Entity/NameableBasicTrait.php" />
         <option value="$PROJECT_DIR$/Resources/views/web/parts/header.html.twig" />
-        <option value="$PROJECT_DIR$/Resources/views/web/page-skeleton-default.html.twig" />
         <option value="$PROJECT_DIR$/Provider/OswisCoreSettingsProvider.php" />
         <option value="$PROJECT_DIR$/Traits/Entity/PhoneTrait.php" />
         <option value="$PROJECT_DIR$/Traits/Entity/FullNameTrait.php" />
@@ -374,7 +369,6 @@
         <option value="$PROJECT_DIR$/Entity/AppUser.php" />
         <option value="$PROJECT_DIR$/Traits/Entity/UsernameTrait.php" />
         <option value="$PROJECT_DIR$/Traits/Entity/EncryptedPasswordTrait.php" />
-        <option value="$PROJECT_DIR$/Resources/views/web/html-skeleton-default.html.twig" />
         <option value="$PROJECT_DIR$/Utils/FileUtils.php" />
         <option value="$PROJECT_DIR$/Entity/AbstractClass/AbstractImage.php" />
         <option value="$PROJECT_DIR$/Utils/SourceCodeUtils.php" />
@@ -386,23 +380,25 @@
         <option value="$PROJECT_DIR$/Service/EmailSender.php" />
         <option value="$PROJECT_DIR$/composer.json" />
         <option value="$PROJECT_DIR$/composer.json" />
-        <option value="$PROJECT_DIR$/Resources/views/web/pages/message.html.twig" />
-        <option value="$PROJECT_DIR$/Resources/views/web/pages/homepage.html.twig" />
         <option value="$PROJECT_DIR$/config/packages/mailer.yaml" />
-        <option value="$PROJECT_DIR$/Resources/views/e-mail/app-user.html.twig" />
         <option value="$PROJECT_DIR$/Resources/views/e-mail/app-user.txt.twig" />
-        <option value="$PROJECT_DIR$/Resources/views/e-mail/password.html.twig" />
         <option value="$PROJECT_DIR$/Resources/views/e-mail/password.txt.twig" />
         <option value="$PROJECT_DIR$/Controller/AppUserController.php" />
         <option value="$PROJECT_DIR$/EventSubscriber/AppUserSubscriber.php" />
         <option value="$PROJECT_DIR$/Api/EventSubscriber/AppUserSubscriber.php" />
         <option value="$PROJECT_DIR$/Resources/config/services.yaml" />
-        <option value="$PROJECT_DIR$/Manager/AppUserManager.php" />
-        <option value="$PROJECT_DIR$/Manager/AppUserManager.php" />
         <option value="$PROJECT_DIR$/EventListener/MailerFromListener.php" />
         <option value="$PROJECT_DIR$/DependencyInjection/Configuration.php" />
         <option value="$PROJECT_DIR$/Resources/views/e-mail/message.css.twig" />
+        <option value="$PROJECT_DIR$/Resources/views/web/page-skeleton-default.html.twig" />
+        <option value="$PROJECT_DIR$/Resources/views/web/html-skeleton-default.html.twig" />
+        <option value="$PROJECT_DIR$/Resources/views/web/pages/homepage.html.twig" />
+        <option value="$PROJECT_DIR$/Resources/views/web/pages/message.html.twig" />
         <option value="$PROJECT_DIR$/Resources/views/e-mail/message.html.twig" />
+        <option value="$PROJECT_DIR$/Resources/views/e-mail/password.html.twig" />
+        <option value="$PROJECT_DIR$/Resources/views/e-mail/app-user.html.twig" />
+        <option value="$PROJECT_DIR$/Manager/AppUserManager.php" />
+        <option value="$PROJECT_DIR$/Manager/AppUserManager.php" />
       </list>
     </option>
   </component>
@@ -540,7 +536,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -551,6 +546,11 @@
             <path>
               <item name="oswis-core-bundle" type="b2602c69:ProjectViewProjectNode" />
               <item name="oswis-core-bundle" type="462c0819:PsiDirectoryNode" />
+              <item name="Manager" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oswis-core-bundle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oswis-core-bundle" type="462c0819:PsiDirectoryNode" />
               <item name="Resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -564,12 +564,13 @@
               <item name="oswis-core-bundle" type="462c0819:PsiDirectoryNode" />
               <item name="Resources" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="e-mail" type="462c0819:PsiDirectoryNode" />
+              <item name="documents" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -577,7 +578,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/vendor/symfony/swiftmailer-bundle/composer.json" />
     <property name="editor.config.ad.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Traits/Entity" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Resources/views/e-mail" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -586,19 +587,19 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/Traits/Entity" />
-      <recent name="$PROJECT_DIR$/Resources/views/web/parts" />
-      <recent name="$PROJECT_DIR$/Service" />
-      <recent name="$PROJECT_DIR$/Resources/public/" />
-      <recent name="$PROJECT_DIR$/Form" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Resources/config" />
       <recent name="$PROJECT_DIR$/Entity" />
       <recent name="$PROJECT_DIR$/Entity/AbstractClass" />
       <recent name="$PROJECT_DIR$/Controller" />
       <recent name="$PROJECT_DIR$/Interfaces" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Resources/views/e-mail" />
+      <recent name="$PROJECT_DIR$/Traits/Entity" />
+      <recent name="$PROJECT_DIR$/Resources/views/web/parts" />
+      <recent name="$PROJECT_DIR$/Service" />
+      <recent name="$PROJECT_DIR$/Resources/public/" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -740,14 +741,8 @@
       <workItem from="1561957315483" duration="1197000" />
       <workItem from="1562130605246" duration="6758000" />
       <workItem from="1562337463875" duration="12875000" />
-      <workItem from="1562425714632" duration="22783000" />
-    </task>
-    <task id="LOCAL-00220" summary="Some changes.">
-      <created>1558712339740</created>
-      <option name="number" value="00220" />
-      <option name="presentableId" value="LOCAL-00220" />
-      <option name="project" value="LOCAL" />
-      <updated>1558712339740</updated>
+      <workItem from="1562425714632" duration="26375000" />
+      <workItem from="1562521147116" duration="3942000" />
     </task>
     <task id="LOCAL-00221" summary="Some changes.">
       <created>1558775533451</created>
@@ -1085,17 +1080,24 @@
       <option name="project" value="LOCAL" />
       <updated>1562509309635</updated>
     </task>
-    <option name="localTasksCounter" value="269" />
+    <task id="LOCAL-00269" summary="Some changes.">
+      <created>1562514291696</created>
+      <option name="number" value="00269" />
+      <option name="presentableId" value="LOCAL-00269" />
+      <option name="project" value="LOCAL" />
+      <updated>1562514291696</updated>
+    </task>
+    <option name="localTasksCounter" value="270" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="533328000" />
+    <option name="totallyTimeSpent" value="540862000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="0" width="1922" height="1080" extended-state="6" />
+    <frame x="-1" y="0" width="1368" height="741" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.122470714" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17371601" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -1106,7 +1108,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="8" sideWeight="0.49022081" visible="true" weight="0.17948718" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49022081" visible="true" weight="0.28140703" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Statistic" order="10" weight="0.32998326" />
       <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.4918919" weight="0.17948718" />
@@ -1963,13 +1965,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Resources/views/documents/pdf-document.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Service/PdfGenerator.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="246">
@@ -2432,13 +2427,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Resources/views/web/page-skeleton-default.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="13" column="22" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Utils/FileUtils.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="336">
@@ -2502,13 +2490,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Resources/views/web/html-skeleton-default.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="106">
-          <caret line="15" column="81" selection-start-line="15" selection-start-column="81" selection-end-line="15" selection-end-column="81" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/symfony/dependency-injection/ContainerInterface.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="12">
@@ -2544,57 +2525,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Resources/views/web/pages/message.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-          <folding>
-            <element signature="e#12#66#0#Twig" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Resources/views/web/pages/homepage.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-          <folding>
-            <element signature="e#12#66#0#Twig" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Resources/views/web/parts/message.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Resources/views/web/parts/main-menu.html.twig">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Resources/views/web/parts/header.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="2" column="14" lean-forward="true" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Resources/views/web/parts/footer.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="13" column="91" lean-forward="true" selection-start-line="13" selection-start-column="91" selection-end-line="13" selection-end-column="91" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Resources/config/packages/mailer.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/config/packages/mailer.yaml" />
     <entry file="file://$PROJECT_DIR$/composer.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
@@ -2622,16 +2553,6 @@
           <caret line="10" column="57" selection-start-line="10" selection-start-column="57" selection-end-line="10" selection-end-column="57" />
           <folding>
             <element signature="e#933#972#0#Twig" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Resources/views/e-mail/password.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="7" column="8" lean-forward="true" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
-          <folding>
-            <element signature="e#12#55#0#Twig" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2705,17 +2626,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Resources/views/e-mail/app-user.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="19" column="27" lean-forward="true" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
-          <folding>
-            <element signature="e#1304#1343#0#Twig" expanded="true" />
-            <element signature="e#1458#1497#0#Twig" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/DependencyInjection/Configuration.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
@@ -2736,28 +2646,119 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Manager/AppUserManager.php">
+    <entry file="file://$PROJECT_DIR$/Resources/views/e-mail/foundation-emails.css.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="301" selection-start-line="301" selection-end-line="301" />
+        <state relative-caret-position="-5817">
+          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Resources/views/e-mail/message.css.twig">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="3" column="1" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/views/web/parts/message.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+          <caret line="6" column="21" lean-forward="true" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/views/web/html-skeleton-default.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="350">
+          <caret line="54" column="43" selection-start-line="54" selection-start-column="43" selection-end-line="54" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/views/web/parts/footer.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="13" column="91" lean-forward="true" selection-start-line="13" selection-start-column="91" selection-end-line="13" selection-end-column="91" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/views/web/parts/header.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="2" column="14" lean-forward="true" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/views/web/parts/main-menu.html.twig">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/views/web/page-skeleton-default.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="17" column="27" lean-forward="true" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
+          <folding>
+            <element signature="e#565#610#0#Twig" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/views/web/pages/homepage.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+          <folding>
+            <element signature="e#12#66#0#Twig" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/views/web/pages/message.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+          <folding>
+            <element signature="e#12#66#0#Twig" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Manager/AppUserManager.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="62">
+          <caret line="230" lean-forward="true" selection-start-line="230" selection-end-line="230" />
+          <folding>
+            <element signature="e#52#92#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/views/e-mail/app-user.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/views/e-mail/password.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+          <folding>
+            <element signature="e#12#55#0#Twig" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Resources/views/e-mail/message.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="651">
-          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
-          <folding>
-            <element signature="n#style#0;n#hr#0;n#columns#0;n#row#0;n#container#2;n#wrapper#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#small#0;n#columns#0;n#row#0;n#container#2;n#wrapper#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="189">
+          <caret line="51" column="41" lean-forward="true" selection-start-line="51" selection-start-column="41" selection-end-line="51" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/views/documents/pdf-document.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
         </state>
       </provider>
     </entry>
