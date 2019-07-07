@@ -291,7 +291,7 @@ class AppUserManager
             }
 
             $data = array(
-                'logo'         => '@ZakjakubOswisCore/Resources/public/logo.png',
+                'logo'         => 'cid:logo',
                 'title'        => $title,
                 'appNameShort' => 'OSWIS',
                 'appNameLong'  => 'One Simple Web IS',
@@ -305,9 +305,9 @@ class AppUserManager
                 ->to(new NamedAddress($appUser->getEmail() ?? '', EmailUtils::mime_header_encode($appUser->getFullName() ?? $appUser->getUsername() ?? '')))
                 ->subject(EmailUtils::mime_header_encode($title))
                 ->htmlTemplate('@ZakjakubOswisCore/e-mail/app-user.html.twig')
+                ->embedFromPath('../assets/assets/images/logo.png', 'logo')
                 ->context($data);
             $this->newMailer->send($email);
-
 
         } catch (Exception $e) {
             throw new ErrorException('Problém s odesláním zprávy o změně účtu:  '.$e->getMessage());
