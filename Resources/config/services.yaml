@@ -188,15 +188,10 @@ services:
 
     Zakjakub\OswisCoreBundle\EventListener\:
         resource: '../../EventListener/*'
+        tags:
+            - { name: kernel.event_listener }
         # arguments:
         #   ['@security.user_password_encoder.generic', '@doctrine.orm.entity_manager.abstract', '@swiftmailer.mailer.abstract', '@monolog.logger_prototype', '@twig', '@security.token_storage']
-        public: true
-
-
-    Zakjakub\OswisCoreBundle\EventListener\MailerFromListener:
-        resource: '../../EventListener/MailerFromListener.php'
-        arguments:
-          ['@zakjakub_oswis_core.oswis_core_settings_provider', '@doctrine.orm.entity_manager.abstract', '@swiftmailer.mailer.abstract', '@monolog.logger_prototype', '@twig', '@security.token_storage']
         public: true
 
     Zakjakub\OswisCoreBundle\Security\AppUserProvider:
