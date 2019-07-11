@@ -6,12 +6,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Exceptions/OswisException.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AppUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUser.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AppUserFlagConnection.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUserFlagConnection.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/AccountActivationTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/AccountActivationTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/DeletedTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/DeletedTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.github/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -111,7 +107,17 @@
     </execution>
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Exceptions/OswisException.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -383,6 +389,7 @@
         <option value="$PROJECT_DIR$/Traits/Entity/DeletedTrait.php" />
         <option value="$PROJECT_DIR$/Traits/Entity/AccountActivationTrait.php" />
         <option value="$PROJECT_DIR$/Entity/AppUser.php" />
+        <option value="$PROJECT_DIR$/Exceptions/OswisException.php" />
       </list>
     </option>
   </component>
@@ -520,6 +527,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -527,11 +535,15 @@
               <item name="oswis-core-bundle" type="b2602c69:ProjectViewProjectNode" />
               <item name="oswis-core-bundle" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="oswis-core-bundle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oswis-core-bundle" type="462c0819:PsiDirectoryNode" />
+              <item name="Exceptions" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -539,7 +551,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/vendor/symfony/swiftmailer-bundle/composer.json" />
     <property name="editor.config.ad.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Resources/views/e-mail" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Exceptions" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -548,19 +560,19 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Exceptions" />
+      <recent name="$PROJECT_DIR$/Resources/views/e-mail" />
+      <recent name="$PROJECT_DIR$/Traits/Entity" />
+      <recent name="$PROJECT_DIR$/Resources/views/web/parts" />
+      <recent name="$PROJECT_DIR$/Service" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Resources/config" />
       <recent name="$PROJECT_DIR$/Entity" />
       <recent name="$PROJECT_DIR$/Entity/AbstractClass" />
       <recent name="$PROJECT_DIR$/Controller" />
       <recent name="$PROJECT_DIR$/Interfaces" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/Resources/views/e-mail" />
-      <recent name="$PROJECT_DIR$/Traits/Entity" />
-      <recent name="$PROJECT_DIR$/Resources/views/web/parts" />
-      <recent name="$PROJECT_DIR$/Service" />
-      <recent name="$PROJECT_DIR$/Resources/public/" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -705,13 +717,7 @@
       <workItem from="1562425714632" duration="26375000" />
       <workItem from="1562521147116" duration="13146000" />
       <workItem from="1562730259256" duration="2470000" />
-    </task>
-    <task id="LOCAL-00223" summary="Some changes.">
-      <created>1558859720918</created>
-      <option name="number" value="00223" />
-      <option name="presentableId" value="LOCAL-00223" />
-      <option name="project" value="LOCAL" />
-      <updated>1558859720918</updated>
+      <workItem from="1562855046823" duration="705000" />
     </task>
     <task id="LOCAL-00224" summary="Some changes.">
       <created>1558860901367</created>
@@ -1049,16 +1055,24 @@
       <option name="project" value="LOCAL" />
       <updated>1562527791667</updated>
     </task>
-    <option name="localTasksCounter" value="272" />
+    <task id="LOCAL-00272" summary="Some changes.">
+      <created>1562855287483</created>
+      <option name="number" value="00272" />
+      <option name="presentableId" value="LOCAL-00272" />
+      <option name="project" value="LOCAL" />
+      <updated>1562855287484</updated>
+    </task>
+    <option name="localTasksCounter" value="273" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="552536000" />
+    <option name="totallyTimeSpent" value="553241000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="0" width="1922" height="1080" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.122470714" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.122470714" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -1069,11 +1083,11 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49022081" weight="0.28140703" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49022081" weight="0.2809829" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Statistic" order="10" weight="0.32998326" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49029127" visible="true" weight="0.20512821" />
-      <window_info active="true" anchor="bottom" id="Event Log" order="12" sideWeight="0.50970876" side_tool="true" visible="true" weight="0.20512821" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.48968446" weight="0.20512821" />
+      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.51031554" side_tool="true" weight="0.20512821" />
       <window_info anchor="bottom" id="Inspection Results" order="13" weight="0.400335" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -2720,6 +2734,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="651">
           <caret line="37" column="7" lean-forward="true" selection-start-line="37" selection-start-column="7" selection-end-line="37" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Exceptions/OswisException.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
         </state>
       </provider>
     </entry>
