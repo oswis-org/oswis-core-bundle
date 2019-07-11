@@ -15,9 +15,9 @@ trait DeletedTrait
 {
 
     /**
-     * Date and time.
+     * Date and time of delete (null if not deleted).
      *
-     * @var DateTime
+     * @var DateTime|null
      *
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true, options={"default" : null})
      */

@@ -66,7 +66,6 @@ use Zakjakub\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
  */
 class AppUser extends AbstractAppUser
 {
-
     /**
      * @var Collection|null
      * @Doctrine\ORM\Mapping\OneToMany(

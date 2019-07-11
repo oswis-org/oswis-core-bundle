@@ -25,12 +25,6 @@ class AppUserFlagConnection
     use BasicEntityTrait;
 
     /**
-     * Dummy "selected" property for forms.
-     * @var bool
-     */
-    public $selected;
-
-    /**
      * Flag.
      * @var AppUserFlag|null
      * @Doctrine\ORM\Mapping\ManyToOne(

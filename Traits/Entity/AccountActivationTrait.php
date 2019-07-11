@@ -26,7 +26,6 @@ trait AccountActivationTrait
      */
     protected $accountActivationRequestDateTime;
 
-
     /**
      * Date and time of account activation.
      * @var DateTime|null
