@@ -32,7 +32,7 @@ trait NumericValueTrait
      *
      * @param int $numericValue
      */
-    final public function setNumericValue(int $numericValue): void
+    final public function setNumericValue(?int $numericValue): void
     {
         $this->numericValue = $numericValue ?? 0;
     }
