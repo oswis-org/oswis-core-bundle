@@ -26,8 +26,10 @@ class ZakjakubOswisCoreExtension extends Extension implements PrependExtensionIn
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yaml');
         $configuration = $this->getConfiguration($configs, $container);
-        $config = $this->processConfiguration($configuration, $configs);
-        $this->oswisCoreSettingsProvider($container, $config);
+        if ($configuration) {
+            $config = $this->processConfiguration($configuration, $configs);
+            $this->oswisCoreSettingsProvider($container, $config);
+        }
     }
 
     /**

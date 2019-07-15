@@ -12,6 +12,8 @@ use HttpInvalidParamException;
 use ReflectionClass;
 use ReflectionException;
 
+/** @noinspection ClassNameCollisionInspection */
+
 final class SearchFilter extends AbstractContextAwareFilter
 {
 

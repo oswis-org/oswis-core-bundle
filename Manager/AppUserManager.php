@@ -74,6 +74,7 @@ class AppUserManager
         $this->encoder = $encoder;
         $this->em = $em;
         $this->logger = $logger;
+        /** @noinspection UnusedConstructorDependenciesInspection */
         $this->emailSender = $emailSender;
         $this->newMailer = $newMailer;
     }

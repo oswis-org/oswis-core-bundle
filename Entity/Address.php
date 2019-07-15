@@ -2,6 +2,8 @@
 
 namespace Zakjakub\OswisCoreBundle\Entity;
 
+/** @noinspection ClassNameCollisionInspection */
+
 /**
  * Class Address
  * @package OswisCoreBundle

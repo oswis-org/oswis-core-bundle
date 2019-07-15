@@ -59,7 +59,7 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
      */
     final public function getLastRevisionDateTime(?DateTime $referenceDateTime = null): ?DateTime
     {
-        return $this->getRevision()->getCreatedDateTime();
+        return $this->getRevision($referenceDateTime)->getCreatedDateTime();
     }
 
     /**

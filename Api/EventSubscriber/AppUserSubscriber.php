@@ -18,6 +18,8 @@ use Zakjakub\OswisCoreBundle\Entity\AppUser;
 use Zakjakub\OswisCoreBundle\Manager\AppUserManager;
 use function assert;
 
+/** @noinspection ClassNameCollisionInspection */
+
 final class AppUserSubscriber implements EventSubscriberInterface
 {
     private $appUserManager;

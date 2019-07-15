@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection UnknownInspectionInspection */
 
 namespace Zakjakub\OswisCoreBundle\Service;
 
@@ -81,6 +81,7 @@ class PdfGenerator
         }
 
         $header = $header ?? '';
+        /** @noinspection HtmlDeprecatedAttribute */
         $footer = $footer ?? '
             <table width="100%" style="width:100%;">
                 <tr>

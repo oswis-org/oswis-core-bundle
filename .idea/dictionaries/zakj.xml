@@ -3,11 +3,14 @@
     <words>
       <w>adci</w>
       <w>blameable</w>
+      <w>browserconfig</w>
       <w>ceny</w>
       <w>ceník</w>
       <w>chybný</w>
       <w>chybějící</w>
+      <w>csrf</w>
       <w>egulias</w>
+      <w>favicons</w>
       <w>gedmo</w>
       <w>hodin</w>
       <w>hyphenize</w>
@@ -15,13 +18,17 @@
       <w>jakubzak</w>
       <w>minut</w>
       <w>msapplication</w>
+      <w>mstile</w>
       <w>měsíců</w>
+      <w>nbpg</w>
       <w>nebo</w>
       <w>nenalezen</w>
       <w>nenalezena</w>
       <w>není</w>
       <w>oswis</w>
+      <w>pageno</w>
       <w>položky</w>
+      <w>sensio</w>
       <w>swiftmailer</w>
       <w>timestampable</w>
       <w>uncapitalize</w>
@@ -29,6 +36,7 @@
       <w>verze</w>
       <w>vteřin</w>
       <w>výpočet</w>
+      <w>webmanifest</w>
       <w>zadán</w>
       <w>zakj</w>
       <w>zakjakub</w>

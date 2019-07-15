@@ -1,5 +1,10 @@
 <?php
 
+/** @noinspection UnknownInspectionInspection */
+/** @noinspection RequiredAttributes */
+/** @noinspection HtmlRequiredAltAttribute */
+/** @noinspection HtmlUnknownTag */
+
 namespace Zakjakub\OswisCoreBundle\Utils;
 
 /**
