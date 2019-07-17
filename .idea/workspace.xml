@@ -7,7 +7,7 @@
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/NumericValueTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/NumericValueTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Filter/SearchFilter.php" beforeDir="false" afterPath="$PROJECT_DIR$/Filter/SearchFilter.php" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.github/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -108,11 +108,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Traits/Entity/NumericValueTrait.php">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Filter/SearchFilter.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="33" selection-start-line="33" selection-end-line="33" />
+            <state relative-caret-position="196">
+              <caret line="85" lean-forward="true" selection-start-line="85" selection-end-line="85" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Filter/SearchAnnotation.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="63">
+              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+              <folding>
+                <element signature="e#51#94#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -389,13 +401,13 @@
         <option value="$PROJECT_DIR$/Entity/Address.php" />
         <option value="$PROJECT_DIR$/Api/EventSubscriber/AppUserSubscriber.php" />
         <option value="$PROJECT_DIR$/EventSubscriber/AppUserSubscriber.php" />
-        <option value="$PROJECT_DIR$/Filter/SearchFilter.php" />
         <option value="$PROJECT_DIR$/DependencyInjection/ZakjakubOswisCoreExtension.php" />
         <option value="$PROJECT_DIR$/Service/PdfGenerator.php" />
         <option value="$PROJECT_DIR$/Utils/SourceCodeUtils.php" />
         <option value="$PROJECT_DIR$/Manager/AppUserManager.php" />
         <option value="$PROJECT_DIR$/Manager/AppUserManager.php" />
         <option value="$PROJECT_DIR$/Traits/Entity/NumericValueTrait.php" />
+        <option value="$PROJECT_DIR$/Filter/SearchFilter.php" />
       </list>
     </option>
   </component>
@@ -543,13 +555,7 @@
             <path>
               <item name="oswis-core-bundle" type="b2602c69:ProjectViewProjectNode" />
               <item name="oswis-core-bundle" type="462c0819:PsiDirectoryNode" />
-              <item name="Traits" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="oswis-core-bundle" type="b2602c69:ProjectViewProjectNode" />
-              <item name="oswis-core-bundle" type="462c0819:PsiDirectoryNode" />
-              <item name="Traits" type="462c0819:PsiDirectoryNode" />
-              <item name="Entity" type="462c0819:PsiDirectoryNode" />
+              <item name="Filter" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -734,14 +740,8 @@
       <workItem from="1563181825575" duration="1262000" />
       <workItem from="1563188799819" duration="6410000" />
       <workItem from="1563204381298" duration="24000" />
-      <workItem from="1563211123812" duration="53000" />
-    </task>
-    <task id="LOCAL-00228" summary="Some changes.">
-      <created>1559046410675</created>
-      <option name="number" value="00228" />
-      <option name="presentableId" value="LOCAL-00228" />
-      <option name="project" value="LOCAL" />
-      <updated>1559046410675</updated>
+      <workItem from="1563211123812" duration="667000" />
+      <workItem from="1563334950204" duration="818000" />
     </task>
     <task id="LOCAL-00229" summary="Some changes.">
       <created>1559047697830</created>
@@ -1079,17 +1079,24 @@
       <option name="project" value="LOCAL" />
       <updated>1563203159607</updated>
     </task>
-    <option name="localTasksCounter" value="277" />
+    <task id="LOCAL-00277" summary="Some changes.">
+      <created>1563211190176</created>
+      <option name="number" value="00277" />
+      <option name="presentableId" value="LOCAL-00277" />
+      <option name="project" value="LOCAL" />
+      <updated>1563211190176</updated>
+    </task>
+    <option name="localTasksCounter" value="278" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="566998000" />
+    <option name="totallyTimeSpent" value="568430000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="0" width="1922" height="1080" extended-state="6" />
+    <frame x="-1" y="0" width="1368" height="741" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12832801" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12764351" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -1100,7 +1107,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49022081" visible="true" weight="0.26923078" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49022081" visible="true" weight="0.2680067" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Statistic" order="10" weight="0.32998326" />
       <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.4890464" weight="0.33653846" />
@@ -1732,13 +1739,6 @@
           <folding>
             <element signature="e#52#96#0#PHP" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Filter/SearchAnnotation.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>
@@ -2708,13 +2708,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Filter/SearchFilter.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/DependencyInjection/ZakjakubOswisCoreExtension.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
@@ -2766,8 +2759,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Traits/Entity/NumericValueTrait.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="33" selection-start-line="33" selection-end-line="33" />
+        <state relative-caret-position="189">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Filter/SearchFilter.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="85" lean-forward="true" selection-start-line="85" selection-end-line="85" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Filter/SearchAnnotation.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+          <folding>
+            <element signature="e#51#94#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
