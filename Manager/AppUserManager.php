@@ -14,7 +14,6 @@ use Symfony\Component\Mime\NamedAddress;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Zakjakub\OswisCoreBundle\Entity\AppUser;
 use Zakjakub\OswisCoreBundle\Entity\AppUserType;
-use Zakjakub\OswisCoreBundle\Service\EmailSender;
 use Zakjakub\OswisCoreBundle\Utils\EmailUtils;
 use Zakjakub\OswisCoreBundle\Utils\StringUtils;
 use function random_int;
@@ -46,14 +45,9 @@ class AppUserManager
     private $encoder;
 
     /**
-     * @var EmailSender
-     */
-    private $emailSender;
-
-    /**
      * @var MailerInterface
      */
-    private $newMailer;
+    private $mailer;
 
     /**
      * AppUserManager constructor.
@@ -61,22 +55,18 @@ class AppUserManager
      * @param UserPasswordEncoderInterface $encoder
      * @param EntityManagerInterface       $em
      * @param LoggerInterface              $logger
-     * @param EmailSender                  $emailSender
-     * @param MailerInterface              $newMailer
+     * @param MailerInterface              $mailer
      */
     public function __construct(
         UserPasswordEncoderInterface $encoder,
         EntityManagerInterface $em,
         LoggerInterface $logger,
-        EmailSender $emailSender,
-        MailerInterface $newMailer
+        MailerInterface $mailer
     ) {
         $this->encoder = $encoder;
         $this->em = $em;
         $this->logger = $logger;
-        /** @noinspection UnusedConstructorDependenciesInspection */
-        $this->emailSender = $emailSender;
-        $this->newMailer = $newMailer;
+        $this->mailer = $mailer;
     }
 
     /**
@@ -261,7 +251,7 @@ class AppUserManager
                 ->htmlTemplate('@ZakjakubOswisCore/e-mail/password.html.twig')
                 ->embedFromPath('../assets/assets/images/logo.png', 'logo')
                 ->context($data);
-            $this->newMailer->send($email);
+            $this->mailer->send($email);
         } catch (Exception $e) {
             $this->logger->error($e->getMessage());
             throw new ErrorException('Problém s odesláním zprávy o změně hesla:  '.$e->getMessage());
@@ -315,7 +305,7 @@ class AppUserManager
                 ->htmlTemplate('@ZakjakubOswisCore/e-mail/app-user.html.twig')
                 ->embedFromPath('../assets/assets/images/logo.png', 'logo')
                 ->context($data);
-            $this->newMailer->send($email);
+            $this->mailer->send($email);
         } catch (Exception $e) {
             throw new ErrorException('Problém s odesláním zprávy o změně účtu:  '.$e->getMessage());
         }

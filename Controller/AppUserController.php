@@ -13,7 +13,6 @@ use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Zakjakub\OswisCoreBundle\Entity\AppUser;
 use Zakjakub\OswisCoreBundle\Manager\AppUserManager;
-use Zakjakub\OswisCoreBundle\Service\EmailSender;
 use function assert;
 
 class AppUserController extends AbstractController
@@ -21,12 +20,9 @@ class AppUserController extends AbstractController
 
     /**
      * @param string                       $token
-     * @param EmailSender                  $emailSender
-     *
      * @param EntityManagerInterface       $em
      * @param UserPasswordEncoderInterface $encoder
      * @param LoggerInterface              $logger
-     *
      * @param MailerInterface              $newMailer
      *
      * @return Response
@@ -35,7 +31,6 @@ class AppUserController extends AbstractController
      */
     final public function appUserActivationAction(
         string $token,
-        EmailSender $emailSender,
         EntityManagerInterface $em,
         UserPasswordEncoderInterface $encoder,
         LoggerInterface $logger,
@@ -73,7 +68,7 @@ class AppUserController extends AbstractController
 
             assert($appUser instanceof AppUser);
 
-            $appUserManager = new AppUserManager($encoder, $em, $logger, $emailSender, $newMailer);
+            $appUserManager = new AppUserManager($encoder, $em, $logger, $newMailer);
 
             $appUserManager->appUserAction($appUser, 'activation', null, $token);
 

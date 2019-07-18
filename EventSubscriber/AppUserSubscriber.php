@@ -16,7 +16,6 @@ use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Zakjakub\OswisCoreBundle\Entity\AppUser;
 use Zakjakub\OswisCoreBundle\Manager\AppUserManager;
-use Zakjakub\OswisCoreBundle\Service\EmailSender;
 use function assert;
 
 /** @noinspection ClassNameCollisionInspection */
@@ -40,14 +39,9 @@ final class AppUserSubscriber implements EventSubscriberInterface
     private $encoder;
 
     /**
-     * @var EmailSender
-     */
-    private $emailSender;
-
-    /**
      * @var MailerInterface
      */
-    private $newMailer;
+    private $mailer;
 
     /**
      * ReservationSubscriber constructor.
@@ -55,22 +49,19 @@ final class AppUserSubscriber implements EventSubscriberInterface
      * @param UserPasswordEncoderInterface $encoder
      * @param EntityManagerInterface       $em
      * @param LoggerInterface              $logger
-     * @param EmailSender                  $emailSender
-     * @param MailerInterface              $newMailer
+     * @param MailerInterface              $mailer
      */
     public function __construct(
         UserPasswordEncoderInterface $encoder,
         EntityManagerInterface $em,
         LoggerInterface $logger,
-        EmailSender $emailSender,
-        MailerInterface $newMailer
+        MailerInterface $mailer
     ) {
         // \error_log('Constructing ReservationSubscriber.');
         $this->encoder = $encoder;
         $this->em = $em;
         $this->logger = $logger;
-        $this->emailSender = $emailSender;
-        $this->newMailer = $newMailer;
+        $this->mailer = $mailer;
     }
 
     /**
@@ -98,7 +89,7 @@ final class AppUserSubscriber implements EventSubscriberInterface
             return;
         }
         assert($appUser instanceof AppUser);
-        $appUserManager = new AppUserManager($this->encoder, $this->em, $this->logger, $this->emailSender, $this->newMailer);
+        $appUserManager = new AppUserManager($this->encoder, $this->em, $this->logger, $this->mailer);
         $appUserManager->appUserAction($appUser, 'activation-request');
     }
 

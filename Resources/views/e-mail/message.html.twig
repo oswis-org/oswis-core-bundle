@@ -1,20 +1,24 @@
 {% set base_url = 'https://oswis.org' %}
+{% set f = is defined informal and informal ? false : true %}
+{% set salName = is defined salutationName and salutationName ? salutationName : '' %}
+{% set logo_src = logo is defined and logo ? logo : absolute_url(asset('@ZakjakubOswisCoreBundle/Resources/public/logo.png')) %}
+
 {% apply inky|inline_css(source('@ZakjakubOswisCore/e-mail/foundation-emails.css.twig' )) %}
     <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
     <html xmlns="http://www.w3.org/1999/xhtml" lang='{% block html_lang %}cs-CZ{% endblock %}' dir="ltr">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <meta name="viewport" content="width=device-width"/>
-        <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-        <meta name='format-detection' content='telephone=yes'>
-        <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0'>
-        <meta name='author' content='{% block meta_author %}Jakub Zak (https://jakubzak.cz){% endblock %}'>
-        <meta name='copyright' content='{% block meta_copyright %}Jakub Zak (https://jakubzak.cz){% endblock %}'>
-        <meta name='generator' content='OSWIS - One Simple Web IS'>
-        <meta name='Description' content='{% block meta_description %}Zpráva z OSWIS (One Simple Web IS){% endblock %}'>
-        <meta name='Designer' content='Jakub Zak (https://jakubzak.cz)'>
-        <meta name='Revisit-After' content='1 day'>
-        <meta name='geo.position' content='{% block meta_geo %}49.5922829,17.2633168{% endblock %}'>
+        <meta http-equiv='X-UA-Compatible' content='IE=edge'/>
+        <meta name='format-detection' content='telephone=yes'/>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0'/>
+        <meta name='author' content='{% block meta_author %}Jakub Zak (https://jakubzak.cz){% endblock %}'/>
+        <meta name='copyright' content='{% block meta_copyright %}Jakub Zak (https://jakubzak.cz){% endblock %}'/>
+        <meta name='generator' content='OSWIS - One Simple Web IS'/>
+        <meta name='Description' content='{% block meta_description %}Zpráva z OSWIS (One Simple Web IS){% endblock %}'/>
+        <meta name='Designer' content='Jakub Zak (https://jakubzak.cz)'/>
+        <meta name='Revisit-After' content='1 day'/>
+        <meta name='geo.position' content='{% block meta_geo %}{% endblock %}'/>
         <meta name='ICBM' content='{{ block('meta_geo') }}'>
         <meta name='DC.Language' content='{{ block('html_lang') }}'>
         <title>{% block html_title %}{{ email.subject|default('Zpráva z OSWIS (One Simple Web IS)') }}{% endblock %}</title>
@@ -23,38 +27,63 @@
     </head>
 
     {% block html_inner %}
-
         <style type='text/css'>
             {% include '@ZakjakubOswisCore/e-mail/message.css.twig' %}
         </style>
-        {% block additional_css %}{% endblock additional_css %}
+        {% block additional_css %}{% endblock additional_css %}{# Additional CSS <style> tags from inherited templates. #}
 
         <body>
         {% block body_outer %}
-
             <container class="header">
                 {% block header_outer %}
                     <row>
+                        <columns small="2" large="2"></columns>
                         <columns small="8" large="8">
                             {% block header_inner %}
                                 <center>
                                     {% block header_logo %}
-                                        <img alt='Logo' src='{{ logo is defined and logo ? logo : absolute_url(asset('@ZakjakubOswisCoreBundle/Resources/public/logo.png')) }}'>
-                                    {% endblock %}
+                                        {% if logo_src %}
+                                            <img alt='Logo' src='{{ logo_src }}' class="logo">
+                                        {% endif %}
+                                    {% endblock header_logo %}
                                 </center>
-                            {% endblock %}
+                            {% endblock header_inner %}
                         </columns>
+                        <columns small="2" large="2"></columns>
                     </row>
-                {% endblock %}
+                {% endblock header_outer %}
             </container>
 
             <container class="content">
+                {% block content_header_outer %}
+                    <row>
+                        <columns small="12" large="12">
+                            {% block content_header_inner %}
+                                {% if f %}Dobrý den{% else %}Ahoj{% endif %}{{ salName ? ' ' ~ salName : '' }}!
+                            {% endblock content_header_inner %}
+                        </columns>
+                    </row>
+                {% endblock content_header_outer %}
                 {% block content_outer %}
                     <row>
                         <columns small="12" large="12">
                             {% block content_inner %}
-                                <p>Nastala chyba. Obsah zprávy nebyl načten. Kontaktujte nás, prosím.</p>
-                            {% endblock %}
+                                <p style="color:red;font-weight:bold;">
+                                    Nastala chyba při odesílání zprávy a její obsah nebyl načten.
+                                </p>
+                                <p style="color:red;font-weight:bold;">
+                                    Kontaktujte nás, prosím, ať můžeme nastalou situaci co nejrychleji vyřešit.
+                                </p>
+                            {% endblock content_inner %}
+                        </columns>
+                    </row>
+                {% endblock %}
+                {% block content_footer_outer %}
+                    <row>
+                        <columns small="12" large="12">
+                            {% block content_footer_inner %}
+                                V případě nejasností nebo problémů nás neváhej{{ f ? 'te' : '' }} kontaktovat.
+                            {% endblock content_footer_inner %}
                         </columns>
                     </row>
                 {% endblock %}
@@ -66,17 +95,18 @@
                         <columns small="12" large="12">
                             {% block footer_inner %}
                                 <hr>
-                                <small>Tento e-mail byl vygenerován a zaslán automaticky aplikací OSWIS.</small>
-                            {% endblock %}
+                                <small style='font-size:0.7em;' class="footer_disclaimer">
+                                    Tento automatický e-mail jste obdrželi, jelikož se s&nbsp;Vaší adresou někdo zaregistroval
+                                    v&nbsp;aplikaci&nbsp;<a href='https://www.oswis.org' title='One Simple Web IS'>OSWIS</a>.
+                                    Pokud jste to nebyli Vy, informujte nás, prosím.
+                                </small>
+                            {% endblock footer_inner %}
                         </columns>
                     </row>
-                {% endblock %}
+                {% endblock footer_outer %}
             </container>
-
         {% endblock body_outer %}
         </body>
-
-
     {% endblock html_inner %}
     </html>
 {% endapply %}

@@ -9,7 +9,7 @@ use Symfony\Component\Mime\NamedAddress;
 use Zakjakub\OswisCoreBundle\Provider\OswisCoreSettingsProvider;
 use Zakjakub\OswisCoreBundle\Utils\EmailUtils;
 
-class MailerFromListener implements EventSubscriberInterface
+class MailerListener implements EventSubscriberInterface
 {
 
     protected $oswisCoreSettings;
@@ -46,10 +46,12 @@ class MailerFromListener implements EventSubscriberInterface
             $message->returnPath($oswisCoreSettings->getEmail()['return_path']);
         }
         if (!$message->getReplyTo() && $oswisCoreSettings->getEmail()['reply_path']) {
-            $message->replyTo($oswisCoreSettings->getEmail()['reply_path']);
+            $message->addReplyTo($oswisCoreSettings->getEmail()['reply_path']);
         }
         if (!$message->getSubject() && $oswisCoreSettings->getEmail()['default_subject']) {
             $message->subject(EmailUtils::mime_header_encode($oswisCoreSettings->getEmail()['default_subject']));
         }
+        $message->embedFromPath('../assets/assets/images/logo.png', 'logo');
+
     }
 }
