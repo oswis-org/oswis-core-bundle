@@ -12,17 +12,17 @@
         <meta http-equiv='X-UA-Compatible' content='IE=edge'/>
         <meta name='format-detection' content='telephone=yes'/>
         <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0'/>
-        <meta name='author' content='{% block meta_author %}Jakub Zak (https://jakubzak.cz){% endblock %}'/>
-        <meta name='copyright' content='{% block meta_copyright %}Jakub Zak (https://jakubzak.cz){% endblock %}'/>
+        <meta name='author' content='{% block meta_author %}{{ oswis.app.author|default('Jakub Zak (https://jakubzak.cz)') }}{% endblock %}'/>
+        <meta name='copyright' content='{% block meta_copyright %}{{ oswis.app.copyright|default('Jakub Zak (https://jakubzak.cz)') }}{% endblock %}'/>
         <meta name='generator' content='OSWIS - One Simple Web IS'/>
         <meta name='Description' content='{% block meta_description %}Zpráva z OSWIS (One Simple Web IS){% endblock %}'/>
         <meta name='Designer' content='Jakub Zak (https://jakubzak.cz)'/>
         <meta name='Revisit-After' content='1 day'/>
-        <meta name='geo.position' content='{% block meta_geo %}{% endblock %}'/>
+        <meta name='geo.position' content='{% block meta_geo %}{{ oswis.app.copyright|default('') }}{% endblock %}'/>
         <meta name='ICBM' content='{{ block('meta_geo') }}'>
         <meta name='DC.Language' content='{{ block('html_lang') }}'>
         <title>{% block html_title %}{{ email.subject|default('Zpráva z OSWIS (One Simple Web IS)') }}{% endblock %}</title>
-        <meta name="theme-color" content="{% block meta_theme_color %}#006FAD{% endblock %}">
+        <meta name="theme-color" content="{% block meta_theme_color %}{{ oswis.app.copyright|default('#006FAD') }}{% endblock %}">
         <meta name="msapplication-TileColor" content="{% block meta_tile_color %}{{ block('meta_theme_color') }}{% endblock %}">
     </head>
 
@@ -43,7 +43,7 @@
                                 <center>
                                     {% block header_logo %}
                                         {% if logo_src %}
-                                            <img alt='Logo' src='{{ logo_src }}' class="logo">
+                                            <img alt='{{ oswis.app.title_short }}' src='{{ logo_src }}' class="logo">
                                         {% endif %}
                                     {% endblock header_logo %}
                                 </center>
@@ -97,7 +97,7 @@
                                 <hr>
                                 <small style='font-size:0.7em;' class="footer_disclaimer">
                                     Tento automatický e-mail jste obdrželi, jelikož se s&nbsp;Vaší adresou někdo zaregistroval
-                                    v&nbsp;aplikaci&nbsp;<a href='https://www.oswis.org' title='One Simple Web IS'>OSWIS</a>.
+                                    v&nbsp;aplikaci&nbsp;<a href='{{ oswis.app.url }}' title='{{ oswis.app.title_long }}'>{{ oswis.app.title_short }}</a>.
                                     Pokud jste to nebyli Vy, informujte nás, prosím.
                                 </small>
                             {% endblock footer_inner %}

@@ -235,21 +235,21 @@ class AppUserManager
             }
 
             $data = array(
-                'type'         => $type,
-                'appUser'      => $appUser,
-                'token'        => $token,
-                'password'     => $password,
-                'logo'         => 'cid:logo',
-                'title'        => EmailUtils::mime_header_encode($title),
-                'appNameShort' => 'OSWIS',
-                'appNameLong'  => 'One Simple Web IS',
+                'type'     => $type,
+                'appUser'  => $appUser,
+                'token'    => $token,
+                'password' => $password,
             );
 
             $email = (new TemplatedEmail())
-                ->to(new NamedAddress($appUser->getEmail() ?? '', EmailUtils::mime_header_encode($appUser->getFullName() ?? $appUser->getUsername() ?? '')))
+                ->to(
+                    new NamedAddress(
+                        $appUser->getEmail() ?? '',
+                        EmailUtils::mime_header_encode($appUser->getFullName() ?? $appUser->getUsername() ?? '')
+                    )
+                )
                 ->subject(EmailUtils::mime_header_encode($title))
                 ->htmlTemplate('@ZakjakubOswisCore/e-mail/password.html.twig')
-                ->embedFromPath('../assets/assets/images/logo.png', 'logo')
                 ->context($data);
             $this->mailer->send($email);
         } catch (Exception $e) {
@@ -289,22 +289,23 @@ class AppUserManager
             }
 
             $data = array(
-                'logo'         => 'cid:logo',
-                'title'        => EmailUtils::mime_header_encode($title),
-                'appNameShort' => 'OSWIS',
-                'appNameLong'  => 'One Simple Web IS',
-                'appUser'      => $appUser,
-                'type'         => $type,
-                'token'        => $token,
-                'password'     => $password,
+                'appUser'  => $appUser,
+                'type'     => $type,
+                'token'    => $token,
+                'password' => $password,
             );
 
             $email = (new TemplatedEmail())
-                ->to(new NamedAddress($appUser->getEmail() ?? '', EmailUtils::mime_header_encode($appUser->getFullName() ?? $appUser->getUsername() ?? '')))
+                ->to(
+                    new NamedAddress(
+                        $appUser->getEmail() ?? '',
+                        EmailUtils::mime_header_encode($appUser->getFullName() ?? $appUser->getUsername() ?? '')
+                    )
+                )
                 ->subject(EmailUtils::mime_header_encode($title))
                 ->htmlTemplate('@ZakjakubOswisCore/e-mail/app-user.html.twig')
-                ->embedFromPath('../assets/assets/images/logo.png', 'logo')
                 ->context($data);
+
             $this->mailer->send($email);
         } catch (Exception $e) {
             throw new ErrorException('Problém s odesláním zprávy o změně účtu:  '.$e->getMessage());
