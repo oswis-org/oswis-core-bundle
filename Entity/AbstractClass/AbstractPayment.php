@@ -26,6 +26,7 @@ abstract class AbstractPayment
         return [
             '',
             'administration',
+            'manual-db',
         ];
     }
 
