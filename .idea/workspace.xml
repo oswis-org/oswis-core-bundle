@@ -6,7 +6,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractPayment.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractPayment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/TypeTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/TypeTrait.php" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.github/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -108,12 +109,12 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Entity/AbstractClass/AbstractPayment.php">
+        <entry file="file://$PROJECT_DIR$/Traits/Entity/TypeTrait.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="84">
-              <caret line="22" selection-start-line="22" selection-end-line="22" />
+            <state relative-caret-position="264">
+              <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
               <folding>
-                <element signature="e#65#125#0#PHP" expanded="true" />
+                <element signature="e#58#72#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -357,7 +358,6 @@
         <option value="$PROJECT_DIR$/Traits/Entity/EncryptedPasswordTrait.php" />
         <option value="$PROJECT_DIR$/Utils/FileUtils.php" />
         <option value="$PROJECT_DIR$/Entity/AbstractClass/AbstractImage.php" />
-        <option value="$PROJECT_DIR$/Traits/Entity/TypeTrait.php" />
         <option value="$PROJECT_DIR$/Traits/Entity/EntityDeletedContainerTrait.php" />
         <option value="$PROJECT_DIR$/Resources/config/serialization/AppUser.yaml" />
         <option value="$PROJECT_DIR$/Resources/config/routes.yaml" />
@@ -401,6 +401,7 @@
         <option value="$PROJECT_DIR$/Traits/Entity/LockedForUserChangesTrait.php" />
         <option value="$PROJECT_DIR$/Resources/config/services.yaml" />
         <option value="$PROJECT_DIR$/Entity/AbstractClass/AbstractPayment.php" />
+        <option value="$PROJECT_DIR$/Traits/Entity/TypeTrait.php" />
       </list>
     </option>
   </component>
@@ -548,13 +549,13 @@
             <path>
               <item name="oswis-core-bundle" type="b2602c69:ProjectViewProjectNode" />
               <item name="oswis-core-bundle" type="462c0819:PsiDirectoryNode" />
-              <item name="Entity" type="462c0819:PsiDirectoryNode" />
+              <item name="Traits" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="oswis-core-bundle" type="b2602c69:ProjectViewProjectNode" />
               <item name="oswis-core-bundle" type="462c0819:PsiDirectoryNode" />
+              <item name="Traits" type="462c0819:PsiDirectoryNode" />
               <item name="Entity" type="462c0819:PsiDirectoryNode" />
-              <item name="AbstractClass" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -748,14 +749,7 @@
       <workItem from="1563534345078" duration="11709000" />
       <workItem from="1563639836503" duration="2985000" />
       <workItem from="1563731552764" duration="596000" />
-      <workItem from="1563783636512" duration="1215000" />
-    </task>
-    <task id="LOCAL-00233" summary="Some changes.">
-      <created>1559160438015</created>
-      <option name="number" value="00233" />
-      <option name="presentableId" value="LOCAL-00233" />
-      <option name="project" value="LOCAL" />
-      <updated>1559160438016</updated>
+      <workItem from="1563783636512" duration="2005000" />
     </task>
     <task id="LOCAL-00234" summary="Some changes.">
       <created>1559160680506</created>
@@ -1093,11 +1087,18 @@
       <option name="project" value="LOCAL" />
       <updated>1563783973952</updated>
     </task>
-    <option name="localTasksCounter" value="282" />
+    <task id="LOCAL-00282" summary="Some changes.">
+      <created>1563786739953</created>
+      <option name="number" value="00282" />
+      <option name="presentableId" value="LOCAL-00282" />
+      <option name="project" value="LOCAL" />
+      <updated>1563786739953</updated>
+    </task>
+    <option name="localTasksCounter" value="283" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="597583000" />
+    <option name="totallyTimeSpent" value="598373000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="0" width="1368" height="741" extended-state="6" />
@@ -2256,13 +2257,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Traits/Entity/TypeTrait.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="36" column="5" lean-forward="true" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Traits/Entity/EntityDeletedContainerTrait.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="99">
@@ -2801,9 +2795,19 @@
     <entry file="file://$PROJECT_DIR$/Entity/AbstractClass/AbstractPayment.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
           <folding>
             <element signature="e#65#125#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Traits/Entity/TypeTrait.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
+          <folding>
+            <element signature="e#58#72#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>

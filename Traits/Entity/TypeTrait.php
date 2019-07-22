@@ -2,6 +2,7 @@
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
+use Exception;
 use InvalidArgumentException;
 
 /**
@@ -19,11 +20,14 @@ trait TypeTrait
 
     /**
      * @return string|null
-     * @throws InvalidArgumentException
      */
     final public function getType(): ?string
     {
-        self::checkType($this->type);
+        try {
+            self::checkType($this->type);
+        } catch (Exception $e) {
+            return null;
+        }
 
         return $this->type;
     }
