@@ -166,6 +166,10 @@ services:
         resource: '../../Manager/*'
         public: true
 
+    Zakjakub\OswisCoreBundle\Traits\:
+        resource: '../../Traits/*'
+        public: true
+
     Zakjakub\OswisCoreBundle\EventSubscriber\:
         resource: '../../EventSubscriber/*'
         tags: [ { name: 'kernel.view'} ]
