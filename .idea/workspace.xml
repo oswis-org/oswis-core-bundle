@@ -6,7 +6,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Traits/Entity/TypeContainerTrait.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Traits/Entity/BankAccountContainerTrait.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Traits/Entity/BankAccountTrait.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.github/" />
@@ -109,10 +110,22 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Traits/Entity/TypeContainerTrait.php">
+        <entry file="file://$PROJECT_DIR$/Traits/Entity/BankAccountContainerTrait.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="22" column="5" lean-forward="true" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+            <state relative-caret-position="105">
+              <caret line="14" selection-start-line="14" selection-end-line="14" />
+              <folding>
+                <element signature="e#162#175#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Traits/Entity/BankAccountTrait.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="840">
+              <caret line="55" selection-start-line="55" selection-end-line="55" />
             </state>
           </provider>
         </entry>
@@ -400,6 +413,8 @@
         <option value="$PROJECT_DIR$/Entity/AbstractClass/AbstractPayment.php" />
         <option value="$PROJECT_DIR$/Traits/Entity/TypeTrait.php" />
         <option value="$PROJECT_DIR$/Traits/Entity/TypeContainerTrait.php" />
+        <option value="$PROJECT_DIR$/Traits/Entity/BankAccountTrait.php" />
+        <option value="$PROJECT_DIR$/Traits/Entity/BankAccountContainerTrait.php" />
       </list>
     </option>
   </component>
@@ -529,7 +544,7 @@
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-1" />
     <option name="width" value="1368" />
-    <option name="height" value="741" />
+    <option name="height" value="768" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -747,14 +762,7 @@
       <workItem from="1563534345078" duration="11709000" />
       <workItem from="1563639836503" duration="2985000" />
       <workItem from="1563731552764" duration="596000" />
-      <workItem from="1563783636512" duration="3386000" />
-    </task>
-    <task id="LOCAL-00235" summary="Some changes.">
-      <created>1559160689771</created>
-      <option name="number" value="00235" />
-      <option name="presentableId" value="LOCAL-00235" />
-      <option name="project" value="LOCAL" />
-      <updated>1559160689771</updated>
+      <workItem from="1563783636512" duration="4886000" />
     </task>
     <task id="LOCAL-00236" summary="Some changes.">
       <created>1559162003687</created>
@@ -1092,11 +1100,18 @@
       <option name="project" value="LOCAL" />
       <updated>1563798408810</updated>
     </task>
-    <option name="localTasksCounter" value="284" />
+    <task id="LOCAL-00284" summary="Some changes.">
+      <created>1563818187762</created>
+      <option name="number" value="00284" />
+      <option name="presentableId" value="LOCAL-00284" />
+      <option name="project" value="LOCAL" />
+      <updated>1563818187763</updated>
+    </task>
+    <option name="localTasksCounter" value="285" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="599754000" />
+    <option name="totallyTimeSpent" value="601254000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="0" width="1368" height="741" extended-state="6" />
@@ -1113,7 +1128,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49022081" visible="true" weight="0.28308207" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49022081" weight="0.28308207" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Statistic" order="10" weight="0.32998326" />
       <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.4890464" weight="0.2043551" />
@@ -2814,6 +2829,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
           <caret line="22" column="5" lean-forward="true" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Traits/Entity/BankAccountTrait.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="840">
+          <caret line="55" selection-start-line="55" selection-end-line="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Traits/Entity/BankAccountContainerTrait.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+          <folding>
+            <element signature="e#162#175#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
