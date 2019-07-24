@@ -55,7 +55,7 @@ trait TypeTrait
         if (!$typeName || '' === $typeName || in_array($typeName, self::getAllowedTypes(), true)) {
             return true;
         }
-        throw new InvalidArgumentException('Typ příznaku kontaktu "'.$typeName.'" v události není povolen.');
+        throw new InvalidArgumentException('Typ "'.$typeName.'" v události není povolen.');
     }
 
     final public static function getAllowedTypes(): array
