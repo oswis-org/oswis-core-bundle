@@ -15,28 +15,6 @@ trait BankAccountContainerTrait
 {
 
     /**
-     * @param DateTime|null $dateTime
-     *
-     * @return string|null
-     * @throws RevisionMissingException
-     */
-    final public function getBankAccountNumber(?DateTime $dateTime = null): ?string
-    {
-        return $this->getRevisionByDate($dateTime)->getBankAccountNumber();
-    }
-
-    /**
-     * @param DateTime|null $dateTime
-     *
-     * @return int|null
-     * @throws RevisionMissingException
-     */
-    final public function getBankAccountBank(?DateTime $dateTime = null): ?int
-    {
-        return $this->getRevisionByDate($dateTime)->getBankAccountBank();
-    }
-
-    /**
      * @param string|null $bankAccountNumber
      *
      * @throws RevisionMissingException
@@ -51,6 +29,17 @@ trait BankAccountContainerTrait
     }
 
     /**
+     * @param DateTime|null $dateTime
+     *
+     * @return string|null
+     * @throws RevisionMissingException
+     */
+    final public function getBankAccountNumber(?DateTime $dateTime = null): ?string
+    {
+        return $this->getRevisionByDate($dateTime)->getBankAccountNumber();
+    }
+
+    /**
      * @param string|null $bankAccountBank
      *
      * @throws RevisionMissingException
@@ -62,6 +51,17 @@ trait BankAccountContainerTrait
             $newRevision->setBankAccountBank($bankAccountBank);
             $this->addRevision($newRevision);
         }
+    }
+
+    /**
+     * @param DateTime|null $dateTime
+     *
+     * @return int|null
+     * @throws RevisionMissingException
+     */
+    final public function getBankAccountBank(?DateTime $dateTime = null): ?int
+    {
+        return $this->getRevisionByDate($dateTime)->getBankAccountBank();
     }
 
     final public function getBankAccountComplete(?DateTime $dateTime = null): ?string

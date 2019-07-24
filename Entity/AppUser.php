@@ -146,6 +146,10 @@ class AppUser extends AbstractAppUser
      */
     final public function isActive(?DateTime $referenceDateTime = null): bool
     {
+        if (!$this->getAccountActivationDateTime()) {
+            return false;
+        }
+
         return $this->containsDateTimeInRange($referenceDateTime);
     }
 
