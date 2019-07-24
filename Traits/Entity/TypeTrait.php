@@ -50,7 +50,7 @@ trait TypeTrait
      * @return bool
      * @throws InvalidArgumentException
      */
-    final public static function checkType(?string $typeName): bool
+    public static function checkType(?string $typeName): bool
     {
         if (!$typeName || '' === $typeName || in_array($typeName, self::getAllowedTypes(), true)) {
             return true;

@@ -7,7 +7,7 @@
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DependencyInjection/Configuration.php" beforeDir="false" afterPath="$PROJECT_DIR$/DependencyInjection/Configuration.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/TypeTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/TypeTrait.php" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.github/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -109,12 +109,12 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/DependencyInjection/Configuration.php">
+        <entry file="file://$PROJECT_DIR$/Traits/Entity/TypeTrait.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="196" selection-start-line="196" selection-end-line="196" />
+            <state relative-caret-position="60">
+              <caret line="51" selection-start-line="51" selection-end-line="51" />
               <folding>
-                <element signature="e#64#85#0#PHP" expanded="true" />
+                <element signature="e#58#72#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -397,7 +397,6 @@
         <option value="$PROJECT_DIR$/Traits/Entity/LockedForUserChangesTrait.php" />
         <option value="$PROJECT_DIR$/Resources/config/services.yaml" />
         <option value="$PROJECT_DIR$/Entity/AbstractClass/AbstractPayment.php" />
-        <option value="$PROJECT_DIR$/Traits/Entity/TypeTrait.php" />
         <option value="$PROJECT_DIR$/Traits/Entity/TypeContainerTrait.php" />
         <option value="$PROJECT_DIR$/Traits/Entity/BankAccountTrait.php" />
         <option value="$PROJECT_DIR$/Traits/Entity/BankAccountContainerTrait.php" />
@@ -405,6 +404,7 @@
         <option value="$PROJECT_DIR$/Repository/AppUserRepository.php" />
         <option value="$PROJECT_DIR$/Traits/Entity/AccountActivationTrait.php" />
         <option value="$PROJECT_DIR$/DependencyInjection/Configuration.php" />
+        <option value="$PROJECT_DIR$/Traits/Entity/TypeTrait.php" />
       </list>
     </option>
   </component>
@@ -552,7 +552,13 @@
             <path>
               <item name="oswis-core-bundle" type="b2602c69:ProjectViewProjectNode" />
               <item name="oswis-core-bundle" type="462c0819:PsiDirectoryNode" />
-              <item name="DependencyInjection" type="462c0819:PsiDirectoryNode" />
+              <item name="Traits" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oswis-core-bundle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oswis-core-bundle" type="462c0819:PsiDirectoryNode" />
+              <item name="Traits" type="462c0819:PsiDirectoryNode" />
+              <item name="Entity" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -746,21 +752,7 @@
       <workItem from="1563534345078" duration="11709000" />
       <workItem from="1563639836503" duration="2985000" />
       <workItem from="1563731552764" duration="596000" />
-      <workItem from="1563783636512" duration="10844000" />
-    </task>
-    <task id="LOCAL-00238" summary="Some changes.">
-      <created>1559164049414</created>
-      <option name="number" value="00238" />
-      <option name="presentableId" value="LOCAL-00238" />
-      <option name="project" value="LOCAL" />
-      <updated>1559164049414</updated>
-    </task>
-    <task id="LOCAL-00239" summary="Some changes.">
-      <created>1559220168604</created>
-      <option name="number" value="00239" />
-      <option name="presentableId" value="LOCAL-00239" />
-      <option name="project" value="LOCAL" />
-      <updated>1559220168604</updated>
+      <workItem from="1563783636512" duration="11280000" />
     </task>
     <task id="LOCAL-00240" summary="Some changes.">
       <created>1559228846342</created>
@@ -1091,11 +1083,25 @@
       <option name="project" value="LOCAL" />
       <updated>1563966944183</updated>
     </task>
-    <option name="localTasksCounter" value="287" />
+    <task id="LOCAL-00287" summary="Some changes.">
+      <created>1563986709544</created>
+      <option name="number" value="00287" />
+      <option name="presentableId" value="LOCAL-00287" />
+      <option name="project" value="LOCAL" />
+      <updated>1563986709544</updated>
+    </task>
+    <task id="LOCAL-00288" summary="Some changes.">
+      <created>1563986949148</created>
+      <option name="number" value="00288" />
+      <option name="presentableId" value="LOCAL-00288" />
+      <option name="project" value="LOCAL" />
+      <updated>1563986949148</updated>
+    </task>
+    <option name="localTasksCounter" value="289" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="607212000" />
+    <option name="totallyTimeSpent" value="607648000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="0" width="1368" height="741" extended-state="6" />
@@ -2765,16 +2771,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Traits/Entity/TypeTrait.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="59" lean-forward="true" selection-start-line="59" selection-end-line="59" />
-          <folding>
-            <element signature="e#58#72#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Traits/Entity/TypeContainerTrait.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
@@ -2828,10 +2824,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/DependencyInjection/Configuration.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="196" selection-start-line="196" selection-end-line="196" />
+        <state relative-caret-position="180">
+          <caret line="190" column="30" selection-start-line="190" selection-start-column="30" selection-end-line="190" selection-end-column="30" />
           <folding>
             <element signature="e#64#85#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Traits/Entity/TypeTrait.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="51" selection-start-line="51" selection-end-line="51" />
+          <folding>
+            <element signature="e#58#72#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
