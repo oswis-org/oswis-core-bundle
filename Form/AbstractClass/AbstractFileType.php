@@ -6,10 +6,10 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\Exception\AccessException;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Vich\UploaderBundle\Form\Type\VichImageType;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 use Zakjakub\OswisCoreBundle\Utils\FileUtils;
 
-abstract class AbstractImageType extends AbstractType
+abstract class AbstractFileType extends AbstractType
 {
 
     final public function buildForm(FormBuilderInterface $builder, array $options): void
@@ -19,7 +19,7 @@ abstract class AbstractImageType extends AbstractType
 
         $builder->add(
             'file',
-            VichImageType::class,
+            VichFileType::class,
             [
                 'label'          => false,
                 'download_label' => true,
@@ -55,7 +55,7 @@ abstract class AbstractImageType extends AbstractType
     /** @noinspection MethodShouldBeFinalInspection */
     public function getBlockPrefix(): string
     {
-        return 'oswis_core_abstract_image';
+        return 'oswis_core_abstract_file';
     }
 
 }
