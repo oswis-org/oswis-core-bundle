@@ -41,7 +41,7 @@ abstract class AbstractFileType extends AbstractType
     {
         $resolver->setDefaults(
             [
-                'data_class'      => $this::getImageClassName(),
+                'data_class'      => $this::getFileClassName(),
                 'csrf_protection' => false,
             ]
         );
@@ -50,7 +50,7 @@ abstract class AbstractFileType extends AbstractType
     /**
      * @return string
      */
-    abstract public static function getImageClassName(): string;
+    abstract public static function getFileClassName(): string;
 
     /** @noinspection MethodShouldBeFinalInspection */
     public function getBlockPrefix(): string
