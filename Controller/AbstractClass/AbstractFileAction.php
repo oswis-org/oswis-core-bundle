@@ -13,7 +13,6 @@ use Zakjakub\OswisCoreBundle\Entity\AbstractClass\AbstractFile;
 
 abstract class AbstractFileAction
 {
-
     private $validator;
 
     private $doctrine;
