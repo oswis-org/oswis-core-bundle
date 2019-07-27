@@ -57,12 +57,14 @@ class MailerListener implements EventSubscriberInterface
             $message->embedFromPath('../assets/assets/images/logo.png', 'logo');
             $data = $message->getContext();
             $data['logo'] = $data['logo'] ?? 'cid:logo';
-            $data['oswis'] = $data['oswis'] ?? [
+            if (!$data['oswis'] || empty($data['oswis'])) {
+                $data['oswis'] = [
                     'app'   => $oswisCoreSettings->getApp(),
                     'admin' => $oswisCoreSettings->getAdmin(),
                     'email' => $oswisCoreSettings->getEmail(),
                     'web'   => $oswisCoreSettings->getWeb(),
                 ];
+            }
             $message->context($data);
         }
 
