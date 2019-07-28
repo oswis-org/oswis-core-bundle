@@ -9,6 +9,7 @@ use Symfony\Component\Mime\Email;
 use Symfony\Component\Mime\NamedAddress;
 use Zakjakub\OswisCoreBundle\Provider\OswisCoreSettingsProvider;
 use Zakjakub\OswisCoreBundle\Utils\EmailUtils;
+use function error_log;
 
 class MailerListener implements EventSubscriberInterface
 {
@@ -25,6 +26,7 @@ class MailerListener implements EventSubscriberInterface
         return [MessageEvent::class => ['onMessageSend', 0]];
     }
 
+    /** @noinspection PhpUnused */
     final public function onMessageSend(MessageEvent $event): void
     {
         $message = $event->getMessage();
@@ -35,7 +37,7 @@ class MailerListener implements EventSubscriberInterface
         }
 
         /** @noinspection ForgottenDebugOutputInspection */
-        \error_log('in listener');
+        error_log('in listener');
 
         if (!$message->getFrom() && $oswisCoreSettings->getEmail()['address']) {
             $message->from(

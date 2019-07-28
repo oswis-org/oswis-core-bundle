@@ -49,6 +49,16 @@ class OswisCoreSettingsProvider
         $this->web = $web;
     }
 
+    final public function getArray(): array
+    {
+        return [
+            'app'   => $this->getApp(),
+            'admin' => $this->getAdmin(),
+            'email' => $this->getEmail(),
+            'web'   => $this->getWeb(),
+        ];
+    }
+
     /**
      * @return array
      */
@@ -68,26 +78,17 @@ class OswisCoreSettingsProvider
     /**
      * @return array
      */
-    final public function getWeb(): array
+    final public function getEmail(): array
     {
-        return $this->web;
-    }
-
-    final public function getArray(): array {
-        return [
-            'app'   => $this->getApp(),
-            'admin' => $this->getAdmin(),
-            'email' => $this->getEmail(),
-            'web'   => $this->getWeb(),
-        ];
+        return $this->email;
     }
 
     /**
      * @return array
      */
-    final public function getEmail(): array
+    final public function getWeb(): array
     {
-        return $this->email;
+        return $this->web;
     }
 
     /**
