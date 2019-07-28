@@ -69,9 +69,7 @@ final class AppUserSubscriber implements EventSubscriberInterface
      */
     public static function getSubscribedEvents(): array
     {
-        return [
-            KernelEvents::VIEW => ['makeAppUser', EventPriorities::POST_WRITE],
-        ];
+        return [KernelEvents::VIEW => ['makeAppUser', EventPriorities::POST_WRITE]];
     }
 
     /**
