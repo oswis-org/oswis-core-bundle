@@ -2,10 +2,8 @@
 
 namespace Zakjakub\OswisCoreBundle\EventListener;
 
-use ApiPlatform\Core\EventListener\EventPriorities;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\Mailer\Event\MessageEvent;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Mime\NamedAddress;
@@ -56,16 +54,18 @@ class MailerListener implements EventSubscriberInterface
 
         if ($message instanceof TemplatedEmail) {
             $message->embedFromPath('../assets/assets/images/logo.png', 'logo');
-            $data = $message->getContext();
-            $data['logo'] = $data['logo'] ?? 'cid:logo';
-            $data['oswis'] = [
-                'app'   => $oswisCoreSettings->getApp(),
-                'admin' => $oswisCoreSettings->getAdmin(),
-                'email' => $oswisCoreSettings->getEmail(),
-                'web'   => $oswisCoreSettings->getWeb(),
-            ];
-            $message->context($data);
+            if ($message->getContext()['logo']) {
+                $message->getContext()['logo'] = 'cid:logo';
+            }
+            if ($message->getContext()['oswis']) {
+                $message->getContext()['oswis'] = [
+                    'app'   => $oswisCoreSettings->getApp(),
+                    'admin' => $oswisCoreSettings->getAdmin(),
+                    'email' => $oswisCoreSettings->getEmail(),
+                    'web'   => $oswisCoreSettings->getWeb(),
+                ];
+            }
+            $event->setMessage($message);
         }
-
     }
 }
