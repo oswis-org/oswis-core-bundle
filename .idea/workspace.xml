@@ -8,7 +8,7 @@
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EventListener/MailerListener.php" beforeDir="false" afterPath="$PROJECT_DIR$/EventListener/MailerListener.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Provider/OswisCoreSettingsProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/Provider/OswisCoreSettingsProvider.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,71 +21,6 @@
     <execution>
       <executable path="composer" />
     </execution>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>public</find>
-      <find>ZakJakub</find>
-      <find>@ORM\</find>
-      <find>web.name</find>
-      <find>eoCoordinatesLength</find>
-      <find>type</find>
-      <find>getUs</find>
-      <find>getUser(</find>
-      <find>twig</find>
-      <find>'activation'</find>
-      <find>logg</find>
-      <find>app_user_controller</find>
-      <find>prot</find>
-      <find>data\.</find>
-      <find>og</find>
-      <find>justify</find>
-      <find>text-align</find>
-      <find>\/\*noinspection ALL\*\/</find>
-      <find>bundles/zakjakuboswiscore</find>
-      <find>mailer</find>
-      <find>appNam</find>
-      <find>title</find>
-      <find>isAct</find>
-      <find>authir</find>
-      <find>footer_inner</find>
-      <find>defined</find>
-      <find>!</find>
-      <find>name</find>
-      <find>defined</find>
-      <find>oswis</find>
-    </findStrings>
-    <replaceStrings>
-      <replace>Zakjakub\OswisResourcesBundle\</replace>
-      <replace>Zakjakub\OswisAccommodationBundle\Entity\</replace>
-      <replace>@ORM\</replace>
-      <replace>OswisCoreBundle</replace>
-      <replace>Zakjakub\OswisCommonBundle\Traits</replace>
-      <replace>Zakjakub\OswisCommonBundle\Utils</replace>
-      <replace>Zakjakub\OswisCoreBundle\Entity\Traits</replace>
-      <replace>\OswisCoreBundle\Traits\Entity;</replace>
-      <replace>@Doctrine\ORM\Mapping</replace>
-      <replace>log_record</replace>
-      <replace>client_log_record</replace>
-      <replace>NoteTrait</replace>
-      <replace>bundles/zakjakuboswiscore/</replace>
-      <replace>Okno do praxe</replace>
-      <replace>protected</replace>
-      <replace>@Doctrine\ORM\Mapping\</replace>
-      <replace>web.title</replace>
-      <replace>eoLongitude</replace>
-      <replace>data.type</replace>
-      <replace>self::ACTIVATION</replace>
-      <replace>@ZakjakubOswisCoreBundle/Resources/public</replace>
-    </replaceStrings>
-    <dirStrings>
-      <dir>$PROJECT_DIR$/Interfaces</dir>
-      <dir>$PROJECT_DIR$/</dir>
-      <dir>$PROJECT_DIR$/Traits/Entity</dir>
-      <dir>$PROJECT_DIR$</dir>
-      <dir>$PROJECT_DIR$/Traits</dir>
-      <dir>$PROJECT_DIR$/Entity</dir>
-    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -102,9 +37,6 @@
         <option value="$PROJECT_DIR$/.idea" />
       </set>
     </option>
-  </component>
-  <component name="PhpServers">
-    <servers />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP">
     <include_path>
@@ -419,14 +351,7 @@
       <workItem from="1564303520921" duration="263000" />
       <workItem from="1564303808939" duration="189000" />
       <workItem from="1564304023497" duration="159000" />
-      <workItem from="1564310079893" duration="993000" />
-    </task>
-    <task id="LOCAL-00248" summary="Some changes.">
-      <created>1560449049777</created>
-      <option name="number" value="00248" />
-      <option name="presentableId" value="LOCAL-00248" />
-      <option name="project" value="LOCAL" />
-      <updated>1560449049778</updated>
+      <workItem from="1564310079893" duration="1831000" />
     </task>
     <task id="LOCAL-00249" summary="Some changes.">
       <created>1560449846994</created>
@@ -764,7 +689,14 @@
       <option name="project" value="LOCAL" />
       <updated>1564303754782</updated>
     </task>
-    <option name="localTasksCounter" value="297" />
+    <task id="LOCAL-00297" summary="Some changes.">
+      <created>1564311995783</created>
+      <option name="number" value="00297" />
+      <option name="presentableId" value="LOCAL-00297" />
+      <option name="project" value="LOCAL" />
+      <updated>1564311995784</updated>
+    </task>
+    <option name="localTasksCounter" value="298" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

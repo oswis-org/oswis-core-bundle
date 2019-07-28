@@ -34,6 +34,9 @@ class MailerListener implements EventSubscriberInterface
             return;
         }
 
+        /** @noinspection ForgottenDebugOutputInspection */
+        \error_log('in listener');
+
         if (!$message->getFrom() && $oswisCoreSettings->getEmail()['address']) {
             $message->from(
                 new NamedAddress(
@@ -51,19 +54,13 @@ class MailerListener implements EventSubscriberInterface
         if (!$message->getSubject() && $oswisCoreSettings->getEmail()['default_subject']) {
             $message->subject(EmailUtils::mime_header_encode($oswisCoreSettings->getEmail()['default_subject']));
         }
-
         if ($message instanceof TemplatedEmail) {
             $message->embedFromPath('../assets/assets/images/logo.png', 'logo');
             if ($message->getContext()['logo']) {
                 $message->getContext()['logo'] = 'cid:logo';
             }
             if ($message->getContext()['oswis']) {
-                $message->getContext()['oswis'] = [
-                    'app'   => $oswisCoreSettings->getApp(),
-                    'admin' => $oswisCoreSettings->getAdmin(),
-                    'email' => $oswisCoreSettings->getEmail(),
-                    'web'   => $oswisCoreSettings->getWeb(),
-                ];
+                $message->getContext()['oswis'] = $oswisCoreSettings->getArray();
             }
             $event->setMessage($message);
         }

@@ -73,6 +73,15 @@ class OswisCoreSettingsProvider
         return $this->web;
     }
 
+    final public function getArray(): array {
+        return [
+            'app'   => $this->getApp(),
+            'admin' => $this->getAdmin(),
+            'email' => $this->getEmail(),
+            'web'   => $this->getWeb(),
+        ];
+    }
+
     /**
      * @return array
      */
