@@ -2,8 +2,11 @@
 
 namespace Zakjakub\OswisCoreBundle\Repository;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\Query;
 use Exception;
 use Symfony\Bridge\Doctrine\Security\User\UserLoaderInterface;
 use Zakjakub\OswisCoreBundle\Entity\AppUser;
@@ -39,4 +42,16 @@ class AppUserRepository extends EntityRepository implements UserLoaderInterface
 
         return $appUser->isActive() ? $appUser : null;
     }
+
+    final public function findByEmail(string $email): Collection
+    {
+        return new ArrayCollection(
+            $queryBuilder = $this->createQueryBuilder('app_user')
+                ->where('app_user.email = :email')
+                ->setParameter('email', $email)
+                ->getQuery()
+                ->getResult(Query::HYDRATE_OBJECT)
+        );
+    }
+
 }
