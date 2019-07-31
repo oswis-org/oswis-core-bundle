@@ -46,7 +46,7 @@ class AppUserRepository extends EntityRepository implements UserLoaderInterface
     final public function findByEmail(string $email): Collection
     {
         return new ArrayCollection(
-            $queryBuilder = $this->createQueryBuilder('app_user')
+            $this->createQueryBuilder('app_user')
                 ->where('app_user.email = :email')
                 ->setParameter('email', $email)
                 ->getQuery()
