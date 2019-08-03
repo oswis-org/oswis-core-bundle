@@ -14,6 +14,7 @@ use Symfony\Component\Mime\NamedAddress;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Zakjakub\OswisCoreBundle\Entity\AppUser;
 use Zakjakub\OswisCoreBundle\Entity\AppUserType;
+use Zakjakub\OswisCoreBundle\Exceptions\OswisUserNotUniqueException;
 use Zakjakub\OswisCoreBundle\Utils\EmailUtils;
 use Zakjakub\OswisCoreBundle\Utils\StringUtils;
 use function random_int;
@@ -94,23 +95,27 @@ class AppUserManager
         ?bool $sendMail = false,
         ?bool $errorWhenExist = true
     ): AppUser {
+        $username = $username ?? 'user'.random_int(1, 9999);
+        $email = $email ?? $username.'@jakubzak.eu';
         $em = $this->em;
         $token = null;
-
         $appUserRoleRepo = $em->getRepository(AppUser::class);
-        $appUser = $appUserRoleRepo->findOneBy(['username' => $username]);
+        $appUser = $appUserRoleRepo->findOneBy(['email' => $email]);
+
+        if (!$appUser) {
+            $appUser = $appUserRoleRepo->findOneBy(['username' => $username]);
+        }
+
         if ($appUser && !$errorWhenExist) {
-            $this->logger->info('Skipped existing user: '.$appUser->getUsername().'.');
+            $this->logger->notice('Skipped existing user: '.$appUser->getUsername().' '.$appUser->getEmail().'.');
 
             return $appUser;
         }
 
         if ($appUser && $errorWhenExist) {
-            throw new ErrorException('User: '.$appUser->getUsername().' already exist.');
+            throw new OswisUserNotUniqueException('User: '.$appUser->getUsername().' already exist.');
         }
 
-        $username = $username ?? 'user'.random_int(1, 9999);
-        $email = $email ?? $username.'@jakubzak.eu';
         $appUser = new AppUser($fullName, $username, $email, null, null);
         $appUser->setAppUserType($appUserType);
         if ($activate) {
