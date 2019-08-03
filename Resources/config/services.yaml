@@ -131,16 +131,15 @@ services:
         alias: zakjakub_oswis_core.oswis_core_source_string_utils
         public: true
 
-
     zakjakub_oswis_core.app_user_controller:
         class: Zakjakub\OswisCoreBundle\Controller\AppUserController
         autowire: true
         public: true
         arguments:
-            - '@zakjakub_oswis_core.oswis_core_settings_provider'
             - 'doctrine.orm.entity_manager.abstract'
             - 'security.password_encoder'
             - 'monolog.logger'
+            - 'mailer'
 
     Zakjakub\OswisCoreBundle\Controller\AppUserController:
         alias: zakjakub_oswis_core.app_user_controller

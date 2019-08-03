@@ -6,12 +6,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Exceptions/OswisUserNotUniqueException.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/Dto/AppUserRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/Api/Dto/AppUserRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DependencyInjection/ZakjakubOswisCoreExtension.php" beforeDir="false" afterPath="$PROJECT_DIR$/DependencyInjection/ZakjakubOswisCoreExtension.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractFile.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractFile.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractImage.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractImage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractOrganization.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractOrganization.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractPayment.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractPayment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractPerson.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractPerson.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AppUserFlag.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUserFlag.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AppUserFlagConnection.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUserFlagConnection.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EventSubscriber/AppUserSubscriber.php" beforeDir="false" afterPath="$PROJECT_DIR$/EventSubscriber/AppUserSubscriber.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Exceptions/BirthDateMissingException.php" beforeDir="false" afterPath="$PROJECT_DIR$/Exceptions/BirthDateMissingException.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Exceptions/RevisionMissingException.php" beforeDir="false" afterPath="$PROJECT_DIR$/Exceptions/RevisionMissingException.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Filter/SearchAnnotation.php" beforeDir="false" afterPath="$PROJECT_DIR$/Filter/SearchAnnotation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Filter/SearchFilter.php" beforeDir="false" afterPath="$PROJECT_DIR$/Filter/SearchFilter.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Form/AbstractClass/AbstractImageType.php" beforeDir="false" afterPath="$PROJECT_DIR$/Form/AbstractClass/AbstractImageType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interfaces/BasicMailConfirmationInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/Interfaces/BasicMailConfirmationInterface.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interfaces/DateTimeInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/Interfaces/DateTimeInterface.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interfaces/RevisionInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/Interfaces/RevisionInterface.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Manager/AppUserManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/Manager/AppUserManager.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/e-mail/app-user-old.txt.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/e-mail/message-old.txt.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/e-mail/password-old.txt.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Manager/AppUserRoleManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/Manager/AppUserRoleManager.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Manager/AppUserTypeManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/Manager/AppUserTypeManager.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Repository/AppUserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/Repository/AppUserRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/config/services.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Security/AppUserProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/Security/AppUserProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Service/PdfGenerator.php" beforeDir="false" afterPath="$PROJECT_DIR$/Service/PdfGenerator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/AccountActivationTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/AccountActivationTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/BlameableTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/BlameableTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/OrderDateRangeTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/OrderDateRangeTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/ReservationDateRangeTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/ReservationDateRangeTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZakjakubOswisCoreBundle.php" beforeDir="false" afterPath="$PROJECT_DIR$/ZakjakubOswisCoreBundle.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -356,14 +381,9 @@
       <workItem from="1564304023497" duration="159000" />
       <workItem from="1564310079893" duration="8857000" />
       <workItem from="1564586923689" duration="356000" />
-      <workItem from="1564850681191" duration="813000" />
-    </task>
-    <task id="LOCAL-00253" summary="Some changes.">
-      <created>1561557664584</created>
-      <option name="number" value="00253" />
-      <option name="presentableId" value="LOCAL-00253" />
-      <option name="project" value="LOCAL" />
-      <updated>1561557664585</updated>
+      <workItem from="1564850681191" duration="841000" />
+      <workItem from="1564858241449" duration="16000" />
+      <workItem from="1564860512847" duration="1264000" />
     </task>
     <task id="LOCAL-00254" summary="Some changes.">
       <created>1561634300751</created>
@@ -701,7 +721,14 @@
       <option name="project" value="LOCAL" />
       <updated>1564587260368</updated>
     </task>
-    <option name="localTasksCounter" value="302" />
+    <task id="LOCAL-00302" summary="Some changes.">
+      <created>1564851509016</created>
+      <option name="number" value="00302" />
+      <option name="presentableId" value="LOCAL-00302" />
+      <option name="project" value="LOCAL" />
+      <updated>1564851509017</updated>
+    </task>
+    <option name="localTasksCounter" value="303" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
