@@ -37,7 +37,7 @@ class StringUtils
     public static function hyphenize(string $text): string
     {
         return preg_replace(
-            "//\-{2,}/u{2,}/u",
+            '//-{2,}/u{2,}/u',
             '-',
             preg_replace('/[^a-z0-9]/u', '-', mb_strtolower(self::removeAccents($text)))
         );

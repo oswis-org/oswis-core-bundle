@@ -18,48 +18,39 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
     protected $revisions;
 
     /**
-     * @param AbstractRevision|null $revision
+     * @var AbstractRevision|null
      */
-    final public function addRevision(?AbstractRevision $revision): void
+    protected $activeRevision;
+
+    /**
+     * @return AbstractRevision|null
+     */
+    final public function getActiveRevision(): ?AbstractRevision
     {
-        static::checkRevision($revision);
-        if (!$revision) {
-            return;
-        }
-        if (!$this->revisions->contains($revision)) {
-            $this->revisions->add($revision);
-            $revision->setContainer($this);
-        }
+        $this->updateActiveRevision();
+
+        return $this->activeRevision;
     }
 
     /**
-     * @param AbstractRevision|null $revision
+     * @param AbstractRevision $activeRevision
      */
-    abstract public static function checkRevision(?AbstractRevision $revision): void;
-
-    /**
-     * @param AbstractRevision|null $revision
-     */
-    final public function removeRevision(?AbstractRevision $revision): void
+    final public function setActiveRevision(AbstractRevision $activeRevision): void
     {
-        static::checkRevision($revision);
-        if (!$revision) {
-            return;
-        }
-        if ($this->revisions->removeElement($revision)) {
-            $revision->setContainer(null);
-        }
+        $this->activeRevision = $activeRevision;
+        $this->updateActiveRevision();
     }
 
-    /**
-     * @param DateTime|null $referenceDateTime
-     *
-     * @return DateTime|null
-     * @throws RevisionMissingException
-     */
-    final public function getLastRevisionDateTime(?DateTime $referenceDateTime = null): ?DateTime
+    final public function updateActiveRevision(): void
     {
-        return $this->getRevision($referenceDateTime)->getCreatedDateTime();
+        try {
+            $lastRevision = $this->getRevision();
+            if ($lastRevision !== $this->activeRevision) {
+                $this->activeRevision = $lastRevision;
+            }
+        } catch (RevisionMissingException $e) {
+            return;
+        }
     }
 
     /**
@@ -113,5 +104,52 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
      * @return string
      */
     abstract public static function getRevisionClassName(): string;
+
+    /**
+     * @param AbstractRevision|null $revision
+     */
+    abstract public static function checkRevision(?AbstractRevision $revision): void;
+
+    /**
+     * @param AbstractRevision|null $revision
+     */
+    final public function addRevision(?AbstractRevision $revision): void
+    {
+        static::checkRevision($revision);
+        if (!$revision) {
+            return;
+        }
+        if (!$this->revisions->contains($revision)) {
+            $this->revisions->add($revision);
+            $revision->setContainer($this);
+        }
+        $this->updateActiveRevision();
+    }
+
+    /**
+     * @param AbstractRevision|null $revision
+     */
+    final public function removeRevision(?AbstractRevision $revision): void
+    {
+        static::checkRevision($revision);
+        if (!$revision) {
+            return;
+        }
+        if ($this->revisions->removeElement($revision)) {
+            $revision->setContainer(null);
+        }
+        $this->updateActiveRevision();
+    }
+
+    /**
+     * @param DateTime|null $referenceDateTime
+     *
+     * @return DateTime|null
+     * @throws RevisionMissingException
+     */
+    final public function getLastRevisionDateTime(?DateTime $referenceDateTime = null): ?DateTime
+    {
+        return $this->getRevision($referenceDateTime)->getCreatedDateTime();
+    }
 
 }
