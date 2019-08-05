@@ -8,7 +8,6 @@
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Filter/SearchFilter.php" beforeDir="false" afterPath="$PROJECT_DIR$/Filter/SearchFilter.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -358,14 +357,7 @@
       <workItem from="1564860512847" duration="1834000" />
       <workItem from="1564862694602" duration="5877000" />
       <workItem from="1564939104999" duration="1409000" />
-      <workItem from="1564941727544" duration="101000" />
-    </task>
-    <task id="LOCAL-00257" summary="Some changes.">
-      <created>1562340444224</created>
-      <option name="number" value="00257" />
-      <option name="presentableId" value="LOCAL-00257" />
-      <option name="project" value="LOCAL" />
-      <updated>1562340444225</updated>
+      <workItem from="1564941727544" duration="1934000" />
     </task>
     <task id="LOCAL-00258" summary="Some changes.">
       <created>1562345004392</created>
@@ -703,7 +695,14 @@
       <option name="project" value="LOCAL" />
       <updated>1564933472240</updated>
     </task>
-    <option name="localTasksCounter" value="306" />
+    <task id="LOCAL-00306" summary="Some changes.">
+      <created>1564941845317</created>
+      <option name="number" value="00306" />
+      <option name="presentableId" value="LOCAL-00306" />
+      <option name="project" value="LOCAL" />
+      <updated>1564941845318</updated>
+    </task>
+    <option name="localTasksCounter" value="307" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

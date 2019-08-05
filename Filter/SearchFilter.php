@@ -88,23 +88,25 @@ final class SearchFilter extends AbstractContextAwareFilter
             $joins = explode('.', $field);
             /** @noinspection ForeachInvariantsInspection */
             for ($lastAlias = 'o', $i = 0, $num = count($joins); $i < $num; $i++) {
-                // $currentAlias = $joins[$i].'_'.$i;
                 $currentAlias = $joins[$i];
+                $currentAliasRenamed = $joins[$i].'_'.$i;
+                // $currentAlias = $joins[$i];
                 if ($i === $num - 1) {
                     $search[] = "LOWER({$lastAlias}.{$currentAlias}) LIKE LOWER(:{$parameterName})";
                 } else {
                     $join = "{$lastAlias}.{$currentAlias}";
                     if (!in_array($join, $mappedJoins, true)) {
-                        $queryBuilder->leftJoin($join, $currentAlias);
+                        $queryBuilder->leftJoin($join, $currentAliasRenamed);
                         $mappedJoins[] = $join;
                     }
                 }
 
-                $lastAlias = $currentAlias;
+                $lastAlias = $currentAliasRenamed;
             }
         }
 
         $queryBuilder->andWhere(implode(' OR ', $search));
         $queryBuilder->setParameter($parameterName, '%'.$value.'%');
+        // \error_log('DQL: ' . $queryBuilder->getDQL());
     }
 }
