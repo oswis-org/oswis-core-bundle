@@ -39,9 +39,9 @@ final class AppUserSubscriber implements EventSubscriberInterface
         AppUserManager $appUserManager,
         TokenStorageInterface $tokenStorage
     ) {
-        $this->appUserManager = $appUserManager;
         $this->em = $em;
         $this->tokenStorage = $tokenStorage;
+        $this->appUserManager = $appUserManager;
     }
 
     public static function getSubscribedEvents(): array
@@ -102,7 +102,6 @@ final class AppUserSubscriber implements EventSubscriberInterface
         $data = [];
         $event->setResponse(new JsonResponse($data, 201));
     }
-
 
     /**
      * @return AppUser
