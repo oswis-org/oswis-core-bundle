@@ -5,7 +5,6 @@ namespace Zakjakub\OswisCoreBundle\Api\EventSubscriber;
 use ApiPlatform\Core\EventListener\EventPriorities;
 use Doctrine\ORM\EntityManagerInterface;
 use ErrorException;
-use Exception;
 use InvalidArgumentException;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -17,6 +16,7 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 use Zakjakub\OswisCoreBundle\Entity\AppUser;
 use Zakjakub\OswisCoreBundle\Manager\AppUserManager;
 use function assert;
+use function in_array;
 
 /** @noinspection ClassNameCollisionInspection */
 
@@ -76,25 +76,16 @@ final class AppUserSubscriber implements EventSubscriberInterface
         $appUser = $controllerResult->appUser;
 
         $em = $this->em;
-        assert($em instanceof EntityManagerInterface);
         $appUserRepository = $em->getRepository(AppUser::class);
-
-        if (!$appUser) {
-            $appUser = $appUserRepository->findOneBy(['id' => $uid]);
-        }
+        $appUser = $appUser ?? $appUserRepository->findOneBy(['id' => $uid]);
 
         if (!$appUser) {
             throw new NotFoundHttpException('Uživatel nenalezen.');
         }
         assert($appUser instanceof AppUser);
-        if ($type === 'reset') {
-            $this->appUserManager->appUserAction($appUser, 'reset', $password, $token);
-        } elseif ($type === 'activation') {
-            $this->appUserManager->appUserAction($appUser, 'activation', $password, $token);
-        } elseif ($type === 'reset-request') {
-            $this->appUserManager->appUserAction($appUser, 'reset-request');
-        } elseif ($type === 'activation-request') {
-            $this->appUserManager->appUserAction($appUser, 'activation');
+
+        if (in_array($type, AppUserManager::ALLOWED_TYPES, true)) {
+            $this->appUserManager->appUserAction($appUser, $type, $password, $token);
         } else {
             throw new InvalidArgumentException('Akce "'.$type.'" není u uživatelských účtů implementována.');
         }
@@ -103,30 +94,4 @@ final class AppUserSubscriber implements EventSubscriberInterface
         $event->setResponse(new JsonResponse($data, 201));
     }
 
-    /**
-     * @return AppUser
-     * @throws Exception
-     */
-    public function getCurrentAppUser(): AppUser
-    {
-        $token = $this->tokenStorage->getToken();
-        if (!$token) {
-            return null;
-        }
-        $appUser = $token->getUser();
-        if (!$appUser instanceof AppUser) {
-            return null;
-        }
-        if (!$appUser) {
-            return null;
-        }
-        $accommodationUserRepo = $this->em->getRepository(AccommodationUser::class);
-        $accommodationUser = $accommodationUserRepo->findOneBy(['appUser' => $appUser->getId()]);
-        assert($accommodationUser instanceof AccommodationUser);
-        if (!$accommodationUser) {
-            throw new AccessDeniedException('Neznámý uživatel ubytovacího systému.');
-        }
-
-        return $accommodationUser;
-    }
 }

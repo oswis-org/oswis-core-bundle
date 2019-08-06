@@ -13,6 +13,7 @@ use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Zakjakub\OswisCoreBundle\Entity\AppUser;
 use Zakjakub\OswisCoreBundle\Manager\AppUserManager;
+use Zakjakub\OswisCoreBundle\Provider\OswisCoreSettingsProvider;
 use function assert;
 
 class AppUserController extends AbstractController
@@ -25,6 +26,8 @@ class AppUserController extends AbstractController
      * @param LoggerInterface              $logger
      * @param MailerInterface              $newMailer
      *
+     * @param OswisCoreSettingsProvider    $oswisCoreSettings
+     *
      * @return Response
      * @throws LogicException
      * @throws TransportExceptionInterface
@@ -34,7 +37,8 @@ class AppUserController extends AbstractController
         EntityManagerInterface $em,
         UserPasswordEncoderInterface $encoder,
         LoggerInterface $logger,
-        MailerInterface $newMailer
+        MailerInterface $newMailer,
+        OswisCoreSettingsProvider $oswisCoreSettings
     ): Response {
         try {
             if (!$token) {
@@ -59,7 +63,7 @@ class AppUserController extends AbstractController
                     '@ZakjakubOswisCore/web/pages/message.html.twig',
                     [
                         'title'   => 'Token nenalezen',
-                        'message' => 'Token nebyl nalezen u žádné z registrací. 
+                        'message' => 'Token nebyl nalezen u žádného z uživatelů. 
                         Je možné, že již vypršena jeho platnost, zkuste se registrovat znovu se stejným e-mailem.
                         Pokud se to nepodaří, kontaktujte nás.',
                     ]
@@ -67,11 +71,8 @@ class AppUserController extends AbstractController
             }
 
             assert($appUser instanceof AppUser);
-
-            $appUserManager = new AppUserManager($encoder, $em, $logger, $newMailer);
-
+            $appUserManager = new AppUserManager($encoder, $em, $logger, $newMailer, $oswisCoreSettings);
             $appUserManager->appUserAction($appUser, 'activation', null, $token);
-
             $em->flush();
 
             return $this->render(

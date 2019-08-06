@@ -16,6 +16,7 @@ use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Zakjakub\OswisCoreBundle\Entity\AppUser;
 use Zakjakub\OswisCoreBundle\Manager\AppUserManager;
+use Zakjakub\OswisCoreBundle\Provider\OswisCoreSettingsProvider;
 use function assert;
 
 /** @noinspection ClassNameCollisionInspection */
@@ -44,24 +45,32 @@ final class AppUserSubscriber implements EventSubscriberInterface
     private $mailer;
 
     /**
+     * @var OswisCoreSettingsProvider
+     */
+    private $oswisCoreSettings;
+
+    /**
      * ReservationSubscriber constructor.
      *
      * @param UserPasswordEncoderInterface $encoder
      * @param EntityManagerInterface       $em
      * @param LoggerInterface              $logger
      * @param MailerInterface              $mailer
+     * @param OswisCoreSettingsProvider    $oswisCoreSettings
      */
     public function __construct(
         UserPasswordEncoderInterface $encoder,
         EntityManagerInterface $em,
         LoggerInterface $logger,
-        MailerInterface $mailer
+        MailerInterface $mailer,
+        OswisCoreSettingsProvider $oswisCoreSettings
     ) {
         // \error_log('Constructing ReservationSubscriber.');
         $this->encoder = $encoder;
         $this->em = $em;
         $this->logger = $logger;
         $this->mailer = $mailer;
+        $this->oswisCoreSettings = $oswisCoreSettings;
     }
 
     /**
@@ -87,7 +96,7 @@ final class AppUserSubscriber implements EventSubscriberInterface
             return;
         }
         assert($appUser instanceof AppUser);
-        $appUserManager = new AppUserManager($this->encoder, $this->em, $this->logger, $this->mailer);
+        $appUserManager = new AppUserManager($this->encoder, $this->em, $this->logger, $this->mailer, $this->oswisCoreSettings);
         $appUserManager->appUserAction($appUser, 'activation-request');
     }
 

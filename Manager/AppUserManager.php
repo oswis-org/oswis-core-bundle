@@ -15,6 +15,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Zakjakub\OswisCoreBundle\Entity\AppUser;
 use Zakjakub\OswisCoreBundle\Entity\AppUserType;
 use Zakjakub\OswisCoreBundle\Exceptions\OswisUserNotUniqueException;
+use Zakjakub\OswisCoreBundle\Provider\OswisCoreSettingsProvider;
 use Zakjakub\OswisCoreBundle\Utils\EmailUtils;
 use Zakjakub\OswisCoreBundle\Utils\StringUtils;
 use function random_int;
@@ -29,6 +30,8 @@ class AppUserManager
     public const RESET_REQUEST = 'reset-request';
     public const ACTIVATION = 'activation';
     public const ACTIVATION_REQUEST = 'activation-request';
+
+    public const ALLOWED_TYPES = [self::RESET, self::RESET_REQUEST, self::ACTIVATION, self::ACTIVATION_REQUEST];
 
     /**
      * @var EntityManagerInterface
@@ -51,23 +54,31 @@ class AppUserManager
     private $mailer;
 
     /**
+     * @var OswisCoreSettingsProvider
+     */
+    private $oswisCoreSettings;
+
+    /**
      * AppUserManager constructor.
      *
      * @param UserPasswordEncoderInterface $encoder
      * @param EntityManagerInterface       $em
      * @param LoggerInterface              $logger
      * @param MailerInterface              $mailer
+     * @param OswisCoreSettingsProvider    $oswisCoreSettings
      */
     public function __construct(
         UserPasswordEncoderInterface $encoder,
         EntityManagerInterface $em,
         LoggerInterface $logger,
-        MailerInterface $mailer
+        MailerInterface $mailer,
+        OswisCoreSettingsProvider $oswisCoreSettings
     ) {
-        $this->encoder = $encoder;
         $this->em = $em;
+        $this->encoder = $encoder;
         $this->logger = $logger;
         $this->mailer = $mailer;
+        $this->oswisCoreSettings = $oswisCoreSettings;
     }
 
     /**
@@ -86,8 +97,8 @@ class AppUserManager
      * @throws TransportExceptionInterface
      */
     final public function create(
-        ?string $fullName,
-        ?AppUserType $appUserType,
+        ?string $fullName = null,
+        ?AppUserType $appUserType = null,
         ?string $username = null,
         ?string $password = null,
         ?string $email = null,
@@ -127,8 +138,7 @@ class AppUserManager
         }
         $em->persist($appUser);
         $em->flush();
-        $infoMessage = 'Created user: '.$appUser->getUsername().', type: '.($appUserType ? $appUserType->getName() : null);
-        $this->logger->info($infoMessage);
+        $this->logger->info('Created user: '.$appUser->getUsername().', type: '.($appUserType ? $appUserType->getName() : null));
 
         return $appUser;
     }
@@ -191,8 +201,7 @@ class AppUserManager
                 if ($sendConfirmation) {
                     $this->sendAppUserEmail($appUser, self::ACTIVATION, $token, $random ? $password : null);
                 }
-            } else {
-                // Type is not recognized.
+            } else { // Type is not recognized.
                 throw new InvalidArgumentException('Akce "'.$type.'" není u uživatelských účtů implementována.');
             }
             $this->em->persist($appUser);
@@ -227,12 +236,10 @@ class AppUserManager
 
             $title = null;
 
-            if (self::RESET === $type) {
-                // Send e-mail about password change. Include password if present (it means that it's generated randomly).
+            if (self::RESET === $type) { // Send e-mail about password change. Include password if present (it means that it's generated randomly).
                 $title = 'Heslo změněno';
                 $token = null;
-            } elseif (self::RESET_REQUEST === $type) {
-                // Send e-mail about password reset request. Include token for change.
+            } elseif (self::RESET_REQUEST === $type) { // Send e-mail about password reset request. Include token for change.
                 $title = 'Požadavek na změnu hesla';
                 $password = null;
             } else {
@@ -259,7 +266,7 @@ class AppUserManager
             $this->mailer->send($email);
         } catch (Exception $e) {
             $this->logger->error($e->getMessage());
-            throw new ErrorException('Problém s odesláním zprávy o změně hesla:  '.$e->getMessage());
+            throw new ErrorException('Problém s odesláním zprávy o změně hesla.  '.$e->getMessage());
         }
     }
 
@@ -283,8 +290,7 @@ class AppUserManager
                 throw new ErrorException('Uživatel nenalezen.');
             }
 
-            if (self::ACTIVATION_REQUEST === $type) {
-                // Send e-mail about activation request. Include token for activation.
+            if (self::ACTIVATION_REQUEST === $type) { // Send e-mail about activation request. Include token for activation.
                 $title = 'Aktivace uživatelského účtu';
             } elseif (self::ACTIVATION === $type) {
                 // Send e-mail about account activation. Include password if present (it means that it's generated randomly).
@@ -298,15 +304,17 @@ class AppUserManager
                 'type'     => $type,
                 'token'    => $token,
                 'password' => $password,
+                'logo'     => 'cid_logo',
+                'oswis'    => $this->oswisCoreSettings,
+            );
+
+            $receiverAddress = new NamedAddress(
+                $appUser->getEmail() ?? '',
+                EmailUtils::mime_header_encode($appUser->getFullName() ?? $appUser->getUsername() ?? '')
             );
 
             $email = (new TemplatedEmail())
-                ->to(
-                    new NamedAddress(
-                        $appUser->getEmail() ?? '',
-                        EmailUtils::mime_header_encode($appUser->getFullName() ?? $appUser->getUsername() ?? '')
-                    )
-                )
+                ->to($receiverAddress)
                 ->subject(EmailUtils::mime_header_encode($title))
                 ->htmlTemplate('@ZakjakubOswisCore/e-mail/app-user.html.twig')
                 ->context($data);

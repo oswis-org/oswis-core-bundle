@@ -18,26 +18,31 @@ use Zakjakub\OswisCoreBundle\Entity\AppUser;
 final class AppUserRequest
 {
     /**
+     * ID of AppUser which is changed.
      * @var int|null
      */
     public $uid;
 
     /**
+     * Token generated when request was created.
      * @var string|null
      */
     public $token;
 
     /**
+     * New password.
      * @var string|null
      */
     public $password;
 
     /**
+     * Type of action.
      * @var string|null
      */
     public $type;
 
     /**
+     * App user to change.
      * @var AppUser|null
      */
     public $appUser;
