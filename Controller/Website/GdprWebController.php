@@ -1,6 +1,6 @@
 <?php
 
-namespace Zakjakub\OswisCoreBundle\Controller;
+namespace Zakjakub\OswisCoreBundle\Controller\Website;
 
 use LogicException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

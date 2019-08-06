@@ -92,7 +92,7 @@ class AppUserController extends AbstractController
                 '@ZakjakubOswisCore/web/pages/message.html.twig',
                 [
                     'title'   => 'Nastala chyba!',
-                    'message' => 'Registraci se nepodařilo potvrdit. Kontaktujte nás a společně to vyřešíme.',
+                    'message' => 'Uživatele se nepodařilo potvrdit. Kontaktujte nás a společně to vyřešíme.',
                 ]
             );
         }

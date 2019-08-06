@@ -141,19 +141,33 @@ services:
             - 'monolog.logger'
             - 'mailer'
 
-    zakjakub_oswis_core.gdpr_web_controller:
-        class: Zakjakub\OswisCoreBundle\Controller\GdprWebController
+    Zakjakub\OswisCoreBundle\Controller\AppUserController:
+        alias: zakjakub_oswis_core.app_user_controller
+        public: true
+
+    zakjakub_oswis_core.index_web_controller:
+        class: Zakjakub\OswisCoreBundle\Controller\Website\IndexWebController
         autowire: true
         public: true
 
-    Zakjakub\OswisCoreBundle\Controller\AppUserController:
-        alias: zakjakub_oswis_core.app_user_controller
+    Zakjakub\OswisCoreBundle\Controller\Website\IndexWebController:
+        alias: zakjakub_oswis_core.index_web_controller
+        public: true
+
+    zakjakub_oswis_core.gdpr_web_controller:
+        class: Zakjakub\OswisCoreBundle\Controller\Website\GdprWebController
+        autowire: true
+        public: true
+
+    Zakjakub\OswisCoreBundle\Controller\Website\GdprWebController:
+        alias: zakjakub_oswis_core.gdpr_web_controller
         public: true
 
     zakjakub_oswis_core.email_sender:
         class: Zakjakub\OswisCoreBundle\Service\EmailSender
         autowire: true
         public: true
+        deprecated: true
         arguments:
             - '@swiftmailer.mailer'
             - '@monolog.logger'
