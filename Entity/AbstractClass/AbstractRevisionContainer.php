@@ -65,16 +65,16 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
             return $this->activeRevision;
         }
 
-        if (!$this->activeRevision) {
-            $this->updateActiveRevision();
-        }
-
         $revisions = $this->getRevisionsOlderThanDateTime($dateTime);
         if (!$revisions || !$revisions[0]) {
             throw new RevisionMissingException((static::getRevisionClassName() ?? 'Revision class').' not found.');
         }
 
         static::checkRevision($revisions[0]);
+
+        if (!$dateTime && !$this->activeRevision) {
+            $this->activeRevision = $revisions[0];
+        }
 
         return $revisions[0];
     }
