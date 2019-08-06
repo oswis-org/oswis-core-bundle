@@ -7,8 +7,7 @@
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/e-mail/foundation-emails.css.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/e-mail/foundation-emails.css.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/e-mail/message.css.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/e-mail/message.css.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractRevisionContainer.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractRevisionContainer.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -361,14 +360,8 @@
       <workItem from="1564941727544" duration="2173000" />
       <workItem from="1565031433235" duration="2542000" />
       <workItem from="1565035997585" duration="146000" />
-      <workItem from="1565091540906" duration="178000" />
-    </task>
-    <task id="LOCAL-00260" summary="Some changes.">
-      <created>1562420418030</created>
-      <option name="number" value="00260" />
-      <option name="presentableId" value="LOCAL-00260" />
-      <option name="project" value="LOCAL" />
-      <updated>1562420418030</updated>
+      <workItem from="1565091540906" duration="816000" />
+      <workItem from="1565093353581" duration="699000" />
     </task>
     <task id="LOCAL-00261" summary="Some changes.">
       <created>1562444132412</created>
@@ -706,7 +699,14 @@
       <option name="project" value="LOCAL" />
       <updated>1565036131206</updated>
     </task>
-    <option name="localTasksCounter" value="309" />
+    <task id="LOCAL-00309" summary="Some changes.">
+      <created>1565091746280</created>
+      <option name="number" value="00309" />
+      <option name="presentableId" value="LOCAL-00309" />
+      <option name="project" value="LOCAL" />
+      <updated>1565091746280</updated>
+    </task>
+    <option name="localTasksCounter" value="310" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -768,16 +768,5 @@
     <MESSAGE value="Added DepositValueTrait." />
     <MESSAGE value="Some changes." />
     <option name="LAST_COMMIT_MESSAGE" value="Some changes." />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/Security/AppUserProvider.php</url>
-          <line>13</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
