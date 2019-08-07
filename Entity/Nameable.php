@@ -3,39 +3,44 @@
 namespace Zakjakub\OswisCoreBundle\Entity;
 
 /**
- * Class Nameable
- * @package OswisCoreBundle
+ * Entity consisting from common "name and description" properties.
+ *
+ * @author Jakub Zak <mail@jakubzak.eu>
  */
 class Nameable
 {
-
     /**
+     * Full name.
      * @var string|null
      */
     public $name;
 
     /**
+     * Shortened name.
      * @var string|null
      */
     public $shortName;
 
     /**
+     * Description.
      * @var string|null
      */
     public $description;
 
     /**
+     * Note.
      * @var string|null
      */
     public $note;
 
     /**
+     * Slug (string for ie. url).
      * @var string|null
      */
     public $slug;
 
     /**
-     * Nameable constructor.
+     * Constructor of nameable.
      *
      * @param string|null $name
      * @param string|null $shortName

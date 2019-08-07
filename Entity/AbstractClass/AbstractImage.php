@@ -1,12 +1,16 @@
 <?php
 
-
 namespace Zakjakub\OswisCoreBundle\Entity\AbstractClass;
 
 use ApiPlatform\Core\Annotation\ApiProperty;
 use Symfony\Component\HttpFoundation\File\File;
 use Zakjakub\OswisCoreBundle\Traits\Entity\BasicEntityTrait;
 
+/**
+ * Abstract image file class for use in uploads and forms.
+ *
+ * @author Jakub Zak <mail@jakubzak.eu>
+ */
 abstract class AbstractImage
 {
 

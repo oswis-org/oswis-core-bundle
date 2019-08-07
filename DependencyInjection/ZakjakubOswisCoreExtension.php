@@ -12,7 +12,6 @@ use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
 class ZakjakubOswisCoreExtension extends Extension implements PrependExtensionInterface
 {
-
     /**
      * Loads a specific configuration.
      *

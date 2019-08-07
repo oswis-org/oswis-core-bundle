@@ -6,12 +6,18 @@ use Zakjakub\OswisCoreBundle\Entity\AppUser;
 use Zakjakub\OswisCoreBundle\Traits\Entity\BasicEntityTrait;
 use Zakjakub\OswisCoreBundle\Traits\Entity\DeletedTrait;
 
+/**
+ * Abstract bundle user (for creating specific user extension in bundle).
+ *
+ * @author Jakub Zak <mail@jakubzak.eu>
+ */
 abstract class AbstractBundleUser
 {
     use BasicEntityTrait;
     use DeletedTrait;
 
     /**
+     * Linked AppUser from core bundle.
      * @var AppUser|null
      * @Doctrine\ORM\Mapping\OneToOne(
      *     targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUser",
@@ -22,9 +28,13 @@ abstract class AbstractBundleUser
      */
     private $appUser;
 
-    public function __construct(
-        ?AppUser $appUser = null
-    ) {
+    /**
+     * AbstractBundleUser constructor.
+     *
+     * @param AppUser|null $appUser
+     */
+    public function __construct(?AppUser $appUser = null)
+    {
         $this->setAppUser($appUser);
     }
 

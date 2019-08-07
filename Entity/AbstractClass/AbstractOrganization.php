@@ -7,6 +7,11 @@ use Zakjakub\OswisCoreBundle\Traits\Entity\BasicEntityTrait;
 use Zakjakub\OswisCoreBundle\Traits\Entity\IdentificationNumberTrait;
 use Zakjakub\OswisCoreBundle\Traits\Entity\NameableBasicTrait;
 
+/**
+ * Abstract class containing properties for organization.
+ *
+ * @author Jakub Zak <mail@jakubzak.eu>
+ */
 abstract class AbstractOrganization
 {
     use BasicEntityTrait;

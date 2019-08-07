@@ -9,6 +9,11 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Zakjakub\OswisCoreBundle\Traits\Entity\BasicEntityTrait;
 use Zakjakub\OswisCoreBundle\Traits\Entity\UserTrait;
 
+/**
+ * Abstract class containing basic properties for user of application.
+ *
+ * @author Jakub Zak <mail@jakubzak.eu>
+ */
 abstract class AbstractAppUser implements UserInterface, Serializable, EquatableInterface
 {
     use BasicEntityTrait;
@@ -89,11 +94,21 @@ abstract class AbstractAppUser implements UserInterface, Serializable, Equatable
     {
     }
 
+    /**
+     * @param string $roleName
+     *
+     * @return bool
+     */
     final public function hasRole(string $roleName): bool
     {
         return $this->containsRole($roleName);
     }
 
+    /**
+     * @param string $roleName
+     *
+     * @return bool
+     */
     final public function containsRole(string $roleName): bool
     {
         $roles = new ArrayCollection($this->getRoles());

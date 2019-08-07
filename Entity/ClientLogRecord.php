@@ -29,6 +29,8 @@ use Zakjakub\OswisCoreBundle\Traits\Entity\BasicEntityTrait;
  *     }
  *   }
  * )
+ *
+ * @author Jakub Zak <mail@jakubzak.eu>
  */
 class ClientLogRecord
 {

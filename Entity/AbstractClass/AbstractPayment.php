@@ -10,9 +10,13 @@ use Zakjakub\OswisCoreBundle\Traits\Entity\NoteTrait;
 use Zakjakub\OswisCoreBundle\Traits\Entity\NumericValueTrait;
 use Zakjakub\OswisCoreBundle\Traits\Entity\TypeTrait;
 
+/**
+ * Abstract class containing basic properties for payment.
+ *
+ * @author Jakub Zak <mail@jakubzak.eu>
+ */
 abstract class AbstractPayment
 {
-
     use BasicEntityTrait;
     use DateTimeTrait;
     use NumericValueTrait;
@@ -34,6 +38,5 @@ abstract class AbstractPayment
     {
         return [];
     }
-
 
 }

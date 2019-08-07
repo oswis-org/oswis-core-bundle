@@ -13,7 +13,7 @@ use Zakjakub\OswisCoreBundle\Entity\AbstractClass\AbstractAppUser;
 use Zakjakub\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
 
 /**
- * Class AppUser
+ * User of application.
  * @Doctrine\ORM\Mapping\Entity(repositoryClass="Zakjakub\OswisCoreBundle\Repository\AppUserRepository")
  * @Doctrine\ORM\Mapping\Table(name="core_app_user")
  * @ApiResource(
@@ -63,6 +63,8 @@ use Zakjakub\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
  *     "description",
  *     "note"
  * })
+ *
+ * @author Jakub Zak <mail@jakubzak.eu>
  */
 class AppUser extends AbstractAppUser
 {

@@ -9,20 +9,28 @@ use Exception;
 use Zakjakub\OswisCoreBundle\Exceptions\RevisionMissingException;
 use Zakjakub\OswisCoreBundle\Interfaces\RevisionContainerInterface;
 
+/**
+ * Abstract class representing container of revisions/versions of some entity (of some entity which extends AbstractRevision).
+ *
+ * @author Jakub Zak <mail@jakubzak.eu>
+ */
 abstract class AbstractRevisionContainer implements RevisionContainerInterface
 {
 
     /**
+     * Revisions/versions of this container.
      * @var Collection
      */
     protected $revisions;
 
     /**
+     * Revision/version which is actual/active now.
      * @var AbstractRevision|null
      */
     protected $activeRevision;
 
     /**
+     * Revision/version which is actual/active now.
      * @return AbstractRevision|null
      */
     final public function getActiveRevision(): ?AbstractRevision
@@ -33,14 +41,17 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
     }
 
     /**
+     * Set revision/version which is actual/active now.
      * @param AbstractRevision $activeRevision
      */
     final public function setActiveRevision(AbstractRevision $activeRevision): void
     {
         $this->activeRevision = $activeRevision;
-        $this->updateActiveRevision();
     }
 
+    /**
+     * Automatically set revision/version which is actual/active now.
+     */
     final public function updateActiveRevision(): void
     {
         try {
@@ -54,6 +65,7 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
     }
 
     /**
+     * Get revision/version which is (was) active in specified date and time (or now if dateTime is not specified).
      * @param DateTime|null $dateTime
      *
      * @return AbstractRevision
@@ -89,6 +101,7 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
         try {
             $dateTime = $dateTime ?? new DateTime();
         } catch (Exception $e) {
+            $dateTime = null;
         }
         $revisions = $this->getRevisions()->filter(
             static function (AbstractRevision $revision) use ($dateTime) {
@@ -101,6 +114,7 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
     }
 
     /**
+     * All revisions/versions of this container.
      * @return Collection
      */
     final public function getRevisions(): Collection
@@ -109,16 +123,19 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
     }
 
     /**
+     * Class name of revisions/versions stored in this container.
      * @return string
      */
     abstract public static function getRevisionClassName(): string;
 
     /**
+     * Check validity of some revision/version (ie. for use before adding revision).
      * @param AbstractRevision|null $revision
      */
     abstract public static function checkRevision(?AbstractRevision $revision): void;
 
     /**
+     * Add some revision/version to this container.
      * @param AbstractRevision|null $revision
      */
     final public function addRevision(?AbstractRevision $revision): void
@@ -135,6 +152,7 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
     }
 
     /**
+     * Remove some revision/version from this container.
      * @param AbstractRevision|null $revision
      */
     final public function removeRevision(?AbstractRevision $revision): void
@@ -150,6 +168,7 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
     }
 
     /**
+     * Get date and time of active/actual revision/version in some date and time (or now if referenceDateTime is not specified).
      * @param DateTime|null $referenceDateTime
      *
      * @return DateTime|null

@@ -9,9 +9,9 @@ use Zakjakub\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
 use Zakjakub\OswisCoreBundle\Traits\Entity\BasicEntityTrait;
 
 /**
+ * Connection between app user and used app user flag.
  * @Doctrine\ORM\Mapping\Entity()
  * @Doctrine\ORM\Mapping\Table(name="core_app_user_flag_connection")
- * @ApiResource()
  * @ApiFilter(OrderFilter::class)
  * @Searchable({
  *     "id",
@@ -19,13 +19,15 @@ use Zakjakub\OswisCoreBundle\Traits\Entity\BasicEntityTrait;
  *     "description",
  *     "note"
  * })
+ *
+ * @author Jakub Zak <mail@jakubzak.eu>
  */
 class AppUserFlagConnection
 {
     use BasicEntityTrait;
 
     /**
-     * Flag.
+     * Flag used by app user.
      * @var AppUserFlag|null
      * @Doctrine\ORM\Mapping\ManyToOne(
      *     targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUserFlag",
@@ -37,6 +39,7 @@ class AppUserFlagConnection
     protected $appUserFlag;
 
     /**
+     * App user.
      * @var AppUser|null
      * @Doctrine\ORM\Mapping\ManyToOne(
      *     targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUser",
@@ -47,11 +50,19 @@ class AppUserFlagConnection
      */
     protected $appUser;
 
+    /**
+     * Get app user.
+     * @return AppUser|null
+     */
     final public function getAppUser(): ?AppUser
     {
         return $this->appUser;
     }
 
+    /**
+     * Set app user.
+     * @param AppUser|null $appUser
+     */
     final public function setAppUser(?AppUser $appUser): void
     {
         if ($this->appUser && $appUser !== $this->appUser) {
@@ -63,11 +74,19 @@ class AppUserFlagConnection
         }
     }
 
+    /**
+     * Get flag of app user.
+     * @return AppUserFlag|null
+     */
     final public function getAppUserFlag(): ?AppUserFlag
     {
         return $this->appUserFlag;
     }
 
+    /**
+     * Set flag of app user.
+     * @param AppUserFlag|null $appUserFlag
+     */
     final public function setAppUserFlag(?AppUserFlag $appUserFlag): void
     {
         if ($this->appUserFlag && $appUserFlag !== $this->appUserFlag) {

@@ -5,8 +5,9 @@ namespace Zakjakub\OswisCoreBundle\Entity;
 /** @noinspection ClassNameCollisionInspection */
 
 /**
- * Class Address
- * @package OswisCoreBundle
+ * Postal address.
+ *
+ * @author Jakub Zak <mail@jakubzak.eu>
  */
 class Address
 {

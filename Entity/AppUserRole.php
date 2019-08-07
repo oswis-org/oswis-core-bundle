@@ -12,7 +12,7 @@ use Zakjakub\OswisCoreBundle\Traits\Entity\BasicEntityTrait;
 use Zakjakub\OswisCoreBundle\Traits\Entity\NameableBasicTrait;
 
 /**
- * Class AppUserRole
+ * Role of app user.
  * @Doctrine\ORM\Mapping\Entity()
  * @Doctrine\ORM\Mapping\Table(name="core_app_user_role")
  * @ApiResource(
@@ -54,6 +54,8 @@ use Zakjakub\OswisCoreBundle\Traits\Entity\NameableBasicTrait;
  *     "description",
  *     "roleString"
  * })
+ *
+ * @author Jakub Zak <mail@jakubzak.eu>
  */
 class AppUserRole
 {
@@ -67,6 +69,7 @@ class AppUserRole
     protected $roleString;
 
     /**
+     * Parent role (also included in this role).
      * @var AppUserRole|null
      * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUserRole", inversedBy="children", fetch="EAGER")
      * @Doctrine\ORM\Mapping\JoinColumn(name="parent_id", referencedColumnName="id")
@@ -74,17 +77,26 @@ class AppUserRole
     protected $parent;
 
     /**
+     * Child roles (which includes this role).
      * @var Collection
      * @Doctrine\ORM\Mapping\OneToMany(targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUserRole", mappedBy="parent")
      */
     protected $children;
 
     /**
+     * Types of app users containing this role.
      * @var Collection
      * @Doctrine\ORM\Mapping\OneToMany(targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUserType", mappedBy="appUserRole")
      */
     protected $appUserTypes;
 
+    /**
+     * AppUserRole constructor.
+     *
+     * @param Nameable|null    $nameable
+     * @param string|null      $roleString
+     * @param AppUserRole|null $parent
+     */
     public function __construct(
         ?Nameable $nameable = null,
         ?string $roleString = null,
@@ -98,6 +110,7 @@ class AppUserRole
     }
 
     /**
+     * Get child roles.
      * @return Collection
      */
     final public function getChildren(): Collection
@@ -106,6 +119,7 @@ class AppUserRole
     }
 
     /**
+     * Remove app user type.
      * @param AppUserType|null $appUserType
      */
     final public function removeAppUserType(?AppUserType $appUserType): void
@@ -119,6 +133,7 @@ class AppUserRole
     }
 
     /**
+     * Add app user type.
      * @param AppUserType|null $appUserType
      */
     final public function addAppUserType(?AppUserType $appUserType): void
@@ -132,6 +147,10 @@ class AppUserRole
         }
     }
 
+    /**
+     * Get names of all contained roles.
+     * @return Collection
+     */
     final public function getAllRoleNames(): Collection
     {
         $roleNames = new ArrayCollection();
@@ -146,6 +165,7 @@ class AppUserRole
     }
 
     /**
+     * Get all contained roles.
      * @return Collection
      */
     final public function getRoles(): Collection
@@ -163,6 +183,7 @@ class AppUserRole
     }
 
     /**
+     * Get parent role (or null of parent is not set).
      * @return AppUserRole|null
      */
     final public function getParent(): ?AppUserRole
@@ -171,6 +192,7 @@ class AppUserRole
     }
 
     /**
+     * Set parent role.
      * @param AppUserRole|null $appUserRole
      */
     final public function setParent(?AppUserRole $appUserRole): void
@@ -184,6 +206,11 @@ class AppUserRole
         }
     }
 
+    /**
+     * Get name/string of role.
+     * @return string
+     * @example ROLE_USER
+     */
     final public function getRoleName(): string
     {
         if (!$this->getRoleString() || $this->getRoleString() === '') {
@@ -210,6 +237,7 @@ class AppUserRole
     }
 
     /**
+     * Remove child role from this role.
      * @param AppUserRole|null $appUserRole
      */
     final public function removeChild(?AppUserRole $appUserRole): void
@@ -223,6 +251,7 @@ class AppUserRole
     }
 
     /**
+     * Add child role to this role.
      * @param AppUserRole|null $appUserRole
      */
     final public function addChild(?AppUserRole $appUserRole): void
