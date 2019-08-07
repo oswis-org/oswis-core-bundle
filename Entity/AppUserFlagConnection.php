@@ -3,7 +3,6 @@
 namespace Zakjakub\OswisCoreBundle\Entity;
 
 use ApiPlatform\Core\Annotation\ApiFilter;
-use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use Zakjakub\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
 use Zakjakub\OswisCoreBundle\Traits\Entity\BasicEntityTrait;
@@ -61,6 +60,7 @@ class AppUserFlagConnection
 
     /**
      * Set app user.
+     *
      * @param AppUser|null $appUser
      */
     final public function setAppUser(?AppUser $appUser): void
@@ -85,6 +85,7 @@ class AppUserFlagConnection
 
     /**
      * Set flag of app user.
+     *
      * @param AppUserFlag|null $appUserFlag
      */
     final public function setAppUserFlag(?AppUserFlag $appUserFlag): void

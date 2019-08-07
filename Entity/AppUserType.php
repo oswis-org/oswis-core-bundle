@@ -125,7 +125,9 @@ class AppUserType
 
     /**
      * Set if user has access to administration/IS.
+     *
      * @param bool|null $adminUser
+     *
      * @todo Make property used (probably has not effect now).
      */
     final public function setAdminUser(?bool $adminUser): void
@@ -193,6 +195,7 @@ class AppUserType
 
     /**
      * Set role of this type.
+     *
      * @param AppUserRole|null $appUserRole
      */
     final public function setAppUserRole(?AppUserRole $appUserRole): void

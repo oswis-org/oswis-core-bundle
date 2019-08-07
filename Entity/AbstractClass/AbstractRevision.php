@@ -108,6 +108,7 @@ abstract class AbstractRevision implements RevisionInterface
 
     /**
      * Check validity of container (ie. for check before setting container).
+     *
      * @param AbstractRevisionContainer|null $revision
      */
     abstract public static function checkRevisionContainer(?AbstractRevisionContainer $revision): void;

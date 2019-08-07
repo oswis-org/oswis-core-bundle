@@ -120,6 +120,7 @@ class AppUserRole
 
     /**
      * Remove app user type.
+     *
      * @param AppUserType|null $appUserType
      */
     final public function removeAppUserType(?AppUserType $appUserType): void
@@ -134,6 +135,7 @@ class AppUserRole
 
     /**
      * Add app user type.
+     *
      * @param AppUserType|null $appUserType
      */
     final public function addAppUserType(?AppUserType $appUserType): void
@@ -193,6 +195,7 @@ class AppUserRole
 
     /**
      * Set parent role.
+     *
      * @param AppUserRole|null $appUserRole
      */
     final public function setParent(?AppUserRole $appUserRole): void
@@ -238,6 +241,7 @@ class AppUserRole
 
     /**
      * Remove child role from this role.
+     *
      * @param AppUserRole|null $appUserRole
      */
     final public function removeChild(?AppUserRole $appUserRole): void
@@ -252,6 +256,7 @@ class AppUserRole
 
     /**
      * Add child role to this role.
+     *
      * @param AppUserRole|null $appUserRole
      */
     final public function addChild(?AppUserRole $appUserRole): void
