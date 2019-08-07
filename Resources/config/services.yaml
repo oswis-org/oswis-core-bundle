@@ -167,7 +167,6 @@ services:
         class: Zakjakub\OswisCoreBundle\Service\EmailSender
         autowire: true
         public: true
-        deprecated: true
         arguments:
             - '@swiftmailer.mailer'
             - '@monolog.logger'

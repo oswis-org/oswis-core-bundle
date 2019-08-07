@@ -6,56 +6,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Controller/Website/IndexWebController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api/Dto/AppUserRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/Api/Dto/AppUserRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api/EventSubscriber/AppUserSubscriber.php" beforeDir="false" afterPath="$PROJECT_DIR$/Api/EventSubscriber/AppUserSubscriber.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/AbstractClass/AbstractFileAction.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/AbstractClass/AbstractFileAction.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/AbstractClass/AbstractImageAction.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/AbstractClass/AbstractImageAction.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/AppUserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/AppUserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/GdprWebController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/Website/GdprWebController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DependencyInjection/ZakjakubOswisCoreExtension.php" beforeDir="false" afterPath="$PROJECT_DIR$/DependencyInjection/ZakjakubOswisCoreExtension.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractFile.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractFile.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractImage.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractImage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractOrganization.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractOrganization.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractPayment.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractPayment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractPerson.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractPerson.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractRevisionContainer.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractRevisionContainer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AppUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUser.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AppUserFlag.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUserFlag.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AppUserFlagConnection.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUserFlagConnection.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AppUserRole.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUserRole.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/ClientLogRecord.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/ClientLogRecord.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventSubscriber/AppUserSubscriber.php" beforeDir="false" afterPath="$PROJECT_DIR$/EventSubscriber/AppUserSubscriber.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Exceptions/BirthDateMissingException.php" beforeDir="false" afterPath="$PROJECT_DIR$/Exceptions/BirthDateMissingException.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Exceptions/OswisException.php" beforeDir="false" afterPath="$PROJECT_DIR$/Exceptions/OswisException.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Exceptions/OswisNotImplementedException.php" beforeDir="false" afterPath="$PROJECT_DIR$/Exceptions/OswisNotImplementedException.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Exceptions/OswisUserNotUniqueException.php" beforeDir="false" afterPath="$PROJECT_DIR$/Exceptions/OswisUserNotUniqueException.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Exceptions/PriceInvalidArgumentException.php" beforeDir="false" afterPath="$PROJECT_DIR$/Exceptions/PriceInvalidArgumentException.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Exceptions/PriceListNotFoundException.php" beforeDir="false" afterPath="$PROJECT_DIR$/Exceptions/PriceListNotFoundException.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Exceptions/RevisionMissingException.php" beforeDir="false" afterPath="$PROJECT_DIR$/Exceptions/RevisionMissingException.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Filter/SearchAnnotation.php" beforeDir="false" afterPath="$PROJECT_DIR$/Filter/SearchAnnotation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Filter/SearchFilter.php" beforeDir="false" afterPath="$PROJECT_DIR$/Filter/SearchFilter.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Form/AbstractClass/AbstractImageType.php" beforeDir="false" afterPath="$PROJECT_DIR$/Form/AbstractClass/AbstractImageType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Interfaces/BasicMailConfirmationInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/Interfaces/BasicMailConfirmationInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Manager/AppUserManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/Manager/AppUserManager.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Manager/AppUserRoleManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/Manager/AppUserRoleManager.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Manager/AppUserTypeManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/Manager/AppUserTypeManager.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/config/routes.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Resources/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/config/services.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Security/AppUserProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/Security/AppUserProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/PdfGenerator.php" beforeDir="false" afterPath="$PROJECT_DIR$/Service/PdfGenerator.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/AccountActivationTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/AccountActivationTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/AgeRangeTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/AgeRangeTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/BlameableTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/BlameableTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/ConfirmedByManagerTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/ConfirmedByManagerTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/EntityPublicContainerTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/EntityPublicContainerTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/NameableBasicContainerTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/NameableBasicContainerTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/OrderDateRangeTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/OrderDateRangeTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/ReservationDateRangeTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/ReservationDateRangeTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/TypeTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/TypeTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Utils/DateTimeUtils.php" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/DateTimeUtils.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZakjakubOswisCoreBundle.php" beforeDir="false" afterPath="$PROJECT_DIR$/ZakjakubOswisCoreBundle.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -410,14 +362,7 @@
       <workItem from="1565035997585" duration="146000" />
       <workItem from="1565091540906" duration="816000" />
       <workItem from="1565093353581" duration="2938000" />
-      <workItem from="1565099530642" duration="3480000" />
-    </task>
-    <task id="LOCAL-00265" summary="Some changes.">
-      <created>1562496821817</created>
-      <option name="number" value="00265" />
-      <option name="presentableId" value="LOCAL-00265" />
-      <option name="project" value="LOCAL" />
-      <updated>1562496821817</updated>
+      <workItem from="1565099530642" duration="6381000" />
     </task>
     <task id="LOCAL-00266" summary="Some changes.">
       <created>1562501668327</created>
@@ -755,7 +700,14 @@
       <option name="project" value="LOCAL" />
       <updated>1565102798978</updated>
     </task>
-    <option name="localTasksCounter" value="314" />
+    <task id="LOCAL-00314" summary="Some changes.">
+      <created>1565105927424</created>
+      <option name="number" value="00314" />
+      <option name="presentableId" value="LOCAL-00314" />
+      <option name="project" value="LOCAL" />
+      <updated>1565105927424</updated>
+    </task>
+    <option name="localTasksCounter" value="315" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
