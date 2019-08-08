@@ -6,9 +6,9 @@ use Exception;
 
 class OswisNotImplementedException extends Exception
 {
-    public function __construct(?string $message = null)
+    public function __construct(?string $type = null, ?string $inContext = null)
     {
-        $message = ' ('.$message.') ';
-        parent::__construct('Akce není implementována. '.$message.'.');
+        $type = $type ? ' "'.$type.'" ' : null;
+        parent::__construct("Akce $type není $inContext implementována.");
     }
 }

@@ -58,14 +58,17 @@ class DateTimeUtils
      * @param DateTime|null $dateTime Checked date and time
      *
      * @return bool True if belongs to date range
-     * @throws Exception
      */
     public static function isDateTimeInRange(?DateTime $start, ?DateTime $end, ?DateTime $dateTime = null): bool
     {
-        $start = $start ?? new DateTime(self::MIN_DATE_TIME_STRING);
-        $end = $end ?? new DateTime(self::MAX_DATE_TIME_STRING);
+        try {
+            $start = $start ?? new DateTime(self::MIN_DATE_TIME_STRING);
+            $end = $end ?? new DateTime(self::MAX_DATE_TIME_STRING);
 
-        return $dateTime >= $start && $dateTime <= $end;
+            return $dateTime >= $start && $dateTime <= $end;
+        } catch (Exception $e) {
+            return false;
+        }
     }
 
     /**

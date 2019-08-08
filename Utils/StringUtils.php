@@ -284,7 +284,6 @@ class StringUtils
      * @param bool $addSpecialChar
      *
      * @return string
-     * @throws Exception
      */
     public static function generatePassword(bool $addSpecialChar = false): string
     {
@@ -306,7 +305,6 @@ class StringUtils
      * @param int    $length Length
      *
      * @return string Random string from required chars
-     * @throws Exception
      */
     private static function randomString(string $from, string $to, int $length): string
     {
@@ -315,7 +313,11 @@ class StringUtils
             $str .= self::randomString($from, $to, --$length);
         }
 
-        return $str.chr(random_int(ord($from), ord($to)));
+        try {
+            return $str.chr(random_int(ord($from), ord($to)));
+        } catch (Exception $e) {
+            return null;
+        }
     }
 
     /**

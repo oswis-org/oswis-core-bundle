@@ -4,24 +4,30 @@ namespace Zakjakub\OswisCoreBundle\Api\EventSubscriber;
 
 use ApiPlatform\Core\EventListener\EventPriorities;
 use Doctrine\ORM\EntityManagerInterface;
-use ErrorException;
-use InvalidArgumentException;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpKernel\Event\ViewEvent;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\KernelEvents;
-use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Zakjakub\OswisCoreBundle\Entity\AppUser;
+use Zakjakub\OswisCoreBundle\Exceptions\OswisException;
+use Zakjakub\OswisCoreBundle\Exceptions\OswisNotImplementedException;
+use Zakjakub\OswisCoreBundle\Exceptions\OswisUserNotFoundException;
+use Zakjakub\OswisCoreBundle\Exceptions\OswisUserNotUniqueException;
 use Zakjakub\OswisCoreBundle\Manager\AppUserManager;
 use function assert;
 use function in_array;
 
 /** @noinspection ClassNameCollisionInspection */
 
-final class AppUserSubscriber implements EventSubscriberInterface
+/**
+ * Handler for endpoint for actions with users (activation, password changes...).
+ */
+final class AppUserActionSubscriber implements EventSubscriberInterface
 {
+    /**
+     * @var AppUserManager
+     */
     private $appUserManager;
 
     /**
@@ -34,6 +40,13 @@ final class AppUserSubscriber implements EventSubscriberInterface
      */
     private $tokenStorage;
 
+    /**
+     * AppUserActionSubscriber constructor.
+     *
+     * @param EntityManagerInterface $em
+     * @param AppUserManager         $appUserManager
+     * @param TokenStorageInterface  $tokenStorage
+     */
     public function __construct(
         EntityManagerInterface $em,
         AppUserManager $appUserManager,
@@ -44,6 +57,9 @@ final class AppUserSubscriber implements EventSubscriberInterface
         $this->appUserManager = $appUserManager;
     }
 
+    /**
+     * @return array
+     */
     public static function getSubscribedEvents(): array
     {
         return [
@@ -54,10 +70,9 @@ final class AppUserSubscriber implements EventSubscriberInterface
     /**
      * @param ViewEvent $event
      *
-     * @throws ErrorException
-     * @throws InvalidArgumentException
-     * @throws NotFoundHttpException
-     * @throws TransportExceptionInterface
+     * @throws OswisNotImplementedException
+     * @throws OswisUserNotFoundException
+     * @throws OswisException
      */
     public function appUserAction(ViewEvent $event): void
     {
@@ -69,25 +84,30 @@ final class AppUserSubscriber implements EventSubscriberInterface
         }
 
         $controllerResult = $event->getControllerResult();
-        $uid = $controllerResult->uid;
-        $type = $controllerResult->type;
-        $token = $controllerResult->token;
-        $password = $controllerResult->password;
-        $appUser = $controllerResult->appUser;
+        $uid = $controllerResult->uid ?? null;
+        $username = $controllerResult->username ?? null;
+        $type = $controllerResult->type ?? null;
+        $token = $controllerResult->token ?? null;
+        $password = $controllerResult->password ?? null;
+        $appUser = $controllerResult->appUser ?? null;
 
         $em = $this->em;
-        $appUserRepository = $em->getRepository(AppUser::class);
-        $appUser = $appUser ?? $appUserRepository->findOneBy(['id' => $uid]);
+        try {
+            $appUserRepository = $em->getRepository(AppUser::class);
+            $appUser = $appUser ?? $appUserRepository->loadUserById($uid);
+            $appUser = $appUser ?? $appUserRepository->loadUserByUsername($username);
+        } catch (OswisUserNotUniqueException $e) {
+        }
 
         if (!$appUser) {
-            throw new NotFoundHttpException('Uživatel nenalezen.');
+            throw new OswisUserNotFoundException();
         }
         assert($appUser instanceof AppUser);
 
         if (in_array($type, AppUserManager::ALLOWED_TYPES, true)) {
             $this->appUserManager->appUserAction($appUser, $type, $password, $token);
         } else {
-            throw new InvalidArgumentException('Akce "'.$type.'" není u uživatelských účtů implementována.');
+            throw new OswisNotImplementedException($type, 'u uživatelských účtů');
         }
 
         $data = [];

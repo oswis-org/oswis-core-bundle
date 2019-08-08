@@ -36,13 +36,16 @@ trait DateRangeTrait
      * @param DateTime $dateTime Checked date and time
      *
      * @return bool True if belongs to date range
-     * @throws Exception
      */
     final public function containsDateTimeInRange(?DateTime $dateTime = null): bool
     {
-        $dateTime = $dateTime ?? new DateTime();
+        try {
+            $dateTime = $dateTime ?? new DateTime();
 
-        return DateTimeUtils::isDateTimeInRange($this->getStartDateTime(), $this->getEndDateTime(), $dateTime);
+            return DateTimeUtils::isDateTimeInRange($this->getStartDateTime(), $this->getEndDateTime(), $dateTime);
+        } catch (Exception $e) {
+            return false;
+        }
     }
 
     /**

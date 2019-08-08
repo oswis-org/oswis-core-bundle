@@ -8,7 +8,6 @@ use LogicException;
 use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Zakjakub\OswisCoreBundle\Entity\AppUser;
@@ -30,7 +29,6 @@ class AppUserController extends AbstractController
      *
      * @return Response
      * @throws LogicException
-     * @throws TransportExceptionInterface
      */
     final public function appUserActivationAction(
         string $token,

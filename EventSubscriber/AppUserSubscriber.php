@@ -4,17 +4,16 @@ namespace Zakjakub\OswisCoreBundle\EventSubscriber;
 
 use ApiPlatform\Core\EventListener\EventPriorities;
 use Doctrine\ORM\EntityManagerInterface;
-use ErrorException;
+use Exception;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\HttpFoundation\Exception\SuspiciousOperationException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\ViewEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
-use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Zakjakub\OswisCoreBundle\Entity\AppUser;
+use Zakjakub\OswisCoreBundle\Exceptions\OswisException;
 use Zakjakub\OswisCoreBundle\Manager\AppUserManager;
 use Zakjakub\OswisCoreBundle\Provider\OswisCoreSettingsProvider;
 use function assert;
@@ -84,14 +83,16 @@ final class AppUserSubscriber implements EventSubscriberInterface
     /**
      * @param ViewEvent $event
      *
-     * @throws ErrorException
-     * @throws SuspiciousOperationException
-     * @throws TransportExceptionInterface
+     * @throws OswisException
      */
     public function makeAppUser(ViewEvent $event): void
     {
         $appUser = $event->getControllerResult();
-        $method = $event->getRequest()->getMethod();
+        try {
+            $method = $event->getRequest()->getMethod();
+        } catch (Exception $e) {
+            return;
+        }
         if (!($appUser instanceof AppUser) || Request::METHOD_POST !== $method) {
             return;
         }

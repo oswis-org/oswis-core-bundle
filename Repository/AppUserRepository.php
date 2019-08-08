@@ -7,9 +7,9 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\Query;
-use Exception;
 use Symfony\Bridge\Doctrine\Security\User\UserLoaderInterface;
 use Zakjakub\OswisCoreBundle\Entity\AppUser;
+use Zakjakub\OswisCoreBundle\Exceptions\OswisUserNotUniqueException;
 use function assert;
 
 /**
@@ -19,22 +19,51 @@ class AppUserRepository extends EntityRepository implements UserLoaderInterface
 {
 
     /**
-     * @param string $username
+     * @param string|null $username
      *
      * @return AppUser|null
-     * @throws NonUniqueResultException
-     * @throws Exception
+     * @throws OswisUserNotUniqueException
      */
     final public function loadUserByUsername(
-        /** @noinspection MissingParameterTypeDeclarationInspection */
-        $username
+        /** @noinspection MissingParameterTypeDeclarationInspection */ $username
     ): ?AppUser {
-        $appUser = $this->createQueryBuilder('u')
-            ->where('(u.username = :username OR u.email = :email) AND (u.deleted IS NULL OR u.deleted = false)')
-            ->setParameter('username', $username)
-            ->setParameter('email', $username)
-            ->getQuery()
-            ->getOneOrNullResult();
+        if (!$username) {
+            return null;
+        }
+        try {
+            $appUser = $this->createQueryBuilder('u')
+                ->where('(u.username = :username OR u.email = :email) AND (u.deleted IS NULL OR u.deleted = false)')
+                ->setParameter('username', $username)->setParameter('email', $username)
+                ->getQuery()->getOneOrNullResult(Query::HYDRATE_OBJECT);
+        } catch (NonUniqueResultException $e) {
+            throw new OswisUserNotUniqueException();
+        }
+        if (!$appUser) {
+            return null;
+        }
+        assert($appUser instanceof AppUser);
+
+        return $appUser->isActive() ? $appUser : null;
+    }
+
+    /**
+     * @param int $id
+     *
+     * @return AppUser|null
+     * @throws OswisUserNotUniqueException
+     */
+    final public function loadUserById(?int $id): ?AppUser
+    {
+        if (!$id) {
+            return null;
+        }
+        try {
+            $appUser = $this->createQueryBuilder('u')
+                ->where('(u.id = :id) AND (u.deleted IS NULL OR u.deleted = false)')->setParameter('id', $id)
+                ->getQuery()->getOneOrNullResult(Query::HYDRATE_OBJECT);
+        } catch (NonUniqueResultException $e) {
+            throw new OswisUserNotUniqueException();
+        }
         if (!$appUser) {
             return null;
         }
@@ -47,10 +76,8 @@ class AppUserRepository extends EntityRepository implements UserLoaderInterface
     {
         return new ArrayCollection(
             $this->createQueryBuilder('app_user')
-                ->where('app_user.email = :email')
-                ->setParameter('email', $email)
-                ->getQuery()
-                ->getResult(Query::HYDRATE_OBJECT)
+                ->where('app_user.email = :email')->setParameter('email', $email)
+                ->getQuery()->getResult(Query::HYDRATE_OBJECT)
         );
     }
 

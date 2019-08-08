@@ -14,6 +14,8 @@ use Symfony\Component\Mime\NamedAddress;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Zakjakub\OswisCoreBundle\Entity\AppUser;
 use Zakjakub\OswisCoreBundle\Entity\AppUserType;
+use Zakjakub\OswisCoreBundle\Exceptions\OswisException;
+use Zakjakub\OswisCoreBundle\Exceptions\OswisNotImplementedException;
 use Zakjakub\OswisCoreBundle\Exceptions\OswisUserNotUniqueException;
 use Zakjakub\OswisCoreBundle\Provider\OswisCoreSettingsProvider;
 use Zakjakub\OswisCoreBundle\Utils\EmailUtils;
@@ -92,9 +94,8 @@ class AppUserManager
      * @param bool|null        $errorWhenExist
      *
      * @return AppUser
-     * @throws ErrorException
-     * @throws Exception
-     * @throws TransportExceptionInterface
+     * @throws OswisException
+     * @throws OswisUserNotUniqueException
      */
     final public function create(
         ?string $fullName = null,
@@ -106,7 +107,11 @@ class AppUserManager
         ?bool $sendMail = false,
         ?bool $errorWhenExist = true
     ): AppUser {
-        $username = $username ?? 'user'.random_int(1, 9999);
+        try {
+            $username = $username ?? 'user'.random_int(1, 9999);
+        } catch (Exception $e) {
+            $username = $username ?? 'user';
+        }
         $email = $email ?? $username.'@jakubzak.eu';
         $em = $this->em;
         $token = null;
@@ -152,8 +157,7 @@ class AppUserManager
      * @param bool|null   $withoutToken
      *
      * @return bool
-     * @throws ErrorException
-     * @throws TransportExceptionInterface
+     * @throws OswisException
      */
     final public function appUserAction(
         AppUser $appUser,
@@ -164,45 +168,61 @@ class AppUserManager
         ?bool $withoutToken = false
     ): bool {
         try {
-            if ($type === self::RESET_REQUEST) {
-                // Create token for password reset/change and send it to user by e-mail.
+            if ($type === self::RESET_REQUEST) { // Create token for password reset/change and send it to user by e-mail.
                 $token = $appUser->generatePasswordRequestToken();
                 if ($sendConfirmation) {
-                    $this->sendPasswordEmail($appUser, self::RESET_REQUEST, $token);
+                    try {
+                        $this->sendPasswordEmail($appUser, self::RESET_REQUEST, $token);
+                    } catch (TransportExceptionInterface $e) {
+                        $this->logger->error($e->getMessage());
+                        throw new OswisException('Nepodařilo se odeslat informační e-mail o změně hesla.');
+                    }
                 }
-            } elseif ($type === self::RESET) {
-                // Check token for password reset/change and change password for user.
+            } elseif ($type === self::RESET) { // Check token for password reset/change and change password for user.
                 if (!$withoutToken && !$token) {
-                    throw new InvalidArgumentException('Token nenalezen.');
+                    throw new InvalidArgumentException('Token pro změnu hesla nebyl zadán.');
                 }
                 if (!$withoutToken && !$appUser->checkAndDestroyPasswordResetRequestToken($token)) {
-                    throw new InvalidArgumentException('Špatný token.');
+                    throw new InvalidArgumentException('Token pro změnu hesla není platný (neexistuje nebo vypršela jeho platnost).');
                 }
                 $random = $password ? false : true;
                 $password = $password ?? StringUtils::generatePassword();
                 $appUser->setPassword($this->encoder->encodePassword($appUser, $password));
                 if ($sendConfirmation) {
-                    $this->sendPasswordEmail($appUser, self::RESET, null, $random ? $password : null);
+                    try {
+                        $this->sendPasswordEmail($appUser, self::RESET, null, $random ? $password : null);
+                    } catch (TransportExceptionInterface $e) {
+                        $this->logger->error($e->getMessage());
+                        throw new OswisException('Nepodařilo se odeslat e-mail s požadavkem na změnu hesla.');
+                    }
                 }
-            } elseif ($type === self::ACTIVATION_REQUEST) {
-                // Generate token for account activation and send it to user by e-mail.
-                $this->sendAppUserEmail($appUser, self::ACTIVATION_REQUEST, $appUser->generateAccountActivationRequestToken());
-            } elseif ($type === self::ACTIVATION) {
-                // Check activation token and activate account.
+            } elseif ($type === self::ACTIVATION_REQUEST) { // Generate token for account activation and send it to user by e-mail.
+                try {
+                    $this->sendAppUserEmail($appUser, self::ACTIVATION_REQUEST, $appUser->generateAccountActivationRequestToken());
+                } catch (TransportExceptionInterface $e) {
+                    $this->logger->error($e->getMessage());
+                    throw new OswisException('Nepodařilo se odeslat e-mail s požadavkem na aktivaci účtu.');
+                }
+            } elseif ($type === self::ACTIVATION) { // Check activation token and activate account.
                 if (!$withoutToken && !$token) {
-                    throw new InvalidArgumentException('Token nenalezen.');
+                    throw new InvalidArgumentException('Token pro aktivaci účtu nebyl zadán.');
                 }
                 if (!$withoutToken && !$appUser->checkAndDestroyAccountActivationRequestToken($token)) {
-                    throw new InvalidArgumentException('Špatný token.');
+                    throw new InvalidArgumentException('Token pro aktivaci účtu není platný (neexistuje nebo vypršela jeho platnost).');
                 }
                 $random = $password ? false : true;
                 $password = $password ?? StringUtils::generatePassword();
                 $appUser->setPassword($this->encoder->encodePassword($appUser, $password));
                 if ($sendConfirmation) {
-                    $this->sendAppUserEmail($appUser, self::ACTIVATION, $token, $random ? $password : null);
+                    try {
+                        $this->sendAppUserEmail($appUser, self::ACTIVATION, $token, $random ? $password : null);
+                    } catch (TransportExceptionInterface $e) {
+                        $this->logger->error($e->getMessage());
+                        throw new OswisException('Nepodařilo se odeslat informační e-mail o aktivaci účtu.');
+                    }
                 }
             } else { // Type is not recognized.
-                throw new InvalidArgumentException('Akce "'.$type.'" není u uživatelských účtů implementována.');
+                throw new OswisNotImplementedException($type, 'u uživatelských účtů');
             }
             $this->em->persist($appUser);
             $this->em->flush();
@@ -210,7 +230,7 @@ class AppUserManager
             return true;
         } catch (Exception $e) {
             $this->logger->error($e->getMessage());
-            throw new ErrorException('Nastal problém při změně uživatelského účtu ('.$e->getMessage().').');
+            throw new OswisException('Nastal problém při změně uživatelského účtu. '.$e->getMessage());
         }
     }
 

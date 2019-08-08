@@ -3,12 +3,12 @@
 namespace Zakjakub\OswisCoreBundle\Security;
 
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\NonUniqueResultException;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Zakjakub\OswisCoreBundle\Entity\AppUser;
+use Zakjakub\OswisCoreBundle\Exceptions\OswisUserNotUniqueException;
 use Zakjakub\OswisCoreBundle\Repository\AppUserRepository;
 
 class AppUserProvider implements UserProviderInterface
@@ -27,9 +27,9 @@ class AppUserProvider implements UserProviderInterface
      * @param UserInterface $user
      *
      * @return AppUser|null
+     * @throws OswisUserNotUniqueException
      * @throws UnsupportedUserException
      * @throws UsernameNotFoundException
-     * @throws NonUniqueResultException
      */
     final public function refreshUser(UserInterface $user): ?AppUser
     {
@@ -47,7 +47,7 @@ class AppUserProvider implements UserProviderInterface
      *
      * @return AppUser|null
      * @throws UsernameNotFoundException
-     * @throws NonUniqueResultException
+     * @throws OswisUserNotUniqueException
      */
     final public function loadUserByUsername(
         /** @noinspection MissingParameterTypeDeclarationInspection */

@@ -6,6 +6,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Zakjakub\OswisCoreBundle\Entity\AppUser;
 
 /**
+ * Endpoint for actions with users (activation, password changes...).
  * @ApiResource(
  *      collectionOperations={
  *          "post"={
@@ -15,13 +16,21 @@ use Zakjakub\OswisCoreBundle\Entity\AppUser;
  *      itemOperations={},
  * )
  */
-final class AppUserRequest
+final class AppUserActionRequest
 {
     /**
-     * ID of AppUser which is changed.
+     * ID of changed user.
+     * ID has higher priority than username/e-mail.
      * @var int|null
      */
     public $uid;
+
+    /**
+     * Username or e-mail of changed user.
+     * ID has higher priority than username/e-mail.
+     * @var string|null
+     */
+    public $username;
 
     /**
      * Token generated when request was created.

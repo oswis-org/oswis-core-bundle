@@ -19,9 +19,9 @@ trait EncryptedPasswordTrait
      * Get encrypted password.
      * @return null|string
      */
-    final public function getPassword(): string
+    final public function getPassword(): ?string
     {
-        return $this->password ?? '';
+        return $this->password;
     }
 
     /**
@@ -31,6 +31,6 @@ trait EncryptedPasswordTrait
      */
     final public function setPassword(?string $password): void
     {
-        $this->password = $password ?? '';
+        $this->password = $password;
     }
 }
