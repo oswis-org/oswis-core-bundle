@@ -4,6 +4,7 @@ namespace Zakjakub\OswisCoreBundle\Api\Dto;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use Zakjakub\OswisCoreBundle\Entity\AppUser;
+use Zakjakub\OswisCoreBundle\Manager\AppUserManager;
 
 /**
  * Endpoint for actions with users (activation, password changes...).
@@ -14,10 +15,13 @@ use Zakjakub\OswisCoreBundle\Entity\AppUser;
  *          },
  *      },
  *      itemOperations={},
+ *      input=false
  * )
  */
 final class AppUserActionRequest
 {
+    public const ALLOWED_TYPES = AppUserManager::ALLOWED_TYPES;
+
     /**
      * ID of changed user.
      * ID has higher priority than username/e-mail.
@@ -47,6 +51,10 @@ final class AppUserActionRequest
     /**
      * Type of action.
      * @var string|null
+     * @Assert\Choice(
+     *     choices=ALLOWED_TYPES,
+     *     message="Požadovaný typ akce není implementovaný."
+     * )
      */
     public $type;
 

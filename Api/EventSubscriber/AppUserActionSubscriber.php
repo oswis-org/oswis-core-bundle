@@ -4,17 +4,20 @@ namespace Zakjakub\OswisCoreBundle\Api\EventSubscriber;
 
 use ApiPlatform\Core\EventListener\EventPriorities;
 use Doctrine\ORM\EntityManagerInterface;
+use Psr\Log\LoggerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpKernel\Event\ViewEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Zakjakub\OswisCoreBundle\Entity\AppUser;
 use Zakjakub\OswisCoreBundle\Exceptions\OswisException;
 use Zakjakub\OswisCoreBundle\Exceptions\OswisNotImplementedException;
 use Zakjakub\OswisCoreBundle\Exceptions\OswisUserNotFoundException;
 use Zakjakub\OswisCoreBundle\Exceptions\OswisUserNotUniqueException;
 use Zakjakub\OswisCoreBundle\Manager\AppUserManager;
+use Zakjakub\OswisCoreBundle\Provider\OswisCoreSettingsProvider;
 use function assert;
 use function in_array;
 
@@ -36,25 +39,23 @@ final class AppUserActionSubscriber implements EventSubscriberInterface
     private $em;
 
     /**
-     * @var TokenStorageInterface
-     */
-    private $tokenStorage;
-
-    /**
      * AppUserActionSubscriber constructor.
      *
-     * @param EntityManagerInterface $em
-     * @param AppUserManager         $appUserManager
-     * @param TokenStorageInterface  $tokenStorage
+     * @param EntityManagerInterface       $em
+     * @param UserPasswordEncoderInterface $encoder
+     * @param LoggerInterface              $logger
+     * @param MailerInterface              $mailer
+     * @param OswisCoreSettingsProvider    $oswisCoreSettings
      */
     public function __construct(
         EntityManagerInterface $em,
-        AppUserManager $appUserManager,
-        TokenStorageInterface $tokenStorage
+        UserPasswordEncoderInterface $encoder,
+        LoggerInterface $logger,
+        MailerInterface $mailer,
+        OswisCoreSettingsProvider $oswisCoreSettings
     ) {
         $this->em = $em;
-        $this->tokenStorage = $tokenStorage;
-        $this->appUserManager = $appUserManager;
+        $this->appUserManager = new AppUserManager($encoder, $em, $logger, $mailer, $oswisCoreSettings);
     }
 
     /**

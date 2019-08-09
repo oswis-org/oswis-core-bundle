@@ -136,10 +136,10 @@ services:
         autowire: true
         public: true
         arguments:
-            - 'doctrine.orm.entity_manager.abstract'
-            - 'security.password_encoder'
-            - 'monolog.logger'
-            - 'mailer'
+            - '@doctrine.orm.entity_manager'
+            - '@security.password_encoder'
+            - '@monolog.logger'
+            - '@mailer'
 
     Zakjakub\OswisCoreBundle\Controller\AppUserController:
         alias: zakjakub_oswis_core.app_user_controller
@@ -177,6 +177,33 @@ services:
     Zakjakub\OswisCoreBundle\Service\EmailSender:
         alias: zakjakub_oswis_core.email_sender
         public: true
+
+
+
+    zakjakub_oswis_core.app_user_action_request:
+        class: Zakjakub\OswisCoreBundle\Api\Dto\AppUserActionRequest
+        autowire: true
+        public: true
+
+    Zakjakub\OswisCoreBundle\Api\Dto\AppUserActionRequest:
+        alias: zakjakub_oswis_core.app_user_action_request
+        public: true
+
+    zakjakub_oswis_core.app_user_action_subscriber:
+        class: Zakjakub\OswisCoreBundle\Api\EventSubscriber\AppUserActionSubscriber
+        autowire: true
+        public: true
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@security.password_encoder'
+            - '@monolog.logger'
+            - '@mailer.mailer'
+            - '@zakjakub_oswis_core.oswis_core_settings_provider'
+
+    Zakjakub\OswisCoreBundle\Api\EventSubscriber\AppUserActionSubscriber:
+        alias: zakjakub_oswis_core.app_user_action_subscriber
+        public: true
+
 
 
     Zakjakub\OswisCoreBundle\Manager\:

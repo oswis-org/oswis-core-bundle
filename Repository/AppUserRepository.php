@@ -13,7 +13,7 @@ use Zakjakub\OswisCoreBundle\Exceptions\OswisUserNotUniqueException;
 use function assert;
 
 /**
- * AppUserRepository
+ * Repository of application users.
  */
 class AppUserRepository extends EntityRepository implements UserLoaderInterface
 {

@@ -89,7 +89,7 @@ class AppUserManager
      * @param string|null      $username
      * @param string|null      $password
      * @param string|null      $email
-     * @param bool|null        $activate
+     * @param bool|null        $activate \"
      * @param bool|null        $sendMail
      * @param bool|null        $errorWhenExist
      *
