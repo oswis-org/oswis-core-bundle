@@ -52,7 +52,7 @@ final class AppUserActionRequest
      * Type of action.
      * @var string|null
      * @Symfony\Component\Validator\Constraints\Choice(
-     *     choices=ALLOWED_TYPES,
+     *     choices=self::ALLOWED_TYPES,
      *     message="Požadovaný typ akce není implementovaný."
      * )
      */
