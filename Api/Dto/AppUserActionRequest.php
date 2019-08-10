@@ -15,7 +15,7 @@ use Zakjakub\OswisCoreBundle\Manager\AppUserManager;
  *          },
  *      },
  *      itemOperations={},
- *      input=false
+ *      output=false
  * )
  */
 final class AppUserActionRequest

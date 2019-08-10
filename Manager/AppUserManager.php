@@ -271,6 +271,8 @@ class AppUserManager
                 'appUser'  => $appUser,
                 'token'    => $token,
                 'password' => $password,
+                'logo'     => 'cid:logo',
+                'oswis'    => $this->oswisCoreSettings,
             );
 
             $email = (new TemplatedEmail())
