@@ -120,5 +120,4 @@ trait DateRangeTrait
     {
         return $this->getStartDateTime();
     }
-
 }

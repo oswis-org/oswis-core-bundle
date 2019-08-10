@@ -14,9 +14,9 @@ class StringUtils
     public static function endsWith(string $haystack, string $needle): string
     {
         return ((mb_strlen($haystack) >= mb_strlen($needle)) && (mb_strpos(
-                    $haystack,
-                    $needle,
-                    mb_strlen($haystack) - mb_strlen($needle)
+            $haystack,
+            $needle,
+            mb_strlen($haystack) - mb_strlen($needle)
                 ) !== false));
     }
 

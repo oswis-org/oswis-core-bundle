@@ -114,6 +114,4 @@ class OswisCoreSettingsProvider
     {
         return 'One Simple Web IS';
     }
-
-
 }

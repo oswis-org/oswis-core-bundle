@@ -64,5 +64,4 @@ class ZakjakubOswisCoreExtension extends Extension implements PrependExtensionIn
         ];
         $container->prependExtensionConfig('twig', $twigGlobals);
     }
-
 }

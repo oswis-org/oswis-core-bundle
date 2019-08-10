@@ -140,5 +140,4 @@ class EmailSender
             throw new ErrorException('Problém s odesláním zprávy: '.$e->getMessage());
         }
     }
-
 }

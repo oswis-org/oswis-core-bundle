@@ -27,7 +27,7 @@ trait TaxRateTrait
      */
     final public function getTaxRate(): ?int
     {
-        return ($this->taxRate === null OR $this->taxRate < 0) ? -1 : $this->taxRate;
+        return ($this->taxRate === null or $this->taxRate < 0) ? -1 : $this->taxRate;
     }
 
     /**
@@ -39,7 +39,6 @@ trait TaxRateTrait
      */
     final public function setTaxRate(int $taxRate): void
     {
-        $this->taxRate = ($taxRate === null OR $taxRate < 0) ? -1 : $taxRate;
+        $this->taxRate = ($taxRate === null or $taxRate < 0) ? -1 : $taxRate;
     }
-
 }

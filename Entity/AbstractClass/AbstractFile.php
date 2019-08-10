@@ -56,5 +56,4 @@ abstract class AbstractFile
     {
         return $this->contentUrl ?? '';
     }
-
 }

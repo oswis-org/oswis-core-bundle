@@ -73,5 +73,4 @@ trait ValueContainerTrait
             $this->addRevision($newRevision);
         }
     }
-
 }

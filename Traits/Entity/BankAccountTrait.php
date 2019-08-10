@@ -63,5 +63,4 @@ trait BankAccountTrait
 
         return $fullBankAccount;
     }
-
 }

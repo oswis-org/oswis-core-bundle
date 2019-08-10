@@ -184,5 +184,4 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
     {
         return $this->getRevision($referenceDateTime)->getCreatedDateTime();
     }
-
 }

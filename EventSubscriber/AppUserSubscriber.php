@@ -100,5 +100,4 @@ final class AppUserSubscriber implements EventSubscriberInterface
         $appUserManager = new AppUserManager($this->encoder, $this->em, $this->logger, $this->mailer, $this->oswisCoreSettings);
         $appUserManager->appUserAction($appUser, 'activation-request');
     }
-
 }

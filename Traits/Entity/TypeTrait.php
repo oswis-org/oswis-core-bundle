@@ -66,5 +66,4 @@ trait TypeTrait
     abstract public static function getAllowedTypesDefault(): array;
 
     abstract public static function getAllowedTypesCustom(): array;
-
 }

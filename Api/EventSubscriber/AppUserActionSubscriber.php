@@ -114,5 +114,4 @@ final class AppUserActionSubscriber implements EventSubscriberInterface
         $data = [];
         $event->setResponse(new JsonResponse($data, 201));
     }
-
 }

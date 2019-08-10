@@ -81,7 +81,6 @@ class AppUserController extends AbstractController
                 ]
             );
         } catch (Exception $e) {
-
             $logger->notice(
                 'App user activation error: '.$e->getMessage()
             );

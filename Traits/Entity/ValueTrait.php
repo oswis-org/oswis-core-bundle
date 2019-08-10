@@ -70,6 +70,4 @@ trait ValueTrait
     {
         $this->valueAllowed = $valueAllowed ?? false;
     }
-
-
 }

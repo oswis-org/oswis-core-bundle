@@ -114,6 +114,4 @@ class PdfGenerator
 
         return $mPdf->Output('', 'S');
     }
-
-
 }

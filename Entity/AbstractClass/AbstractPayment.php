@@ -38,5 +38,4 @@ abstract class AbstractPayment
     {
         return [];
     }
-
 }

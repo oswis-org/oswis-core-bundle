@@ -19,5 +19,4 @@ class GdprWebController extends AbstractController
             '@ZakjakubOswisCore/web/pages/gdpr.html.twig'
         );
     }
-
 }

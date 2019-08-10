@@ -13,7 +13,6 @@ use Zakjakub\OswisCoreBundle\Entity\AbstractClass\AbstractImage;
 
 abstract class AbstractImageAction
 {
-
     private $validator;
 
     private $doctrine;
@@ -60,5 +59,4 @@ abstract class AbstractImageAction
      * @return string
      */
     abstract public static function getImageClassName(): string;
-
 }

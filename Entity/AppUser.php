@@ -221,6 +221,4 @@ class AppUser extends AbstractAppUser
             $flagInEmployer->setAppUser(null);
         }
     }
-
-
 }

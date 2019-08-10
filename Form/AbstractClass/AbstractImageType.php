@@ -11,7 +11,6 @@ use Zakjakub\OswisCoreBundle\Utils\FileUtils;
 
 abstract class AbstractImageType extends AbstractType
 {
-
     final public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $maxSize = FileUtils::humanReadableFileUploadMaxSize();
@@ -57,5 +56,4 @@ abstract class AbstractImageType extends AbstractType
     {
         return 'oswis_core_abstract_image';
     }
-
 }

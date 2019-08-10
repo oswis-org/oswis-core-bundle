@@ -14,7 +14,6 @@ namespace Zakjakub\OswisCoreBundle\Utils;
  */
 class SourceCodeUtils
 {
-
     public static function escapeHtml(string $input): string
     {
         if (!$input) {
@@ -42,5 +41,4 @@ class SourceCodeUtils
 
         return strip_tags($input, $allowedTags);
     }
-
 }

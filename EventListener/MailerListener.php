@@ -13,7 +13,6 @@ use function error_log;
 
 class MailerListener implements EventSubscriberInterface
 {
-
     protected $oswisCoreSettings;
 
     public function __construct(OswisCoreSettingsProvider $oswisCoreSettings)

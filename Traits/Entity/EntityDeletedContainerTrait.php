@@ -7,7 +7,6 @@ use DateTime;
 
 trait EntityDeletedContainerTrait
 {
-
     final public function setDeleted(?DateTime $deletedDateTime): void
     {
         if ($this->getDeleted() !== $deletedDateTime) {
@@ -26,6 +25,4 @@ trait EntityDeletedContainerTrait
     {
         return $this->getRevisionByDate($referenceDateTime)->isDeleted();
     }
-
-
 }

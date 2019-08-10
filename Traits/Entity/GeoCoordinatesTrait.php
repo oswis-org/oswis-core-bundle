@@ -77,5 +77,4 @@ trait GeoCoordinatesTrait
     {
         $this->geoElevation = $geoElevation;
     }
-
 }

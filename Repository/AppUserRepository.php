@@ -25,7 +25,8 @@ class AppUserRepository extends EntityRepository implements UserLoaderInterface
      * @throws OswisUserNotUniqueException
      */
     final public function loadUserByUsername(
-        /** @noinspection MissingParameterTypeDeclarationInspection */ $username
+        /** @noinspection MissingParameterTypeDeclarationInspection */
+        $username
     ): ?AppUser {
         if (!$username) {
             return null;
@@ -80,5 +81,4 @@ class AppUserRepository extends EntityRepository implements UserLoaderInterface
                 ->getQuery()->getResult(Query::HYDRATE_OBJECT)
         );
     }
-
 }

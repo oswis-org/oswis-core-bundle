@@ -4,7 +4,6 @@ namespace Zakjakub\OswisCoreBundle\Utils;
 
 class FileUtils
 {
-
     final public static function humanReadableFileUploadMaxSize(): string
     {
         return self::humanReadableBytes(self::fileUploadMaxSize());
@@ -76,5 +75,4 @@ class FileUtils
 
         return round($size);
     }
-
 }

@@ -68,5 +68,4 @@ trait BankAccountContainerTrait
     {
         return $this->getRevisionByDate($dateTime)->getBankAccountComplete();
     }
-
 }

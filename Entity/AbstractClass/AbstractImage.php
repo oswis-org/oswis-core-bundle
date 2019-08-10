@@ -13,7 +13,6 @@ use Zakjakub\OswisCoreBundle\Traits\Entity\BasicEntityTrait;
  */
 abstract class AbstractImage
 {
-
     use BasicEntityTrait;
 
     /**
@@ -70,5 +69,4 @@ abstract class AbstractImage
     {
         return $this->contentUrl ?? '';
     }
-
 }

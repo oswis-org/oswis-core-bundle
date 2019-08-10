@@ -221,5 +221,4 @@ trait FullNameTrait
             return '';
         }
     }
-
 }

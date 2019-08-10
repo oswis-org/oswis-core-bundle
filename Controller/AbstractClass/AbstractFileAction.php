@@ -59,5 +59,4 @@ abstract class AbstractFileAction
      * @return string
      */
     abstract public static function getFileClassName(): string;
-
 }
