@@ -44,8 +44,8 @@ class AppUserController extends AbstractController
                     [
                         'title'   => 'Token nezadán',
                         'message' => 'Nebyl zadán token. 
-                    Zkuste odkaz otevřít znovu nebo jej zkopírovat celý do adresního řádku prohlížeče.
-                    Pokud se to nepodaří, kontaktujte nás a společně to vyřešíme.',
+                        Zkuste odkaz otevřít znovu nebo jej zkopírovat celý do adresního řádku prohlížeče.
+                        Pokud se to nepodaří, kontaktujte nás a společně to vyřešíme.',
                     ]
                 );
             }
@@ -53,7 +53,6 @@ class AppUserController extends AbstractController
             $appUser = $this->getDoctrine()
                 ->getRepository(AppUser::class)
                 ->findOneBy(['accountActivationRequestToken' => $token]);
-
 
             if (!$appUser) {
                 return $this->render(
