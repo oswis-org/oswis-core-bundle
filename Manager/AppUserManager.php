@@ -263,7 +263,7 @@ class AppUserManager
                 $title = 'Požadavek na změnu hesla';
                 $password = null;
             } else {
-                throw new InvalidArgumentException('Akce "'.$type.'" není u změny hesla implementována.');
+                throw new OswisNotImplementedException($type, 'u změny hesla');
             }
 
             $data = array(

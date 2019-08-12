@@ -17,7 +17,6 @@ use function assert;
 
 class AppUserController extends AbstractController
 {
-
     /**
      * @param string                       $token
      * @param EntityManagerInterface       $em
