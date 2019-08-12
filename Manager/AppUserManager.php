@@ -28,12 +28,12 @@ use function random_int;
  */
 class AppUserManager
 {
-    public const RESET = 'reset';
-    public const RESET_REQUEST = 'reset-request';
+    public const PASSWORD_CHANGE = 'password-change';
+    public const PASSWORD_CHANGE_REQUEST = 'password-change-request';
     public const ACTIVATION = 'activation';
     public const ACTIVATION_REQUEST = 'activation-request';
 
-    public const ALLOWED_TYPES = [self::RESET, self::RESET_REQUEST, self::ACTIVATION, self::ACTIVATION_REQUEST];
+    public const ALLOWED_TYPES = [self::PASSWORD_CHANGE, self::PASSWORD_CHANGE_REQUEST, self::ACTIVATION, self::ACTIVATION_REQUEST];
 
     /**
      * @var EntityManagerInterface
@@ -168,17 +168,17 @@ class AppUserManager
         ?bool $withoutToken = false
     ): bool {
         try {
-            if ($type === self::RESET_REQUEST) { // Create token for password reset/change and send it to user by e-mail.
+            if ($type === self::PASSWORD_CHANGE_REQUEST) { // Create token for password reset/change and send it to user by e-mail.
                 $token = $appUser->generatePasswordRequestToken();
                 if ($sendConfirmation) {
                     try {
-                        $this->sendPasswordEmail($appUser, self::RESET_REQUEST, $token);
+                        $this->sendPasswordEmail($appUser, self::PASSWORD_CHANGE_REQUEST, $token);
                     } catch (TransportExceptionInterface $e) {
                         $this->logger->error($e->getMessage());
                         throw new OswisException('Nepodařilo se odeslat informační e-mail o změně hesla.');
                     }
                 }
-            } elseif ($type === self::RESET) { // Check token for password reset/change and change password for user.
+            } elseif ($type === self::PASSWORD_CHANGE) { // Check token for password reset/change and change password for user.
                 if (!$withoutToken && !$token) {
                     throw new InvalidArgumentException('Token pro změnu hesla nebyl zadán.');
                 }
@@ -190,7 +190,7 @@ class AppUserManager
                 $appUser->setPassword($this->encoder->encodePassword($appUser, $password));
                 if ($sendConfirmation) {
                     try {
-                        $this->sendPasswordEmail($appUser, self::RESET, null, $random ? $password : null);
+                        $this->sendPasswordEmail($appUser, self::PASSWORD_CHANGE, null, $random ? $password : null);
                     } catch (TransportExceptionInterface $e) {
                         $this->logger->error($e->getMessage());
                         throw new OswisException('Nepodařilo se odeslat e-mail s požadavkem na změnu hesla.');
@@ -256,10 +256,10 @@ class AppUserManager
 
             $title = null;
 
-            if (self::RESET === $type) { // Send e-mail about password change. Include password if present (it means that it's generated randomly).
+            if (self::PASSWORD_CHANGE === $type) { // Send e-mail about password change. Include password if present (it means that it's generated randomly).
                 $title = 'Heslo změněno';
                 $token = null;
-            } elseif (self::RESET_REQUEST === $type) { // Send e-mail about password reset request. Include token for change.
+            } elseif (self::PASSWORD_CHANGE_REQUEST === $type) { // Send e-mail about password reset request. Include token for change.
                 $title = 'Požadavek na změnu hesla';
                 $password = null;
             } else {
