@@ -123,13 +123,13 @@ class AppUserManager
         }
 
         if ($appUser && !$errorWhenExist) {
-            $this->logger->notice('Skipped existing user: '.$appUser->getUsername().' '.$appUser->getEmail().'.');
+            $this->logger->notice('Skipped existing user '.$appUser->getUsername().' '.$appUser->getEmail().'.');
 
             return $appUser;
         }
 
         if ($appUser && $errorWhenExist) {
-            throw new OswisUserNotUniqueException('User: '.$appUser->getUsername().' already exist.');
+            throw new OswisUserNotUniqueException('User '.$appUser->getUsername().' already exist.');
         }
 
         $appUser = new AppUser($fullName, $username, $email, null, null);
@@ -143,7 +143,7 @@ class AppUserManager
         }
         $em->persist($appUser);
         $em->flush();
-        $this->logger->info('Created user: '.$appUser->getUsername().', type: '.($appUserType ? $appUserType->getName() : null));
+        $this->logger->info('Created user '.$appUser->getUsername().', type: '.($appUserType ? $appUserType->getName() : null));
 
         return $appUser;
     }

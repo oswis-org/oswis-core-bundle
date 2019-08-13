@@ -22,15 +22,7 @@ abstract class AbstractAppUser implements UserInterface, Serializable, Equatable
     /** @see \Serializable::serialize() */
     final public function serialize(): string
     {
-        return serialize(
-            array(
-                $this->id,
-                $this->username,
-                $this->email,
-                $this->password,
-                $this->deleted,
-            )
-        );
+        return serialize(array($this->id, $this->username, $this->email, $this->password, $this->deleted));
     }
 
     /**
@@ -60,29 +52,17 @@ abstract class AbstractAppUser implements UserInterface, Serializable, Equatable
      */
     final public function isEqualTo(UserInterface $user): bool
     {
-        if (!$user instanceof self) {
+        if (!$user || !($user instanceof self)) {
             return false;
         }
 
-        if ($this->id !== $user->getId()) {
-            return false;
-        }
-
-        if ($this->password !== $user->getPassword()) {
-            return false;
-        }
-
-        if ($this->username !== $user->getUsername()) {
-            return false;
-        }
-
-        if ($this->email !== $user->getEmail()) {
+        if ($this->id !== $user->getId() || $this->username !== $user->getUsername()
+            || $this->email !== $user->getEmail() || $this->password !== $user->getPassword()) {
             return false;
         }
 
         return true;
     }
-
 
     /**
      * Removes sensitive data from the user.
@@ -118,15 +98,6 @@ abstract class AbstractAppUser implements UserInterface, Serializable, Equatable
 
     /**
      * Returns the roles granted to the user.
-     *
-     *     public function getRoles()
-     *     {
-     *         return array('ROLE_USER');
-     *     }
-     *
-     * Alternatively, the roles might be stored on a ``roles`` property,
-     * and populated in any number of different ways when the user object
-     * is created.
      *
      * @return array (Role|string)[] The user roles
      */

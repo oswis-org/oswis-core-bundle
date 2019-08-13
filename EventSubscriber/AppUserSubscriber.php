@@ -80,6 +80,7 @@ final class AppUserSubscriber implements EventSubscriberInterface
         return [KernelEvents::VIEW => ['makeAppUser', EventPriorities::POST_WRITE]];
     }
 
+    /** @noinspection PhpUnused */
     /**
      * @param ViewEvent $event
      *

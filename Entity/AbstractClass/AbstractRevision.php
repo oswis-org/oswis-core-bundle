@@ -17,8 +17,6 @@ use function usort;
 abstract class AbstractRevision implements RevisionInterface
 {
 
-    // abstract public function hasSameValues(AbstractRevision $revision): bool;
-
     /**
      * Container of revisions.
      * @var AbstractRevisionContainer
