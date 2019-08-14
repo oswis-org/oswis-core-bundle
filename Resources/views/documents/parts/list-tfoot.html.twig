@@ -1,0 +1,9 @@
+<tfoot>
+<tr>
+    {% block list_tfoot_inner %}
+        <td colspan="{{ columns|length }}">
+            Celkem bylo vypsáno {{ data.items is defined ? data.items|length : '0' }} položek.
+        </td>
+    {% endblock list_tfoot_inner %}
+</tr>
+</tfoot>

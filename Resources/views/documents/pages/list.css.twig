@@ -1,0 +1,173 @@
+
+ul {
+    padding-top: 1px;
+    padding-bottom: 3px;
+    padding-left: 15px;
+}
+
+ul ul {
+    font-size: 0.97em;
+    padding-left: 10px;
+}
+
+.thead {
+    background-color: #006FAD;
+    color: #ffffff;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.tfoot {
+    color: #006FAD;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+}
+
+table.list {
+    border-collapse: collapse;
+    margin-bottom: 2em;
+    font-size: 0.9em;
+}
+
+table.list a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 2px;
+}
+
+table.list td,
+table.list th {
+    border: 1px solid #006FAD;
+    text-align: left;
+    padding: 5px;
+}
+
+table.list td {
+    padding: 6px;
+}
+
+table.list tr:first-child,
+table.list tr:first-child:hover,
+table.list th:hover,
+table.list th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: rgba(0, 60, 240, 0.95);
+    color: white;
+    text-align: center;
+}
+
+table.list td a {
+    font-weight: 600;
+}
+
+table.list td span {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-content: stretch;
+    align-items: stretch;
+}
+
+table.list td span small,
+table.list span small,
+table.list th span small,
+table.list tr td span small,
+table.list td small,
+table.list th small {
+    display: block;
+    font-weight: normal;
+    font-size: 0.7em;
+    padding-top: 0.2em;
+    margin: 0;
+    width: 100%;
+}
+
+/*noinspection CssFloatPxLength*/
+table.list a.sorting {
+    display: inline;
+    margin: 0;
+    padding: 0.5px;
+    vertical-align: middle;
+    text-decoration: none;
+    font-size: 0.8em;
+}
+
+td.flags span {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-content: stretch;
+    align-items: stretch;
+    /*cursor: default;*/
+    vertical-align: middle;
+}
+
+.flags span span {
+    padding: 0.15em;
+    font-size: 1.15em;
+    vertical-align: middle;
+    margin: 0.15em;
+    text-decoration: none;
+}
+
+.flags span span a {
+    padding: 0;
+    margin: 0;
+    width: auto;
+    height: auto;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+.flags span span a span {
+    padding: 0;
+    margin: 0;
+    width: auto;
+    height: auto;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 1100px), handheld and (max-width: 1100px), projection and (max-width: 1100px), tv and (max-width: 1100px), tty and (max-width: 1100px) {
+    table.list td:nth-child(5),
+    table.list th:nth-child(5),
+    table.list td:nth-child(6),
+    table.list th:nth-child(6),
+    table.list td:nth-child(7),
+    table.list th:nth-child(7) {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 640px), handheld and (max-width: 640px), projection and (max-width: 640px), tv and (max-width: 640px), tty and (max-width: 640px) {
+    table.list td:nth-child(3),
+    table.list th:nth-child(3),
+    table.list td:nth-child(4),
+    table.list th:nth-child(4),
+    table.list td:nth-child(8),
+    table.list th:nth-child(8) {
+        display: none;
+    }
+}
+
+.list td, .list td span {
+    vertical-align: middle;
+}
+
+.list td:nth-child(1),
+.list td:nth-child(1) span,
+.list td:nth-child(3),
+.list td:nth-child(4),
+.list td:nth-child(4) span,
+.list td:nth-child(5),
+.list td:nth-child(7) {
+    text-align: center;
+}
+

@@ -1,18 +1,45 @@
-<style>
-    {% block css %}
-    {% endblock %}
-</style>
-
 <!DOCTYPE html>
 <html lang="cs">
 <head>
     <meta charset='UTF-8'>
-    <title>{% block title %}{% endblock %}</title>
+    <title>{% block title %}{{ title|default('Dokument z OSWIS') }}{% endblock %}</title>
+    <style>{% block css %}{% include '@ZakjakubOswisCore/documents/pdf-document.css.twig' %}{% endblock css %}</style>
+    <style>{% block additional_css %}{% endblock additional_css %}</style>
 </head>
 <body>
-{% block content %}
-    <h1>Prázdný dokument</h1>
-    <p><strong>Nebyl načten žádný obsah dokumentu.</strong></p>
-{% endblock %}
+{% block content_outer %}
+    <div class="document">
+
+        {% block content_logo %}
+            <div class="document-images">
+                <div class="document-logo">
+                    <img src="{{ asset('public/logo.png') }}" alt="Logo"/>
+                </div>
+            </div>
+        {% endblock content_logo %}
+
+        {% block content_header %}
+            <div class="document-header">
+                <h1>{{ title|default('Seznam položek') }}</h1>
+                {% if subtitle is defined and subtitle %}
+                    <h2>{{ subtitle }}</h2>
+                {% endif %}
+            </div>
+            <div>
+                {% block header_text %}
+                    {# Info about list settings etc. #}
+                {% endblock header_text %}
+            </div>
+        {% endblock content_header %}
+
+        {% block content_inner %}
+            <div class="document-content">
+                <h1>Prázdný dokument</h1>
+                <p><strong>Nebyl načten žádný obsah dokumentu.</strong></p>
+            </div>
+        {% endblock content_inner %}
+
+    </div>
+{% endblock content_outer %}
 </body>
 </html>

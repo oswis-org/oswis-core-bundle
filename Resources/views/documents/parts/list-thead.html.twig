@@ -1,0 +1,13 @@
+<thead>
+<tr class="thead">
+    {% block list_thead_inner %}
+        {% for column in data.columns %}
+            <th>
+                {% apply markdown_to_html %}
+                    {{ column.title }}
+                {% endapply %}
+            </th>
+        {% endfor %}
+    {% endblock list_thead_inner %}
+</tr>
+</thead>

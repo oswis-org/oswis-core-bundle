@@ -1,0 +1,36 @@
+{% extends '@ZakjakubOswisCore/documents/pdf-document.html.twig' %}
+
+{% block css %}{% include '@ZakjakubOswisCore/documents/pages/list.css.twig' %}{% endblock %}
+{% block title %}{{ title|default('Seznam položek') }}{% endblock %}
+
+{% block content_inner %}
+    {% block list_outer %}
+        <table class=list style="width:100%;max-width:100%;">
+            {% block list_inner %}
+                {% block list_thead_outer %}
+                    {% include '@ZakjakubOswisCore/documents/parts/list-thead.html.twig' %}
+                {% endblock list_thead_outer %}
+                {% block list_row_outer %}
+                    {% for row in data.items %}
+                        <tbody>
+                        <tr>
+                            {% block list_row_inner %}
+                                {% for column in columns %}
+                                    {% include '@ZakjakubOswisCore/documents/parts/list-row.html.twig' %}
+                                {% endfor %}
+                            {% endblock list_row_inner %}
+                        </tr>
+                        </tbody>
+                    {% endfor %}
+                {% endblock list_row_outer %}
+                {% block list_tfoot_outer %}
+                    {% include '@ZakjakubOswisCore/documents/parts/list-thead.html.twig' %}
+                {% endblock list_tfoot_outer %}
+            {% endblock list_inner %}
+        </table>
+    {% endblock list_outer %}
+{% endblock %}
+
+{#
+<pagebreak/>
+#}

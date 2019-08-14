@@ -1,0 +1,38 @@
+<td style="font-weight:{{ column.fontWeight|default('normal') }};color:{{ column.color|default('black') }};
+        background-color:{{ column.backgroundColor|default('transparent') }};text-align:{{ column.textAlign|default('left') }};
+        vertical-align:{{ column.fontWeight|default('middle') }};">
+    {% if row[column.name] is defined %}
+        {% if column.type == 'x' or column.type == 'X' %}
+            X
+        {% elseif column.type == 'link' %}
+            <a href="{{ row[column.name] }}" title="{{ row[column.name] }}" target="_blank">
+                {{ row[column.name] }}
+            </a>
+        {% elseif column.type == 'email' %}
+            <a href="mailto:{{ row[column.name] }}" title="E-mail {{ row[column.name] }}">
+                {{ row[column.name] }}
+            </a>
+        {% elseif column.type == 'bool' or column.type == 'boolean' %}
+            {% if row[column.name] %}
+                <span style="font-weight:bold;color:green;">✔</span>
+            {% else %}
+                <span style="font-weight:bold;color:red;">❌</span>
+            {% endif %}
+        {% elseif column.type == 'date' %}
+            {{ row[column.name] ? row[column.name]|date("j. n. Y") : '' }}
+        {% elseif column.type == 'datetime' or column.type == 'date-time' or column.type == 'dateTime' %}
+            {{ row[column.name] ? row[column.name]|date("j. n. Y, H:i") : '' }}
+        {% elseif column.type == 'id+datetime' or column.type == 'id+date-time' or column.type == 'id+dateTime' or column.type == 'idDateTime' %}
+            {{ row.id }}
+            {{ row.dateTime ? '<br>' ~ row.dateTime|date("j. n. Y, H:i") : '' }}
+        {% elseif column.type == 'id+date' or column.type == 'id+date' or column.type == 'id+date' or column.type == 'idDate' %}
+            {{ row.id }}
+            {{ row.dateTime ? '<br>' ~ row.dateTime|date("j. n. Y") : '' }}
+        {% elseif (not column.type) or column.type == '' or column.type == 'basic' or column.type == 'plain' or column.type == 'simple' %}
+            {{ row[column.name]|default('∅') }}
+        {% endif %}
+        {% block list_row_inner_extension %}{% endblock list_row_inner_extension %}
+    {% else %}
+        <span style="color:red;font-weight:bold;" title="Sloupec neexistuje!">⚠</span>
+    {% endif %}
+</td>

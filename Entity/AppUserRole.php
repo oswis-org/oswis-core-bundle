@@ -47,11 +47,23 @@ use Zakjakub\OswisCoreBundle\Traits\Entity\NameableBasicTrait;
  *     }
  *   }
  * )
- * @ApiFilter(OrderFilter::class)
+ * @ApiFilter(OrderFilter::class, properties={
+ *     "id": "ASC",
+ *     "dateTime": "ASC",
+ *     "slug",
+ *     "name",
+ *     "shortName",
+ *     "description",
+ *     "note",
+ *     "roleString"
+ * })
  * @Searchable({
  *     "id",
+ *     "slug",
  *     "name",
+ *     "shortName",
  *     "description",
+ *     "note",
  *     "roleString"
  * })
  *

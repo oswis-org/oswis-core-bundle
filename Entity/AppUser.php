@@ -47,7 +47,24 @@ use Zakjakub\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
  *     }
  *   }
  * )
- * @ApiFilter(OrderFilter::class)
+ * @ApiFilter(OrderFilter::class, properties={
+ *     "id": "ASC",
+ *     "dateTime": "ASC",
+ *     "username",
+ *     "email",
+ *     "givenName",
+ *     "additionalName",
+ *     "familyName",
+ *     "nickname",
+ *     "honorificPrefix",
+ *     "honorificSuffix",
+ *     "description",
+ *     "note",
+ *     "appUserType.name",
+ *     "appUserType.shortName",
+ *     "appUserType.slug",
+ *     "city"
+ * })
  * @ApiFilter(ExistsFilter::class, properties={"active", "deleted"})
  * @Searchable({
  *     "id",
@@ -60,7 +77,11 @@ use Zakjakub\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
  *     "honorificPrefix",
  *     "honorificSuffix",
  *     "description",
- *     "note"
+ *     "note",
+ *     "appUserType.name",
+ *     "appUserType.shortName",
+ *     "appUserType.slug",
+ *     "city"
  * })
  *
  * @author Jakub Zak <mail@jakubzak.eu>

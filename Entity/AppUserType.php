@@ -48,13 +48,24 @@ use Zakjakub\OswisCoreBundle\Traits\Entity\NameableBasicTrait;
  *     }
  *   }
  * )
- * @ApiFilter(OrderFilter::class)
+ * @ApiFilter(OrderFilter::class, properties={
+ *     "id": "ASC",
+ *     "dateTime": "ASC",
+ *     "slug",
+ *     "name",
+ *     "shortName",
+ *     "description",
+ *     "note",
+ *     "adminUser
+ * })
  * @ApiFilter(ExistsFilter::class, properties={"adminUser"})
  * @Searchable({
  *     "id",
+ *     "slug",
  *     "name",
+ *     "shortName",
  *     "description",
- *     "singleNote"
+ *     "note"
  * })
  *
  * @author Jakub Zak <mail@jakubzak.eu>
