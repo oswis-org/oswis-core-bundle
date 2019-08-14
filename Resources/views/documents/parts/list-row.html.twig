@@ -4,11 +4,11 @@
     {% if row[column.name] is defined %}
         {% if column.type == 'x' or column.type == 'X' %}
             X
-        {% elseif column.type == 'link' %}
+        {% elseif column.type == 'link' or column.type == 'url' %}
             <a href="{{ row[column.name] }}" title="{{ row[column.name] }}" target="_blank">
                 {{ row[column.name] }}
             </a>
-        {% elseif column.type == 'email' %}
+        {% elseif column.type == 'email' or column.type == 'e-mail' or column.type == 'mail' %}
             <a href="mailto:{{ row[column.name] }}" title="E-mail {{ row[column.name] }}">
                 {{ row[column.name] }}
             </a>
@@ -33,6 +33,6 @@
         {% endif %}
         {% block list_row_inner_extension %}{% endblock list_row_inner_extension %}
     {% else %}
-        <span style="color:red;font-weight:bold;" title="Sloupec neexistuje!">⚠</span>
+        <span style="color:red;font-weight:bold;" title="Položka neexistuje!">⚠</span>
     {% endif %}
 </td>

@@ -55,6 +55,7 @@ class PdfGenerator
         $this->oswisCoreSettings = $oswisCoreSettings;
     }
 
+    /** @noinspection PhpUnused */
     /**
      * @param string|null $title
      * @param string|null $template

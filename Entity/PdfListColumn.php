@@ -1,59 +1,72 @@
-<?php
+<?php /** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Entity;
 
-use function in_array;
-
 /**
- * Class PdfListColumn
- * @package Zakjakub\OswisCoreBundle\Entity
+ * Definition for column in PDF export file.
+ * @author Jakub Zak <mail@jakubzak.eu>
  */
 class PdfListColumn
 {
     public const TYPE_BASIC = '';
-
-    public const ALLOWED_TYPES = [self::TYPE_BASIC];
+    public const TYPE_BOOLEAN = 'bool';
+    public const TYPE_DATE = 'date';
+    public const TYPE_DATETIME = 'datetime';
+    public const TYPE_URL = 'url';
+    public const TYPE_EMAIL = 'email';
+    public const TYPE_ID = 'id';
+    public const TYPE_ID_DATE = 'id+date';
+    public const TYPE_ID_DATETIME = 'id+datetime';
 
     /**
      * @var string
-     * @example
+     * @example dateTime
      */
     public $name;
 
     /**
      * @var string
+     * @example Datum a čas
      */
     public $title;
 
     /**
      * @var string
+     * @example #006FAD
+     * @example rgba(0,0,0,1)
      */
     public $color;
 
     /**
      * @var string
+     * @example #006FAD
+     * @example rgba(0,0,0,1)
      */
     public $backgroundColor;
 
     /**
      * @var string
+     * @example bold
      */
     public $fontWeight;
 
     /**
      * @var string
+     * @example center
      */
     public $textAlign;
 
     /**
      * @var string
+     * @example middle
      */
     public $verticalAlign;
 
     /**
      * @var string
+     * @example id+datetime
      */
-    protected $type;
+    public $type;
 
     /**
      * PdfListColumn constructor.
@@ -68,14 +81,14 @@ class PdfListColumn
      * @param string $type
      */
     public function __construct(
-        string $name = null,
-        string $type = null,
-        string $title = null,
-        string $textAlign = null,
-        string $fontWeight = null,
-        string $color = null,
-        string $backgroundColor = null,
-        string $verticalAlign = null
+        ?string $name = null,
+        ?string $type = null,
+        ?string $title = null,
+        ?string $textAlign = null,
+        ?string $fontWeight = null,
+        ?string $color = null,
+        ?string $backgroundColor = null,
+        ?string $verticalAlign = null
     ) {
         $this->name = $name;
         $this->title = $title;
@@ -85,12 +98,5 @@ class PdfListColumn
         $this->textAlign = $textAlign;
         $this->verticalAlign = $verticalAlign;
         $this->type = $type;
-    }
-
-    final public function setType(?string $newType): void
-    {
-        if (in_array($newType, self::ALLOWED_TYPES, true)) {
-            $this->type = $newType;
-        }
     }
 }

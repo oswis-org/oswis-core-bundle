@@ -110,6 +110,9 @@
     "league/commonmark": {
         "version": "1.0.0"
     },
+    "league/csv": {
+        "version": "9.3.0"
+    },
     "league/html-to-markdown": {
         "version": "4.8.1"
     },
