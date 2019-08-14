@@ -9,14 +9,21 @@
       <w>chybný</w>
       <w>chybějící</w>
       <w>csrf</w>
+      <w>cssinliner</w>
+      <w>ctype</w>
       <w>egulias</w>
       <w>favicons</w>
       <w>gedmo</w>
+      <w>gesdinet</w>
+      <w>hirak</w>
       <w>hodin</w>
       <w>hyphenize</w>
+      <w>iconv</w>
       <w>jakub</w>
       <w>jakubzak</w>
+      <w>mbstring</w>
       <w>minut</w>
+      <w>mpdf</w>
       <w>msapplication</w>
       <w>mstile</w>
       <w>měsíců</w>
@@ -28,7 +35,9 @@
       <w>oswis</w>
       <w>pageno</w>
       <w>položky</w>
+      <w>roave</w>
       <w>sensio</w>
+      <w>stof</w>
       <w>swiftmailer</w>
       <w>timestampable</w>
       <w>uncapitalize</w>
