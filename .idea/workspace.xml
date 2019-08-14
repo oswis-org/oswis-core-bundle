@@ -7,12 +7,7 @@
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/PdfListColumn.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/PdfListColumn.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/documents/parts/list-row.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/documents/parts/list-row.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/PdfGenerator.php" beforeDir="false" afterPath="$PROJECT_DIR$/Service/PdfGenerator.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Utils/StringUtils.php" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/StringUtils.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AppUserType.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUserType.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -381,14 +376,7 @@
       <workItem from="1565709734474" duration="43000" />
       <workItem from="1565710178104" duration="504000" />
       <workItem from="1565716911700" duration="24339000" />
-      <workItem from="1565795708113" duration="2927000" />
-    </task>
-    <task id="LOCAL-00282" summary="Some changes.">
-      <created>1563786739953</created>
-      <option name="number" value="00282" />
-      <option name="presentableId" value="LOCAL-00282" />
-      <option name="project" value="LOCAL" />
-      <updated>1563786739953</updated>
+      <workItem from="1565795708113" duration="3873000" />
     </task>
     <task id="LOCAL-00283" summary="Some changes.">
       <created>1563798408810</created>
@@ -726,7 +714,14 @@
       <option name="project" value="LOCAL" />
       <updated>1565710495663</updated>
     </task>
-    <option name="localTasksCounter" value="331" />
+    <task id="LOCAL-00331" summary="Some changes.">
+      <created>1565807815353</created>
+      <option name="number" value="00331" />
+      <option name="presentableId" value="LOCAL-00331" />
+      <option name="project" value="LOCAL" />
+      <updated>1565807815353</updated>
+    </task>
+    <option name="localTasksCounter" value="332" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

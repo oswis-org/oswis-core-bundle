@@ -56,7 +56,7 @@ use Zakjakub\OswisCoreBundle\Traits\Entity\NameableBasicTrait;
  *     "shortName",
  *     "description",
  *     "note",
- *     "adminUser
+ *     "adminUser"
  * })
  * @ApiFilter(ExistsFilter::class, properties={"adminUser"})
  * @Searchable({
