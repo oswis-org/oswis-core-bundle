@@ -1,4 +1,5 @@
-<?php
+<?php /** @noinspection PhpUnused */
+
 /** @noinspection PhpUndefinedMethodInspection */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
@@ -25,4 +26,19 @@ trait EntityDeletedContainerTrait
     {
         return $this->getRevisionByDate($referenceDateTime)->isDeleted();
     }
+
+    final public function setEMailDeleteConfirmationDateTime(?DateTime $deletedConfirmationDateTime): void
+    {
+        if ($this->getEMailDeleteConfirmationDateTime() !== $deletedConfirmationDateTime) {
+            $newRevision = clone $this->getRevision();
+            $newRevision->setEMailDeleteConfirmationDateTime($deletedConfirmationDateTime);
+            $this->addRevision($newRevision);
+        }
+    }
+
+    final public function getEMailDeleteConfirmationDateTime(?DateTime $referenceDateTime = null): ?DateTime
+    {
+        return $this->getRevisionByDate($referenceDateTime)->getEMailDeleteConfirmationDateTime();
+    }
+
 }

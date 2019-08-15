@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -22,6 +22,37 @@ trait DeletedTrait
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true, options={"default" : null})
      */
     protected $deleted;
+
+    /**
+     * Date and time of delete confirmation e-mail.
+     * @var DateTime|null
+     * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true)
+     */
+    protected $eMailDeleteConfirmationDateTime;
+
+    /**
+     * Get date and time of delete confirmation e-mail.
+     * @return DateTime|null
+     */
+    final public function getEMailDeleteConfirmationDateTime(): ?DateTime
+    {
+        return $this->eMailDeleteConfirmationDateTime;
+    }
+
+    /**
+     * Set delete confirmation date and time.
+     *
+     * @param DateTime|null $eMailDeleteConfirmationDateTime
+     */
+    final public function setEMailDeleteConfirmationDateTime(?DateTime $eMailDeleteConfirmationDateTime): void
+    {
+        $this->eMailDeleteConfirmationDateTime = $eMailDeleteConfirmationDateTime;
+    }
+
+    final public function setMailDeleteConfirmationSend(): void
+    {
+        $this->eMailDeleteConfirmationDateTime = date_create();
+    }
 
     /**
      * @param bool|null $decimal
