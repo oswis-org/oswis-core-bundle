@@ -86,6 +86,9 @@ trait DeletedTrait
      */
     final public function setDeleted(?DateTime $deleted = null): void
     {
+        if (!$deleted || (!$this->deleted && $deleted)) {
+            $this->setEMailDeleteConfirmationDateTime(null);
+        }
         $this->deleted = $deleted;
     }
 
@@ -96,8 +99,7 @@ trait DeletedTrait
      */
     final public function delete(?DateTime $dateTime = null): void
     {
-        $dateTime = $dateTime ?? new DateTime();
-        $this->deleted = $dateTime;
+        $this->setDeleted($dateTime ?? new DateTime());
     }
 
     /**

@@ -8,7 +8,6 @@
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Traits/Entity/DeletedTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/DeletedTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/EntityDeletedContainerTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/EntityDeletedContainerTrait.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -382,14 +381,8 @@
       <workItem from="1565891032444" duration="21000" />
       <workItem from="1565891077260" duration="109000" />
       <workItem from="1565891586185" duration="257000" />
-      <workItem from="1565894077293" duration="357000" />
-    </task>
-    <task id="LOCAL-00285" summary="Some changes.">
-      <created>1563886820524</created>
-      <option name="number" value="00285" />
-      <option name="presentableId" value="LOCAL-00285" />
-      <option name="project" value="LOCAL" />
-      <updated>1563886820525</updated>
+      <workItem from="1565894077293" duration="435000" />
+      <workItem from="1565952697128" duration="858000" />
     </task>
     <task id="LOCAL-00286" summary="Some changes.">
       <created>1563966944183</created>
@@ -727,7 +720,14 @@
       <option name="project" value="LOCAL" />
       <updated>1565813024528</updated>
     </task>
-    <option name="localTasksCounter" value="334" />
+    <task id="LOCAL-00334" summary="Some changes.">
+      <created>1565894502119</created>
+      <option name="number" value="00334" />
+      <option name="presentableId" value="LOCAL-00334" />
+      <option name="project" value="LOCAL" />
+      <updated>1565894502122</updated>
+    </task>
+    <option name="localTasksCounter" value="335" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
