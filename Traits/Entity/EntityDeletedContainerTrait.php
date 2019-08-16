@@ -40,5 +40,4 @@ trait EntityDeletedContainerTrait
     {
         return $this->getRevisionByDate($referenceDateTime)->getEMailDeleteConfirmationDateTime();
     }
-
 }

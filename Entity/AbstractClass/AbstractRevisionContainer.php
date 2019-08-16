@@ -50,10 +50,11 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
         $this->activeRevision = $activeRevision;
     }
 
+    /** @noinspection MethodShouldBeFinalInspection */
     /**
      * Automatically set revision/version which is actual/active now.
      */
-    final public function updateActiveRevision(): void
+    public function updateActiveRevision(): void
     {
         try {
             $lastRevision = $this->getRevision();
