@@ -6,6 +6,7 @@ use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\ExistsFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Zakjakub\OswisCoreBundle\Entity\AbstractClass\AbstractAppUser;
@@ -66,6 +67,7 @@ use Zakjakub\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
  *     "city"
  * })
  * @ApiFilter(ExistsFilter::class, properties={"active", "deleted"})
+ * @ApiFilter(DateFilter::class, properties={"createdDateTime", "updatedDateTime", "startDateTime", "endDateTime"})
  * @Searchable({
  *     "id",
  *     "username",
