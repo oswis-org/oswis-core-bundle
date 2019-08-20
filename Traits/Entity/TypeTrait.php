@@ -19,6 +19,29 @@ trait TypeTrait
     private $type;
 
     /**
+     * @param string|null $typeName
+     *
+     * @return bool
+     * @throws InvalidArgumentException
+     */
+    public static function checkType(?string $typeName): bool
+    {
+        if (!$typeName || '' === $typeName || in_array($typeName, self::getAllowedTypes(), true)) {
+            return true;
+        }
+        throw new InvalidArgumentException('Typ "'.$typeName.'" v události není povolen.');
+    }
+
+    final public static function getAllowedTypes(): array
+    {
+        return array_merge(self::getAllowedTypesDefault(), self::getAllowedTypesCustom());
+    }
+
+    abstract public static function getAllowedTypesDefault(): array;
+
+    abstract public static function getAllowedTypesCustom(): array;
+
+    /**
      * @return string|null
      */
     final public function getType(): ?string
@@ -43,27 +66,4 @@ trait TypeTrait
         self::checkType($type);
         $this->type = $type;
     }
-
-    /**
-     * @param string|null $typeName
-     *
-     * @return bool
-     * @throws InvalidArgumentException
-     */
-    public static function checkType(?string $typeName): bool
-    {
-        if (!$typeName || '' === $typeName || in_array($typeName, self::getAllowedTypes(), true)) {
-            return true;
-        }
-        throw new InvalidArgumentException('Typ "'.$typeName.'" v události není povolen.');
-    }
-
-    final public static function getAllowedTypes(): array
-    {
-        return array_merge(self::getAllowedTypesDefault(), self::getAllowedTypesCustom());
-    }
-
-    abstract public static function getAllowedTypesDefault(): array;
-
-    abstract public static function getAllowedTypesCustom(): array;
 }

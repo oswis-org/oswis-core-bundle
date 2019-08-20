@@ -29,6 +29,13 @@ abstract class AbstractImageAction
         $this->factory = $factory;
     }
 
+    abstract public static function getImageNewInstance(): AbstractImage;
+
+    /**
+     * @return string
+     */
+    abstract public static function getImageClassName(): string;
+
     /**
      * @param Request $request
      *
@@ -52,11 +59,4 @@ abstract class AbstractImageAction
         }
         throw new ValidationException($this->validator->validate($mediaObject)); // This will be handled by API Platform and returns a validation error.
     }
-
-    abstract public static function getImageNewInstance(): AbstractImage;
-
-    /**
-     * @return string
-     */
-    abstract public static function getImageClassName(): string;
 }

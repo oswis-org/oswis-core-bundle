@@ -30,12 +30,29 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
     protected $activeRevision;
 
     /**
+     * Class name of revisions/versions stored in this container.
+     * @return string
+     */
+    abstract public static function getRevisionClassName(): string;
+
+    /**
+     * Check validity of some revision/version (ie. for use before adding revision).
+     *
+     * @param AbstractRevision|null $revision
+     */
+    abstract public static function checkRevision(?AbstractRevision $revision): void;
+
+    /** @noinspection MethodShouldBeFinalInspection */
+
+    /**
      * Revision/version which is actual/active now.
      * @return AbstractRevision|null
      */
     final public function getActiveRevision(): ?AbstractRevision
     {
-        $this->updateActiveRevision();
+        if (!$this->activeRevision) {
+            $this->updateActiveRevision();
+        }
 
         return $this->activeRevision;
     }
@@ -50,7 +67,6 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
         $this->activeRevision = $activeRevision;
     }
 
-    /** @noinspection MethodShouldBeFinalInspection */
     /**
      * Automatically set revision/version which is actual/active now.
      */
@@ -126,19 +142,6 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
     }
 
     /**
-     * Class name of revisions/versions stored in this container.
-     * @return string
-     */
-    abstract public static function getRevisionClassName(): string;
-
-    /**
-     * Check validity of some revision/version (ie. for use before adding revision).
-     *
-     * @param AbstractRevision|null $revision
-     */
-    abstract public static function checkRevision(?AbstractRevision $revision): void;
-
-    /**
      * Add some revision/version to this container.
      *
      * @param AbstractRevision|null $revision
@@ -153,7 +156,7 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
             $this->revisions->add($revision);
             $revision->setContainer($this);
         }
-        $this->updateActiveRevision();
+        $this->setActiveRevision($revision);
     }
 
     /**
@@ -170,7 +173,9 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
         if ($this->revisions->removeElement($revision)) {
             $revision->setContainer(null);
         }
-        $this->updateActiveRevision();
+        if ($revision === $this->getActiveRevision()) {
+            $this->updateActiveRevision();
+        }
     }
 
     /**
