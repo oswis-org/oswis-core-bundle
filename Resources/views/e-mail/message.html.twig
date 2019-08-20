@@ -1,5 +1,5 @@
 {% set base_url = 'https://oswis.org' %}
-{% set f = informal is defined and informal ? false : true %}
+{% set f = f is defined ? f : true %}
 {% set salName = salutationName is defined and salutationName ? salutationName : '' %}
 {% set logo_src = logo is defined and logo ? logo : absolute_url(asset('@ZakjakubOswisCoreBundle/Resources/public/logo.png')) %}
 

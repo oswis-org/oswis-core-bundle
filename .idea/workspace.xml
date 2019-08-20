@@ -6,7 +6,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractRevisionContainer.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractRevisionContainer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EventListener/MailerListener.php" beforeDir="false" afterPath="$PROJECT_DIR$/EventListener/MailerListener.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/views/e-mail/foundation-emails.css.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/e-mail/foundation-emails.css.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/views/e-mail/message.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/e-mail/message.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -385,14 +388,8 @@
       <workItem from="1565963059036" duration="598000" />
       <workItem from="1565966080755" duration="100000" />
       <workItem from="1566039742390" duration="2405000" />
-      <workItem from="1566241648962" duration="2154000" />
-    </task>
-    <task id="LOCAL-00290" summary="Some changes.">
-      <created>1564139905089</created>
-      <option name="number" value="00290" />
-      <option name="presentableId" value="LOCAL-00290" />
-      <option name="project" value="LOCAL" />
-      <updated>1564139905090</updated>
+      <workItem from="1566241648962" duration="2201000" />
+      <workItem from="1566290986185" duration="1695000" />
     </task>
     <task id="LOCAL-00291" summary="Some changes.">
       <created>1564141126355</created>
@@ -730,7 +727,14 @@
       <option name="project" value="LOCAL" />
       <updated>1566288106506</updated>
     </task>
-    <option name="localTasksCounter" value="339" />
+    <task id="LOCAL-00339" summary="Some changes.">
+      <created>1566288162927</created>
+      <option name="number" value="00339" />
+      <option name="presentableId" value="LOCAL-00339" />
+      <option name="project" value="LOCAL" />
+      <updated>1566288162927</updated>
+    </task>
+    <option name="localTasksCounter" value="340" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

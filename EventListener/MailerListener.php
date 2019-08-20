@@ -35,9 +35,6 @@ class MailerListener implements EventSubscriberInterface
             return;
         }
 
-        /** @noinspection ForgottenDebugOutputInspection */
-        error_log('in listener');
-
         if (!$message->getFrom() && $oswisCoreSettings->getEmail()['address']) {
             $message->from(
                 new NamedAddress(
