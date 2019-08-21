@@ -33,8 +33,7 @@ abstract class AbstractAppUser implements UserInterface, Serializable, Equatable
      *
      */
     final public function unserialize(
-        /** @noinspection MissingParameterTypeDeclarationInspection */
-        $serialized
+        /** @noinspection MissingParameterTypeDeclarationInspection */ $serialized
     ): void {
         [
             $this->id,
@@ -55,9 +54,7 @@ abstract class AbstractAppUser implements UserInterface, Serializable, Equatable
         if (!$user || !($user instanceof self)) {
             return false;
         }
-
-        if ($this->id !== $user->getId() || $this->username !== $user->getUsername()
-            || $this->email !== $user->getEmail() || $this->password !== $user->getPassword()) {
+        if ($this->id !== $user->getId() || $this->username !== $user->getUsername() || $this->email !== $user->getEmail() || $this->password !== $user->getPassword()) {
             return false;
         }
 

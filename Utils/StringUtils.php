@@ -312,7 +312,6 @@ class StringUtils
         if ($length > 1) {
             $str .= self::randomString($from, $to, --$length);
         }
-
         try {
             return $str.chr(random_int(ord($from), ord($to)));
         } catch (Exception $e) {

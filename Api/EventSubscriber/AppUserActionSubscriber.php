@@ -79,11 +79,9 @@ final class AppUserActionSubscriber implements EventSubscriberInterface
     {
         $out = null;
         $request = $event->getRequest();
-
         if ('api_app_user_action_requests_post_collection' !== $request->attributes->get('_route')) {
             return;
         }
-
         $controllerResult = $event->getControllerResult();
         $uid = $controllerResult->uid ?? null;
         $username = $controllerResult->username ?? null;
@@ -91,7 +89,6 @@ final class AppUserActionSubscriber implements EventSubscriberInterface
         $token = $controllerResult->token ?? null;
         $password = $controllerResult->password ?? null;
         $appUser = $controllerResult->appUser ?? null;
-
         $em = $this->em;
         try {
             $appUserRepository = $em->getRepository(AppUser::class);
@@ -108,18 +105,15 @@ final class AppUserActionSubscriber implements EventSubscriberInterface
         } catch (OswisUserNotUniqueException $e) {
             $appUser = null;
         }
-
         if (!$appUser) {
             throw new OswisUserNotFoundException();
         }
         assert($appUser instanceof AppUser);
-
         if (in_array($type, AppUserManager::ALLOWED_TYPES, true)) {
             $this->appUserManager->appUserAction($appUser, $type, $password, $token);
         } else {
             throw new OswisNotImplementedException($type, 'u uživatelských účtů');
         }
-
         $data = [];
         $event->setResponse(new JsonResponse($data, 201));
     }

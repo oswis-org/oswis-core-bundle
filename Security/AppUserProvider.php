@@ -50,11 +50,9 @@ class AppUserProvider implements UserProviderInterface
      * @throws OswisUserNotUniqueException
      */
     final public function loadUserByUsername(
-        /** @noinspection MissingParameterTypeDeclarationInspection */
-        $username
+        /** @noinspection MissingParameterTypeDeclarationInspection */ $username
     ): ?AppUser {
         $user = $this->userRepository->loadUserByUsername($username);
-
         if (!$user) {
             throw new UsernameNotFoundException(sprintf('Username "%s" does not exist.', $username));
         }
@@ -64,8 +62,7 @@ class AppUserProvider implements UserProviderInterface
     }
 
     final public function supportsClass(
-        /** @noinspection MissingParameterTypeDeclarationInspection */
-        $class
+        /** @noinspection MissingParameterTypeDeclarationInspection */ $class
     ): bool {
         return AppUser::class === $class;
     }

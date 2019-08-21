@@ -26,7 +26,6 @@ final class SearchAnnotation
         if (!isset($data['value']) || !is_array($data['value'])) {
             throw new AnnotationException('Options must be a array of strings.');
         }
-
         foreach ($data['value'] as $key => $value) {
             if (is_string($value)) {
                 $this->fields[] = $value;

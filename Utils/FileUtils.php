@@ -12,7 +12,6 @@ class FileUtils
     final public static function humanReadableBytes(int $bytes, int $decimals = 2, string $system = 'binary'): string
     {
         $mod = ($system === 'binary') ? 1024 : 1000;
-
         $units = array(
             'binary' => array(
                 'B',
@@ -37,7 +36,6 @@ class FileUtils
                 'YB',
             ),
         );
-
         $factor = floor((strlen($bytes) - 1) / 3);
 
         return sprintf("%.{$decimals}f %s", $bytes / ($mod ** $factor), $units[$system][$factor]);
@@ -46,14 +44,12 @@ class FileUtils
     final public static function fileUploadMaxSize(): int
     {
         static $max_size = -1;
-
         if ($max_size < 0) {
             // Start with post_max_size.
             $post_max_size = self::parseSize(ini_get('post_max_size'));
             if ($post_max_size > 0) {
                 $max_size = $post_max_size;
             }
-
             $upload_max = self::parseSize(ini_get('upload_max_filesize'));
             if ($upload_max > 0 && $upload_max < $max_size) {
                 $max_size = $upload_max;

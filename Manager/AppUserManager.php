@@ -117,21 +117,17 @@ class AppUserManager
         $token = null;
         $appUserRoleRepo = $em->getRepository(AppUser::class);
         $appUser = $appUserRoleRepo->findOneBy(['email' => $email]);
-
         if (!$appUser) {
             $appUser = $appUserRoleRepo->findOneBy(['username' => $username]);
         }
-
         if ($appUser && !$errorWhenExist) {
             $this->logger->notice('Skipped existing user '.$appUser->getUsername().' '.$appUser->getEmail().'.');
 
             return $appUser;
         }
-
         if ($appUser && $errorWhenExist) {
             throw new OswisUserNotUniqueException('User '.$appUser->getUsername().' already exist.');
         }
-
         $appUser = new AppUser($fullName, $username, $email, null, null);
         $appUser->setAppUserType($appUserType);
         if ($activate) {
@@ -253,9 +249,7 @@ class AppUserManager
             if (!$appUser) {
                 throw new InvalidArgumentException('Uživatel nenalezen.');
             }
-
             $title = null;
-
             if (self::PASSWORD_CHANGE === $type) { // Send e-mail about password change. Include password if present (it means that it's generated randomly).
                 $title = 'Heslo změněno';
                 $token = null;
@@ -265,7 +259,6 @@ class AppUserManager
             } else {
                 throw new OswisNotImplementedException($type, 'u změny hesla');
             }
-
             $data = array(
                 'type'     => $type,
                 'appUser'  => $appUser,
@@ -274,17 +267,11 @@ class AppUserManager
                 'logo'     => 'cid:logo',
                 'oswis'    => $this->oswisCoreSettings,
             );
-
-            $email = (new TemplatedEmail())
-                ->to(
-                    new NamedAddress(
-                        $appUser->getEmail() ?? '',
-                        EmailUtils::mime_header_encode($appUser->getFullName() ?? $appUser->getUsername() ?? '')
-                    )
+            $email = (new TemplatedEmail())->to(
+                new NamedAddress(
+                    $appUser->getEmail() ?? '', EmailUtils::mime_header_encode($appUser->getFullName() ?? $appUser->getUsername() ?? '')
                 )
-                ->subject(EmailUtils::mime_header_encode($title))
-                ->htmlTemplate('@ZakjakubOswisCore/e-mail/password.html.twig')
-                ->context($data);
+            )->subject(EmailUtils::mime_header_encode($title))->htmlTemplate('@ZakjakubOswisCore/e-mail/password.html.twig')->context($data);
             $this->mailer->send($email);
         } catch (Exception $e) {
             $this->logger->error($e->getMessage());
@@ -311,7 +298,6 @@ class AppUserManager
             if (!$appUser) {
                 throw new ErrorException('Uživatel nenalezen.');
             }
-
             if (self::ACTIVATION_REQUEST === $type) { // Send e-mail about activation request. Include token for activation.
                 $title = 'Aktivace uživatelského účtu';
             } elseif (self::ACTIVATION === $type) {
@@ -320,7 +306,6 @@ class AppUserManager
             } else {
                 throw new InvalidArgumentException('Akce "'.$type.'" není u uživatelských účtů implementována.');
             }
-
             $data = array(
                 'appUser'  => $appUser,
                 'type'     => $type,
@@ -329,18 +314,10 @@ class AppUserManager
                 'logo'     => 'cid_logo',
                 'oswis'    => $this->oswisCoreSettings,
             );
-
             $receiverAddress = new NamedAddress(
-                $appUser->getEmail() ?? '',
-                EmailUtils::mime_header_encode($appUser->getFullName() ?? $appUser->getUsername() ?? '')
+                $appUser->getEmail() ?? '', EmailUtils::mime_header_encode($appUser->getFullName() ?? $appUser->getUsername() ?? '')
             );
-
-            $email = (new TemplatedEmail())
-                ->to($receiverAddress)
-                ->subject(EmailUtils::mime_header_encode($title))
-                ->htmlTemplate('@ZakjakubOswisCore/e-mail/app-user.html.twig')
-                ->context($data);
-
+            $email = (new TemplatedEmail())->to($receiverAddress)->subject(EmailUtils::mime_header_encode($title))->htmlTemplate('@ZakjakubOswisCore/e-mail/app-user.html.twig')->context($data);
             $this->mailer->send($email);
         } catch (Exception $e) {
             throw new ErrorException('Problém s odesláním zprávy o změně účtu:  '.$e->getMessage());

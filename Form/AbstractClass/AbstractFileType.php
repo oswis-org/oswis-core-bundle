@@ -15,7 +15,6 @@ abstract class AbstractFileType extends AbstractType
     {
         $maxSize = FileUtils::humanReadableFileUploadMaxSize();
         $maxSize = $maxSize ? ' (max. '.$maxSize.')' : '';
-
         $builder->add(
             'file',
             VichFileType::class,
@@ -52,7 +51,6 @@ abstract class AbstractFileType extends AbstractType
     abstract public static function getFileClassName(): string;
 
     /** @noinspection MethodShouldBeFinalInspection */
-
     public function getBlockPrefix(): string
     {
         return 'oswis_core_abstract_file';

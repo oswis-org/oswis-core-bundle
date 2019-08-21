@@ -81,22 +81,20 @@ class PdfGenerator
         string $footerTemplate = self::DEFAULT_FOOTER_TEMPLATE
     ): string {
         $format .= $landscape ? '-L' : null;
-
         $context = array(
             'title'    => $title,
             'dateTime' => new DateTime(),
             'oswis'    => $this->oswisCoreSettings,
             'data'     => $data,
         );
-
-        $mPdf = new Mpdf(['format' => $format, 'mode' => 'utf-8']);
+        $mPdf = new Mpdf(['format' => $format, 'mode' => 'utf-8', 'logger' => $this->logger]);
         $mPdf->SetTitle($title);
         $mPdf->SetSubject($title);
         $mPdf->SetAuthor($this->oswisCoreSettings->getApp()['name']);
         $mPdf->SetCreator($this->oswisCoreSettings->getCoreAppName());
-        $mPdf->setLogger($this->logger);
         $mPdf->h2toc = array('H1' => 0, 'H2' => 1, 'H3' => 2, 'H4' => 3, 'H5' => 4, 'H6' => 5);
         $mPdf->showImageErrors = true;
+        $mPdf->useSubstitutions = true;
         $mPdf->SetHTMLHeader($this->templating->render($headerTemplate, $context));
         $mPdf->SetHTMLFooter($this->templating->render($footerTemplate, $context));
         $mPdf->WriteHTML($this->templating->render($template, $context));

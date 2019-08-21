@@ -29,16 +29,13 @@ class MailerListener implements EventSubscriberInterface
     {
         $message = $event->getMessage();
         $oswisCoreSettings = $this->oswisCoreSettings;
-
         if (!$message instanceof Email) {
             return;
         }
-
         if (!$message->getFrom() && $oswisCoreSettings->getEmail()['address']) {
             $message->from(
                 new NamedAddress(
-                    $oswisCoreSettings->getEmail()['address'] ?? null,
-                    EmailUtils::mime_header_encode($oswisCoreSettings->getEmail()['name'] ?? null)
+                    $oswisCoreSettings->getEmail()['address'] ?? null, EmailUtils::mime_header_encode($oswisCoreSettings->getEmail()['name'] ?? null)
                 )
             );
         }

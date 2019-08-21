@@ -1,5 +1,4 @@
 <?php
-
 /** @noinspection UnknownInspectionInspection */
 /** @noinspection RequiredAttributes */
 /** @noinspection HtmlRequiredAltAttribute */

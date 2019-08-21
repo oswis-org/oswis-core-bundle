@@ -124,16 +124,13 @@ class EmailSender
                 $this->templating->render($templateName.'.html.twig', $args),
                 'text/html'
             );
-
             $message->addPart(
                 $this->templating->render($templateName.'.txt.twig', $args),
                 'text/plain'
             );
-
             if ($this->mailer->send($message)) {
                 return;
             }
-
             throw new ErrorException('Problém s odesláním zprávy.');
         } catch (Exception $e) {
             $this->logger->error($e->getMessage());

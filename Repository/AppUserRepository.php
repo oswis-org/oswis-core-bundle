@@ -25,17 +25,16 @@ class AppUserRepository extends EntityRepository implements UserLoaderInterface
      * @throws OswisUserNotUniqueException
      */
     final public function loadUserByUsername(
-        /** @noinspection MissingParameterTypeDeclarationInspection */
-        $username
+        /** @noinspection MissingParameterTypeDeclarationInspection */ $username
     ): ?AppUser {
         if (!$username) {
             return null;
         }
         try {
-            $appUser = $this->createQueryBuilder('u')
-                ->where('(u.username = :username OR u.email = :email) AND (u.deleted IS NULL OR u.deleted = false)')
-                ->setParameter('username', $username)->setParameter('email', $username)
-                ->getQuery()->getOneOrNullResult(Query::HYDRATE_OBJECT);
+            $appUser = $this->createQueryBuilder('u')->where('(u.username = :username OR u.email = :email) AND (u.deleted IS NULL OR u.deleted = false)')->setParameter(
+                'username',
+                $username
+            )->setParameter('email', $username)->getQuery()->getOneOrNullResult(Query::HYDRATE_OBJECT);
         } catch (NonUniqueResultException $e) {
             throw new OswisUserNotUniqueException();
         }
@@ -59,9 +58,9 @@ class AppUserRepository extends EntityRepository implements UserLoaderInterface
             return null;
         }
         try {
-            $appUser = $this->createQueryBuilder('u')
-                ->where('(u.id = :id) AND (u.deleted IS NULL OR u.deleted = false)')->setParameter('id', $id)
-                ->getQuery()->getOneOrNullResult(Query::HYDRATE_OBJECT);
+            $appUser = $this->createQueryBuilder('u')->where('(u.id = :id) AND (u.deleted IS NULL OR u.deleted = false)')->setParameter('id', $id)->getQuery()->getOneOrNullResult(
+                Query::HYDRATE_OBJECT
+            );
         } catch (NonUniqueResultException $e) {
             throw new OswisUserNotUniqueException();
         }
@@ -76,9 +75,7 @@ class AppUserRepository extends EntityRepository implements UserLoaderInterface
     final public function findByEmail(string $email): Collection
     {
         return new ArrayCollection(
-            $this->createQueryBuilder('app_user')
-                ->where('app_user.email = :email')->setParameter('email', $email)
-                ->getQuery()->getResult(Query::HYDRATE_OBJECT)
+            $this->createQueryBuilder('app_user')->where('app_user.email = :email')->setParameter('email', $email)->getQuery()->getResult(Query::HYDRATE_OBJECT)
         );
     }
 }

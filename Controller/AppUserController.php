@@ -49,11 +49,7 @@ class AppUserController extends AbstractController
                     ]
                 );
             }
-
-            $appUser = $this->getDoctrine()
-                ->getRepository(AppUser::class)
-                ->findOneBy(['accountActivationRequestToken' => $token]);
-
+            $appUser = $this->getDoctrine()->getRepository(AppUser::class)->findOneBy(['accountActivationRequestToken' => $token]);
             if (!$appUser) {
                 return $this->render(
                     '@ZakjakubOswisCore/web/pages/message.html.twig',
@@ -65,7 +61,6 @@ class AppUserController extends AbstractController
                     ]
                 );
             }
-
             assert($appUser instanceof AppUser);
             $appUserManager = new AppUserManager($encoder, $em, $logger, $newMailer, $oswisCoreSettings);
             $appUserManager->appUserAction($appUser, 'activation', null, $token);

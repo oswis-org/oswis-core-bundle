@@ -15,7 +15,6 @@ abstract class AbstractImageType extends AbstractType
     {
         $maxSize = FileUtils::humanReadableFileUploadMaxSize();
         $maxSize = $maxSize ? ' (max. '.$maxSize.')' : '';
-
         $builder->add(
             'file',
             VichImageType::class,
@@ -52,7 +51,6 @@ abstract class AbstractImageType extends AbstractType
     abstract public static function getImageClassName(): string;
 
     /** @noinspection MethodShouldBeFinalInspection */
-
     public function getBlockPrefix(): string
     {
         return 'oswis_core_abstract_image';

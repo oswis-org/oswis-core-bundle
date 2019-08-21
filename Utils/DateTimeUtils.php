@@ -100,7 +100,6 @@ class DateTimeUtils
         $publicHolidays[12][24] = 'Štědrý den';
         $publicHolidays[12][25] = '1. svátek vánoční';
         $publicHolidays[12][26] = '2. svátek vánoční';
-
         $easter = self::getEaster($dateTime);
         if ($easter) {
             return $easter;

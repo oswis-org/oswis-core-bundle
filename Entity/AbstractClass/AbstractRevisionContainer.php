@@ -55,7 +55,6 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
     abstract public static function checkRevision(?AbstractRevision $revision): void;
 
     /** @noinspection MethodShouldBeFinalInspection */
-
     /**
      * Remove some revision/version from this container.
      *
@@ -89,7 +88,6 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
     }
 
     /** @noinspection MethodShouldBeFinalInspection */
-
     /**
      * Set revision/version which is actual/active now.
      *
@@ -128,14 +126,11 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
         if (!$dateTime && $this->activeRevision) {
             return $this->activeRevision;
         }
-
         $revisions = $this->getRevisionsOlderThanDateTime($dateTime);
         if (!$revisions || !$revisions[0]) {
             throw new RevisionMissingException((static::getRevisionClassName() ?? 'Revision class').' not found.');
         }
-
         static::checkRevision($revisions[0]);
-
         if (!$dateTime && !$this->activeRevision) {
             $this->activeRevision = $revisions[0];
         }

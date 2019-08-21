@@ -31,7 +31,6 @@ final class SearchFilter extends AbstractContextAwareFilter
             new ReflectionClass(new $resourceClass),
             SearchAnnotation::class
         );
-
         /** @noinspection NullPointerExceptionInspection */
         $description['search'] = [
             'property' => 'search',
@@ -57,8 +56,7 @@ final class SearchFilter extends AbstractContextAwareFilter
      */
     public function filterProperty(
         string $property,
-        /** @noinspection MissingParameterTypeDeclarationInspection */
-        $value,
+        /** @noinspection MissingParameterTypeDeclarationInspection */ $value,
         QueryBuilder $queryBuilder,
         QueryNameGeneratorInterface $queryNameGenerator,
         string $resourceClass,
@@ -69,21 +67,17 @@ final class SearchFilter extends AbstractContextAwareFilter
         } else {
             return;
         }
-
         $reader = new AnnotationReader();
         $annotation = $reader->getClassAnnotation(
             new ReflectionClass(new $resourceClass),
             SearchAnnotation::class
         );
-
         if (!$annotation) {
             throw new HttpInvalidParamException('No Search implemented.');
         }
-
         $parameterName = $queryNameGenerator->generateParameterName($property);
         $search = [];
         $mappedJoins = [];
-
         foreach ($annotation->fields as $field) {
             $joins = explode('.', $field);
             /** @noinspection ForeachInvariantsInspection */
@@ -100,11 +94,9 @@ final class SearchFilter extends AbstractContextAwareFilter
                         $mappedJoins[] = $join;
                     }
                 }
-
                 $lastAlias = $currentAliasRenamed;
             }
         }
-
         $queryBuilder->andWhere(implode(' OR ', $search));
         $queryBuilder->setParameter($parameterName, '%'.$value.'%');
         // \error_log('DQL: ' . $queryBuilder->getDQL());

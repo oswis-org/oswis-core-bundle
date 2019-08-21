@@ -86,8 +86,7 @@ trait FullNameTrait
      */
     final public function getFullName(): string
     {
-        $fullName = $this->getHonorificPrefix().' '.$this->getGivenName().' '.$this->getAdditionalName()
-            .' '.$this->getFamilyName().' '.$this->getHonorificSuffix();
+        $fullName = $this->getHonorificPrefix().' '.$this->getGivenName().' '.$this->getAdditionalName().' '.$this->getFamilyName().' '.$this->getHonorificSuffix();
         $fullName = trim($fullName);
         $fullName = preg_replace('!\s+!', ' ', $fullName);
 
