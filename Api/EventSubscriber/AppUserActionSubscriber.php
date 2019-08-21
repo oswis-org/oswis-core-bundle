@@ -97,7 +97,16 @@ final class AppUserActionSubscriber implements EventSubscriberInterface
             $appUserRepository = $em->getRepository(AppUser::class);
             $appUser = $appUser ?? $appUserRepository->loadUserById($uid);
             $appUser = $appUser ?? $appUserRepository->loadUserByUsername($username);
+            if (!$appUser && $token) {
+                $appUserByToken = $this->em->getRepository(AppUser::class)->findOneBy(['passwordResetRequestToken' => $token]);
+                $appUser = $appUserByToken && $appUserByToken->checkPasswordResetRequestToken($token) ? $appUserByToken : null;
+            }
+            if (!$appUser && $token) {
+                $appUserByToken = $this->em->getRepository(AppUser::class)->findOneBy(['accountActivationRequestToken' => $token]);
+                $appUser = $appUserByToken && $appUserByToken->checkAccountActivationRequestToken($token) ? $appUserByToken : null;
+            }
         } catch (OswisUserNotUniqueException $e) {
+            $appUser = null;
         }
 
         if (!$appUser) {
