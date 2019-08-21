@@ -9,7 +9,6 @@ use Symfony\Component\Mime\Email;
 use Symfony\Component\Mime\NamedAddress;
 use Zakjakub\OswisCoreBundle\Provider\OswisCoreSettingsProvider;
 use Zakjakub\OswisCoreBundle\Utils\EmailUtils;
-use function error_log;
 
 class MailerListener implements EventSubscriberInterface
 {

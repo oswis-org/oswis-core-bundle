@@ -206,6 +206,21 @@ services:
 
 
 
+    zakjakub_oswis_core.pdf_generator:
+        class: Zakjakub\OswisCoreBundle\Service\PdfGenerator
+        autowire: true
+        public: true
+        arguments:
+            - '@monolog.logger'
+            - '@twig'
+            - '@zakjakub_oswis_core.oswis_core_settings_provider'
+
+    Zakjakub\OswisCoreBundle\Service\PdfGenerator:
+        alias: zakjakub_oswis_core.pdf_generator
+        public: true
+
+
+
     Zakjakub\OswisCoreBundle\Manager\:
         resource: '../../Manager/*'
         public: true

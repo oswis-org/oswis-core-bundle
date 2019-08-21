@@ -4,9 +4,9 @@ namespace Zakjakub\OswisCoreBundle\Entity;
 
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\ExistsFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
-use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Zakjakub\OswisCoreBundle\Entity\AbstractClass\AbstractAppUser;
