@@ -64,7 +64,7 @@ trait DeletedTrait
         if (!$this->deleted) {
             return null;
         }
-        $ago = $this->deleted->diff(date_create());
+        $ago = (int)$this->deleted->diff(date_create())->days;
 
         return $decimal ? $ago : floor($ago);
     }

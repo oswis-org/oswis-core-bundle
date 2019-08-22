@@ -47,8 +47,12 @@ class AgeUtils
      * @return int
      * @throws Exception
      */
-    public static function getAgeFromBirthDate(DateTime $birthDate, DateTime $referenceDateTime = null): int
+    public static function getAgeFromBirthDate(?DateTime $birthDate, DateTime $referenceDateTime = null): ?int
     {
+        if (!$birthDate) {
+            return null;
+        }
+
         return floor(self::getAgeDecimalFromBirthDate($birthDate, $referenceDateTime));
     }
 
@@ -59,8 +63,11 @@ class AgeUtils
      * @return int
      * @throws Exception
      */
-    public static function getAgeDecimalFromBirthDate(DateTime $birthDate, ?DateTime $referenceDateTime = null): int
+    public static function getAgeDecimalFromBirthDate(?DateTime $birthDate, ?DateTime $referenceDateTime = null): ?int
     {
+        if (!$birthDate) {
+            return null;
+        }
         $referenceDateTime = $referenceDateTime ?? new DateTime();
         $referenceDateTime->setTime(0, 0);
         $birthDate->setTime(0, 0);
