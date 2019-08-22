@@ -26,7 +26,7 @@ trait ValueTrait
     /**
      * @return string
      */
-    final public function getValueRegex(): string
+    final public function getValueRegex(): ?string
     {
         return $this->valueRegex;
     }

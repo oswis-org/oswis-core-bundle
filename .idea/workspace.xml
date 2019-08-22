@@ -7,6 +7,7 @@
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/ValueTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/ValueTrait.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -392,14 +393,8 @@
       <workItem from="1566419620946" duration="1050000" />
       <workItem from="1566479578197" duration="657000" />
       <workItem from="1566480816746" duration="88000" />
-      <workItem from="1566483412805" duration="2238000" />
-    </task>
-    <task id="LOCAL-00296" summary="Some changes.">
-      <created>1564303754780</created>
-      <option name="number" value="00296" />
-      <option name="presentableId" value="LOCAL-00296" />
-      <option name="project" value="LOCAL" />
-      <updated>1564303754782</updated>
+      <workItem from="1566483412805" duration="2415000" />
+      <workItem from="1566502154114" duration="31000" />
     </task>
     <task id="LOCAL-00297" summary="Some changes.">
       <created>1564311995783</created>
@@ -737,7 +732,14 @@
       <option name="project" value="LOCAL" />
       <updated>1566484098320</updated>
     </task>
-    <option name="localTasksCounter" value="345" />
+    <task id="LOCAL-00345" summary="Some changes.">
+      <created>1566486856767</created>
+      <option name="number" value="00345" />
+      <option name="presentableId" value="LOCAL-00345" />
+      <option name="project" value="LOCAL" />
+      <updated>1566486856768</updated>
+    </task>
+    <option name="localTasksCounter" value="346" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
