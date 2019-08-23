@@ -5,7 +5,10 @@
     <option name="CUSTOM_SCOPE_NAME" value="Project Files" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="" />
+    <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -392,13 +395,7 @@
       <workItem from="1566480816746" duration="88000" />
       <workItem from="1566483412805" duration="2415000" />
       <workItem from="1566502154114" duration="664000" />
-    </task>
-    <task id="LOCAL-00298" summary="Some changes.">
-      <created>1564312825482</created>
-      <option name="number" value="00298" />
-      <option name="presentableId" value="LOCAL-00298" />
-      <option name="project" value="LOCAL" />
-      <updated>1564312825482</updated>
+      <workItem from="1566563407961" duration="223000" />
     </task>
     <task id="LOCAL-00299" summary="Some changes.">
       <created>1564318979041</created>
@@ -736,7 +733,14 @@
       <option name="project" value="LOCAL" />
       <updated>1566502193628</updated>
     </task>
-    <option name="localTasksCounter" value="347" />
+    <task id="LOCAL-00347" summary="Reformated code.">
+      <created>1566563527539</created>
+      <option name="number" value="00347" />
+      <option name="presentableId" value="LOCAL-00347" />
+      <option name="project" value="LOCAL" />
+      <updated>1566563527540</updated>
+    </task>
+    <option name="localTasksCounter" value="348" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -797,6 +801,7 @@
     <MESSAGE value="Added ValueTrait and ValueContainerTrait." />
     <MESSAGE value="Added DepositValueTrait." />
     <MESSAGE value="Some changes." />
-    <option name="LAST_COMMIT_MESSAGE" value="Some changes." />
+    <MESSAGE value="Reformated code." />
+    <option name="LAST_COMMIT_MESSAGE" value="Reformated code." />
   </component>
 </project>
