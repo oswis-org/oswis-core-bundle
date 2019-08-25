@@ -7,7 +7,12 @@
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractRevisionContainer.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractRevisionContainer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AppUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUser.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AppUserFlag.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUserFlag.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AppUserFlagConnection.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUserFlagConnection.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AppUserRole.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUserRole.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AppUserType.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUserType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/ClientLogRecord.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/ClientLogRecord.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -397,14 +402,9 @@
       <workItem from="1566502154114" duration="664000" />
       <workItem from="1566563407961" duration="393000" />
       <workItem from="1566677342451" duration="897000" />
-      <workItem from="1566740707301" duration="663000" />
-    </task>
-    <task id="LOCAL-00301" summary="Some changes.">
-      <created>1564587260368</created>
-      <option name="number" value="00301" />
-      <option name="presentableId" value="LOCAL-00301" />
-      <option name="project" value="LOCAL" />
-      <updated>1564587260368</updated>
+      <workItem from="1566740707301" duration="2080000" />
+      <workItem from="1566755157852" duration="2000" />
+      <workItem from="1566757729892" duration="84000" />
     </task>
     <task id="LOCAL-00302" summary="Some changes.">
       <created>1564851509016</created>
@@ -742,7 +742,14 @@
       <option name="project" value="LOCAL" />
       <updated>1566563768059</updated>
     </task>
-    <option name="localTasksCounter" value="350" />
+    <task id="LOCAL-00350" summary="Reformat of code. Fixed return of revision from revision container.">
+      <created>1566742793882</created>
+      <option name="number" value="00350" />
+      <option name="presentableId" value="LOCAL-00350" />
+      <option name="project" value="LOCAL" />
+      <updated>1566742793883</updated>
+    </task>
+    <option name="localTasksCounter" value="351" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -779,7 +786,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Fixed namespaces in serialization config files." />
     <MESSAGE value="Removed serialization." />
     <MESSAGE value="Removed alias." />
     <MESSAGE value="Removed code example." />
@@ -804,6 +810,7 @@
     <MESSAGE value="Reformated code." />
     <MESSAGE value="Updated dependency league/csv to 9.3." />
     <MESSAGE value="Reformat of code." />
-    <option name="LAST_COMMIT_MESSAGE" value="Reformat of code." />
+    <MESSAGE value="Reformat of code. Fixed return of revision from revision container." />
+    <option name="LAST_COMMIT_MESSAGE" value="Reformat of code. Fixed return of revision from revision container." />
   </component>
 </project>

@@ -87,6 +87,7 @@ use Zakjakub\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
  * })
  *
  * @author Jakub Zak <mail@jakubzak.eu>
+ * @Doctrine\ORM\Mapping\Cache(usage="NONSTRICT_READ_WRITE", region="core_app_user")
  */
 class AppUser extends AbstractAppUser
 {
