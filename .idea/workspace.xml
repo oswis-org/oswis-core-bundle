@@ -7,7 +7,7 @@
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractRevisionContainer.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractRevisionContainer.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -395,21 +395,9 @@
       <workItem from="1566480816746" duration="88000" />
       <workItem from="1566483412805" duration="2415000" />
       <workItem from="1566502154114" duration="664000" />
-      <workItem from="1566563407961" duration="223000" />
-    </task>
-    <task id="LOCAL-00299" summary="Some changes.">
-      <created>1564318979041</created>
-      <option name="number" value="00299" />
-      <option name="presentableId" value="LOCAL-00299" />
-      <option name="project" value="LOCAL" />
-      <updated>1564318979042</updated>
-    </task>
-    <task id="LOCAL-00300" summary="Some changes.">
-      <created>1564587174102</created>
-      <option name="number" value="00300" />
-      <option name="presentableId" value="LOCAL-00300" />
-      <option name="project" value="LOCAL" />
-      <updated>1564587174102</updated>
+      <workItem from="1566563407961" duration="393000" />
+      <workItem from="1566677342451" duration="897000" />
+      <workItem from="1566740707301" duration="663000" />
     </task>
     <task id="LOCAL-00301" summary="Some changes.">
       <created>1564587260368</created>
@@ -740,7 +728,21 @@
       <option name="project" value="LOCAL" />
       <updated>1566563527540</updated>
     </task>
-    <option name="localTasksCounter" value="348" />
+    <task id="LOCAL-00348" summary="Updated dependency league/csv to 9.3.">
+      <created>1566563696501</created>
+      <option name="number" value="00348" />
+      <option name="presentableId" value="LOCAL-00348" />
+      <option name="project" value="LOCAL" />
+      <updated>1566563696501</updated>
+    </task>
+    <task id="LOCAL-00349" summary="Reformat of code.">
+      <created>1566563768059</created>
+      <option name="number" value="00349" />
+      <option name="presentableId" value="LOCAL-00349" />
+      <option name="project" value="LOCAL" />
+      <updated>1566563768059</updated>
+    </task>
+    <option name="localTasksCounter" value="350" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -777,8 +779,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Initial commit." />
-    <MESSAGE value="Some minor changes." />
     <MESSAGE value="Fixed namespaces in serialization config files." />
     <MESSAGE value="Removed serialization." />
     <MESSAGE value="Removed alias." />
@@ -802,6 +802,8 @@
     <MESSAGE value="Added DepositValueTrait." />
     <MESSAGE value="Some changes." />
     <MESSAGE value="Reformated code." />
-    <option name="LAST_COMMIT_MESSAGE" value="Reformated code." />
+    <MESSAGE value="Updated dependency league/csv to 9.3." />
+    <MESSAGE value="Reformat of code." />
+    <option name="LAST_COMMIT_MESSAGE" value="Reformat of code." />
   </component>
 </project>
