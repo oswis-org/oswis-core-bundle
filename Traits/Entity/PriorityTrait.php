@@ -15,7 +15,7 @@ trait PriorityTrait
      *
      * @Doctrine\ORM\Mapping\Column(nullable=true, options={"default": 0})
      */
-    private $priority;
+    protected $priority;
 
     /**
      * Get priority

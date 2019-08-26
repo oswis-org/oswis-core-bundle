@@ -17,7 +17,7 @@ trait TaxRateTrait
      *
      * @Doctrine\ORM\Mapping\Column(nullable=true)
      */
-    private $taxRate;
+    protected $taxRate;
 
     /**
      * Get tax rate (in percents).

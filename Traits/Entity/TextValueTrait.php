@@ -15,7 +15,7 @@ trait TextValueTrait
      *
      * @Doctrine\ORM\Mapping\Column(type="text", nullable=true)
      */
-    private $textValue;
+    protected $textValue;
 
     /**
      * Get text value.

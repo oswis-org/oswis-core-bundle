@@ -12,7 +12,7 @@ trait DepositValueTrait
      *
      * @Doctrine\ORM\Mapping\Column(type="integer", nullable=false, options={"default": 0})
      */
-    private $depositValue;
+    protected $depositValue;
 
     /**
      * Get deposit value.
