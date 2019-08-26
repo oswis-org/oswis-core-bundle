@@ -7,13 +7,7 @@
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/ActiveTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/ActiveTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/DepositValueTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/DepositValueTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/NumericValueTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/NumericValueTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/PriorityTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/PriorityTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/TaxRateTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/TaxRateTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/TextValueTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/TextValueTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/TypeTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/TypeTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractPayment.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractPayment.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -407,14 +401,9 @@
       <workItem from="1566755157852" duration="2000" />
       <workItem from="1566757729892" duration="177000" />
       <workItem from="1566761890123" duration="1333000" />
-      <workItem from="1566821258808" duration="355000" />
-    </task>
-    <task id="LOCAL-00303" summary="Some changes.">
-      <created>1564861784463</created>
-      <option name="number" value="00303" />
-      <option name="presentableId" value="LOCAL-00303" />
-      <option name="project" value="LOCAL" />
-      <updated>1564861784463</updated>
+      <workItem from="1566821258808" duration="592000" />
+      <workItem from="1566825537216" duration="892000" />
+      <workItem from="1566830484056" duration="12000" />
     </task>
     <task id="LOCAL-00304" summary="Some changes.">
       <created>1564863138460</created>
@@ -752,7 +741,14 @@
       <option name="project" value="LOCAL" />
       <updated>1566757884026</updated>
     </task>
-    <option name="localTasksCounter" value="352" />
+    <task id="LOCAL-00352" summary="Fixed modifiers (private to protected) of properties in traits.">
+      <created>1566821800247</created>
+      <option name="number" value="00352" />
+      <option name="presentableId" value="LOCAL-00352" />
+      <option name="project" value="LOCAL" />
+      <updated>1566821800248</updated>
+    </task>
+    <option name="localTasksCounter" value="353" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -789,7 +785,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Removed alias." />
     <MESSAGE value="Removed code example." />
     <MESSAGE value="Changes." />
     <MESSAGE value="Changed @Doctrine\ORM\Mapping\ to @ORM." />
@@ -814,6 +809,7 @@
     <MESSAGE value="Reformat of code." />
     <MESSAGE value="Reformat of code. Fixed return of revision from revision container." />
     <MESSAGE value="Added ORM/Cache annotations." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added ORM/Cache annotations." />
+    <MESSAGE value="Fixed modifiers (private to protected) of properties in traits." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed modifiers (private to protected) of properties in traits." />
   </component>
 </project>

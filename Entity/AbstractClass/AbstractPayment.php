@@ -27,7 +27,7 @@ abstract class AbstractPayment
 
     public static function getAllowedTypesDefault(): array
     {
-        return ['', 'administration', 'manual-db'];
+        return ['', 'administration', 'manual-db', 'csv'];
     }
 
     public static function getAllowedTypesCustom(): array
