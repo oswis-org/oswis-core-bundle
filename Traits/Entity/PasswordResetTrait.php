@@ -15,7 +15,7 @@ trait PasswordResetTrait
     /**
      * Token for password reset.
      * @var string|null
-     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true, unique=true)
+     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true, unique=true, length=100)
      */
     protected $passwordResetRequestToken;
 

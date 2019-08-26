@@ -7,7 +7,8 @@
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractPayment.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractPayment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/AccountActivationTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/AccountActivationTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/PasswordResetTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/PasswordResetTrait.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -404,13 +405,8 @@
       <workItem from="1566821258808" duration="592000" />
       <workItem from="1566825537216" duration="892000" />
       <workItem from="1566830484056" duration="12000" />
-    </task>
-    <task id="LOCAL-00304" summary="Some changes.">
-      <created>1564863138460</created>
-      <option name="number" value="00304" />
-      <option name="presentableId" value="LOCAL-00304" />
-      <option name="project" value="LOCAL" />
-      <updated>1564863138460</updated>
+      <workItem from="1566831232274" duration="160000" />
+      <workItem from="1566838438809" duration="56000" />
     </task>
     <task id="LOCAL-00305" summary="Some changes.">
       <created>1564933472240</created>
@@ -748,7 +744,14 @@
       <option name="project" value="LOCAL" />
       <updated>1566821800248</updated>
     </task>
-    <option name="localTasksCounter" value="353" />
+    <task id="LOCAL-00353" summary="Added 'csv' type to payments.">
+      <created>1566831371599</created>
+      <option name="number" value="00353" />
+      <option name="presentableId" value="LOCAL-00353" />
+      <option name="project" value="LOCAL" />
+      <updated>1566831371600</updated>
+    </task>
+    <option name="localTasksCounter" value="354" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -785,7 +788,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Removed code example." />
     <MESSAGE value="Changes." />
     <MESSAGE value="Changed @Doctrine\ORM\Mapping\ to @ORM." />
     <MESSAGE value="Whitespaces." />
@@ -810,6 +812,7 @@
     <MESSAGE value="Reformat of code. Fixed return of revision from revision container." />
     <MESSAGE value="Added ORM/Cache annotations." />
     <MESSAGE value="Fixed modifiers (private to protected) of properties in traits." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed modifiers (private to protected) of properties in traits." />
+    <MESSAGE value="Added 'csv' type to payments." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added 'csv' type to payments." />
   </component>
 </project>
