@@ -36,10 +36,10 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
      */
     final public function addRevision(?AbstractRevision $revision): void
     {
-        static::checkRevision($revision);
         if (!$revision) {
             return;
         }
+        static::checkRevision($revision);
         if (!$this->revisions->contains($revision)) {
             $this->revisions->add($revision);
             $revision->setContainer($this);
@@ -62,10 +62,10 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
      */
     final public function removeRevision(?AbstractRevision $revision): void
     {
-        static::checkRevision($revision);
         if (!$revision) {
             return;
         }
+        static::checkRevision($revision);
         if ($this->revisions->removeElement($revision)) {
             $revision->setContainer(null);
         }
@@ -98,6 +98,7 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
         $this->activeRevision = $activeRevision;
     }
 
+    /** @noinspection MethodShouldBeFinalInspection */
     /**
      * Automatically set revision/version which is actual/active now.
      */

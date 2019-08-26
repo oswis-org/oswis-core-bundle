@@ -28,10 +28,10 @@ class MailerListener implements EventSubscriberInterface
     final public function onMessageSend(MessageEvent $event): void
     {
         $message = $event->getMessage();
-        $oswisCoreSettings = $this->oswisCoreSettings;
-        if (!$message instanceof Email) {
+        if (!($message instanceof Email)) {
             return;
         }
+        $oswisCoreSettings = $this->oswisCoreSettings;
         if (!$message->getFrom() && $oswisCoreSettings->getEmail()['address']) {
             $message->from(
                 new NamedAddress(

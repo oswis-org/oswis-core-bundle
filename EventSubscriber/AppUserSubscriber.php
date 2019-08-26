@@ -16,7 +16,6 @@ use Zakjakub\OswisCoreBundle\Entity\AppUser;
 use Zakjakub\OswisCoreBundle\Exceptions\OswisException;
 use Zakjakub\OswisCoreBundle\Manager\AppUserManager;
 use Zakjakub\OswisCoreBundle\Provider\OswisCoreSettingsProvider;
-use function assert;
 
 /** @noinspection ClassNameCollisionInspection */
 
@@ -89,15 +88,17 @@ final class AppUserSubscriber implements EventSubscriberInterface
     public function makeAppUser(ViewEvent $event): void
     {
         $appUser = $event->getControllerResult();
+        if (!($appUser instanceof AppUser)) {
+            return;
+        }
         try {
             $method = $event->getRequest()->getMethod();
         } catch (Exception $e) {
             return;
         }
-        if (!($appUser instanceof AppUser) || Request::METHOD_POST !== $method) {
+        if (Request::METHOD_POST !== $method) {
             return;
         }
-        assert($appUser instanceof AppUser);
         $appUserManager = new AppUserManager($this->encoder, $this->em, $this->logger, $this->mailer, $this->oswisCoreSettings);
         $appUserManager->appUserAction($appUser, 'activation-request');
     }
