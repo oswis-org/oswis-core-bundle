@@ -58,7 +58,7 @@ trait BankAccountTrait
     {
         $fullBankAccount = $this->bankAccountNumber;
         if ($this->bankAccountNumber && $this->bankAccountBank) {
-            $fullBankAccount .= '/'.$this->bankAccountNumber;
+            $fullBankAccount .= '/'.$this->bankAccountBank;
         }
 
         return $fullBankAccount;

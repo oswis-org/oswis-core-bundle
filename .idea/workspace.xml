@@ -7,11 +7,7 @@
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractRevisionContainer.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractRevisionContainer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AppUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUser.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AppUserType.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUserType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventListener/MailerListener.php" beforeDir="false" afterPath="$PROJECT_DIR$/EventListener/MailerListener.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventSubscriber/AppUserSubscriber.php" beforeDir="false" afterPath="$PROJECT_DIR$/EventSubscriber/AppUserSubscriber.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/BankAccountTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/BankAccountTrait.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -410,14 +406,10 @@
       <workItem from="1566830484056" duration="12000" />
       <workItem from="1566831232274" duration="160000" />
       <workItem from="1566838438809" duration="160000" />
-      <workItem from="1566842780242" duration="2155000" />
-    </task>
-    <task id="LOCAL-00306" summary="Some changes.">
-      <created>1564941845317</created>
-      <option name="number" value="00306" />
-      <option name="presentableId" value="LOCAL-00306" />
-      <option name="project" value="LOCAL" />
-      <updated>1564941845318</updated>
+      <workItem from="1566842780242" duration="2334000" />
+      <workItem from="1566949738859" duration="19000" />
+      <workItem from="1566949820284" duration="257000" />
+      <workItem from="1566997538831" duration="22000" />
     </task>
     <task id="LOCAL-00307" summary="Some changes.">
       <created>1564993564654</created>
@@ -755,7 +747,14 @@
       <option name="project" value="LOCAL" />
       <updated>1566838518526</updated>
     </task>
-    <option name="localTasksCounter" value="355" />
+    <task id="LOCAL-00355" summary="Some changes and fixes.">
+      <created>1566845132685</created>
+      <option name="number" value="00355" />
+      <option name="presentableId" value="LOCAL-00355" />
+      <option name="project" value="LOCAL" />
+      <updated>1566845132685</updated>
+    </task>
+    <option name="localTasksCounter" value="356" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -792,7 +791,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Changed @Doctrine\ORM\Mapping\ to @ORM." />
     <MESSAGE value="Whitespaces." />
     <MESSAGE value="Renamed from Special period to Maintenance period." />
     <MESSAGE value="Allowed null." />
@@ -817,6 +815,7 @@
     <MESSAGE value="Fixed modifiers (private to protected) of properties in traits." />
     <MESSAGE value="Added 'csv' type to payments." />
     <MESSAGE value="Added length 100 to unique properties." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added length 100 to unique properties." />
+    <MESSAGE value="Some changes and fixes." />
+    <option name="LAST_COMMIT_MESSAGE" value="Some changes and fixes." />
   </component>
 </project>
