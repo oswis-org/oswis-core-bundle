@@ -95,8 +95,12 @@ class PdfGenerator
         $mPdf->h2toc = array('H1' => 0, 'H2' => 1, 'H3' => 2, 'H4' => 3, 'H5' => 4, 'H6' => 5);
         $mPdf->showImageErrors = true;
         $mPdf->useSubstitutions = true;
-        $mPdf->SetHTMLHeader($this->templating->render($headerTemplate, $context));
-        $mPdf->SetHTMLFooter($this->templating->render($footerTemplate, $context));
+        if ($headerTemplate) {
+            $mPdf->SetHTMLHeader($this->templating->render($headerTemplate, $context));
+        }
+        if ($footerTemplate) {
+            $mPdf->SetHTMLFooter($this->templating->render($footerTemplate, $context));
+        }
         $mPdf->WriteHTML($this->templating->render($template, $context));
 
         return $mPdf->Output('', 'S');
