@@ -29,6 +29,11 @@ trait GeoCoordinatesTrait
      */
     protected $geoElevation;
 
+    final public function getGeoLon(): ?float
+    {
+        return $this->getGeoLongitude();
+    }
+
     /**
      * @return int
      */
@@ -43,6 +48,11 @@ trait GeoCoordinatesTrait
     final public function setGeoLongitude(?int $geoLongitude): void
     {
         $this->geoLongitude = $geoLongitude;
+    }
+
+    final public function getGeoLat(): ?float
+    {
+        return $this->getGeoLatitude();
     }
 
     /**
@@ -61,6 +71,10 @@ trait GeoCoordinatesTrait
         $this->geoLatitude = $geoLatitude;
     }
 
+    final public function getGeoEle(): ?int
+    {
+        return $this->getGeoElevation();
+    }
 
     /**
      * @return float|null
@@ -77,17 +91,4 @@ trait GeoCoordinatesTrait
     {
         $this->geoElevation = $geoElevation;
     }
-
-    final public function getGeoLon(): ?float {
-        return $this->getGeoLongitude();
-    }
-
-    final public function getGeoLat(): ?float {
-        return $this->getGeoLatitude();
-    }
-
-    final public function getGeoEle(): ?int {
-        return $this->getGeoElevation();
-    }
-
 }

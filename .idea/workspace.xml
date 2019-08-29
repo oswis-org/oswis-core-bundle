@@ -6,8 +6,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Traits/Entity/InfoMailSentTrait.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/GeoCoordinatesTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/GeoCoordinatesTrait.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -165,7 +165,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/vendor/symfony/swiftmailer-bundle/composer.json" />
     <property name="editor.config.ad.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Resources/views/documents" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Traits/Entity" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -177,19 +177,19 @@
     <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/Resources/views/documents" />
-      <recent name="$PROJECT_DIR$/Resources/views" />
-      <recent name="$PROJECT_DIR$/Exceptions" />
-      <recent name="$PROJECT_DIR$/Controller/Website" />
-      <recent name="$PROJECT_DIR$/Resources/views/web/parts" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Resources/views/documents/pages" />
       <recent name="$PROJECT_DIR$/Controller/Website" />
       <recent name="$PROJECT_DIR$/Resources/config" />
       <recent name="$PROJECT_DIR$/Entity" />
       <recent name="$PROJECT_DIR$/Entity/AbstractClass" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Traits/Entity" />
+      <recent name="$PROJECT_DIR$/Resources/views/documents" />
+      <recent name="$PROJECT_DIR$/Resources/views" />
+      <recent name="$PROJECT_DIR$/Exceptions" />
+      <recent name="$PROJECT_DIR$/Controller/Website" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -411,13 +411,8 @@
       <workItem from="1566949820284" duration="257000" />
       <workItem from="1566997538831" duration="157000" />
       <workItem from="1567073613036" duration="116000" />
-    </task>
-    <task id="LOCAL-00308" summary="Some changes.">
-      <created>1565036131206</created>
-      <option name="number" value="00308" />
-      <option name="presentableId" value="LOCAL-00308" />
-      <option name="project" value="LOCAL" />
-      <updated>1565036131206</updated>
+      <workItem from="1567083246064" duration="62000" />
+      <workItem from="1567089250890" duration="32000" />
     </task>
     <task id="LOCAL-00309" summary="Some changes.">
       <created>1565091746280</created>
@@ -755,7 +750,14 @@
       <option name="project" value="LOCAL" />
       <updated>1566997668302</updated>
     </task>
-    <option name="localTasksCounter" value="357" />
+    <task id="LOCAL-00357" summary="Fixed bankAccountComplete format.">
+      <created>1567083262707</created>
+      <option name="number" value="00357" />
+      <option name="presentableId" value="LOCAL-00357" />
+      <option name="project" value="LOCAL" />
+      <updated>1567083262707</updated>
+    </task>
+    <option name="localTasksCounter" value="358" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
