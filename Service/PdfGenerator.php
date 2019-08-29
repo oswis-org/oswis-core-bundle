@@ -77,8 +77,8 @@ class PdfGenerator
         array $data = [],
         string $format = self::DEFAULT_PAPER_FORMAT,
         bool $landscape = self::DEFAULT_PAPER_LANDSCAPE,
-        string $headerTemplate = self::DEFAULT_HEADER_TEMPLATE,
-        string $footerTemplate = self::DEFAULT_FOOTER_TEMPLATE
+        ?string $headerTemplate = self::DEFAULT_HEADER_TEMPLATE,
+        ?string $footerTemplate = self::DEFAULT_FOOTER_TEMPLATE
     ): string {
         $format .= $landscape ? '-L' : null;
         $context = array(

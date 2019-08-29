@@ -7,7 +7,7 @@
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/InfoMailSentTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/InfoMailSentTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Service/PdfGenerator.php" beforeDir="false" afterPath="$PROJECT_DIR$/Service/PdfGenerator.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -412,14 +412,8 @@
       <workItem from="1566997538831" duration="157000" />
       <workItem from="1567073613036" duration="116000" />
       <workItem from="1567083246064" duration="62000" />
-      <workItem from="1567089250890" duration="868000" />
-    </task>
-    <task id="LOCAL-00310" summary="Some changes.">
-      <created>1565094060773</created>
-      <option name="number" value="00310" />
-      <option name="presentableId" value="LOCAL-00310" />
-      <option name="project" value="LOCAL" />
-      <updated>1565094060773</updated>
+      <workItem from="1567089250890" duration="984000" />
+      <workItem from="1567102896067" duration="43000" />
     </task>
     <task id="LOCAL-00311" summary="Some changes.">
       <created>1565095615536</created>
@@ -757,7 +751,14 @@
       <option name="project" value="LOCAL" />
       <updated>1567089360558</updated>
     </task>
-    <option name="localTasksCounter" value="359" />
+    <task id="LOCAL-00359" summary="New InfoMailSentTrait.">
+      <created>1567093350899</created>
+      <option name="number" value="00359" />
+      <option name="presentableId" value="LOCAL-00359" />
+      <option name="project" value="LOCAL" />
+      <updated>1567093350900</updated>
+    </task>
+    <option name="localTasksCounter" value="360" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -794,7 +795,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Renamed from Special period to Maintenance period." />
     <MESSAGE value="Allowed null." />
     <MESSAGE value="Moving common to resources bundle." />
     <MESSAGE value="Renamed to OswisCoreBundle." />
@@ -819,6 +819,7 @@
     <MESSAGE value="Added length 100 to unique properties." />
     <MESSAGE value="Some changes and fixes." />
     <MESSAGE value="Fixed bankAccountComplete format." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed bankAccountComplete format." />
+    <MESSAGE value="New InfoMailSentTrait." />
+    <option name="LAST_COMMIT_MESSAGE" value="New InfoMailSentTrait." />
   </component>
 </project>
