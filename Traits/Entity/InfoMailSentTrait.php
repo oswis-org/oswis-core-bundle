@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -40,7 +40,7 @@ trait InfoMailSentTrait
     /**
      * (DO NOT USE!) Set last info e-mail date and time.
      *
-     * @param DateTime|null $eMailConfirmationDateTime
+     * @param DateTime|null $infoMailSentDateTime
      */
     final public function setInfoMailSentDateTime(?DateTime $infoMailSentDateTime): void
     {
@@ -59,7 +59,7 @@ trait InfoMailSentTrait
     /**
      * (DO NOT USE!) Set number of confirmations sent.
      *
-     * @param int $eMailConfirmationCount
+     * @param int|null $infoMailSentCount
      */
     final public function setInfoMailSentCount(?int $infoMailSentCount): void
     {
@@ -78,7 +78,7 @@ trait InfoMailSentTrait
     /**
      * (DO NOT USE!) Set last info mail source/reason/author.
      *
-     * @param string|null $eMailConfirmationSource
+     * @param string|null $infoMailSentSource
      */
     final public function setInfoMailSentSource(?string $infoMailSentSource): void
     {
@@ -90,7 +90,7 @@ trait InfoMailSentTrait
         if ($this->infoMailSentCount && $this->infoMailSentCount > 0) {
             ++$this->infoMailSentCount;
         } else {
-            $this->eMailConfirmationCount = 1;
+            $this->infoMailSentCount = 1;
         }
         $this->infoMailSentDateTime = new DateTime();
         $this->infoMailSentSource = $source;

@@ -6,8 +6,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Traits/Entity/InfoMailSentTrait.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/InfoMailSentTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/InfoMailSentTrait.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -412,14 +412,7 @@
       <workItem from="1566997538831" duration="157000" />
       <workItem from="1567073613036" duration="116000" />
       <workItem from="1567083246064" duration="62000" />
-      <workItem from="1567089250890" duration="32000" />
-    </task>
-    <task id="LOCAL-00309" summary="Some changes.">
-      <created>1565091746280</created>
-      <option name="number" value="00309" />
-      <option name="presentableId" value="LOCAL-00309" />
-      <option name="project" value="LOCAL" />
-      <updated>1565091746280</updated>
+      <workItem from="1567089250890" duration="868000" />
     </task>
     <task id="LOCAL-00310" summary="Some changes.">
       <created>1565094060773</created>
@@ -757,7 +750,14 @@
       <option name="project" value="LOCAL" />
       <updated>1567083262707</updated>
     </task>
-    <option name="localTasksCounter" value="358" />
+    <task id="LOCAL-00358" summary="Fixed bankAccountComplete format.">
+      <created>1567089360558</created>
+      <option name="number" value="00358" />
+      <option name="presentableId" value="LOCAL-00358" />
+      <option name="project" value="LOCAL" />
+      <updated>1567089360558</updated>
+    </task>
+    <option name="localTasksCounter" value="359" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
