@@ -77,4 +77,17 @@ trait GeoCoordinatesTrait
     {
         $this->geoElevation = $geoElevation;
     }
+
+    final public function getGeoLon(): ?float {
+        return $this->getGeoLongitude();
+    }
+
+    final public function getGeoLat(): ?float {
+        return $this->getGeoLatitude();
+    }
+
+    final public function getGeoEle(): ?int {
+        return $this->getGeoElevation();
+    }
+
 }

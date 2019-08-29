@@ -7,7 +7,7 @@
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/BankAccountTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/BankAccountTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/GeoCoordinatesTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/GeoCoordinatesTrait.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -409,14 +409,8 @@
       <workItem from="1566842780242" duration="2334000" />
       <workItem from="1566949738859" duration="19000" />
       <workItem from="1566949820284" duration="257000" />
-      <workItem from="1566997538831" duration="22000" />
-    </task>
-    <task id="LOCAL-00307" summary="Some changes.">
-      <created>1564993564654</created>
-      <option name="number" value="00307" />
-      <option name="presentableId" value="LOCAL-00307" />
-      <option name="project" value="LOCAL" />
-      <updated>1564993564654</updated>
+      <workItem from="1566997538831" duration="157000" />
+      <workItem from="1567073613036" duration="116000" />
     </task>
     <task id="LOCAL-00308" summary="Some changes.">
       <created>1565036131206</created>
@@ -754,7 +748,14 @@
       <option name="project" value="LOCAL" />
       <updated>1566845132685</updated>
     </task>
-    <option name="localTasksCounter" value="356" />
+    <task id="LOCAL-00356" summary="Fixed bankAccountComplete format.">
+      <created>1566997668302</created>
+      <option name="number" value="00356" />
+      <option name="presentableId" value="LOCAL-00356" />
+      <option name="project" value="LOCAL" />
+      <updated>1566997668302</updated>
+    </task>
+    <option name="localTasksCounter" value="357" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -791,7 +792,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Whitespaces." />
     <MESSAGE value="Renamed from Special period to Maintenance period." />
     <MESSAGE value="Allowed null." />
     <MESSAGE value="Moving common to resources bundle." />
@@ -816,6 +816,7 @@
     <MESSAGE value="Added 'csv' type to payments." />
     <MESSAGE value="Added length 100 to unique properties." />
     <MESSAGE value="Some changes and fixes." />
-    <option name="LAST_COMMIT_MESSAGE" value="Some changes and fixes." />
+    <MESSAGE value="Fixed bankAccountComplete format." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed bankAccountComplete format." />
   </component>
 </project>
