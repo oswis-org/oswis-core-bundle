@@ -126,7 +126,7 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
      */
     final public function getRevision(DateTime $dateTime = null, ?bool $force = false): AbstractRevision
     {
-        if (!$force && !$dateTime) {
+        if (!$force && !$dateTime && $this->activeRevision) {
             return $this->activeRevision;
         }
         $revisions = $this->getRevisionsOlderThanDateTime($dateTime);
