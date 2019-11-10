@@ -183,7 +183,7 @@ class AppUserType
      */
     final public function getAppUsers(): Collection
     {
-        return $this->appUsers;
+        return $this->appUsers ?? new ArrayCollection();
     }
 
     /**

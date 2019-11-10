@@ -2,10 +2,10 @@
 
 namespace Zakjakub\OswisCoreBundle\Entity\AbstractClass;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Serializable;
 use Symfony\Component\Security\Core\User\EquatableInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Zakjakub\OswisCoreBundle\Entity\AppUserRole;
 use Zakjakub\OswisCoreBundle\Traits\Entity\BasicEntityTrait;
 use Zakjakub\OswisCoreBundle\Traits\Entity\UserTrait;
 
@@ -88,9 +88,17 @@ abstract class AbstractAppUser implements UserInterface, Serializable, Equatable
      */
     final public function containsRole(string $roleName): bool
     {
-        $roles = new ArrayCollection($this->getRoles());
+        foreach ($this->getRoles() as $role) {
+            if ($role instanceof AppUserRole) {
+                if ($role->getRoleString() === $roleName) {
+                    return true;
+                }
+            } elseif ($role === $roleName) {
+                return true;
+            }
+        }
 
-        return $roles->contains($roleName);
+        return false;
     }
 
     /**

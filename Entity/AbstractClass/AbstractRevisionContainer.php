@@ -16,7 +16,6 @@ use Zakjakub\OswisCoreBundle\Interfaces\RevisionContainerInterface;
  */
 abstract class AbstractRevisionContainer implements RevisionContainerInterface
 {
-
     /**
      * Revisions/versions of this container.
      * @var Collection
