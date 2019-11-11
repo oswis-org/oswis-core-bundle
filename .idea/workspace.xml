@@ -7,8 +7,7 @@
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractRevision.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractRevision.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/NameableBasicTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/NameableBasicTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -426,14 +425,8 @@
       <workItem from="1573295788622" duration="1700000" />
       <workItem from="1573417146702" duration="2822000" />
       <workItem from="1573498290712" duration="240000" />
-      <workItem from="1573500485550" duration="2496000" />
-    </task>
-    <task id="LOCAL-00316" summary="Some changes.">
-      <created>1565170884434</created>
-      <option name="number" value="00316" />
-      <option name="presentableId" value="LOCAL-00316" />
-      <option name="project" value="LOCAL" />
-      <updated>1565170884435</updated>
+      <workItem from="1573500485550" duration="2879000" />
+      <workItem from="1573504108490" duration="1034000" />
     </task>
     <task id="LOCAL-00317" summary="Some changes.">
       <created>1565179677798</created>
@@ -771,7 +764,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573419675395</updated>
     </task>
-    <option name="localTasksCounter" value="365" />
+    <task id="LOCAL-00365" summary="Some changes.">
+      <created>1573502995086</created>
+      <option name="number" value="00365" />
+      <option name="presentableId" value="LOCAL-00365" />
+      <option name="project" value="LOCAL" />
+      <updated>1573502995087</updated>
+    </task>
+    <option name="localTasksCounter" value="366" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -819,7 +819,6 @@
     <MESSAGE value="Added TypeTrait." />
     <MESSAGE value="Added ValueTrait and ValueContainerTrait." />
     <MESSAGE value="Added DepositValueTrait." />
-    <MESSAGE value="Some changes." />
     <MESSAGE value="Reformated code." />
     <MESSAGE value="Updated dependency league/csv to 9.3." />
     <MESSAGE value="Reformat of code." />
@@ -833,6 +832,7 @@
     <MESSAGE value="New InfoMailSentTrait." />
     <MESSAGE value="Try to return activeRevision in some cases." />
     <MESSAGE value="Upgrade of Symfony." />
-    <option name="LAST_COMMIT_MESSAGE" value="Upgrade of Symfony." />
+    <MESSAGE value="Some changes." />
+    <option name="LAST_COMMIT_MESSAGE" value="Some changes." />
   </component>
 </project>
