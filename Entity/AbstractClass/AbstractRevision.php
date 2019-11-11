@@ -16,7 +16,6 @@ use function usort;
  */
 abstract class AbstractRevision implements RevisionInterface
 {
-
     /**
      * Container of revisions.
      * @var AbstractRevisionContainer

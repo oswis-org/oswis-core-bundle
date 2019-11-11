@@ -10,7 +10,7 @@ trait NameableBasicTrait
     use DescriptionTrait;
     use NoteTrait;
     use SlugTrait;
-    use InternalNoteTrait;
+    use InternalNoteTrait; /// ????? Is used somewhere?
 
     final public function setFieldsFromNameable(?Nameable $nameable = null): void
     {
@@ -21,5 +21,10 @@ trait NameableBasicTrait
             $this->setNote($nameable->note);
             $this->setSlug($nameable->slug);
         }
+    }
+
+    final public function getNameable(): Nameable
+    {
+        return new Nameable($this->getName(), $this->getShortName(), $this->getDescription(), $this->getNote(), $this->getSlug());
     }
 }
