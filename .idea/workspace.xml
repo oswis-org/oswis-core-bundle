@@ -7,7 +7,6 @@
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -426,14 +425,8 @@
       <workItem from="1573417146702" duration="2822000" />
       <workItem from="1573498290712" duration="240000" />
       <workItem from="1573500485550" duration="2879000" />
-      <workItem from="1573504108490" duration="1034000" />
-    </task>
-    <task id="LOCAL-00317" summary="Some changes.">
-      <created>1565179677798</created>
-      <option name="number" value="00317" />
-      <option name="presentableId" value="LOCAL-00317" />
-      <option name="project" value="LOCAL" />
-      <updated>1565179677798</updated>
+      <workItem from="1573504108490" duration="1774000" />
+      <workItem from="1573509076620" duration="249000" />
     </task>
     <task id="LOCAL-00318" summary="Some changes.">
       <created>1565287600085</created>
@@ -771,7 +764,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573502995087</updated>
     </task>
-    <option name="localTasksCounter" value="366" />
+    <task id="LOCAL-00366" summary="Some changes.">
+      <created>1573505157966</created>
+      <option name="number" value="00366" />
+      <option name="presentableId" value="LOCAL-00366" />
+      <option name="project" value="LOCAL" />
+      <updated>1573505157967</updated>
+    </task>
+    <option name="localTasksCounter" value="367" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
