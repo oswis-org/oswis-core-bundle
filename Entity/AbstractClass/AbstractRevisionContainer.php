@@ -42,7 +42,6 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
     abstract public static function getRevisionClassName(): string;
 
     /** @noinspection MethodShouldBeFinalInspection */
-
     /**
      * Add some revision/version to this container.
      *
@@ -81,7 +80,6 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
     }
 
     /** @noinspection MethodShouldBeFinalInspection */
-
     /**
      * Revision/version which is actual/active now.
      * @return AbstractRevision|null
@@ -96,7 +94,6 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
     }
 
     /** @noinspection MethodShouldBeFinalInspection */
-
     /**
      * Set revision/version which is actual/active now.
      *

@@ -51,7 +51,6 @@ abstract class AbstractImageType extends AbstractType
     }
 
     /** @noinspection MethodShouldBeFinalInspection */
-
     public function getBlockPrefix(): string
     {
         return 'oswis_core_abstract_image';
