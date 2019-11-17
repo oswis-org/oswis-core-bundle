@@ -11,6 +11,11 @@ use Zakjakub\OswisCoreBundle\Utils\FileUtils;
 
 abstract class AbstractFileType extends AbstractType
 {
+    /**
+     * @return string
+     */
+    abstract public static function getFileClassName(): string;
+
     final public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $maxSize = FileUtils::humanReadableFileUploadMaxSize();
@@ -45,12 +50,8 @@ abstract class AbstractFileType extends AbstractType
         );
     }
 
-    /**
-     * @return string
-     */
-    abstract public static function getFileClassName(): string;
-
     /** @noinspection MethodShouldBeFinalInspection */
+
     public function getBlockPrefix(): string
     {
         return 'oswis_core_abstract_file';
