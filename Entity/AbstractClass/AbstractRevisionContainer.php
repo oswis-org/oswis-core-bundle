@@ -99,7 +99,7 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
      *
      * @param AbstractRevision $activeRevision
      */
-    final public function setActiveRevision(AbstractRevision $activeRevision): void
+    final public function setActiveRevision(?AbstractRevision $activeRevision): void
     {
         $this->activeRevision = $activeRevision;
     }

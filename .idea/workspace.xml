@@ -8,7 +8,6 @@
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractRevisionContainer.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractRevisionContainer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -442,14 +441,8 @@
       <workItem from="1574017800389" duration="1163000" />
       <workItem from="1574019639117" duration="453000" />
       <workItem from="1574020398526" duration="865000" />
-      <workItem from="1574107142745" duration="502000" />
-    </task>
-    <task id="LOCAL-00322" summary="Some changes.">
-      <created>1565463761126</created>
-      <option name="number" value="00322" />
-      <option name="presentableId" value="LOCAL-00322" />
-      <option name="project" value="LOCAL" />
-      <updated>1565463761126</updated>
+      <workItem from="1574107142745" duration="667000" />
+      <workItem from="1574120696665" duration="38000" />
     </task>
     <task id="LOCAL-00323" summary="Some changes.">
       <created>1565463913407</created>
@@ -787,7 +780,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574019968932</updated>
     </task>
-    <option name="localTasksCounter" value="371" />
+    <task id="LOCAL-00371" summary="Some changes and updates.">
+      <created>1574107682590</created>
+      <option name="number" value="00371" />
+      <option name="presentableId" value="LOCAL-00371" />
+      <option name="project" value="LOCAL" />
+      <updated>1574107682591</updated>
+    </task>
+    <option name="localTasksCounter" value="372" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -824,7 +824,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Added MIN_DATE_TIME_STRING and MAX_DATE_TIME_STRING." />
     <MESSAGE value="Updated requirements." />
     <MESSAGE value="Added blameable." />
     <MESSAGE value="Fixed AppUser's namespace." />
@@ -849,6 +848,7 @@
     <MESSAGE value="Upgrade of Symfony." />
     <MESSAGE value="Some changes." />
     <MESSAGE value="Some changes, update to 4.4RC." />
-    <option name="LAST_COMMIT_MESSAGE" value="Some changes, update to 4.4RC." />
+    <MESSAGE value="Some changes and updates." />
+    <option name="LAST_COMMIT_MESSAGE" value="Some changes and updates." />
   </component>
 </project>
