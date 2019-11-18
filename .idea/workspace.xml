@@ -8,8 +8,7 @@
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractRevisionContainer.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractRevisionContainer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Form/AbstractClass/AbstractFileType.php" beforeDir="false" afterPath="$PROJECT_DIR$/Form/AbstractClass/AbstractFileType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Form/AbstractClass/AbstractImageType.php" beforeDir="false" afterPath="$PROJECT_DIR$/Form/AbstractClass/AbstractImageType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -441,14 +440,9 @@
       <workItem from="1573760058201" duration="29000" />
       <workItem from="1573760110540" duration="1983000" />
       <workItem from="1574017800389" duration="1163000" />
-      <workItem from="1574019639117" duration="239000" />
-    </task>
-    <task id="LOCAL-00321" summary="Some changes.">
-      <created>1565460452416</created>
-      <option name="number" value="00321" />
-      <option name="presentableId" value="LOCAL-00321" />
-      <option name="project" value="LOCAL" />
-      <updated>1565460452417</updated>
+      <workItem from="1574019639117" duration="453000" />
+      <workItem from="1574020398526" duration="865000" />
+      <workItem from="1574107142745" duration="502000" />
     </task>
     <task id="LOCAL-00322" summary="Some changes.">
       <created>1565463761126</created>
@@ -786,7 +780,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574018886368</updated>
     </task>
-    <option name="localTasksCounter" value="370" />
+    <task id="LOCAL-00370" summary="Some changes, update to 4.4RC.">
+      <created>1574019968931</created>
+      <option name="number" value="00370" />
+      <option name="presentableId" value="LOCAL-00370" />
+      <option name="project" value="LOCAL" />
+      <updated>1574019968932</updated>
+    </task>
+    <option name="localTasksCounter" value="371" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
