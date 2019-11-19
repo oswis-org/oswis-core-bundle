@@ -3,7 +3,7 @@
 namespace Zakjakub\OswisCoreBundle\Controller\AbstractClass;
 
 use ApiPlatform\Core\Bridge\Symfony\Validator\Exception\ValidationException;
-use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\Common\Persistence\ManagerRegistry;
 use Symfony\Component\Form\Exception\LogicException;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,7 +20,7 @@ abstract class AbstractImageAction
     private $factory;
 
     public function __construct(
-        RegistryInterface $doctrine,
+        ManagerRegistry $doctrine,
         FormFactoryInterface $factory,
         ValidatorInterface $validator
     ) {
@@ -28,13 +28,6 @@ abstract class AbstractImageAction
         $this->doctrine = $doctrine;
         $this->factory = $factory;
     }
-
-    abstract public static function getImageNewInstance(): AbstractImage;
-
-    /**
-     * @return string
-     */
-    abstract public static function getImageClassName(): string;
 
     /**
      * @param Request $request
@@ -59,4 +52,11 @@ abstract class AbstractImageAction
         }
         throw new ValidationException($this->validator->validate($mediaObject)); // This will be handled by API Platform and returns a validation error.
     }
+
+    abstract public static function getImageNewInstance(): AbstractImage;
+
+    /**
+     * @return string
+     */
+    abstract public static function getImageClassName(): string;
 }
