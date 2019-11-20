@@ -53,10 +53,10 @@
     "symfony/mailer": "^4.3",
     "symfony/mime": "^4.3",
     "twig/inky-extension": "^2.0",
-    "twig/markdown-extension": "^1.0",
     "league/commonmark": "^1.1",
     "league/html-to-markdown": "^4.9",
-    "twig/cssinliner-extension": "^2.0"
+    "twig/cssinliner-extra": "^3.0",
+    "twig/markdown-extra": "^3.0"
   },
   "require-dev": {
     "roave/security-advisories": "dev-master",
