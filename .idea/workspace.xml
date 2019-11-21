@@ -6,11 +6,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -446,14 +444,9 @@
       <workItem from="1574107142745" duration="667000" />
       <workItem from="1574120696665" duration="113000" />
       <workItem from="1574191654153" duration="1713000" />
-      <workItem from="1574247208457" duration="1257000" />
-    </task>
-    <task id="LOCAL-00325" summary="Some changes.">
-      <created>1565464444377</created>
-      <option name="number" value="00325" />
-      <option name="presentableId" value="LOCAL-00325" />
-      <option name="project" value="LOCAL" />
-      <updated>1565464444377</updated>
+      <workItem from="1574247208457" duration="2711000" />
+      <workItem from="1574273315891" duration="509000" />
+      <workItem from="1574327471302" duration="1508000" />
     </task>
     <task id="LOCAL-00326" summary="Some changes.">
       <created>1565466240007</created>
@@ -791,7 +784,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574193487509</updated>
     </task>
-    <option name="localTasksCounter" value="374" />
+    <task id="LOCAL-00374" summary="Some changes and updates.">
+      <created>1574249070193</created>
+      <option name="number" value="00374" />
+      <option name="presentableId" value="LOCAL-00374" />
+      <option name="project" value="LOCAL" />
+      <updated>1574249070194</updated>
+    </task>
+    <option name="localTasksCounter" value="375" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
