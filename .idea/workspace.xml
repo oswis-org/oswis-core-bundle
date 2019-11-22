@@ -5,12 +5,17 @@
     <option name="CUSTOM_SCOPE_NAME" value="Project Files" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
+    <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="Update to Symfony 4.4.0">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/oswis-core-bundle.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/oswis-core-bundle.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/views/e-mail/app-user.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/e-mail/app-user.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/views/e-mail/message.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/e-mail/message.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/views/e-mail/password.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/e-mail/password.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,7 +31,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GithubDefaultAccount">
-    <option name="defaultAccountId" value="8ad70eaf-3c68-4089-b27a-0f4957442a93" />
+    <option name="defaultAccountId" value="9cf1c361-fb0c-4273-9734-feb3c2eb7172" />
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Resources/views/e-mail/foundation-emails.css.twig" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
@@ -162,12 +167,18 @@
   </component>
   <component name="ProjectId" id="1OdNRiB7J91AH4isXqLMtDEiNnC" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/vendor/symfony/swiftmailer-bundle/composer.json" />
     <property name="editor.config.ad.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Traits/Entity" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -176,7 +187,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="Errors" />
+    <property name="settings.editor.selected.configurable" value="settings.github" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -194,18 +205,6 @@
       <recent name="$PROJECT_DIR$/Controller/Website" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
   <component name="RunManager">
     <configuration name="vojta.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/oswis-core-bundle/vojta.html" useBuiltInWebServerPort="true">
       <method v="2" />
@@ -216,7 +215,18 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="1" Folder0="$USER_HOME$/.jetbrains-dic" CustomDictionaries="1" CustomDictionary0="$USER_HOME$/.jetbrains-dic/cs.dic" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="project-level" UseSingleDictionary="true" />
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -446,14 +456,9 @@
       <workItem from="1574191654153" duration="1713000" />
       <workItem from="1574247208457" duration="2711000" />
       <workItem from="1574273315891" duration="509000" />
-      <workItem from="1574327471302" duration="1508000" />
-    </task>
-    <task id="LOCAL-00326" summary="Some changes.">
-      <created>1565466240007</created>
-      <option name="number" value="00326" />
-      <option name="presentableId" value="LOCAL-00326" />
-      <option name="project" value="LOCAL" />
-      <updated>1565466240007</updated>
+      <workItem from="1574327471302" duration="1860000" />
+      <workItem from="1574451385572" duration="217000" />
+      <workItem from="1574451658549" duration="1679000" />
     </task>
     <task id="LOCAL-00327" summary="Some changes.">
       <created>1565594479209</created>
@@ -791,7 +796,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574249070194</updated>
     </task>
-    <option name="localTasksCounter" value="375" />
+    <task id="LOCAL-00375" summary="Update to Symfony 4.4.0">
+      <created>1574332396032</created>
+      <option name="number" value="00375" />
+      <option name="presentableId" value="LOCAL-00375" />
+      <option name="project" value="LOCAL" />
+      <updated>1574332396032</updated>
+    </task>
+    <option name="localTasksCounter" value="376" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -828,7 +840,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Updated requirements." />
     <MESSAGE value="Added blameable." />
     <MESSAGE value="Fixed AppUser's namespace." />
     <MESSAGE value="Changed traits, their names and namespaces." />
@@ -853,6 +864,30 @@
     <MESSAGE value="Some changes." />
     <MESSAGE value="Some changes, update to 4.4RC." />
     <MESSAGE value="Some changes and updates." />
-    <option name="LAST_COMMIT_MESSAGE" value="Some changes and updates." />
+    <MESSAGE value="Update to Symfony 4.4.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update to Symfony 4.4.0" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="701" y="381" width="509" height="312" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1574452912736">
+      <screen x="0" y="0" width="1920" height="741" />
+    </state>
+    <state x="701" y="381" width="509" height="312" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1574452912736" />
+    <state x="518" y="0" width="876" height="735" key="CommitChangelistDialog2" timestamp="1574453348215">
+      <screen x="0" y="0" width="1920" height="741" />
+    </state>
+    <state x="518" y="0" width="876" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1574453348215" />
+    <state x="542" y="128" width="426" height="478" key="FileChooserDialogImpl" timestamp="1574453032408">
+      <screen x="0" y="0" width="1920" height="741" />
+    </state>
+    <state x="542" y="128" width="426" height="478" key="FileChooserDialogImpl/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1574453032408" />
+    <state x="263" y="5" key="SettingsEditor" timestamp="1574453363420">
+      <screen x="0" y="0" width="1920" height="741" />
+    </state>
+    <state x="263" y="5" key="SettingsEditor/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1574453363420" />
+    <state x="2107" y="5" key="SettingsEditor/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1574451596535" />
+    <state x="842" y="455" width="228" height="163" key="VCS.EditChangelistDialog" timestamp="1574453185964">
+      <screen x="0" y="0" width="1920" height="741" />
+    </state>
+    <state x="842" y="455" width="228" height="163" key="VCS.EditChangelistDialog/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1574453185964" />
   </component>
 </project>

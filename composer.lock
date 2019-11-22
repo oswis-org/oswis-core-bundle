@@ -4,7 +4,7 @@
     "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
     "This file is @generated automatically"
   ],
-  "content-hash": "9a52599df9f5c5951b0b7fde3d5779a9",
+  "content-hash": "01544df86c8c00f12c440103a56901ee",
   "packages": [
     {
       "name": "adci/full-name-parser",
@@ -1614,27 +1614,27 @@
     },
     {
       "name": "gesdinet/jwt-refresh-token-bundle",
-      "version": "v0.5.4",
+      "version": "v0.8.3",
       "source": {
         "type": "git",
         "url": "https://github.com/markitosgv/JWTRefreshTokenBundle.git",
-        "reference": "604b70c86e557c70105b8850eb44426ab2056a9d"
+        "reference": "e3b2db2563982629a77ed4521df60a0e8ac2df64"
       },
       "dist": {
         "type": "zip",
-        "url": "https://api.github.com/repos/markitosgv/JWTRefreshTokenBundle/zipball/604b70c86e557c70105b8850eb44426ab2056a9d",
-        "reference": "604b70c86e557c70105b8850eb44426ab2056a9d",
+        "url": "https://api.github.com/repos/markitosgv/JWTRefreshTokenBundle/zipball/e3b2db2563982629a77ed4521df60a0e8ac2df64",
+        "reference": "e3b2db2563982629a77ed4521df60a0e8ac2df64",
         "shasum": ""
       },
       "require": {
         "lexik/jwt-authentication-bundle": "^1.1|^2.0@dev",
-        "php": ">=5.3.3",
-        "symfony/framework-bundle": "~3.3|~4.0",
-        "symfony/validator": "~3.3|~4.0"
+        "php": "^5.5.9|>=7.0.8",
+        "symfony/framework-bundle": "~3.4|~4.0",
+        "symfony/validator": "~3.4|~4.0"
       },
       "require-dev": {
         "doctrine/doctrine-bundle": "~1.4",
-        "doctrine/mongodb-odm-bundle": "^3.4",
+        "doctrine/mongodb-odm-bundle": "^3.4|^4.0",
         "doctrine/orm": "^2.4.8",
         "phpspec/phpspec": "^3.0|^4.0"
       },
@@ -1663,7 +1663,7 @@
       "keywords": [
         "jwt refresh token bundle symfony json web"
       ],
-      "time": "2018-12-06T11:02:57+00:00"
+      "time": "2019-11-12T16:03:22+00:00"
     },
     {
       "name": "hirak/prestissimo",
@@ -2084,16 +2084,16 @@
     },
     {
       "name": "lexik/jwt-authentication-bundle",
-      "version": "v2.6.4",
+      "version": "v2.6.5",
       "source": {
         "type": "git",
         "url": "https://github.com/lexik/LexikJWTAuthenticationBundle.git",
-        "reference": "f79f20b282834878aab10530ca102a80396624ed"
+        "reference": "448551fc08c6cff37aad9d8f27f6b9615cd28966"
       },
       "dist": {
         "type": "zip",
-        "url": "https://api.github.com/repos/lexik/LexikJWTAuthenticationBundle/zipball/f79f20b282834878aab10530ca102a80396624ed",
-        "reference": "f79f20b282834878aab10530ca102a80396624ed",
+        "url": "https://api.github.com/repos/lexik/LexikJWTAuthenticationBundle/zipball/448551fc08c6cff37aad9d8f27f6b9615cd28966",
+        "reference": "448551fc08c6cff37aad9d8f27f6b9615cd28966",
         "shasum": ""
       },
       "require": {
@@ -2101,17 +2101,16 @@
         "lcobucci/jwt": "^3.2",
         "namshi/jose": "^7.2",
         "php": "^5.5|^7.0",
-        "symfony/framework-bundle": "^3.4|^4.0",
-        "symfony/security-bundle": "^3.4|^4.0"
+        "symfony/framework-bundle": "^3.4|^4.0|^5.0",
+        "symfony/security-bundle": "^3.4|^4.0|^5.0"
       },
       "require-dev": {
-        "friendsofphp/php-cs-fixer": "^1.1|^2.8",
-        "symfony/browser-kit": "^3.4|^4.0",
-        "symfony/console": "^3.4|^4.0",
-        "symfony/dom-crawler": "^3.4|^4.0",
-        "symfony/phpunit-bridge": "^3.4|^4.0",
-        "symfony/var-dumper": "^3.4|^4.0",
-        "symfony/yaml": "^3.4|^4.0"
+        "symfony/browser-kit": "^3.4|^4.0|^5.0",
+        "symfony/console": "^3.4|^4.0|^5.0",
+        "symfony/dom-crawler": "^3.4|^4.0|^5.0",
+        "symfony/phpunit-bridge": "^3.4|^4.0|^5.0",
+        "symfony/var-dumper": "^3.4|^4.0|^5.0",
+        "symfony/yaml": "^3.4|^4.0|^5.0"
       },
       "suggest": {
         "gesdinet/jwt-refresh-token-bundle": "Implements a refresh token system over Json Web Tokens in Symfony",
@@ -2177,7 +2176,7 @@
         "rest",
         "symfony"
       ],
-      "time": "2019-07-29T10:02:31+00:00"
+      "time": "2019-11-22T14:22:26+00:00"
     },
     {
       "name": "lorenzo/pinky",
@@ -7261,16 +7260,16 @@
     },
     {
       "name": "vich/uploader-bundle",
-      "version": "1.10.2",
+      "version": "1.11.0",
       "source": {
         "type": "git",
         "url": "https://github.com/dustin10/VichUploaderBundle.git",
-        "reference": "5526f985991235b12aa1ae014962118df04fff47"
+        "reference": "8ef4935f5535bb4e967f30ee95dff358c7c0705e"
       },
       "dist": {
         "type": "zip",
-        "url": "https://api.github.com/repos/dustin10/VichUploaderBundle/zipball/5526f985991235b12aa1ae014962118df04fff47",
-        "reference": "5526f985991235b12aa1ae014962118df04fff47",
+        "url": "https://api.github.com/repos/dustin10/VichUploaderBundle/zipball/8ef4935f5535bb4e967f30ee95dff358c7c0705e",
+        "reference": "8ef4935f5535bb4e967f30ee95dff358c7c0705e",
         "shasum": ""
       },
       "require": {
@@ -7329,7 +7328,7 @@
       "type": "symfony-bundle",
       "extra": {
         "branch-alias": {
-          "dev-master": "1.10.x-dev"
+          "dev-master": "1.11.x-dev"
         }
       },
       "autoload": {
@@ -7353,7 +7352,7 @@
         "file uploads",
         "upload"
       ],
-      "time": "2019-10-11T13:37:44+00:00"
+      "time": "2019-11-21T14:09:47+00:00"
     },
     {
       "name": "webmozart/assert",
