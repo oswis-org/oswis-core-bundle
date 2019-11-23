@@ -21,7 +21,7 @@
     }
   ],
   "require": {
-    "php": "^7.1.3",
+    "php": "^7.2.9",
     "ext-ctype": "*",
     "ext-iconv": "*",
     "ext-mbstring": "*",
@@ -52,11 +52,11 @@
     "bigit/vokativ": "dev-master",
     "symfony/mailer": "^4.4",
     "symfony/mime": "^4.4",
-    "twig/inky-extension": "^2.0",
     "league/commonmark": "^1.1",
     "league/html-to-markdown": "^4.9",
     "twig/cssinliner-extra": "^3.0",
-    "twig/markdown-extra": "^3.0"
+    "twig/markdown-extra": "^3.0",
+    "twig/inky-extra": "^3.0"
   },
   "require-dev": {
     "roave/security-advisories": "dev-master",

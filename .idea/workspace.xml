@@ -5,16 +5,12 @@
     <option name="CUSTOM_SCOPE_NAME" value="Project Files" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="Update to Symfony 4.4.0">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/oswis-core-bundle.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/oswis-core-bundle.iml" afterDir="false" />
+    <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/e-mail/app-user.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/e-mail/app-user.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/e-mail/message.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/e-mail/message.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/e-mail/password.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/e-mail/password.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,8 +148,6 @@
       <path value="$PROJECT_DIR$/vendor/symfony/service-contracts" />
       <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher-contracts" />
       <path value="$PROJECT_DIR$/vendor/symfony/mailer" />
-      <path value="$PROJECT_DIR$/vendor/twig/inky-extension" />
-      <path value="$PROJECT_DIR$/vendor/lorenzo/pinky" />
       <path value="$PROJECT_DIR$/vendor/league/commonmark" />
       <path value="$PROJECT_DIR$/vendor/league/html-to-markdown" />
       <path value="$PROJECT_DIR$/vendor/tijsverkoyen/css-to-inline-styles" />
@@ -163,6 +157,8 @@
       <path value="$PROJECT_DIR$/vendor/symfony/error-handler" />
       <path value="$PROJECT_DIR$/vendor/twig/cssinliner-extra" />
       <path value="$PROJECT_DIR$/vendor/twig/markdown-extra" />
+      <path value="$PROJECT_DIR$/vendor/twig/inky-extra" />
+      <path value="$PROJECT_DIR$/vendor/lorenzo/pinky" />
     </include_path>
   </component>
   <component name="ProjectId" id="1OdNRiB7J91AH4isXqLMtDEiNnC" />
@@ -178,7 +174,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/vendor/symfony/swiftmailer-bundle/composer.json" />
     <property name="editor.config.ad.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../oswis-address-book-bundle" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -458,14 +454,9 @@
       <workItem from="1574273315891" duration="509000" />
       <workItem from="1574327471302" duration="1860000" />
       <workItem from="1574451385572" duration="217000" />
-      <workItem from="1574451658549" duration="1679000" />
-    </task>
-    <task id="LOCAL-00327" summary="Some changes.">
-      <created>1565594479209</created>
-      <option name="number" value="00327" />
-      <option name="presentableId" value="LOCAL-00327" />
-      <option name="project" value="LOCAL" />
-      <updated>1565594479209</updated>
+      <workItem from="1574451658549" duration="1764000" />
+      <workItem from="1574455812736" duration="70000" />
+      <workItem from="1574466756719" duration="342000" />
     </task>
     <task id="LOCAL-00328" summary="Some changes.">
       <created>1565602249928</created>
@@ -803,7 +794,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574332396032</updated>
     </task>
-    <option name="localTasksCounter" value="376" />
+    <task id="LOCAL-00376" summary="Update to Symfony 4.4.0">
+      <created>1574453395415</created>
+      <option name="number" value="00376" />
+      <option name="presentableId" value="LOCAL-00376" />
+      <option name="project" value="LOCAL" />
+      <updated>1574453395416</updated>
+    </task>
+    <option name="localTasksCounter" value="377" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -868,18 +866,19 @@
     <option name="LAST_COMMIT_MESSAGE" value="Update to Symfony 4.4.0" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="701" y="381" width="509" height="312" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1574452912736">
-      <screen x="0" y="0" width="1920" height="741" />
+    <state x="499" y="381" width="381" height="312" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1574467148430">
+      <screen x="0" y="0" width="1366" height="741" />
     </state>
+    <state x="499" y="381" width="381" height="312" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1366.741@0.0.1366.741" timestamp="1574467148430" />
     <state x="701" y="381" width="509" height="312" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1574452912736" />
-    <state x="518" y="0" width="876" height="735" key="CommitChangelistDialog2" timestamp="1574453348215">
+    <state x="518" y="0" width="876" height="735" key="CommitChangelistDialog2" timestamp="1574453394969">
       <screen x="0" y="0" width="1920" height="741" />
     </state>
-    <state x="518" y="0" width="876" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1574453348215" />
-    <state x="542" y="128" width="426" height="478" key="FileChooserDialogImpl" timestamp="1574453032408">
+    <state x="518" y="0" width="876" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1574453394969" />
+    <state x="542" y="128" width="426" height="478" key="FileChooserDialogImpl" timestamp="1574453448787">
       <screen x="0" y="0" width="1920" height="741" />
     </state>
-    <state x="542" y="128" width="426" height="478" key="FileChooserDialogImpl/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1574453032408" />
+    <state x="542" y="128" width="426" height="478" key="FileChooserDialogImpl/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1574453448787" />
     <state x="263" y="5" key="SettingsEditor" timestamp="1574453363420">
       <screen x="0" y="0" width="1920" height="741" />
     </state>
@@ -889,5 +888,9 @@
       <screen x="0" y="0" width="1920" height="741" />
     </state>
     <state x="842" y="455" width="228" height="163" key="VCS.EditChangelistDialog/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1574453185964" />
+    <state x="555" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1574453398691">
+      <screen x="0" y="0" width="1920" height="741" />
+    </state>
+    <state x="555" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1574453398691" />
   </component>
 </project>

@@ -123,7 +123,7 @@
         }
     },
     "lorenzo/pinky": {
-        "version": "1.0.4"
+        "version": "1.0.5"
     },
     "monolog/monolog": {
         "version": "1.24.0"
@@ -434,14 +434,8 @@
     "twig/cssinliner-extra": {
         "version": "v3.0.0"
     },
-    "twig/inky-extension": {
-        "version": "1.0",
-        "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "master",
-            "version": "1.0",
-            "ref": "98aa25792ca5b18aebbac6644a150ac90867408d"
-        }
+    "twig/inky-extra": {
+        "version": "v3.0.0"
     },
     "twig/markdown-extra": {
         "version": "v3.0.0"

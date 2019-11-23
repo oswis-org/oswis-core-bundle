@@ -114,8 +114,6 @@
       <path value="$PROJECT_DIR$/vendor/symfony/service-contracts" />
       <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher-contracts" />
       <path value="$PROJECT_DIR$/vendor/symfony/mailer" />
-      <path value="$PROJECT_DIR$/vendor/twig/inky-extension" />
-      <path value="$PROJECT_DIR$/vendor/lorenzo/pinky" />
       <path value="$PROJECT_DIR$/vendor/league/commonmark" />
       <path value="$PROJECT_DIR$/vendor/league/html-to-markdown" />
       <path value="$PROJECT_DIR$/vendor/tijsverkoyen/css-to-inline-styles" />
@@ -125,6 +123,8 @@
       <path value="$PROJECT_DIR$/vendor/symfony/error-handler" />
       <path value="$PROJECT_DIR$/vendor/twig/cssinliner-extra" />
       <path value="$PROJECT_DIR$/vendor/twig/markdown-extra" />
+      <path value="$PROJECT_DIR$/vendor/twig/inky-extra" />
+      <path value="$PROJECT_DIR$/vendor/lorenzo/pinky" />
     </include_path>
   </component>
   <component name="PhpInterpreters">
@@ -132,5 +132,5 @@
       <interpreter id="9a7553dd-6275-4596-b7f3-00aec4906344" name="PHP latest" home="$USER_HOME$/.PhpStorm2019.3/system/plugins/idea-php-latest-plugin/php-v7.3.1/php.sh" debugger_id="php.debugger.XDebug" />
     </interpreters>
   </component>
-  <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />
+  <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />
 </project>
