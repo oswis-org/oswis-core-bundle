@@ -96,6 +96,7 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
     }
 
     /** @noinspection MethodShouldBeFinalInspection */
+
     /**
      * Automatically set revision/version which is actual/active now.
      */
