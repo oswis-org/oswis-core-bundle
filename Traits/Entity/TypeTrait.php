@@ -60,7 +60,7 @@ trait TypeTrait
 
     final public static function getAllowedTypes(): array
     {
-        return array_merge(self::getAllowedTypesDefault(), self::getAllowedTypesCustom());
+        return array_merge(static::getAllowedTypesDefault(), static::getAllowedTypesCustom());
     }
 
     abstract public static function getAllowedTypesDefault(): array;

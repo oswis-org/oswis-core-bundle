@@ -17,8 +17,6 @@ use Zakjakub\OswisCoreBundle\Exceptions\OswisException;
 use Zakjakub\OswisCoreBundle\Manager\AppUserManager;
 use Zakjakub\OswisCoreBundle\Provider\OswisCoreSettingsProvider;
 
-/** @noinspection ClassNameCollisionInspection */
-
 final class AppUserSubscriber implements EventSubscriberInterface
 {
 

@@ -39,7 +39,7 @@ abstract class AbstractFileAction
      */
     final public function __invoke(Request $request): AbstractFile
     {
-        $mediaObject = self::getFileNewInstance();
+        $mediaObject = $this::getFileNewInstance();
         $form = $this->factory->create($this::getFileClassName(), $mediaObject);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {

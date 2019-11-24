@@ -1,6 +1,4 @@
 <?php
-/** @noinspection PhpDocRedundantThrowsInspection */
-
 /** @noinspection PhpUndefinedMethodInspection */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;

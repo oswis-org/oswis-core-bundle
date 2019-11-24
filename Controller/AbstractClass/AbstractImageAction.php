@@ -39,7 +39,7 @@ abstract class AbstractImageAction
      */
     final public function __invoke(Request $request): AbstractImage
     {
-        $mediaObject = self::getImageNewInstance();
+        $mediaObject = static::getImageNewInstance();
         $form = $this->factory->create($this::getImageClassName(), $mediaObject);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {

@@ -21,8 +21,6 @@ use Zakjakub\OswisCoreBundle\Provider\OswisCoreSettingsProvider;
 use function assert;
 use function in_array;
 
-/** @noinspection ClassNameCollisionInspection */
-
 /**
  * Handler for endpoint for actions with users (activation, password changes...).
  */
