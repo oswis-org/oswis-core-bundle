@@ -146,15 +146,11 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
     final public function getRevisionsOlderThanDateTime(DateTime $dateTime = null): array
     {
         try {
-            $dateTime = $dateTime ?? new DateTime();
+            $dateTime = $dateTime ?? new DateTime() ?? null;
         } catch (Exception $e) {
             $dateTime = null;
         }
-        $revisions = $this->getRevisions()->filter(
-            static function (AbstractRevision $revision) use ($dateTime) {
-                return $dateTime >= $revision->getCreatedDateTime();
-            }
-        )->toArray();
+        $revisions = $this->getRevisions()->filter(fn(AbstractRevision $revision) => $dateTime >= $revision->getCreatedDateTime())->toArray();
         AbstractRevision::sortByCreatedDateTime($revisions);
 
         return $revisions;
