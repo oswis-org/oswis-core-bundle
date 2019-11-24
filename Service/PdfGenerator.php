@@ -26,17 +26,17 @@ class PdfGenerator
     /**
      * @var LoggerInterface
      */
-    protected $logger;
+    protected LoggerInterface $logger;
 
     /**
      * @var Environment
      */
-    protected $templating;
+    protected Environment $templating;
 
     /**
      * @var OswisCoreSettingsProvider
      */
-    protected $oswisCoreSettings;
+    protected OswisCoreSettingsProvider $oswisCoreSettings;
 
     /**
      * PDF generator constructor.

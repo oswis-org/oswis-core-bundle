@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -15,7 +15,7 @@ trait IpTraceableTrait
      *     version = "all"
      * )
      */
-    protected $createdIp;
+    protected ?string $createdIp;
 
     /**
      * @var string|null $updatedIp
@@ -27,7 +27,7 @@ trait IpTraceableTrait
      *     version = "all"
      * )
      */
-    protected $updatedIp;
+    protected ?string $updatedIp;
 
     final public function getCreatedIp(): ?string
     {

@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -13,7 +13,7 @@ trait PlainTextReasonTrait
      * @var string|null
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
-    protected $reason;
+    protected ?string $reason;
 
     /**
      * @return string|null

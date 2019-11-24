@@ -19,54 +19,54 @@ class PdfListColumn
     public const TYPE_ID_DATETIME = 'id+datetime';
 
     /**
-     * @var string
+     * @var string|null
      * @example dateTime
      */
-    public $name;
+    public ?string $name;
 
     /**
-     * @var string
+     * @var string|null
      * @example Datum a čas
      */
-    public $title;
+    public ?string $title;
 
     /**
-     * @var string
+     * @var string|null
      * @example #006FAD
      * @example rgba(0,0,0,1)
      */
-    public $color;
+    public ?string $color;
 
     /**
-     * @var string
+     * @var string|null
      * @example #006FAD
      * @example rgba(0,0,0,1)
      */
-    public $backgroundColor;
+    public ?string $backgroundColor;
 
     /**
-     * @var string
+     * @var string|null
      * @example bold
      */
-    public $fontWeight;
+    public ?string $fontWeight;
 
     /**
-     * @var string
+     * @var string|null
      * @example center
      */
-    public $textAlign;
+    public ?string $textAlign;
 
     /**
-     * @var string
+     * @var string|null
      * @example middle
      */
-    public $verticalAlign;
+    public ?string $verticalAlign;
 
     /**
-     * @var string
+     * @var string|null
      * @example id+datetime
      */
-    public $type;
+    public ?string $type;
 
     /**
      * PdfListColumn constructor.

@@ -75,6 +75,7 @@ abstract class AbstractAppUser implements UserInterface, Serializable, Equatable
      * @param string $roleName
      *
      * @return bool
+     * @noinspection PhpUnused
      */
     final public function hasRole(string $roleName): bool
     {

@@ -21,7 +21,7 @@ trait PhoneTrait
      *      max = 15
      * )
      */
-    protected $phone;
+    protected ?string $phone;
 
     /**
      * Get phone number.

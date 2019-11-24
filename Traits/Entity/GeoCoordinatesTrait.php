@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -11,7 +11,7 @@ trait GeoCoordinatesTrait
      * @Doctrine\ORM\Mapping\Column(type="decimal", precision=10, scale=7, nullable=true)
      * @example 37.42242
      */
-    protected $geoLatitude;
+    protected ?float $geoLatitude;
 
     /**
      * Geo longitude (WGS 84).
@@ -19,7 +19,7 @@ trait GeoCoordinatesTrait
      * @Doctrine\ORM\Mapping\Column(type="decimal", precision=10, scale=7, nullable=true)
      * @example -122.08585
      */
-    protected $geoLongitude;
+    protected ?float $geoLongitude;
 
     /**
      * Geo elevation (WGS 84, in meters).
@@ -27,7 +27,7 @@ trait GeoCoordinatesTrait
      * @Doctrine\ORM\Mapping\Column(type="integer", nullable=true)
      * @example 1000
      */
-    protected $geoElevation;
+    protected ?int $geoElevation;
 
     final public function getGeoLon(): ?float
     {

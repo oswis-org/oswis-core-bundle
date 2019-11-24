@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Entity;
 
@@ -83,11 +83,11 @@ class AppUserType
      *     mappedBy="appUserType"
      * )
      */
-    protected $appUsers;
+    protected Collection $appUsers;
 
     /**
      * Contained app user role.
-     * @var AppUserRole
+     * @var AppUserRole|null
      * @Doctrine\ORM\Mapping\ManyToOne(
      *     targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUserRole",
      *     inversedBy="appUserTypes",
@@ -96,7 +96,7 @@ class AppUserType
      * @Doctrine\ORM\Mapping\JoinColumn(name="user_role_id", referencedColumnName="id")
      * @todo Refactor for use of multiple roles.
      */
-    protected $appUserRole;
+    protected ?AppUserRole $appUserRole;
 
     /**
      * User has access to administration/IS.
@@ -104,7 +104,7 @@ class AppUserType
      * @Doctrine\ORM\Mapping\Column(type="boolean", nullable=true)
      * @todo Make property used (probably has not effect now).
      */
-    protected $adminUser;
+    protected ?bool $adminUser;
 
     /**
      * Constructor of app user type.

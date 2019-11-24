@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -14,7 +14,7 @@ trait LockedForUserChangesTrait
      * @var DateTime|null
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true)
      */
-    protected $lockedForUserChanges;
+    protected ?DateTime $lockedForUserChanges;
 
 
     /**

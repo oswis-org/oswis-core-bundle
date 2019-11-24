@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Utils;
 
@@ -7,7 +7,7 @@ use Psr\Log\LoggerInterface;
 
 class SpamDateTimeEncoder
 {
-    private $secret_key = 'fe67d68ee1e09b47acd8810b880d537034c10c15344433a992b9c79002666844';
+    private string $secret_key = 'fe67d68ee1e09b47acd8810b880d537034c10c15344433a992b9c79002666844';
 
     /**
      * @param string $string

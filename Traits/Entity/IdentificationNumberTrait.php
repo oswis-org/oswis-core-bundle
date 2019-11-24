@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -21,7 +21,7 @@ trait IdentificationNumberTrait
      *      maxMessage = "IČ {{ value }} je příliš dlouhé, musí obsahovat nejvíce {{ limit }} znaků.",
      * )
      */
-    protected $identificationNumber;
+    protected ?string $identificationNumber;
 
     /**
      * @return string

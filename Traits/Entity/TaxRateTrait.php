@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -17,7 +17,7 @@ trait TaxRateTrait
      *
      * @Doctrine\ORM\Mapping\Column(nullable=true)
      */
-    protected $taxRate;
+    protected ?int $taxRate;
 
     /**
      * Get tax rate (in percents).

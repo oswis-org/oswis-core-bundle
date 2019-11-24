@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Controller;
 
@@ -23,7 +23,6 @@ class AppUserController extends AbstractController
      * @param UserPasswordEncoderInterface $encoder
      * @param LoggerInterface              $logger
      * @param MailerInterface              $newMailer
-     *
      * @param OswisCoreSettingsProvider    $oswisCoreSettings
      *
      * @return Response

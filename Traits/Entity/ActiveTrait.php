@@ -15,7 +15,7 @@ trait ActiveTrait
      *
      * @Doctrine\ORM\Mapping\Column(type="boolean", nullable=true)
      */
-    protected $active;
+    protected ?bool $active;
 
     /**
      * Get active

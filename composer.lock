@@ -4,7 +4,7 @@
     "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
     "This file is @generated automatically"
   ],
-  "content-hash": "0462358ca0c1d148e3912d5db9876266",
+  "content-hash": "a518acc6b2f0accd62ad8fbac484886c",
   "packages": [
     {
       "name": "adci/full-name-parser",
@@ -9634,7 +9634,7 @@
   "prefer-stable": false,
   "prefer-lowest": false,
   "platform": {
-    "php": "^7.2.9",
+    "php": "^7.4",
     "ext-ctype": "*",
     "ext-iconv": "*",
     "ext-mbstring": "*",

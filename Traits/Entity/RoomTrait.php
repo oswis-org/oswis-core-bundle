@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -12,31 +12,31 @@ trait RoomTrait
 
     /**
      * Floor number.
-     * @var int
+     * @var int|null
      * @Doctrine\ORM\Mapping\Column(type="smallint", nullable=true)
      */
-    protected $floor;
+    protected ?int $floor;
 
     /**
      * Number of regular beds.
-     * @var int
+     * @var int|null
      * @Doctrine\ORM\Mapping\Column(type="smallint", nullable=true)
      */
-    protected $numberOfBeds;
+    protected ?int $numberOfBeds;
 
     /**
      * Number of extra beds.
-     * @var int
+     * @var int|null
      * @Doctrine\ORM\Mapping\Column(type="smallint", nullable=true)
      */
-    protected $numberOfExtraBeds;
+    protected ?int $numberOfExtraBeds;
 
     /**
      * Number of animals.
-     * @var int
+     * @var int|null
      * @Doctrine\ORM\Mapping\Column(type="smallint", nullable=true)
      */
-    protected $numberOfAnimals;
+    protected ?int $numberOfAnimals;
 
     /**
      * @return int|null

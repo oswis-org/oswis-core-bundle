@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -15,7 +15,7 @@ trait NumericValueTrait
      *
      * @Doctrine\ORM\Mapping\Column(type="integer", nullable=false, options={"default": 0})
      */
-    protected $numericValue;
+    protected ?int $numericValue;
 
     /**
      * Get numeric value.

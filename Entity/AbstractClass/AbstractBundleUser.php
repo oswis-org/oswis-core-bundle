@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Entity\AbstractClass;
 
@@ -26,7 +26,7 @@ abstract class AbstractBundleUser
      * )
      * @Doctrine\ORM\Mapping\JoinColumn(name="app_user_id", referencedColumnName="id")
      */
-    private $appUser;
+    private ?AppUser $appUser;
 
     /**
      * AbstractBundleUser constructor.
@@ -67,7 +67,7 @@ abstract class AbstractBundleUser
      */
     final public function getFullName(): string
     {
-        return $this->getAppUser() ? ($this->getAppUser()->getFullName() ?? $this->getAppUser()->getUsername()) : null;
+        return $this->getAppUser() ? ($this->getAppUser()->getFullName() ?? $this->getAppUser()->getUsername()) : '';
     }
 
     /**

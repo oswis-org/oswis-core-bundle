@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Service;
 
@@ -22,17 +22,17 @@ class EmailSender
     /**
      * @var EntityManagerInterface
      */
-    protected $em;
+    protected EntityManagerInterface $em;
 
     /**
      * @var Swift_Mailer
      */
-    protected $mailer;
+    protected Swift_Mailer $mailer;
 
     /**
      * @var LoggerInterface
      */
-    protected $logger;
+    protected LoggerInterface $logger;
 
     /**
      * @var Twig_Environment
@@ -42,7 +42,7 @@ class EmailSender
     /**
      * @var OswisCoreSettingsProvider
      */
-    protected $oswisCoreSettings;
+    protected OswisCoreSettingsProvider $oswisCoreSettings;
 
     /**
      * E-mail sender constructor.

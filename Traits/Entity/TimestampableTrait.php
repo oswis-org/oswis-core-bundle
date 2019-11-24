@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -19,19 +19,19 @@ trait TimestampableTrait
 
     /**
      * Date and time of entity creation.
-     * @var DateTime
+     * @var DateTime|null
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true)
      * @Gedmo\Mapping\Annotation\Timestampable(on="create")
      */
-    protected $createdDateTime;
+    protected ?DateTime $createdDateTime;
 
     /**
      * Date and time of entity update.
-     * @var DateTime
+     * @var DateTime|null
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true, options={"default" : null})
      * @Gedmo\Mapping\Annotation\Timestampable(on="update")
      */
-    protected $updatedDateTime;
+    protected ?DateTime $updatedDateTime;
 
 
     final public function getCreatedDaysAgo(?bool $decimal = false): ?int

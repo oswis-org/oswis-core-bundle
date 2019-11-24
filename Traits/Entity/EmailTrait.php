@@ -18,7 +18,7 @@ trait EmailTrait
      *     mode = "strict"
      * )
      */
-    protected $email;
+    protected ?string $email;
 
     /**
      * Get e-mail.

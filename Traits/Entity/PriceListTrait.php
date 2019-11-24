@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -9,41 +9,41 @@ trait PriceListTrait
 
     /**
      * Percentage (as decimal 0.01-1.00) from reservation charge (excludes resort fees) needed as deposit.
-     * @var int
+     * @var int|null
      * @Doctrine\ORM\Mapping\Column(type="integer", nullable=true)
      */
-    protected $depositPercentage;
+    protected ?int $depositPercentage;
 
     /**
      * Percentage (as decimal 0.01-1.00) from reservation charge (excludes resort fees) needed as cancel fee.
-     * @var int
+     * @var int|null
      * @Doctrine\ORM\Mapping\Column(type="integer", nullable=true)
      */
-    protected $cancelFeePercentage;
+    protected ?int $cancelFeePercentage;
 
     /**
      * Working days available for payment of deposit.
-     * @var int
+     * @var int|null
      * @Doctrine\ORM\Mapping\Column(type="integer", nullable=true)
      */
-    protected $depositDaysAfterOrder;
+    protected ?int $depositDaysAfterOrder;
 
     /**
      * Minimal amount of working days before reservation start for complete payment.
-     * @var int
+     * @var int|null
      * @Doctrine\ORM\Mapping\Column(type="integer", nullable=true)
      */
-    protected $restDaysBeforeReservation;
+    protected ?int $restDaysBeforeReservation;
 
     /**
      * Minimal length of stay in nights
-     * @var int
+     * @var int|null
      * @Doctrine\ORM\Mapping\Column(type="integer", nullable=true)
      */
-    protected $minLength;
+    protected ?int $minLength;
 
     /**
-     * @return int
+     * @return int|null
      */
     final public function getDepositPercentage(): ?int
     {
@@ -51,7 +51,7 @@ trait PriceListTrait
     }
 
     /**
-     * @param int $depositPercentage
+     * @param int|null $depositPercentage
      */
     final public function setDepositPercentage(?int $depositPercentage): void
     {
@@ -59,7 +59,7 @@ trait PriceListTrait
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     final public function getCancelFeePercentage(): ?int
     {
@@ -67,7 +67,7 @@ trait PriceListTrait
     }
 
     /**
-     * @param int $cancelFeePercentage
+     * @param int|null $cancelFeePercentage
      */
     final public function setCancelFeePercentage(?int $cancelFeePercentage): void
     {
@@ -75,7 +75,7 @@ trait PriceListTrait
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     final public function getDepositDaysAfterOrder(): ?int
     {
@@ -83,7 +83,7 @@ trait PriceListTrait
     }
 
     /**
-     * @param int $depositDaysAfterOrder
+     * @param int|null $depositDaysAfterOrder
      */
     final public function setDepositDaysAfterOrder(?int $depositDaysAfterOrder): void
     {
@@ -91,7 +91,7 @@ trait PriceListTrait
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     final public function getRestDaysBeforeReservation(): ?int
     {
@@ -99,7 +99,7 @@ trait PriceListTrait
     }
 
     /**
-     * @param int $restDaysBeforeReservation
+     * @param int|null $restDaysBeforeReservation
      */
     final public function setRestDaysBeforeReservation(?int $restDaysBeforeReservation): void
     {
@@ -107,7 +107,7 @@ trait PriceListTrait
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     final public function getMinLength(): int
     {
@@ -115,7 +115,7 @@ trait PriceListTrait
     }
 
     /**
-     * @param int $minLength
+     * @param int|null $minLength
      */
     final public function setMinLength(?int $minLength): void
     {

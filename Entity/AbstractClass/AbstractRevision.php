@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Entity\AbstractClass;
 
@@ -18,9 +18,9 @@ abstract class AbstractRevision implements RevisionInterface
 {
     /**
      * Container of revisions.
-     * @var AbstractRevisionContainer
+     * @var AbstractRevisionContainer|null
      */
-    protected $container;
+    protected ?AbstractRevisionContainer $container;
 
     /**
      * Class name of revisions container.

@@ -13,11 +13,11 @@ use Zakjakub\OswisCoreBundle\Entity\AbstractClass\AbstractFile;
 
 abstract class AbstractFileAction
 {
-    private $validator;
+    private ValidatorInterface $validator;
 
-    private $doctrine;
+    private ManagerRegistry $doctrine;
 
-    private $factory;
+    private FormFactoryInterface $factory;
 
     public function __construct(
         ManagerRegistry $doctrine,

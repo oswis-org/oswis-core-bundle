@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -17,7 +17,7 @@ trait ConfirmedByUserTrait
      * @var DateTime|null
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true)
      */
-    protected $confirmedByUser;
+    protected ?DateTime $confirmedByUser;
 
 
     /**

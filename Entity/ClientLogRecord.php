@@ -41,13 +41,13 @@ class ClientLogRecord
      * @var int|null
      * @Doctrine\ORM\Mapping\Column(type="integer", nullable=true)
      */
-    public $level;
+    public ?int $level;
 
     /**
      * @var string|null
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
-    public $message;
+    public ?string $message;
 
     public function __construct(
         ?int $level = null,

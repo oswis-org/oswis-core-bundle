@@ -17,7 +17,7 @@ trait NoteTrait
      *
      * @Doctrine\ORM\Mapping\Column(type="text", nullable=true)
      */
-    protected $note;
+    protected ?string $note;
 
     /**
      * Get note

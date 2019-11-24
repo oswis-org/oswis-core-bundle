@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -10,10 +10,10 @@ trait NationalityTrait
 
     /**
      * Nationality (as national string).
-     * @var string
+     * @var string|null
      * @Doctrine\ORM\Mapping\Column(type="string")
      */
-    protected $nationality;
+    protected ?string $nationality;
 
     /**
      * @return string

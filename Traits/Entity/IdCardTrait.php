@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -10,17 +10,17 @@ trait IdCardTrait
 
     /**
      * ID card type (as string)
-     * @var string
+     * @var string|null
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
-    protected $idCardType;
+    protected ?string $idCardType;
 
     /**
      * ID card number (as string).
-     * @var string
+     * @var string|null
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
-    protected $idCardNumber;
+    protected ?string $idCardNumber;
 
     /**
      * @return string

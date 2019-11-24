@@ -14,12 +14,12 @@ trait SlugTrait
      *
      * @Doctrine\ORM\Mapping\Column(nullable=true)
      */
-    protected $slug;
+    protected ?string $slug;
 
 
     /**
      * Get slug.
-     * @return string
+     * @return string|null
      */
     final public function getSlug(): ?string
     {

@@ -13,31 +13,31 @@ class Nameable
      * Full name.
      * @var string|null
      */
-    public $name;
+    public ?string $name;
 
     /**
      * Shortened name.
      * @var string|null
      */
-    public $shortName;
+    public ?string $shortName;
 
     /**
      * Description.
      * @var string|null
      */
-    public $description;
+    public ?string $description;
 
     /**
      * Note.
      * @var string|null
      */
-    public $note;
+    public ?string $note;
 
     /**
      * Slug (string for ie. url).
      * @var string|null
      */
-    public $slug;
+    public ?string $slug;
 
     /**
      * Constructor of nameable.

@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -12,13 +12,12 @@ use Exception;
 trait ConfirmedByManagerTrait
 {
 
-
     /**
      * Confirmed by manager.
      * @var DateTime|null
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true)
      */
-    protected $confirmedByManager;
+    protected ?DateTime $confirmedByManager;
 
 
     /**

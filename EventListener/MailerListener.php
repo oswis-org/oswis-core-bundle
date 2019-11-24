@@ -12,7 +12,7 @@ use Zakjakub\OswisCoreBundle\Utils\EmailUtils;
 
 class MailerListener implements EventSubscriberInterface
 {
-    protected $oswisCoreSettings;
+    protected OswisCoreSettingsProvider $oswisCoreSettings;
 
     public function __construct(OswisCoreSettingsProvider $oswisCoreSettings)
     {

@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -15,7 +15,7 @@ trait TextValueTrait
      *
      * @Doctrine\ORM\Mapping\Column(type="text", nullable=true)
      */
-    protected $textValue;
+    protected ?string $textValue;
 
     /**
      * Get text value.

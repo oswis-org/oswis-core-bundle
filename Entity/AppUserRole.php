@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Entity;
 
@@ -79,7 +79,7 @@ class AppUserRole
      * @var string|null
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
-    protected $roleString;
+    protected ?string $roleString;
 
     /**
      * Parent role (also included in this role).
@@ -87,7 +87,7 @@ class AppUserRole
      * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUserRole", inversedBy="children", fetch="EAGER")
      * @Doctrine\ORM\Mapping\JoinColumn(name="parent_id", referencedColumnName="id")
      */
-    protected $parent;
+    protected ?AppUserRole $parent;
 
     /**
      * Child roles (which includes this role).

@@ -12,21 +12,21 @@ trait InfoMailSentTrait
      * @var DateTime|null
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true)
      */
-    protected $infoMailSentDateTime;
+    protected ?DateTime $infoMailSentDateTime;
 
     /**
      * Number of info e-mails sent.
-     * @var int
+     * @var int|null
      * @Doctrine\ORM\Mapping\Column(type="integer", nullable=true)
      */
-    protected $infoMailSentCount;
+    protected ?int $infoMailSentCount;
 
     /**
      * Source/reason/author of last info e-mail (cron, manual...).
      * @var string|null
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
-    protected $infoMailSentSource;
+    protected ?string $infoMailSentSource;
 
     /**
      * Get date and time of last info e-mail.

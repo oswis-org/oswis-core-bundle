@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Controller\Website;
 
@@ -8,10 +8,10 @@ use Symfony\Component\HttpFoundation\Response;
 
 class IndexWebController extends AbstractController
 {
-    /** @noinspection MethodShouldBeFinalInspection */
     /**
      * @return Response
      * @throws LogicException
+     * @noinspection MethodShouldBeFinalInspection
      */
     public function indexAction(): Response
     {

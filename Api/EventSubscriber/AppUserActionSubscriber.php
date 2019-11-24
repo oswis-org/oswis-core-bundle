@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Api\EventSubscriber;
 
@@ -29,12 +29,12 @@ final class AppUserActionSubscriber implements EventSubscriberInterface
     /**
      * @var AppUserManager
      */
-    private $appUserManager;
+    private AppUserManager $appUserManager;
 
     /**
      * @var EntityManagerInterface
      */
-    private $em;
+    private EntityManagerInterface $em;
 
     /**
      * AppUserActionSubscriber constructor.

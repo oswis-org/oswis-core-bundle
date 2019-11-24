@@ -17,7 +17,7 @@ trait NameTrait
      *
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
-    protected $name;
+    protected ?string $name;
 
     /**
      * Short name/shortcut.
@@ -25,7 +25,7 @@ trait NameTrait
      *
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
-    protected $shortName;
+    protected ?string $shortName;
 
     /**
      * Get short name.

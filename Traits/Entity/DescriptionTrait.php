@@ -15,7 +15,7 @@ trait DescriptionTrait
      *
      * @Doctrine\ORM\Mapping\Column(type="text", nullable=true)
      */
-    protected $description;
+    protected ?string $description;
 
 
     /**

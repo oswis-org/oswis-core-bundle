@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -17,11 +17,11 @@ trait DateTimeTrait
     /**
      * Date and time.
      *
-     * @var DateTime
+     * @var DateTime|null
      *
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true, options={"default" : null})
      */
-    protected $dateTime;
+    protected ?DateTime $dateTime;
 
     final public function getDaysAgo(?bool $decimal = false): ?int
     {

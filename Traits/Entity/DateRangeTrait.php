@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -15,20 +15,20 @@ trait DateRangeTrait
     /**
      * Date and time of range start
      *
-     * @var DateTime
+     * @var DateTime|null
      *
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true, options={"default": null})
      */
-    protected $startDateTime;
+    protected ?DateTime $startDateTime;
 
     /**
      * Date and time of range end
      *
-     * @var DateTime
+     * @var DateTime|null
      *
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true, options={"default": null})
      */
-    protected $endDateTime;
+    protected ?DateTime $endDateTime;
 
     /**
      * True if datetime belongs to this datetime range.

@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -17,7 +17,7 @@ trait UrlTrait
      *      max = 254
      * )
      */
-    protected $url;
+    protected ?string $url;
 
     /**
      * Get url.

@@ -15,37 +15,37 @@ class Address
     /**
      * @var string|null
      */
-    public $street;
+    public ?string $street;
 
     /**
      * @var string|null
      */
-    public $street2;
+    public ?string $street2;
 
     /**
      * @var string|null
      */
-    public $city;
+    public ?string $city;
 
     /**
      * @var string|null
      */
-    public $postalCode;
+    public ?string $postalCode;
 
     /**
      * @var int|null
      */
-    public $houseNumber;
+    public ?int $houseNumber;
 
     /**
      * @var int|null
      */
-    public $doorNumber;
+    public ?int $doorNumber;
 
     /**
      * @var int|null
      */
-    public $orientationNumber;
+    public ?int $orientationNumber;
 
     public function __construct(
         ?string $street = null,

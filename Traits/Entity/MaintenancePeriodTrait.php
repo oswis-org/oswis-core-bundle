@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -10,10 +10,10 @@ trait MaintenancePeriodTrait
 
     /**
      * True if accommodation is not available during this period.
-     * @var bool
+     * @var bool|null
      * @Doctrine\ORM\Mapping\Column(type="boolean")
      */
-    protected $accommodationNotAvailable;
+    protected ?bool $accommodationNotAvailable;
 
     /**
      * @return bool

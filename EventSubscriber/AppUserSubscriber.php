@@ -23,27 +23,27 @@ final class AppUserSubscriber implements EventSubscriberInterface
     /**
      * @var EntityManagerInterface
      */
-    private $em;
+    private EntityManagerInterface $em;
 
     /**
      * @var LoggerInterface
      */
-    private $logger;
+    private LoggerInterface $logger;
 
     /**
      * @var UserPasswordEncoderInterface
      */
-    private $encoder;
+    private UserPasswordEncoderInterface $encoder;
 
     /**
      * @var MailerInterface
      */
-    private $mailer;
+    private MailerInterface $mailer;
 
     /**
      * @var OswisCoreSettingsProvider
      */
-    private $oswisCoreSettings;
+    private OswisCoreSettingsProvider $oswisCoreSettings;
 
     /**
      * ReservationSubscriber constructor.

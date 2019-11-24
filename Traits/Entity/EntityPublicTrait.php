@@ -13,7 +13,7 @@ trait EntityPublicTrait
      * @var bool|null
      * @Doctrine\ORM\Mapping\Column(type="boolean", nullable=true)
      */
-    protected $publicOnWeb;
+    protected ?bool $publicOnWeb;
 
 
     /**
@@ -21,21 +21,21 @@ trait EntityPublicTrait
      * @var bool|null
      * @Doctrine\ORM\Mapping\Column(type="boolean", nullable=true)
      */
-    protected $publicOnWebRoute;
+    protected ?bool $publicOnWebRoute;
 
     /**
      * Entity is visible in IS.
      * @var bool|null
      * @Doctrine\ORM\Mapping\Column(type="boolean", nullable=true)
      */
-    protected $publicInIS;
+    protected ?bool $publicInIS;
 
     /**
      * Entity is visible in portal.
      * @var bool|null
      * @Doctrine\ORM\Mapping\Column(type="boolean", nullable=true)
      */
-    protected $publicInPortal;
+    protected ?bool $publicInPortal;
 
     /**
      * @return bool

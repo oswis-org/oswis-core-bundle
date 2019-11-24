@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -16,7 +16,7 @@ trait AddressTrait
      * @var string|null $street First line of street
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
-    protected $street;
+    protected ?string $street;
 
     /**
      * Second line of street
@@ -24,7 +24,7 @@ trait AddressTrait
      * @var string|null $street2 Second line of street
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
-    protected $street2;
+    protected ?string $street2;
 
     /**
      * City
@@ -32,7 +32,7 @@ trait AddressTrait
      * @var string|null $city City
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
-    protected $city;
+    protected ?string $city;
 
     /**
      * Postal code
@@ -40,7 +40,7 @@ trait AddressTrait
      * @var string|null $postalCode Postal code
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
-    protected $postalCode;
+    protected ?string $postalCode;
 
     /**
      * House number
@@ -48,7 +48,7 @@ trait AddressTrait
      * @var int|null $houseNumber House number
      * @Doctrine\ORM\Mapping\Column(type="integer", nullable=true)
      */
-    protected $houseNumber;
+    protected ?int $houseNumber;
 
     /**
      * Door number
@@ -56,7 +56,7 @@ trait AddressTrait
      * @var int|null $doorNumber Door number
      * @Doctrine\ORM\Mapping\Column(type="integer", nullable=true)
      */
-    protected $doorNumber;
+    protected ?int $doorNumber;
 
     /**
      * Orientation number
@@ -64,7 +64,7 @@ trait AddressTrait
      * @var int|null $doorNumber Door number
      * @Doctrine\ORM\Mapping\Column(type="integer", nullable=true)
      */
-    protected $orientationNumber;
+    protected ?int $orientationNumber;
 
     /**
      * @return string|null

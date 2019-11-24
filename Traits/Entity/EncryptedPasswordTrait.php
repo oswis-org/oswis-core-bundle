@@ -13,7 +13,7 @@ trait EncryptedPasswordTrait
      * @var string|null
      * @Doctrine\ORM\Mapping\Column(name="password", type="string", length=255, nullable=true)
      */
-    protected $password;
+    protected ?string $password;
 
     /**
      * Get encrypted password.

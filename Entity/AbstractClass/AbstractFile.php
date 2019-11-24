@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Entity\AbstractClass;
 
@@ -24,32 +24,32 @@ abstract class AbstractFile
      *     mimeType="contentMimeType"
      * )
      */
-    public $file;
+    public ?File $file;
 
     /**
      * @var string|null
      * @Doctrine\ORM\Mapping\Column(nullable=true)
      * @ApiProperty(iri="http://schema.org/contentUrl")
      */
-    public $contentUrl;
+    public ?string $contentUrl;
 
     /**
      * @var int|null
      * @Doctrine\ORM\Mapping\Column(nullable=true)
      */
-    public $contentSize;
+    public ?int $contentSize;
 
     /**
      * @var int|null
      * @Doctrine\ORM\Mapping\Column(nullable=true)
      */
-    public $contentMimeType;
+    public ?int $contentMimeType;
 
     /**
      * @var string|null
      * @Doctrine\ORM\Mapping\Column(nullable=true)
      */
-    public $contentOriginalName;
+    public ?string $contentOriginalName;
 
     /** @noinspection MethodShouldBeFinalInspection */
     public function __toString(): string

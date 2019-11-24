@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -17,21 +17,21 @@ trait BasicMailConfirmationTrait
      * @var DateTime|null
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true)
      */
-    protected $eMailConfirmationDateTime;
+    protected ?DateTime $eMailConfirmationDateTime;
 
     /**
      * Number of confirmation e-mails sent.
      * @var int
      * @Doctrine\ORM\Mapping\Column(type="integer", nullable=true)
      */
-    protected $eMailConfirmationCount;
+    protected int $eMailConfirmationCount;
 
     /**
      * Source/reason/author of last e-mail confirmation (cron, manual...).
      * @var string|null
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
-    protected $eMailConfirmationSource;
+    protected ?string $eMailConfirmationSource;
 
     /**
      * Get date and time of last confirmation e-mail.

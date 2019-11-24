@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Api\Dto;
 
@@ -27,26 +27,26 @@ final class AppUserActionRequest
      * ID has higher priority than username/e-mail.
      * @var int|null
      */
-    public $uid;
+    public ?int $uid;
 
     /**
      * Username or e-mail of changed user.
      * ID has higher priority than username/e-mail.
      * @var string|null
      */
-    public $username;
+    public ?string $username;
 
     /**
      * Token generated when request was created.
      * @var string|null
      */
-    public $token;
+    public ?string $token;
 
     /**
      * New password.
      * @var string|null
      */
-    public $password;
+    public ?string $password;
 
     /**
      * Type of action.
@@ -56,11 +56,11 @@ final class AppUserActionRequest
      *     message="Požadovaný typ akce není implementovaný."
      * )
      */
-    public $type;
+    public ?string $type;
 
     /**
      * App user to change.
      * @var AppUser|null
      */
-    public $appUser;
+    public ?AppUser $appUser;
 }

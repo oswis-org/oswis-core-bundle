@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -17,7 +17,7 @@ trait UserTrait
      * @var string|null
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
-    protected $salt;
+    protected ?string $salt;
 
     /**
      * Returns the salt that was originally used to encode the password.

@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -20,23 +20,23 @@ trait OrderDateRangeTrait
     /**
      * Date and time of range start
      *
-     * @var DateTime
+     * @var DateTime|null
      *
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true, options={"default": null})
      */
-    protected $startOrderDateTime;
+    protected ?DateTime $startOrderDateTime;
 
     /**
      * Date and time of range end
      *
-     * @var DateTime
+     * @var DateTime|null
      *
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true, options={"default": null})
      */
-    protected $endOrderDateTime;
+    protected ?DateTime $endOrderDateTime;
 
     /**
-     * @return DateTime
+     * @return DateTime|null
      */
     final public function getStartOrderDateTime(): ?DateTime
     {
@@ -44,7 +44,7 @@ trait OrderDateRangeTrait
     }
 
     /**
-     * @param DateTime $startOrderDateTime
+     * @param DateTime|null $startOrderDateTime
      */
     final public function setStartOrderDateTime(?DateTime $startOrderDateTime): void
     {
@@ -54,7 +54,7 @@ trait OrderDateRangeTrait
     /**
      * True if datetime belongs to this datetime range.
      *
-     * @param DateTime $dateTime Checked date and time
+     * @param DateTime|null $dateTime Checked date and time
      *
      * @return bool True if belongs to date range
      * @throws Exception
@@ -65,7 +65,7 @@ trait OrderDateRangeTrait
     }
 
     /**
-     * @return DateTime
+     * @return DateTime|null
      */
     final public function getEndOrderDateTime(): ?DateTime
     {
@@ -73,7 +73,7 @@ trait OrderDateRangeTrait
     }
 
     /**
-     * @param DateTime $endOrderDateTime
+     * @param DateTime|null $endOrderDateTime
      */
     final public function setEndOrderDateTime(?DateTime $endOrderDateTime): void
     {

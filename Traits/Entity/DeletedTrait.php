@@ -21,14 +21,14 @@ trait DeletedTrait
      *
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true, options={"default" : null})
      */
-    protected $deleted;
+    protected ?DateTime $deleted;
 
     /**
      * Date and time of delete confirmation e-mail.
      * @var DateTime|null
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true)
      */
-    protected $eMailDeleteConfirmationDateTime;
+    protected ?DateTime $eMailDeleteConfirmationDateTime;
 
     /**
      * Get date and time of delete confirmation e-mail.

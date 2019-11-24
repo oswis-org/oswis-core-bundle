@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -20,21 +20,21 @@ trait AgeRangeTrait
     /**
      * Minimal age of person in this group
      *
-     * @var int
+     * @var int|null
      * @Doctrine\ORM\Mapping\Column(type="smallint", nullable=true)
      */
-    protected $minAge;
+    protected ?int $minAge;
 
     /**
      * Maximal age of person in this group
      *
-     * @var int
+     * @var int|null
      * @Doctrine\ORM\Mapping\Column(type="smallint", nullable=true)
      */
-    protected $maxAge;
+    protected ?int $maxAge;
 
     /**
-     * @return int
+     * @return int|null
      */
     final public function getMinAge(): ?int
     {
@@ -50,7 +50,7 @@ trait AgeRangeTrait
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     final public function getMaxAge(): ?int
     {
@@ -58,7 +58,7 @@ trait AgeRangeTrait
     }
 
     /**
-     * @param int $maxAge
+     * @param int|null $maxAge
      */
     final public function setMaxAge(?int $maxAge): void
     {

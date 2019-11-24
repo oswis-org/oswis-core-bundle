@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Entity;
 
@@ -100,14 +100,14 @@ class AppUser extends AbstractAppUser
      *     fetch="EAGER"
      * )
      */
-    protected $appUserFlags;
+    protected ?Collection $appUserFlags;
 
     /**
      * @var AppUserType|null
      * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUserType", inversedBy="appUsers", fetch="EAGER")
      * @Doctrine\ORM\Mapping\JoinColumn(name="app_user_type_id", referencedColumnName="id")
      */
-    protected $appUserType;
+    protected ?AppUserType $appUserType;
 
     public function __construct(
         ?string $fullName = null,

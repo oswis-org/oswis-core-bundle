@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -15,7 +15,7 @@ trait PriorityTrait
      *
      * @Doctrine\ORM\Mapping\Column(nullable=true, options={"default": 0})
      */
-    protected $priority;
+    protected ?int $priority;
 
     /**
      * Get priority

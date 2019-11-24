@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnused */
 /** @noinspection UnknownInspectionInspection */
 /** @noinspection RequiredAttributes */
 /** @noinspection HtmlRequiredAltAttribute */

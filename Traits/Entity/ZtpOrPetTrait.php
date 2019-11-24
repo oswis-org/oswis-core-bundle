@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -10,24 +10,24 @@ trait ZtpOrPetTrait
 
     /**
      * Person is ZTP(P).
-     * @var bool
+     * @var bool|null
      * @Doctrine\ORM\Mapping\Column(type="boolean", nullable=true)
      */
-    protected $ztp;
+    protected ?bool $ztp;
 
     /**
      * Person is ZTP(P) accompaniment.
-     * @var bool
+     * @var bool|null
      * @Doctrine\ORM\Mapping\Column(type="boolean", nullable=true)
      */
-    protected $ztpAccompaniment;
+    protected ?bool $ztpAccompaniment;
 
     /**
      * Pet, not person.
-     * @var bool
+     * @var bool|null
      * @Doctrine\ORM\Mapping\Column(type="boolean", nullable=true)
      */
-    protected $pet;
+    protected ?bool $pet;
 
     /**
      * @return bool

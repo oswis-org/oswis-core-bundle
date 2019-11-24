@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Entity;
 
@@ -36,7 +36,7 @@ class AppUserFlagConnection
      * )
      * @Doctrine\ORM\Mapping\JoinColumn(nullable=true)
      */
-    protected $appUserFlag;
+    protected ?AppUserFlag $appUserFlag;
 
     /**
      * App user.
@@ -48,7 +48,7 @@ class AppUserFlagConnection
      * )
      * @Doctrine\ORM\Mapping\JoinColumn(nullable=true)
      */
-    protected $appUser;
+    protected ?AppUser $appUser;
 
     /**
      * Get app user.

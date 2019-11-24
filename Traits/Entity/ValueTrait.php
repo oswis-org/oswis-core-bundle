@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -6,25 +6,25 @@ trait ValueTrait
 {
 
     /**
-     * @var bool
+     * @var bool|null
      * @Doctrine\ORM\Mapping\Column(type="boolean", nullable=true)
      */
-    protected $valueAllowed;
+    protected ?bool $valueAllowed;
 
     /**
-     * @var string
+     * @var string|null
      * @Doctrine\ORM\Mapping\Column(type="text", nullable=true)
      */
-    protected $valueRegex;
+    protected ?string $valueRegex;
 
     /**
-     * @var string
+     * @var string|null
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
-    protected $valueLabel;
+    protected ?string $valueLabel;
 
     /**
-     * @return string
+     * @return string|null
      */
     final public function getValueRegex(): ?string
     {
@@ -32,15 +32,15 @@ trait ValueTrait
     }
 
     /**
-     * @param string $valueRegex
+     * @param string|null $valueRegex
      */
-    final public function setValueRegex(string $valueRegex): void
+    final public function setValueRegex(?string $valueRegex): void
     {
         $this->valueRegex = $valueRegex;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     final public function getValueLabel(): ?string
     {
@@ -48,7 +48,7 @@ trait ValueTrait
     }
 
     /**
-     * @param string $valueLabel
+     * @param string|null $valueLabel
      */
     final public function setValueLabel(?string $valueLabel): void
     {
@@ -64,7 +64,7 @@ trait ValueTrait
     }
 
     /**
-     * @param bool $valueAllowed
+     * @param bool|null $valueAllowed
      */
     final public function setValueAllowed(?bool $valueAllowed): void
     {

@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -12,7 +12,7 @@ trait DepositValueTrait
      *
      * @Doctrine\ORM\Mapping\Column(type="integer", nullable=false, options={"default": 0})
      */
-    protected $depositValue;
+    protected ?int $depositValue;
 
     /**
      * Get deposit value.

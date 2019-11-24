@@ -38,27 +38,27 @@ class AppUserManager
     /**
      * @var EntityManagerInterface
      */
-    protected $em;
+    protected EntityManagerInterface $em;
 
     /**
      * @var LoggerInterface
      */
-    protected $logger;
+    protected LoggerInterface $logger;
 
     /**
      * @var UserPasswordEncoderInterface
      */
-    private $encoder;
+    private UserPasswordEncoderInterface $encoder;
 
     /**
      * @var MailerInterface
      */
-    private $mailer;
+    private MailerInterface $mailer;
 
     /**
      * @var OswisCoreSettingsProvider
      */
-    private $oswisCoreSettings;
+    private OswisCoreSettingsProvider $oswisCoreSettings;
 
     /**
      * AppUserManager constructor.

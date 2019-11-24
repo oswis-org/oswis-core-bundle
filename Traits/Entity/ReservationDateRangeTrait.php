@@ -20,7 +20,7 @@ trait ReservationDateRangeTrait
      *
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true, options={"default": null})
      */
-    protected $startReservationDateTime;
+    protected DateTime $startReservationDateTime;
 
     /**
      * Date and time of range end
@@ -29,7 +29,7 @@ trait ReservationDateRangeTrait
      *
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true, options={"default": null})
      */
-    protected $endReservationDateTime;
+    protected DateTime $endReservationDateTime;
 
     /**
      * @return DateTime

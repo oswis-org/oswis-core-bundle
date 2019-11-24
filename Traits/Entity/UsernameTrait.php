@@ -13,7 +13,7 @@ trait UsernameTrait
      * @var string|null
      * @Doctrine\ORM\Mapping\Column(name="username", type="string", length=50, unique=true, nullable=true)
      */
-    protected $username;
+    protected ?string $username;
 
     /**
      * Get username.

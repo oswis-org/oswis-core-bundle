@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -23,42 +23,42 @@ trait FullNameTrait
      * @var string|null $nickname
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
-    protected $nickname;
+    protected ?string $nickname;
 
     /**
      * First (given) name.
      * @var string|null $givenName
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
-    protected $givenName;
+    protected ?string $givenName;
 
     /**
      * Middle (additional) name.
      * @var string|null $additionalName
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
-    protected $additionalName;
+    protected ?string $additionalName;
 
     /**
      * Last (family) name.
      * @var string|null $familyName
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
-    protected $familyName;
+    protected ?string $familyName;
 
     /**
      * Prefix (title before name).
      * @var string|null $honorificPrefix
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
-    protected $honorificPrefix;
+    protected ?string $honorificPrefix;
 
     /**
      * Suffix (title after name).
      * @var string|null $honorificSuffix
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
-    protected $honorificSuffix;
+    protected ?string $honorificSuffix;
 
     final public function setFullName(?string $name): void
     {
@@ -72,7 +72,7 @@ trait FullNameTrait
                 $this->setAdditionalName($nameObject->getMiddleName() ?? '');
                 $this->setFamilyName($nameObject->getLastName() ?? '');
                 $this->setHonorificSuffix($nameObject->getSuffix() ?? '');
-                $this->setNickname(implode([', '], $nameObject->getNicknames()) ?? '');
+                $this->setNickname(implode($nameObject->getNicknames(), [', ']) ?? '');
             } catch (NameParsingException $e) {
                 // Name not recognized.
             } finally {

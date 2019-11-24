@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -16,11 +16,11 @@ trait BirthDateTrait
     /**
      * Birth date
      *
-     * @var DateTime
+     * @var DateTime|null
      *
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true, options={"default" : null})
      */
-    protected $birthDate;
+    protected ?DateTime $birthDate;
 
     /**
      * @param DateTime|null $referenceDateTime
@@ -28,7 +28,7 @@ trait BirthDateTrait
      * @return int|null
      * @throws Exception
      */
-    final public function getAge(DateTime $referenceDateTime = null): ?int
+    final public function getAge(?DateTime $referenceDateTime = null): ?int
     {
         return AgeUtils::getAgeFromBirthDate($this->birthDate, $referenceDateTime);
     }
@@ -39,7 +39,7 @@ trait BirthDateTrait
      * @return int|null
      * @throws Exception
      */
-    final public function getAgeDecimal(DateTime $referenceDateTime = null): ?int
+    final public function getAgeDecimal(?DateTime $referenceDateTime = null): ?int
     {
         return AgeUtils::getAgeDecimalFromBirthDate($this->birthDate, $referenceDateTime);
     }
@@ -61,9 +61,7 @@ trait BirthDateTrait
     /**
      * Set date and time of entity update
      *
-     * @param DateTime $birthDate
-     *
-     * @throws Exception
+     * @param DateTime|null $birthDate
      */
     final public function setBirthDate(?DateTime $birthDate): void
     {

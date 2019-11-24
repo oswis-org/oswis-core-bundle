@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Entity\AbstractClass;
 
@@ -20,13 +20,13 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
      * Revisions/versions of this container.
      * @var Collection
      */
-    protected $revisions;
+    protected Collection $revisions;
 
     /**
      * Revision/version which is actual/active now.
      * @var AbstractRevision|null
      */
-    protected $activeRevision;
+    protected ?AbstractRevision $activeRevision;
 
     /**
      * Add some revision/version to this container.
@@ -96,7 +96,6 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
     }
 
     /** @noinspection MethodShouldBeFinalInspection */
-
     /**
      * Automatically set revision/version which is actual/active now.
      */

@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Provider;
 
@@ -11,22 +11,22 @@ class OswisCoreSettingsProvider
     /**
      * @var array
      */
-    protected $app;
+    protected ?array $app;
 
     /**
      * @var array
      */
-    protected $admin;
+    protected ?array $admin;
 
     /**
      * @var array
      */
-    protected $email;
+    protected ?array $email;
 
     /**
      * @var array
      */
-    protected $web;
+    protected ?array $web;
 
     /**
      * OswisCoreSettingsProvider constructor.

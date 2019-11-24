@@ -16,7 +16,7 @@ trait TypeTrait
      * @var string|null $type
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
-    protected $type;
+    protected ?string $type;
 
     /**
      * @return string|null

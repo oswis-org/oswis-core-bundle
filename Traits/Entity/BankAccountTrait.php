@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -9,7 +9,7 @@ trait BankAccountTrait
      * @var string|null $bankAccountNumber
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
-    protected $bankAccountNumber;
+    protected ?string $bankAccountNumber;
 
     /**
      * Second line of street
@@ -17,7 +17,7 @@ trait BankAccountTrait
      * @var string|null $bankAccountBank Second line of street
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
-    protected $bankAccountBank;
+    protected ?string $bankAccountBank;
 
     /**
      * @return string|null
