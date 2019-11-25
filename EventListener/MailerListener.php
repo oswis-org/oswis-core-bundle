@@ -5,8 +5,10 @@ namespace Zakjakub\OswisCoreBundle\EventListener;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Mailer\Event\MessageEvent;
+use Symfony\Component\Mime\Address;
 use Symfony\Component\Mime\Email;
-use Symfony\Component\Mime\NamedAddress;
+use Symfony\Component\Mime\Exception\LogicException;
+use Symfony\Component\Mime\Exception\RfcComplianceException;
 use Zakjakub\OswisCoreBundle\Provider\OswisCoreSettingsProvider;
 use Zakjakub\OswisCoreBundle\Utils\EmailUtils;
 
@@ -33,11 +35,17 @@ class MailerListener implements EventSubscriberInterface
         }
         $oswisCoreSettings = $this->oswisCoreSettings;
         if (!$message->getFrom() && $oswisCoreSettings->getEmail()['address']) {
-            $message->from(
-                new NamedAddress(
-                    $oswisCoreSettings->getEmail()['address'] ?? null, EmailUtils::mime_header_encode($oswisCoreSettings->getEmail()['name'] ?? null)
-                )
-            );
+            try {
+                $message->from(
+                    new Address(
+                        $oswisCoreSettings->getEmail()['address'] ?? null, EmailUtils::mime_header_encode($oswisCoreSettings->getEmail()['name'] ?? null)
+                    )
+                );
+            } catch (LogicException $e) {
+                /// TODO: Catch.
+            } catch (RfcComplianceException $e) {
+                /// TODO: Catch.
+            }
         }
         if (!$message->getReturnPath() && $oswisCoreSettings->getEmail()['return_path']) {
             $message->returnPath($oswisCoreSettings->getEmail()['return_path']);

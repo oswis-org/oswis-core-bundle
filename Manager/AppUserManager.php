@@ -10,7 +10,7 @@ use Psr\Log\LoggerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mailer\MailerInterface;
-use Symfony\Component\Mime\NamedAddress;
+use Symfony\Component\Mime\Address;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Zakjakub\OswisCoreBundle\Entity\AppUser;
 use Zakjakub\OswisCoreBundle\Entity\AppUserType;
@@ -268,7 +268,7 @@ class AppUserManager
                 'oswis'    => $this->oswisCoreSettings,
             );
             $email = (new TemplatedEmail())->to(
-                new NamedAddress(
+                new Address(
                     $appUser->getEmail() ?? '', EmailUtils::mime_header_encode($appUser->getFullName() ?? $appUser->getUsername() ?? '')
                 )
             )->subject(EmailUtils::mime_header_encode($title))->htmlTemplate('@ZakjakubOswisCore/e-mail/password.html.twig')->context($data);
@@ -314,7 +314,7 @@ class AppUserManager
                 'logo'     => 'cid_logo',
                 'oswis'    => $this->oswisCoreSettings,
             );
-            $receiverAddress = new NamedAddress(
+            $receiverAddress = new Address(
                 $appUser->getEmail() ?? '', EmailUtils::mime_header_encode($appUser->getFullName() ?? $appUser->getUsername() ?? '')
             );
             $email = (new TemplatedEmail())->to($receiverAddress)->subject(EmailUtils::mime_header_encode($title))->htmlTemplate('@ZakjakubOswisCore/e-mail/app-user.html.twig')->context($data);
