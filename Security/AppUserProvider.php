@@ -48,8 +48,8 @@ class AppUserProvider implements UserProviderInterface
      * @return AppUser|null
      * @throws UsernameNotFoundException
      * @throws OswisUserNotUniqueException
-     * @noinspection MissingParameterTypeDeclarationInspection
      */
+    /** @noinspection MissingParameterTypeDeclarationInspection */
     final public function loadUserByUsername($username): ?AppUser
     {
         $user = $this->userRepository->loadUserByUsername($username);
@@ -65,8 +65,8 @@ class AppUserProvider implements UserProviderInterface
      * @param string $class
      *
      * @return bool
-     * @noinspection MissingParameterTypeDeclarationInspection
      */
+    /** @noinspection MissingParameterTypeDeclarationInspection */
     final public function supportsClass($class): bool
     {
         return AppUser::class === $class;

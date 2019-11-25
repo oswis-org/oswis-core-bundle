@@ -52,8 +52,8 @@ final class SearchFilter extends AbstractContextAwareFilter
      * @throws AnnotationException
      * @throws ReflectionException
      * @throws HttpInvalidParamException
-     * @noinspection MissingParameterTypeDeclarationInspection
      */
+    /** @noinspection MissingParameterTypeDeclarationInspection */
     public function filterProperty(
         string $property,
         $value,

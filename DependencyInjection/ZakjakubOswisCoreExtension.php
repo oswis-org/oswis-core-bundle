@@ -22,6 +22,7 @@ class ZakjakubOswisCoreExtension extends Extension implements PrependExtensionIn
      */
     final public function load(array $configs, ContainerBuilder $container): void
     {
+        $configs ??= array();
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yaml');
         $configuration = $this->getConfiguration($configs, $container);
