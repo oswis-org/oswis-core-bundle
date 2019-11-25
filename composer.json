@@ -3,7 +3,7 @@
   "description": "Core module for One Simple Web IS.",
   "homepage": "https://oswis.org",
   "type": "symfony-bundle",
-  "minimum-stability": "RC",
+  "minimum-stability": "stable",
   "keywords": [
     "php",
     "information-system",
