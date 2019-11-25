@@ -61,7 +61,6 @@
     "symfony/browser-kit": "^4.4",
     "symfony/yaml": "^4.4",
     "symfony/expression-language": "^4.4",
-    "spomky-labs/lexik-jose-bridge": "^3.0",
     "league/commonmark-extras": "^1.1"
   },
   "require-dev": {
