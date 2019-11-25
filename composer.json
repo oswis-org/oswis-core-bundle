@@ -58,9 +58,9 @@
     "twig/inky-extra": "^3.0",
     "elasticsearch/elasticsearch": "^7.4",
     "psr/event-dispatcher": "^1.0",
-    "symfony/browser-kit": "^5.0",
-    "symfony/yaml": "^5.0",
-    "symfony/expression-language": "^5.0",
+    "symfony/browser-kit": "^4.4",
+    "symfony/yaml": "^4.4",
+    "symfony/expression-language": "^4.4",
     "spomky-labs/lexik-jose-bridge": "^3.0",
     "league/commonmark-extras": "^1.1"
   },
