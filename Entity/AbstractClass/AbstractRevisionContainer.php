@@ -29,6 +29,19 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
     protected ?AbstractRevision $activeRevision;
 
     /**
+     * Check validity of some revision/version (ie. for use before adding revision).
+     *
+     * @param AbstractRevision|null $revision
+     */
+    abstract public static function checkRevision(?AbstractRevision $revision): void;
+
+    /**
+     * Class name of revisions/versions stored in this container.
+     * @return string
+     */
+    abstract public static function getRevisionClassName(): string;
+
+    /**
      * Add some revision/version to this container.
      *
      * @param AbstractRevision|null $revision
@@ -45,13 +58,6 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
         }
         $this->setActiveRevision($revision);
     }
-
-    /**
-     * Check validity of some revision/version (ie. for use before adding revision).
-     *
-     * @param AbstractRevision|null $revision
-     */
-    abstract public static function checkRevision(?AbstractRevision $revision): void;
 
     /**
      * Remove some revision/version from this container.
@@ -85,6 +91,8 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
         return $this->activeRevision;
     }
 
+    /** @noinspection MethodShouldBeFinalInspection */
+
     /**
      * Set revision/version which is actual/active now.
      *
@@ -95,7 +103,6 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
         $this->activeRevision = $activeRevision;
     }
 
-    /** @noinspection MethodShouldBeFinalInspection */
     /**
      * Automatically set revision/version which is actual/active now.
      */
@@ -164,12 +171,6 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
     {
         return $this->revisions ?? new ArrayCollection();
     }
-
-    /**
-     * Class name of revisions/versions stored in this container.
-     * @return string
-     */
-    abstract public static function getRevisionClassName(): string;
 
     /**
      * Get date and time of active/actual revision/version in some date and time (or now if referenceDateTime is not specified).
