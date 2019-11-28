@@ -34,14 +34,6 @@ class ZakjakubOswisCoreExtension extends Extension implements PrependExtensionIn
 
     /**
      * @param ContainerBuilder $container
-     */
-    final public function prepend(ContainerBuilder $container): void
-    {
-        $this->prependTwig($container);
-    }
-
-    /**
-     * @param ContainerBuilder $container
      *
      * @param array            $config
      *
@@ -54,6 +46,14 @@ class ZakjakubOswisCoreExtension extends Extension implements PrependExtensionIn
         $definition->setArgument(1, $config['admin']);
         $definition->setArgument(2, $config['email']);
         $definition->setArgument(3, $config['web']);
+    }
+
+    /**
+     * @param ContainerBuilder $container
+     */
+    final public function prepend(ContainerBuilder $container): void
+    {
+        $this->prependTwig($container);
     }
 
     private function prependTwig(ContainerBuilder $container): void

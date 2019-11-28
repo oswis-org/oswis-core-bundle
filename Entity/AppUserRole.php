@@ -115,6 +115,7 @@ class AppUserRole
         ?string $roleString = null,
         ?AppUserRole $parent = null
     ) {
+        $this->parent = null;
         $this->children = new ArrayCollection();
         $this->appUserTypes = new ArrayCollection();
         $this->setFieldsFromNameable($nameable);
