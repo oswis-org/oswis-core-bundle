@@ -8,10 +8,6 @@ use DateTime;
 
 trait ValueContainerTrait
 {
-
-    /**
-     * @param string $valueRegex
-     */
     final public function setValueRegex(string $valueRegex): void
     {
         if ($this->getValueRegex() !== $valueRegex) {
@@ -21,11 +17,6 @@ trait ValueContainerTrait
         }
     }
 
-    /**
-     * @param DateTime|null $referenceDateTime
-     *
-     * @return string
-     */
     final public function getValueRegex(?DateTime $referenceDateTime = null): string
     {
         return $this->getRevisionByDate($referenceDateTime)->getValueRegex();
@@ -44,8 +35,6 @@ trait ValueContainerTrait
     }
 
     /**
-     * @param DateTime|null $referenceDateTime
-     *
      * @return string
      */
     final public function getValueLabel(?DateTime $referenceDateTime = null): ?string
@@ -53,11 +42,6 @@ trait ValueContainerTrait
         return $this->getRevisionByDate($referenceDateTime)->getValueLabel();
     }
 
-    /**
-     * @param DateTime|null $referenceDateTime
-     *
-     * @return bool
-     */
     final public function isValueAllowed(?DateTime $referenceDateTime = null): bool
     {
         return $this->getRevisionByDate($referenceDateTime)->getValueAllowed();

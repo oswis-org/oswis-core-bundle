@@ -8,12 +8,6 @@ use DateTime;
 
 trait InternalNoteContainerTrait
 {
-
-    /**
-     * @param string|null $note
-     *
-     * @throws RevisionMissingException
-     */
     final public function setInternalNote(?string $note): void
     {
         if ($this->getInternalNote() !== $note) {

@@ -14,6 +14,7 @@ trait UserTrait
 
     /**
      * Salt that was originally used to encode the password.
+     *
      * @var string|null
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */

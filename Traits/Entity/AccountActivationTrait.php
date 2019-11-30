@@ -11,27 +11,29 @@ use Zakjakub\OswisCoreBundle\Utils\StringUtils;
  */
 trait AccountActivationTrait
 {
-
     /**
      * Token for password reset.
+     *
      * @var string|null
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true, unique=true, length=100)
      */
-    protected ?string $accountActivationRequestToken;
+    protected ?string $accountActivationRequestToken = null;
 
     /**
      * Date and time of password reset request (and token generation).
+     *
      * @var DateTime|null
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true)
      */
-    protected ?DateTime $accountActivationRequestDateTime;
+    protected ?DateTime $accountActivationRequestDateTime = null;
 
     /**
      * Date and time of account activation.
+     *
      * @var DateTime|null
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true)
      */
-    protected ?DateTime $accountActivationDateTime;
+    protected ?DateTime $accountActivationDateTime = null;
 
     final public function checkAndDestroyAccountActivationRequestToken(?string $token, int $validHours = 24): bool
     {
@@ -54,17 +56,11 @@ trait AccountActivationTrait
         return false;
     }
 
-    /**
-     * @return DateTime|null
-     */
     final public function getAccountActivationRequestDateTime(): ?DateTime
     {
         return $this->accountActivationRequestDateTime;
     }
 
-    /**
-     * @param DateTime|null $accountActivationRequestDateTime
-     */
     final public function setAccountActivationRequestDateTime(?DateTime $accountActivationRequestDateTime): void
     {
         $this->accountActivationRequestDateTime = $accountActivationRequestDateTime;
@@ -81,17 +77,11 @@ trait AccountActivationTrait
         return $token && $token === $this->getAccountActivationRequestToken();
     }
 
-    /**
-     * @return string|null
-     */
     final public function getAccountActivationRequestToken(): ?string
     {
         return $this->accountActivationRequestToken;
     }
 
-    /**
-     * @param string|null $accountActivationRequestToken
-     */
     final public function setAccountActivationRequestToken(?string $accountActivationRequestToken): void
     {
         $this->accountActivationRequestToken = $accountActivationRequestToken;
@@ -111,17 +101,11 @@ trait AccountActivationTrait
         }
     }
 
-    /**
-     * @return DateTime|null
-     */
     final public function getAccountActivationDateTime(): ?DateTime
     {
         return $this->accountActivationDateTime;
     }
 
-    /**
-     * @param DateTime|null $accountActivationDateTime
-     */
     final public function setAccountActivationDateTime(?DateTime $accountActivationDateTime): void
     {
         $this->accountActivationDateTime = $accountActivationDateTime;

@@ -5,6 +5,7 @@ namespace Zakjakub\OswisCoreBundle\Entity;
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Zakjakub\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
 use Zakjakub\OswisCoreBundle\Traits\Entity\BasicEntityTrait;
@@ -12,6 +13,7 @@ use Zakjakub\OswisCoreBundle\Traits\Entity\NameableBasicTrait;
 
 /**
  * Flag for app user.
+ *
  * @Doctrine\ORM\Mapping\Entity()
  * @Doctrine\ORM\Mapping\Table(name="core_app_user_flag")
  * @ApiResource()
@@ -33,6 +35,7 @@ class AppUserFlag
 
     /**
      * Connections to users which contains this flag.
+     *
      * @var Collection|null
      * @Doctrine\ORM\Mapping\OneToMany(
      *     targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUserFlagConnection",
@@ -45,8 +48,6 @@ class AppUserFlag
 
     /**
      * Constructor for app user flag.
-     *
-     * @param Nameable|null $nameable
      */
     public function __construct(
         ?Nameable $nameable = null
@@ -55,17 +56,11 @@ class AppUserFlag
         $this->setFieldsFromNameable($nameable);
     }
 
-    /**
-     * @return Collection
-     */
     final public function getAppUserFlagConnections(): Collection
     {
         return $this->appUserFlagConnections;
     }
 
-    /**
-     * @param AppUserFlagConnection|null $appUserFlagConnection
-     */
     final public function addAppUserFlagConnection(?AppUserFlagConnection $appUserFlagConnection): void
     {
         if ($appUserFlagConnection && !$this->appUserFlagConnections->contains($appUserFlagConnection)) {
@@ -74,9 +69,6 @@ class AppUserFlag
         }
     }
 
-    /**
-     * @param AppUserFlagConnection|null $appUserFlagConnection
-     */
     final public function removeAppUserFlagConnection(?AppUserFlagConnection $appUserFlagConnection): void
     {
         if (!$appUserFlagConnection) {

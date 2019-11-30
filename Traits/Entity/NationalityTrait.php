@@ -3,17 +3,17 @@
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
 /**
- * Trait adds description field
+ * Trait adds description field.
  */
 trait NationalityTrait
 {
-
     /**
      * Nationality (as national string).
+     *
      * @var string|null
      * @Doctrine\ORM\Mapping\Column(type="string")
      */
-    protected ?string $nationality;
+    protected ?string $nationality = null;
 
     /**
      * @return string

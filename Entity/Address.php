@@ -11,41 +11,40 @@ namespace Zakjakub\OswisCoreBundle\Entity;
  */
 class Address
 {
+    /**
+     * @var string|null
+     */
+    public ?string $street = null;
 
     /**
      * @var string|null
      */
-    public ?string $street;
+    public ?string $street2 = null;
 
     /**
      * @var string|null
      */
-    public ?string $street2;
+    public ?string $city = null;
 
     /**
      * @var string|null
      */
-    public ?string $city;
-
-    /**
-     * @var string|null
-     */
-    public ?string $postalCode;
+    public ?string $postalCode = null;
 
     /**
      * @var int|null
      */
-    public ?int $houseNumber;
+    public ?int $houseNumber = null;
 
     /**
      * @var int|null
      */
-    public ?int $doorNumber;
+    public ?int $doorNumber = null;
 
     /**
      * @var int|null
      */
-    public ?int $orientationNumber;
+    public ?int $orientationNumber = null;
 
     public function __construct(
         ?string $street = null,

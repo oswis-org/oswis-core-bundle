@@ -1,4 +1,4 @@
-<?php /** @noinspection PhpUnused */
+<?php
 
 namespace Zakjakub\OswisCoreBundle;
 

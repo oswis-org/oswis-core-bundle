@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -7,9 +7,9 @@ namespace Zakjakub\OswisCoreBundle\Traits\Entity;
  */
 trait PhoneTrait
 {
-
     /**
      * Phone number.
+     *
      * @var string|null
      * @Doctrine\ORM\Mapping\Column(type="string", unique=false, length=60, nullable=true)
      * @Symfony\Component\Validator\Constraints\Regex(
@@ -21,11 +21,10 @@ trait PhoneTrait
      *      max = 15
      * )
      */
-    protected ?string $phone;
+    protected ?string $phone = null;
 
     /**
      * Get phone number.
-     * @return string
      */
     final public function getPhone(): string
     {
@@ -34,8 +33,6 @@ trait PhoneTrait
 
     /**
      * Set phone number.
-     *
-     * @param null|string $phone
      */
     final public function setPhone(?string $phone): void
     {

@@ -11,10 +11,6 @@ use DateTime;
  */
 trait EntityPublicContainerTrait
 {
-
-    /**
-     * @param bool $publicOnWeb
-     */
     final public function setPublicOnWeb(bool $publicOnWeb): void
     {
         if ($this->isPublicOnWeb() !== $publicOnWeb) {
@@ -24,11 +20,6 @@ trait EntityPublicContainerTrait
         }
     }
 
-    /**
-     * @param DateTime|null $referenceDateTime
-     *
-     * @return bool
-     */
     final public function isPublicOnWeb(?DateTime $referenceDateTime = null): bool
     {
         return $this->getRevisionByDate($referenceDateTime)->isPublicOnWeb();
@@ -46,11 +37,6 @@ trait EntityPublicContainerTrait
         }
     }
 
-    /**
-     * @param DateTime|null $referenceDateTime
-     *
-     * @return bool
-     */
     final public function isPublicOnWebRoute(?DateTime $referenceDateTime = null): bool
     {
         return $this->getRevisionByDate($referenceDateTime)->isPublicOnWebRoute();
@@ -68,11 +54,6 @@ trait EntityPublicContainerTrait
         }
     }
 
-    /**
-     * @param DateTime|null $referenceDateTime
-     *
-     * @return bool
-     */
     final public function isPublicInIS(?DateTime $referenceDateTime = null): bool
     {
         return $this->getRevisionByDate($referenceDateTime)->isPublicInIS;
@@ -90,11 +71,6 @@ trait EntityPublicContainerTrait
         }
     }
 
-    /**
-     * @param DateTime|null $referenceDateTime
-     *
-     * @return bool
-     */
     final public function isPublicInPortal(?DateTime $referenceDateTime = null): bool
     {
         return $this->getRevisionByDate($referenceDateTime)->isPublicInPortal();

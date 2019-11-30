@@ -7,12 +7,6 @@ use DateTime;
 
 trait DescriptionContainerTrait
 {
-
-    /**
-     * @param string|null $description
-     *
-     * @throws RevisionMissingException
-     */
     final public function setDescription(?string $description): void
     {
         if ($this->getDescription() !== $description) {

@@ -4,9 +4,8 @@ namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
 trait IpTraceableTrait
 {
-
     /**
-     * @var string|null $createdIp
+     * @var string|null
      *
      * @Gedmo\Mapping\Annotation\IpTraceable(on="create")
      * @Doctrine\ORM\Mapping\Column(length=45, nullable=true)
@@ -15,10 +14,10 @@ trait IpTraceableTrait
      *     version = "all"
      * )
      */
-    protected ?string $createdIp;
+    protected ?string $createdIp = null;
 
     /**
-     * @var string|null $updatedIp
+     * @var string|null
      *
      * @Gedmo\Mapping\Annotation\IpTraceable(on="update")
      * @Doctrine\ORM\Mapping\Column(length=45, nullable=true)
@@ -27,7 +26,7 @@ trait IpTraceableTrait
      *     version = "all"
      * )
      */
-    protected ?string $updatedIp;
+    protected ?string $updatedIp = null;
 
     final public function getCreatedIp(): ?string
     {

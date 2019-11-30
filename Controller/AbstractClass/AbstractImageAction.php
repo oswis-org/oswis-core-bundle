@@ -30,12 +30,9 @@ abstract class AbstractImageAction
     }
 
     /**
-     * @param Request $request
-     *
-     * @return AbstractImage
-     * @throws ValidationException
-     * @throws LogicException
      * @throws InvalidOptionsException
+     * @throws LogicException
+     * @throws ValidationException
      */
     final public function __invoke(Request $request): AbstractImage
     {
@@ -55,8 +52,5 @@ abstract class AbstractImageAction
 
     abstract public static function getImageNewInstance(): AbstractImage;
 
-    /**
-     * @return string
-     */
     abstract public static function getImageClassName(): string;
 }

@@ -18,20 +18,18 @@ abstract class AbstractRevision implements RevisionInterface
 {
     /**
      * Container of revisions.
+     *
      * @var AbstractRevisionContainer|null
      */
-    protected ?AbstractRevisionContainer $container;
+    protected ?AbstractRevisionContainer $container = null;
 
     /**
      * Class name of revisions container.
-     * @return string
      */
     abstract public static function getRevisionContainerClassName(): string;
 
     /**
      * Function for (in-place) sorting of array of revisions by createdDateTime and id.
-     *
-     * @param array $revisions
      */
     public static function sortByCreatedDateTime(array &$revisions): void
     {
@@ -41,24 +39,18 @@ abstract class AbstractRevision implements RevisionInterface
             static function (self $arg1, self $arg2) {
                 $cmpResult = DateTimeUtils::cmpDate($arg2->getCreatedDateTime(), $arg1->getCreatedDateTime());
 
-                return $cmpResult === 0 ? self::cmpId($arg2->getId(), $arg1->getId()) : $cmpResult;
+                return 0 === $cmpResult ? self::cmpId($arg2->getId(), $arg1->getId()) : $cmpResult;
             }
         );
     }
 
     /**
      * Date and time of revision creation.
-     * @return DateTime|null
      */
     abstract public function getCreatedDateTime(): ?DateTime;
 
     /**
      * Helper function for sorting by id of revisions.
-     *
-     * @param int|null $a
-     * @param int|null $b
-     *
-     * @return int
      */
     public static function cmpId(?int $a, ?int $b): int
     {
@@ -71,13 +63,11 @@ abstract class AbstractRevision implements RevisionInterface
 
     /**
      * ID of this revision (version).
-     * @return int|null
      */
     abstract public function getId(): ?int;
 
     /**
      * Container of this revision.
-     * @return AbstractRevisionContainer|null
      */
     final public function getContainer(): ?AbstractRevisionContainer
     {
@@ -88,8 +78,6 @@ abstract class AbstractRevision implements RevisionInterface
 
     /**
      * Set container of this revision.
-     *
-     * @param AbstractRevisionContainer|null $container
      */
     final public function setContainer(?AbstractRevisionContainer $container): void
     {
@@ -105,17 +93,11 @@ abstract class AbstractRevision implements RevisionInterface
 
     /**
      * Check validity of container (ie. for check before setting container).
-     *
-     * @param AbstractRevisionContainer|null $revision
      */
     abstract public static function checkRevisionContainer(?AbstractRevisionContainer $revision): void;
 
     /**
      * Check if this revision is actual/active in specified datetime (or now if datetime is not specified).
-     *
-     * @param DateTime|null $dateTime
-     *
-     * @return bool
      */
     final public function isActive(?DateTime $dateTime = null): bool
     {

@@ -1,11 +1,10 @@
 <?php /** @noinspection PhpUnused */
-/** @noinspection PhpDocRedundantThrowsInspection */
+
 /** @noinspection PhpUndefinedMethodInspection */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
 use DateTime;
-use Zakjakub\OswisCoreBundle\Exceptions\RevisionMissingException;
 
 /**
  * Trait adds getters and setters for container of entity with nameable fields.
@@ -14,11 +13,6 @@ trait NameableBasicContainerTrait
 {
     use SlugContainerTrait;
 
-    /**
-     * @param string|null $name
-     *
-     * @throws RevisionMissingException
-     */
     final public function setName(?string $name): void
     {
         if ($this->getName() !== $name) {
@@ -33,11 +27,6 @@ trait NameableBasicContainerTrait
         return $this->getRevisionByDate($dateTime)->getName();
     }
 
-    /**
-     * @param string|null $shortName
-     *
-     * @throws RevisionMissingException
-     */
     final public function setShortName(?string $shortName): void
     {
         if ($this->getShortName() !== $shortName) {
@@ -52,11 +41,6 @@ trait NameableBasicContainerTrait
         return $this->getRevisionByDate($dateTime)->getShortName();
     }
 
-    /**
-     * @param string|null $description
-     *
-     * @throws RevisionMissingException
-     */
     final public function setDescription(?string $description): void
     {
         if ($this->getDescription() !== $description) {
@@ -71,11 +55,6 @@ trait NameableBasicContainerTrait
         return $this->getRevisionByDate($dateTime)->getDescription();
     }
 
-    /**
-     * @param string|null $note
-     *
-     * @throws RevisionMissingException
-     */
     final public function setNote(?string $note): void
     {
         if ($this->getNote() !== $note) {

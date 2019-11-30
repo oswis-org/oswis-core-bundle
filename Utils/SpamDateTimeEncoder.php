@@ -2,19 +2,12 @@
 
 namespace Zakjakub\OswisCoreBundle\Utils;
 
-use Exception;
 use Psr\Log\LoggerInterface;
 
 class SpamDateTimeEncoder
 {
     private string $secret_key = 'fe67d68ee1e09b47acd8810b880d537034c10c15344433a992b9c79002666844';
 
-    /**
-     * @param string $string
-     *
-     * @return string
-     * @throws Exception
-     */
     final public function encrypt(string $string): string
     {
         return base64_encode(openssl_encrypt($string, 'AES-256-CBC', hash('sha256', $this->secret_key)));
@@ -36,6 +29,6 @@ class SpamDateTimeEncoder
 
     final public function decrypt(string $string): string
     {
-        return openssl_decrypt(base64_decode($string), 'AES-256-CBC', hash('sha256', $this->secret_key));
+        return openssl_decrypt(base64_decode($string, true), 'AES-256-CBC', hash('sha256', $this->secret_key));
     }
 }

@@ -9,7 +9,6 @@ namespace Zakjakub\OswisCoreBundle\Traits\Entity;
  */
 trait InternalNoteTrait
 {
-
     /**
      * Internal note.
      *
@@ -17,12 +16,10 @@ trait InternalNoteTrait
      *
      * @Doctrine\ORM\Mapping\Column(nullable=true)
      */
-    protected ?string $internalNote;
+    protected ?string $internalNote = null;
 
     /**
      * Get internal note.
-     *
-     * @return null|string
      */
     final public function getInternalNote(): ?string
     {
@@ -31,8 +28,6 @@ trait InternalNoteTrait
 
     /**
      * Set internal note.
-     *
-     * @param null|string $internalNote
      */
     final public function setInternalNote(?string $internalNote): void
     {

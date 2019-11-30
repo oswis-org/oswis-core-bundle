@@ -1,4 +1,4 @@
-<?php /** @noinspection PhpUnused */
+<?php
 
 namespace Zakjakub\OswisCoreBundle\Service;
 
@@ -18,7 +18,6 @@ use Zakjakub\OswisCoreBundle\Utils\EmailUtils;
  */
 class EmailSender
 {
-
     /**
      * @var EntityManagerInterface
      */
@@ -35,9 +34,9 @@ class EmailSender
     protected LoggerInterface $logger;
 
     /**
-     * @var Twig_Environment
+     * @var Environment
      */
-    protected $templating;
+    protected Environment $templating;
 
     /**
      * @var OswisCoreSettingsProvider
@@ -46,11 +45,6 @@ class EmailSender
 
     /**
      * E-mail sender constructor.
-     *
-     * @param Swift_Mailer              $mailer
-     * @param LoggerInterface           $logger
-     * @param Environment               $templating
-     * @param OswisCoreSettingsProvider $oswisCoreSettings
      */
     public function __construct(
         Swift_Mailer $mailer,
@@ -65,14 +59,10 @@ class EmailSender
     }
 
     /**
-     * @param array       $recipients
      * @param string|null $title
-     *
      * @param array       $sender
-     *
      * @param string      $senderAccountEmail
      *
-     * @return Swift_Message
      * @throws ErrorException
      */
     final public function getPreparedMessage(
@@ -82,7 +72,7 @@ class EmailSender
         ?string $senderAccountEmail = null
     ): Swift_Message {
         try {
-            $sender = $sender ?? array($this->oswisCoreSettings->getEmail()['address'] => EmailUtils::mime_header_encode($this->oswisCoreSettings->getEmail()['name']));
+            $sender = $sender ?? [$this->oswisCoreSettings->getEmail()['address'] => EmailUtils::mime_header_encode($this->oswisCoreSettings->getEmail()['name'])];
             $message = new Swift_Message(EmailUtils::mime_header_encode($title));
             $message->setTo($recipients);
             $message->setCharset('UTF-8');
@@ -97,12 +87,8 @@ class EmailSender
     }
 
     /**
-     * @param Swift_Message $message
-     * @param string        $templateName
-     * @param array         $data
-     * @param string        $logoPath
-     *
      * @throws ErrorException
+     * @noinspection PhpUnused
      */
     final public function sendMessage(
         Swift_Message $message,
@@ -113,13 +99,13 @@ class EmailSender
         try {
             /// TODO: Check template!!!
             $cidLogo = $message->embed(Swift_Image::fromPath($logoPath));
-            $args = array(
+            $args = [
                 'title'        => $message->getSubject(),
                 'logo'         => $cidLogo,
                 'appNameShort' => 'OSWIS',
                 'appNameLong'  => 'One Simple Web IS',
                 'data'         => $data,
-            );
+            ];
             $message->setBody(
                 $this->templating->render($templateName.'.html.twig', $args),
                 'text/html'

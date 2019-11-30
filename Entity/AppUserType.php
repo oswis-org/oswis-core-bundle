@@ -14,6 +14,7 @@ use Zakjakub\OswisCoreBundle\Traits\Entity\NameableBasicTrait;
 
 /**
  * Type of user (customer, manager, admin etc.).
+ *
  * @Doctrine\ORM\Mapping\Entity
  * @Doctrine\ORM\Mapping\Table(name="core_app_user_type")
  * @ApiResource(
@@ -67,6 +68,7 @@ use Zakjakub\OswisCoreBundle\Traits\Entity\NameableBasicTrait;
  *     "description",
  *     "note"
  * })
+ *
  * @author Jakub Zak <mail@jakubzak.eu>
  * @Doctrine\ORM\Mapping\Cache(usage="NONSTRICT_READ_WRITE", region="core_app_user")
  */
@@ -77,6 +79,7 @@ class AppUserType
 
     /**
      * App users using this role.
+     *
      * @var Collection
      * @Doctrine\ORM\Mapping\OneToMany(
      *     targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUser",
@@ -87,6 +90,7 @@ class AppUserType
 
     /**
      * Contained app user role.
+     *
      * @var AppUserRole|null
      * @Doctrine\ORM\Mapping\ManyToOne(
      *     targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUserRole",
@@ -94,14 +98,17 @@ class AppUserType
      *     fetch="EAGER"
      * )
      * @Doctrine\ORM\Mapping\JoinColumn(name="user_role_id", referencedColumnName="id")
+     *
      * @todo Refactor for use of multiple roles.
      */
     protected ?AppUserRole $appUserRole;
 
     /**
      * User has access to administration/IS.
+     *
      * @var bool|null
      * @Doctrine\ORM\Mapping\Column(type="boolean", nullable=true)
+     *
      * @todo Make property used (probably has not effect now).
      */
     protected ?bool $adminUser;
@@ -109,9 +116,7 @@ class AppUserType
     /**
      * Constructor of app user type.
      *
-     * @param Nameable|null $nameable
-     * @param AppUserRole   $appUserRole
-     * @param bool|null     $adminUser
+     * @param AppUserRole $appUserRole
      */
     public function __construct(
         ?Nameable $nameable = null,
@@ -126,7 +131,7 @@ class AppUserType
 
     /**
      * User has access to administration/IS.
-     * @return bool
+     *
      * @todo Make property used (probably has not effect now).
      */
     final public function getAdminUser(): bool
@@ -137,8 +142,6 @@ class AppUserType
     /**
      * Set if user has access to administration/IS.
      *
-     * @param bool|null $adminUser
-     *
      * @todo Make property used (probably has not effect now).
      */
     final public function setAdminUser(?bool $adminUser): void
@@ -148,8 +151,6 @@ class AppUserType
 
     /**
      * Add app user of this type.
-     *
-     * @param AppUser|null $appUser
      */
     final public function addAppUser(?AppUser $appUser): void
     {
@@ -164,8 +165,6 @@ class AppUserType
 
     /**
      * Remove app user from this type.
-     *
-     * @param AppUser|null $appUser
      */
     final public function removeAppUser(?AppUser $appUser): void
     {
@@ -179,7 +178,6 @@ class AppUserType
 
     /**
      * Get app users of this type.
-     * @return Collection
      */
     final public function getAppUsers(): Collection
     {
@@ -188,7 +186,6 @@ class AppUserType
 
     /**
      * Get name/string of role of this type.
-     * @return string
      */
     final public function getRoleName(): string
     {
@@ -197,6 +194,7 @@ class AppUserType
 
     /**
      * Get role of this type.
+     *
      * @return AppUserRole
      */
     final public function getAppUserRole(): ?AppUserRole
@@ -206,8 +204,6 @@ class AppUserType
 
     /**
      * Set role of this type.
-     *
-     * @param AppUserRole|null $appUserRole
      */
     final public function setAppUserRole(?AppUserRole $appUserRole): void
     {
@@ -222,7 +218,6 @@ class AppUserType
 
     /**
      * Get names of all roles contained in this type.
-     * @return Collection
      */
     final public function getAllRoleNames(): Collection
     {

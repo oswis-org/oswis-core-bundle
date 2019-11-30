@@ -2,6 +2,8 @@
 
 namespace Zakjakub\OswisCoreBundle\Utils;
 
+use function strlen;
+
 /**
  * @author  Jakub Zak <mail@jakubzak.eu>
  */
@@ -9,7 +11,7 @@ class ColorUtils
 {
     final public static function isOppositeWhite(string $color): string
     {
-        if (strlen($color) === 4) {
+        if (4 === strlen($color)) {
             [$r, $g, $b] = sscanf($color, '#%1x%1x%1x');
         } else {
             [$r, $g, $b] = sscanf($color, '#%2x%2x%2x');

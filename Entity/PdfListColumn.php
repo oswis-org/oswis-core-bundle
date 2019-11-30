@@ -4,6 +4,7 @@ namespace Zakjakub\OswisCoreBundle\Entity;
 
 /**
  * Definition for column in PDF export file.
+ *
  * @author Jakub Zak <mail@jakubzak.eu>
  */
 class PdfListColumn
@@ -20,53 +21,62 @@ class PdfListColumn
 
     /**
      * @var string|null
+     *
      * @example dateTime
      */
-    public ?string $name;
+    public ?string $name = null;
 
     /**
      * @var string|null
+     *
      * @example Datum a čas
      */
-    public ?string $title;
+    public ?string $title = null;
 
     /**
      * @var string|null
+     *
      * @example #006FAD
      * @example rgba(0,0,0,1)
      */
-    public ?string $color;
+    public ?string $color = null;
 
     /**
      * @var string|null
+     *
      * @example #006FAD
      * @example rgba(0,0,0,1)
      */
-    public ?string $backgroundColor;
+    public ?string $backgroundColor = null;
 
     /**
      * @var string|null
+     *
      * @example bold
      */
-    public ?string $fontWeight;
+    public ?string $fontWeight = null;
 
     /**
      * @var string|null
+     *
      * @example center
      */
-    public ?string $textAlign;
+    public ?string $textAlign = null;
 
     /**
      * @var string|null
+     *
      * @example middle
      */
-    public ?string $verticalAlign;
+    public ?string $verticalAlign = null;
 
     /**
      * @var string|null
+     *
+     * @example datetime
      * @example id+datetime
      */
-    public ?string $type;
+    public ?string $type = null;
 
     /**
      * PdfListColumn constructor.

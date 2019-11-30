@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -7,14 +7,12 @@ use Exception;
 use Zakjakub\OswisCoreBundle\Utils\DateTimeUtils;
 
 /**
- * Trait ReservationDateRangeTrait
- * @package Zakjakub\OswisCoreBundle\Traits\Entity
+ * Trait ReservationDateRangeTrait.
  */
 trait ReservationDateRangeTrait
 {
-
     /**
-     * Date and time of range start
+     * Date and time of range start.
      *
      * @var DateTime
      *
@@ -23,7 +21,7 @@ trait ReservationDateRangeTrait
     protected DateTime $startReservationDateTime;
 
     /**
-     * Date and time of range end
+     * Date and time of range end.
      *
      * @var DateTime
      *

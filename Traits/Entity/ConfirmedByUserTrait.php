@@ -6,39 +6,28 @@ use DateTime;
 use Exception;
 
 /**
- * Trait ConfirmedByUserTrait
- * @package Zakjakub\OswisCoreBundle\Traits\Entity
+ * Trait ConfirmedByUserTrait.
  */
 trait ConfirmedByUserTrait
 {
-
     /**
      * Confirmed by user.
+     *
      * @var DateTime|null
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true)
      */
-    protected ?DateTime $confirmedByUser;
+    protected ?DateTime $confirmedByUser = null;
 
-
-    /**
-     * @return bool
-     */
     final public function isConfirmedByUser(): bool
     {
         return $this->confirmedByUser ? true : false;
     }
 
-    /**
-     * @return DateTime|null
-     */
     final public function getConfirmedByUser(): ?DateTime
     {
         return $this->confirmedByUser;
     }
 
-    /**
-     * @param DateTime|null $confirmedByUser
-     */
     final public function setConfirmedByUser(?DateTime $confirmedByUser): void
     {
         $this->confirmedByUser = $confirmedByUser;

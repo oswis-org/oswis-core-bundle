@@ -3,11 +3,10 @@
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
 /**
- * Trait adds numericValue field
+ * Trait adds numericValue field.
  */
 trait NumericValueTrait
 {
-
     /**
      * Numeric value.
      *
@@ -15,12 +14,10 @@ trait NumericValueTrait
      *
      * @Doctrine\ORM\Mapping\Column(type="integer", nullable=false, options={"default": 0})
      */
-    protected ?int $numericValue;
+    protected ?int $numericValue = null;
 
     /**
      * Get numeric value.
-     *
-     * @return int
      */
     final public function getNumericValue(): int
     {

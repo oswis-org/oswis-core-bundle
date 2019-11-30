@@ -19,7 +19,6 @@ use Zakjakub\OswisCoreBundle\Provider\OswisCoreSettingsProvider;
 
 final class AppUserSubscriber implements EventSubscriberInterface
 {
-
     /**
      * @var EntityManagerInterface
      */
@@ -47,12 +46,6 @@ final class AppUserSubscriber implements EventSubscriberInterface
 
     /**
      * ReservationSubscriber constructor.
-     *
-     * @param UserPasswordEncoderInterface $encoder
-     * @param EntityManagerInterface       $em
-     * @param LoggerInterface              $logger
-     * @param MailerInterface              $mailer
-     * @param OswisCoreSettingsProvider    $oswisCoreSettings
      */
     public function __construct(
         UserPasswordEncoderInterface $encoder,
@@ -69,9 +62,6 @@ final class AppUserSubscriber implements EventSubscriberInterface
         $this->oswisCoreSettings = $oswisCoreSettings;
     }
 
-    /**
-     * @return array
-     */
     public static function getSubscribedEvents(): array
     {
         return [KernelEvents::VIEW => ['makeAppUser', EventPriorities::POST_WRITE]];
@@ -79,8 +69,6 @@ final class AppUserSubscriber implements EventSubscriberInterface
 
     /** @noinspection PhpUnused */
     /**
-     * @param ViewEvent $event
-     *
      * @throws OswisException
      */
     public function makeAppUser(ViewEvent $event): void

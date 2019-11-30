@@ -31,8 +31,6 @@ abstract class AbstractImageType extends AbstractType
     }
 
     /**
-     * @param OptionsResolver $resolver
-     *
      * @throws AccessException
      */
     final public function configureOptions(OptionsResolver $resolver): void
@@ -45,13 +43,9 @@ abstract class AbstractImageType extends AbstractType
         );
     }
 
-    /**
-     * @return string
-     */
     abstract public static function getImageClassName(): string;
 
     /** @noinspection MethodShouldBeFinalInspection */
-
     public function getBlockPrefix(): string
     {
         return 'oswis_core_abstract_image';

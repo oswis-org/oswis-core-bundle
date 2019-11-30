@@ -7,45 +7,37 @@ use Exception;
 use Zakjakub\OswisCoreBundle\Utils\DateTimeUtils;
 
 /**
- * Trait adds createdDateTime and updatedDateTime fields
+ * Trait adds createdDateTime and updatedDateTime fields.
  *
  * Trait adds fields *createdDateTime* and *updatedDateTime* and allows to access them.
  * * _**createdDateTime**_ contains date and time when entity was created
  * * _**updatedDateTime**_ contains date and time when entity was updated/changed
- *
  */
 trait OrderDateRangeTrait
 {
-
     /**
-     * Date and time of range start
+     * Date and time of range start.
      *
      * @var DateTime|null
      *
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true, options={"default": null})
      */
-    protected ?DateTime $startOrderDateTime;
+    protected ?DateTime $startOrderDateTime = null;
 
     /**
-     * Date and time of range end
+     * Date and time of range end.
      *
      * @var DateTime|null
      *
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true, options={"default": null})
      */
-    protected ?DateTime $endOrderDateTime;
+    protected ?DateTime $endOrderDateTime = null;
 
-    /**
-     * @return DateTime|null
-     */
     final public function getStartOrderDateTime(): ?DateTime
     {
         return $this->startOrderDateTime;
     }
 
-    /**
-     * @param DateTime|null $startOrderDateTime
-     */
     final public function setStartOrderDateTime(?DateTime $startOrderDateTime): void
     {
         $this->startOrderDateTime = $startOrderDateTime;
@@ -64,17 +56,11 @@ trait OrderDateRangeTrait
         return DateTimeUtils::isDateTimeInRange($this->startOrderDateTime, $this->getEndOrderDateTime(), $dateTime);
     }
 
-    /**
-     * @return DateTime|null
-     */
     final public function getEndOrderDateTime(): ?DateTime
     {
         return $this->endOrderDateTime;
     }
 
-    /**
-     * @param DateTime|null $endOrderDateTime
-     */
     final public function setEndOrderDateTime(?DateTime $endOrderDateTime): void
     {
         $this->endOrderDateTime = $endOrderDateTime;

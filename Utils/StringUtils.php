@@ -3,21 +3,23 @@
 namespace Zakjakub\OswisCoreBundle\Utils;
 
 use Exception;
+use function chr;
+use function ord;
 
 class StringUtils
 {
     public static function startsWith(string $haystack, string $needle): string
     {
-        return (mb_strpos($haystack, $needle) === 0);
+        return 0 === mb_strpos($haystack, $needle);
     }
 
     public static function endsWith(string $haystack, string $needle): string
     {
-        return ((mb_strlen($haystack) >= mb_strlen($needle)) && (mb_strpos(
+        return (mb_strlen($haystack) >= mb_strlen($needle)) && (false !== mb_strpos(
                     $haystack,
                     $needle,
                     mb_strlen($haystack) - mb_strlen($needle)
-                ) !== false));
+                ));
     }
 
     public static function capitalize(string $text): string
@@ -45,7 +47,7 @@ class StringUtils
 
     public static function removeAccents(string $text): string
     {
-        $chars = array(
+        $chars = [
             // Decompositions for Latin-1 Supplement
             chr(195).chr(128)          => 'A',
             chr(195).chr(129)          => 'A',
@@ -235,7 +237,7 @@ class StringUtils
             chr(226).chr(130).chr(172) => 'E',
             // GBP (Pound) Sign
             chr(194).chr(163)          => '',
-        );
+        ];
 
         return strtr($text, $chars);
     }
@@ -280,17 +282,12 @@ class StringUtils
         return self::convertFromCamel($text, '_');
     }
 
-    /**
-     * @param bool $addSpecialChar
-     *
-     * @return string
-     */
     public static function generatePassword(bool $addSpecialChar = false): string
     {
         $numbers = self::randomString('0', '9', 3);
         $lowerCase = self::randomString('a', 'z', 3);
         $upperCase = self::randomString('A', 'Z', 3);
-        $specialChars = array('!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '.', ',');
+        $specialChars = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '.', ','];
         $password = $numbers.$lowerCase.$upperCase;
         if ($addSpecialChar) {
             $password .= $specialChars[array_rand($specialChars)];
@@ -320,7 +317,6 @@ class StringUtils
     }
 
     /**
-     * @return string
      * @throws Exception
      */
     public static function generateToken(): string

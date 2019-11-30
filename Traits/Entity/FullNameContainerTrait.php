@@ -8,12 +8,6 @@ use DateTime;
 
 trait FullNameContainerTrait
 {
-
-    /**
-     * @param string|null $fullName
-     *
-     * @throws RevisionMissingException
-     */
     final public function setFullName(?string $fullName): void
     {
         if ($this->getFullName() !== $fullName) {

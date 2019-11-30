@@ -4,23 +4,21 @@ namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
 use Exception;
 use InvalidArgumentException;
+use function in_array;
 
 /**
  * Trait adds type field and some attended fiends and functions.
  */
 trait TypeTrait
 {
-
     /**
      * Type of this event.
-     * @var string|null $type
+     *
+     * @var string|null
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
-    protected ?string $type;
+    protected ?string $type = null;
 
-    /**
-     * @return string|null
-     */
     final public function getType(): ?string
     {
         try {
@@ -33,8 +31,6 @@ trait TypeTrait
     }
 
     /**
-     * @param string|null $type
-     *
      * @throws InvalidArgumentException
      */
     final public function setType(?string $type): void
@@ -45,9 +41,6 @@ trait TypeTrait
     }
 
     /**
-     * @param string|null $typeName
-     *
-     * @return bool
      * @throws InvalidArgumentException
      */
     public static function checkType(?string $typeName): bool

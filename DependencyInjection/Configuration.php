@@ -10,16 +10,15 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 class Configuration implements ConfigurationInterface
 {
-
     /**
-     * @return TreeBuilder
      * @throws RuntimeException
+     * @noinspection PhpUndefinedMethodInspection
+     * @noinspection NullPointerExceptionInspection
      */
     final public function getConfigTreeBuilder(): TreeBuilder
     {
         $treeBuilder = new TreeBuilder('zakjakub_oswis_core');
         $rootNode = $treeBuilder->getRootNode();
-        /** @noinspection PhpUndefinedMethodInspection */
         $rootNode->info('Default configuration for core module of OSWIS (One Simple Web IS).')->children()
             /// App general.
             ->arrayNode('app')->info('General settings.')->addDefaultsIfNotSet()->children()->scalarNode('name')->info('Name of application.')->defaultValue('OSWIS')->example('John\'s IS')->end(

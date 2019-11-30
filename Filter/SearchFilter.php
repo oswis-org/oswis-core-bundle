@@ -1,5 +1,4 @@
-<?php
-/** @noinspection PhpComposerExtensionStubsInspection */
+<?php /** @noinspection PhpComposerExtensionStubsInspection */
 
 namespace Zakjakub\OswisCoreBundle\Filter;
 
@@ -11,16 +10,14 @@ use Doctrine\ORM\QueryBuilder;
 use HttpInvalidParamException;
 use ReflectionClass;
 use ReflectionException;
+use function count;
+use function in_array;
 
 /** @noinspection ClassNameCollisionInspection */
 
 final class SearchFilter extends AbstractContextAwareFilter
 {
-
     /**
-     * @param string $resourceClass
-     *
-     * @return array
      * @throws AnnotationException
      * @throws ReflectionException
      */
@@ -28,7 +25,7 @@ final class SearchFilter extends AbstractContextAwareFilter
     {
         $reader = new AnnotationReader();
         $annotation = $reader->getClassAnnotation(
-            new ReflectionClass(new $resourceClass),
+            new ReflectionClass(new $resourceClass()),
             SearchAnnotation::class
         );
         $description['search'] = [
@@ -42,18 +39,21 @@ final class SearchFilter extends AbstractContextAwareFilter
     }
 
     /**
-     * @param string                      $property
-     * @param                             $value
-     * @param QueryBuilder                $queryBuilder
-     * @param QueryNameGeneratorInterface $queryNameGenerator
-     * @param string                      $resourceClass
-     * @param string|null                 $operationName
+     * @param $value
      *
      * @throws AnnotationException
      * @throws ReflectionException
      * @throws HttpInvalidParamException
      */
-    /** @noinspection MissingParameterTypeDeclarationInspection */
+    /**
+     * @param $value
+     *
+     * @throws AnnotationException
+     * @throws ReflectionException
+     * @throws HttpInvalidParamException
+     * @noinspection MissingParameterTypeDeclarationInspection
+     * @noinspection ForeachInvariantsInspection
+     */
     public function filterProperty(
         string $property,
         $value,
@@ -62,14 +62,14 @@ final class SearchFilter extends AbstractContextAwareFilter
         string $resourceClass,
         string $operationName = null
     ): void {
-        if ($property === 'search') {
+        if ('search' === $property) {
             $this->logger->info('Search for: '.$value);
         } else {
             return;
         }
         $reader = new AnnotationReader();
         $annotation = $reader->getClassAnnotation(
-            new ReflectionClass(new $resourceClass),
+            new ReflectionClass(new $resourceClass()),
             SearchAnnotation::class
         );
         if (!$annotation) {
@@ -80,8 +80,8 @@ final class SearchFilter extends AbstractContextAwareFilter
         $mappedJoins = [];
         foreach ($annotation->fields as $field) {
             $joins = explode('.', $field);
-            /** @noinspection ForeachInvariantsInspection */
-            for ($lastAlias = 'o', $i = 0, $num = count($joins); $i < $num; $i++) {
+            // @noinspection ForeachInvariantsInspection
+            for ($lastAlias = 'o', $i = 0, $num = count($joins); $i < $num; ++$i) {
                 $currentAlias = $joins[$i];
                 $currentAliasRenamed = $joins[$i].'_'.$i;
                 // $currentAlias = $joins[$i];

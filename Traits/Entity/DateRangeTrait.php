@@ -11,24 +11,23 @@ use Zakjakub\OswisCoreBundle\Utils\DateTimeUtils;
  */
 trait DateRangeTrait
 {
-
     /**
-     * Date and time of range start
+     * Date and time of range start.
      *
      * @var DateTime|null
      *
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true, options={"default": null})
      */
-    protected ?DateTime $startDateTime;
+    protected ?DateTime $startDateTime = null;
 
     /**
-     * Date and time of range end
+     * Date and time of range end.
      *
      * @var DateTime|null
      *
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true, options={"default": null})
      */
-    protected ?DateTime $endDateTime;
+    protected ?DateTime $endDateTime = null;
 
     /**
      * True if datetime belongs to this datetime range.
@@ -40,9 +39,7 @@ trait DateRangeTrait
     final public function containsDateTimeInRange(?DateTime $dateTime = null): bool
     {
         try {
-            $dateTime = $dateTime ?? new DateTime();
-
-            return DateTimeUtils::isDateTimeInRange($this->getStartDateTime(), $this->getEndDateTime(), $dateTime);
+            return DateTimeUtils::isDateTimeInRange($this->getStartDateTime(), $this->getEndDateTime(), $dateTime ?? new DateTime());
         } catch (Exception $e) {
             return false;
         }
@@ -61,7 +58,7 @@ trait DateRangeTrait
      */
     final public function setStartDateTime(?DateTime $startDateTime): void
     {
-        $this->startDateTime = $startDateTime ?? null;
+        $this->startDateTime = $startDateTime;
     }
 
     /**
@@ -77,20 +74,14 @@ trait DateRangeTrait
      */
     final public function setEndDateTime(?DateTime $endDateTime): void
     {
-        $this->endDateTime = $endDateTime ?? null;
+        $this->endDateTime = $endDateTime;
     }
 
-    /**
-     * @param DateTime|null $dateTime
-     */
     final public function setStartDate(?DateTime $dateTime): void
     {
         $this->setStartDateTime($dateTime);
     }
 
-    /**
-     * @param DateTime|null $dateTime
-     */
     final public function setEndDate(?DateTime $dateTime): void
     {
         $this->setEndDateTime($dateTime);
@@ -98,24 +89,14 @@ trait DateRangeTrait
 
     final public function getLengthInHours(): ?int
     {
-        if (!$this->getStartDate() || !$this->getEndDate()) {
-            return null;
-        }
-
-        return (int)$this->getEndDate()->diff($this->getStartDate())->h;
+        return (!$this->getStartDate() || !$this->getEndDate()) ? null : (int)$this->getEndDate()->diff($this->getStartDate())->h;
     }
 
-    /**
-     * @return DateTime|null
-     */
     final public function getStartDate(): ?DateTime
     {
         return $this->getStartDateTime();
     }
 
-    /**
-     * @return DateTime|null
-     */
     final public function getEndDate(): ?DateTime
     {
         return $this->getStartDateTime();

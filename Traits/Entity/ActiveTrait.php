@@ -3,24 +3,21 @@
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
 /**
- * Trait adds active field
+ * Trait adds active field.
  */
 trait ActiveTrait
 {
-
     /**
-     * Active
+     * Active.
      *
      * @var bool|null
      *
      * @Doctrine\ORM\Mapping\Column(type="boolean", nullable=true)
      */
-    protected ?bool $active;
+    protected ?bool $active = null;
 
     /**
-     * Get active
-     *
-     * @return bool
+     * Get active.
      */
     final public function getActive(): bool
     {
@@ -28,7 +25,7 @@ trait ActiveTrait
     }
 
     /**
-     * Set active
+     * Set active.
      *
      * @param bool $active
      */

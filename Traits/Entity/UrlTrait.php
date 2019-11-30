@@ -7,9 +7,9 @@ namespace Zakjakub\OswisCoreBundle\Traits\Entity;
  */
 trait UrlTrait
 {
-
     /**
      * URL of website.
+     *
      * @var string|null
      * @Doctrine\ORM\Mapping\Column(type="string", unique=false, length=255, nullable=true)
      * @Symfony\Component\Validator\Constraints\Length(
@@ -21,6 +21,7 @@ trait UrlTrait
 
     /**
      * Get url.
+     *
      * @return string
      */
     final public function getUrl(): ?string
@@ -30,8 +31,6 @@ trait UrlTrait
 
     /**
      * Set url.
-     *
-     * @param null|string $url
      */
     final public function setUrl(?string $url): void
     {

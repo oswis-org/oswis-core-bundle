@@ -8,6 +8,7 @@ use Zakjakub\OswisCoreBundle\Manager\AppUserManager;
 
 /**
  * Endpoint for actions with users (activation, password changes...).
+ *
  * @ApiResource(
  *      collectionOperations={
  *          "post"={
@@ -25,42 +26,48 @@ final class AppUserActionRequest
     /**
      * ID of changed user.
      * ID has higher priority than username/e-mail.
+     *
      * @var int|null
      */
-    public ?int $uid;
+    public ?int $uid = null;
 
     /**
      * Username or e-mail of changed user.
      * ID has higher priority than username/e-mail.
+     *
      * @var string|null
      */
-    public ?string $username;
+    public ?string $username = null;
 
     /**
      * Token generated when request was created.
+     *
      * @var string|null
      */
-    public ?string $token;
+    public ?string $token = null;
 
     /**
      * New password.
+     *
      * @var string|null
      */
-    public ?string $password;
+    public ?string $password = null;
 
     /**
      * Type of action.
+     *
      * @var string|null
      * @Symfony\Component\Validator\Constraints\Choice(
      *     choices=AppUserActionRequest::ALLOWED_TYPES,
      *     message="Požadovaný typ akce není implementovaný."
      * )
      */
-    public ?string $type;
+    public ?string $type = null;
 
     /**
      * App user to change.
+     *
      * @var AppUser|null
      */
-    public ?AppUser $appUser;
+    public ?AppUser $appUser = null;
 }

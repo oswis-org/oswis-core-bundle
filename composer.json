@@ -65,7 +65,8 @@
   },
   "require-dev": {
     "roave/security-advisories": "dev-master",
-    "symfony/debug": "^4.4"
+    "symfony/debug": "^4.4",
+    "friendsofphp/php-cs-fixer": "^2.16"
   },
   "autoload": {
     "psr-4": {

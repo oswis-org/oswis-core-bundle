@@ -11,20 +11,21 @@ use Zakjakub\OswisCoreBundle\Utils\StringUtils;
  */
 trait PasswordResetTrait
 {
-
     /**
      * Token for password reset.
+     *
      * @var string|null
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true, unique=true, length=100)
      */
-    protected ?string $passwordResetRequestToken;
+    protected ?string $passwordResetRequestToken = null;
 
     /**
      * Date and time of password reset request (and token generation).
+     *
      * @var DateTime|null
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true)
      */
-    protected ?DateTime $passwordResetRequestDateTime;
+    protected ?DateTime $passwordResetRequestDateTime = null;
 
     final public function checkAndDestroyPasswordResetRequestToken(?string $token, int $validHours = 24): bool
     {
@@ -46,17 +47,11 @@ trait PasswordResetTrait
         return false;
     }
 
-    /**
-     * @return DateTime|null
-     */
     final public function getPasswordResetRequestDateTime(): ?DateTime
     {
         return $this->passwordResetRequestDateTime;
     }
 
-    /**
-     * @param DateTime|null $passwordResetRequestDateTime
-     */
     final public function setPasswordResetRequestDateTime(?DateTime $passwordResetRequestDateTime): void
     {
         $this->passwordResetRequestDateTime = $passwordResetRequestDateTime;
@@ -73,17 +68,11 @@ trait PasswordResetTrait
         return $token && $token === $this->getPasswordResetRequestToken();
     }
 
-    /**
-     * @return string|null
-     */
     final public function getPasswordResetRequestToken(): ?string
     {
         return $this->passwordResetRequestToken;
     }
 
-    /**
-     * @param string|null $passwordResetRequestToken
-     */
     final public function setPasswordResetRequestToken(?string $passwordResetRequestToken): void
     {
         $this->passwordResetRequestToken = $passwordResetRequestToken;

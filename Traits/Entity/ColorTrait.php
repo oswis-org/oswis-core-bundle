@@ -1,27 +1,22 @@
-<?php /** @noinspection PhpUnused */
+<?php
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
+use function strlen;
+
 trait ColorTrait
 {
-
     /**
      * @var string|null
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
-    protected ?string $color;
+    protected ?string $color = null;
 
-    /**
-     * @return string|null
-     */
     final public function getColor(): ?string
     {
         return $this->color;
     }
 
-    /**
-     * @param string|null $color
-     */
     final public function setColor(?string $color): void
     {
         $this->color = $color;
@@ -29,7 +24,7 @@ trait ColorTrait
 
     final public function isForegroundWhite(): bool
     {
-        if (strlen($this->color) === 4) {
+        if (4 === strlen($this->color)) {
             [$r, $g, $b] = sscanf($this->color, '#%1x%1x%1x');
         } else {
             [$r, $g, $b] = sscanf($this->color, '#%2x%2x%2x');

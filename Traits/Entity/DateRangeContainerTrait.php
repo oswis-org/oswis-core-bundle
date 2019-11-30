@@ -13,12 +13,10 @@ use Zakjakub\OswisCoreBundle\Utils\DateTimeUtils;
  */
 trait DateRangeContainerTrait
 {
-
     /**
      * True if datetime belongs to this datetime range.
      *
-     * @param DateTime      $dateTime Checked date and time
-     * @param DateTime|null $referenceDateTime
+     * @param DateTime $dateTime Checked date and time
      *
      * @return bool True if belongs to date range
      * @throws Exception
@@ -33,8 +31,6 @@ trait DateRangeContainerTrait
     }
 
     /**
-     * @param DateTime|null $referenceDateTime
-     *
      * @return DateTime
      */
     final public function getStartDateTime(?DateTime $referenceDateTime = null): ?DateTime
@@ -43,8 +39,6 @@ trait DateRangeContainerTrait
     }
 
     /**
-     * @param DateTime|null $referenceDateTime
-     *
      * @return DateTime
      */
     final public function getEndDateTime(?DateTime $referenceDateTime = null): ?DateTime
@@ -52,29 +46,16 @@ trait DateRangeContainerTrait
         return $this->getRevisionByDate($referenceDateTime)->getEndDateTime();
     }
 
-    /**
-     * @param DateTime|null $referenceDateTime
-     *
-     * @return DateTime|null
-     */
     final public function getStartDate(?DateTime $referenceDateTime = null): ?DateTime
     {
         return $this->getStartDateTime($referenceDateTime);
     }
 
-    /**
-     * @param DateTime|null $referenceDateTime
-     *
-     * @return DateTime|null
-     */
     final public function getEndDate(?DateTime $referenceDateTime = null): ?DateTime
     {
         return $this->getEndDateTime($referenceDateTime);
     }
 
-    /**
-     * @param DateTime|null $dateTime
-     */
     final public function setStartDate(?DateTime $dateTime): void
     {
         $this->setStartDateTime($dateTime);
@@ -85,16 +66,13 @@ trait DateRangeContainerTrait
      */
     final public function setStartDateTime(?DateTime $startDateTime): void
     {
-        if ($this->getStartDateTime() != $startDateTime) {
+        if ($this->getStartDateTime() !== $startDateTime) {
             $newRevision = clone $this->getRevisionByDate();
             $newRevision->setStartDateTime($startDateTime);
             $this->addRevision($newRevision);
         }
     }
 
-    /**
-     * @param DateTime|null $dateTime
-     */
     final public function setEndDate(?DateTime $dateTime): void
     {
         $this->setEndDateTime($dateTime);
@@ -105,7 +83,7 @@ trait DateRangeContainerTrait
      */
     final public function setEndDateTime(?DateTime $endDateTime): void
     {
-        if ($this->getEndDateTime() != $endDateTime) {
+        if ($this->getEndDateTime() !== $endDateTime) {
             $newRevision = clone $this->getRevisionByDate();
             $newRevision->setEndDateTime($endDateTime);
             $this->addRevision($newRevision);

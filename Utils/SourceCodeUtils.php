@@ -7,8 +7,8 @@
 namespace Zakjakub\OswisCoreBundle\Utils;
 
 /**
- * Class AgeUtils
- * @package OswisCoreBundle
+ * Class AgeUtils.
+ *
  * @author  Jakub Zak <mail@jakubzak.eu>
  */
 class SourceCodeUtils
@@ -24,11 +24,6 @@ class SourceCodeUtils
 
     /**
      * Strips HTML tags from string.
-     *
-     * @param string $input
-     * @param string $allowedTags
-     *
-     * @return string
      */
     public static function stripHtml(
         string $input,

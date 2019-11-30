@@ -7,6 +7,7 @@ use Zakjakub\OswisCoreBundle\Traits\Entity\BasicEntityTrait;
 
 /**
  * Log record from client.
+ *
  * @Doctrine\ORM\Mapping\Entity()
  * @Doctrine\ORM\Mapping\Table(name="core_client_log_record")
  * @ApiResource(
@@ -41,13 +42,13 @@ class ClientLogRecord
      * @var int|null
      * @Doctrine\ORM\Mapping\Column(type="integer", nullable=true)
      */
-    public ?int $level;
+    public ?int $level = null;
 
     /**
      * @var string|null
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
-    public ?string $message;
+    public ?string $message = null;
 
     public function __construct(
         ?int $level = null,

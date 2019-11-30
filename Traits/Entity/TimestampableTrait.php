@@ -7,32 +7,31 @@ use function date_create;
 use function floor;
 
 /**
- * Trait adds createdDateTime and updatedDateTime fields
+ * Trait adds createdDateTime and updatedDateTime fields.
  *
  * Trait adds fields *createdDateTime* and *updatedDateTime* and allows to access them.
  * * _**createdDateTime**_ contains date and time when entity was created
  * * _**updatedDateTime**_ contains date and time when entity was updated/changed
- *
  */
 trait TimestampableTrait
 {
-
     /**
      * Date and time of entity creation.
+     *
      * @var DateTime|null
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true)
      * @Gedmo\Mapping\Annotation\Timestampable(on="create")
      */
-    protected ?DateTime $createdDateTime;
+    protected ?DateTime $createdDateTime = null;
 
     /**
      * Date and time of entity update.
+     *
      * @var DateTime|null
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true, options={"default" : null})
      * @Gedmo\Mapping\Annotation\Timestampable(on="update")
      */
-    protected ?DateTime $updatedDateTime;
-
+    protected ?DateTime $updatedDateTime = null;
 
     final public function getCreatedDaysAgo(?bool $decimal = false): ?int
     {
@@ -48,7 +47,7 @@ trait TimestampableTrait
     }
 
     /**
-     * Get date and time of entity creation
+     * Get date and time of entity creation.
      *
      * @return DateTime
      */
@@ -71,7 +70,7 @@ trait TimestampableTrait
     }
 
     /**
-     * Get date and time of entity update
+     * Get date and time of entity update.
      *
      * @return DateTime
      */

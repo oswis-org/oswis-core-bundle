@@ -25,44 +25,44 @@ abstract class AbstractImage
      *     mimeType="contentMimeType"
      * )
      */
-    public ?File $file;
+    public ?File $file = null;
 
     /**
      * @var string|null
      * @Doctrine\ORM\Mapping\Column(nullable=true)
      * @ApiProperty(iri="http://schema.org/contentUrl")
      */
-    public ?string $contentUrl;
+    public ?string $contentUrl = null;
 
     /**
      * @var int|null
      * @Doctrine\ORM\Mapping\Column(nullable=true)
      */
-    public ?int $contentSize;
+    public ?int $contentSize = null;
 
     /**
      * @var int|null
      * @Doctrine\ORM\Mapping\Column(nullable=true)
      */
-    public ?int $contentMimeType;
+    public ?int $contentMimeType = null;
 
     /**
      * @var string|null
      * @Doctrine\ORM\Mapping\Column(nullable=true)
      */
-    public ?string $contentOriginalName;
+    public ?string $contentOriginalName = null;
 
     /**
      * @var int|null
      * @Doctrine\ORM\Mapping\Column(nullable=true)
      */
-    public ?int $contentDimensionsWidth;
+    public ?int $contentDimensionsWidth = null;
 
     /**
      * @var int|null
      * @Doctrine\ORM\Mapping\Column(nullable=true)
      */
-    public ?int $contentDimensionsHeight;
+    public ?int $contentDimensionsHeight = null;
 
     /** @noinspection MethodShouldBeFinalInspection */
     public function __toString(): string

@@ -6,25 +6,18 @@ use DateTime;
 
 interface TimestampableInterface
 {
-
     /**
-     * Get date and time of entity creation
-     *
-     * @return DateTime
+     * Get date and time of entity creation.
      */
     public function getCreatedDateTime(): DateTime;
 
     /**
-     * Get date and time of entity update
-     *
-     * @return DateTime
+     * Get date and time of entity update.
      */
     public function getUpdatedDateTime(): DateTime;
 
     /**
-     * Set date and time of entity update
-     *
-     * @param DateTime $updatedDateTime
+     * Set date and time of entity update.
      */
     public function setUpdatedDateTime(DateTime $updatedDateTime): void;
 

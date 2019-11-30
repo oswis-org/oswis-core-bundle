@@ -4,7 +4,6 @@ namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
 trait DepositValueTrait
 {
-
     /**
      * Numeric value of deposit.
      *
@@ -12,12 +11,10 @@ trait DepositValueTrait
      *
      * @Doctrine\ORM\Mapping\Column(type="integer", nullable=false, options={"default": 0})
      */
-    protected ?int $depositValue;
+    protected ?int $depositValue = null;
 
     /**
      * Get deposit value.
-     *
-     * @return int
      */
     final public function getDepositValue(): int
     {
@@ -26,8 +23,6 @@ trait DepositValueTrait
 
     /**
      * Set deposit value.
-     *
-     * @param int $depositValue
      */
     final public function setDepositValue(int $depositValue): void
     {

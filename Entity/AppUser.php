@@ -15,6 +15,7 @@ use Zakjakub\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
 
 /**
  * User of application.
+ *
  * @Doctrine\ORM\Mapping\Entity(repositoryClass="Zakjakub\OswisCoreBundle\Repository\AppUserRepository")
  * @Doctrine\ORM\Mapping\Table(name="core_app_user")
  * @ApiResource(
@@ -86,6 +87,7 @@ use Zakjakub\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
  *     "appUserType.slug",
  *     "city"
  * })
+ *
  * @author Jakub Zak <mail@jakubzak.eu>
  * @Doctrine\ORM\Mapping\Cache(usage="NONSTRICT_READ_WRITE", region="core_app_user")
  */
@@ -100,14 +102,14 @@ class AppUser extends AbstractAppUser
      *     fetch="EAGER"
      * )
      */
-    protected ?Collection $appUserFlags;
+    protected ?Collection $appUserFlags = null;
 
     /**
      * @var AppUserType|null
      * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUserType", inversedBy="appUsers", fetch="EAGER")
      * @Doctrine\ORM\Mapping\JoinColumn(name="app_user_type_id", referencedColumnName="id")
      */
-    protected ?AppUserType $appUserType;
+    protected ?AppUserType $appUserType = null;
 
     public function __construct(
         ?string $fullName = null,
@@ -128,7 +130,6 @@ class AppUser extends AbstractAppUser
 
     /**
      * Can visit administration?
-     * @return bool
      */
     final public function isAdminUser(): bool
     {
@@ -139,17 +140,11 @@ class AppUser extends AbstractAppUser
         return $this->getAppUserType()->getAdminUser() ?? false;
     }
 
-    /**
-     * @return AppUserType|null
-     */
     final public function getAppUserType(): ?AppUserType
     {
         return $this->appUserType;
     }
 
-    /**
-     * @param AppUserType|null $appUserType
-     */
     final public function setAppUserType(?AppUserType $appUserType): void
     {
         if ($this->appUserType && $appUserType !== $this->appUserType) {
@@ -163,10 +158,6 @@ class AppUser extends AbstractAppUser
 
     /**
      * True if user is active.
-     *
-     * @param DateTime|null $referenceDateTime
-     *
-     * @return bool
      */
     final public function isActive(?DateTime $referenceDateTime = null): bool
     {
@@ -181,10 +172,8 @@ class AppUser extends AbstractAppUser
      * Can user edit this user?
      *
      * @param $user
-     *
-     * @return bool
      */
-    final public function canEdit(AppUser $user): bool
+    final public function canEdit(self $user): bool
     {
         if (!($user instanceof self) || !$this->canRead($user)) {
             return false;
@@ -197,10 +186,8 @@ class AppUser extends AbstractAppUser
      * Can user read this user?
      *
      * @param $user
-     *
-     * @return bool
      */
-    final public function canRead(AppUser $user): bool
+    final public function canRead(self $user): bool
     {
         if (!($user instanceof self)) { // User is not logged in.
             return false;
@@ -221,7 +208,6 @@ class AppUser extends AbstractAppUser
     {
         return $this->getAppUserType() ? $this->getAppUserType()->getAllRoleNames()->toArray() : [];
     }
-
 
     final public function getAppUserFlags(): Collection
     {

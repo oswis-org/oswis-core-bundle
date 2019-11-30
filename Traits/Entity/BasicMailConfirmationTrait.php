@@ -6,36 +6,36 @@ use DateTime;
 use function date_create;
 
 /**
- * Trait EntityBasicMailConfirmationTrait
- * @package OswisCoreBundle
+ * Trait EntityBasicMailConfirmationTrait.
  */
 trait BasicMailConfirmationTrait
 {
-
     /**
      * Date and time of last confirmation e-mail.
+     *
      * @var DateTime|null
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true)
      */
-    protected ?DateTime $eMailConfirmationDateTime;
+    protected ?DateTime $eMailConfirmationDateTime = null;
 
     /**
      * Number of confirmation e-mails sent.
+     *
      * @var int
      * @Doctrine\ORM\Mapping\Column(type="integer", nullable=true)
      */
-    protected int $eMailConfirmationCount;
+    protected int $eMailConfirmationCount = 0;
 
     /**
      * Source/reason/author of last e-mail confirmation (cron, manual...).
+     *
      * @var string|null
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
-    protected ?string $eMailConfirmationSource;
+    protected ?string $eMailConfirmationSource = null;
 
     /**
      * Get date and time of last confirmation e-mail.
-     * @return DateTime|null
      */
     final public function getEMailConfirmationDateTime(): ?DateTime
     {
@@ -44,8 +44,6 @@ trait BasicMailConfirmationTrait
 
     /**
      * (DO NOT USE!) Set last confirmation date and time.
-     *
-     * @param DateTime|null $eMailConfirmationDateTime
      */
     final public function setEMailConfirmationDateTime(?DateTime $eMailConfirmationDateTime): void
     {
@@ -54,7 +52,6 @@ trait BasicMailConfirmationTrait
 
     /**
      * Get number of confirmation e-mails sent.
-     * @return int
      */
     final public function getEMailConfirmationCount(): int
     {
@@ -73,7 +70,6 @@ trait BasicMailConfirmationTrait
 
     /**
      * Get source/reason of last confirmation e-mail.
-     * @return string|null
      */
     final public function getEMailConfirmationSource(): ?string
     {
@@ -82,8 +78,6 @@ trait BasicMailConfirmationTrait
 
     /**
      * (DO NOT USE!) Set last confirmation source/reason/author.
-     *
-     * @param string|null $eMailConfirmationSource
      */
     final public function setEMailConfirmationSource(?string $eMailConfirmationSource): void
     {

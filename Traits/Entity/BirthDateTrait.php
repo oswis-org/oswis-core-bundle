@@ -7,25 +7,20 @@ use Exception;
 use Zakjakub\OswisCoreBundle\Utils\AgeUtils;
 
 /**
- * Trait adds birthDate field
- *
+ * Trait adds birthDate field.
  */
 trait BirthDateTrait
 {
-
     /**
-     * Birth date
+     * Birth date.
      *
      * @var DateTime|null
      *
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true, options={"default" : null})
      */
-    protected ?DateTime $birthDate;
+    protected ?DateTime $birthDate = null;
 
     /**
-     * @param DateTime|null $referenceDateTime
-     *
-     * @return int|null
      * @throws Exception
      */
     final public function getAge(?DateTime $referenceDateTime = null): ?int
@@ -34,9 +29,6 @@ trait BirthDateTrait
     }
 
     /**
-     * @param DateTime|null $referenceDateTime
-     *
-     * @return int|null
      * @throws Exception
      */
     final public function getAgeDecimal(?DateTime $referenceDateTime = null): ?int
@@ -46,8 +38,6 @@ trait BirthDateTrait
 
     /**
      * Get birth date.
-     *
-     * @return DateTime|null
      */
     final public function getBirthDate(): ?DateTime
     {
@@ -59,9 +49,7 @@ trait BirthDateTrait
     }
 
     /**
-     * Set date and time of entity update
-     *
-     * @param DateTime|null $birthDate
+     * Set date and time of entity update.
      */
     final public function setBirthDate(?DateTime $birthDate): void
     {

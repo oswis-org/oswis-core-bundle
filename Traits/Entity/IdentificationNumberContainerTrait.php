@@ -8,12 +8,6 @@ use DateTime;
 
 trait IdentificationNumberContainerTrait
 {
-
-    /**
-     * @param string|null $identificationNumber
-     *
-     * @throws RevisionMissingException
-     */
     final public function setIdentificationNumber(?string $identificationNumber): void
     {
         if ($this->getIdentificationNumber() !== $identificationNumber) {

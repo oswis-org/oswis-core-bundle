@@ -3,25 +3,21 @@
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
 /**
- * Trait adds description field
+ * Trait adds description field.
  */
 trait DescriptionTrait
 {
-
     /**
-     * Description
+     * Description.
      *
      * @var string|null
      *
      * @Doctrine\ORM\Mapping\Column(type="text", nullable=true)
      */
-    protected ?string $description;
-
+    protected ?string $description = null;
 
     /**
-     * Get description
-     *
-     * @return string
+     * Get description.
      */
     final public function getDescription(): string
     {
@@ -29,12 +25,10 @@ trait DescriptionTrait
     }
 
     /**
-     * Set description
-     *
-     * @param null|string $description
+     * Set description.
      */
     final public function setDescription(?string $description): void
     {
-        $this->description = $description;
+        $this->description = empty($description) ? null : $description;
     }
 }

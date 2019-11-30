@@ -7,17 +7,16 @@ namespace Zakjakub\OswisCoreBundle\Traits\Entity;
  */
 trait UsernameTrait
 {
-
     /**
      * Username.
+     *
      * @var string|null
      * @Doctrine\ORM\Mapping\Column(name="username", type="string", length=50, unique=true, nullable=true)
      */
-    protected ?string $username;
+    protected ?string $username = null;
 
     /**
      * Get username.
-     * @return null|string
      */
     final public function getUsername(): ?string
     {
@@ -26,8 +25,6 @@ trait UsernameTrait
 
     /**
      * Set username.
-     *
-     * @param null|string $username
      */
     final public function setUsername(?string $username): void
     {

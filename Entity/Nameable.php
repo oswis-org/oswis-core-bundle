@@ -11,42 +11,41 @@ class Nameable
 {
     /**
      * Full name.
+     *
      * @var string|null
      */
-    public ?string $name;
+    public ?string $name = null;
 
     /**
      * Shortened name.
+     *
      * @var string|null
      */
-    public ?string $shortName;
+    public ?string $shortName = null;
 
     /**
      * Description.
+     *
      * @var string|null
      */
-    public ?string $description;
+    public ?string $description = null;
 
     /**
      * Note.
+     *
      * @var string|null
      */
-    public ?string $note;
+    public ?string $note = null;
 
     /**
      * Slug (string for ie. url).
+     *
      * @var string|null
      */
-    public ?string $slug;
+    public ?string $slug = null;
 
     /**
      * Constructor of nameable.
-     *
-     * @param string|null $name
-     * @param string|null $shortName
-     * @param string|null $description
-     * @param string|null $note
-     * @param string|null $slug
      */
     public function __construct(
         ?string $name = null,

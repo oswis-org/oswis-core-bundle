@@ -18,20 +18,20 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
 {
     /**
      * Revisions/versions of this container.
+     *
      * @var Collection
      */
     protected Collection $revisions;
 
     /**
      * Revision/version which is actual/active now.
+     *
      * @var AbstractRevision|null
      */
     protected ?AbstractRevision $activeRevision;
 
     /**
      * Add some revision/version to this container.
-     *
-     * @param AbstractRevision|null $revision
      */
     final public function addRevision(?AbstractRevision $revision): void
     {
@@ -48,15 +48,11 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
 
     /**
      * Check validity of some revision/version (ie. for use before adding revision).
-     *
-     * @param AbstractRevision|null $revision
      */
     abstract public static function checkRevision(?AbstractRevision $revision): void;
 
     /**
      * Remove some revision/version from this container.
-     *
-     * @param AbstractRevision|null $revision
      */
     final public function removeRevision(?AbstractRevision $revision): void
     {
@@ -74,7 +70,6 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
 
     /**
      * Revision/version which is actual/active now.
-     * @return AbstractRevision|null
      */
     final public function getActiveRevision(): ?AbstractRevision
     {
@@ -96,7 +91,6 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
     }
 
     /** @noinspection MethodShouldBeFinalInspection */
-
     /**
      * Automatically set revision/version which is actual/active now.
      */
@@ -115,11 +109,6 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
     /**
      * Get revision/version which is (was) active in specified date and time (or now if dateTime is not specified).
      *
-     * @param DateTime|null $dateTime
-     *
-     * @param bool|null     $force
-     *
-     * @return AbstractRevision
      * @throws RevisionMissingException
      */
     final public function getRevision(DateTime $dateTime = null, ?bool $force = false): AbstractRevision
@@ -139,11 +128,6 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
         return $revisions[0];
     }
 
-    /**
-     * @param DateTime|null $dateTime
-     *
-     * @return array
-     */
     final public function getRevisionsOlderThanDateTime(DateTime $dateTime = null): array
     {
         try {
@@ -159,7 +143,6 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
 
     /**
      * All revisions/versions of this container.
-     * @return Collection
      */
     final public function getRevisions(): Collection
     {
@@ -168,16 +151,12 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
 
     /**
      * Class name of revisions/versions stored in this container.
-     * @return string
      */
     abstract public static function getRevisionClassName(): string;
 
     /**
      * Get date and time of active/actual revision/version in some date and time (or now if referenceDateTime is not specified).
      *
-     * @param DateTime|null $referenceDateTime
-     *
-     * @return DateTime|null
      * @throws RevisionMissingException
      */
     final public function getLastRevisionDateTime(?DateTime $referenceDateTime = null): ?DateTime

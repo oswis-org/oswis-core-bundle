@@ -40,10 +40,6 @@ class PdfGenerator
 
     /**
      * PDF generator constructor.
-     *
-     * @param LoggerInterface           $logger
-     * @param Environment               $templating
-     * @param OswisCoreSettingsProvider $oswisCoreSettings
      */
     public function __construct(
         LoggerInterface $logger,
@@ -57,15 +53,9 @@ class PdfGenerator
 
     /** @noinspection PhpUnused */
     /**
-     * @param string|null $title
      * @param string|null $template
      * @param array|null  $data
-     * @param string      $format
-     * @param bool        $landscape
-     * @param string|null $headerTemplate
-     * @param string|null $footerTemplate
      *
-     * @return string
      * @throws LoaderError
      * @throws MpdfException
      * @throws RuntimeError
@@ -81,18 +71,18 @@ class PdfGenerator
         ?string $footerTemplate = self::DEFAULT_FOOTER_TEMPLATE
     ): string {
         $format .= $landscape ? '-L' : null;
-        $context = array(
+        $context = [
             'title'    => $title,
             'dateTime' => new DateTime(),
             'oswis'    => $this->oswisCoreSettings,
             'data'     => $data,
-        );
+        ];
         $mPdf = new Mpdf(['format' => $format, 'mode' => 'utf-8', 'logger' => $this->logger]);
         $mPdf->SetTitle($title);
         $mPdf->SetSubject($title);
         $mPdf->SetAuthor($this->oswisCoreSettings->getApp()['name']);
         $mPdf->SetCreator($this->oswisCoreSettings->getCoreAppName());
-        $mPdf->h2toc = array('H1' => 0, 'H2' => 1, 'H3' => 2, 'H4' => 3, 'H5' => 4, 'H6' => 5);
+        $mPdf->h2toc = ['H1' => 0, 'H2' => 1, 'H3' => 2, 'H4' => 3, 'H5' => 4, 'H6' => 5];
         $mPdf->showImageErrors = true;
         $mPdf->useSubstitutions = true;
         if ($headerTemplate) {

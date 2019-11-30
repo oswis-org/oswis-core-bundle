@@ -7,19 +7,17 @@ namespace Zakjakub\OswisCoreBundle\Traits\Entity;
  */
 trait SlugTrait
 {
-
     /**
      * Slug.
+     *
      * @var string|null
      *
      * @Doctrine\ORM\Mapping\Column(nullable=true)
      */
-    protected ?string $slug;
-
+    protected ?string $slug = null;
 
     /**
      * Get slug.
-     * @return string|null
      */
     final public function getSlug(): ?string
     {
@@ -28,8 +26,6 @@ trait SlugTrait
 
     /**
      * Set slug.
-     *
-     * @param null|string $slug
      */
     final public function setSlug(?string $slug): void
     {

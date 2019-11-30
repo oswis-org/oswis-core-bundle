@@ -3,24 +3,25 @@
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
 /**
- * Trait adds description field
+ * Trait adds description field.
  */
 trait IdCardTrait
 {
-
     /**
-     * ID card type (as string)
+     * ID card type (as string).
+     *
      * @var string|null
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
-    protected ?string $idCardType;
+    protected ?string $idCardType = null;
 
     /**
      * ID card number (as string).
+     *
      * @var string|null
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
-    protected ?string $idCardNumber;
+    protected ?string $idCardNumber = null;
 
     /**
      * @return string

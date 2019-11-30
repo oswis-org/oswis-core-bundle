@@ -17,15 +17,13 @@ use function assert;
  */
 class AppUserRepository extends EntityRepository implements UserLoaderInterface
 {
-
     /**
      * @param string|null $username
      *
-     * @return AppUser|null
      * @throws OswisUserNotUniqueException
      */
     final public function loadUserByUsername(
-        /** @noinspection MissingParameterTypeDeclarationInspection */ $username
+        /* @noinspection MissingParameterTypeDeclarationInspection */ $username
     ): ?AppUser {
         if (!$username) {
             return null;
@@ -49,7 +47,6 @@ class AppUserRepository extends EntityRepository implements UserLoaderInterface
     /**
      * @param int $id
      *
-     * @return AppUser|null
      * @throws OswisUserNotUniqueException
      */
     final public function loadUserById(?int $id): ?AppUser

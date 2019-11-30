@@ -2,6 +2,8 @@
 
 namespace Zakjakub\OswisCoreBundle\Utils;
 
+use function strlen;
+
 class FileUtils
 {
     final public static function humanReadableFileUploadMaxSize(): string
@@ -11,9 +13,9 @@ class FileUtils
 
     final public static function humanReadableBytes(int $bytes, int $decimals = 2, string $system = 'binary'): string
     {
-        $mod = ($system === 'binary') ? 1024 : 1000;
-        $units = array(
-            'binary' => array(
+        $mod = ('binary' === $system) ? 1024 : 1000;
+        $units = [
+            'binary' => [
                 'B',
                 'KiB',
                 'MiB',
@@ -23,8 +25,8 @@ class FileUtils
                 'EiB',
                 'ZiB',
                 'YiB',
-            ),
-            'metric' => array(
+            ],
+            'metric' => [
                 'B',
                 'kB',
                 'MB',
@@ -34,8 +36,8 @@ class FileUtils
                 'EB',
                 'ZB',
                 'YB',
-            ),
-        );
+            ],
+        ];
         $factor = floor((strlen($bytes) - 1) / 3);
 
         return sprintf("%.{$decimals}f %s", $bytes / ($mod ** $factor), $units[$system][$factor]);
@@ -65,7 +67,7 @@ class FileUtils
         $size = preg_replace('/[^0-9.]/', '', $size); // Remove the non-numeric characters from the size.
         if ($unit) {
             // Find the position of the unit in the ordered string which is the power of magnitude to multiply a kilobyte by.
-            /** @noinspection SpellCheckingInspection */
+            // @noinspection SpellCheckingInspection
             return round($size * (1024 ** stripos('bkmgtpezy', $unit[0])));
         }
 

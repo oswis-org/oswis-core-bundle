@@ -15,14 +15,13 @@ class ZakjakubOswisCoreExtension extends Extension implements PrependExtensionIn
     /**
      * Loads a specific configuration.
      *
-     * @param array            $configs
-     * @param ContainerBuilder $container
-     *
+     * @throws ServiceNotFoundException
+     * @throws Exception
      * @throws Exception
      */
     final public function load(array $configs, ContainerBuilder $container): void
     {
-        $configs ??= array();
+        $configs ??= [];
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yaml');
         $configuration = $this->getConfiguration($configs, $container);
@@ -33,10 +32,6 @@ class ZakjakubOswisCoreExtension extends Extension implements PrependExtensionIn
     }
 
     /**
-     * @param ContainerBuilder $container
-     *
-     * @param array            $config
-     *
      * @throws ServiceNotFoundException
      */
     private function oswisCoreSettingsProvider(ContainerBuilder $container, array $config): void
@@ -48,9 +43,6 @@ class ZakjakubOswisCoreExtension extends Extension implements PrependExtensionIn
         $definition->setArgument(3, $config['web']);
     }
 
-    /**
-     * @param ContainerBuilder $container
-     */
     final public function prepend(ContainerBuilder $container): void
     {
         $this->prependTwig($container);

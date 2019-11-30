@@ -24,6 +24,7 @@ interface AgeRangeInterface
      * @param DateTime|null $referenceDateTime Reference date, default is _now_
      *
      * @return bool True if belongs to age range
+     *
      * @throws Exception
      */
     public function containsAccommodatedPerson(DateTime $birthDate, DateTime $referenceDateTime = null): bool;

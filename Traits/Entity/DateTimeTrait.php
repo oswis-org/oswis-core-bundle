@@ -8,12 +8,10 @@ use function date_create;
 use function floor;
 
 /**
- * Trait adds dateTime field
- *
+ * Trait adds dateTime field.
  */
 trait DateTimeTrait
 {
-
     /**
      * Date and time.
      *
@@ -21,7 +19,7 @@ trait DateTimeTrait
      *
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true, options={"default" : null})
      */
-    protected ?DateTime $dateTime;
+    protected ?DateTime $dateTime = null;
 
     final public function getDaysAgo(?bool $decimal = false): ?int
     {

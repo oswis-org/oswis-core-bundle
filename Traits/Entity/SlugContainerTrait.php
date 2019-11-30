@@ -8,12 +8,6 @@ use DateTime;
 
 trait SlugContainerTrait
 {
-
-    /**
-     * @param string|null $slug
-     *
-     * @throws RevisionMissingException
-     */
     final public function setSlug(?string $slug): void
     {
         if ($this->getSlug() !== $slug) {

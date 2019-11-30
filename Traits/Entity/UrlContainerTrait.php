@@ -8,12 +8,6 @@ use DateTime;
 
 trait UrlContainerTrait
 {
-
-    /**
-     * @param string|null $url
-     *
-     * @throws RevisionMissingException
-     */
     final public function setUrl(?string $url): void
     {
         if ($this->getUrl() !== $url) {

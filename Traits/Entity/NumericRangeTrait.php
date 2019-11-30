@@ -4,46 +4,33 @@ namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
 trait NumericRangeTrait
 {
+    /**
+     * @var int|null
+     * @Doctrine\ORM\Mapping\Column(type="integer", nullable=true)
+     */
+    protected ?int $min = null;
 
     /**
      * @var int|null
      * @Doctrine\ORM\Mapping\Column(type="integer", nullable=true)
      */
-    protected ?int $min;
+    protected ?int $max = null;
 
-    /**
-     * @var int|null
-     * @Doctrine\ORM\Mapping\Column(type="integer", nullable=true)
-     */
-    protected ?int $max;
-
-    /**
-     * @return int|null
-     */
     final public function getMin(): ?int
     {
         return $this->min;
     }
 
-    /**
-     * @param int|null $min
-     */
     final public function setMin(?int $min): void
     {
         $this->min = $min;
     }
 
-    /**
-     * @return int|null
-     */
     final public function getMax(): ?int
     {
         return $this->max;
     }
 
-    /**
-     * @param int|null $max
-     */
     final public function setMax(?int $max): void
     {
         $this->max = $max;

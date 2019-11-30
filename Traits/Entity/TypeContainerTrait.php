@@ -7,12 +7,6 @@ use DateTime;
 
 trait TypeContainerTrait
 {
-
-    /**
-     * @param string|null $type
-     *
-     * @throws RevisionMissingException
-     */
     final public function setType(?string $type): void
     {
         if ($this->getType() !== $type) {

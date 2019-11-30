@@ -8,12 +8,6 @@ use DateTime;
 
 trait PhoneContainerTrait
 {
-
-    /**
-     * @param string|null $phone
-     *
-     * @throws RevisionMissingException
-     */
     final public function setPhone(?string $phone): void
     {
         if ($this->getPhone() !== $phone) {

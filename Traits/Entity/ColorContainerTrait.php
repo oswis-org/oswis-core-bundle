@@ -8,12 +8,6 @@ use DateTime;
 
 trait ColorContainerTrait
 {
-
-    /**
-     * @param string|null $color
-     *
-     * @throws RevisionMissingException
-     */
     final public function setColor(?string $color): void
     {
         if ($this->getColor() !== $color) {

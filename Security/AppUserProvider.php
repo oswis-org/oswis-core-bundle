@@ -10,6 +10,8 @@ use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Zakjakub\OswisCoreBundle\Entity\AppUser;
 use Zakjakub\OswisCoreBundle\Exceptions\OswisUserNotUniqueException;
 use Zakjakub\OswisCoreBundle\Repository\AppUserRepository;
+use function assert;
+use function get_class;
 
 class AppUserProvider implements UserProviderInterface
 {
@@ -24,9 +26,6 @@ class AppUserProvider implements UserProviderInterface
     }
 
     /**
-     * @param UserInterface $user
-     *
-     * @return AppUser|null
      * @throws OswisUserNotUniqueException
      * @throws UnsupportedUserException
      * @throws UsernameNotFoundException
@@ -34,9 +33,7 @@ class AppUserProvider implements UserProviderInterface
     final public function refreshUser(UserInterface $user): ?AppUser
     {
         if (!$user instanceof AppUser) {
-            throw new UnsupportedUserException(
-                sprintf('Instances of "%s" are not supported.', get_class($user))
-            );
+            throw new UnsupportedUserException(sprintf('Instances of "%s" are not supported.', get_class($user)));
         }
 
         return $this->loadUserByUsername($user->getUsername());
@@ -45,11 +42,11 @@ class AppUserProvider implements UserProviderInterface
     /**
      * @param string $username
      *
-     * @return AppUser|null
-     * @throws UsernameNotFoundException
+     * @noinspection MissingParameterTypeDeclarationInspection
+     *
      * @throws OswisUserNotUniqueException
+     * @throws UsernameNotFoundException
      */
-    /** @noinspection MissingParameterTypeDeclarationInspection */
     final public function loadUserByUsername($username): ?AppUser
     {
         $user = $this->userRepository->loadUserByUsername($username);
@@ -64,9 +61,8 @@ class AppUserProvider implements UserProviderInterface
     /**
      * @param string $class
      *
-     * @return bool
+     * @noinspection MissingParameterTypeDeclarationInspection
      */
-    /** @noinspection MissingParameterTypeDeclarationInspection */
     final public function supportsClass($class): bool
     {
         return AppUser::class === $class;

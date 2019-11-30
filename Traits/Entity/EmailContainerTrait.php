@@ -8,12 +8,6 @@ use DateTime;
 
 trait EmailContainerTrait
 {
-
-    /**
-     * @param string|null $email
-     *
-     * @throws RevisionMissingException
-     */
     final public function setEmail(?string $email): void
     {
         if ($this->getEmail() !== $email) {
@@ -23,7 +17,7 @@ trait EmailContainerTrait
         }
     }
 
-    final public function getEmail(?DateTime $dateTime = null): ?string
+    final public function getEmail(?DateTime $dateTime = null): string
     {
         return $this->getRevisionByDate($dateTime)->getEmail();
     }

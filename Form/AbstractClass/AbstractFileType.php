@@ -31,8 +31,6 @@ abstract class AbstractFileType extends AbstractType
     }
 
     /**
-     * @param OptionsResolver $resolver
-     *
      * @throws AccessException
      */
     final public function configureOptions(OptionsResolver $resolver): void
@@ -45,16 +43,9 @@ abstract class AbstractFileType extends AbstractType
         );
     }
 
-    /**
-     * @return string
-     */
     abstract public static function getFileClassName(): string;
 
-    /**
-     * @return string
-     */
     /** @noinspection MethodShouldBeFinalInspection */
-
     public function getBlockPrefix(): string
     {
         return 'oswis_core_abstract_file';

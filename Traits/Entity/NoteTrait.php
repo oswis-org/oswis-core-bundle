@@ -9,20 +9,17 @@ namespace Zakjakub\OswisCoreBundle\Traits\Entity;
  */
 trait NoteTrait
 {
-
     /**
-     * Note
+     * Note.
      *
      * @var string|null
      *
      * @Doctrine\ORM\Mapping\Column(type="text", nullable=true)
      */
-    protected ?string $note;
+    protected ?string $note = null;
 
     /**
-     * Get note
-     *
-     * @return null|string
+     * Get note.
      */
     final public function getNote(): ?string
     {
@@ -30,9 +27,7 @@ trait NoteTrait
     }
 
     /**
-     * Set note
-     *
-     * @param null|string $note
+     * Set note.
      */
     final public function setNote(?string $note): void
     {

@@ -8,8 +8,8 @@ use Exception;
 use function array_key_exists;
 
 /**
- * Class DateTimeUtils
- * @package OswisCoreBundle
+ * Class DateTimeUtils.
+ *
  * @author  Jakub Zak <mail@jakubzak.eu>
  */
 class DateTimeUtils
@@ -19,8 +19,6 @@ class DateTimeUtils
 
     /**
      * @param DateInterval $dateInterval
-     *
-     * @return string
      */
     public static function formatIntervalToReadable(?DateInterval $dateInterval): string
     {
@@ -71,11 +69,6 @@ class DateTimeUtils
         }
     }
 
-    /**
-     * @param DateTime $dateTime
-     *
-     * @return bool
-     */
     public static function isWeekend(DateTime $dateTime): bool
     {
         return $dateTime->format('N') > 6;
@@ -134,7 +127,7 @@ class DateTimeUtils
 
     public static function cmpDate(?DateTime $a, ?DateTime $b): int
     {
-        if ($a == $b) {
+        if ($a === $b) {
             return 0;
         }
 

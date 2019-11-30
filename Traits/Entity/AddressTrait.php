@@ -5,78 +5,71 @@ namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 use Zakjakub\OswisCoreBundle\Entity\Address;
 
 /**
- * Trait adds address fields
+ * Trait adds address fields.
  */
 trait AddressTrait
 {
-
     /**
-     * First line of street
+     * First line of street.
      *
-     * @var string|null $street First line of street
+     * @var string|null First line of street
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
-    protected ?string $street;
+    protected ?string $street = null;
 
     /**
-     * Second line of street
+     * Second line of street.
      *
-     * @var string|null $street2 Second line of street
+     * @var string|null Second line of street
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
-    protected ?string $street2;
+    protected ?string $street2 = null;
 
     /**
-     * City
+     * City.
      *
-     * @var string|null $city City
+     * @var string|null City
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
-    protected ?string $city;
+    protected ?string $city = null;
 
     /**
-     * Postal code
+     * Postal code.
      *
-     * @var string|null $postalCode Postal code
+     * @var string|null Postal code
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
-    protected ?string $postalCode;
+    protected ?string $postalCode = null;
 
     /**
-     * House number
+     * House number.
      *
-     * @var int|null $houseNumber House number
+     * @var int|null House number
      * @Doctrine\ORM\Mapping\Column(type="integer", nullable=true)
      */
-    protected ?int $houseNumber;
+    protected ?int $houseNumber = null;
 
     /**
-     * Door number
+     * Door number.
      *
-     * @var int|null $doorNumber Door number
+     * @var int|null Door number
      * @Doctrine\ORM\Mapping\Column(type="integer", nullable=true)
      */
-    protected ?int $doorNumber;
+    protected ?int $doorNumber = null;
 
     /**
-     * Orientation number
+     * Orientation number.
      *
-     * @var int|null $doorNumber Door number
+     * @var int|null Door number
      * @Doctrine\ORM\Mapping\Column(type="integer", nullable=true)
      */
-    protected ?int $orientationNumber;
+    protected ?int $orientationNumber = null;
 
-    /**
-     * @return string|null
-     */
     final public function getStreet(): ?string
     {
-        return $this->street ?? '';
+        return $this->street;
     }
 
-    /**
-     * @param string|null $street
-     */
     final public function setStreet(?string $street): void
     {
         $this->street = $street;
@@ -87,65 +80,41 @@ trait AddressTrait
         return $this->orientationNumber;
     }
 
-    /**
-     * @return string|null
-     */
     final public function getStreet2(): ?string
     {
-        return $this->street2 ?? '';
+        return $this->street2;
     }
 
-    /**
-     * @param string|null $street2
-     */
     final public function setStreet2(?string $street2): void
     {
         $this->street2 = $street2;
     }
 
-    /**
-     * @return string|null
-     */
     final public function getCity(): ?string
     {
-        return $this->city ?? '';
+        return $this->city;
     }
 
-    /**
-     * @param string|null $city
-     */
     final public function setCity(?string $city): void
     {
         $this->city = $city;
     }
 
-    /**
-     * @return string|null
-     */
     final public function getPostalCode(): ?string
     {
-        return $this->postalCode ?? '';
+        return $this->postalCode;
     }
 
-    /**
-     * @param string|null $postalCode
-     */
     final public function setPostalCode(?string $postalCode): void
     {
         $this->postalCode = $postalCode;
     }
 
-    /**
-     * @return int|null
-     */
     final public function getHouseNumber(): ?int
     {
         return $this->houseNumber;
     }
 
-    /**
-     * @param int|null $houseNumber
-     */
     final public function setHouseNumber(?int $houseNumber): void
     {
         $this->houseNumber = $houseNumber;
@@ -156,25 +125,16 @@ trait AddressTrait
         $this->orientationNumber = $orientationNumber;
     }
 
-    /**
-     * @return int|null
-     */
     final public function getDoorNumber(): ?int
     {
         return $this->doorNumber;
     }
 
-    /**
-     * @param int|null $doorNumber
-     */
     final public function setDoorNumber(?int $doorNumber): void
     {
         $this->doorNumber = $doorNumber;
     }
 
-    /**
-     * @return string
-     */
     final public function getFullAddress(): string
     {
         $fullAddress = '';

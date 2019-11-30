@@ -7,7 +7,6 @@ namespace Zakjakub\OswisCoreBundle\Provider;
  */
 class OswisCoreSettingsProvider
 {
-
     /**
      * @var array
      */
@@ -30,11 +29,6 @@ class OswisCoreSettingsProvider
 
     /**
      * OswisCoreSettingsProvider constructor.
-     *
-     * @param array|null $app
-     * @param array|null $admin
-     * @param array|null $email
-     * @param array|null $web
      */
     public function __construct(
         ?array $app,
@@ -58,57 +52,36 @@ class OswisCoreSettingsProvider
         ];
     }
 
-    /**
-     * @return array
-     */
     final public function getApp(): array
     {
         return $this->app;
     }
 
-    /**
-     * @return array
-     */
     final public function getAdmin(): array
     {
         return $this->admin;
     }
 
-    /**
-     * @return array
-     */
     final public function getEmail(): array
     {
         return $this->email;
     }
 
-    /**
-     * @return array
-     */
     final public function getWeb(): array
     {
         return $this->web;
     }
 
-    /**
-     * @return string
-     */
     final public function getCoreAppName(): string
     {
         return 'OSWIS';
     }
 
-    /**
-     * @return string
-     */
     final public function getCoreAppNameShort(): string
     {
         return 'OSWIS';
     }
 
-    /**
-     * @return string
-     */
     final public function getCoreAppNameLong(): string
     {
         return 'One Simple Web IS';

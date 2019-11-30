@@ -3,24 +3,21 @@
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
 /**
- * Trait adds priority field
+ * Trait adds priority field.
  */
 trait PriorityTrait
 {
-
     /**
-     * Priority (numeric)
+     * Priority (numeric).
      *
      * @var int|null
      *
      * @Doctrine\ORM\Mapping\Column(nullable=true, options={"default": 0})
      */
-    protected ?int $priority;
+    protected ?int $priority = 0;
 
     /**
-     * Get priority
-     *
-     * @return int
+     * Get priority.
      */
     final public function getPriority(): int
     {
@@ -28,7 +25,7 @@ trait PriorityTrait
     }
 
     /**
-     * Set priority
+     * Set priority.
      *
      * @param int $priority
      */

@@ -4,30 +4,35 @@ namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
 trait GeoCoordinatesTrait
 {
-
     /**
      * Geo latitude (WGS 84).
+     *
      * @var float|null
      * @Doctrine\ORM\Mapping\Column(type="decimal", precision=10, scale=7, nullable=true)
+     *
      * @example 37.42242
      */
-    protected ?float $geoLatitude;
+    protected ?float $geoLatitude = null;
 
     /**
      * Geo longitude (WGS 84).
+     *
      * @var float|null
      * @Doctrine\ORM\Mapping\Column(type="decimal", precision=10, scale=7, nullable=true)
+     *
      * @example -122.08585
      */
-    protected ?float $geoLongitude;
+    protected ?float $geoLongitude = null;
 
     /**
      * Geo elevation (WGS 84, in meters).
+     *
      * @var int|null
      * @Doctrine\ORM\Mapping\Column(type="integer", nullable=true)
+     *
      * @example 1000
      */
-    protected ?int $geoElevation;
+    protected ?int $geoElevation = null;
 
     final public function getGeoLon(): ?float
     {
@@ -55,17 +60,11 @@ trait GeoCoordinatesTrait
         return $this->getGeoLatitude();
     }
 
-    /**
-     * @return float|null
-     */
     final public function getGeoLatitude(): ?float
     {
         return $this->geoLatitude;
     }
 
-    /**
-     * @param float|null $geoLatitude
-     */
     final public function setGeoLatitude(?float $geoLatitude): void
     {
         $this->geoLatitude = $geoLatitude;
@@ -76,17 +75,11 @@ trait GeoCoordinatesTrait
         return $this->getGeoElevation();
     }
 
-    /**
-     * @return float|null
-     */
     final public function getGeoElevation(): ?float
     {
         return $this->geoElevation;
     }
 
-    /**
-     * @param float|null $geoElevation
-     */
     final public function setGeoElevation(?float $geoElevation): void
     {
         $this->geoElevation = $geoElevation;

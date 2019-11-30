@@ -4,51 +4,43 @@ namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
 trait BankAccountTrait
 {
-
     /**
-     * @var string|null $bankAccountNumber
+     * @var string|null
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
-    protected ?string $bankAccountNumber;
+    protected ?string $bankAccountNumber = null;
 
     /**
-     * Second line of street
+     * Second line of street.
      *
-     * @var string|null $bankAccountBank Second line of street
+     * @var string|null Second line of street
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
-    protected ?string $bankAccountBank;
+    protected ?string $bankAccountBank = null;
 
-    /**
-     * @return string|null
-     */
     final public function getBankAccountNumber(): ?string
     {
-        return $this->bankAccountNumber ?? '';
+        return $this->bankAccountNumber;
     }
 
-    /**
-     * @param string|null $bankAccountNumber
-     */
     final public function setBankAccountNumber(?string $bankAccountNumber): void
     {
         $this->bankAccountNumber = $bankAccountNumber;
     }
 
-    /**
-     * @return string|null
-     */
     final public function getBankAccountBank(): ?string
     {
-        return $this->bankAccountBank ?? '';
+        return $this->bankAccountBank;
     }
 
-    /**
-     * @param string|null $bankAccountBank
-     */
     final public function setBankAccountBank(?string $bankAccountBank): void
     {
         $this->bankAccountBank = $bankAccountBank;
+    }
+
+    final public function getFullBankAccount(): ?string
+    {
+        return $this->getBankAccountComplete();
     }
 
     /**
@@ -63,4 +55,5 @@ trait BankAccountTrait
 
         return $fullBankAccount;
     }
+
 }

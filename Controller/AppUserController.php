@@ -18,14 +18,6 @@ use function assert;
 class AppUserController extends AbstractController
 {
     /**
-     * @param string                       $token
-     * @param EntityManagerInterface       $em
-     * @param UserPasswordEncoderInterface $encoder
-     * @param LoggerInterface              $logger
-     * @param MailerInterface              $newMailer
-     * @param OswisCoreSettingsProvider    $oswisCoreSettings
-     *
-     * @return Response
      * @throws LogicException
      */
     final public function appUserActivationAction(

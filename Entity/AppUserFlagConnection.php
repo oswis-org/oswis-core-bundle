@@ -9,6 +9,7 @@ use Zakjakub\OswisCoreBundle\Traits\Entity\BasicEntityTrait;
 
 /**
  * Connection between app user and used app user flag.
+ *
  * @Doctrine\ORM\Mapping\Entity()
  * @Doctrine\ORM\Mapping\Table(name="core_app_user_flag_connection")
  * @ApiFilter(OrderFilter::class)
@@ -28,6 +29,7 @@ class AppUserFlagConnection
 
     /**
      * Flag used by app user.
+     *
      * @var AppUserFlag|null
      * @Doctrine\ORM\Mapping\ManyToOne(
      *     targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUserFlag",
@@ -40,6 +42,7 @@ class AppUserFlagConnection
 
     /**
      * App user.
+     *
      * @var AppUser|null
      * @Doctrine\ORM\Mapping\ManyToOne(
      *     targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUser",
@@ -52,7 +55,6 @@ class AppUserFlagConnection
 
     /**
      * Get app user.
-     * @return AppUser|null
      */
     final public function getAppUser(): ?AppUser
     {
@@ -61,8 +63,6 @@ class AppUserFlagConnection
 
     /**
      * Set app user.
-     *
-     * @param AppUser|null $appUser
      */
     final public function setAppUser(?AppUser $appUser): void
     {
@@ -77,7 +77,6 @@ class AppUserFlagConnection
 
     /**
      * Get flag of app user.
-     * @return AppUserFlag|null
      */
     final public function getAppUserFlag(): ?AppUserFlag
     {
@@ -86,8 +85,6 @@ class AppUserFlagConnection
 
     /**
      * Set flag of app user.
-     *
-     * @param AppUserFlag|null $appUserFlag
      */
     final public function setAppUserFlag(?AppUserFlag $appUserFlag): void
     {

@@ -30,12 +30,9 @@ abstract class AbstractFileAction
     }
 
     /**
-     * @param Request $request
-     *
-     * @return AbstractFile
-     * @throws ValidationException
-     * @throws LogicException
      * @throws InvalidOptionsException
+     * @throws LogicException
+     * @throws ValidationException
      */
     final public function __invoke(Request $request): AbstractFile
     {
@@ -55,8 +52,5 @@ abstract class AbstractFileAction
 
     abstract public static function getFileNewInstance(): AbstractFile;
 
-    /**
-     * @return string
-     */
     abstract public static function getFileClassName(): string;
 }

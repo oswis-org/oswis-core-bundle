@@ -10,14 +10,12 @@ trait MaintenancePeriodTrait
 
     /**
      * True if accommodation is not available during this period.
+     *
      * @var bool|null
      * @Doctrine\ORM\Mapping\Column(type="boolean")
      */
-    protected ?bool $accommodationNotAvailable;
+    protected ?bool $accommodationNotAvailable = null;
 
-    /**
-     * @return bool
-     */
     final public function getAccommodationNotAvailable(): bool
     {
         return $this->accommodationNotAvailable ?? false;

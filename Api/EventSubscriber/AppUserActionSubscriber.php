@@ -38,12 +38,6 @@ final class AppUserActionSubscriber implements EventSubscriberInterface
 
     /**
      * AppUserActionSubscriber constructor.
-     *
-     * @param EntityManagerInterface       $em
-     * @param UserPasswordEncoderInterface $encoder
-     * @param LoggerInterface              $logger
-     * @param MailerInterface              $mailer
-     * @param OswisCoreSettingsProvider    $oswisCoreSettings
      */
     public function __construct(
         EntityManagerInterface $em,
@@ -56,9 +50,6 @@ final class AppUserActionSubscriber implements EventSubscriberInterface
         $this->appUserManager = new AppUserManager($encoder, $em, $logger, $mailer, $oswisCoreSettings);
     }
 
-    /**
-     * @return array
-     */
     public static function getSubscribedEvents(): array
     {
         return [
@@ -67,11 +58,9 @@ final class AppUserActionSubscriber implements EventSubscriberInterface
     }
 
     /**
-     * @param ViewEvent $event
-     *
+     * @throws OswisException
      * @throws OswisNotImplementedException
      * @throws OswisUserNotFoundException
-     * @throws OswisException
      */
     public function appUserAction(ViewEvent $event): void
     {

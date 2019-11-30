@@ -6,31 +6,32 @@ use DateTime;
 
 trait InfoMailSentTrait
 {
-
     /**
      * Date and time of last info e-mail.
+     *
      * @var DateTime|null
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true)
      */
-    protected ?DateTime $infoMailSentDateTime;
+    protected ?DateTime $infoMailSentDateTime = null;
 
     /**
      * Number of info e-mails sent.
+     *
      * @var int|null
      * @Doctrine\ORM\Mapping\Column(type="integer", nullable=true)
      */
-    protected ?int $infoMailSentCount;
+    protected ?int $infoMailSentCount = 0;
 
     /**
      * Source/reason/author of last info e-mail (cron, manual...).
+     *
      * @var string|null
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
-    protected ?string $infoMailSentSource;
+    protected ?string $infoMailSentSource = null;
 
     /**
      * Get date and time of last info e-mail.
-     * @return DateTime|null
      */
     final public function getInfoMailSentDateTime(): ?DateTime
     {
@@ -39,8 +40,6 @@ trait InfoMailSentTrait
 
     /**
      * (DO NOT USE!) Set last info e-mail date and time.
-     *
-     * @param DateTime|null $infoMailSentDateTime
      */
     final public function setInfoMailSentDateTime(?DateTime $infoMailSentDateTime): void
     {
@@ -49,7 +48,6 @@ trait InfoMailSentTrait
 
     /**
      * Get number of confirmation e-mails sent.
-     * @return int
      */
     final public function getInfoMailSentCount(): int
     {
@@ -58,17 +56,14 @@ trait InfoMailSentTrait
 
     /**
      * (DO NOT USE!) Set number of confirmations sent.
-     *
-     * @param int|null $infoMailSentCount
      */
     final public function setInfoMailSentCount(?int $infoMailSentCount): void
     {
-        $this->infoMailSentCount = $infoMailSentCount ?? null;
+        $this->infoMailSentCount = $infoMailSentCount ?? 0;
     }
 
     /**
      * Get source/reason of last info e-mail.
-     * @return string|null
      */
     final public function getInfoMailSentSource(): ?string
     {
@@ -77,8 +72,6 @@ trait InfoMailSentTrait
 
     /**
      * (DO NOT USE!) Set last info mail source/reason/author.
-     *
-     * @param string|null $infoMailSentSource
      */
     final public function setInfoMailSentSource(?string $infoMailSentSource): void
     {

@@ -3,11 +3,10 @@
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
 /**
- * Trait adds textValue field
+ * Trait adds textValue field.
  */
 trait TextValueTrait
 {
-
     /**
      * Text value.
      *
@@ -15,7 +14,7 @@ trait TextValueTrait
      *
      * @Doctrine\ORM\Mapping\Column(type="text", nullable=true)
      */
-    protected ?string $textValue;
+    protected ?string $textValue = null;
 
     /**
      * Get text value.

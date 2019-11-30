@@ -12,51 +12,46 @@ trait RoomTrait
 
     /**
      * Floor number.
+     *
      * @var int|null
      * @Doctrine\ORM\Mapping\Column(type="smallint", nullable=true)
      */
-    protected ?int $floor;
+    protected ?int $floor = null;
 
     /**
      * Number of regular beds.
+     *
      * @var int|null
      * @Doctrine\ORM\Mapping\Column(type="smallint", nullable=true)
      */
-    protected ?int $numberOfBeds;
+    protected ?int $numberOfBeds = null;
 
     /**
      * Number of extra beds.
+     *
      * @var int|null
      * @Doctrine\ORM\Mapping\Column(type="smallint", nullable=true)
      */
-    protected ?int $numberOfExtraBeds;
+    protected ?int $numberOfExtraBeds = null;
 
     /**
      * Number of animals.
+     *
      * @var int|null
      * @Doctrine\ORM\Mapping\Column(type="smallint", nullable=true)
      */
-    protected ?int $numberOfAnimals;
+    protected ?int $numberOfAnimals = null;
 
-    /**
-     * @return int|null
-     */
     final public function getFloor(): ?int
     {
         return $this->floor;
     }
 
-    /**
-     * @param int|null $floor
-     */
     final public function setFloor(?int $floor): void
     {
         $this->floor = $floor;
     }
 
-    /**
-     * @return int
-     */
     final public function getNumberOfBeds(): int
     {
         return $this->numberOfBeds ?? 0;
@@ -70,9 +65,6 @@ trait RoomTrait
         $this->numberOfBeds = $numberOfBeds;
     }
 
-    /**
-     * @return int
-     */
     final public function getNumberOfExtraBeds(): int
     {
         return $this->numberOfExtraBeds ?? 0;
@@ -86,9 +78,6 @@ trait RoomTrait
         $this->numberOfExtraBeds = $numberOfExtraBeds;
     }
 
-    /**
-     * @return int
-     */
     final public function getNumberOfAnimals(): int
     {
         return $this->numberOfAnimals ?? 0;
