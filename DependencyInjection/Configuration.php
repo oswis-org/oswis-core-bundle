@@ -6,14 +6,15 @@ use RuntimeException;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
-/** @noinspection ClassNameCollisionInspection */
-
+/**
+ * Class Configuration
+ * @noinspection ClassNameCollisionInspection
+ */
 class Configuration implements ConfigurationInterface
 {
     /**
      * @throws RuntimeException
-     * @noinspection PhpUndefinedMethodInspection
-     * @noinspection NullPointerExceptionInspection
+     * @noinspection PhpUndefinedMethodInspection NullPointerExceptionInspection
      */
     final public function getConfigTreeBuilder(): TreeBuilder
     {

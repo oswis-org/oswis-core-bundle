@@ -4,6 +4,7 @@
     <unboundedVersionInspectionSettings>
       <excludedPackages>
         <pattern pattern="roave/security-advisories" />
+        <pattern pattern="bigit/*" />
       </excludedPackages>
     </unboundedVersionInspectionSettings>
     <customRepositories />
