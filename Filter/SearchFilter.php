@@ -24,10 +24,7 @@ final class SearchFilter extends AbstractContextAwareFilter
     public function getDescription(string $resourceClass): array
     {
         $reader = new AnnotationReader();
-        $annotation = $reader->getClassAnnotation(
-            new ReflectionClass(new $resourceClass()),
-            SearchAnnotation::class
-        );
+        $annotation = $reader->getClassAnnotation(new ReflectionClass(new $resourceClass()), SearchAnnotation::class);
         $description['search'] = [
             'property' => 'search',
             'type'     => 'string',
@@ -38,13 +35,6 @@ final class SearchFilter extends AbstractContextAwareFilter
         return $description;
     }
 
-    /**
-     * @param $value
-     *
-     * @throws AnnotationException
-     * @throws ReflectionException
-     * @throws HttpInvalidParamException
-     */
     /**
      * @param $value
      *

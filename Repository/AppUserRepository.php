@@ -21,10 +21,10 @@ class AppUserRepository extends EntityRepository implements UserLoaderInterface
      * @param string|null $username
      *
      * @throws OswisUserNotUniqueException
+     * @noinspection MissingParameterTypeDeclarationInspection
      */
-    final public function loadUserByUsername(
-        /* @noinspection MissingParameterTypeDeclarationInspection */ $username
-    ): ?AppUser {
+    final public function loadUserByUsername($username): ?AppUser
+    {
         if (!$username) {
             return null;
         }

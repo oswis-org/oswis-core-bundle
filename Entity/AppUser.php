@@ -119,25 +119,21 @@ class AppUser extends AbstractAppUser
         ?DateTime $deleted = null,
         ?string $encryptedPassword = null
     ) {
+        $this->appUserFlags = new ArrayCollection();
         $this->setFullName($fullName);
         $this->setUsername($username);
         $this->setEmail($email);
         $this->setFieldsFromAddress($address);
         $this->setPassword($encryptedPassword);
         $this->setDeleted($deleted);
-        $this->appUserFlags = new ArrayCollection();
     }
 
     /**
-     * Can visit administration?
+     * Can user visit administration?
      */
     final public function isAdminUser(): bool
     {
-        if (!$this->getAppUserType()) {
-            return false;
-        }
-
-        return $this->getAppUserType()->getAdminUser() ?? false;
+        return !$this->getAppUserType() ? false : ($this->getAppUserType()->getAdminUser() ?? false);
     }
 
     final public function getAppUserType(): ?AppUserType
@@ -161,11 +157,7 @@ class AppUser extends AbstractAppUser
      */
     final public function isActive(?DateTime $referenceDateTime = null): bool
     {
-        if (!$this->getAccountActivationDateTime()) {
-            return false;
-        }
-
-        return $this->containsDateTimeInRange($referenceDateTime);
+        return !$this->getAccountActivationDateTime() ? false : $this->containsDateTimeInRange($referenceDateTime);
     }
 
     /**
@@ -216,6 +208,9 @@ class AppUser extends AbstractAppUser
 
     final public function addAppUserFlag(?AppUserFlagConnection $flagInJobFairUser): void
     {
+        if (!$this->appUserFlags) {
+            $this->appUserFlags = new ArrayCollection();
+        }
         if ($flagInJobFairUser && !$this->appUserFlags->contains($flagInJobFairUser)) {
             $this->appUserFlags->add($flagInJobFairUser);
             $flagInJobFairUser->setAppUser($this);
@@ -224,6 +219,9 @@ class AppUser extends AbstractAppUser
 
     final public function removeAppUserFlag(?AppUserFlagConnection $flagInEmployer): void
     {
+        if (!$this->appUserFlags) {
+            $this->appUserFlags = new ArrayCollection();
+        }
         if (!$flagInEmployer) {
             return;
         }

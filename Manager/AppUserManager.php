@@ -77,7 +77,7 @@ class AppUserManager
     }
 
     /**
-     * @param bool|null $activate \"
+     * @param bool|null $activate
      *
      * @throws OswisException
      * @throws OswisUserNotUniqueException

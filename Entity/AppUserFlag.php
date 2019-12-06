@@ -44,7 +44,7 @@ class AppUserFlag
      *     fetch="EAGER"
      * )
      */
-    protected $appUserFlagConnections;
+    protected ?Collection $appUserFlagConnections = null;
 
     /**
      * Constructor for app user flag.

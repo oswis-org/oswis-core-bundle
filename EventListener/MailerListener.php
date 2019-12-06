@@ -12,6 +12,9 @@ use Symfony\Component\Mime\Exception\RfcComplianceException;
 use Zakjakub\OswisCoreBundle\Provider\OswisCoreSettingsProvider;
 use Zakjakub\OswisCoreBundle\Utils\EmailUtils;
 
+/**
+ * Class MailerListener
+ */
 class MailerListener implements EventSubscriberInterface
 {
     protected OswisCoreSettingsProvider $oswisCoreSettings;
@@ -23,10 +26,14 @@ class MailerListener implements EventSubscriberInterface
 
     final public static function getSubscribedEvents(): array
     {
-        return [MessageEvent::class => ['onMessageSend', 0]];
+        return [
+            MessageEvent::class => ['onMessageSend', 0],
+        ];
     }
 
-    /** @noinspection PhpUnused */
+    /**
+     * @noinspection PhpUnused
+     */
     final public function onMessageSend(MessageEvent $event): void
     {
         $message = $event->getMessage();
@@ -36,11 +43,9 @@ class MailerListener implements EventSubscriberInterface
         $oswisCoreSettings = $this->oswisCoreSettings;
         if (!$message->getFrom() && $oswisCoreSettings->getEmail()['address']) {
             try {
-                $message->from(
-                    new Address(
-                        $oswisCoreSettings->getEmail()['address'] ?? null, EmailUtils::mime_header_encode($oswisCoreSettings->getEmail()['name'] ?? null)
-                    )
-                );
+                $fromAddress = $oswisCoreSettings->getEmail()['address'] ?? null;
+                $fromName = EmailUtils::mime_header_encode($oswisCoreSettings->getEmail()['name'] ?? null);
+                $message->from(new Address($fromAddress, $fromName));
             } catch (LogicException $e) {
                 /// TODO: Catch.
             } catch (RfcComplianceException $e) {

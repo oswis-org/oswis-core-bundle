@@ -19,16 +19,16 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
     /**
      * Revisions/versions of this container.
      *
-     * @var Collection
+     * @var Collection|null
      */
-    protected Collection $revisions;
+    protected ?Collection $revisions = null;
 
     /**
      * Revision/version which is actual/active now.
      *
      * @var AbstractRevision|null
      */
-    protected ?AbstractRevision $activeRevision;
+    protected ?AbstractRevision $activeRevision = null;
 
     /**
      * Add some revision/version to this container.
@@ -37,6 +37,9 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
     {
         if (!$revision) {
             return;
+        }
+        if (!$this->revisions) {
+            $this->revisions = new ArrayCollection();
         }
         static::checkRevision($revision);
         if (!$this->revisions->contains($revision)) {
@@ -58,6 +61,9 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
     {
         if (!$revision) {
             return;
+        }
+        if (!$this->revisions) {
+            $this->revisions = new ArrayCollection();
         }
         static::checkRevision($revision);
         if ($this->revisions->removeElement($revision)) {
@@ -90,19 +96,22 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
         $this->activeRevision = $activeRevision;
     }
 
-    /** @noinspection MethodShouldBeFinalInspection */
     /**
      * Automatically set revision/version which is actual/active now.
+     * @return AbstractRevision Active revision after update.
+     * @noinspection MethodShouldBeFinalInspection
      */
-    public function updateActiveRevision(): void
+    public function updateActiveRevision(): AbstractRevision
     {
         try {
             $lastRevision = $this->getRevision(null, true);
             if ($lastRevision !== $this->activeRevision) {
                 $this->activeRevision = $lastRevision;
             }
+
+            return $this->activeRevision;
         } catch (RevisionMissingException $e) {
-            return;
+            return null;
         }
     }
 
@@ -131,7 +140,7 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
     final public function getRevisionsOlderThanDateTime(DateTime $dateTime = null): array
     {
         try {
-            $dateTime = $dateTime ?? new DateTime() ?? null;
+            $dateTime ??= new DateTime() ?? null;
         } catch (Exception $e) {
             $dateTime = null;
         }

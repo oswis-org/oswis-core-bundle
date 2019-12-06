@@ -64,19 +64,20 @@ final class AppUserActionSubscriber implements EventSubscriberInterface
      */
     public function appUserAction(ViewEvent $event): void
     {
+        $em = $this->em;
         $out = null;
         $request = $event->getRequest();
         if ('api_app_user_action_requests_post_collection' !== $request->attributes->get('_route')) {
             return;
         }
         $controllerResult = $event->getControllerResult();
-        $uid = $controllerResult->uid ?? null;
-        $username = $controllerResult->username ?? null;
-        $type = $controllerResult->type ?? null;
-        $token = $controllerResult->token ?? null;
-        $password = $controllerResult->password ?? null;
-        $appUser = $controllerResult->appUser ?? null;
-        $em = $this->em;
+        // TODO: Refactor to array ($data[]).
+        $uid = $controllerResult->uid;
+        $username = $controllerResult->username;
+        $type = $controllerResult->type;
+        $token = $controllerResult->token;
+        $password = $controllerResult->password;
+        $appUser = $controllerResult->appUser;
         try {
             $appUserRepository = $em->getRepository(AppUser::class);
             $appUser = $appUser ?? $appUserRepository->loadUserById($uid);

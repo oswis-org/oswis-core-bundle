@@ -38,7 +38,7 @@ class AppUserFlagConnection
      * )
      * @Doctrine\ORM\Mapping\JoinColumn(nullable=true)
      */
-    protected ?AppUserFlag $appUserFlag;
+    protected ?AppUserFlag $appUserFlag = null;
 
     /**
      * App user.
@@ -51,7 +51,7 @@ class AppUserFlagConnection
      * )
      * @Doctrine\ORM\Mapping\JoinColumn(nullable=true)
      */
-    protected ?AppUser $appUser;
+    protected ?AppUser $appUser = null;
 
     /**
      * Get app user.
