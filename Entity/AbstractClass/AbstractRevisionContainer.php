@@ -101,17 +101,15 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
      * @return AbstractRevision Active revision after update.
      * @noinspection MethodShouldBeFinalInspection
      */
-    public function updateActiveRevision(): AbstractRevision
+    public function updateActiveRevision(): void
     {
         try {
             $lastRevision = $this->getRevision(null, true);
             if ($lastRevision !== $this->activeRevision) {
                 $this->activeRevision = $lastRevision;
             }
-
-            return $this->activeRevision;
         } catch (RevisionMissingException $e) {
-            return null;
+            return;
         }
     }
 
