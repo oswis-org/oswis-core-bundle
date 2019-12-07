@@ -41,10 +41,10 @@ abstract class AbstractImage
     public ?int $contentSize = null;
 
     /**
-     * @var int|null
+     * @var string|null
      * @Doctrine\ORM\Mapping\Column(nullable=true)
      */
-    public ?int $contentMimeType = null;
+    public ?string $contentMimeType = null;
 
     /**
      * @var string|null
