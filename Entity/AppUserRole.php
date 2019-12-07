@@ -81,7 +81,7 @@ class AppUserRole
      * @var string|null
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
-    protected ?string $roleString;
+    protected ?string $roleString = null;
 
     /**
      * Parent role (also included in this role).
@@ -90,23 +90,23 @@ class AppUserRole
      * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUserRole", inversedBy="children", fetch="EAGER")
      * @Doctrine\ORM\Mapping\JoinColumn(name="parent_id", referencedColumnName="id")
      */
-    protected ?AppUserRole $parent;
+    protected ?AppUserRole $parent = null;
 
     /**
      * Child roles (which includes this role).
      *
-     * @var Collection
+     * @var Collection|null
      * @Doctrine\ORM\Mapping\OneToMany(targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUserRole", mappedBy="parent")
      */
-    protected $children;
+    protected ?Collection $children = null;
 
     /**
      * Types of app users containing this role.
      *
-     * @var Collection
+     * @var Collection|null
      * @Doctrine\ORM\Mapping\OneToMany(targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUserType", mappedBy="appUserRole")
      */
-    protected $appUserTypes;
+    protected ?Collection $appUserTypes = null;
 
     /**
      * AppUserRole constructor.
@@ -131,7 +131,7 @@ class AppUserRole
      */
     final public function getChildren(): Collection
     {
-        return $this->children;
+        return $this->children ?? new ArrayCollection();
     }
 
     /**

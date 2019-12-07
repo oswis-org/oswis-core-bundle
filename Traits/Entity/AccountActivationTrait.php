@@ -41,7 +41,7 @@ trait AccountActivationTrait
         if ($this->getAccountActivationRequestDateTime()) {
             $diff = $this->getAccountActivationRequestDateTime()->diff(new DateTime());
         }
-        if ($diff && $validHours < $diff->h) {
+        if ($diff && ($validHours < $diff->h)) {
             $this->destroyAccountActivationRequestToken();
 
             return false;

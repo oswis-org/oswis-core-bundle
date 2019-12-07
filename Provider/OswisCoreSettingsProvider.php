@@ -10,22 +10,22 @@ class OswisCoreSettingsProvider
     /**
      * @var array
      */
-    protected ?array $app;
+    protected ?array $app = null;
 
     /**
      * @var array
      */
-    protected ?array $admin;
+    protected ?array $admin = null;
 
     /**
      * @var array
      */
-    protected ?array $email;
+    protected ?array $email = null;
 
     /**
      * @var array
      */
-    protected ?array $web;
+    protected ?array $web = null;
 
     /**
      * OswisCoreSettingsProvider constructor.

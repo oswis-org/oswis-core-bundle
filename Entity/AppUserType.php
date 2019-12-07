@@ -80,13 +80,13 @@ class AppUserType
     /**
      * App users using this role.
      *
-     * @var Collection
+     * @var Collection|null
      * @Doctrine\ORM\Mapping\OneToMany(
      *     targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUser",
      *     mappedBy="appUserType"
      * )
      */
-    protected Collection $appUsers;
+    protected ?Collection $appUsers = null;
 
     /**
      * Contained app user role.
@@ -101,7 +101,7 @@ class AppUserType
      *
      * @todo Refactor for use of multiple roles.
      */
-    protected ?AppUserRole $appUserRole;
+    protected ?AppUserRole $appUserRole = null;
 
     /**
      * User has access to administration/IS.
@@ -111,7 +111,7 @@ class AppUserType
      *
      * @todo Make property used (probably has not effect now).
      */
-    protected ?bool $adminUser;
+    protected ?bool $adminUser = null;
 
     /**
      * Constructor of app user type.
@@ -123,8 +123,8 @@ class AppUserType
         ?AppUserRole $appUserRole = null,
         ?bool $adminUser = false
     ) {
-        $this->setFieldsFromNameable($nameable);
         $this->appUsers = new ArrayCollection();
+        $this->setFieldsFromNameable($nameable);
         $this->appUserRole = $appUserRole;
         $this->adminUser = $adminUser;
     }

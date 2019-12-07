@@ -85,8 +85,8 @@ abstract class AbstractRevision implements RevisionInterface
         if ($this->container && $this->container !== $container) {
             $this->container->removeRevision($this);
         }
+        $this->container = $container;
         if ($container && $container !== $this->container) {
-            $this->container = $container;
             $container->addRevision($this);
         }
     }

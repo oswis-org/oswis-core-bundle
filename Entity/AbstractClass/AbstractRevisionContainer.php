@@ -140,7 +140,7 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
         try {
             $dateTime ??= new DateTime() ?? null;
         } catch (Exception $e) {
-            $dateTime = null;
+            $dateTime ??= null;
         }
         $revisions = $this->getRevisions()->filter(fn(AbstractRevision $revision) => $dateTime >= $revision->getCreatedDateTime())->toArray();
         AbstractRevision::sortByCreatedDateTime($revisions);
