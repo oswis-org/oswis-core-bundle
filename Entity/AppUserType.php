@@ -83,7 +83,6 @@ class AppUserType
      * @var AppUserRole|null
      * @Doctrine\ORM\Mapping\ManyToOne(
      *     targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUserRole",
-     *     inversedBy="appUserTypes",
      *     fetch="EAGER"
      * )
      * @Doctrine\ORM\Mapping\JoinColumn(name="user_role_id", referencedColumnName="id")
