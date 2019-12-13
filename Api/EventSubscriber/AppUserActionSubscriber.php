@@ -26,19 +26,10 @@ use function in_array;
  */
 final class AppUserActionSubscriber implements EventSubscriberInterface
 {
-    /**
-     * @var AppUserManager
-     */
     private AppUserManager $appUserManager;
 
-    /**
-     * @var EntityManagerInterface
-     */
     private EntityManagerInterface $em;
 
-    /**
-     * AppUserActionSubscriber constructor.
-     */
     public function __construct(
         EntityManagerInterface $em,
         UserPasswordEncoderInterface $encoder,

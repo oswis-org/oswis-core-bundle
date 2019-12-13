@@ -23,35 +23,19 @@ class PdfGenerator
     public const DEFAULT_PAPER_FORMAT = 'A4';
     public const DEFAULT_PAPER_LANDSCAPE = false;
 
-    /**
-     * @var LoggerInterface
-     */
     protected LoggerInterface $logger;
 
-    /**
-     * @var Environment
-     */
     protected Environment $templating;
 
-    /**
-     * @var OswisCoreSettingsProvider
-     */
     protected OswisCoreSettingsProvider $oswisCoreSettings;
 
-    /**
-     * PDF generator constructor.
-     */
-    public function __construct(
-        LoggerInterface $logger,
-        Environment $templating,
-        OswisCoreSettingsProvider $oswisCoreSettings
-    ) {
+    public function __construct(LoggerInterface $logger, Environment $templating, OswisCoreSettingsProvider $oswisCoreSettings)
+    {
         $this->logger = $logger;
         $this->templating = $templating;
         $this->oswisCoreSettings = $oswisCoreSettings;
     }
 
-    /** @noinspection PhpUnused */
     /**
      * @param string|null $template
      * @param array|null  $data
@@ -60,6 +44,7 @@ class PdfGenerator
      * @throws MpdfException
      * @throws RuntimeError
      * @throws SyntaxError
+     * @noinspection PhpUnused
      */
     final public function generatePdfAsString(
         ?string $title,

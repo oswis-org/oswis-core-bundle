@@ -5,8 +5,6 @@ namespace Zakjakub\OswisCoreBundle\Entity;
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Zakjakub\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
 use Zakjakub\OswisCoreBundle\Traits\Entity\BasicEntityTrait;
 use Zakjakub\OswisCoreBundle\Traits\Entity\NameableBasicTrait;
@@ -34,48 +32,10 @@ class AppUserFlag
     use NameableBasicTrait;
 
     /**
-     * Connections to users which contains this flag.
-     *
-     * @var Collection|null
-     * @Doctrine\ORM\Mapping\OneToMany(
-     *     targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUserFlagConnection",
-     *     cascade={"all"},
-     *     mappedBy="appUserFlag",
-     *     fetch="EAGER"
-     * )
-     */
-    protected ?Collection $appUserFlagConnections = null;
-
-    /**
      * Constructor for app user flag.
      */
-    public function __construct(
-        ?Nameable $nameable = null
-    ) {
-        $this->appUserFlagConnections = new ArrayCollection();
+    public function __construct(?Nameable $nameable = null)
+    {
         $this->setFieldsFromNameable($nameable);
-    }
-
-    final public function getAppUserFlagConnections(): Collection
-    {
-        return $this->appUserFlagConnections;
-    }
-
-    final public function addAppUserFlagConnection(?AppUserFlagConnection $appUserFlagConnection): void
-    {
-        if ($appUserFlagConnection && !$this->appUserFlagConnections->contains($appUserFlagConnection)) {
-            $this->appUserFlagConnections->add($appUserFlagConnection);
-            $appUserFlagConnection->setAppUserFlag($this);
-        }
-    }
-
-    final public function removeAppUserFlagConnection(?AppUserFlagConnection $appUserFlagConnection): void
-    {
-        if (!$appUserFlagConnection) {
-            return;
-        }
-        if ($this->appUserFlagConnections->removeElement($appUserFlagConnection)) {
-            $appUserFlagConnection->setAppUserFlag(null);
-        }
     }
 }

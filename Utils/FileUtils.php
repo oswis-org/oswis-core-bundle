@@ -15,28 +15,8 @@ class FileUtils
     {
         $mod = ('binary' === $system) ? 1024 : 1000;
         $units = [
-            'binary' => [
-                'B',
-                'KiB',
-                'MiB',
-                'GiB',
-                'TiB',
-                'PiB',
-                'EiB',
-                'ZiB',
-                'YiB',
-            ],
-            'metric' => [
-                'B',
-                'kB',
-                'MB',
-                'GB',
-                'TB',
-                'PB',
-                'EB',
-                'ZB',
-                'YB',
-            ],
+            'binary' => ['B', 'KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB'],
+            'metric' => ['B', 'kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'],
         ];
         $factor = floor((strlen($bytes) - 1) / 3);
 

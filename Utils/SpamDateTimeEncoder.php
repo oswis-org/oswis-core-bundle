@@ -17,9 +17,7 @@ class SpamDateTimeEncoder
     {
         $time_till_unlock = 7;
         if ($this->decrypt($string) > strtotime('-'.$time_till_unlock.' seconds')) {
-            $logger->notice(
-                'TIME SPAM: '.$string.', '.strtotime('-'.$time_till_unlock.' seconds')
-            );
+            $logger->notice('TIME SPAM: '.$string.', '.strtotime('-'.$time_till_unlock.' seconds'));
 
             return true;
         }

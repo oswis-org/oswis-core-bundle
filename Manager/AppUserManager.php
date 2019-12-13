@@ -34,29 +34,14 @@ class AppUserManager
 
     public const ALLOWED_TYPES = [self::PASSWORD_CHANGE, self::PASSWORD_CHANGE_REQUEST, self::ACTIVATION, self::ACTIVATION_REQUEST];
 
-    /**
-     * @var EntityManagerInterface
-     */
     protected EntityManagerInterface $em;
 
-    /**
-     * @var LoggerInterface
-     */
     protected LoggerInterface $logger;
 
-    /**
-     * @var UserPasswordEncoderInterface
-     */
     private UserPasswordEncoderInterface $encoder;
 
-    /**
-     * @var MailerInterface
-     */
     private MailerInterface $mailer;
 
-    /**
-     * @var OswisCoreSettingsProvider
-     */
     private OswisCoreSettingsProvider $oswisCoreSettings;
 
     /**
@@ -93,18 +78,15 @@ class AppUserManager
         ?bool $errorWhenExist = true
     ): AppUser {
         try {
-            $username = $username ?? 'user'.random_int(1, 9999);
+            $username ??= 'user'.random_int(1, 9999);
         } catch (Exception $e) {
-            $username = $username ?? 'user';
+            $username ??= 'user';
         }
-        $email = $email ?? $username.'@jakubzak.eu';
+        $email ??= $username.'@jakubzak.eu'; // TODO: Change to @oswis.org and redirect mails.
         $em = $this->em;
         $token = null;
         $appUserRoleRepo = $em->getRepository(AppUser::class);
-        $appUser = $appUserRoleRepo->findOneBy(['email' => $email]);
-        if (!$appUser) {
-            $appUser = $appUserRoleRepo->findOneBy(['username' => $username]);
-        }
+        $appUser = $appUserRoleRepo->findOneBy(['email' => $email]) ?? $appUserRoleRepo->findOneBy(['username' => $username]);
         if ($appUser && !$errorWhenExist) {
             $this->logger->notice('Skipped existing user '.$appUser->getUsername().' '.$appUser->getEmail().'.');
 
@@ -116,7 +98,7 @@ class AppUserManager
         $appUser = new AppUser($fullName, $username, $email, null, null);
         $appUser->setAppUserType($appUserType);
         if ($activate) {
-            $password = $password ?? StringUtils::generatePassword();
+            $password ??= StringUtils::generatePassword();
             $appUser->setPassword($this->encoder->encodePassword($appUser, $password));
             $this->appUserAction($appUser, self::ACTIVATION, $password, null, $sendMail, true);
         } else {
@@ -159,7 +141,7 @@ class AppUserManager
                     throw new InvalidArgumentException('Token pro změnu hesla není platný (neexistuje nebo vypršela jeho platnost).');
                 }
                 $random = $password ? false : true;
-                $password = $password ?? StringUtils::generatePassword();
+                $password ??= StringUtils::generatePassword();
                 $appUser->setPassword($this->encoder->encodePassword($appUser, $password));
                 if ($sendConfirmation) {
                     try {
@@ -183,8 +165,8 @@ class AppUserManager
                 if (!$withoutToken && !$appUser->checkAndDestroyAccountActivationRequestToken($token)) {
                     throw new InvalidArgumentException('Token pro aktivaci účtu není platný (neexistuje nebo vypršela jeho platnost).');
                 }
-                $random = $password ? false : true;
-                $password = $password ?? StringUtils::generatePassword();
+                $random = empty($password);
+                $password ??= StringUtils::generatePassword();
                 $appUser->setPassword($this->encoder->encodePassword($appUser, $password));
                 if ($sendConfirmation) {
                     try {
@@ -211,12 +193,8 @@ class AppUserManager
      * @throws ErrorException
      * @throws TransportExceptionInterface
      */
-    final public function sendPasswordEmail(
-        AppUser $appUser,
-        string $type,
-        ?string $token = null,
-        string $password = null
-    ): void {
+    final public function sendPasswordEmail(AppUser $appUser, string $type, ?string $token = null, string $password = null): void
+    {
         try {
             if (!$appUser) {
                 throw new InvalidArgumentException('Uživatel nenalezen.');
@@ -255,12 +233,8 @@ class AppUserManager
      * @throws ErrorException
      * @throws TransportExceptionInterface
      */
-    final public function sendAppUserEmail(
-        AppUser $appUser,
-        string $type,
-        ?string $token = null,
-        ?string $password = null
-    ): void {
+    final public function sendAppUserEmail(AppUser $appUser, string $type, ?string $token = null, ?string $password = null): void
+    {
         try {
             if (!$appUser) {
                 throw new ErrorException('Uživatel nenalezen.');

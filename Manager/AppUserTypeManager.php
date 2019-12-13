@@ -10,38 +10,26 @@ use Zakjakub\OswisCoreBundle\Entity\Nameable;
 
 class AppUserTypeManager
 {
-    /**
-     * @var EntityManagerInterface
-     */
     protected EntityManagerInterface $em;
 
-    /**
-     * @var LoggerInterface
-     */
     protected ?LoggerInterface $logger;
 
-    public function __construct(
-        EntityManagerInterface $em,
-        ?LoggerInterface $logger = null
-    ) {
+    public function __construct(EntityManagerInterface $em, ?LoggerInterface $logger = null)
+    {
         $this->em = $em;
         $this->logger = $logger;
     }
 
-    final public function create(
-        ?Nameable $nameable = null,
-        ?AppUserRole $role = null,
-        ?bool $adminUser = null
-    ): AppUserType {
-        $em = $this->em;
-        $appUserTypeRepo = $em->getRepository(AppUserType::class);
-        $type = $appUserTypeRepo->findOneBy(['slug' => $nameable ? $nameable->slug : null]);
+    final public function create(?Nameable $nameable = null, ?AppUserRole $role = null, ?bool $adminUser = null): AppUserType
+    {
+        $type = $this->em->getRepository(AppUserType::class)->findOneBy(['slug' => $nameable ? $nameable->slug : null]);
         if (!$type) {
             $type = new AppUserType($nameable, $role, $adminUser);
-            $em->persist($type);
+            $this->em->persist($type);
         }
-        $em->flush();
+        $this->em->flush();
 
+        // TODO: Log it.
         return $type;
     }
 }

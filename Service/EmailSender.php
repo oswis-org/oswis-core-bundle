@@ -18,40 +18,18 @@ use Zakjakub\OswisCoreBundle\Utils\EmailUtils;
  */
 class EmailSender
 {
-    /**
-     * @var EntityManagerInterface
-     */
     protected EntityManagerInterface $em;
 
-    /**
-     * @var Swift_Mailer
-     */
     protected Swift_Mailer $mailer;
 
-    /**
-     * @var LoggerInterface
-     */
     protected LoggerInterface $logger;
 
-    /**
-     * @var Environment
-     */
     protected Environment $templating;
 
-    /**
-     * @var OswisCoreSettingsProvider
-     */
     protected OswisCoreSettingsProvider $oswisCoreSettings;
 
-    /**
-     * E-mail sender constructor.
-     */
-    public function __construct(
-        Swift_Mailer $mailer,
-        LoggerInterface $logger,
-        Environment $templating,
-        OswisCoreSettingsProvider $oswisCoreSettings
-    ) {
+    public function __construct(Swift_Mailer $mailer, LoggerInterface $logger, Environment $templating, OswisCoreSettingsProvider $oswisCoreSettings)
+    {
         $this->mailer = $mailer;
         $this->logger = $logger;
         $this->templating = $templating;
@@ -74,12 +52,8 @@ class EmailSender
         try {
             $sender = $sender ?? [$this->oswisCoreSettings->getEmail()['address'] => EmailUtils::mime_header_encode($this->oswisCoreSettings->getEmail()['name'])];
             $message = new Swift_Message(EmailUtils::mime_header_encode($title));
-            $message->setTo($recipients);
-            $message->setCharset('UTF-8');
-            $message->setFrom($sender);
-            $message->setSender($senderAccountEmail);
 
-            return $message;
+            return $message->setTo($recipients)->setCharset('UTF-8')->setFrom($sender)->setSender($senderAccountEmail);
         } catch (Exception $e) {
             $this->logger->error($e->getMessage());
             throw new ErrorException('Problém s přípravou zprávy.  '.$e->getMessage());
@@ -106,14 +80,8 @@ class EmailSender
                 'appNameLong'  => 'One Simple Web IS',
                 'data'         => $data,
             ];
-            $message->setBody(
-                $this->templating->render($templateName.'.html.twig', $args),
-                'text/html'
-            );
-            $message->addPart(
-                $this->templating->render($templateName.'.txt.twig', $args),
-                'text/plain'
-            );
+            $message->setBody($this->templating->render($templateName.'.html.twig', $args), 'text/html');
+            $message->addPart($this->templating->render($templateName.'.txt.twig', $args), 'text/plain');
             if ($this->mailer->send($message)) {
                 return;
             }

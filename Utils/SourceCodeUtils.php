@@ -7,7 +7,7 @@
 namespace Zakjakub\OswisCoreBundle\Utils;
 
 /**
- * Class AgeUtils.
+ * Utilities for source codes.
  *
  * @author  Jakub Zak <mail@jakubzak.eu>
  */
@@ -15,11 +15,7 @@ class SourceCodeUtils
 {
     public static function escapeHtml(string $input): string
     {
-        if (!$input) {
-            return '';
-        }
-
-        return htmlspecialchars($input, ENT_QUOTES);
+        return $input ? htmlspecialchars($input, ENT_QUOTES) : '';
     }
 
     /**
@@ -29,10 +25,6 @@ class SourceCodeUtils
         string $input,
         string $allowedTags = '<ul><li><img><cite><h1><h2><h3><h4><h5><br><a><p>'
     ): string {
-        if (!$input) {
-            return '';
-        }
-
-        return strip_tags($input, $allowedTags);
+        return $input ? strip_tags($input, $allowedTags) : '';
     }
 }

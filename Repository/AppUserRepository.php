@@ -10,10 +10,10 @@ use Doctrine\ORM\Query;
 use Symfony\Bridge\Doctrine\Security\User\UserLoaderInterface;
 use Zakjakub\OswisCoreBundle\Entity\AppUser;
 use Zakjakub\OswisCoreBundle\Exceptions\OswisUserNotUniqueException;
-use function assert;
 
 /**
  * Repository of application users.
+ * @todo Optimize queries!
  */
 class AppUserRepository extends EntityRepository implements UserLoaderInterface
 {
@@ -29,19 +29,13 @@ class AppUserRepository extends EntityRepository implements UserLoaderInterface
             return null;
         }
         try {
-            $appUser = $this->createQueryBuilder('u')->where('(u.username = :username OR u.email = :email) AND (u.deleted IS NULL OR u.deleted = false)')->setParameter(
-                'username',
-                $username
-            )->setParameter('email', $username)->getQuery()->getOneOrNullResult(Query::HYDRATE_OBJECT);
+            $qb = $this->createQueryBuilder('u')->where('(u.username = :username OR u.email = :email) AND (u.deleted IS NULL OR u.deleted = false)');
+            $appUser = $qb->setParameter('username', $username)->setParameter('email', $username)->getQuery()->getOneOrNullResult(Query::HYDRATE_OBJECT);
         } catch (NonUniqueResultException $e) {
             throw new OswisUserNotUniqueException();
         }
-        if (!$appUser) {
-            return null;
-        }
-        assert($appUser instanceof AppUser);
 
-        return $appUser->isActive() ? $appUser : null;
+        return $appUser && ($appUser instanceof AppUser) && $appUser->isActive() ? $appUser : null;
     }
 
     /**
@@ -55,18 +49,13 @@ class AppUserRepository extends EntityRepository implements UserLoaderInterface
             return null;
         }
         try {
-            $appUser = $this->createQueryBuilder('u')->where('(u.id = :id) AND (u.deleted IS NULL OR u.deleted = false)')->setParameter('id', $id)->getQuery()->getOneOrNullResult(
-                Query::HYDRATE_OBJECT
-            );
+            $qb = $this->createQueryBuilder('u')->where('(u.id = :id) AND (u.deleted IS NULL OR u.deleted = false)');
+            $appUser = $qb->setParameter('id', $id)->getQuery()->getOneOrNullResult(Query::HYDRATE_OBJECT);
         } catch (NonUniqueResultException $e) {
             throw new OswisUserNotUniqueException();
         }
-        if (!$appUser) {
-            return null;
-        }
-        assert($appUser instanceof AppUser);
 
-        return $appUser->isActive() ? $appUser : null;
+        return $appUser && ($appUser instanceof AppUser) && $appUser->isActive() ? $appUser : null;
     }
 
     final public function findByEmail(string $email): Collection

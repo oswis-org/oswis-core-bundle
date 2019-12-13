@@ -78,17 +78,6 @@ class AppUserType
     use NameableBasicTrait;
 
     /**
-     * App users using this role.
-     *
-     * @var Collection|null
-     * @Doctrine\ORM\Mapping\OneToMany(
-     *     targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUser",
-     *     mappedBy="appUserType"
-     * )
-     */
-    protected ?Collection $appUsers = null;
-
-    /**
      * Contained app user role.
      *
      * @var AppUserRole|null
@@ -118,15 +107,11 @@ class AppUserType
      *
      * @param AppUserRole $appUserRole
      */
-    public function __construct(
-        ?Nameable $nameable = null,
-        ?AppUserRole $appUserRole = null,
-        ?bool $adminUser = false
-    ) {
-        $this->appUsers = new ArrayCollection();
+    public function __construct(?Nameable $nameable = null, ?AppUserRole $appUserRole = null, ?bool $adminUser = false)
+    {
+        $this->setAppUserRole($appUserRole);
+        $this->setAdminUser($adminUser);
         $this->setFieldsFromNameable($nameable);
-        $this->appUserRole = $appUserRole;
-        $this->adminUser = $adminUser;
     }
 
     /**
@@ -147,33 +132,6 @@ class AppUserType
     final public function setAdminUser(?bool $adminUser): void
     {
         $this->adminUser = $adminUser ?? null;
-    }
-
-    /**
-     * Add app user of this type.
-     */
-    final public function addAppUser(?AppUser $appUser): void
-    {
-        if (!$appUser) {
-            return;
-        }
-        if (!$this->appUsers->contains($appUser)) {
-            $this->appUsers->add($appUser);
-            $appUser->setAppUserType($this);
-        }
-    }
-
-    /**
-     * Remove app user from this type.
-     */
-    final public function removeAppUser(?AppUser $appUser): void
-    {
-        if (!$appUser) {
-            return;
-        }
-        if ($this->appUsers->removeElement($appUser) && $appUser->getAppUserType() === $this) {
-            $appUser->setAppUserType(null);
-        }
     }
 
     /**
@@ -207,13 +165,7 @@ class AppUserType
      */
     final public function setAppUserRole(?AppUserRole $appUserRole): void
     {
-        if (null !== $this->appUserRole) {
-            $this->appUserRole->removeAppUserType($this);
-        }
-        if ($appUserRole && $this->appUserRole !== $appUserRole) {
-            $appUserRole->addAppUserType($this);
-            $this->appUserRole = $appUserRole;
-        }
+        $this->appUserRole = $appUserRole;
     }
 
     /**

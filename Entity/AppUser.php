@@ -106,7 +106,7 @@ class AppUser extends AbstractAppUser
 
     /**
      * @var AppUserType|null
-     * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUserType", inversedBy="appUsers", fetch="EAGER")
+     * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUserType", fetch="EAGER")
      * @Doctrine\ORM\Mapping\JoinColumn(name="app_user_type_id", referencedColumnName="id")
      */
     protected ?AppUserType $appUserType = null;
@@ -143,13 +143,7 @@ class AppUser extends AbstractAppUser
 
     final public function setAppUserType(?AppUserType $appUserType): void
     {
-        if ($this->appUserType && $appUserType !== $this->appUserType) {
-            $this->appUserType->removeAppUser($this);
-        }
         $this->appUserType = $appUserType;
-        if ($appUserType && $this->appUserType !== $appUserType) {
-            $appUserType->addAppUser($this);
-        }
     }
 
     /**
@@ -167,11 +161,7 @@ class AppUser extends AbstractAppUser
      */
     final public function canEdit(self $user): bool
     {
-        if (!($user instanceof self) || !$this->canRead($user)) {
-            return false;
-        }
-
-        return $user === $this;
+        return (!($user instanceof self) || !$this->canRead($user)) ? false : $user === $this;
     }
 
     /**
@@ -181,14 +171,7 @@ class AppUser extends AbstractAppUser
      */
     final public function canRead(self $user): bool
     {
-        if (!($user instanceof self)) { // User is not logged in.
-            return false;
-        }
-        if ($user === $this) {
-            return true;
-        }
-
-        return false;
+        return !($user instanceof self) ? false : $user === $this;
     }
 
     /**
@@ -208,9 +191,7 @@ class AppUser extends AbstractAppUser
 
     final public function addAppUserFlag(?AppUserFlagConnection $flagInJobFairUser): void
     {
-        if (!$this->appUserFlags) {
-            $this->appUserFlags = new ArrayCollection();
-        }
+        $this->appUserFlags ??= new ArrayCollection();
         if ($flagInJobFairUser && !$this->appUserFlags->contains($flagInJobFairUser)) {
             $this->appUserFlags->add($flagInJobFairUser);
             $flagInJobFairUser->setAppUser($this);
@@ -219,13 +200,8 @@ class AppUser extends AbstractAppUser
 
     final public function removeAppUserFlag(?AppUserFlagConnection $flagInEmployer): void
     {
-        if (!$this->appUserFlags) {
-            $this->appUserFlags = new ArrayCollection();
-        }
-        if (!$flagInEmployer) {
-            return;
-        }
-        if ($this->appUserFlags->removeElement($flagInEmployer)) {
+        $this->appUserFlags ??= new ArrayCollection();
+        if ($flagInEmployer && $this->appUserFlags->removeElement($flagInEmployer)) {
             $flagInEmployer->setAppUser(null);
         }
     }

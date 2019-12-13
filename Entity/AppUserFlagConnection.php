@@ -33,7 +33,6 @@ class AppUserFlagConnection
      * @var AppUserFlag|null
      * @Doctrine\ORM\Mapping\ManyToOne(
      *     targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUserFlag",
-     *     inversedBy="appUserFlagConnections",
      *     fetch="EAGER"
      * )
      * @Doctrine\ORM\Mapping\JoinColumn(nullable=true)
@@ -88,12 +87,6 @@ class AppUserFlagConnection
      */
     final public function setAppUserFlag(?AppUserFlag $appUserFlag): void
     {
-        if ($this->appUserFlag && $appUserFlag !== $this->appUserFlag) {
-            $this->appUserFlag->removeAppUserFlagConnection($this);
-        }
         $this->appUserFlag = $appUserFlag;
-        if ($this->appUserFlag) {
-            $this->appUserFlag->addAppUserFlagConnection($this);
-        }
     }
 }

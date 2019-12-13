@@ -10,7 +10,6 @@ use Doctrine\Common\Collections\Collection;
 use Zakjakub\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
 use Zakjakub\OswisCoreBundle\Traits\Entity\BasicEntityTrait;
 use Zakjakub\OswisCoreBundle\Traits\Entity\NameableBasicTrait;
-use function assert;
 
 /**
  * Role of app user.
@@ -101,14 +100,6 @@ class AppUserRole
     protected ?Collection $children = null;
 
     /**
-     * Types of app users containing this role.
-     *
-     * @var Collection|null
-     * @Doctrine\ORM\Mapping\OneToMany(targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUserType", mappedBy="appUserRole")
-     */
-    protected ?Collection $appUserTypes = null;
-
-    /**
      * AppUserRole constructor.
      *
      * @param AppUserRole|null $parent
@@ -120,7 +111,6 @@ class AppUserRole
     ) {
         $this->parent = null;
         $this->children = new ArrayCollection();
-        $this->appUserTypes = new ArrayCollection();
         $this->setFieldsFromNameable($nameable);
         $this->roleString = $roleString;
         $this->setParent($parent);
@@ -135,46 +125,11 @@ class AppUserRole
     }
 
     /**
-     * Remove app user type.
-     */
-    final public function removeAppUserType(?AppUserType $appUserType): void
-    {
-        if (!$appUserType) {
-            return;
-        }
-        if ($this->appUserTypes->removeElement($appUserType)) {
-            $appUserType->setAppUserRole(null);
-        }
-    }
-
-    /**
-     * Add app user type.
-     */
-    final public function addAppUserType(?AppUserType $appUserType): void
-    {
-        if (!$appUserType) {
-            return;
-        }
-        if (!$this->appUserTypes->contains($appUserType)) {
-            $this->appUserTypes->add($appUserType);
-            $appUserType->setAppUserRole($this);
-        }
-    }
-
-    /**
      * Get names of all contained roles.
      */
     final public function getAllRoleNames(): Collection
     {
-        $roleNames = new ArrayCollection();
-        foreach ($this->getRoles() as $appUserRole) {
-            assert($appUserRole instanceof self);
-            if (!$roleNames->contains($appUserRole)) {
-                $roleNames->add($appUserRole->getRoleName());
-            }
-        }
-
-        return $roleNames;
+        return $this->getRoles()->map(fn(self $role) => $role->getRoleName());
     }
 
     /**
@@ -225,11 +180,7 @@ class AppUserRole
      */
     final public function getRoleName(): string
     {
-        if (!$this->getRoleString() || '' === $this->getRoleString()) {
-            return '';
-        }
-
-        return 'ROLE_'.$this->getRoleString();
+        return empty($this->getRoleString()) ? '' : 'ROLE_'.$this->getRoleString();
     }
 
     final public function getRoleString(): string
@@ -249,10 +200,7 @@ class AppUserRole
      */
     final public function removeChild(?self $appUserRole): void
     {
-        if (!$appUserRole) {
-            return;
-        }
-        if ($this->children->removeElement($appUserRole)) {
+        if ($appUserRole && $this->children->removeElement($appUserRole)) {
             $appUserRole->setParent(null);
         }
     }
@@ -264,10 +212,7 @@ class AppUserRole
      */
     final public function addChild(?self $appUserRole): void
     {
-        if (!$appUserRole) {
-            return;
-        }
-        if (!$this->children->contains($appUserRole)) {
+        if ($appUserRole && !$this->children->contains($appUserRole)) {
             $this->children->add($appUserRole);
             $appUserRole->setParent($this);
         }

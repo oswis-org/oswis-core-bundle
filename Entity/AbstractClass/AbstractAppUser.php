@@ -30,16 +30,9 @@ abstract class AbstractAppUser implements UserInterface, Serializable, Equatable
      *
      * @see \Serializable::unserialize()
      */
-    final public function unserialize(
-        /* @noinspection MissingParameterTypeDeclarationInspection */ $serialized
-    ): void {
-        [
-            $this->id,
-            $this->username,
-            $this->email,
-            $this->password,
-            $this->deleted,
-        ] = unserialize($serialized, ['allowed_classes' => ['AppUser']]);
+    final public function unserialize(/* @noinspection MissingParameterTypeDeclarationInspection */ $serialized): void
+    {
+        [$this->id, $this->username, $this->email, $this->password, $this->deleted] = unserialize($serialized, ['allowed_classes' => ['AppUser']]);
     }
 
     final public function isEqualTo(UserInterface $user): bool
@@ -76,11 +69,7 @@ abstract class AbstractAppUser implements UserInterface, Serializable, Equatable
     final public function containsRole(string $roleName): bool
     {
         foreach ($this->getRoles() as $role) {
-            if ($role instanceof AppUserRole) {
-                if ($role->getRoleString() === $roleName) {
-                    return true;
-                }
-            } elseif ($role === $roleName) {
+            if ((is_string($role) && $role === $roleName) || ($role instanceof AppUserRole && $role->getRoleString() === $roleName)) {
                 return true;
             }
         }

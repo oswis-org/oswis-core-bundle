@@ -9,38 +9,26 @@ use Zakjakub\OswisCoreBundle\Entity\Nameable;
 
 class AppUserRoleManager
 {
-    /**
-     * @var EntityManagerInterface
-     */
     protected EntityManagerInterface $em;
 
-    /**
-     * @var LoggerInterface
-     */
     protected ?LoggerInterface $logger;
 
-    public function __construct(
-        EntityManagerInterface $em,
-        ?LoggerInterface $logger = null
-    ) {
+    public function __construct(EntityManagerInterface $em, ?LoggerInterface $logger = null)
+    {
         $this->em = $em;
         $this->logger = $logger;
     }
 
-    final public function create(
-        ?Nameable $nameable = null,
-        ?string $roleString = null,
-        ?AppUserRole $parent = null
-    ): AppUserRole {
-        $em = $this->em;
-        $appUserRoleRepo = $em->getRepository(AppUserRole::class);
-        $role = $appUserRoleRepo->findOneBy(['name' => $nameable ? $nameable->name : null]);
+    final public function create(?Nameable $nameable = null, ?string $roleString = null, ?AppUserRole $parent = null): AppUserRole
+    {
+        $role = $this->em->getRepository(AppUserRole::class)->findOneBy(['name' => $nameable ? $nameable->name : null]);
         if (!$role) {
             $role = new AppUserRole($nameable, $roleString, $parent);
-            $em->persist($role);
+            $this->em->persist($role);
         }
-        $em->flush();
+        $this->em->flush();
 
+        // TODO: Log it.
         return $role;
     }
 }

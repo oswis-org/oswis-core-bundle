@@ -15,14 +15,13 @@ use function get_class;
 
 class AppUserProvider implements UserProviderInterface
 {
-    /**
-     * @var AppUserRepository
-     */
-    private $userRepository;
+    private AppUserRepository $userRepository;
 
     public function __construct(EntityManagerInterface $entityManager)
     {
-        $this->userRepository = $entityManager->getRepository(AppUserRepository::class);
+        $appUserRepo = $entityManager->getRepository(AppUserRepository::class);
+        assert($appUserRepo instanceof AppUserRepository);
+        $this->userRepository = $appUserRepo;
     }
 
     /**
@@ -43,7 +42,6 @@ class AppUserProvider implements UserProviderInterface
      * @param string $username
      *
      * @noinspection MissingParameterTypeDeclarationInspection
-     *
      * @throws OswisUserNotUniqueException
      * @throws UsernameNotFoundException
      */
@@ -53,7 +51,6 @@ class AppUserProvider implements UserProviderInterface
         if (!$user) {
             throw new UsernameNotFoundException(sprintf('Username "%s" does not exist.', $username));
         }
-        assert($user instanceof AppUser);
 
         return $user;
     }

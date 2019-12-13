@@ -19,34 +19,16 @@ use Zakjakub\OswisCoreBundle\Provider\OswisCoreSettingsProvider;
 
 final class AppUserSubscriber implements EventSubscriberInterface
 {
-    /**
-     * @var EntityManagerInterface
-     */
     private EntityManagerInterface $em;
 
-    /**
-     * @var LoggerInterface
-     */
     private LoggerInterface $logger;
 
-    /**
-     * @var UserPasswordEncoderInterface
-     */
     private UserPasswordEncoderInterface $encoder;
 
-    /**
-     * @var MailerInterface
-     */
     private MailerInterface $mailer;
 
-    /**
-     * @var OswisCoreSettingsProvider
-     */
     private OswisCoreSettingsProvider $oswisCoreSettings;
 
-    /**
-     * ReservationSubscriber constructor.
-     */
     public function __construct(
         UserPasswordEncoderInterface $encoder,
         EntityManagerInterface $em,

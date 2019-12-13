@@ -15,11 +15,7 @@ class StringUtils
 
     public static function endsWith(string $haystack, string $needle): string
     {
-        return (mb_strlen($haystack) >= mb_strlen($needle)) && (false !== mb_strpos(
-                    $haystack,
-                    $needle,
-                    mb_strlen($haystack) - mb_strlen($needle)
-                ));
+        return (mb_strlen($haystack) >= mb_strlen($needle)) && (false !== mb_strpos($haystack, $needle, mb_strlen($haystack) - mb_strlen($needle)));
     }
 
     public static function capitalize(string $text): string
@@ -38,11 +34,7 @@ class StringUtils
 
     public static function hyphenize(string $text): string
     {
-        return preg_replace(
-            '//-{2,}/u{2,}/u',
-            '-',
-            preg_replace('/[^a-z0-9]/u', '-', mb_strtolower(self::removeAccents($text)))
-        );
+        return preg_replace('//-{2,}/u{2,}/u', '-', preg_replace('/[^a-z0-9]/u', '-', mb_strtolower(self::removeAccents($text))));
     }
 
     public static function removeAccents(string $text): string
@@ -250,11 +242,8 @@ class StringUtils
     private static function convertToCamel(string $text, string $separator, bool $uncapitalize = true): string
     {
         $result = str_replace(' ', '', mb_convert_case(str_replace($separator, ' ', $text), MB_CASE_TITLE));
-        if ($uncapitalize) {
-            $result = self::uncapitalize($result);
-        }
 
-        return $result;
+        return $uncapitalize ? self::uncapitalize($result) : $result;
     }
 
     public static function uncapitalize(string $text): string
@@ -307,7 +296,7 @@ class StringUtils
     {
         $str = '';
         if ($length > 1) {
-            $str .= self::randomString($from, $to, --$length);
+            $str = self::randomString($from, $to, --$length);
         }
         try {
             return $str.chr(random_int(ord($from), ord($to)));

@@ -26,37 +26,25 @@ class AgeUtils
      *
      * @throws Exception
      */
-    public static function isBirthDateInRange(
-        ?DateTime $birthDate,
-        int $minAge = null,
-        int $maxAge = null,
-        DateTime $referenceDateTime = null
-    ): bool {
+    public static function isBirthDateInRange(?DateTime $birthDate, int $minAge = null, int $maxAge = null, DateTime $referenceDateTime = null): bool
+    {
         if (null === $birthDate) {
             return false;
         }
-        $referenceDateTime = $referenceDateTime ?? new DateTime();
+        $referenceDateTime ??= new DateTime();
         $age = self::getAgeFromBirthDate($birthDate, $referenceDateTime);
-        $min = $minAge ?? 0;
-        $max = $maxAge ?? PHP_INT_MAX;
+        $minAge ??= 0;
+        $maxAge ??= PHP_INT_MAX;
 
-        return $age >= $min && $age <= $max;
+        return $age >= $minAge && $age <= $maxAge;
     }
 
     /**
-     * @param DateTime $birthDate
-     *
-     * @return int
-     *
      * @throws Exception
      */
     public static function getAgeFromBirthDate(?DateTime $birthDate, DateTime $referenceDateTime = null): ?int
     {
-        if (!$birthDate) {
-            return null;
-        }
-
-        return floor(self::getAgeDecimalFromBirthDate($birthDate, $referenceDateTime));
+        return $birthDate ? floor(self::getAgeDecimalFromBirthDate($birthDate, $referenceDateTime)) : null;
     }
 
     /**
@@ -71,7 +59,7 @@ class AgeUtils
         if (!$birthDate) {
             return null;
         }
-        $referenceDateTime = $referenceDateTime ?? new DateTime();
+        $referenceDateTime ??= new DateTime();
         $referenceDateTime->setTime(0, 0);
         $birthDate->setTime(0, 0);
 
