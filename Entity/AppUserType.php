@@ -134,14 +134,6 @@ class AppUserType
     }
 
     /**
-     * Get app users of this type.
-     */
-    final public function getAppUsers(): Collection
-    {
-        return $this->appUsers ?? new ArrayCollection();
-    }
-
-    /**
      * Get name/string of role of this type.
      */
     final public function getRoleName(): string

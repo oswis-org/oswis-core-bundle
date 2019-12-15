@@ -44,14 +44,8 @@ final class SearchFilter extends AbstractContextAwareFilter
      * @noinspection MissingParameterTypeDeclarationInspection
      * @noinspection ForeachInvariantsInspection
      */
-    public function filterProperty(
-        string $property,
-        $value,
-        QueryBuilder $queryBuilder,
-        QueryNameGeneratorInterface $queryNameGenerator,
-        string $resourceClass,
-        string $operationName = null
-    ): void {
+    public function filterProperty(string $property, $value, QueryBuilder $queryBuilder, QueryNameGeneratorInterface $queryNameGenerator, string $resourceClass, string $operationName = null): void
+    {
         if ('search' === $property) {
             $this->logger->info('Search for: '.$value);
         } else {
