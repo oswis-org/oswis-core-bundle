@@ -7,35 +7,16 @@ namespace Zakjakub\OswisCoreBundle\Provider;
  */
 class OswisCoreSettingsProvider
 {
-    /**
-     * @var array
-     */
     protected ?array $app = null;
 
-    /**
-     * @var array
-     */
     protected ?array $admin = null;
 
-    /**
-     * @var array
-     */
     protected ?array $email = null;
 
-    /**
-     * @var array
-     */
     protected ?array $web = null;
 
-    /**
-     * OswisCoreSettingsProvider constructor.
-     */
-    public function __construct(
-        ?array $app,
-        ?array $admin,
-        ?array $email,
-        ?array $web
-    ) {
+    public function __construct(?array $app, ?array $admin, ?array $email, ?array $web)
+    {
         $this->app = $app;
         $this->admin = $admin;
         $this->email = $email;

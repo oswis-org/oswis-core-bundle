@@ -140,7 +140,6 @@ services:
             - '@security.password_encoder'
             - '@monolog.logger'
             - '@mailer'
-
     Zakjakub\OswisCoreBundle\Controller\AppUserController:
         alias: zakjakub_oswis_core.app_user_controller
         public: true
@@ -149,7 +148,6 @@ services:
         class: Zakjakub\OswisCoreBundle\Controller\Website\IndexWebController
         autowire: true
         public: true
-
     Zakjakub\OswisCoreBundle\Controller\Website\IndexWebController:
         alias: zakjakub_oswis_core.index_web_controller
         public: true
@@ -158,33 +156,53 @@ services:
         class: Zakjakub\OswisCoreBundle\Controller\Website\GdprWebController
         autowire: true
         public: true
-
     Zakjakub\OswisCoreBundle\Controller\Website\GdprWebController:
         alias: zakjakub_oswis_core.gdpr_web_controller
         public: true
 
-    zakjakub_oswis_core.email_sender:
-        class: Zakjakub\OswisCoreBundle\Service\EmailSender
+
+    zakjakub_oswis_core.app_user_service:
+        class: Zakjakub\OswisCoreBundle\Service\AppUserService
         autowire: true
         public: true
         arguments:
-            - '@swiftmailer.mailer'
+            - '@security.password_encoder'
+            - '@doctrine.orm.entity_manager'
             - '@monolog.logger'
-            - '@twig'
-            - '@zakjakub_oswis_core.oswis_core_settings_provider'
             - '@mailer.mailer'
-
-    Zakjakub\OswisCoreBundle\Service\EmailSender:
-        alias: zakjakub_oswis_core.email_sender
+            - '@zakjakub_oswis_core.oswis_core_settings_provider'
+    Zakjakub\OswisCoreBundle\Service\AppUserService:
+        alias: zakjakub_oswis_core.app_user_service
         public: true
 
 
+    zakjakub_oswis_core.app_user_role_service:
+        class: Zakjakub\OswisCoreBundle\Service\AppUserRoleService
+        autowire: true
+        public: true
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@monolog.logger'
+    Zakjakub\OswisCoreBundle\Service\AppUserRoleService:
+        alias: zakjakub_oswis_core.app_user_role_service
+        public: true
+
+
+    zakjakub_oswis_core.app_user_type_service:
+        class: Zakjakub\OswisCoreBundle\Service\AppUserTypeService
+        autowire: true
+        public: true
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@monolog.logger'
+    Zakjakub\OswisCoreBundle\Service\AppUserTypeService:
+        alias: zakjakub_oswis_core.app_user_type_service
+        public: true
 
     zakjakub_oswis_core.app_user_action_request:
         class: Zakjakub\OswisCoreBundle\Api\Dto\AppUserActionRequest
         autowire: true
         public: true
-
     Zakjakub\OswisCoreBundle\Api\Dto\AppUserActionRequest:
         alias: zakjakub_oswis_core.app_user_action_request
         public: true
@@ -195,16 +213,20 @@ services:
         public: true
         arguments:
             - '@doctrine.orm.entity_manager'
-            - '@security.password_encoder'
-            - '@monolog.logger'
-            - '@mailer.mailer'
-            - '@zakjakub_oswis_core.oswis_core_settings_provider'
-
+            - '@zakjakub_oswis_core.app_user_service'
     Zakjakub\OswisCoreBundle\Api\EventSubscriber\AppUserActionSubscriber:
         alias: zakjakub_oswis_core.app_user_action_subscriber
         public: true
 
-
+    zakjakub_oswis_core.mailer_subscriber:
+        class: Zakjakub\OswisCoreBundle\EventSubscriber\MailerSubscriber
+        autowire: true
+        public: true
+        arguments:
+            - '@zakjakub_oswis_core.oswis_core_settings_provider'
+    Zakjakub\OswisCoreBundle\EventSubscriber\MailerSubscriber:
+        alias: zakjakub_oswis_core.mailer_subscriber
+        public: true
 
     zakjakub_oswis_core.pdf_generator:
         class: Zakjakub\OswisCoreBundle\Service\PdfGenerator
@@ -214,12 +236,9 @@ services:
             - '@monolog.logger'
             - '@twig'
             - '@zakjakub_oswis_core.oswis_core_settings_provider'
-
     Zakjakub\OswisCoreBundle\Service\PdfGenerator:
         alias: zakjakub_oswis_core.pdf_generator
         public: true
-
-
 
     Zakjakub\OswisCoreBundle\Manager\:
         resource: '../../Manager/*'
@@ -232,12 +251,6 @@ services:
     Zakjakub\OswisCoreBundle\EventSubscriber\:
         resource: '../../EventSubscriber/*'
         tags: [ { name: 'kernel.view'} ]
-        # arguments:
-        #   ['@security.user_password_encoder.generic', '@doctrine.orm.entity_manager.abstract', '@swiftmailer.mailer.abstract', '@monolog.logger_prototype', '@twig', '@security.token_storage']
-        public: true
-
-    Zakjakub\OswisCoreBundle\EventListener\:
-        resource: '../../EventListener/*'
         # arguments:
         #   ['@security.user_password_encoder.generic', '@doctrine.orm.entity_manager.abstract', '@swiftmailer.mailer.abstract', '@monolog.logger_prototype', '@twig', '@security.token_storage']
         public: true

@@ -1,6 +1,6 @@
 <?php
 
-namespace Zakjakub\OswisCoreBundle\EventListener;
+namespace Zakjakub\OswisCoreBundle\EventSubscriber;
 
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
@@ -12,10 +12,7 @@ use Symfony\Component\Mime\Exception\RfcComplianceException;
 use Zakjakub\OswisCoreBundle\Provider\OswisCoreSettingsProvider;
 use Zakjakub\OswisCoreBundle\Utils\EmailUtils;
 
-/**
- * Class MailerListener
- */
-class MailerListener implements EventSubscriberInterface
+class MailerSubscriber implements EventSubscriberInterface
 {
     protected OswisCoreSettingsProvider $oswisCoreSettings;
 

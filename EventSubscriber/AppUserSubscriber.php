@@ -3,45 +3,22 @@
 namespace Zakjakub\OswisCoreBundle\EventSubscriber;
 
 use ApiPlatform\Core\EventListener\EventPriorities;
-use Doctrine\ORM\EntityManagerInterface;
 use Exception;
-use Psr\Log\LoggerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\ViewEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
-use Symfony\Component\Mailer\MailerInterface;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Zakjakub\OswisCoreBundle\Entity\AppUser;
 use Zakjakub\OswisCoreBundle\Exceptions\OswisException;
-use Zakjakub\OswisCoreBundle\Manager\AppUserManager;
-use Zakjakub\OswisCoreBundle\Provider\OswisCoreSettingsProvider;
+use Zakjakub\OswisCoreBundle\Service\AppUserService;
 
 final class AppUserSubscriber implements EventSubscriberInterface
 {
-    private EntityManagerInterface $em;
+    private AppUserService $appUserService;
 
-    private LoggerInterface $logger;
-
-    private UserPasswordEncoderInterface $encoder;
-
-    private MailerInterface $mailer;
-
-    private OswisCoreSettingsProvider $oswisCoreSettings;
-
-    public function __construct(
-        UserPasswordEncoderInterface $encoder,
-        EntityManagerInterface $em,
-        LoggerInterface $logger,
-        MailerInterface $mailer,
-        OswisCoreSettingsProvider $oswisCoreSettings
-    ) {
-        // \error_log('Constructing ReservationSubscriber.');
-        $this->encoder = $encoder;
-        $this->em = $em;
-        $this->logger = $logger;
-        $this->mailer = $mailer;
-        $this->oswisCoreSettings = $oswisCoreSettings;
+    public function __construct(AppUserService $appUserService)
+    {
+        $this->appUserService = $appUserService;
     }
 
     public static function getSubscribedEvents(): array
@@ -49,9 +26,9 @@ final class AppUserSubscriber implements EventSubscriberInterface
         return [KernelEvents::VIEW => ['makeAppUser', EventPriorities::POST_WRITE]];
     }
 
-    /** @noinspection PhpUnused */
     /**
      * @throws OswisException
+     * @noinspection PhpUnused
      */
     public function makeAppUser(ViewEvent $event): void
     {
@@ -67,7 +44,6 @@ final class AppUserSubscriber implements EventSubscriberInterface
         if (Request::METHOD_POST !== $method) {
             return;
         }
-        $appUserManager = new AppUserManager($this->encoder, $this->em, $this->logger, $this->mailer, $this->oswisCoreSettings);
-        $appUserManager->appUserAction($appUser, 'activation-request');
+        $this->appUserService->appUserAction($appUser, AppUserService::ACTIVATION_REQUEST);
     }
 }

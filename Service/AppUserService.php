@@ -1,6 +1,6 @@
 <?php
 
-namespace Zakjakub\OswisCoreBundle\Manager;
+namespace Zakjakub\OswisCoreBundle\Service;
 
 use Doctrine\ORM\EntityManagerInterface;
 use ErrorException;
@@ -22,10 +22,7 @@ use Zakjakub\OswisCoreBundle\Utils\EmailUtils;
 use Zakjakub\OswisCoreBundle\Utils\StringUtils;
 use function random_int;
 
-/**
- * Class AppUserManager.
- */
-class AppUserManager
+class AppUserService
 {
     public const PASSWORD_CHANGE = 'password-change';
     public const PASSWORD_CHANGE_REQUEST = 'password-change-request';
@@ -44,9 +41,6 @@ class AppUserManager
 
     private OswisCoreSettingsProvider $oswisCoreSettings;
 
-    /**
-     * AppUserManager constructor.
-     */
     public function __construct(
         UserPasswordEncoderInterface $encoder,
         EntityManagerInterface $em,
@@ -62,6 +56,8 @@ class AppUserManager
     }
 
     /**
+     * Create and save new user of application.
+     *
      * @param bool|null $activate
      *
      * @throws OswisException
@@ -83,10 +79,10 @@ class AppUserManager
             $username ??= 'user';
         }
         $email ??= $username.'@jakubzak.eu'; // TODO: Change to @oswis.org and redirect mails.
-        $em = $this->em;
         $token = null;
-        $appUserRoleRepo = $em->getRepository(AppUser::class);
+        $appUserRoleRepo = $this->em->getRepository(AppUser::class);
         $appUser = $appUserRoleRepo->findOneBy(['email' => $email]) ?? $appUserRoleRepo->findOneBy(['username' => $username]);
+        assert($appUser instanceof AppUser);
         if ($appUser && !$errorWhenExist) {
             $this->logger->notice('Skipped existing user '.$appUser->getUsername().' '.$appUser->getEmail().'.');
 
@@ -104,8 +100,8 @@ class AppUserManager
         } else {
             $this->appUserAction($appUser, self::ACTIVATION_REQUEST, null, null, $sendMail);
         }
-        $em->persist($appUser);
-        $em->flush();
+        $this->em->persist($appUser);
+        $this->em->flush();
         $this->logger->info('Created user '.$appUser->getUsername().', type: '.($appUserType ? $appUserType->getName() : null));
 
         return $appUser;
@@ -140,7 +136,7 @@ class AppUserManager
                 if (!$withoutToken && !$appUser->checkAndDestroyPasswordResetRequestToken($token)) {
                     throw new InvalidArgumentException('Token pro změnu hesla není platný (neexistuje nebo vypršela jeho platnost).');
                 }
-                $random = $password ? false : true;
+                $random = empty($password);
                 $password ??= StringUtils::generatePassword();
                 $appUser->setPassword($this->encoder->encodePassword($appUser, $password));
                 if ($sendConfirmation) {
@@ -217,16 +213,21 @@ class AppUserManager
                 'logo'     => 'cid:logo',
                 'oswis'    => $this->oswisCoreSettings,
             ];
-            $email = (new TemplatedEmail())->to(
-                new Address(
-                    $appUser->getEmail() ?? '', EmailUtils::mime_header_encode($appUser->getFullName() ?? $appUser->getUsername() ?? '')
-                )
-            )->subject(EmailUtils::mime_header_encode($title))->htmlTemplate('@ZakjakubOswisCore/e-mail/password.html.twig')->context($data);
+            $name = $appUser->getFullName() ?? $appUser->getUsername() ?? '';
+            $email = new TemplatedEmail();
+            $email->to(new Address($appUser->getEmail() ?? '', self::mimeEnc($name)));
+            $email->subject(self::mimeEnc($title));
+            $email->htmlTemplate('@ZakjakubOswisCore/e-mail/password.html.twig')->context($data);
             $this->mailer->send($email);
         } catch (Exception $e) {
             $this->logger->error($e->getMessage());
             throw new ErrorException('Problém s odesláním zprávy o změně hesla.  '.$e->getMessage());
         }
+    }
+
+    private static function mimeEnc(?string $input = null): string
+    {
+        return EmailUtils::mime_header_encode($input);
     }
 
     /**
@@ -255,10 +256,11 @@ class AppUserManager
                 'logo'     => 'cid_logo',
                 'oswis'    => $this->oswisCoreSettings,
             ];
-            $receiverAddress = new Address(
-                $appUser->getEmail() ?? '', EmailUtils::mime_header_encode($appUser->getFullName() ?? $appUser->getUsername() ?? '')
-            );
-            $email = (new TemplatedEmail())->to($receiverAddress)->subject(EmailUtils::mime_header_encode($title))->htmlTemplate('@ZakjakubOswisCore/e-mail/app-user.html.twig')->context($data);
+            $name = $appUser->getFullName() ?? $appUser->getUsername() ?? '';
+            $receiverAddress = new Address($appUser->getEmail() ?? '', self::mimeEnc($name));
+            $email = new TemplatedEmail();
+            $email->to($receiverAddress)->subject(self::mimeEnc($title));
+            $email->htmlTemplate('@ZakjakubOswisCore/e-mail/app-user.html.twig')->context($data);
             $this->mailer->send($email);
         } catch (Exception $e) {
             throw new ErrorException('Problém s odesláním zprávy o změně účtu:  '.$e->getMessage());

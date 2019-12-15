@@ -4,7 +4,7 @@ namespace Zakjakub\OswisCoreBundle\Api\Dto;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use Zakjakub\OswisCoreBundle\Entity\AppUser;
-use Zakjakub\OswisCoreBundle\Manager\AppUserManager;
+use Zakjakub\OswisCoreBundle\Service\AppUserService;
 
 /**
  * Endpoint for actions with users (activation, password changes...).
@@ -21,42 +21,32 @@ use Zakjakub\OswisCoreBundle\Manager\AppUserManager;
  */
 final class AppUserActionRequest
 {
-    public const ALLOWED_TYPES = AppUserManager::ALLOWED_TYPES;
+    public const ALLOWED_TYPES = AppUserService::ALLOWED_TYPES;
 
     /**
      * ID of changed user.
      * ID has higher priority than username/e-mail.
-     *
-     * @var int|null
      */
     public ?int $uid = null;
 
     /**
      * Username or e-mail of changed user.
      * ID has higher priority than username/e-mail.
-     *
-     * @var string|null
      */
     public ?string $username = null;
 
     /**
      * Token generated when request was created.
-     *
-     * @var string|null
      */
     public ?string $token = null;
 
     /**
      * New password.
-     *
-     * @var string|null
      */
     public ?string $password = null;
 
     /**
      * Type of action.
-     *
-     * @var string|null
      * @Symfony\Component\Validator\Constraints\Choice(
      *     choices=AppUserActionRequest::ALLOWED_TYPES,
      *     message="Požadovaný typ akce není implementovaný."
@@ -66,8 +56,6 @@ final class AppUserActionRequest
 
     /**
      * App user to change.
-     *
-     * @var AppUser|null
      */
     public ?AppUser $appUser = null;
 }

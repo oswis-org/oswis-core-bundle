@@ -55,7 +55,7 @@ class AppUserRepository extends EntityRepository implements UserLoaderInterface
             throw new OswisUserNotUniqueException();
         }
 
-        return $appUser && ($appUser instanceof AppUser) && $appUser->isActive() ? $appUser : null;
+        return ($appUser && ($appUser instanceof AppUser) && $appUser->isActive()) ? $appUser : null;
     }
 
     final public function findByEmail(string $email): Collection

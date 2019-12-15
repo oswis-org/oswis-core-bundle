@@ -1,13 +1,17 @@
 <?php
 
-namespace Zakjakub\OswisCoreBundle\Manager;
+namespace Zakjakub\OswisCoreBundle\Service;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\Log\LoggerInterface;
 use Zakjakub\OswisCoreBundle\Entity\AppUserRole;
 use Zakjakub\OswisCoreBundle\Entity\Nameable;
 
-class AppUserRoleManager
+/**
+ * AppUserRole service.
+ * @noinspection PhpUnused
+ */
+class AppUserRoleService
 {
     protected EntityManagerInterface $em;
 

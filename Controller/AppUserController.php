@@ -8,11 +8,8 @@ use LogicException;
 use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Mailer\MailerInterface;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Zakjakub\OswisCoreBundle\Entity\AppUser;
-use Zakjakub\OswisCoreBundle\Manager\AppUserManager;
-use Zakjakub\OswisCoreBundle\Provider\OswisCoreSettingsProvider;
+use Zakjakub\OswisCoreBundle\Service\AppUserService;
 use function assert;
 
 class AppUserController extends AbstractController
@@ -23,10 +20,8 @@ class AppUserController extends AbstractController
     final public function appUserActivationAction(
         string $token,
         EntityManagerInterface $em,
-        UserPasswordEncoderInterface $encoder,
         LoggerInterface $logger,
-        MailerInterface $newMailer,
-        OswisCoreSettingsProvider $oswisCoreSettings
+        AppUserService $appUserService
     ): Response {
         try {
             if (!$token) {
@@ -53,8 +48,7 @@ class AppUserController extends AbstractController
                 );
             }
             assert($appUser instanceof AppUser);
-            $appUserManager = new AppUserManager($encoder, $em, $logger, $newMailer, $oswisCoreSettings);
-            $appUserManager->appUserAction($appUser, 'activation', null, $token);
+            $appUserService->appUserAction($appUser, 'activation', null, $token);
             $em->flush();
 
             return $this->render(

@@ -4,20 +4,15 @@ namespace Zakjakub\OswisCoreBundle\Api\EventSubscriber;
 
 use ApiPlatform\Core\EventListener\EventPriorities;
 use Doctrine\ORM\EntityManagerInterface;
-use Psr\Log\LoggerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpKernel\Event\ViewEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
-use Symfony\Component\Mailer\MailerInterface;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Zakjakub\OswisCoreBundle\Entity\AppUser;
 use Zakjakub\OswisCoreBundle\Exceptions\OswisException;
 use Zakjakub\OswisCoreBundle\Exceptions\OswisNotImplementedException;
 use Zakjakub\OswisCoreBundle\Exceptions\OswisUserNotFoundException;
-use Zakjakub\OswisCoreBundle\Exceptions\OswisUserNotUniqueException;
-use Zakjakub\OswisCoreBundle\Manager\AppUserManager;
-use Zakjakub\OswisCoreBundle\Provider\OswisCoreSettingsProvider;
+use Zakjakub\OswisCoreBundle\Service\AppUserService;
 use function assert;
 use function in_array;
 
@@ -26,19 +21,14 @@ use function in_array;
  */
 final class AppUserActionSubscriber implements EventSubscriberInterface
 {
-    private AppUserManager $appUserManager;
+    private AppUserService $appUserService;
 
     private EntityManagerInterface $em;
 
-    public function __construct(
-        EntityManagerInterface $em,
-        UserPasswordEncoderInterface $encoder,
-        LoggerInterface $logger,
-        MailerInterface $mailer,
-        OswisCoreSettingsProvider $oswisCoreSettings
-    ) {
+    public function __construct(EntityManagerInterface $em, AppUserService $appUserService)
+    {
         $this->em = $em;
-        $this->appUserManager = new AppUserManager($encoder, $em, $logger, $mailer, $oswisCoreSettings);
+        $this->appUserService = $appUserService;
     }
 
     public static function getSubscribedEvents(): array
@@ -69,27 +59,22 @@ final class AppUserActionSubscriber implements EventSubscriberInterface
         $token = $controllerResult->token;
         $password = $controllerResult->password;
         $appUser = $controllerResult->appUser;
-        try {
-            $appUserRepository = $em->getRepository(AppUser::class);
-            $appUser = $appUser ?? $appUserRepository->loadUserById($uid);
-            $appUser = $appUser ?? $appUserRepository->loadUserByUsername($username);
-            if (!$appUser && $token) {
-                $appUserByToken = $this->em->getRepository(AppUser::class)->findOneBy(['passwordResetRequestToken' => $token]);
-                $appUser = $appUserByToken && $appUserByToken->checkPasswordResetRequestToken($token) ? $appUserByToken : null;
-            }
-            if (!$appUser && $token) {
-                $appUserByToken = $this->em->getRepository(AppUser::class)->findOneBy(['accountActivationRequestToken' => $token]);
-                $appUser = $appUserByToken && $appUserByToken->checkAccountActivationRequestToken($token) ? $appUserByToken : null;
-            }
-        } catch (OswisUserNotUniqueException $e) {
-            $appUser = null;
+        $appUserRepository = $em->getRepository(AppUser::class);
+        $appUser ??= $appUserRepository->loadUserById($uid) ?? $appUserRepository->loadUserByUsername($username);
+        if (!$appUser && $token) {
+            $appUserByToken = $this->em->getRepository(AppUser::class)->findOneBy(['passwordResetRequestToken' => $token]);
+            $appUser = $appUserByToken && $appUserByToken->checkPasswordResetRequestToken($token) ? $appUserByToken : null;
+        }
+        if (!$appUser && $token) {
+            $appUserByToken = $this->em->getRepository(AppUser::class)->findOneBy(['accountActivationRequestToken' => $token]);
+            $appUser = $appUserByToken && $appUserByToken->checkAccountActivationRequestToken($token) ? $appUserByToken : null;
         }
         if (!$appUser) {
             throw new OswisUserNotFoundException();
         }
         assert($appUser instanceof AppUser);
-        if (in_array($type, AppUserManager::ALLOWED_TYPES, true)) {
-            $this->appUserManager->appUserAction($appUser, $type, $password, $token);
+        if (in_array($type, AppUserService::ALLOWED_TYPES, true)) {
+            $this->appUserService->appUserAction($appUser, $type, $password, $token);
         } else {
             throw new OswisNotImplementedException($type, 'u uživatelských účtů');
         }
