@@ -32,29 +32,8 @@ Zakjakub\OswisCoreBundle\Entity\AppUser:
             groups: ['app_users_post', 'app_user_get', 'app_user_put']
         singleNote:
             groups: ['app_users_post', 'app_user_get', 'app_user_put']
-        accommodationUser:
-            groups: ['app_users_post', 'app_user_get', 'app_user_put']
         roles:
             groups: ['app_user_get']
-
-#App\Entity\Accommodation\AccommodationUser:
-#    attributes:
-#        id:
-#            groups: ['app_user_get']
-#        createdDateTime:
-#            groups: ['app_user_get']
-#        updatedDateTime:
-#            groups: ['app_user_get']
-#        accommodationUserCategory:
-#            groups: ['app_users_post', 'app_user_get', 'app_user_put']
-#        cashDeskTransfers:
-#            groups: ['app_user_get']
-#        reservationPayments:
-#            groups: ['app_user_get']
-#        managedFacilityRevisions:
-#            groups: ['app_user_get']
-#        facilityRevisionsWhereFacilityManager:
-#            groups: ['app_user_get']
 
 Zakjakub\OswisCoreBundle\Entity\AppUserType:
     attributes:

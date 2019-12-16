@@ -1,33 +1,39 @@
+### OSWIS Core - routes
+
+
+### Endpoint for log in by front-end app.
 login_check:
     path:     /api/login_check
     methods:  [POST]
 
+### Endpoint for refresh of JWT token.
 gesdinet_jwt_refresh_token:
     path:     /api/token/refresh
     defaults: { _controller: gesdinet.jwtrefreshtoken:refresh }
 
+### API Platform settings.
 api_platform:
     resource: .
     type: api_platform
     prefix: /api
 
+### Controller folder.
 controllers:
     resource: ../../Controller/
     type: annotation
 
-oswis_controller:
-    controller: zakjakub_oswis_core.oswis_controller::index
-    path: /oswis_index
-
+### Endpoint for user activation requests.
 zakjakub_oswis_core_app_user_activation:
     controller: zakjakub_oswis_core.app_user_controller::appUserActivationAction
     path: "/app-user-activation/{token}"
 
+### Index page.
 zakjakub_oswis_core_index_action:
-    controller: zakjakub_oswis_core.gdpr_web_controller::gdprAction
+    controller: zakjakub_oswis_core.index_web_controller::indexAction
     path: "/gdpr"
 
+### GDPR page (for forms etc.).
 zakjakub_oswis_core_gdpr_action:
-    controller: zakjakub_oswis_core.index_web_controller::indexAction
+    controller: zakjakub_oswis_core.gdpr_web_controller::gdprAction
     path: "/gdpr"
 

@@ -45,7 +45,6 @@ final class AppUserActionSubscriber implements EventSubscriberInterface
      */
     public function appUserAction(ViewEvent $event): void
     {
-        $em = $this->em;
         $out = null;
         $request = $event->getRequest();
         if ('api_app_user_action_requests_post_collection' !== $request->attributes->get('_route')) {
@@ -59,7 +58,7 @@ final class AppUserActionSubscriber implements EventSubscriberInterface
         $token = $controllerResult->token;
         $password = $controllerResult->password;
         $appUser = $controllerResult->appUser;
-        $appUserRepository = $em->getRepository(AppUser::class);
+        $appUserRepository = $this->em->getRepository(AppUser::class);
         $appUser ??= $appUserRepository->loadUserById($uid) ?? $appUserRepository->loadUserByUsername($username);
         if (!$appUser && $token) {
             $appUserByToken = $this->em->getRepository(AppUser::class)->findOneBy(['passwordResetRequestToken' => $token]);

@@ -13,8 +13,10 @@ use ReflectionException;
 use function count;
 use function in_array;
 
-/** @noinspection ClassNameCollisionInspection */
-
+/**
+ * Search filter.
+ * @noinspection ClassNameCollisionInspection
+ */
 final class SearchFilter extends AbstractContextAwareFilter
 {
     /**

@@ -10,18 +10,15 @@ use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Zakjakub\OswisCoreBundle\Entity\AppUser;
 use Zakjakub\OswisCoreBundle\Exceptions\OswisUserNotUniqueException;
 use Zakjakub\OswisCoreBundle\Repository\AppUserRepository;
-use function assert;
 use function get_class;
 
 class AppUserProvider implements UserProviderInterface
 {
-    private AppUserRepository $userRepository;
+    private EntityManagerInterface $em;
 
     public function __construct(EntityManagerInterface $entityManager)
     {
-        $appUserRepo = $entityManager->getRepository(AppUserRepository::class);
-        assert($appUserRepo instanceof AppUserRepository);
-        $this->userRepository = $appUserRepo;
+        $this->em = $entityManager;
     }
 
     /**
@@ -47,7 +44,9 @@ class AppUserProvider implements UserProviderInterface
      */
     final public function loadUserByUsername($username): ?AppUser
     {
-        $user = $this->userRepository->loadUserByUsername($username);
+        $userRepository = $this->em->getRepository(AppUserRepository::class);
+        assert($userRepository instanceof AppUserRepository);
+        $user = $userRepository->loadUserByUsername($username);
         if (!$user) {
             throw new UsernameNotFoundException(sprintf('Username "%s" does not exist.', $username));
         }

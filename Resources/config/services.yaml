@@ -1,3 +1,5 @@
+### OSWIS Core - services
+
 # This file is the entry point to configure your own services.
 # Files in the packages/ subdirectory configure your dependencies.
 
@@ -31,26 +33,24 @@ services:
     #        tags: [ { name: 'api_platform.filter', id: 'search' } ]
     #        public: true
 
+    ### Search Filter
     zakjakub_oswis_core.search_filter:
         class: Zakjakub\OswisCoreBundle\Filter\SearchFilter
         autowire: true
         tags: [ { name: 'api_platform.filter', id: 'search' } ]
         public: true
-
     Zakjakub\OswisCoreBundle\Filter\SearchFilter:
         alias: zakjakub_oswis_core.search_filter
         public: true
 
-
+    ### OSWIS Core Settings Provider
     zakjakub_oswis_core.oswis_core_settings_provider:
         class: Zakjakub\OswisCoreBundle\Provider\OswisCoreSettingsProvider
         autowire: true
         public: true
-
     Zakjakub\OswisCoreBundle\Provider\OswisCoreSettingsProvider:
         alias: zakjakub_oswis_core.oswis_core_settings_provider
         public: true
-
 
     ### AGE UTILS
     zakjakub_oswis_core.oswis_core_age_utils:
@@ -61,7 +61,6 @@ services:
         alias: zakjakub_oswis_core.oswis_core_age_utils
         public: true
 
-
     ### COLOR UTILS
     zakjakub_oswis_core.oswis_core_color_utils:
         class: Zakjakub\OswisCoreBundle\Utils\ColorUtils
@@ -70,7 +69,6 @@ services:
     Zakjakub\OswisCoreBundle\Utils\ColorUtils:
         alias: zakjakub_oswis_core.oswis_core_color_utils
         public: true
-
 
     ### DateTime UTILS
     zakjakub_oswis_core.oswis_core_date_time_utils:
@@ -81,7 +79,6 @@ services:
         alias: zakjakub_oswis_core.oswis_core_date_time_utils
         public: true
 
-
     ### Email UTILS
     zakjakub_oswis_core.oswis_core_email_utils:
         class: Zakjakub\OswisCoreBundle\Utils\EmailUtils
@@ -90,7 +87,6 @@ services:
     Zakjakub\OswisCoreBundle\Utils\EmailUtils:
         alias: zakjakub_oswis_core.oswis_core_email_utils
         public: true
-
 
     ### File UTILS
     zakjakub_oswis_core.oswis_core_file_utils:
@@ -101,7 +97,6 @@ services:
         alias: zakjakub_oswis_core.oswis_core_file_utils
         public: true
 
-
     ### SourceCode UTILS
     zakjakub_oswis_core.oswis_core_source_code_utils:
         class: Zakjakub\OswisCoreBundle\Utils\SourceCodeUtils
@@ -110,7 +105,6 @@ services:
     Zakjakub\OswisCoreBundle\Utils\SourceCodeUtils:
         alias: zakjakub_oswis_core.oswis_core_source_code_utils
         public: true
-
 
     ### AGE UTILS
     zakjakub_oswis_core.oswis_core_spam_date_time_encoder:
@@ -121,7 +115,6 @@ services:
         alias: zakjakub_oswis_core.oswis_core_spam_date_time_encoder
         public: true
 
-
     ### String UTILS
     zakjakub_oswis_core.oswis_core_source_string_utils:
         class: Zakjakub\OswisCoreBundle\Utils\StringUtils
@@ -131,6 +124,7 @@ services:
         alias: zakjakub_oswis_core.oswis_core_source_string_utils
         public: true
 
+    ### AppUser Controller
     zakjakub_oswis_core.app_user_controller:
         class: Zakjakub\OswisCoreBundle\Controller\AppUserController
         autowire: true
@@ -144,6 +138,7 @@ services:
         alias: zakjakub_oswis_core.app_user_controller
         public: true
 
+    ### Index Web Controller
     zakjakub_oswis_core.index_web_controller:
         class: Zakjakub\OswisCoreBundle\Controller\Website\IndexWebController
         autowire: true
@@ -152,6 +147,7 @@ services:
         alias: zakjakub_oswis_core.index_web_controller
         public: true
 
+    ### GDPR Web Controller
     zakjakub_oswis_core.gdpr_web_controller:
         class: Zakjakub\OswisCoreBundle\Controller\Website\GdprWebController
         autowire: true
@@ -160,7 +156,7 @@ services:
         alias: zakjakub_oswis_core.gdpr_web_controller
         public: true
 
-
+    ### AppUser Service
     zakjakub_oswis_core.app_user_service:
         class: Zakjakub\OswisCoreBundle\Service\AppUserService
         autowire: true
@@ -175,7 +171,7 @@ services:
         alias: zakjakub_oswis_core.app_user_service
         public: true
 
-
+    ### AppUser Role Service
     zakjakub_oswis_core.app_user_role_service:
         class: Zakjakub\OswisCoreBundle\Service\AppUserRoleService
         autowire: true
@@ -187,7 +183,7 @@ services:
         alias: zakjakub_oswis_core.app_user_role_service
         public: true
 
-
+    ### AppUser Type Service
     zakjakub_oswis_core.app_user_type_service:
         class: Zakjakub\OswisCoreBundle\Service\AppUserTypeService
         autowire: true
@@ -199,6 +195,7 @@ services:
         alias: zakjakub_oswis_core.app_user_type_service
         public: true
 
+    ### AppUser Action Request
     zakjakub_oswis_core.app_user_action_request:
         class: Zakjakub\OswisCoreBundle\Api\Dto\AppUserActionRequest
         autowire: true
@@ -207,6 +204,7 @@ services:
         alias: zakjakub_oswis_core.app_user_action_request
         public: true
 
+    ### AppUser Action Subscriber
     zakjakub_oswis_core.app_user_action_subscriber:
         class: Zakjakub\OswisCoreBundle\Api\EventSubscriber\AppUserActionSubscriber
         autowire: true
@@ -218,6 +216,7 @@ services:
         alias: zakjakub_oswis_core.app_user_action_subscriber
         public: true
 
+    ### Mailer Subscriber
     zakjakub_oswis_core.mailer_subscriber:
         class: Zakjakub\OswisCoreBundle\EventSubscriber\MailerSubscriber
         autowire: true
@@ -228,6 +227,7 @@ services:
         alias: zakjakub_oswis_core.mailer_subscriber
         public: true
 
+    ### PDF Generator
     zakjakub_oswis_core.pdf_generator:
         class: Zakjakub\OswisCoreBundle\Service\PdfGenerator
         autowire: true
@@ -240,14 +240,12 @@ services:
         alias: zakjakub_oswis_core.pdf_generator
         public: true
 
-    Zakjakub\OswisCoreBundle\Manager\:
-        resource: '../../Manager/*'
-        public: true
-
+    ### Traits folder
     Zakjakub\OswisCoreBundle\Traits\:
         resource: '../../Traits/*'
         public: true
 
+    ### EventSubscriber folder
     Zakjakub\OswisCoreBundle\EventSubscriber\:
         resource: '../../EventSubscriber/*'
         tags: [ { name: 'kernel.view'} ]
@@ -255,6 +253,7 @@ services:
         #   ['@security.user_password_encoder.generic', '@doctrine.orm.entity_manager.abstract', '@swiftmailer.mailer.abstract', '@monolog.logger_prototype', '@twig', '@security.token_storage']
         public: true
 
+    ### AppUser Provider
     Zakjakub\OswisCoreBundle\Security\AppUserProvider:
         class: Zakjakub\OswisCoreBundle\Security\AppUserProvider
         autowire: true
@@ -262,10 +261,12 @@ services:
         arguments:
           ['@doctrine.orm.entity_manager.abstract']
 
+    ### Security folder
     Zakjakub\OswisCoreBundle\Security\:
         resource: '../../Security/*'
         public: true
 
+    ### GEDMO
     gedmo.listener.timestampable:
         class: Gedmo\Timestampable\TimestampableListener
         tags:

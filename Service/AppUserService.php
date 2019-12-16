@@ -18,6 +18,7 @@ use Zakjakub\OswisCoreBundle\Exceptions\OswisException;
 use Zakjakub\OswisCoreBundle\Exceptions\OswisNotImplementedException;
 use Zakjakub\OswisCoreBundle\Exceptions\OswisUserNotUniqueException;
 use Zakjakub\OswisCoreBundle\Provider\OswisCoreSettingsProvider;
+use Zakjakub\OswisCoreBundle\Repository\AppUserRepository;
 use Zakjakub\OswisCoreBundle\Utils\EmailUtils;
 use Zakjakub\OswisCoreBundle\Utils\StringUtils;
 use function random_int;
@@ -72,7 +73,8 @@ class AppUserService
         ?bool $activate = false,
         ?bool $sendMail = false,
         ?bool $errorWhenExist = true
-    ): AppUser {
+    ): AppUser
+    {
         try {
             $username ??= 'user'.random_int(1, 9999);
         } catch (Exception $e) {
@@ -80,8 +82,9 @@ class AppUserService
         }
         $email ??= $username.'@jakubzak.eu'; // TODO: Change to @oswis.org and redirect mails.
         $token = null;
-        $appUserRoleRepo = $this->em->getRepository(AppUser::class);
-        $appUser = $appUserRoleRepo->findOneBy(['email' => $email]) ?? $appUserRoleRepo->findOneBy(['username' => $username]);
+        $appUserRepo = $this->em->getRepository(AppUser::class);
+        assert($appUserRepo instanceof AppUserRepository);
+        $appUser = $appUserRepo->findOneBy(['email' => $email]) ?? $appUserRepo->findOneBy(['username' => $username]);
         assert($appUser instanceof AppUser);
         if ($appUser && !$errorWhenExist) {
             $this->logger->notice('Skipped existing user '.$appUser->getUsername().' '.$appUser->getEmail().'.');
