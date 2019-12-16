@@ -156,8 +156,6 @@ class AppUser extends AbstractAppUser
 
     /**
      * Can user edit this user?
-     *
-     * @param $user
      */
     final public function canEdit(self $user): bool
     {
@@ -166,8 +164,6 @@ class AppUser extends AbstractAppUser
 
     /**
      * Can user read this user?
-     *
-     * @param $user
      */
     final public function canRead(self $user): bool
     {
@@ -177,13 +173,16 @@ class AppUser extends AbstractAppUser
     /**
      * Returns the roles granted to the user.
      *
-     * @return array (Role|string)[] The user roles
+     * @return array<AppUserRole|string> The user roles
      */
     final public function getRoles(): array
     {
         return $this->getAppUserType() ? $this->getAppUserType()->getAllRoleNames()->toArray() : [];
     }
 
+    /**
+     * @return Collection<AppUserFlag>
+     */
     final public function getAppUserFlags(): Collection
     {
         return $this->appUserFlags ?? new ArrayCollection();

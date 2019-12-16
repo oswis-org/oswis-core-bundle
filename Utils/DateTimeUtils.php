@@ -107,13 +107,14 @@ class DateTimeUtils
         return null;
     }
 
-    public static function getEaster(DateTime $dateTime): string
+    public static function getEaster(DateTime $dateTime): ?string
     {
+        $dateTime->setTime(0, 0, 0, 0);
         $y = (int)$dateTime->format('Y');
-        if ($dateTime === strtotime('+1 day', easter_date($y))) {
+        if ($dateTime->getTimestamp() === strtotime('+1 day', easter_date($y))) {
             return 'Velikonoční pondělí';
         }
-        if ($dateTime === strtotime('-2 day', easter_date($y))) {
+        if ($dateTime->getTimestamp() === strtotime('-2 day', easter_date($y))) {
             return 'Velký pátek';
         }
 

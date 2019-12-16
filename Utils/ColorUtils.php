@@ -9,7 +9,7 @@ use function strlen;
  */
 class ColorUtils
 {
-    final public static function isOppositeWhite(string $color): string
+    final public static function isOppositeWhite(string $color): bool
     {
         if (4 === strlen($color)) {
             [$r, $g, $b] = sscanf($color, '#%1x%1x%1x');

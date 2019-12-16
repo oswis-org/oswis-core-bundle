@@ -86,9 +86,6 @@ trait FullNameTrait
         }
     }
 
-    /**
-     * @return string|null
-     */
     final public function getFullName(): string
     {
         $fullName = $this->getHonorificPrefix().' '.$this->getGivenName().' '.$this->getAdditionalName().' '.$this->getFamilyName().' '.$this->getHonorificSuffix();

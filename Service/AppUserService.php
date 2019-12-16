@@ -81,16 +81,13 @@ class AppUserService
         }
         $email ??= $username.'@jakubzak.eu'; // TODO: Change to @oswis.org and redirect mails.
         $token = null;
-        $appUserRepo = $this->em->getRepository(AppUser::class);
-        assert($appUserRepo instanceof AppUserRepository);
-        $appUser = $appUserRepo->findOneBy(['email' => $email]) ?? $appUserRepo->findOneBy(['username' => $username]);
-        assert($appUser instanceof AppUser);
-        if ($appUser && !$errorWhenExist) {
+        $appUser = $this->getRepository()->findOneBy(['email' => $email]) ?? $this->getRepository()->findOneBy(['username' => $username]);
+        if (null !== $appUser && !$errorWhenExist) {
             $this->logger->notice('Skipped existing user '.$appUser->getUsername().' '.$appUser->getEmail().'.');
 
             return $appUser;
         }
-        if ($appUser && $errorWhenExist) {
+        if (null !== $appUser && $errorWhenExist) {
             throw new OswisUserNotUniqueException('User '.$appUser->getUsername().' already exist.');
         }
         $appUser = new AppUser($fullName, $username, $email, null, null);
@@ -107,6 +104,14 @@ class AppUserService
         $this->logger->info('Created user '.$appUser->getUsername().', type: '.($appUserType ? $appUserType->getName() : null));
 
         return $appUser;
+    }
+
+    final public function getRepository(): AppUserRepository
+    {
+        $repository = $this->em->getRepository(AppUser::class);
+        assert($repository instanceof AppUserRepository);
+
+        return $repository;
     }
 
     /**
@@ -194,9 +199,6 @@ class AppUserService
     final public function sendPasswordEmail(AppUser $appUser, string $type, ?string $token = null, string $password = null): void
     {
         try {
-            if (!$appUser) {
-                throw new InvalidArgumentException('Uživatel nenalezen.');
-            }
             $title = null;
             if (self::PASSWORD_CHANGE === $type) { // Send e-mail about password change. Include password if present (it means that it's generated randomly).
                 $title = 'Heslo změněno';
@@ -239,9 +241,6 @@ class AppUserService
     final public function sendAppUserEmail(AppUser $appUser, string $type, ?string $token = null, ?string $password = null): void
     {
         try {
-            if (!$appUser) {
-                throw new ErrorException('Uživatel nenalezen.');
-            }
             if (self::ACTIVATION_REQUEST === $type) { // Send e-mail about activation request. Include token for activation.
                 $title = 'Aktivace uživatelského účtu';
             } elseif (self::ACTIVATION === $type) {
@@ -268,4 +267,5 @@ class AppUserService
             throw new ErrorException('Problém s odesláním zprávy o změně účtu:  '.$e->getMessage());
         }
     }
+
 }

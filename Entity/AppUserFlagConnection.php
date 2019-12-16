@@ -28,9 +28,6 @@ class AppUserFlagConnection
     use BasicEntityTrait;
 
     /**
-     * Flag used by app user.
-     *
-     * @var AppUserFlag|null
      * @Doctrine\ORM\Mapping\ManyToOne(
      *     targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUserFlag",
      *     fetch="EAGER"
@@ -40,9 +37,6 @@ class AppUserFlagConnection
     protected ?AppUserFlag $appUserFlag = null;
 
     /**
-     * App user.
-     *
-     * @var AppUser|null
      * @Doctrine\ORM\Mapping\ManyToOne(
      *     targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUser",
      *     inversedBy="appUserFlags",

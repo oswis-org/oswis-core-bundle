@@ -44,7 +44,7 @@ class AgeUtils
      */
     public static function getAgeFromBirthDate(?DateTime $birthDate, DateTime $referenceDateTime = null): ?int
     {
-        return $birthDate ? floor(self::getAgeDecimalFromBirthDate($birthDate, $referenceDateTime)) : null;
+        return $birthDate ? (int)floor(self::getAgeDecimalFromBirthDate($birthDate, $referenceDateTime)) : null;
     }
 
     /**

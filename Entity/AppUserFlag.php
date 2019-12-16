@@ -31,9 +31,6 @@ class AppUserFlag
     use BasicEntityTrait;
     use NameableBasicTrait;
 
-    /**
-     * Constructor for app user flag.
-     */
     public function __construct(?Nameable $nameable = null)
     {
         $this->setFieldsFromNameable($nameable);

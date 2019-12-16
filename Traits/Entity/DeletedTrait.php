@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -14,17 +14,12 @@ trait DeletedTrait
 {
     /**
      * Date and time of delete (null if not deleted).
-     *
-     * @var DateTime|null
-     *
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true, options={"default" : null})
      */
     protected ?DateTime $deleted = null;
 
     /**
      * Date and time of delete confirmation e-mail.
-     *
-     * @var DateTime|null
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true)
      */
     protected ?DateTime $eMailDeleteConfirmationDateTime = null;
@@ -61,9 +56,15 @@ trait DeletedTrait
     }
 
     /**
-     * Get date and time.
-     *
-     * @return DateTime
+     * @throws Exception
+     */
+    final public function delete(?DateTime $dateTime = null): void
+    {
+        $this->setDeleted($this->getDeleted() ?? $dateTime ?? new DateTime());
+    }
+
+    /**
+     * Get date and time when entity was deleted.
      */
     final public function getDeleted(): ?DateTime
     {
@@ -75,31 +76,23 @@ trait DeletedTrait
      */
     final public function setDeleted(?DateTime $deleted = null): void
     {
-        if (!$deleted || (!$this->deleted && $deleted)) {
+        if (null === $deleted || (null === $this->deleted && null !== $deleted)) {
             $this->setEMailDeleteConfirmationDateTime(null);
         }
         $this->deleted = $deleted;
     }
 
     /**
-     * @throws Exception
-     */
-    final public function delete(?DateTime $dateTime = null): void
-    {
-        $this->setDeleted($dateTime ?? new DateTime());
-    }
-
-    /**
      * True if user is deleted (at some moment).
      *
-     * @param DateTime|null $dateTime reference date and time
+     * @param DateTime|null $dateTime Reference date and time.
      */
     final public function isDeleted(?DateTime $dateTime = null): bool
     {
-        if ($dateTime) {
-            return $dateTime > $this->deleted;
+        try {
+            return ($dateTime ?? new DateTime()) > $this->deleted;
+        } catch (Exception $e) {
+            return false;
         }
-
-        return $this->deleted ? true : false;
     }
 }

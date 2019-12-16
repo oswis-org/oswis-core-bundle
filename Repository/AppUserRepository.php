@@ -64,4 +64,12 @@ class AppUserRepository extends EntityRepository implements UserLoaderInterface
             $this->createQueryBuilder('app_user')->where('app_user.email = :email')->setParameter('email', $email)->getQuery()->getResult(Query::HYDRATE_OBJECT)
         );
     }
+
+    final public function findOneBy(array $criteria, array $orderBy = null): ?AppUser
+    {
+        $result = parent::findOneBy($criteria, $orderBy);
+
+        return $result && $result instanceof AppUser ? $result : null;
+    }
+
 }

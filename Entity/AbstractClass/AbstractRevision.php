@@ -18,8 +18,6 @@ abstract class AbstractRevision implements RevisionInterface
 {
     /**
      * Container of revisions.
-     *
-     * @var AbstractRevisionContainer|null
      */
     protected ?AbstractRevisionContainer $container = null;
 

@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Exception;
 use Zakjakub\OswisCoreBundle\Exceptions\RevisionMissingException;
 use Zakjakub\OswisCoreBundle\Interfaces\RevisionContainerInterface;
+use Zakjakub\OswisCoreBundle\Interfaces\RevisionInterface;
 
 /**
  * Abstract class representing container of revisions/versions of some entity (of some entity which extends AbstractRevision).
@@ -19,7 +20,7 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
     /**
      * Revisions/versions of this container.
      *
-     * @var Collection|null
+     * @var Collection<AbstractRevision>|null
      */
     protected ?Collection $revisions = null;
 
@@ -98,7 +99,6 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
 
     /**
      * Automatically set revision/version which is actual/active now.
-     * @return AbstractRevision Active revision after update.
      * @noinspection MethodShouldBeFinalInspection
      */
     public function updateActiveRevision(): void
@@ -124,7 +124,7 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
             return $this->activeRevision;
         }
         $revisions = $this->getRevisionsOlderThanDateTime($dateTime);
-        if (!$revisions || !$revisions[0]) {
+        if (empty($revisions) || empty($revisions[0])) {
             throw new RevisionMissingException((static::getRevisionClassName() ?? 'Revision class').' not found.');
         }
         static::checkRevision($revisions[0]);
@@ -135,6 +135,11 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
         return $revisions[0];
     }
 
+    /**
+     * @param DateTime|null $dateTime
+     *
+     * @return array<AbstractRevision>
+     */
     final public function getRevisionsOlderThanDateTime(DateTime $dateTime = null): array
     {
         try {
@@ -150,6 +155,7 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
 
     /**
      * All revisions/versions of this container.
+     * @return Collection<RevisionInterface>
      */
     final public function getRevisions(): Collection
     {

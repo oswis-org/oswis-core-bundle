@@ -8,12 +8,12 @@ use function ord;
 
 class StringUtils
 {
-    public static function startsWith(string $haystack, string $needle): string
+    public static function startsWith(string $haystack, string $needle): bool
     {
         return 0 === mb_strpos($haystack, $needle);
     }
 
-    public static function endsWith(string $haystack, string $needle): string
+    public static function endsWith(string $haystack, string $needle): bool
     {
         return (mb_strlen($haystack) >= mb_strlen($needle)) && (false !== mb_strpos($haystack, $needle, mb_strlen($haystack) - mb_strlen($needle)));
     }
@@ -292,7 +292,7 @@ class StringUtils
      *
      * @return string Random string from required chars
      */
-    private static function randomString(string $from, string $to, int $length): string
+    private static function randomString(string $from, string $to, int $length): ?string
     {
         $str = '';
         if ($length > 1) {

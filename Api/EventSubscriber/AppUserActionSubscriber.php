@@ -12,6 +12,7 @@ use Zakjakub\OswisCoreBundle\Entity\AppUser;
 use Zakjakub\OswisCoreBundle\Exceptions\OswisException;
 use Zakjakub\OswisCoreBundle\Exceptions\OswisNotImplementedException;
 use Zakjakub\OswisCoreBundle\Exceptions\OswisUserNotFoundException;
+use Zakjakub\OswisCoreBundle\Exceptions\OswisUserNotUniqueException;
 use Zakjakub\OswisCoreBundle\Service\AppUserService;
 use function assert;
 use function in_array;
@@ -31,6 +32,9 @@ final class AppUserActionSubscriber implements EventSubscriberInterface
         $this->appUserService = $appUserService;
     }
 
+    /**
+     * @return array<string, array<int, int|string>>
+     */
     public static function getSubscribedEvents(): array
     {
         return [
@@ -39,9 +43,12 @@ final class AppUserActionSubscriber implements EventSubscriberInterface
     }
 
     /**
+     * @param ViewEvent $event
+     *
      * @throws OswisException
      * @throws OswisNotImplementedException
      * @throws OswisUserNotFoundException
+     * @throws OswisUserNotUniqueException
      */
     public function appUserAction(ViewEvent $event): void
     {
@@ -58,7 +65,7 @@ final class AppUserActionSubscriber implements EventSubscriberInterface
         $token = $controllerResult->token;
         $password = $controllerResult->password;
         $appUser = $controllerResult->appUser;
-        $appUserRepository = $this->em->getRepository(AppUser::class);
+        $appUserRepository = $this->appUserService->getRepository();
         $appUser ??= $appUserRepository->loadUserById($uid) ?? $appUserRepository->loadUserByUsername($username);
         if (!$appUser && $token) {
             $appUserByToken = $this->em->getRepository(AppUser::class)->findOneBy(['passwordResetRequestToken' => $token]);

@@ -18,7 +18,7 @@ class FileUtils
             'binary' => ['B', 'KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB'],
             'metric' => ['B', 'kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'],
         ];
-        $factor = floor((strlen($bytes) - 1) / 3);
+        $factor = floor((strlen((string)$bytes) - 1) / 3);
 
         return sprintf("%.{$decimals}f %s", $bytes / ($mod ** $factor), $units[$system][$factor]);
     }
@@ -47,10 +47,10 @@ class FileUtils
         $size = preg_replace('/[^0-9.]/', '', $size); // Remove the non-numeric characters from the size.
         if ($unit) {
             // Find the position of the unit in the ordered string which is the power of magnitude to multiply a kilobyte by.
-            // @noinspection SpellCheckingInspection
-            return round($size * (1024 ** stripos('bkmgtpezy', $unit[0])));
+            /** @noinspection SpellCheckingInspection */
+            return (int)round(((float)$size) * (1024 ** stripos('bkmgtpezy', $unit[0])));
         }
 
-        return round($size);
+        return (int)round((float)$size);
     }
 }

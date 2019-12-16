@@ -37,7 +37,7 @@ abstract class AbstractAppUser implements UserInterface, Serializable, Equatable
 
     final public function isEqualTo(UserInterface $user): bool
     {
-        if (!$user || !($user instanceof self)) {
+        if (!($user instanceof self)) {
             return false;
         }
         if ($this->id !== $user->getId() || $this->username !== $user->getUsername()) {

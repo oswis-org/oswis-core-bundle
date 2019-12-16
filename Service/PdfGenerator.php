@@ -37,9 +37,6 @@ class PdfGenerator
     }
 
     /**
-     * @param string|null $template
-     * @param array|null  $data
-     *
      * @throws LoaderError
      * @throws MpdfException
      * @throws RuntimeError
