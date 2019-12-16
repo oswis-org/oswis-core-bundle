@@ -3,7 +3,8 @@
 namespace Zakjakub\OswisCoreBundle\Controller\AbstractClass;
 
 use ApiPlatform\Core\Bridge\Symfony\Validator\Exception\ValidationException;
-use Doctrine\Persistence\ManagerRegistry;
+use InvalidArgumentException;
+use Symfony\Bridge\Doctrine\ManagerRegistry;
 use Symfony\Component\Form\Exception\LogicException;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,20 +20,21 @@ abstract class AbstractImageAction
 
     private FormFactoryInterface $factory;
 
-    public function __construct(
-        ManagerRegistry $doctrine,
-        FormFactoryInterface $factory,
-        ValidatorInterface $validator
-    ) {
+    public function __construct(ManagerRegistry $doctrine, FormFactoryInterface $factory, ValidatorInterface $validator)
+    {
         $this->validator = $validator;
         $this->doctrine = $doctrine;
         $this->factory = $factory;
     }
 
     /**
+     * @param Request $request
+     *
+     * @return AbstractImage
      * @throws InvalidOptionsException
      * @throws LogicException
      * @throws ValidationException
+     * @throws InvalidArgumentException
      */
     final public function __invoke(Request $request): AbstractImage
     {

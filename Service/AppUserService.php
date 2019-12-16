@@ -73,8 +73,7 @@ class AppUserService
         ?bool $activate = false,
         ?bool $sendMail = false,
         ?bool $errorWhenExist = true
-    ): AppUser
-    {
+    ): AppUser {
         try {
             $username ??= 'user'.random_int(1, 9999);
         } catch (Exception $e) {
