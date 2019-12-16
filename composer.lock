@@ -4,7 +4,7 @@
     "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
     "This file is @generated automatically"
   ],
-  "content-hash": "1bcfa642310c89574ed8a6c800195faf",
+  "content-hash": "8c14dec3c3a486a64c74837328560813",
   "packages": [
     {
       "name": "adci/full-name-parser",
@@ -7876,6 +7876,65 @@
         "twig"
       ],
       "time": "2019-10-17T07:27:07+00:00"
+    },
+    {
+      "name": "twig/extra-bundle",
+      "version": "v3.0.0",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/twigphp/twig-extra-bundle.git",
+        "reference": "c56821429490e351003a09b7ed0c917feec2355f"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/twigphp/twig-extra-bundle/zipball/c56821429490e351003a09b7ed0c917feec2355f",
+        "reference": "c56821429490e351003a09b7ed0c917feec2355f",
+        "shasum": ""
+      },
+      "require": {
+        "php": "^7.1.3",
+        "symfony/framework-bundle": "^4.3|^5.0",
+        "symfony/twig-bundle": "^4.3|^5.0",
+        "twig/twig": "^2.4|^3.0"
+      },
+      "require-dev": {
+        "twig/cssinliner-extra": "^2.12|^3.0@dev",
+        "twig/html-extra": "^2.12@dev|^3.0@dev",
+        "twig/inky-extra": "^2.12@dev|^3.0@dev",
+        "twig/intl-extra": "^2.12@dev|^3.0@dev",
+        "twig/markdown-extra": "^2.12@dev|^3.0@dev"
+      },
+      "type": "symfony-bundle",
+      "extra": {
+        "branch-alias": {
+          "dev-master": "3.0-dev"
+        }
+      },
+      "autoload": {
+        "psr-4": {
+          "Twig\\Extra\\TwigExtraBundle\\": "src/"
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
+      "authors": [
+        {
+          "name": "Fabien Potencier",
+          "email": "fabien@symfony.com",
+          "homepage": "http://fabien.potencier.org",
+          "role": "Lead Developer"
+        }
+      ],
+      "description": "A Symfony bundle for extra Twig extensions",
+      "homepage": "https://twig.symfony.com",
+      "keywords": [
+        "bundle",
+        "extra",
+        "twig"
+      ],
+      "time": "2019-10-17T07:30:08+00:00"
     },
     {
       "name": "twig/inky-extra",
