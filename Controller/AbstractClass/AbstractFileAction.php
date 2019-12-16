@@ -3,8 +3,8 @@
 namespace Zakjakub\OswisCoreBundle\Controller\AbstractClass;
 
 use ApiPlatform\Core\Bridge\Symfony\Validator\Exception\ValidationException;
+use Doctrine\Common\Persistence\ManagerRegistry;
 use InvalidArgumentException;
-use Symfony\Bridge\Doctrine\ManagerRegistry;
 use Symfony\Component\Form\Exception\LogicException;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
