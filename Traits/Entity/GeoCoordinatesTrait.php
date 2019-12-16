@@ -6,30 +6,21 @@ trait GeoCoordinatesTrait
 {
     /**
      * Geo latitude (WGS 84).
-     *
-     * @var float|null
      * @Doctrine\ORM\Mapping\Column(type="decimal", precision=10, scale=7, nullable=true)
-     *
      * @example 37.42242
      */
     protected ?float $geoLatitude = null;
 
     /**
      * Geo longitude (WGS 84).
-     *
-     * @var float|null
      * @Doctrine\ORM\Mapping\Column(type="decimal", precision=10, scale=7, nullable=true)
-     *
      * @example -122.08585
      */
     protected ?float $geoLongitude = null;
 
     /**
      * Geo elevation (WGS 84, in meters).
-     *
-     * @var int|null
      * @Doctrine\ORM\Mapping\Column(type="integer", nullable=true)
-     *
      * @example 1000
      */
     protected ?int $geoElevation = null;
@@ -39,18 +30,12 @@ trait GeoCoordinatesTrait
         return $this->getGeoLongitude();
     }
 
-    /**
-     * @return int
-     */
-    final public function getGeoLongitude(): ?int
+    final public function getGeoLongitude(): ?float
     {
         return $this->geoLongitude;
     }
 
-    /**
-     * @param int $geoLongitude
-     */
-    final public function setGeoLongitude(?int $geoLongitude): void
+    final public function setGeoLongitude(?float $geoLongitude): void
     {
         $this->geoLongitude = $geoLongitude;
     }
@@ -75,12 +60,12 @@ trait GeoCoordinatesTrait
         return $this->getGeoElevation();
     }
 
-    final public function getGeoElevation(): ?float
+    final public function getGeoElevation(): ?int
     {
         return $this->geoElevation;
     }
 
-    final public function setGeoElevation(?float $geoElevation): void
+    final public function setGeoElevation(?int $geoElevation): void
     {
         $this->geoElevation = $geoElevation;
     }
