@@ -1,21 +1,23 @@
 <!doctype html>
-<html class="no-js" lang="{% block html_lang %}cs-cz{% endblock %}">
+<html class="no-js" lang="{% block html_lang %}cs-CZ{% endblock html_lang %}">
 <head>
     {% block meta_tags_outer %}
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name='DC.Language' content='{{ block('html_lang') }}'>
-        <title>{% block html_title %}{{ oswis_core_settings.web.title }}{% endblock %}</title>
-        {% block tag_manager_script %}{% endblock %}
-        <meta name="description" content="{% block html_description %}{{ oswis_core_settings.web.description }}{% endblock %}">
+        <title>{% block html_title %}{{ oswis_core_settings.web.title }}{% endblock html_title %}</title>
+        {% block tag_manager_script %}{% endblock tag_manager_script %}
+        <meta name="description" content="{% block html_description %}{{ oswis_core_settings.web.description }}{% endblock html_description %}">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta http-equiv='X-UA-Compatible' content='IE=edge'>
         <meta name='format-detection' content='telephone=yes'>
-        <meta name='author' content='{% block meta_author %}Jakub Zak (https://jakubzak.cz){% endblock %}'>
-        <meta name='copyright' content='{% block meta_copyright %}Jakub Zak (https://jakubzak.cz){% endblock %}'>
-        <meta name='generator' content='{% block meta_generator %}OSWIS (One Simple Web IS){% endblock %}'>
-        <meta name='Designer' content='{% block meta_designer %}Jakub Zak (https://jakubzak.cz){% endblock %}'>
-        <meta name='Revisit-After' content='{% block meta_revisit_after %}1 day{% endblock %}'>
+        <meta name='author' content='{% block meta_author %}Jakub Zak (https://jakubzak.cz){% endblock meta_author %}'>
+        <meta name='copyright' content='{% block meta_copyright %}Jakub Zak (https://jakubzak.cz){% endblock meta_copyright %}'>
+        <meta name='generator' content='{% block meta_generator %}OSWIS (One Simple Web IS){% endblock meta_generator %}'>
+        <meta name='Designer' content='{% block meta_designer %}Jakub Zak (https://jakubzak.cz){% endblock meta_designer %}'>
+        {% block meta_revisit_after_outer %}
+            <meta name='Revisit-After' content='{% block meta_revisit_after %}1 day{% endblock meta_revisit_after %}'>
+        {% endblock meta_revisit_after_outer %}
         {% block meta_tags_inner %}
             {% block meta_dns_prefetch %}
                 <link rel="dns-prefetch" href="//www.googletagmanager.com">
@@ -29,17 +31,17 @@
                 <link rel="dns-prefetch" href="//www.youtube-nocookie.com">
             {% endblock meta_dns_prefetch %}
             {% block meta_geo %}
-                <meta name='geo.position' content='{% block meta_geo_position %}49.5922829,17.2633168{% endblock %}'>
+                <meta name='geo.position' content='{% block meta_geo_position %}{{ block('meta_geo_x') }},{{ block('meta_geo_y') }}{% endblock %}'>
                 <meta name='ICBM' content='{{ block('meta_geo_position') }}'>
-            {% endblock %}
+            {% endblock meta_geo %}
             {% block meta_tags_app %}
                 <meta name="application-name" content="{% block meta_app_name %}{{ block('html_title') }}{% endblock %}">
                 <meta name="apple-mobile-web-app-title" content="{% block meta_app_title_apple %}{{ block('meta_app_name') }}{% endblock %}">
-            {% endblock %}
+            {% endblock meta_tags_app %}
             {% block meta_tags_color %}
                 <meta name="theme-color" content="{% block meta_theme_color %}#3498d0{% endblock %}">
                 <meta name="msapplication-TileColor" content="{% block meta_tile_color %}{{ block('meta_theme_color') }}{% endblock %}">
-            {% endblock %}
+            {% endblock meta_tags_color %}
             {% block meta_tags_icons %}
                 <link rel="apple-touch-icon" sizes="180x180" href="{{ preload(asset('@ZakjakubOswisCoreBundle/Resources/public/favicons/apple-touch-icon.png')) }}">
                 <link rel="icon" type="image/png" sizes="32x32" href="{{ preload(asset('@ZakjakubOswisCoreBundle/Resources/public/favicons/favicon-32x32.png')) }}">
@@ -51,41 +53,52 @@
                 <link rel="shortcut icon" href="{{ preload(asset('@ZakjakubOswisCoreBundle/Resources/public/favicons/favicon.ico')) }}">
                 <meta name="msapplication-config" content="{{ preload(asset('@ZakjakubOswisCoreBundle/Resources/public/favicons/browserconfig.xml')) }}">
                 <meta name="msapplication-TileImage" content="{{ preload(asset('@ZakjakubOswisCoreBundle/Resources/public/favicons/mstile-144x144.png')) }}">
-            {% endblock %}
-            {% block meta_tags_canonical %}
-            {% endblock meta_tags_canonical %}
+            {% endblock meta_tags_icons %}
+            {% block meta_tags_canonical %}{% endblock meta_tags_canonical %}
         {% endblock meta_tags_inner %}
         {% block meta_og %}
+            <meta property="og:site_name" content="{{ block('meta_app_name') }}">
+            <meta property="og:title" content="{{ block('html_title') }}">
+            <meta property="og:description" content="{{ block('html_description') }}">
+            <meta property="og:locale" content="{{ block('html_lang') }}">
+            <meta property="og:type" content="{% block og_type %}website{% endblock %}">
+            <!-- <meta property="og:url" content="http://www.imdb.com/title/tt0117500/"> -->
+            {% block meta_og_image %}
+                <!-- <meta property="og:image" content="http://ia.media-imdb.com/images/rock.jpg"> -->
+            {% endblock meta_og_image %}
+            {% block meta_og_geo %}
+                <meta property="og:latitude" content="{% block meta_geo_x %}49.5922829{% endblock %}"/>
+                <meta property="og:longitude" content="{% block meta_geo_y %}17.2633168{% endblock %}"/>
+            {% endblock meta_og_geo %}
+            {% block meta_og_additional %}{% endblock meta_og_additional %}
         {% endblock %}
     {% endblock meta_tags_outer %}
     {% block stylesheets %}
         {{ encore_entry_link_tags('app') }}
-    {% endblock %}
+    {% endblock stylesheets %}
 </head>
 {% block html_inner %}
     <body>
     {% block body_outer %}
-        {% block tag_manager_noscript %}{% endblock %}
+        {% block tag_manager_noscript %}{% endblock tag_manager_noscript %}
 
-        {% block body_start %}{% endblock %}
+        {% block body_start %}{% endblock body_start %}
 
         {% block body_inner %}
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <p>
-                            Obsah stránky nebyl načten.
-                        </p>
+                        <!-- <p>Obsah stránky nebyl načten.</p> -->
                     </div>
                 </div>
             </div>
-        {% endblock %}
+        {% endblock body_inner %}
 
-        {% block body_end %}{% endblock %}
+        {% block body_end %}{% endblock body_end %}
 
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
-        {% endblock %}
+        {% endblock javascript %}
 
     {% endblock body_outer %}
     </body>

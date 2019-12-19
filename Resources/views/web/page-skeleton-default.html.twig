@@ -3,20 +3,18 @@
 {% block body_inner %}
     {% block body_header %}
         {% include '@ZakjakubOswisCore/web/parts/header.html.twig' %}
-    {% endblock %}
+    {% endblock body_header %}
     {% block body_content %}
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <p>
-                        Obsah stránky nebyl načten.
-                    </p>
+                    <!-- <p>Obsah stránky nebyl načten.</p> -->
                 </div>
             </div>
         </div>
-    {% endblock %}
+    {% endblock body_content %}
     {% block body_footer %}
         {% include '@ZakjakubOswisCore/web/parts/footer.html.twig' %}
-    {% endblock %}
-{% endblock %}
+    {% endblock body_footer %}
+{% endblock body_inner %}
 
