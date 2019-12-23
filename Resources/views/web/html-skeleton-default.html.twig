@@ -1,22 +1,22 @@
 <!doctype html>
-<html class="no-js" lang="{% block html_lang %}cs-CZ{% endblock html_lang %}">
+<html class="no-js" lang="{% block html_lang %}{{ language|default('cs-CZ') }}{% endblock html_lang %}">
 <head>
     {% block meta_tags_outer %}
         <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <meta name='DC.Language' content='{{ block('html_lang') }}'>
-        <title>{% block html_title %}{{ oswis_core_settings.web.title }}{% endblock html_title %}</title>
-        {% block tag_manager_script %}{% endblock tag_manager_script %}
-        <meta name="description" content="{% block html_description %}{{ oswis_core_settings.web.description }}{% endblock html_description %}">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+        <meta name='DC.Language' content='{{ block('html_lang') }}'>
+        <title>{% block html_title %}{{ title|default(oswis_core_settings.web.title) }}{% endblock html_title %}</title>
+        {% block tag_manager_script %}{% endblock tag_manager_script %}
+        <meta name="description"
+              content="{% block html_description %}{{ description|default(oswis_core_settings.web.description) }}{% endblock html_description %}">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name='format-detection' content='telephone=yes'>
-        <meta name='author' content='{% block meta_author %}Jakub Zak (https://jakubzak.cz){% endblock meta_author %}'>
-        <meta name='copyright' content='{% block meta_copyright %}Jakub Zak (https://jakubzak.cz){% endblock meta_copyright %}'>
+        <meta name='author' content='{% block meta_author %}{{ author|default('Jakub Zak (https://jakubzak.cz)') }}{% endblock meta_author %}'>
+        <meta name='copyright' content='{% block meta_copyright %}{{ copyright|default('Jakub Zak (https://jakubzak.cz)') }}{% endblock meta_copyright %}'>
         <meta name='generator' content='{% block meta_generator %}OSWIS (One Simple Web IS){% endblock meta_generator %}'>
-        <meta name='Designer' content='{% block meta_designer %}Jakub Zak (https://jakubzak.cz){% endblock meta_designer %}'>
+        <meta name='Designer' content='{% block meta_designer %}{{ designer|default('Jakub Zak (https://jakubzak.cz)') }}{% endblock meta_designer %}'>
         {% block meta_revisit_after_outer %}
-            <meta name='Revisit-After' content='{% block meta_revisit_after %}1 day{% endblock meta_revisit_after %}'>
+            <meta name='Revisit-After' content='{% block meta_revisit_after %}{{ revisit_after|default('1 day') }}{% endblock meta_revisit_after %}'>
         {% endblock meta_revisit_after_outer %}
         {% block meta_tags_inner %}
             {% block meta_dns_prefetch %}
@@ -24,11 +24,6 @@
                 <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
                 <link rel="dns-prefetch" href="//piwik.dwarf.jakubzak.cz">
                 <link rel="dns-prefetch" href="//www.google-analytics.com">
-                <link rel="dns-prefetch" href="//facebook.com">
-                <link rel="dns-prefetch" href="//fb.com">
-                <link rel="dns-prefetch" href="//youtube.com">
-                <link rel="dns-prefetch" href="//upol.cz">
-                <link rel="dns-prefetch" href="//www.youtube-nocookie.com">
             {% endblock meta_dns_prefetch %}
             {% block meta_geo %}
                 <meta name='geo.position' content='{% block meta_geo_position %}{{ block('meta_geo_x') }},{{ block('meta_geo_y') }}{% endblock %}'>
@@ -61,20 +56,23 @@
             <meta property="og:title" content="{{ block('html_title') }}">
             <meta property="og:description" content="{{ block('html_description') }}">
             <meta property="og:locale" content="{{ block('html_lang') }}">
-            <meta property="og:type" content="{% block og_type %}website{% endblock %}">
+            <meta property="og:type" content="{% block og_type %}{{ og_type|default('website') }}{% endblock %}">
             <!-- <meta property="og:url" content="http://www.imdb.com/title/tt0117500/"> -->
             {% block meta_og_image %}
                 <!-- <meta property="og:image" content="http://ia.media-imdb.com/images/rock.jpg"> -->
             {% endblock meta_og_image %}
             {% block meta_og_geo %}
-                <meta property="og:latitude" content="{% block meta_geo_x %}49.5922829{% endblock %}"/>
-                <meta property="og:longitude" content="{% block meta_geo_y %}17.2633168{% endblock %}"/>
+                <meta property="og:latitude" content="{% block meta_geo_x %}{{ geo_lat|default('49.5922829') }}{% endblock %}"/>
+                <meta property="og:longitude" content="{% block meta_geo_y %}{{ geo_lon|default('17.2633168') }}{% endblock %}"/>
             {% endblock meta_og_geo %}
             {% block meta_og_additional %}{% endblock meta_og_additional %}
         {% endblock %}
     {% endblock meta_tags_outer %}
     {% block stylesheets %}
         {{ encore_entry_link_tags('app') }}
+        {% if css is defined and css %}
+            <style type="text/css">{{ css|default }}</style>
+        {% endif %}
     {% endblock stylesheets %}
 </head>
 {% block html_inner %}
@@ -84,23 +82,32 @@
 
         {% block body_start %}{% endblock body_start %}
 
-        {% block body_inner %}
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <!-- <p>Obsah stránky nebyl načten.</p> -->
-                    </div>
+    {% block body_inner %}
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <!-- <p>Obsah stránky nebyl načten.</p> -->
                 </div>
             </div>
-        {% endblock body_inner %}
+        </div>
+    {% endblock body_inner %}
 
         {% block body_end %}{% endblock body_end %}
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock javascript %}
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+        {% if js is defined and js %}
+        <script>{{ js|default }}</script>
+        {% endif %}
+    {% endblock javascript %}
 
     {% endblock body_outer %}
+    {% block ie %}
+        <!--[if lt IE 9]>
+        {{ encore_entry_link_tags('ie') }}
+        {{ encore_entry_script_tags('ie') }}
+        <![endif]-->
+    {% endblock ie %}
     </body>
 {% endblock html_inner %}
 </html>

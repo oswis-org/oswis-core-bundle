@@ -1,6 +1,13 @@
-<?php /** @noinspection PhpUnused */
+<?php /** @noinspection MethodShouldBeFinalInspection */
+
+/** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Provider;
+
+use Symfony\Component\Mime\Address;
+use Symfony\Component\Mime\Exception\LogicException;
+use Symfony\Component\Mime\Exception\RfcComplianceException;
+use Zakjakub\OswisCoreBundle\Utils\EmailUtils;
 
 /**
  * Provider of settings for core module of OSWIS.
@@ -66,5 +73,15 @@ class OswisCoreSettingsProvider
     final public function getCoreAppNameLong(): string
     {
         return 'One Simple Web IS';
+    }
+
+    /**
+     * @return Address
+     * @throws LogicException
+     * @throws RfcComplianceException
+     */
+    public function getArchiveMailerAddress(): Address
+    {
+        return new Address($mailSettings['archive_address'] ?? '', EmailUtils::mime_header_encode($mailSettings['archive_name'] ?? ''));
     }
 }
