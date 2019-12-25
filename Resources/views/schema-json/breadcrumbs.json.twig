@@ -1,0 +1,20 @@
+{% if breadcrumbs|length > 0 %}
+{% apply spaceless %}
+{
+    "@context": "http://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {% for b in breadcrumbs %}
+        {
+            "@type": "ListItem",
+            {{ '"position":' ~ loop.index ~ ',' }}
+            "item": {
+                "@id": "{{ b.url }}",
+                "name": "{{- b.title -}}"
+            }
+        }
+        {{ loop.last ? '' : ',' }}{% endfor %}
+    ]
+}
+{% endapply %}
+{% endif %}

@@ -1,6 +1,9 @@
-<?php /** @noinspection MethodShouldBeFinalInspection */
-/** @noinspection PhpUnused */
-/** @noinspection PhpUndefinedMethodInspection */
+<?php
+/**
+ * @noinspection MethodShouldBeFinalInspection
+ * @noinspection PhpUnused
+ * @noinspection PhpUndefinedMethodInspection
+ */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
