@@ -1,4 +1,6 @@
-<?php /** @noinspection PhpUnused */
+<?php /** @noinspection MethodShouldBeFinalInspection */
+
+/** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -26,7 +28,7 @@ trait PhoneTrait
     /**
      * Get phone number.
      */
-    final public function getPhone(): string
+    public function getPhone(): string
     {
         return $this->phone ?? '';
     }
@@ -34,7 +36,7 @@ trait PhoneTrait
     /**
      * Set phone number.
      */
-    final public function setPhone(?string $phone): void
+    public function setPhone(?string $phone): void
     {
         $this->phone = preg_replace('/\s+/', '', $phone);
     }

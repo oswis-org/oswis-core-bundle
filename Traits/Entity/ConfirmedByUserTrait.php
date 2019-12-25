@@ -1,4 +1,6 @@
-<?php /** @noinspection PhpUnused */
+<?php /** @noinspection MethodShouldBeFinalInspection */
+
+/** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -18,17 +20,17 @@ trait ConfirmedByUserTrait
      */
     protected ?DateTime $confirmedByUser = null;
 
-    final public function isConfirmedByUser(): bool
+    public function isConfirmedByUser(): bool
     {
         return $this->confirmedByUser ? true : false;
     }
 
-    final public function getConfirmedByUser(): ?DateTime
+    public function getConfirmedByUser(): ?DateTime
     {
         return $this->confirmedByUser;
     }
 
-    final public function setConfirmedByUser(?DateTime $confirmedByUser): void
+    public function setConfirmedByUser(?DateTime $confirmedByUser): void
     {
         $this->confirmedByUser = $confirmedByUser;
     }
@@ -36,7 +38,7 @@ trait ConfirmedByUserTrait
     /**
      * @throws Exception
      */
-    final public function confirmByUser(): void
+    public function confirmByUser(): void
     {
         if (!$this->confirmedByUser) {
             $this->confirmedByUser = new DateTime();

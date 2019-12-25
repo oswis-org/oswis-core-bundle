@@ -1,4 +1,6 @@
-<?php /** @noinspection PhpUnused */
+<?php /** @noinspection MethodShouldBeFinalInspection */
+
+/** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -33,12 +35,12 @@ trait OrderDateRangeTrait
      */
     protected ?DateTime $endOrderDateTime = null;
 
-    final public function getStartOrderDateTime(): ?DateTime
+    public function getStartOrderDateTime(): ?DateTime
     {
         return $this->startOrderDateTime;
     }
 
-    final public function setStartOrderDateTime(?DateTime $startOrderDateTime): void
+    public function setStartOrderDateTime(?DateTime $startOrderDateTime): void
     {
         $this->startOrderDateTime = $startOrderDateTime;
     }
@@ -51,17 +53,17 @@ trait OrderDateRangeTrait
      * @return bool True if belongs to date range
      * @throws Exception
      */
-    final public function containsOrderDateTime(DateTime $dateTime): bool
+    public function containsOrderDateTime(DateTime $dateTime): bool
     {
         return DateTimeUtils::isDateTimeInRange($this->startOrderDateTime, $this->getEndOrderDateTime(), $dateTime);
     }
 
-    final public function getEndOrderDateTime(): ?DateTime
+    public function getEndOrderDateTime(): ?DateTime
     {
         return $this->endOrderDateTime;
     }
 
-    final public function setEndOrderDateTime(?DateTime $endOrderDateTime): void
+    public function setEndOrderDateTime(?DateTime $endOrderDateTime): void
     {
         $this->endOrderDateTime = $endOrderDateTime;
     }

@@ -1,4 +1,8 @@
-<?php /** @noinspection PhpUnused */
+<?php
+/**
+ * @noinspection MethodShouldBeFinalInspection
+ * @noinspection PhpUnused
+ */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -23,7 +27,7 @@ trait BirthDateTrait
     /**
      * @throws Exception
      */
-    final public function getAge(?DateTime $referenceDateTime = null): ?int
+    public function getAge(?DateTime $referenceDateTime = null): ?int
     {
         return AgeUtils::getAgeFromBirthDate($this->birthDate, $referenceDateTime);
     }
@@ -31,7 +35,7 @@ trait BirthDateTrait
     /**
      * @throws Exception
      */
-    final public function getAgeDecimal(?DateTime $referenceDateTime = null): ?int
+    public function getAgeDecimal(?DateTime $referenceDateTime = null): ?int
     {
         return AgeUtils::getAgeDecimalFromBirthDate($this->birthDate, $referenceDateTime);
     }
@@ -39,7 +43,7 @@ trait BirthDateTrait
     /**
      * Get birth date.
      */
-    final public function getBirthDate(): ?DateTime
+    public function getBirthDate(): ?DateTime
     {
         if ($this->birthDate) {
             $this->birthDate->setTime(0, 0);
@@ -51,7 +55,7 @@ trait BirthDateTrait
     /**
      * Set date and time of entity update.
      */
-    final public function setBirthDate(?DateTime $birthDate): void
+    public function setBirthDate(?DateTime $birthDate): void
     {
         if ($birthDate) {
             $birthDate->setTime(0, 0);

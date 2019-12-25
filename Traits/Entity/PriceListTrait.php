@@ -1,4 +1,6 @@
-<?php /** @noinspection PhpUnused */
+<?php /** @noinspection MethodShouldBeFinalInspection */
+
+/** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -47,42 +49,42 @@ trait PriceListTrait
      */
     protected ?int $minLength = null;
 
-    final public function getDepositPercentage(): ?int
+    public function getDepositPercentage(): ?int
     {
         return $this->depositPercentage;
     }
 
-    final public function setDepositPercentage(?int $depositPercentage): void
+    public function setDepositPercentage(?int $depositPercentage): void
     {
         $this->depositPercentage = $depositPercentage;
     }
 
-    final public function getCancelFeePercentage(): ?int
+    public function getCancelFeePercentage(): ?int
     {
         return $this->cancelFeePercentage;
     }
 
-    final public function setCancelFeePercentage(?int $cancelFeePercentage): void
+    public function setCancelFeePercentage(?int $cancelFeePercentage): void
     {
         $this->cancelFeePercentage = $cancelFeePercentage;
     }
 
-    final public function getDepositDaysAfterOrder(): ?int
+    public function getDepositDaysAfterOrder(): ?int
     {
         return $this->depositDaysAfterOrder;
     }
 
-    final public function setDepositDaysAfterOrder(?int $depositDaysAfterOrder): void
+    public function setDepositDaysAfterOrder(?int $depositDaysAfterOrder): void
     {
         $this->depositDaysAfterOrder = $depositDaysAfterOrder;
     }
 
-    final public function getRestDaysBeforeReservation(): ?int
+    public function getRestDaysBeforeReservation(): ?int
     {
         return $this->restDaysBeforeReservation;
     }
 
-    final public function setRestDaysBeforeReservation(?int $restDaysBeforeReservation): void
+    public function setRestDaysBeforeReservation(?int $restDaysBeforeReservation): void
     {
         $this->restDaysBeforeReservation = $restDaysBeforeReservation;
     }
@@ -90,12 +92,12 @@ trait PriceListTrait
     /**
      * @return int|null
      */
-    final public function getMinLength(): int
+    public function getMinLength(): int
     {
         return $this->minLength ?? 0;
     }
 
-    final public function setMinLength(?int $minLength): void
+    public function setMinLength(?int $minLength): void
     {
         $this->minLength = $minLength;
     }

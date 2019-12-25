@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection MethodShouldBeFinalInspection */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -30,7 +30,7 @@ trait NameTrait
     /**
      * Get short name.
      */
-    final public function getShortName(): ?string
+    public function getShortName(): ?string
     {
         return $this->shortName ?? $this->getName();
     }
@@ -38,7 +38,7 @@ trait NameTrait
     /**
      * Set short name.
      */
-    final public function setShortName(?string $shortName): void
+    public function setShortName(?string $shortName): void
     {
         $this->shortName = $shortName;
     }
@@ -46,7 +46,7 @@ trait NameTrait
     /**
      * Get name/title.
      */
-    final public function getName(): ?string
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -54,7 +54,7 @@ trait NameTrait
     /**
      * Set name/title.
      */
-    final public function setName(?string $name): void
+    public function setName(?string $name): void
     {
         $this->name = $name;
     }

@@ -1,4 +1,6 @@
-<?php /** @noinspection PhpUnused */
+<?php /** @noinspection MethodShouldBeFinalInspection */
+
+/** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -42,17 +44,17 @@ trait RoomTrait
      */
     protected ?int $numberOfAnimals = null;
 
-    final public function getFloor(): ?int
+    public function getFloor(): ?int
     {
         return $this->floor;
     }
 
-    final public function setFloor(?int $floor): void
+    public function setFloor(?int $floor): void
     {
         $this->floor = $floor;
     }
 
-    final public function getNumberOfBeds(): int
+    public function getNumberOfBeds(): int
     {
         return $this->numberOfBeds ?? 0;
     }
@@ -60,12 +62,12 @@ trait RoomTrait
     /**
      * @param int $numberOfBeds
      */
-    final public function setNumberOfBeds(?int $numberOfBeds): void
+    public function setNumberOfBeds(?int $numberOfBeds): void
     {
         $this->numberOfBeds = $numberOfBeds;
     }
 
-    final public function getNumberOfExtraBeds(): int
+    public function getNumberOfExtraBeds(): int
     {
         return $this->numberOfExtraBeds ?? 0;
     }
@@ -73,12 +75,12 @@ trait RoomTrait
     /**
      * @param int| $numberOfExtraBeds
      */
-    final public function setNumberOfExtraBeds(?int $numberOfExtraBeds): void
+    public function setNumberOfExtraBeds(?int $numberOfExtraBeds): void
     {
         $this->numberOfExtraBeds = $numberOfExtraBeds;
     }
 
-    final public function getNumberOfAnimals(): int
+    public function getNumberOfAnimals(): int
     {
         return $this->numberOfAnimals ?? 0;
     }
@@ -86,7 +88,7 @@ trait RoomTrait
     /**
      * @param int| $numberOfAnimals
      */
-    final public function setNumberOfAnimals(?int $numberOfAnimals): void
+    public function setNumberOfAnimals(?int $numberOfAnimals): void
     {
         $this->numberOfAnimals = $numberOfAnimals;
     }

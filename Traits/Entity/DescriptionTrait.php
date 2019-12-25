@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection MethodShouldBeFinalInspection */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -19,7 +19,7 @@ trait DescriptionTrait
     /**
      * Get description.
      */
-    final public function getDescription(): string
+    public function getDescription(): string
     {
         return $this->description ?? '';
     }
@@ -27,7 +27,7 @@ trait DescriptionTrait
     /**
      * Set description.
      */
-    final public function setDescription(?string $description): void
+    public function setDescription(?string $description): void
     {
         $this->description = empty($description) ? null : $description;
     }

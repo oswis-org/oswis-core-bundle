@@ -1,35 +1,42 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection MethodShouldBeFinalInspection
+ */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
 /**
- * Trait adds active field.
+ * Trait adds "active" field.
  */
 trait ActiveTrait
 {
     /**
      * Active.
      *
-     * @var bool|null
-     *
      * @Doctrine\ORM\Mapping\Column(type="boolean", nullable=true)
      */
     protected ?bool $active = null;
 
+    public function isActive(): bool
+    {
+        return $this->getActive();
+    }
+
     /**
-     * Get active.
+     * Get value of "active" field.
      */
-    final public function getActive(): bool
+    public function getActive(): bool
     {
         return $this->active ?? false;
     }
 
     /**
-     * Set active.
+     * Set value of "active" field.
      *
      * @param bool $active
      */
-    final public function setActive(?bool $active = false): void
+    public function setActive(?bool $active = false): void
     {
         $this->active = $active ?? false;
     }

@@ -1,4 +1,8 @@
-<?php /** @noinspection PhpUnused */
+<?php
+/**
+ * @noinspection MethodShouldBeFinalInspection
+ * @noinspection PhpUnused
+ */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -18,27 +22,27 @@ trait BankAccountTrait
      */
     protected ?string $bankAccountBank = null;
 
-    final public function getBankAccountNumber(): ?string
+    public function getBankAccountNumber(): ?string
     {
         return $this->bankAccountNumber;
     }
 
-    final public function setBankAccountNumber(?string $bankAccountNumber): void
+    public function setBankAccountNumber(?string $bankAccountNumber): void
     {
         $this->bankAccountNumber = $bankAccountNumber;
     }
 
-    final public function getBankAccountBank(): ?string
+    public function getBankAccountBank(): ?string
     {
         return $this->bankAccountBank;
     }
 
-    final public function setBankAccountBank(?string $bankAccountBank): void
+    public function setBankAccountBank(?string $bankAccountBank): void
     {
         $this->bankAccountBank = $bankAccountBank;
     }
 
-    final public function getFullBankAccount(): ?string
+    public function getFullBankAccount(): ?string
     {
         return $this->getBankAccountComplete();
     }
@@ -46,7 +50,7 @@ trait BankAccountTrait
     /**
      * @return string
      */
-    final public function getBankAccountComplete(): ?string
+    public function getBankAccountComplete(): ?string
     {
         $fullBankAccount = $this->bankAccountNumber;
         if ($this->bankAccountNumber && $this->bankAccountBank) {

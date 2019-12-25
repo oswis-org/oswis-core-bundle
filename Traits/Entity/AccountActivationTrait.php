@@ -1,4 +1,7 @@
 <?php
+/**
+ * @noinspection MethodShouldBeFinalInspection
+ */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -35,7 +38,7 @@ trait AccountActivationTrait
      */
     protected ?DateTime $accountActivationDateTime = null;
 
-    final public function checkAndDestroyAccountActivationRequestToken(?string $token, int $validHours = 24): bool
+    public function checkAndDestroyAccountActivationRequestToken(?string $token, int $validHours = 24): bool
     {
         $diff = null;
         if ($this->getAccountActivationRequestDateTime()) {
@@ -56,38 +59,38 @@ trait AccountActivationTrait
         return false;
     }
 
-    final public function getAccountActivationRequestDateTime(): ?DateTime
+    public function getAccountActivationRequestDateTime(): ?DateTime
     {
         return $this->accountActivationRequestDateTime;
     }
 
-    final public function setAccountActivationRequestDateTime(?DateTime $accountActivationRequestDateTime): void
+    public function setAccountActivationRequestDateTime(?DateTime $accountActivationRequestDateTime): void
     {
         $this->accountActivationRequestDateTime = $accountActivationRequestDateTime;
     }
 
-    final public function destroyAccountActivationRequestToken(): void
+    public function destroyAccountActivationRequestToken(): void
     {
         $this->setAccountActivationRequestDateTime(null);
         $this->setAccountActivationRequestToken(null);
     }
 
-    final public function checkAccountActivationRequestToken(?string $token): bool
+    public function checkAccountActivationRequestToken(?string $token): bool
     {
         return $token && $token === $this->getAccountActivationRequestToken();
     }
 
-    final public function getAccountActivationRequestToken(): ?string
+    public function getAccountActivationRequestToken(): ?string
     {
         return $this->accountActivationRequestToken;
     }
 
-    final public function setAccountActivationRequestToken(?string $accountActivationRequestToken): void
+    public function setAccountActivationRequestToken(?string $accountActivationRequestToken): void
     {
         $this->accountActivationRequestToken = $accountActivationRequestToken;
     }
 
-    final public function generateAccountActivationRequestToken(): ?string
+    public function generateAccountActivationRequestToken(): ?string
     {
         try {
             $this->setAccountActivationRequestToken(StringUtils::generateToken());
@@ -101,12 +104,12 @@ trait AccountActivationTrait
         }
     }
 
-    final public function getAccountActivationDateTime(): ?DateTime
+    public function getAccountActivationDateTime(): ?DateTime
     {
         return $this->accountActivationDateTime;
     }
 
-    final public function setAccountActivationDateTime(?DateTime $accountActivationDateTime): void
+    public function setAccountActivationDateTime(?DateTime $accountActivationDateTime): void
     {
         $this->accountActivationDateTime = $accountActivationDateTime;
     }

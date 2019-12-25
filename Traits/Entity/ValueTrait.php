@@ -1,4 +1,6 @@
-<?php /** @noinspection PhpUnused */
+<?php /** @noinspection MethodShouldBeFinalInspection */
+
+/** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -22,32 +24,32 @@ trait ValueTrait
      */
     protected ?string $valueLabel = null;
 
-    final public function getValueRegex(): ?string
+    public function getValueRegex(): ?string
     {
         return $this->valueRegex;
     }
 
-    final public function setValueRegex(?string $valueRegex): void
+    public function setValueRegex(?string $valueRegex): void
     {
         $this->valueRegex = $valueRegex;
     }
 
-    final public function getValueLabel(): ?string
+    public function getValueLabel(): ?string
     {
         return $this->valueLabel;
     }
 
-    final public function setValueLabel(?string $valueLabel): void
+    public function setValueLabel(?string $valueLabel): void
     {
         $this->valueLabel = $valueLabel;
     }
 
-    final public function isValueAllowed(): bool
+    public function isValueAllowed(): bool
     {
         return $this->valueAllowed ?? false;
     }
 
-    final public function setValueAllowed(?bool $valueAllowed): void
+    public function setValueAllowed(?bool $valueAllowed): void
     {
         $this->valueAllowed = $valueAllowed ?? false;
     }

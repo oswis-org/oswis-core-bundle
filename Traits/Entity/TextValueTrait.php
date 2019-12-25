@@ -1,4 +1,6 @@
-<?php /** @noinspection PhpUnused */
+<?php /** @noinspection MethodShouldBeFinalInspection */
+
+/** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -21,7 +23,7 @@ trait TextValueTrait
      *
      * @return string
      */
-    final public function getTextValue(): ?string
+    public function getTextValue(): ?string
     {
         return $this->textValue;
     }
@@ -31,7 +33,7 @@ trait TextValueTrait
      *
      * @param string $textValue
      */
-    final public function setTextValue(?string $textValue): void
+    public function setTextValue(?string $textValue): void
     {
         $this->textValue = $textValue;
     }

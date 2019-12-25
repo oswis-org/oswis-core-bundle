@@ -1,4 +1,6 @@
-<?php /** @noinspection PhpUnused */
+<?php /** @noinspection MethodShouldBeFinalInspection */
+
+/** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -15,12 +17,12 @@ trait PlainTextReasonTrait
      */
     protected ?string $reason = null;
 
-    final public function getReason(): ?string
+    public function getReason(): ?string
     {
         return $this->reason;
     }
 
-    final public function setReason(?string $reason): void
+    public function setReason(?string $reason): void
     {
         $this->reason = $reason;
     }

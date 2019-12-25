@@ -1,4 +1,6 @@
-<?php /** @noinspection PhpUnused */
+<?php /** @noinspection MethodShouldBeFinalInspection */
+
+/** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -65,7 +67,7 @@ trait FullNameTrait
      */
     protected ?string $honorificSuffix = null;
 
-    final public function setFullName(?string $name): void
+    public function setFullName(?string $name): void
     {
         if ($name) {
             $parser = new FullNameParser();
@@ -86,7 +88,7 @@ trait FullNameTrait
         }
     }
 
-    final public function getFullName(): string
+    public function getFullName(): string
     {
         $fullName = $this->getHonorificPrefix().' '.$this->getGivenName().' '.$this->getAdditionalName().' '.$this->getFamilyName().' '.$this->getHonorificSuffix();
         $fullName = trim($fullName);
@@ -95,67 +97,67 @@ trait FullNameTrait
         return $fullName ?? '';
     }
 
-    final public function getHonorificPrefix(): ?string
+    public function getHonorificPrefix(): ?string
     {
         return $this->honorificPrefix;
     }
 
-    final public function setHonorificPrefix(?string $honorificPrefix): void
+    public function setHonorificPrefix(?string $honorificPrefix): void
     {
         $this->honorificPrefix = $honorificPrefix;
     }
 
-    final public function getGivenName(): ?string
+    public function getGivenName(): ?string
     {
         return $this->givenName;
     }
 
-    final public function setGivenName(?string $givenName): void
+    public function setGivenName(?string $givenName): void
     {
         $this->givenName = $givenName;
     }
 
-    final public function getAdditionalName(): ?string
+    public function getAdditionalName(): ?string
     {
         return $this->additionalName;
     }
 
-    final public function setAdditionalName(?string $additionalName): void
+    public function setAdditionalName(?string $additionalName): void
     {
         $this->additionalName = $additionalName;
     }
 
-    final public function getFamilyName(): ?string
+    public function getFamilyName(): ?string
     {
         return $this->familyName;
     }
 
-    final public function setFamilyName(?string $familyName): void
+    public function setFamilyName(?string $familyName): void
     {
         $this->familyName = $familyName;
     }
 
-    final public function getHonorificSuffix(): ?string
+    public function getHonorificSuffix(): ?string
     {
         return $this->honorificSuffix;
     }
 
-    final public function setHonorificSuffix(?string $honorificSuffix): void
+    public function setHonorificSuffix(?string $honorificSuffix): void
     {
         $this->honorificSuffix = $honorificSuffix;
     }
 
-    final public function getNickname(): ?string
+    public function getNickname(): ?string
     {
         return $this->nickname;
     }
 
-    final public function setNickname(?string $nickname): void
+    public function setNickname(?string $nickname): void
     {
         $this->nickname = $nickname;
     }
 
-    final public function getSalutationName(): ?string
+    public function getSalutationName(): ?string
     {
         if (!$this->getGivenName()) {
             return null;
@@ -170,7 +172,7 @@ trait FullNameTrait
         }
     }
 
-    final public function getCzechSuffixA(): string
+    public function getCzechSuffixA(): string
     {
         try {
             $vokativName = new VokativName();

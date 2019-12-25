@@ -1,4 +1,6 @@
-<?php /** @noinspection PhpUnused */
+<?php /** @noinspection MethodShouldBeFinalInspection */
+
+/** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -32,7 +34,7 @@ trait ReservationDateRangeTrait
     /**
      * @return DateTime
      */
-    final public function getStartReservationDateTime(): ?DateTime
+    public function getStartReservationDateTime(): ?DateTime
     {
         return $this->startReservationDateTime;
     }
@@ -40,7 +42,7 @@ trait ReservationDateRangeTrait
     /**
      * @param DateTime $startReservationDateTime
      */
-    final public function setStartReservationDateTime(?DateTime $startReservationDateTime): void
+    public function setStartReservationDateTime(?DateTime $startReservationDateTime): void
     {
         $this->startReservationDateTime = $startReservationDateTime;
     }
@@ -53,7 +55,7 @@ trait ReservationDateRangeTrait
      * @return bool True if belongs to date range
      * @throws Exception
      */
-    final public function containsReservationDateTime(DateTime $dateTime): bool
+    public function containsReservationDateTime(DateTime $dateTime): bool
     {
         return DateTimeUtils::isDateTimeInRange($this->startReservationDateTime, $this->getEndReservationDateTime(), $dateTime);
     }
@@ -61,7 +63,7 @@ trait ReservationDateRangeTrait
     /**
      * @return DateTime
      */
-    final public function getEndReservationDateTime(): ?DateTime
+    public function getEndReservationDateTime(): ?DateTime
     {
         return $this->endReservationDateTime;
     }
@@ -69,7 +71,7 @@ trait ReservationDateRangeTrait
     /**
      * @param DateTime $endReservationDateTime
      */
-    final public function setEndReservationDateTime(?DateTime $endReservationDateTime): void
+    public function setEndReservationDateTime(?DateTime $endReservationDateTime): void
     {
         $this->endReservationDateTime = $endReservationDateTime;
     }

@@ -1,5 +1,5 @@
-<?php /** @noinspection PhpUnused */
-
+<?php /** @noinspection MethodShouldBeFinalInspection */
+/** @noinspection PhpUnused */
 /** @noinspection PhpUndefinedMethodInspection */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
@@ -8,7 +8,7 @@ use DateTime;
 
 trait IdentificationNumberContainerTrait
 {
-    final public function setIdentificationNumber(?string $identificationNumber): void
+    public function setIdentificationNumber(?string $identificationNumber): void
     {
         if ($this->getIdentificationNumber() !== $identificationNumber) {
             $newRevision = clone $this->getRevision();
@@ -17,7 +17,7 @@ trait IdentificationNumberContainerTrait
         }
     }
 
-    final public function getIdentificationNumber(?DateTime $dateTime = null): ?string
+    public function getIdentificationNumber(?DateTime $dateTime = null): ?string
     {
         if ($this->getRevisionByDate($dateTime)->getIdentificationNumber()) {
             return $this->getRevisionByDate($dateTime)->getIdentificationNumber();

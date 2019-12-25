@@ -1,5 +1,9 @@
 <?php
-/** @noinspection PhpUndefinedMethodInspection */
+/**
+ * @noinspection PhpUnused
+ * @noinspection MethodShouldBeFinalInspection
+ * @noinspection PhpUndefinedMethodInspection
+ */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -10,17 +14,17 @@ use DateTime;
  */
 trait AddressContainerTrait
 {
-    final public function getCity(?DateTime $dateTime = null): ?string
+    public function getCity(?DateTime $dateTime = null): ?string
     {
         return $this->getRevisionByDate($dateTime)->getCity();
     }
 
-    final public function getDoorNumber(?DateTime $dateTime = null): ?int
+    public function getDoorNumber(?DateTime $dateTime = null): ?int
     {
         return $this->getRevisionByDate($dateTime)->getDoorNumber();
     }
 
-    final public function setStreet(?string $street): void
+    public function setStreet(?string $street): void
     {
         if ($this->getStreet() !== $street) {
             $newRevision = clone $this->getRevisionByDate();
@@ -29,12 +33,12 @@ trait AddressContainerTrait
         }
     }
 
-    final public function getStreet(?DateTime $dateTime = null): ?string
+    public function getStreet(?DateTime $dateTime = null): ?string
     {
         return $this->getRevisionByDate($dateTime)->getStreet();
     }
 
-    final public function setStreet2(?string $street2): void
+    public function setStreet2(?string $street2): void
     {
         if ($this->getStreet2() !== $street2) {
             $newRevision = clone $this->getRevisionByDate();
@@ -43,12 +47,12 @@ trait AddressContainerTrait
         }
     }
 
-    final public function getStreet2(?DateTime $dateTime = null): ?string
+    public function getStreet2(?DateTime $dateTime = null): ?string
     {
         return $this->getRevisionByDate($dateTime)->getStreet2();
     }
 
-    final public function setHouseNumber(?int $houseNumber): void
+    public function setHouseNumber(?int $houseNumber): void
     {
         if ($this->getHouseNumber() !== $houseNumber) {
             $newRevision = clone $this->getRevisionByDate();
@@ -57,12 +61,12 @@ trait AddressContainerTrait
         }
     }
 
-    final public function getHouseNumber(?DateTime $dateTime = null): ?int
+    public function getHouseNumber(?DateTime $dateTime = null): ?int
     {
         return $this->getRevisionByDate($dateTime)->getHouseNumber();
     }
 
-    final public function setDoorNumber(?int $doorNumber): void
+    public function setDoorNumber(?int $doorNumber): void
     {
         if ($this->getStreet() !== $doorNumber) {
             $newRevision = clone $this->getRevisionByDate();
@@ -71,7 +75,7 @@ trait AddressContainerTrait
         }
     }
 
-    final public function setPostalCode(?string $postalCode): void
+    public function setPostalCode(?string $postalCode): void
     {
         if ($this->getPostalCode() !== $postalCode) {
             $newRevision = clone $this->getRevisionByDate();
@@ -80,12 +84,12 @@ trait AddressContainerTrait
         }
     }
 
-    final public function getPostalCode(?DateTime $dateTime = null): ?string
+    public function getPostalCode(?DateTime $dateTime = null): ?string
     {
         return $this->getRevisionByDate($dateTime)->getPostalCode();
     }
 
-    final public function setCity(?string $city): void
+    public function setCity(?string $city): void
     {
         if ($this->getStreet() !== $city) {
             $newRevision = clone $this->getRevisionByDate();

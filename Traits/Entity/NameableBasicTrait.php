@@ -1,4 +1,6 @@
-<?php /** @noinspection PhpUnused */
+<?php /** @noinspection MethodShouldBeFinalInspection */
+
+/** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -12,7 +14,7 @@ trait NameableBasicTrait
     use SlugTrait;
     use InternalNoteTrait; /// ????? Is used somewhere?
 
-    final public function setFieldsFromNameable(?Nameable $nameable = null): void
+    public function setFieldsFromNameable(?Nameable $nameable = null): void
     {
         if ($nameable) {
             $this->setName($nameable->name);
@@ -23,7 +25,7 @@ trait NameableBasicTrait
         }
     }
 
-    final public function getNameable(): Nameable
+    public function getNameable(): Nameable
     {
         return new Nameable($this->getName(), $this->getShortName(), $this->getDescription(), $this->getNote(), $this->getSlug());
     }

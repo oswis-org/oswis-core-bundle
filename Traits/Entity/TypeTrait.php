@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection MethodShouldBeFinalInspection */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -19,7 +19,7 @@ trait TypeTrait
      */
     protected ?string $type = null;
 
-    final public function getType(): ?string
+    public function getType(): ?string
     {
         try {
             self::checkType($this->type);
@@ -33,7 +33,7 @@ trait TypeTrait
     /**
      * @throws InvalidArgumentException
      */
-    final public function setType(?string $type): void
+    public function setType(?string $type): void
     {
         $type = '' === $type ? null : $type;
         self::checkType($type);
@@ -51,7 +51,7 @@ trait TypeTrait
         throw new InvalidArgumentException('Typ "'.$typeName.'" v události není povolen.');
     }
 
-    final public static function getAllowedTypes(): array
+    public static function getAllowedTypes(): array
     {
         return array_merge(static::getAllowedTypesDefault(), static::getAllowedTypesCustom());
     }

@@ -1,5 +1,8 @@
-<?php /** @noinspection PhpUnused */
-
+<?php /** @noinspection MethodShouldBeFinalInspection */
+/** @noinspection MethodShouldBeFinalInspection */
+/** @noinspection MethodShouldBeFinalInspection */
+/** @noinspection ALL */
+/** @noinspection PhpUnused */
 /** @noinspection PhpUndefinedMethodInspection */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
@@ -21,7 +24,7 @@ trait DateRangeContainerTrait
      * @return bool True if belongs to date range
      * @throws Exception
      */
-    final public function containsDateTimeInRange(?DateTime $dateTime = null, ?DateTime $referenceDateTime = null): bool
+    public function containsDateTimeInRange(?DateTime $dateTime = null, ?DateTime $referenceDateTime = null): bool
     {
         $dateTime = $dateTime ?? new DateTime();
         $start = $this->getStartDateTime($referenceDateTime);
@@ -33,7 +36,7 @@ trait DateRangeContainerTrait
     /**
      * @return DateTime
      */
-    final public function getStartDateTime(?DateTime $referenceDateTime = null): ?DateTime
+    public function getStartDateTime(?DateTime $referenceDateTime = null): ?DateTime
     {
         return $this->getRevisionByDate($referenceDateTime)->getStartDateTime();
     }
@@ -41,22 +44,22 @@ trait DateRangeContainerTrait
     /**
      * @return DateTime
      */
-    final public function getEndDateTime(?DateTime $referenceDateTime = null): ?DateTime
+    public function getEndDateTime(?DateTime $referenceDateTime = null): ?DateTime
     {
         return $this->getRevisionByDate($referenceDateTime)->getEndDateTime();
     }
 
-    final public function getStartDate(?DateTime $referenceDateTime = null): ?DateTime
+    public function getStartDate(?DateTime $referenceDateTime = null): ?DateTime
     {
         return $this->getStartDateTime($referenceDateTime);
     }
 
-    final public function getEndDate(?DateTime $referenceDateTime = null): ?DateTime
+    public function getEndDate(?DateTime $referenceDateTime = null): ?DateTime
     {
         return $this->getEndDateTime($referenceDateTime);
     }
 
-    final public function setStartDate(?DateTime $dateTime): void
+    public function setStartDate(?DateTime $dateTime): void
     {
         $this->setStartDateTime($dateTime);
     }
@@ -64,7 +67,7 @@ trait DateRangeContainerTrait
     /**
      * @param DateTime $startDateTime
      */
-    final public function setStartDateTime(?DateTime $startDateTime): void
+    public function setStartDateTime(?DateTime $startDateTime): void
     {
         if ($this->getStartDateTime() !== $startDateTime) {
             $newRevision = clone $this->getRevisionByDate();
@@ -73,7 +76,7 @@ trait DateRangeContainerTrait
         }
     }
 
-    final public function setEndDate(?DateTime $dateTime): void
+    public function setEndDate(?DateTime $dateTime): void
     {
         $this->setEndDateTime($dateTime);
     }
@@ -81,7 +84,7 @@ trait DateRangeContainerTrait
     /**
      * @param DateTime $endDateTime
      */
-    final public function setEndDateTime(?DateTime $endDateTime): void
+    public function setEndDateTime(?DateTime $endDateTime): void
     {
         if ($this->getEndDateTime() !== $endDateTime) {
             $newRevision = clone $this->getRevisionByDate();
@@ -90,7 +93,7 @@ trait DateRangeContainerTrait
         }
     }
 
-    final public function getLengthInHours(?DateTime $referenceDateTime = null): ?int
+    public function getLengthInHours(?DateTime $referenceDateTime = null): ?int
     {
         return $this->getRevisionByDate($referenceDateTime)->getLengthInHours();
     }

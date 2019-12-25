@@ -1,4 +1,6 @@
-<?php /** @noinspection PhpUnused */
+<?php /** @noinspection MethodShouldBeFinalInspection */
+
+/** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -16,7 +18,7 @@ trait DepositValueTrait
     /**
      * Get deposit value.
      */
-    final public function getDepositValue(): int
+    public function getDepositValue(): int
     {
         return $this->depositValue ?? 0;
     }
@@ -24,7 +26,7 @@ trait DepositValueTrait
     /**
      * Set deposit value.
      */
-    final public function setDepositValue(int $depositValue): void
+    public function setDepositValue(int $depositValue): void
     {
         $this->depositValue = $depositValue ?? 0;
     }

@@ -1,4 +1,6 @@
-<?php /** @noinspection PhpUnused */
+<?php /** @noinspection MethodShouldBeFinalInspection */
+
+/** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -36,7 +38,7 @@ trait DateRangeTrait
      *
      * @return bool True if belongs to date range
      */
-    final public function containsDateTimeInRange(?DateTime $dateTime = null): bool
+    public function containsDateTimeInRange(?DateTime $dateTime = null): bool
     {
         try {
             return DateTimeUtils::isDateTimeInRange($this->getStartDateTime(), $this->getEndDateTime(), $dateTime ?? new DateTime());
@@ -48,7 +50,7 @@ trait DateRangeTrait
     /**
      * @return DateTime
      */
-    final public function getStartDateTime(): ?DateTime
+    public function getStartDateTime(): ?DateTime
     {
         return $this->startDateTime;
     }
@@ -56,7 +58,7 @@ trait DateRangeTrait
     /**
      * @param DateTime $startDateTime
      */
-    final public function setStartDateTime(?DateTime $startDateTime): void
+    public function setStartDateTime(?DateTime $startDateTime): void
     {
         $this->startDateTime = $startDateTime;
     }
@@ -64,7 +66,7 @@ trait DateRangeTrait
     /**
      * @return DateTime
      */
-    final public function getEndDateTime(): ?DateTime
+    public function getEndDateTime(): ?DateTime
     {
         return $this->endDateTime;
     }
@@ -72,32 +74,32 @@ trait DateRangeTrait
     /**
      * @param DateTime $endDateTime
      */
-    final public function setEndDateTime(?DateTime $endDateTime): void
+    public function setEndDateTime(?DateTime $endDateTime): void
     {
         $this->endDateTime = $endDateTime;
     }
 
-    final public function setStartDate(?DateTime $dateTime): void
+    public function setStartDate(?DateTime $dateTime): void
     {
         $this->setStartDateTime($dateTime);
     }
 
-    final public function setEndDate(?DateTime $dateTime): void
+    public function setEndDate(?DateTime $dateTime): void
     {
         $this->setEndDateTime($dateTime);
     }
 
-    final public function getLengthInHours(): ?int
+    public function getLengthInHours(): ?int
     {
         return (!$this->getStartDate() || !$this->getEndDate()) ? null : (int)$this->getEndDate()->diff($this->getStartDate())->h;
     }
 
-    final public function getStartDate(): ?DateTime
+    public function getStartDate(): ?DateTime
     {
         return $this->getStartDateTime();
     }
 
-    final public function getEndDate(): ?DateTime
+    public function getEndDate(): ?DateTime
     {
         return $this->getStartDateTime();
     }

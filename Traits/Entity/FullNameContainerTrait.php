@@ -1,5 +1,5 @@
-<?php /** @noinspection PhpUnused */
-
+<?php /** @noinspection MethodShouldBeFinalInspection */
+/** @noinspection PhpUnused */
 /** @noinspection PhpUndefinedMethodInspection */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
@@ -8,7 +8,7 @@ use DateTime;
 
 trait FullNameContainerTrait
 {
-    final public function setFullName(?string $fullName): void
+    public function setFullName(?string $fullName): void
     {
         if ($this->getFullName() !== $fullName) {
             $newRevision = clone $this->getRevisionByDate();
@@ -17,32 +17,32 @@ trait FullNameContainerTrait
         }
     }
 
-    final public function getFullName(?DateTime $dateTime = null): ?string
+    public function getFullName(?DateTime $dateTime = null): ?string
     {
         return $this->getRevisionByDate($dateTime)->getFullName();
     }
 
-    final public function getNickname(?DateTime $dateTime = null): ?string
+    public function getNickname(?DateTime $dateTime = null): ?string
     {
         return $this->getRevisionByDate($dateTime)->getNickname();
     }
 
-    final public function getGivenName(?DateTime $dateTime = null): ?string
+    public function getGivenName(?DateTime $dateTime = null): ?string
     {
         return $this->getRevisionByDate($dateTime)->getGivenName();
     }
 
-    final public function getFamilyName(?DateTime $dateTime = null): ?string
+    public function getFamilyName(?DateTime $dateTime = null): ?string
     {
         return $this->getRevisionByDate($dateTime)->getFamilyName();
     }
 
-    final public function getSalutationName(?DateTime $dateTime = null): ?string
+    public function getSalutationName(?DateTime $dateTime = null): ?string
     {
         return $this->getRevisionByDate($dateTime)->getSalutationName();
     }
 
-    final public function getCzechSuffixA(?DateTime $dateTime = null): string
+    public function getCzechSuffixA(?DateTime $dateTime = null): string
     {
         return $this->getRevisionByDate($dateTime)->getCzechSuffixA();
     }

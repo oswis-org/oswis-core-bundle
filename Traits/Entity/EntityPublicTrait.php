@@ -1,4 +1,6 @@
-<?php /** @noinspection PhpUnused */
+<?php /** @noinspection MethodShouldBeFinalInspection */
+
+/** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -39,7 +41,7 @@ trait EntityPublicTrait
      */
     protected ?bool $publicInPortal = null;
 
-    final public function isPublicOnWeb(): bool
+    public function isPublicOnWeb(): bool
     {
         return $this->publicOnWeb ?? false;
     }
@@ -47,12 +49,12 @@ trait EntityPublicTrait
     /**
      * @param bool $publicOnWeb
      */
-    final public function setPublicOnWeb(?bool $publicOnWeb): void
+    public function setPublicOnWeb(?bool $publicOnWeb): void
     {
         $this->publicOnWeb = $publicOnWeb;
     }
 
-    final public function isPublicOnWebRoute(): bool
+    public function isPublicOnWebRoute(): bool
     {
         return $this->publicOnWebRoute ?? false;
     }
@@ -60,12 +62,12 @@ trait EntityPublicTrait
     /**
      * @param bool $publicOnWebRoute
      */
-    final public function setPublicOnWebRoute(?bool $publicOnWebRoute): void
+    public function setPublicOnWebRoute(?bool $publicOnWebRoute): void
     {
         $this->publicOnWebRoute = $publicOnWebRoute;
     }
 
-    final public function isPublicInIS(): bool
+    public function isPublicInIS(): bool
     {
         return $this->publicInIS ?? false;
     }
@@ -73,12 +75,12 @@ trait EntityPublicTrait
     /**
      * @param bool $publicInIS
      */
-    final public function setPublicInIS(?bool $publicInIS): void
+    public function setPublicInIS(?bool $publicInIS): void
     {
         $this->publicInIS = $publicInIS;
     }
 
-    final public function isPublicInPortal(): bool
+    public function isPublicInPortal(): bool
     {
         return $this->publicInPortal ?? false;
     }
@@ -86,7 +88,7 @@ trait EntityPublicTrait
     /**
      * @param bool $publicInPortal
      */
-    final public function setPublicInPortal(?bool $publicInPortal): void
+    public function setPublicInPortal(?bool $publicInPortal): void
     {
         $this->publicInPortal = $publicInPortal;
     }

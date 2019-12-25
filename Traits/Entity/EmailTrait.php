@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection MethodShouldBeFinalInspection */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -23,7 +23,7 @@ trait EmailTrait
     /**
      * Get e-mail.
      */
-    final public function getEmail(): string
+    public function getEmail(): string
     {
         return $this->email ?? '';
     }
@@ -31,7 +31,7 @@ trait EmailTrait
     /**
      * Set e-mail.
      */
-    final public function setEmail(?string $email): void
+    public function setEmail(?string $email): void
     {
         $this->email = $email;
     }

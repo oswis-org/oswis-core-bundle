@@ -1,4 +1,6 @@
-<?php /** @noinspection PhpUnused */
+<?php /** @noinspection MethodShouldBeFinalInspection */
+
+/** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -18,17 +20,17 @@ trait LockedForUserChangesTrait
     /**
      * @throws Exception
      */
-    final public function isLockedForUserChanges(): bool
+    public function isLockedForUserChanges(): bool
     {
         return $this->lockedForUserChanges ? new DateTime() > $this->lockedForUserChanges : false;
     }
 
-    final public function getLockedForUserChanges(): ?DateTime
+    public function getLockedForUserChanges(): ?DateTime
     {
         return $this->lockedForUserChanges;
     }
 
-    final public function setLockedForUserChanges(?DateTime $lockedForUserChanges): void
+    public function setLockedForUserChanges(?DateTime $lockedForUserChanges): void
     {
         $this->lockedForUserChanges = $lockedForUserChanges;
     }
@@ -36,7 +38,7 @@ trait LockedForUserChangesTrait
     /**
      * @throws Exception
      */
-    final public function lockForUserChanges(): void
+    public function lockForUserChanges(): void
     {
         if (!$this->lockedForUserChanges) {
             $this->lockedForUserChanges = new DateTime();
@@ -46,7 +48,7 @@ trait LockedForUserChangesTrait
     /**
      * @throws Exception
      */
-    final public function unlockForUserChanges(): void
+    public function unlockForUserChanges(): void
     {
         $this->lockedForUserChanges = null;
     }

@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection MethodShouldBeFinalInspection */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -22,12 +22,12 @@ trait IdTrait
      *
      * @return int
      */
-    final public function getId(): ?int
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    final public function setId(int $id): void
+    public function setId(int $id): void
     {
         $this->id = $id;
     }

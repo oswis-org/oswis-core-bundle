@@ -1,5 +1,5 @@
-<?php /** @noinspection PhpUnused */
-
+<?php /** @noinspection MethodShouldBeFinalInspection */
+/** @noinspection PhpUnused */
 /** @noinspection PhpUndefinedMethodInspection */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
@@ -8,7 +8,7 @@ use DateTime;
 
 trait PhoneContainerTrait
 {
-    final public function setPhone(?string $phone): void
+    public function setPhone(?string $phone): void
     {
         if ($this->getPhone() !== $phone) {
             $newRevision = clone $this->getRevision();
@@ -17,7 +17,7 @@ trait PhoneContainerTrait
         }
     }
 
-    final public function getPhone(?DateTime $dateTime = null): ?string
+    public function getPhone(?DateTime $dateTime = null): ?string
     {
         return $this->getRevisionByDate($dateTime)->getPhone();
     }

@@ -1,4 +1,6 @@
-<?php /** @noinspection PhpUnused */
+<?php /** @noinspection MethodShouldBeFinalInspection */
+
+/** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -19,7 +21,7 @@ trait PriorityTrait
     /**
      * Get priority.
      */
-    final public function getPriority(): int
+    public function getPriority(): int
     {
         return $this->priority ?? 0;
     }
@@ -29,7 +31,7 @@ trait PriorityTrait
      *
      * @param int $priority
      */
-    final public function setPriority(?int $priority): void
+    public function setPriority(?int $priority): void
     {
         $this->priority = $priority ?? 0;
     }

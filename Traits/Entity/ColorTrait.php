@@ -1,4 +1,8 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection MethodShouldBeFinalInspection
+ */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -12,17 +16,22 @@ trait ColorTrait
      */
     protected ?string $color = null;
 
-    final public function getColor(): ?string
+    public function getColor(): ?string
     {
         return $this->color;
     }
 
-    final public function setColor(?string $color): void
+    public function setColor(?string $color): void
     {
         $this->color = $color;
     }
 
-    final public function isForegroundWhite(): bool
+    public function getForegroundColor(): string
+    {
+        return $this->isForegroundWhite() ? '#ffffff' : '#000000';
+    }
+
+    public function isForegroundWhite(): bool
     {
         if (4 === strlen($this->color)) {
             [$r, $g, $b] = sscanf($this->color, '#%1x%1x%1x');

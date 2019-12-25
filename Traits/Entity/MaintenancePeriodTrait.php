@@ -1,4 +1,6 @@
-<?php /** @noinspection PhpUnused */
+<?php /** @noinspection MethodShouldBeFinalInspection */
+
+/** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -16,7 +18,7 @@ trait MaintenancePeriodTrait
      */
     protected ?bool $accommodationNotAvailable = null;
 
-    final public function getAccommodationNotAvailable(): bool
+    public function getAccommodationNotAvailable(): bool
     {
         return $this->accommodationNotAvailable ?? false;
     }
@@ -24,7 +26,7 @@ trait MaintenancePeriodTrait
     /**
      * @param bool $accommodationNotAvailable
      */
-    final public function setAccommodationNotAvailable(?bool $accommodationNotAvailable = null): void
+    public function setAccommodationNotAvailable(?bool $accommodationNotAvailable = null): void
     {
         $this->accommodationNotAvailable = $accommodationNotAvailable;
     }

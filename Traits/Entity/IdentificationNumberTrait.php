@@ -1,4 +1,6 @@
-<?php /** @noinspection PhpUnused */
+<?php /** @noinspection MethodShouldBeFinalInspection */
+
+/** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -25,12 +27,12 @@ trait IdentificationNumberTrait
     /**
      * @return string
      */
-    final public function getIdentificationNumber(): ?string
+    public function getIdentificationNumber(): ?string
     {
         return $this->identificationNumber;
     }
 
-    final public function setIdentificationNumber(?string $identificationNumber): void
+    public function setIdentificationNumber(?string $identificationNumber): void
     {
         $this->identificationNumber = $identificationNumber;
     }

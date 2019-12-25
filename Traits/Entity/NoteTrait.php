@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection MethodShouldBeFinalInspection */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -21,7 +21,7 @@ trait NoteTrait
     /**
      * Get note.
      */
-    final public function getNote(): ?string
+    public function getNote(): ?string
     {
         return $this->note;
     }
@@ -29,7 +29,7 @@ trait NoteTrait
     /**
      * Set note.
      */
-    final public function setNote(?string $note): void
+    public function setNote(?string $note): void
     {
         $this->note = $note;
     }

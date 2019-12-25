@@ -1,4 +1,6 @@
-<?php /** @noinspection PhpUnused */
+<?php /** @noinspection MethodShouldBeFinalInspection */
+
+/** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -24,7 +26,7 @@ trait UrlTrait
      *
      * @return string
      */
-    final public function getUrl(): ?string
+    public function getUrl(): ?string
     {
         return $this->url;
     }
@@ -32,7 +34,7 @@ trait UrlTrait
     /**
      * Set url.
      */
-    final public function setUrl(?string $url): void
+    public function setUrl(?string $url): void
     {
         $this->url = $url;
     }

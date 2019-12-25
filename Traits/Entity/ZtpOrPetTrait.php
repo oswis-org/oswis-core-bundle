@@ -1,4 +1,6 @@
-<?php /** @noinspection PhpUnused */
+<?php /** @noinspection MethodShouldBeFinalInspection */
+
+/** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -31,32 +33,32 @@ trait ZtpOrPetTrait
      */
     protected ?bool $pet;
 
-    final public function isZtp(): bool
+    public function isZtp(): bool
     {
         return $this->ztp ?? false;
     }
 
-    final public function setZtp(bool $ztp): void
+    public function setZtp(bool $ztp): void
     {
         $this->ztp = $ztp;
     }
 
-    final public function isZtpAccompaniment(): bool
+    public function isZtpAccompaniment(): bool
     {
         return $this->ztpAccompaniment ?? false;
     }
 
-    final public function setZtpAccompaniment(bool $ztpAccompaniment): void
+    public function setZtpAccompaniment(bool $ztpAccompaniment): void
     {
         $this->ztpAccompaniment = $ztpAccompaniment;
     }
 
-    final public function isPet(): bool
+    public function isPet(): bool
     {
         return $this->pet ?? false;
     }
 
-    final public function setPet(bool $pet): void
+    public function setPet(bool $pet): void
     {
         $this->pet = $pet;
     }

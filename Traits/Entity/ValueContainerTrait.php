@@ -1,5 +1,5 @@
-<?php /** @noinspection PhpUnused */
-
+<?php /** @noinspection MethodShouldBeFinalInspection */
+/** @noinspection PhpUnused */
 /** @noinspection PhpUndefinedMethodInspection */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
@@ -8,7 +8,7 @@ use DateTime;
 
 trait ValueContainerTrait
 {
-    final public function setValueRegex(string $valueRegex): void
+    public function setValueRegex(string $valueRegex): void
     {
         if ($this->getValueRegex() !== $valueRegex) {
             $newRevision = clone $this->getRevision();
@@ -17,7 +17,7 @@ trait ValueContainerTrait
         }
     }
 
-    final public function getValueRegex(?DateTime $referenceDateTime = null): string
+    public function getValueRegex(?DateTime $referenceDateTime = null): string
     {
         return $this->getRevisionByDate($referenceDateTime)->getValueRegex();
     }
@@ -25,7 +25,7 @@ trait ValueContainerTrait
     /**
      * @param string $valueLabel
      */
-    final public function setValueLabel(?string $valueLabel): void
+    public function setValueLabel(?string $valueLabel): void
     {
         if ($this->getValueLabel() !== $valueLabel) {
             $newRevision = clone $this->getRevision();
@@ -37,12 +37,12 @@ trait ValueContainerTrait
     /**
      * @return string
      */
-    final public function getValueLabel(?DateTime $referenceDateTime = null): ?string
+    public function getValueLabel(?DateTime $referenceDateTime = null): ?string
     {
         return $this->getRevisionByDate($referenceDateTime)->getValueLabel();
     }
 
-    final public function isValueAllowed(?DateTime $referenceDateTime = null): bool
+    public function isValueAllowed(?DateTime $referenceDateTime = null): bool
     {
         return $this->getRevisionByDate($referenceDateTime)->getValueAllowed();
     }
@@ -50,7 +50,7 @@ trait ValueContainerTrait
     /**
      * @param bool $valueAllowed
      */
-    final public function setValueAllowed(?bool $valueAllowed): void
+    public function setValueAllowed(?bool $valueAllowed): void
     {
         if ($this->getValueAllowed() !== $valueAllowed) {
             $newRevision = clone $this->getRevision();

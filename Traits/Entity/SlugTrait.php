@@ -1,34 +1,31 @@
-<?php
+<?php /** @noinspection MethodShouldBeFinalInspection */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
 /**
- * Trait adds slug field.
+ * Trait that adds slug field.
  */
 trait SlugTrait
 {
     /**
      * Slug.
-     *
-     * @var string|null
-     *
      * @Doctrine\ORM\Mapping\Column(nullable=true)
      */
     protected ?string $slug = null;
 
     /**
-     * Get slug.
+     * Get slug (or id if not set).
      */
-    final public function getSlug(): ?string
+    public function getSlug(): ?string
     {
-        return $this->slug;
+        return $this->slug ?? ''.$this->getId();
     }
 
     /**
-     * Set slug.
+     * Set slug (or id if not set).
      */
-    final public function setSlug(?string $slug): void
+    public function setSlug(?string $slug): void
     {
-        $this->slug = $slug;
+        $this->slug = $slug ?? ''.$this->getId();
     }
 }

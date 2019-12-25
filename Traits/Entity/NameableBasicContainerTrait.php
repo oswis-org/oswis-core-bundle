@@ -1,5 +1,5 @@
-<?php /** @noinspection PhpUnused */
-
+<?php /** @noinspection MethodShouldBeFinalInspection */
+/** @noinspection PhpUnused */
 /** @noinspection PhpUndefinedMethodInspection */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
@@ -13,7 +13,7 @@ trait NameableBasicContainerTrait
 {
     use SlugContainerTrait;
 
-    final public function setName(?string $name): void
+    public function setName(?string $name): void
     {
         if ($this->getName() !== $name) {
             $newRevision = clone $this->getRevision();
@@ -22,12 +22,12 @@ trait NameableBasicContainerTrait
         }
     }
 
-    final public function getName(?DateTime $dateTime = null): ?string
+    public function getName(?DateTime $dateTime = null): ?string
     {
         return $this->getRevisionByDate($dateTime)->getName();
     }
 
-    final public function setShortName(?string $shortName): void
+    public function setShortName(?string $shortName): void
     {
         if ($this->getShortName() !== $shortName) {
             $newRevision = clone $this->getRevision();
@@ -36,12 +36,12 @@ trait NameableBasicContainerTrait
         }
     }
 
-    final public function getShortName(?DateTime $dateTime = null): ?string
+    public function getShortName(?DateTime $dateTime = null): ?string
     {
         return $this->getRevisionByDate($dateTime)->getShortName();
     }
 
-    final public function setDescription(?string $description): void
+    public function setDescription(?string $description): void
     {
         if ($this->getDescription() !== $description) {
             $newRevision = clone $this->getRevision();
@@ -50,12 +50,12 @@ trait NameableBasicContainerTrait
         }
     }
 
-    final public function getDescription(?DateTime $dateTime = null): ?string
+    public function getDescription(?DateTime $dateTime = null): ?string
     {
         return $this->getRevisionByDate($dateTime)->getDescription();
     }
 
-    final public function setNote(?string $note): void
+    public function setNote(?string $note): void
     {
         if ($this->getNote() !== $note) {
             $newRevision = clone $this->getRevision();
@@ -64,7 +64,7 @@ trait NameableBasicContainerTrait
         }
     }
 
-    final public function getNote(?DateTime $dateTime = null): ?string
+    public function getNote(?DateTime $dateTime = null): ?string
     {
         return $this->getRevisionByDate($dateTime)->getNote();
     }

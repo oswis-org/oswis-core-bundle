@@ -1,4 +1,6 @@
-<?php /** @noinspection PhpUnused */
+<?php /** @noinspection MethodShouldBeFinalInspection */
+
+/** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -33,7 +35,7 @@ trait TimestampableTrait
      */
     protected ?DateTime $updatedDateTime = null;
 
-    final public function getCreatedDaysAgo(?bool $decimal = false): ?int
+    public function getCreatedDaysAgo(?bool $decimal = false): ?int
     {
         if (!$this->getCreatedDateTime()) {
             return null;
@@ -51,12 +53,12 @@ trait TimestampableTrait
      *
      * @return DateTime
      */
-    final public function getCreatedDateTime(): ?DateTime
+    public function getCreatedDateTime(): ?DateTime
     {
         return $this->createdDateTime;
     }
 
-    final public function getUpdatedDaysAgo(?bool $decimal = false): ?int
+    public function getUpdatedDaysAgo(?bool $decimal = false): ?int
     {
         if (!$this->getUpdatedDateTime()) {
             return null;
@@ -74,7 +76,7 @@ trait TimestampableTrait
      *
      * @return DateTime
      */
-    final public function getUpdatedDateTime(): ?DateTime
+    public function getUpdatedDateTime(): ?DateTime
     {
         return $this->updatedDateTime;
     }

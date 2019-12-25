@@ -1,5 +1,5 @@
-<?php /** @noinspection PhpUnused */
-
+<?php /** @noinspection MethodShouldBeFinalInspection */
+/** @noinspection PhpUnused */
 /** @noinspection PhpUndefinedMethodInspection */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
@@ -11,7 +11,7 @@ use DateTime;
  */
 trait EntityPublicContainerTrait
 {
-    final public function setPublicOnWeb(bool $publicOnWeb): void
+    public function setPublicOnWeb(bool $publicOnWeb): void
     {
         if ($this->isPublicOnWeb() !== $publicOnWeb) {
             $newRevision = clone $this->getRevision();
@@ -20,7 +20,7 @@ trait EntityPublicContainerTrait
         }
     }
 
-    final public function isPublicOnWeb(?DateTime $referenceDateTime = null): bool
+    public function isPublicOnWeb(?DateTime $referenceDateTime = null): bool
     {
         return $this->getRevisionByDate($referenceDateTime)->isPublicOnWeb();
     }
@@ -28,7 +28,7 @@ trait EntityPublicContainerTrait
     /**
      * @param bool $publicOnWebRoute
      */
-    final public function setPublicOnWebRoute(?bool $publicOnWebRoute): void
+    public function setPublicOnWebRoute(?bool $publicOnWebRoute): void
     {
         if ($this->isPublicOnWebRoute() !== $publicOnWebRoute) {
             $newRevision = clone $this->getRevision();
@@ -37,7 +37,7 @@ trait EntityPublicContainerTrait
         }
     }
 
-    final public function isPublicOnWebRoute(?DateTime $referenceDateTime = null): bool
+    public function isPublicOnWebRoute(?DateTime $referenceDateTime = null): bool
     {
         return $this->getRevisionByDate($referenceDateTime)->isPublicOnWebRoute();
     }
@@ -45,7 +45,7 @@ trait EntityPublicContainerTrait
     /**
      * @param bool $publicInIS
      */
-    final public function setPublicInIS(?bool $publicInIS): void
+    public function setPublicInIS(?bool $publicInIS): void
     {
         if ($this->isPublicInIS() !== $publicInIS) {
             $newRevision = clone $this->getRevision();
@@ -54,7 +54,7 @@ trait EntityPublicContainerTrait
         }
     }
 
-    final public function isPublicInIS(?DateTime $referenceDateTime = null): bool
+    public function isPublicInIS(?DateTime $referenceDateTime = null): bool
     {
         return $this->getRevisionByDate($referenceDateTime)->isPublicInIS;
     }
@@ -62,7 +62,7 @@ trait EntityPublicContainerTrait
     /**
      * @param bool $publicInPortal
      */
-    final public function setPublicInPortal(?bool $publicInPortal): void
+    public function setPublicInPortal(?bool $publicInPortal): void
     {
         if ($this->isPublicInPortal() !== $publicInPortal) {
             $newRevision = clone $this->getRevision();
@@ -71,7 +71,7 @@ trait EntityPublicContainerTrait
         }
     }
 
-    final public function isPublicInPortal(?DateTime $referenceDateTime = null): bool
+    public function isPublicInPortal(?DateTime $referenceDateTime = null): bool
     {
         return $this->getRevisionByDate($referenceDateTime)->isPublicInPortal();
     }

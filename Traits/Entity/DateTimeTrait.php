@@ -1,4 +1,6 @@
-<?php /** @noinspection PhpUnused */
+<?php /** @noinspection MethodShouldBeFinalInspection */
+
+/** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -21,7 +23,7 @@ trait DateTimeTrait
      */
     protected ?DateTime $dateTime = null;
 
-    final public function getDaysAgo(?bool $decimal = false): ?int
+    public function getDaysAgo(?bool $decimal = false): ?int
     {
         try {
             if ($this->getDateTime()) {
@@ -41,7 +43,7 @@ trait DateTimeTrait
      *
      * @return DateTime
      */
-    final public function getDateTime(): ?DateTime
+    public function getDateTime(): ?DateTime
     {
         return $this->dateTime;
     }
@@ -51,7 +53,7 @@ trait DateTimeTrait
      *
      * @param DateTime $dateTime
      */
-    final public function setDateTime(?DateTime $dateTime = null): void
+    public function setDateTime(?DateTime $dateTime = null): void
     {
         $this->dateTime = $dateTime ? clone $dateTime : null;
     }

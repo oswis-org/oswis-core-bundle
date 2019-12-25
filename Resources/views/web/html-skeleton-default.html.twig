@@ -4,13 +4,13 @@
     {% block meta_tags_outer %}
         <meta charset="utf-8">
         <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name='format-detection' content='telephone=yes'>
         <meta name='DC.Language' content='{{ block('html_lang') }}'>
         <title>{% block html_title %}{{ title|default(oswis_core_settings.web.title) }}{% endblock html_title %}</title>
         {% block tag_manager_script %}{% endblock tag_manager_script %}
         <meta name="description"
               content="{% block html_description %}{{ description|default(oswis_core_settings.web.description) }}{% endblock html_description %}">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name='format-detection' content='telephone=yes'>
         <meta name='author' content='{% block meta_author %}{{ author|default('Jakub Zak (https://jakubzak.cz)') }}{% endblock meta_author %}'>
         <meta name='copyright' content='{% block meta_copyright %}{{ copyright|default('Jakub Zak (https://jakubzak.cz)') }}{% endblock meta_copyright %}'>
         <meta name='generator' content='{% block meta_generator %}OSWIS (One Simple Web IS){% endblock meta_generator %}'>
@@ -102,6 +102,7 @@
     {% endblock javascript %}
 
     {% endblock body_outer %}
+    {% include '@ZakjakubOswisCore/web/parts/breadcrumbs-jsonld.html.twig' %}
     {% block ie %}
         <!--[if lt IE 9]>
         {{ encore_entry_link_tags('ie') }}

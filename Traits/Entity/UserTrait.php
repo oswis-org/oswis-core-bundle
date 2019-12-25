@@ -1,4 +1,6 @@
-<?php /** @noinspection PhpUnused */
+<?php /** @noinspection MethodShouldBeFinalInspection */
+
+/** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -27,7 +29,7 @@ trait UserTrait
      *
      * @return string|null The salt
      */
-    final public function getSalt(): ?string
+    public function getSalt(): ?string
     {
         return $this->salt;
     }
@@ -35,7 +37,7 @@ trait UserTrait
     /**
      * @param string $salt
      */
-    final public function setSalt(?string $salt): void
+    public function setSalt(?string $salt): void
     {
         $this->salt = $salt;
     }

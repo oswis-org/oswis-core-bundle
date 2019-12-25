@@ -1,4 +1,6 @@
-<?php /** @noinspection PhpUnused */
+<?php /** @noinspection MethodShouldBeFinalInspection */
+
+/** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -25,47 +27,47 @@ trait GeoCoordinatesTrait
      */
     protected ?int $geoElevation = null;
 
-    final public function getGeoLon(): ?float
+    public function getGeoLon(): ?float
     {
         return $this->getGeoLongitude();
     }
 
-    final public function getGeoLongitude(): ?float
+    public function getGeoLongitude(): ?float
     {
         return $this->geoLongitude;
     }
 
-    final public function setGeoLongitude(?float $geoLongitude): void
+    public function setGeoLongitude(?float $geoLongitude): void
     {
         $this->geoLongitude = $geoLongitude;
     }
 
-    final public function getGeoLat(): ?float
+    public function getGeoLat(): ?float
     {
         return $this->getGeoLatitude();
     }
 
-    final public function getGeoLatitude(): ?float
+    public function getGeoLatitude(): ?float
     {
         return $this->geoLatitude;
     }
 
-    final public function setGeoLatitude(?float $geoLatitude): void
+    public function setGeoLatitude(?float $geoLatitude): void
     {
         $this->geoLatitude = $geoLatitude;
     }
 
-    final public function getGeoEle(): ?int
+    public function getGeoEle(): ?int
     {
         return $this->getGeoElevation();
     }
 
-    final public function getGeoElevation(): ?int
+    public function getGeoElevation(): ?int
     {
         return $this->geoElevation;
     }
 
-    final public function setGeoElevation(?int $geoElevation): void
+    public function setGeoElevation(?int $geoElevation): void
     {
         $this->geoElevation = $geoElevation;
     }

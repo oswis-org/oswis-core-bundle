@@ -1,4 +1,8 @@
-<?php /** @noinspection PhpUnused */
+<?php
+/**
+ * @noinspection MethodShouldBeFinalInspection
+ * @noinspection PhpUnused
+ */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -37,7 +41,7 @@ trait BasicMailConfirmationTrait
     /**
      * Get date and time of last confirmation e-mail.
      */
-    final public function getEMailConfirmationDateTime(): ?DateTime
+    public function getEMailConfirmationDateTime(): ?DateTime
     {
         return $this->eMailConfirmationDateTime;
     }
@@ -45,7 +49,7 @@ trait BasicMailConfirmationTrait
     /**
      * (DO NOT USE!) Set last confirmation date and time.
      */
-    final public function setEMailConfirmationDateTime(?DateTime $eMailConfirmationDateTime): void
+    public function setEMailConfirmationDateTime(?DateTime $eMailConfirmationDateTime): void
     {
         $this->eMailConfirmationDateTime = $eMailConfirmationDateTime;
     }
@@ -53,7 +57,7 @@ trait BasicMailConfirmationTrait
     /**
      * Get number of confirmation e-mails sent.
      */
-    final public function getEMailConfirmationCount(): int
+    public function getEMailConfirmationCount(): int
     {
         return $this->eMailConfirmationCount ?? 0;
     }
@@ -63,7 +67,7 @@ trait BasicMailConfirmationTrait
      *
      * @param int $eMailConfirmationCount
      */
-    final public function setEMailConfirmationCount(?int $eMailConfirmationCount): void
+    public function setEMailConfirmationCount(?int $eMailConfirmationCount): void
     {
         $this->eMailConfirmationCount = $eMailConfirmationCount ?? null;
     }
@@ -71,7 +75,7 @@ trait BasicMailConfirmationTrait
     /**
      * Get source/reason of last confirmation e-mail.
      */
-    final public function getEMailConfirmationSource(): ?string
+    public function getEMailConfirmationSource(): ?string
     {
         return $this->eMailConfirmationSource;
     }
@@ -79,12 +83,12 @@ trait BasicMailConfirmationTrait
     /**
      * (DO NOT USE!) Set last confirmation source/reason/author.
      */
-    final public function setEMailConfirmationSource(?string $eMailConfirmationSource): void
+    public function setEMailConfirmationSource(?string $eMailConfirmationSource): void
     {
         $this->eMailConfirmationSource = $eMailConfirmationSource;
     }
 
-    final public function setMailConfirmationSend(?string $source = null): void
+    public function setMailConfirmationSend(?string $source = null): void
     {
         if ($this->eMailConfirmationCount && $this->eMailConfirmationCount > 0) {
             ++$this->eMailConfirmationCount;

@@ -1,4 +1,8 @@
-<?php /** @noinspection PhpUnused */
+<?php
+/**
+ * @noinspection MethodShouldBeFinalInspection
+ * @noinspection PhpUnused
+ */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -26,12 +30,12 @@ trait BlameableTrait
      */
     protected ?AppUser $updatedAuthor = null;
 
-    final public function getUpdatedAuthor(): ?AppUser
+    public function getUpdatedAuthor(): ?AppUser
     {
         return $this->updatedAuthor;
     }
 
-    final public function getCreatedAuthor(): ?AppUser
+    public function getCreatedAuthor(): ?AppUser
     {
         return $this->createdAuthor;
     }

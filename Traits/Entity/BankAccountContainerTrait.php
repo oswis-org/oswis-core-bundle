@@ -1,6 +1,9 @@
-<?php /** @noinspection PhpUnused */
-
-/** @noinspection PhpUndefinedMethodInspection */
+<?php
+/**
+ * @noinspection MethodShouldBeFinalInspection
+ * @noinspection PhpUnused
+ * @noinspection PhpUndefinedMethodInspection
+ */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -11,7 +14,7 @@ use DateTime;
  */
 trait BankAccountContainerTrait
 {
-    final public function setBankAccountNumber(?string $bankAccountNumber): void
+    public function setBankAccountNumber(?string $bankAccountNumber): void
     {
         if ($this->getBankAccountNumber() !== $bankAccountNumber) {
             $newRevision = clone $this->getRevisionByDate();
@@ -20,12 +23,12 @@ trait BankAccountContainerTrait
         }
     }
 
-    final public function getBankAccountNumber(?DateTime $dateTime = null): ?string
+    public function getBankAccountNumber(?DateTime $dateTime = null): ?string
     {
         return $this->getRevisionByDate($dateTime)->getBankAccountNumber();
     }
 
-    final public function setBankAccountBank(?string $bankAccountBank): void
+    public function setBankAccountBank(?string $bankAccountBank): void
     {
         if ($this->getBankAccountBank() !== $bankAccountBank) {
             $newRevision = clone $this->getRevisionByDate();
@@ -34,12 +37,12 @@ trait BankAccountContainerTrait
         }
     }
 
-    final public function getBankAccountBank(?DateTime $dateTime = null): ?int
+    public function getBankAccountBank(?DateTime $dateTime = null): ?int
     {
         return $this->getRevisionByDate($dateTime)->getBankAccountBank();
     }
 
-    final public function getBankAccountComplete(?DateTime $dateTime = null): ?string
+    public function getBankAccountComplete(?DateTime $dateTime = null): ?string
     {
         return $this->getRevisionByDate($dateTime)->getBankAccountComplete();
     }

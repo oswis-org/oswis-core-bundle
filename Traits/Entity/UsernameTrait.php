@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection MethodShouldBeFinalInspection */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -18,7 +18,7 @@ trait UsernameTrait
     /**
      * Get username.
      */
-    final public function getUsername(): ?string
+    public function getUsername(): ?string
     {
         return $this->username ?? null;
     }
@@ -26,7 +26,7 @@ trait UsernameTrait
     /**
      * Set username.
      */
-    final public function setUsername(?string $username): void
+    public function setUsername(?string $username): void
     {
         $this->username = $username ?? null;
     }

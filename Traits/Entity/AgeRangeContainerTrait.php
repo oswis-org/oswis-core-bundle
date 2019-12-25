@@ -1,6 +1,9 @@
-<?php /** @noinspection PhpUnused */
-
-/** @noinspection PhpUndefinedMethodInspection */
+<?php
+/**
+ * @noinspection MethodShouldBeFinalInspection
+ * @noinspection PhpUnused
+ * @noinspection PhpUndefinedMethodInspection
+ */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -18,17 +21,17 @@ trait AgeRangeContainerTrait
      *
      * @throws Exception
      */
-    final public function containsBirthDate(?DateTime $birthDate, ?DateTime $referenceDateTime): bool
+    public function containsBirthDate(?DateTime $birthDate, ?DateTime $referenceDateTime): bool
     {
         return $this->getRevisionByDate($referenceDateTime)->containsBirthDate($birthDate, $referenceDateTime);
     }
 
-    final public function agesDiff(?DateTime $referenceDateTime = null): int
+    public function agesDiff(?DateTime $referenceDateTime = null): int
     {
         return $this->getRevisionByDate($referenceDateTime)->containsBirthDate();
     }
 
-    final public function setMinAge(?int $minAge): void
+    public function setMinAge(?int $minAge): void
     {
         if ($this->getMinAge() !== $minAge) {
             $newRevision = clone $this->getRevisionByDate();
@@ -37,12 +40,12 @@ trait AgeRangeContainerTrait
         }
     }
 
-    final public function getMinAge(?DateTime $dateTime = null): ?int
+    public function getMinAge(?DateTime $dateTime = null): ?int
     {
         return $this->getRevisionByDate($dateTime)->getMinAge();
     }
 
-    final public function setMaxAge(?int $maxAge): void
+    public function setMaxAge(?int $maxAge): void
     {
         if ($this->getMaxAge() !== $maxAge) {
             $newRevision = clone $this->getRevisionByDate();
@@ -51,7 +54,7 @@ trait AgeRangeContainerTrait
         }
     }
 
-    final public function getMaxAge(?DateTime $dateTime = null): ?int
+    public function getMaxAge(?DateTime $dateTime = null): ?int
     {
         return $this->getRevisionByDate($dateTime)->getMaxAge();
     }

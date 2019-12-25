@@ -1,4 +1,5 @@
-<?php
+<?php /** @noinspection MethodShouldBeFinalInspection */
+
 /** @noinspection PhpUndefinedMethodInspection */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
@@ -7,7 +8,7 @@ use DateTime;
 
 trait TypeContainerTrait
 {
-    final public function setType(?string $type): void
+    public function setType(?string $type): void
     {
         if ($this->getType() !== $type) {
             $newRevision = clone $this->getRevision();
@@ -16,7 +17,7 @@ trait TypeContainerTrait
         }
     }
 
-    final public function getType(?DateTime $dateTime = null): ?string
+    public function getType(?DateTime $dateTime = null): ?string
     {
         return $this->getRevisionByDate($dateTime)->getType();
     }

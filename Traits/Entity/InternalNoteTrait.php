@@ -1,4 +1,6 @@
-<?php /** @noinspection PhpUnused */
+<?php /** @noinspection MethodShouldBeFinalInspection */
+
+/** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -21,7 +23,7 @@ trait InternalNoteTrait
     /**
      * Get internal note.
      */
-    final public function getInternalNote(): ?string
+    public function getInternalNote(): ?string
     {
         return $this->internalNote;
     }
@@ -29,7 +31,7 @@ trait InternalNoteTrait
     /**
      * Set internal note.
      */
-    final public function setInternalNote(?string $internalNote): void
+    public function setInternalNote(?string $internalNote): void
     {
         $this->internalNote = $internalNote;
     }

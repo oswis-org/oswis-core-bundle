@@ -1,11 +1,15 @@
-<?php /** @noinspection PhpUnused */
+<?php /** @noinspection MethodShouldBeFinalInspection */
+
+/**
+ * @noinspection PhpUnused
+ */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
 use Zakjakub\OswisCoreBundle\Entity\Address;
 
 /**
- * Trait adds address fields.
+ * Trait adds fields for postal address.
  */
 trait AddressTrait
 {
@@ -65,77 +69,77 @@ trait AddressTrait
      */
     protected ?int $orientationNumber = null;
 
-    final public function getStreet(): ?string
+    public function getStreet(): ?string
     {
         return $this->street;
     }
 
-    final public function setStreet(?string $street): void
+    public function setStreet(?string $street): void
     {
         $this->street = $street;
     }
 
-    final public function getOrientation(): ?int
+    public function getOrientation(): ?int
     {
         return $this->orientationNumber;
     }
 
-    final public function getStreet2(): ?string
+    public function getStreet2(): ?string
     {
         return $this->street2;
     }
 
-    final public function setStreet2(?string $street2): void
+    public function setStreet2(?string $street2): void
     {
         $this->street2 = $street2;
     }
 
-    final public function getCity(): ?string
+    public function getCity(): ?string
     {
         return $this->city;
     }
 
-    final public function setCity(?string $city): void
+    public function setCity(?string $city): void
     {
         $this->city = $city;
     }
 
-    final public function getPostalCode(): ?string
+    public function getPostalCode(): ?string
     {
         return $this->postalCode;
     }
 
-    final public function setPostalCode(?string $postalCode): void
+    public function setPostalCode(?string $postalCode): void
     {
         $this->postalCode = $postalCode;
     }
 
-    final public function getHouseNumber(): ?int
+    public function getHouseNumber(): ?int
     {
         return $this->houseNumber;
     }
 
-    final public function setHouseNumber(?int $houseNumber): void
+    public function setHouseNumber(?int $houseNumber): void
     {
         $this->houseNumber = $houseNumber;
     }
 
-    final public function setOrientationNumber(?int $orientationNumber): void
+    public function setOrientationNumber(?int $orientationNumber): void
     {
         $this->orientationNumber = $orientationNumber;
     }
 
-    final public function getDoorNumber(): ?int
+    public function getDoorNumber(): ?int
     {
         return $this->doorNumber;
     }
 
-    final public function setDoorNumber(?int $doorNumber): void
+    public function setDoorNumber(?int $doorNumber): void
     {
         $this->doorNumber = $doorNumber;
     }
 
-    final public function getFullAddress(): string
+    public function getFullAddress(): string
     {
         $fullAddress = '';
         $fullAddress .= $this->street ?? null;
@@ -151,7 +155,7 @@ trait AddressTrait
         return $fullAddress;
     }
 
-    final public function setFieldsFromAddress(?Address $address = null): void
+    public function setFieldsFromAddress(?Address $address = null): void
     {
         if ($address) {
             $this->setStreet($address->street);

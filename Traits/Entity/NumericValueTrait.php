@@ -1,4 +1,6 @@
-<?php /** @noinspection PhpUnused */
+<?php /** @noinspection MethodShouldBeFinalInspection */
+
+/** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -19,7 +21,7 @@ trait NumericValueTrait
     /**
      * Get numeric value.
      */
-    final public function getNumericValue(): int
+    public function getNumericValue(): int
     {
         return $this->numericValue ?? 0;
     }
@@ -29,7 +31,7 @@ trait NumericValueTrait
      *
      * @param int $numericValue
      */
-    final public function setNumericValue(?int $numericValue): void
+    public function setNumericValue(?int $numericValue): void
     {
         $this->numericValue = $numericValue ?? 0;
     }

@@ -1,4 +1,6 @@
-<?php /** @noinspection PhpUnused */
+<?php /** @noinspection MethodShouldBeFinalInspection */
+
+/** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -33,7 +35,7 @@ trait InfoMailSentTrait
     /**
      * Get date and time of last info e-mail.
      */
-    final public function getInfoMailSentDateTime(): ?DateTime
+    public function getInfoMailSentDateTime(): ?DateTime
     {
         return $this->infoMailSentDateTime;
     }
@@ -41,7 +43,7 @@ trait InfoMailSentTrait
     /**
      * (DO NOT USE!) Set last info e-mail date and time.
      */
-    final public function setInfoMailSentDateTime(?DateTime $infoMailSentDateTime): void
+    public function setInfoMailSentDateTime(?DateTime $infoMailSentDateTime): void
     {
         $this->infoMailSentDateTime = $infoMailSentDateTime;
     }
@@ -49,7 +51,7 @@ trait InfoMailSentTrait
     /**
      * Get number of confirmation e-mails sent.
      */
-    final public function getInfoMailSentCount(): int
+    public function getInfoMailSentCount(): int
     {
         return $this->infoMailSentCount ?? 0;
     }
@@ -57,7 +59,7 @@ trait InfoMailSentTrait
     /**
      * (DO NOT USE!) Set number of confirmations sent.
      */
-    final public function setInfoMailSentCount(?int $infoMailSentCount): void
+    public function setInfoMailSentCount(?int $infoMailSentCount): void
     {
         $this->infoMailSentCount = $infoMailSentCount ?? 0;
     }
@@ -65,7 +67,7 @@ trait InfoMailSentTrait
     /**
      * Get source/reason of last info e-mail.
      */
-    final public function getInfoMailSentSource(): ?string
+    public function getInfoMailSentSource(): ?string
     {
         return $this->infoMailSentSource;
     }
@@ -73,12 +75,12 @@ trait InfoMailSentTrait
     /**
      * (DO NOT USE!) Set last info mail source/reason/author.
      */
-    final public function setInfoMailSentSource(?string $infoMailSentSource): void
+    public function setInfoMailSentSource(?string $infoMailSentSource): void
     {
         $this->infoMailSentSource = $infoMailSentSource;
     }
 
-    final public function setInfoMailSent(?string $source = null): void
+    public function setInfoMailSent(?string $source = null): void
     {
         if ($this->infoMailSentCount && $this->infoMailSentCount > 0) {
             ++$this->infoMailSentCount;

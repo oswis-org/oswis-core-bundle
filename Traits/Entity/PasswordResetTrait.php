@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection MethodShouldBeFinalInspection */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -27,7 +27,7 @@ trait PasswordResetTrait
      */
     protected ?DateTime $passwordResetRequestDateTime = null;
 
-    final public function checkAndDestroyPasswordResetRequestToken(?string $token, int $validHours = 24): bool
+    public function checkAndDestroyPasswordResetRequestToken(?string $token, int $validHours = 24): bool
     {
         try {
             $diff = (new DateTime())->diff($this->getPasswordResetRequestDateTime());
@@ -47,38 +47,38 @@ trait PasswordResetTrait
         return false;
     }
 
-    final public function getPasswordResetRequestDateTime(): ?DateTime
+    public function getPasswordResetRequestDateTime(): ?DateTime
     {
         return $this->passwordResetRequestDateTime;
     }
 
-    final public function setPasswordResetRequestDateTime(?DateTime $passwordResetRequestDateTime): void
+    public function setPasswordResetRequestDateTime(?DateTime $passwordResetRequestDateTime): void
     {
         $this->passwordResetRequestDateTime = $passwordResetRequestDateTime;
     }
 
-    final public function destroyPasswordResetRequestToken(): void
+    public function destroyPasswordResetRequestToken(): void
     {
         $this->setPasswordResetRequestDateTime(null);
         $this->setPasswordResetRequestToken(null);
     }
 
-    final public function checkPasswordResetRequestToken(?string $token): bool
+    public function checkPasswordResetRequestToken(?string $token): bool
     {
         return $token && $token === $this->getPasswordResetRequestToken();
     }
 
-    final public function getPasswordResetRequestToken(): ?string
+    public function getPasswordResetRequestToken(): ?string
     {
         return $this->passwordResetRequestToken;
     }
 
-    final public function setPasswordResetRequestToken(?string $passwordResetRequestToken): void
+    public function setPasswordResetRequestToken(?string $passwordResetRequestToken): void
     {
         $this->passwordResetRequestToken = $passwordResetRequestToken;
     }
 
-    final public function generatePasswordRequestToken(): ?string
+    public function generatePasswordRequestToken(): ?string
     {
         try {
             $this->setPasswordResetRequestToken(StringUtils::generateToken());

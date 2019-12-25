@@ -1,5 +1,5 @@
-<?php /** @noinspection PhpUnused */
-
+<?php /** @noinspection MethodShouldBeFinalInspection */
+/** @noinspection PhpUnused */
 /** @noinspection PhpUndefinedMethodInspection */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
@@ -8,7 +8,7 @@ use DateTime;
 
 trait SlugContainerTrait
 {
-    final public function setSlug(?string $slug): void
+    public function setSlug(?string $slug): void
     {
         if ($this->getSlug() !== $slug) {
             $newRevision = clone $this->getRevision();
@@ -17,7 +17,7 @@ trait SlugContainerTrait
         }
     }
 
-    final public function getSlug(?DateTime $dateTime = null): ?string
+    public function getSlug(?DateTime $dateTime = null): ?string
     {
         return $this->getRevisionByDate($dateTime)->getSlug();
     }

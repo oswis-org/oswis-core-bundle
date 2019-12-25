@@ -1,4 +1,6 @@
-<?php /** @noinspection PhpUnused */
+<?php /** @noinspection MethodShouldBeFinalInspection */
+
+/** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -15,7 +17,7 @@ trait ForeignNationalityTrait
      */
     protected ?bool $foreignNationality = null;
 
-    final public function getForeignNationality(): bool
+    public function getForeignNationality(): bool
     {
         return $this->foreignNationality ?? false;
     }
@@ -23,7 +25,7 @@ trait ForeignNationalityTrait
     /**
      * @param bool $foreignNationality
      */
-    final public function setForeignNationality(?bool $foreignNationality): void
+    public function setForeignNationality(?bool $foreignNationality): void
     {
         $this->foreignNationality = $foreignNationality;
     }

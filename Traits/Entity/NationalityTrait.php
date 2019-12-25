@@ -1,4 +1,6 @@
-<?php /** @noinspection PhpUnused */
+<?php /** @noinspection MethodShouldBeFinalInspection */
+
+/** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -18,7 +20,7 @@ trait NationalityTrait
     /**
      * @return string
      */
-    final public function getNationality(): ?string
+    public function getNationality(): ?string
     {
         return $this->nationality;
     }
@@ -26,7 +28,7 @@ trait NationalityTrait
     /**
      * @param string $nationality
      */
-    final public function setNationality(?string $nationality): void
+    public function setNationality(?string $nationality): void
     {
         $this->nationality = $nationality;
     }

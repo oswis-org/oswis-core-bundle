@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection MethodShouldBeFinalInspection */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -18,7 +18,7 @@ trait EncryptedPasswordTrait
     /**
      * Get encrypted password.
      */
-    final public function getPassword(): ?string
+    public function getPassword(): ?string
     {
         return $this->password;
     }
@@ -26,7 +26,7 @@ trait EncryptedPasswordTrait
     /**
      * Set encrypted password.
      */
-    final public function setPassword(?string $password): void
+    public function setPassword(?string $password): void
     {
         $this->password = empty($password) ? null : $password;
     }

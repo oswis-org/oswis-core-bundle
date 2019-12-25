@@ -1,4 +1,6 @@
-<?php /** @noinspection PhpUnused */
+<?php /** @noinspection MethodShouldBeFinalInspection */
+
+/** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -26,7 +28,7 @@ trait IdCardTrait
     /**
      * @return string
      */
-    final public function getIdCardType(): ?string
+    public function getIdCardType(): ?string
     {
         return $this->idCardType;
     }
@@ -34,7 +36,7 @@ trait IdCardTrait
     /**
      * @param string $idCardType
      */
-    final public function setIdCardType(?string $idCardType): void
+    public function setIdCardType(?string $idCardType): void
     {
         $this->idCardType = $idCardType;
     }
@@ -42,7 +44,7 @@ trait IdCardTrait
     /**
      * @return string
      */
-    final public function getIdCardNumber(): ?string
+    public function getIdCardNumber(): ?string
     {
         return $this->idCardNumber;
     }
@@ -50,7 +52,7 @@ trait IdCardTrait
     /**
      * @param string $idCardNumber
      */
-    final public function setIdCardNumber(?string $idCardNumber): void
+    public function setIdCardNumber(?string $idCardNumber): void
     {
         $this->idCardNumber = $idCardNumber;
     }

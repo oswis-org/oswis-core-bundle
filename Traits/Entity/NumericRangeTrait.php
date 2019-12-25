@@ -1,4 +1,6 @@
-<?php /** @noinspection PhpUnused */
+<?php /** @noinspection MethodShouldBeFinalInspection */
+
+/** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -16,27 +18,27 @@ trait NumericRangeTrait
      */
     protected ?int $max = null;
 
-    final public function getMin(): ?int
+    public function getMin(): ?int
     {
         return $this->min;
     }
 
-    final public function setMin(?int $min): void
+    public function setMin(?int $min): void
     {
         $this->min = $min;
     }
 
-    final public function getMax(): ?int
+    public function getMax(): ?int
     {
         return $this->max;
     }
 
-    final public function setMax(?int $max): void
+    public function setMax(?int $max): void
     {
         $this->max = $max;
     }
 
-    final public function betweenMinMax(?int $value): bool
+    public function betweenMinMax(?int $value): bool
     {
         if (null === $value) {
             return false;

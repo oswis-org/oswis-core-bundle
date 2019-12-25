@@ -1,4 +1,6 @@
-<?php /** @noinspection PhpUnused */
+<?php /** @noinspection MethodShouldBeFinalInspection */
+
+/** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
@@ -28,12 +30,12 @@ trait IpTraceableTrait
      */
     protected ?string $updatedIp = null;
 
-    final public function getCreatedIp(): ?string
+    public function getCreatedIp(): ?string
     {
         return $this->createdIp;
     }
 
-    final public function getUpdatedIp(): ?string
+    public function getUpdatedIp(): ?string
     {
         return $this->updatedIp;
     }
