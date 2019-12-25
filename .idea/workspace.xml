@@ -7,26 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Resources/public/rss.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/views/web/parts/breadcrumbs-jsonld.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/web/html-skeleton-default.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/html-skeleton-default.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/AccountActivationTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/AccountActivationTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/ActiveTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/ActiveTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/AddressContainerTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/AddressContainerTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/AddressTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/AddressTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/AgeRangeContainerTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/AgeRangeContainerTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/AgeRangeTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/AgeRangeTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/BankAccountContainerTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/BankAccountContainerTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/BankAccountTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/BankAccountTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/BasicMailConfirmationTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/BasicMailConfirmationTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/BirthDateContainerTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/BirthDateContainerTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/BirthDateTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/BirthDateTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/BlameableTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/BlameableTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/ColorContainerTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/ColorContainerTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/ColorTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/ColorTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/ConfirmedByManagerTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/ConfirmedByManagerTrait.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Traits/Entity/ConfirmedByUserTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/ConfirmedByUserTrait.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Traits/Entity/DateRangeContainerTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/DateRangeContainerTrait.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Traits/Entity/DateRangeTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/DateRangeTrait.php" afterDir="false" />
@@ -45,50 +26,6 @@
       <change beforePath="$PROJECT_DIR$/Traits/Entity/ForeignNationalityTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/ForeignNationalityTrait.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Traits/Entity/FullNameContainerTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/FullNameContainerTrait.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Traits/Entity/FullNameTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/FullNameTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/GeoCoordinatesTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/GeoCoordinatesTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/IdCardTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/IdCardTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/IdTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/IdTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/IdentificationNumberContainerTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/IdentificationNumberContainerTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/IdentificationNumberTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/IdentificationNumberTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/InfoMailSentTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/InfoMailSentTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/InternalNoteContainerTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/InternalNoteContainerTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/InternalNoteTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/InternalNoteTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/IpTraceableTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/IpTraceableTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/LockedForUserChangesTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/LockedForUserChangesTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/MaintenancePeriodTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/MaintenancePeriodTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/NameTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/NameTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/NameableBasicContainerTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/NameableBasicContainerTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/NameableBasicTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/NameableBasicTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/NationalityTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/NationalityTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/NoteContainerTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/NoteContainerTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/NoteTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/NoteTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/NumericRangeTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/NumericRangeTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/NumericValueTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/NumericValueTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/OrderDateRangeTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/OrderDateRangeTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/PasswordResetTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/PasswordResetTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/PhoneContainerTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/PhoneContainerTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/PhoneTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/PhoneTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/PlainTextReasonTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/PlainTextReasonTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/PriceListTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/PriceListTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/PriorityTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/PriorityTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/ReservationDateRangeTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/ReservationDateRangeTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/RoomContainerTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/RoomContainerTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/RoomTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/RoomTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/SlugContainerTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/SlugContainerTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/SlugTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/SlugTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/TaxRateTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/TaxRateTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/TextValueTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/TextValueTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/TimestampableTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/TimestampableTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/TypeContainerTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/TypeContainerTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/TypeTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/TypeTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/UrlContainerTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/UrlContainerTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/UrlTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/UrlTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/UserTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/UserTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/UsernameTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/UsernameTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/ValueContainerTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/ValueContainerTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/ValueTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/ValueTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/ZtpOrPetTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/ZtpOrPetTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -612,14 +549,7 @@
       <workItem from="1576768388268" duration="66000" />
       <workItem from="1576860266665" duration="131000" />
       <workItem from="1577117511515" duration="3477000" />
-      <workItem from="1577177125033" duration="5097000" />
-    </task>
-    <task id="LOCAL-00361" summary="New InfoMailSentTrait.">
-      <created>1567103051150</created>
-      <option name="number" value="00361" />
-      <option name="presentableId" value="LOCAL-00361" />
-      <option name="project" value="LOCAL" />
-      <updated>1567103051150</updated>
+      <workItem from="1577177125033" duration="5310000" />
     </task>
     <task id="LOCAL-00362" summary="Try to return activeRevision in some cases.">
       <created>1567110974162</created>
@@ -957,7 +887,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577118256797</updated>
     </task>
-    <option name="localTasksCounter" value="410" />
+    <task id="LOCAL-00410" summary="Some changes.">
+      <created>1577310685404</created>
+      <option name="number" value="00410" />
+      <option name="presentableId" value="LOCAL-00410" />
+      <option name="project" value="LOCAL" />
+      <updated>1577310685405</updated>
+    </task>
+    <option name="localTasksCounter" value="411" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1075,10 +1012,10 @@
     <state x="499" y="381" width="389" height="318" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1575745872477" />
     <state x="701" y="381" width="509" height="318" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1576403639749" />
     <state x="2419" y="395" width="509" height="318" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1574963553143" />
-    <state x="1920" y="0" width="904" height="735" key="CommitChangelistDialog2" timestamp="1577118256554">
-      <screen x="0" y="0" width="3286" height="741" />
+    <state x="369" y="0" width="904" height="735" key="CommitChangelistDialog2" timestamp="1577310684876">
+      <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="369" y="0" width="904" height="735" key="CommitChangelistDialog2/0.0.1366.741@0.0.1366.741" timestamp="1576761574972" />
+    <state x="369" y="0" width="904" height="735" key="CommitChangelistDialog2/0.0.1366.741@0.0.1366.741" timestamp="1577310684876" />
     <state x="1920" y="0" width="1366" height="735" key="CommitChangelistDialog2/0.0.3286.741@0.0.3286.741" timestamp="1577118256554" />
     <state x="369" y="0" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1575745900400" />
     <state x="518" y="0" width="876" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1576408475185" />
@@ -1123,10 +1060,10 @@
       <screen x="0" y="0" width="1920" height="741" />
     </state>
     <state x="842" y="455" width="228" height="163" key="VCS.EditChangelistDialog/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1574453185964" />
-    <state x="0" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1577118258771">
-      <screen x="0" y="0" width="3286" height="741" />
+    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1577310687487">
+      <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1576761576745" />
+    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1577310687487" />
     <state x="0" y="213" width="1920" height="522" key="Vcs.Push.Dialog.v2/0.0.3286.741@0.0.3286.741" timestamp="1577118258771" />
     <state x="395" y="213" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1575745902932" />
     <state x="555" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1576408477204" />
