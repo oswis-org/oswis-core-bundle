@@ -96,4 +96,15 @@ trait DateRangeTrait
     {
         return $this->getStartDateTime();
     }
+
+    public function getStartByFormat(string $format): ?string
+    {
+        return $this->getStartDate() ? $this->getStartDate()->format($format) : null;
+    }
+
+    public function getEndByFormat(string $format): ?string
+    {
+        return $this->getStartDate() ? $this->getStartDate()->format($format) : null;
+    }
+
 }
