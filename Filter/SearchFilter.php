@@ -1,4 +1,7 @@
-<?php /** @noinspection PhpComposerExtensionStubsInspection */
+<?php
+/**
+ * @noinspection PhpComposerExtensionStubsInspection
+ */
 
 namespace Zakjakub\OswisCoreBundle\Filter;
 

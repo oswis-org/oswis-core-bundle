@@ -1,9 +1,12 @@
 <?php
 /**
+ * @noinspection PhpUnused
  * @noinspection MethodShouldBeFinalInspection
  */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
+
+use Zakjakub\OswisCoreBundle\Utils\StringUtils;
 
 /**
  * Trait that adds slug field.
@@ -11,24 +14,35 @@ namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 trait SlugTrait
 {
     /**
-     * Slug.
-     * @Doctrine\ORM\Mapping\Column(nullable=true)
+     * Slug (auto-generated if forcedSlug not set).
+     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
     protected ?string $slug = null;
 
     /**
-     * Get slug (or id if not set).
+     * Forced slug - set by user, not auto-generated.
+     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
-    public function getSlug(): ?string
+    protected ?string $forcedSlug = null;
+
+    public function getForcedSlug(): ?string
     {
-        return $this->slug ?? ''.$this->getId();
+        return !empty($this->forcedSlug) ? $this->forcedSlug : null;
     }
 
-    /**
-     * Set slug (or id if not set).
-     */
-    public function setSlug(?string $slug): void
+    public function setForcedSlug(?string $forcedSlug): void
     {
-        $this->slug = $slug ?? ''.$this->getId();
+        $this->forcedSlug = StringUtils::hyphenize($forcedSlug);
+        method_exists($this, 'updateSlug') ? $this->updateSlug() : $this->setSlug($this->getSlug());
+    }
+
+    public function getSlug(): string
+    {
+        return $this->getForcedSlug() ?? $this->slug ?? ''.$this->getId();
+    }
+
+    public function setSlug(?string $slug): string
+    {
+        return $this->slug = $this->getForcedSlug() ?? (!empty($slug) ? $slug : ''.$this->getId());
     }
 }

@@ -15,16 +15,12 @@ trait NameTrait
     /**
      * Name/title.
      *
-     * @var string|null
-     *
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
     protected ?string $name = null;
 
     /**
-     * Short name/shortcut.
-     *
-     * @var string|null
+     * Shortened name/shortcut.
      *
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */

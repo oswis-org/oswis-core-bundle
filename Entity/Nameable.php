@@ -11,36 +11,31 @@ class Nameable
 {
     /**
      * Full name.
-     *
-     * @var string|null
      */
     public ?string $name = null;
 
     /**
      * Shortened name.
-     *
-     * @var string|null
      */
     public ?string $shortName = null;
 
     /**
      * Description.
-     *
-     * @var string|null
      */
     public ?string $description = null;
 
     /**
      * Note.
-     *
-     * @var string|null
      */
     public ?string $note = null;
 
     /**
+     * Internal note.
+     */
+    public ?string $internalNote = null;
+
+    /**
      * Slug (string for ie. url).
-     *
-     * @var string|null
      */
     public ?string $slug = null;
 
@@ -52,12 +47,14 @@ class Nameable
         ?string $shortName = null,
         ?string $description = null,
         ?string $note = null,
-        ?string $slug = null
+        ?string $slug = null,
+        ?string $internalNote = null
     ) {
         $this->name = $name;
         $this->shortName = $shortName;
         $this->description = $description;
         $this->note = $note;
         $this->slug = $slug;
+        $this->internalNote = $internalNote;
     }
 }
