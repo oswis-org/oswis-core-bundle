@@ -23,7 +23,6 @@ trait AgeRangeTrait
     /**
      * Minimal age of person in this group.
      *
-     * @var int|null
      * @Doctrine\ORM\Mapping\Column(type="smallint", nullable=true)
      */
     protected ?int $minAge = null;
@@ -31,7 +30,6 @@ trait AgeRangeTrait
     /**
      * Maximal age of person in this group.
      *
-     * @var int|null
      * @Doctrine\ORM\Mapping\Column(type="smallint", nullable=true)
      */
     protected ?int $maxAge = null;
@@ -71,9 +69,6 @@ trait AgeRangeTrait
         return $this->minAge;
     }
 
-    /**
-     * @param int $minAge
-     */
     public function setMinAge(?int $minAge): void
     {
         $this->minAge = $minAge;
