@@ -1,4 +1,7 @@
-<?php /** @noinspection PhpUnused */
+<?php
+/**
+ * @noinspection PhpUnused
+ */
 
 namespace Zakjakub\OswisCoreBundle\Utils;
 
@@ -8,7 +11,7 @@ use Exception;
 use function array_key_exists;
 
 /**
- * Class DateTimeUtils.
+ * Utilities for work with DateTime objects.
  *
  * @author  Jakub Zak <mail@jakubzak.eu>
  */
@@ -16,6 +19,24 @@ class DateTimeUtils
 {
     public const MIN_DATE_TIME_STRING = '1970-01-01 00:00:00';
     public const MAX_DATE_TIME_STRING = '2038-01-19 00:00:00';
+
+    public const LENGTH_TYPE_SECONDS = 's';
+    public const LENGTH_TYPE_MINUTES = 'i';
+    public const LENGTH_TYPE_HOURS = 'h';
+    public const LENGTH_TYPE_DAYS = 'd';
+    public const LENGTH_TYPE_DAYS_ALL = 'days';
+    public const LENGTH_TYPE_MONTHS = 'm';
+    public const LENGTH_TYPE_YEARS = 'y';
+
+    public const LENGTH_TYPES_ALLOWED = [
+        self::LENGTH_TYPE_SECONDS,
+        self::LENGTH_TYPE_MINUTES,
+        self::LENGTH_TYPE_HOURS,
+        self::LENGTH_TYPE_DAYS,
+        self::LENGTH_TYPE_DAYS_ALL,
+        self::LENGTH_TYPE_MONTHS,
+        self::LENGTH_TYPE_YEARS,
+    ];
 
     /**
      * @param DateInterval $dateInterval
@@ -60,6 +81,7 @@ class DateTimeUtils
     public static function isDateTimeInRange(?DateTime $start, ?DateTime $end, ?DateTime $dateTime = null): bool
     {
         try {
+            $dateTime ??= new DateTime();
             $start ??= new DateTime(self::MIN_DATE_TIME_STRING);
             $end ??= new DateTime(self::MAX_DATE_TIME_STRING);
 
@@ -105,7 +127,7 @@ class DateTimeUtils
         }
 
         return null;
-    }
+    } // Counts all included days.
 
     public static function getEaster(DateTime $dateTime): ?string
     {
@@ -134,4 +156,18 @@ class DateTimeUtils
 
         return $a < $b ? -1 : 1;
     }
+
+    public static function getLength(?DateTime $start, ?DateTime $end, string $type = self::LENGTH_TYPE_HOURS): ?int
+    {
+        if (null === $start || null === $end || !in_array($type, self::LENGTH_TYPES_ALLOWED, true)) {
+            return null;
+        }
+        $interval = $end->diff($start);
+        if (false !== $interval && !$interval->invert) {
+            return (int)$interval->$type;
+        }
+
+        return null;
+    }
+
 }

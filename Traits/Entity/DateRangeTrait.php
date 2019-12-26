@@ -7,7 +7,6 @@
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
 use DateTime;
-use Exception;
 use Zakjakub\OswisCoreBundle\Utils\DateTimeUtils;
 
 /**
@@ -18,16 +17,12 @@ trait DateRangeTrait
     /**
      * Date and time of range start.
      *
-     * @var DateTime|null
-     *
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true, options={"default": null})
      */
     protected ?DateTime $startDateTime = null;
 
     /**
      * Date and time of range end.
-     *
-     * @var DateTime|null
      *
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true, options={"default": null})
      */
@@ -36,17 +31,13 @@ trait DateRangeTrait
     /**
      * True if datetime belongs to this datetime range.
      *
-     * @param DateTime $dateTime Checked date and time
+     * @param DateTime $dateTime Checked date and time ('now' if not set).
      *
-     * @return bool True if belongs to date range
+     * @return bool True if belongs to date range.
      */
     public function containsDateTimeInRange(?DateTime $dateTime = null): bool
     {
-        try {
-            return DateTimeUtils::isDateTimeInRange($this->getStartDateTime(), $this->getEndDateTime(), $dateTime ?? new DateTime());
-        } catch (Exception $e) {
-            return false;
-        }
+        return DateTimeUtils::isDateTimeInRange($this->getStartDateTime(), $this->getEndDateTime(), $dateTime);
     }
 
     /**
@@ -91,9 +82,9 @@ trait DateRangeTrait
         $this->setEndDateTime($dateTime);
     }
 
-    public function getLengthInHours(): ?int
+    public function getLength(?string $type = DateTimeUtils::LENGTH_TYPE_HOURS): ?int
     {
-        return (!$this->getStartDate() || !$this->getEndDate()) ? null : (int)$this->getEndDate()->diff($this->getStartDate())->h;
+        return DateTimeUtils::getLength($this->getStartDate(), $this->getEndDateTime(), $type);
     }
 
     public function getStartDate(): ?DateTime
