@@ -82,7 +82,7 @@ trait DateRangeTrait
         $this->setEndDateTime($dateTime);
     }
 
-    public function getLength(?string $type = DateTimeUtils::LENGTH_TYPE_HOURS): ?int
+    public function getLength(?string $type = DateTimeUtils::DATE_TIME_HOURS): ?int
     {
         return DateTimeUtils::getLength($this->getStartDate(), $this->getEndDateTime(), $type);
     }
@@ -104,7 +104,11 @@ trait DateRangeTrait
 
     public function getEndByFormat(string $format): ?string
     {
-        return $this->getStartDate() ? $this->getStartDate()->format($format) : null;
+        return $this->getEndDate() ? $this->getEndDate()->format($format) : null;
     }
 
+    public function isInOnePeriod(string $period): ?string
+    {
+        return DateTimeUtils::isInOnePeriod($period, $this->getStartDate(), $this->getEndDate());
+    }
 }

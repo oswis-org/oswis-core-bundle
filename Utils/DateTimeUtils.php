@@ -20,22 +20,29 @@ class DateTimeUtils
     public const MIN_DATE_TIME_STRING = '1970-01-01 00:00:00';
     public const MAX_DATE_TIME_STRING = '2038-01-19 00:00:00';
 
-    public const LENGTH_TYPE_SECONDS = 's';
-    public const LENGTH_TYPE_MINUTES = 'i';
-    public const LENGTH_TYPE_HOURS = 'h';
-    public const LENGTH_TYPE_DAYS = 'd';
-    public const LENGTH_TYPE_DAYS_ALL = 'days';
-    public const LENGTH_TYPE_MONTHS = 'm';
-    public const LENGTH_TYPE_YEARS = 'y';
+    public const DATE_TIME_SECONDS = 's';
+    public const DATE_TIME_MINUTES = 'i';
+    public const DATE_TIME_HOURS = 'h';
+    public const DATE_TIME_DAYS = 'd';
+    public const DATE_TIME_DAYS_ALL = 'days';
+    public const DATE_TIME_MONTHS = 'm';
+    public const DATE_TIME_YEARS = 'y';
 
     public const LENGTH_TYPES_ALLOWED = [
-        self::LENGTH_TYPE_SECONDS,
-        self::LENGTH_TYPE_MINUTES,
-        self::LENGTH_TYPE_HOURS,
-        self::LENGTH_TYPE_DAYS,
-        self::LENGTH_TYPE_DAYS_ALL,
-        self::LENGTH_TYPE_MONTHS,
-        self::LENGTH_TYPE_YEARS,
+        self::DATE_TIME_SECONDS,
+        self::DATE_TIME_MINUTES,
+        self::DATE_TIME_HOURS,
+        self::DATE_TIME_DAYS,
+        self::DATE_TIME_DAYS_ALL,
+        self::DATE_TIME_MONTHS,
+        self::DATE_TIME_YEARS,
+    ];
+
+    public const PERIOD_TYPES_ALLOWED = [
+        self::DATE_TIME_HOURS,
+        self::DATE_TIME_DAYS,
+        self::DATE_TIME_MONTHS,
+        self::DATE_TIME_YEARS,
     ];
 
     /**
@@ -157,7 +164,7 @@ class DateTimeUtils
         return $a < $b ? -1 : 1;
     }
 
-    public static function getLength(?DateTime $start, ?DateTime $end, string $type = self::LENGTH_TYPE_HOURS): ?int
+    public static function getLength(?DateTime $start, ?DateTime $end, string $type = self::DATE_TIME_HOURS): ?int
     {
         if (null === $start || null === $end || !in_array($type, self::LENGTH_TYPES_ALLOWED, true)) {
             return null;
@@ -169,5 +176,29 @@ class DateTimeUtils
 
         return null;
     }
+
+
+    public static function isInOnePeriod(string $period, ?DateTime $start, ?DateTime $end): ?bool
+    {
+        if (empty($period) || $start === null || null === $end || !in_array($period, self::PERIOD_TYPES_ALLOWED, true)) {
+            return null;
+        }
+        if ($period === self::DATE_TIME_YEARS) {
+            $format = 'y';
+        }
+        if ($period === self::DATE_TIME_MONTHS) {
+            $format = 'y-m';
+        }
+        if ($period === self::DATE_TIME_DAYS) {
+            $format = 'y-m-d';
+        }
+        if ($period === self::DATE_TIME_HOURS) {
+            $format = 'y-m-d h';
+        }
+
+        return !empty($format) && ($start->format($format) === $end->format($format));
+
+    }
+
 
 }
