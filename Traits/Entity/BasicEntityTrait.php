@@ -16,6 +16,7 @@ namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 trait BasicEntityTrait
 {
     use IdTrait;
+    use CustomIdTrait;
     use TimestampableTrait;
     use BlameableTrait;
     use IpTraceableTrait;

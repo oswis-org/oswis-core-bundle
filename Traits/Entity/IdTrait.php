@@ -13,18 +13,12 @@ trait IdTrait
     /**
      * Unique (auto-incremented) numeric identifier.
      *
-     * @var int|null
      * @Doctrine\ORM\Mapping\Id()
      * @Doctrine\ORM\Mapping\GeneratedValue(strategy="AUTO")
      * @Doctrine\ORM\Mapping\Column(type="integer")
      */
     protected ?int $id = null;
 
-    /**
-     * Get id (unique identifier).
-     *
-     * @return int
-     */
     public function getId(): ?int
     {
         return $this->id;

@@ -92,26 +92,6 @@ trait DateRangeTrait
         return $this->getStartDateTime();
     }
 
-    public function getEndDate(): ?DateTime
-    {
-        return $this->getStartDateTime();
-    }
-
-    public function getStartByFormat(string $format): ?string
-    {
-        return $this->getStartDate() ? $this->getStartDate()->format($format) : null;
-    }
-
-    public function getEndByFormat(string $format): ?string
-    {
-        return $this->getEndDate() ? $this->getEndDate()->format($format) : null;
-    }
-
-    public function isInOnePeriod(string $period): ?string
-    {
-        return DateTimeUtils::isInOnePeriod($period, $this->getStartDate(), $this->getEndDate());
-    }
-
     public function getRangeAsText(): ?string
     {
         if (null === $this->getStartDate()) {
@@ -128,5 +108,25 @@ trait DateRangeTrait
         }
 
         return $this->getStartByFormat('d. m. y').$this->getEndByFormat(' až d. m. y');
+    }
+
+    public function isInOnePeriod(string $period): ?string
+    {
+        return DateTimeUtils::isInOnePeriod($period, $this->getStartDate(), $this->getEndDate());
+    }
+
+    public function getEndDate(): ?DateTime
+    {
+        return $this->getStartDateTime();
+    }
+
+    public function getStartByFormat(string $format): ?string
+    {
+        return $this->getStartDate() ? $this->getStartDate()->format($format) : null;
+    }
+
+    public function getEndByFormat(string $format): ?string
+    {
+        return $this->getEndDate() ? $this->getEndDate()->format($format) : null;
     }
 }
