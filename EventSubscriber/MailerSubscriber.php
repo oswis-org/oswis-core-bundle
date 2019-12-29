@@ -42,7 +42,7 @@ class MailerSubscriber implements EventSubscriberInterface
             try {
                 $fromAddress = $oswisCoreSettings->getEmail()['address'] ?? null;
                 $fromName = EmailUtils::mime_header_encode($oswisCoreSettings->getEmail()['name'] ?? null);
-                $message->from([new Address($fromAddress, $fromName)]);
+                $message->from(new Address($fromAddress, $fromName));
             } catch (LogicException $e) {
                 /// TODO: Catch.
             } catch (RfcComplianceException $e) {

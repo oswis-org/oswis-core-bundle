@@ -110,7 +110,7 @@ trait DateRangeTrait
         return $this->getStartByFormat('d. m. y').$this->getEndByFormat(' až d. m. y');
     }
 
-    public function isInOnePeriod(string $period): ?string
+    public function isInOnePeriod(string $period): ?bool
     {
         return DateTimeUtils::isInOnePeriod($period, $this->getStartDate(), $this->getEndDate());
     }

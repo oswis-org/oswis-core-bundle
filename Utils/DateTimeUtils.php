@@ -18,7 +18,7 @@ use function array_key_exists;
  */
 class DateTimeUtils
 {
-    public const RANGE_ALL = null;
+    public const RANGE_ALL = '';
     public const RANGE_YEAR = 'year';
     public const RANGE_MONTH = 'month';
     public const RANGE_WEEK = 'week';
@@ -117,7 +117,7 @@ class DateTimeUtils
      */
     public static function getDateTimeByRange(?DateTime $dateTime, ?string $range, ?bool $isEnd = false): DateTime
     {
-        if (null === $range || self::RANGE_ALL === $range) {
+        if (empty($range) || self::RANGE_ALL === $range) {
             return $dateTime;
         }
         if (in_array($range, [self::RANGE_YEAR, self::RANGE_MONTH, self::RANGE_DAY], true)) {
@@ -136,14 +136,14 @@ class DateTimeUtils
     {
         $month = $isEnd ? 12 : 1;
 
-        return $range === self::RANGE_MONTH || self::RANGE_DAY ? (int)$dateTime->format('m') : $month;
+        return ($range === self::RANGE_MONTH || $range === self::RANGE_DAY) ? (int)$dateTime->format('m') : $month;
     }
 
     public static function getDayByRange(DateTime $dateTime, ?string $range, ?bool $isEnd = false): int
     {
         $day = $isEnd ? (int)$dateTime->format('t') : 1;
 
-        return $range || self::RANGE_DAY ? (int)$dateTime->format('d') : $day;
+        return ($range === self::RANGE_DAY) ? (int)$dateTime->format('d') : $day;
     }
 
     public static function isWeekend(DateTime $dateTime): bool
