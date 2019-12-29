@@ -122,16 +122,28 @@ class DateTimeUtils
         }
         if (in_array($range, [self::RANGE_YEAR, self::RANGE_MONTH, self::RANGE_DAY], true)) {
             $dateTime ??= new DateTime();
-            $year = (int)$dateTime->format('Y');
-            $month = $isEnd ? 12 : 1;
-            $month = $range === self::RANGE_MONTH || self::RANGE_DAY ? (int)$dateTime->format('m') : $month;
-            $day = $isEnd ? (int)$dateTime->format('t') : 1;
-            $day = $range || self::RANGE_DAY ? (int)$dateTime->format('d') : $day;
-            $dateTime = $dateTime->setDate($year, $month, $day);
+            $month = self::getMonthByRange($dateTime, $range, $isEnd);
+            $day = self::getDayByRange($dateTime, $range, $isEnd);
+            $minute = $isEnd ? 59 : 0;
+            $dateTime = $dateTime->setDate((int)$dateTime->format('Y'), $month, $day);
 
-            return $dateTime->setTime($isEnd ? 23 : 0, $isEnd ? 59 : 0, $isEnd ? 59 : 0, $isEnd ? 999 : 0);
+            return $dateTime->setTime($isEnd ? 23 : 0, $minute, $minute, $isEnd ? 999 : 0);
         }
         throw new InvalidArgumentException("Rozsah '$range' není povolen.");
+    }
+
+    public static function getMonthByRange(DateTime $dateTime, ?string $range, ?bool $isEnd = false): int
+    {
+        $month = $isEnd ? 12 : 1;
+
+        return $range === self::RANGE_MONTH || self::RANGE_DAY ? (int)$dateTime->format('m') : $month;
+    }
+
+    public static function getDayByRange(DateTime $dateTime, ?string $range, ?bool $isEnd = false): int
+    {
+        $day = $isEnd ? (int)$dateTime->format('t') : 1;
+
+        return $range || self::RANGE_DAY ? (int)$dateTime->format('d') : $day;
     }
 
     public static function isWeekend(DateTime $dateTime): bool
