@@ -13,32 +13,24 @@ trait EntityPublicTrait
 {
     /**
      * Entity is visible on website.
-     *
-     * @var bool|null
      * @Doctrine\ORM\Mapping\Column(type="boolean", nullable=true)
      */
     protected ?bool $publicOnWeb = null;
 
     /**
-     * Entity is visible on automatically generated route (only of it's visible on website).
-     *
-     * @var bool|null
+     * Entity is visible on automatically generated route.
      * @Doctrine\ORM\Mapping\Column(type="boolean", nullable=true)
      */
     protected ?bool $publicOnWebRoute = null;
 
     /**
-     * Entity is visible in IS.
-     *
-     * @var bool|null
+     * Entity is visible in IS (is used somewhere?).
      * @Doctrine\ORM\Mapping\Column(type="boolean", nullable=true)
      */
     protected ?bool $publicInIS = null;
 
     /**
-     * Entity is visible in portal.
-     *
-     * @var bool|null
+     * Entity is visible in portal (is used somewhere?).
      * @Doctrine\ORM\Mapping\Column(type="boolean", nullable=true)
      */
     protected ?bool $publicInPortal = null;
@@ -48,9 +40,6 @@ trait EntityPublicTrait
         return $this->publicOnWeb ?? false;
     }
 
-    /**
-     * @param bool $publicOnWeb
-     */
     public function setPublicOnWeb(?bool $publicOnWeb): void
     {
         $this->publicOnWeb = $publicOnWeb;
@@ -61,9 +50,6 @@ trait EntityPublicTrait
         return $this->publicOnWebRoute ?? false;
     }
 
-    /**
-     * @param bool $publicOnWebRoute
-     */
     public function setPublicOnWebRoute(?bool $publicOnWebRoute): void
     {
         $this->publicOnWebRoute = $publicOnWebRoute;
@@ -74,9 +60,6 @@ trait EntityPublicTrait
         return $this->publicInIS ?? false;
     }
 
-    /**
-     * @param bool $publicInIS
-     */
     public function setPublicInIS(?bool $publicInIS): void
     {
         $this->publicInIS = $publicInIS;
@@ -87,9 +70,6 @@ trait EntityPublicTrait
         return $this->publicInPortal ?? false;
     }
 
-    /**
-     * @param bool $publicInPortal
-     */
     public function setPublicInPortal(?bool $publicInPortal): void
     {
         $this->publicInPortal = $publicInPortal;

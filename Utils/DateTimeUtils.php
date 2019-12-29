@@ -8,15 +8,22 @@ namespace Zakjakub\OswisCoreBundle\Utils;
 use DateInterval;
 use DateTime;
 use Exception;
+use InvalidArgumentException;
 use function array_key_exists;
 
 /**
  * Utilities for work with DateTime objects.
  *
- * @author  Jakub Zak <mail@jakubzak.eu>
+ * @author Jakub Zak <mail@jakubzak.eu>
  */
 class DateTimeUtils
 {
+    public const RANGE_ALL = null;
+    public const RANGE_YEAR = 'year';
+    public const RANGE_MONTH = 'month';
+    public const RANGE_WEEK = 'week';
+    public const RANGE_DAY = 'day';
+
     public const MIN_DATE_TIME_STRING = '1970-01-01 00:00:00';
     public const MAX_DATE_TIME_STRING = '2038-01-19 00:00:00';
 
@@ -79,11 +86,11 @@ class DateTimeUtils
     /**
      * True if datetime belongs to this datetime range.
      *
-     * @param DateTime      $start    Start of range
-     * @param DateTime      $end      End of range
-     * @param DateTime|null $dateTime Checked date and time
+     * @param DateTime      $start    Start of range.
+     * @param DateTime      $end      End of range.
+     * @param DateTime|null $dateTime Checked date and time ('now' if it's not set).
      *
-     * @return bool True if belongs to date range
+     * @return bool True if belongs to date range.
      */
     public static function isDateTimeInRange(?DateTime $start, ?DateTime $end, ?DateTime $dateTime = null): bool
     {
@@ -98,6 +105,35 @@ class DateTimeUtils
         }
     }
 
+    /**
+     * Converts DateTime to start (or end) of some range (year, month, day).
+     *
+     * @param DateTime|null $dateTime
+     * @param string|null   $range
+     * @param bool|null     $isEnd
+     *
+     * @return DateTime
+     * @throws Exception
+     */
+    public static function getDateTimeByRange(?DateTime $dateTime, ?string $range, ?bool $isEnd = false): DateTime
+    {
+        if (null === $range || self::RANGE_ALL === $range) {
+            return $dateTime;
+        }
+        if (in_array($range, [self::RANGE_YEAR, self::RANGE_MONTH, self::RANGE_DAY], true)) {
+            $dateTime ??= new DateTime();
+            $year = (int)$dateTime->format('Y');
+            $month = $isEnd ? 12 : 1;
+            $month = $range === self::RANGE_MONTH || self::RANGE_DAY ? (int)$dateTime->format('m') : $month;
+            $day = $isEnd ? (int)$dateTime->format('t') : 1;
+            $day = $range || self::RANGE_DAY ? (int)$dateTime->format('d') : $day;
+            $dateTime = $dateTime->setDate($year, $month, $day);
+
+            return $dateTime->setTime($isEnd ? 23 : 0, $isEnd ? 59 : 0, $isEnd ? 59 : 0, $isEnd ? 999 : 0);
+        }
+        throw new InvalidArgumentException("Rozsah '$range' není povolen.");
+    }
+
     public static function isWeekend(DateTime $dateTime): bool
     {
         return $dateTime->format('N') > 6;
@@ -105,7 +141,7 @@ class DateTimeUtils
 
     public static function isPublicHolidays(DateTime $dateTime): bool
     {
-        return self::getPublicHolidays($dateTime) ? true : false;
+        return !empty(self::getPublicHolidays($dateTime));
     }
 
     public static function getPublicHolidays(DateTime $dateTime): ?string
