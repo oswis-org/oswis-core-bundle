@@ -27,7 +27,7 @@ class AppUserTypeService
     final public function create(?Nameable $nameable = null, ?AppUserRole $role = null, ?bool $adminUser = null): AppUserType
     {
         $type = $this->em->getRepository(AppUserType::class)->findOneBy(['slug' => $nameable ? $nameable->slug : null]);
-        if (!$type) {
+        if (null === $type || !($type instanceof AppUserType)) {
             $type = new AppUserType($nameable, $role, $adminUser);
             $this->em->persist($type);
         }

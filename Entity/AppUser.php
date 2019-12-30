@@ -1,4 +1,6 @@
-<?php /** @noinspection PhpUnused */
+<?php /** @noinspection MethodShouldBeFinalInspection */
+
+/** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Entity;
 
@@ -94,7 +96,6 @@ use Zakjakub\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
 class AppUser extends AbstractAppUser
 {
     /**
-     * @var Collection|null
      * @Doctrine\ORM\Mapping\OneToMany(
      *     targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUserFlagConnection",
      *     cascade={"all"},
@@ -105,7 +106,6 @@ class AppUser extends AbstractAppUser
     protected ?Collection $appUserFlags = null;
 
     /**
-     * @var AppUserType|null
      * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUserType", fetch="EAGER")
      * @Doctrine\ORM\Mapping\JoinColumn(name="app_user_type_id", referencedColumnName="id")
      */
@@ -131,17 +131,17 @@ class AppUser extends AbstractAppUser
     /**
      * Can user visit administration?
      */
-    final public function isAdminUser(): bool
+    public function isAdminUser(): bool
     {
         return !$this->getAppUserType() ? false : ($this->getAppUserType()->getAdminUser() ?? false);
     }
 
-    final public function getAppUserType(): ?AppUserType
+    public function getAppUserType(): ?AppUserType
     {
         return $this->appUserType;
     }
 
-    final public function setAppUserType(?AppUserType $appUserType): void
+    public function setAppUserType(?AppUserType $appUserType): void
     {
         $this->appUserType = $appUserType;
     }
@@ -149,7 +149,7 @@ class AppUser extends AbstractAppUser
     /**
      * True if user is active.
      */
-    final public function isActive(?DateTime $referenceDateTime = null): bool
+    public function isActive(?DateTime $referenceDateTime = null): bool
     {
         return !$this->getAccountActivationDateTime() ? false : $this->containsDateTimeInRange($referenceDateTime);
     }
@@ -157,7 +157,7 @@ class AppUser extends AbstractAppUser
     /**
      * Can user edit this user?
      */
-    final public function canEdit(self $user): bool
+    public function canEdit(self $user): bool
     {
         return (!($user instanceof self) || !$this->canRead($user)) ? false : $user === $this;
     }
@@ -165,17 +165,16 @@ class AppUser extends AbstractAppUser
     /**
      * Can user read this user?
      */
-    final public function canRead(self $user): bool
+    public function canRead(self $user): bool
     {
         return !($user instanceof self) ? false : $user === $this;
     }
 
     /**
      * Returns the roles granted to the user.
-     *
      * @return array<AppUserRole|string> The user roles
      */
-    final public function getRoles(): array
+    public function getRoles(): array
     {
         return $this->getAppUserType() ? $this->getAppUserType()->getAllRoleNames()->toArray() : [];
     }
@@ -183,12 +182,12 @@ class AppUser extends AbstractAppUser
     /**
      * @return Collection<AppUserFlag>
      */
-    final public function getAppUserFlags(): Collection
+    public function getAppUserFlags(): Collection
     {
         return $this->appUserFlags ?? new ArrayCollection();
     }
 
-    final public function addAppUserFlag(?AppUserFlagConnection $flagInJobFairUser): void
+    public function addAppUserFlag(?AppUserFlagConnection $flagInJobFairUser): void
     {
         $this->appUserFlags ??= new ArrayCollection();
         if ($flagInJobFairUser && !$this->appUserFlags->contains($flagInJobFairUser)) {
@@ -197,11 +196,16 @@ class AppUser extends AbstractAppUser
         }
     }
 
-    final public function removeAppUserFlag(?AppUserFlagConnection $flagInEmployer): void
+    public function removeAppUserFlag(?AppUserFlagConnection $flagInEmployer): void
     {
         $this->appUserFlags ??= new ArrayCollection();
         if ($flagInEmployer && $this->appUserFlags->removeElement($flagInEmployer)) {
             $flagInEmployer->setAppUser(null);
         }
+    }
+
+    public function getName(): string
+    {
+        return $this->getFullName() ?? $this->getUsername();
     }
 }

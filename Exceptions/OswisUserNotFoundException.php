@@ -2,13 +2,10 @@
 
 namespace Zakjakub\OswisCoreBundle\Exceptions;
 
-use Exception;
-
-class OswisUserNotFoundException extends Exception
+class OswisUserNotFoundException extends OswisException
 {
     public function __construct(?string $message = null)
     {
-        $message = $message ? ' '.$message : null;
-        parent::__construct('Uživatel nenalezen.'.$message);
+        parent::__construct($message ?? 'Uživatel nenalezen.');
     }
 }

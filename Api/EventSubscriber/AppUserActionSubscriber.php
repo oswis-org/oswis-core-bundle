@@ -1,9 +1,11 @@
-<?php /** @noinspection PhpUnused */
+<?php
+/**
+ * @noinspection PhpUnused
+ */
 
 namespace Zakjakub\OswisCoreBundle\Api\EventSubscriber;
 
 use ApiPlatform\Core\EventListener\EventPriorities;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpKernel\Event\ViewEvent;
@@ -24,11 +26,8 @@ final class AppUserActionSubscriber implements EventSubscriberInterface
 {
     private AppUserService $appUserService;
 
-    private EntityManagerInterface $em;
-
-    public function __construct(EntityManagerInterface $em, AppUserService $appUserService)
+    public function __construct(AppUserService $appUserService)
     {
-        $this->em = $em;
         $this->appUserService = $appUserService;
     }
 
@@ -68,11 +67,11 @@ final class AppUserActionSubscriber implements EventSubscriberInterface
         $appUserRepository = $this->appUserService->getRepository();
         $appUser ??= $appUserRepository->loadUserById($uid) ?? $appUserRepository->loadUserByUsername($username);
         if (!$appUser && $token) {
-            $appUserByToken = $this->em->getRepository(AppUser::class)->findOneBy(['passwordResetRequestToken' => $token]);
+            $appUserByToken = $this->appUserService->getRepository()->findOneBy(['passwordResetRequestToken' => $token]);
             $appUser = $appUserByToken && $appUserByToken->checkPasswordResetRequestToken($token) ? $appUserByToken : null;
         }
         if (!$appUser && $token) {
-            $appUserByToken = $this->em->getRepository(AppUser::class)->findOneBy(['accountActivationRequestToken' => $token]);
+            $appUserByToken = $this->appUserService->getRepository()->findOneBy(['accountActivationRequestToken' => $token]);
             $appUser = $appUserByToken && $appUserByToken->checkAccountActivationRequestToken($token) ? $appUserByToken : null;
         }
         if (!$appUser) {

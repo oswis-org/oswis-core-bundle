@@ -7,7 +7,6 @@
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
 use DateTime;
-use function date_create;
 
 /**
  * Trait EntityBasicMailConfirmationTrait.
@@ -90,12 +89,12 @@ trait BasicMailConfirmationTrait
 
     public function setMailConfirmationSend(?string $source = null): void
     {
-        if ($this->eMailConfirmationCount && $this->eMailConfirmationCount > 0) {
+        if (!empty($this->eMailConfirmationCount)) {
             ++$this->eMailConfirmationCount;
         } else {
             $this->eMailConfirmationCount = 1;
         }
-        $this->eMailConfirmationDateTime = date_create();
+        $this->eMailConfirmationDateTime = new DateTime();
         $this->eMailConfirmationSource = $source;
     }
 }

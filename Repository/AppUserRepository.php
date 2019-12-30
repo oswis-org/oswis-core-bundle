@@ -69,7 +69,7 @@ class AppUserRepository extends EntityRepository implements UserLoaderInterface
     {
         $result = parent::findOneBy($criteria, $orderBy);
 
-        return $result && $result instanceof AppUser ? $result : null;
+        return $result instanceof AppUser ? $result : null;
     }
 
 }

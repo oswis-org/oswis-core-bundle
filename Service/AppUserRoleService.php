@@ -26,7 +26,7 @@ class AppUserRoleService
     final public function create(?Nameable $nameable = null, ?string $roleString = null, ?AppUserRole $parent = null): AppUserRole
     {
         $role = $this->em->getRepository(AppUserRole::class)->findOneBy(['name' => $nameable ? $nameable->name : null]);
-        if (!$role) {
+        if (null === $role || !($role instanceof AppUserRole)) {
             $role = new AppUserRole($nameable, $roleString, $parent);
             $this->em->persist($role);
         }

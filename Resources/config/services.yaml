@@ -130,10 +130,8 @@ services:
         autowire: true
         public: true
         arguments:
-            - '@doctrine.orm.entity_manager'
-            - '@security.password_encoder'
             - '@monolog.logger'
-            - '@mailer'
+            - '@zakjakub_oswis_core.app_user_service'
     Zakjakub\OswisCoreBundle\Controller\AppUserController:
         alias: zakjakub_oswis_core.app_user_controller
         public: true

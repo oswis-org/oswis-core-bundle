@@ -2,13 +2,10 @@
 
 namespace Zakjakub\OswisCoreBundle\Exceptions;
 
-use Exception;
-
-class OswisUserNotUniqueException extends Exception
+class OswisUserNotUniqueException extends OswisException
 {
     public function __construct(?string $message = null)
     {
-        $message = ' '.$message;
-        parent::__construct('Chyba! Nejednoznačná identifikace uživatele.'.$message);
+        parent::__construct($message ?? 'Identifikátor uživatele není unikátní.');
     }
 }

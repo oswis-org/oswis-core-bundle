@@ -2,9 +2,7 @@
 
 namespace Zakjakub\OswisCoreBundle\Exceptions;
 
-use Exception;
-
-class OswisNotImplementedException extends Exception
+class OswisNotImplementedException extends OswisException
 {
     public function __construct(?string $type = null, ?string $inContext = null)
     {

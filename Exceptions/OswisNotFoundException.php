@@ -8,7 +8,6 @@ class OswisNotFoundException extends NotFoundHttpException
 {
     public function __construct(?string $message = null)
     {
-        $message = $message ? ' '.$message : null;
-        parent::__construct('Stránka nenalezena.'.$message);
+        parent::__construct($message ?? 'Stránka nenalezena.');
     }
 }

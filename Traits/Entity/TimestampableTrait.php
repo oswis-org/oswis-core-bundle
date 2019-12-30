@@ -7,7 +7,6 @@
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
 use DateTime;
-use function date_create;
 use function floor;
 
 /**
@@ -42,7 +41,7 @@ trait TimestampableTrait
         if (!$this->getCreatedDateTime()) {
             return null;
         }
-        $ago = $this->getCreatedDateTime()->diff(date_create())->days;
+        $ago = $this->getCreatedDateTime()->diff(new DateTime())->days;
         if (!$ago) {
             return null;
         }
@@ -65,7 +64,7 @@ trait TimestampableTrait
         if (!$this->getUpdatedDateTime()) {
             return null;
         }
-        $ago = $this->getUpdatedDateTime()->diff(date_create())->days;
+        $ago = $this->getUpdatedDateTime()->diff(new DateTime())->days;
         if (!$ago) {
             return null;
         }

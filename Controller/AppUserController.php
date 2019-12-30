@@ -1,75 +1,46 @@
-<?php /** @noinspection PhpUnused */
+<?php
+/**
+ * @noinspection PhpUnused
+ */
 
 namespace Zakjakub\OswisCoreBundle\Controller;
 
-use Doctrine\ORM\EntityManagerInterface;
-use Exception;
 use LogicException;
-use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Zakjakub\OswisCoreBundle\Entity\AppUser;
+use Zakjakub\OswisCoreBundle\Exceptions\OswisException;
 use Zakjakub\OswisCoreBundle\Service\AppUserService;
-use function assert;
 
 class AppUserController extends AbstractController
 {
+    private AppUserService $appUserService;
+
+    public function __construct(AppUserService $appUserService)
+    {
+        $this->appUserService = $appUserService;
+    }
+
     /**
+     * @param string|null $token Secret token for user activation (sent by e-mail).
+     *
+     * @return Response
      * @throws LogicException
      */
-    final public function appUserActivationAction(
-        string $token,
-        EntityManagerInterface $em,
-        LoggerInterface $logger,
-        AppUserService $appUserService
-    ): Response {
+    final public function appUserActivationAction(?string $token = null): Response
+    {
         try {
-            if (!$token) {
-                return $this->render(
-                    '@ZakjakubOswisCore/web/pages/message.html.twig',
-                    [
-                        'title'   => 'Token nezadán',
-                        'message' => 'Nebyl zadán token. 
-                        Zkuste odkaz otevřít znovu nebo jej zkopírovat celý do adresního řádku prohlížeče.
-                        Pokud se to nepodaří, kontaktujte nás a společně to vyřešíme.',
-                    ]
-                );
-            }
-            $appUser = $this->getDoctrine()->getRepository(AppUser::class)->findOneBy(['accountActivationRequestToken' => $token]);
-            if (!$appUser) {
-                return $this->render(
-                    '@ZakjakubOswisCore/web/pages/message.html.twig',
-                    [
-                        'title'   => 'Token nenalezen',
-                        'message' => 'Token nebyl nalezen u žádného z uživatelů. 
-                        Je možné, že již vypršena jeho platnost, zkuste se registrovat znovu se stejným e-mailem.
-                        Pokud se to nepodaří, kontaktujte nás.',
-                    ]
-                );
-            }
-            assert($appUser instanceof AppUser);
-            $appUserService->appUserAction($appUser, 'activation', null, $token);
-            $em->flush();
-
-            return $this->render(
-                '@ZakjakubOswisCore/web/pages/message.html.twig',
-                [
-                    'title'   => 'Účet aktivován!',
-                    'message' => 'Účet byl úspěšně aktivován.',
-                ]
-            );
-        } catch (Exception $e) {
-            $logger->notice(
-                'App user activation error: '.$e->getMessage()
-            );
-
-            return $this->render(
-                '@ZakjakubOswisCore/web/pages/message.html.twig',
-                [
-                    'title'   => 'Nastala chyba!',
-                    'message' => 'Uživatele se nepodařilo potvrdit. Kontaktujte nás a společně to vyřešíme.',
-                ]
-            );
+            $this->appUserService->appUserAction(null, 'activation', null, $token);
+            $data = [
+                'title'   => 'Účet aktivován!',
+                'message' => 'Účet byl úspěšně aktivován.',
+            ];
+        } catch (OswisException $e) {
+            $data = [
+                'title'   => 'Účet nebyl aktivován!',
+                'message' => $e->getMessage(),
+            ];
+        } finally {
+            return $this->render('@ZakjakubOswisCore/web/pages/message.html.twig', $data ?? []);
         }
     }
 }

@@ -8,8 +8,6 @@ namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
 use DateTime;
 use Exception;
-use function date_create;
-use function floor;
 
 /**
  * Trait adds deleted dateTime field.
@@ -46,17 +44,17 @@ trait DeletedTrait
 
     public function setMailDeleteConfirmationSend(): void
     {
-        $this->eMailDeleteConfirmationDateTime = date_create();
+        $this->eMailDeleteConfirmationDateTime = new DateTime();
     }
 
-    public function getDeletedDaysAgo(?bool $decimal = false): ?int
+    public function getDeletedDaysAgo(?bool $decimal = false): ?float
     {
-        if (!$this->deleted) {
+        if (null === $this->deleted) {
             return null;
         }
-        $ago = (int)$this->deleted->diff(date_create())->days;
+        $interval = $this->deleted->diff(new DateTime());
 
-        return $decimal ? $ago : floor($ago);
+        return $decimal ? $interval->days : $interval->d;
     }
 
     /**
@@ -87,14 +85,16 @@ trait DeletedTrait
     }
 
     /**
-     * True if user is deleted (at some moment).
+     * True if user is deleted.
      *
-     * @param DateTime|null $dateTime Reference date and time.
+     * @param DateTime|null $referenceDateTime Reference date and time ('now' if not specified).
      */
-    public function isDeleted(?DateTime $dateTime = null): bool
+    public function isDeleted(?DateTime $referenceDateTime = null): bool
     {
         try {
-            return ($dateTime ?? new DateTime()) > $this->deleted;
+            $referenceDateTime ??= new DateTime();
+
+            return ($referenceDateTime) > $this->deleted;
         } catch (Exception $e) {
             return false;
         }

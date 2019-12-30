@@ -7,6 +7,7 @@
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
 use ADCI\FullNameParser\Exception\NameParsingException;
+use ADCI\FullNameParser\Name;
 use ADCI\FullNameParser\Parser as FullNameParser;
 use Exception;
 use Vokativ\Name as VokativName;
@@ -76,12 +77,14 @@ trait FullNameTrait
             try {
                 $name = preg_replace('!\s+!', ' ', $name);
                 $nameObject = $parser->parse($name);
-                $this->setHonorificPrefix($nameObject->getAcademicTitle() ?? '');
-                $this->setGivenName($nameObject->getFirstName() ?? '');
-                $this->setAdditionalName($nameObject->getMiddleName() ?? '');
-                $this->setFamilyName($nameObject->getLastName() ?? '');
-                $this->setHonorificSuffix($nameObject->getSuffix() ?? '');
-                $this->setNickname(implode($nameObject->getNicknames(), [', ']) ?? '');
+                if ($nameObject instanceof Name) {
+                    $this->setHonorificPrefix($nameObject->getAcademicTitle() ?? '');
+                    $this->setGivenName($nameObject->getFirstName() ?? '');
+                    $this->setAdditionalName($nameObject->getMiddleName() ?? '');
+                    $this->setFamilyName($nameObject->getLastName() ?? '');
+                    $this->setHonorificSuffix($nameObject->getSuffix() ?? '');
+                    $this->setNickname(implode($nameObject->getNicknames(), [', ']) ?? '');
+                }
             } catch (NameParsingException $e) {
                 // Name not recognized.
             } finally {

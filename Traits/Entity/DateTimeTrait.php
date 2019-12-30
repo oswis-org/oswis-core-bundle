@@ -8,8 +8,6 @@ namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
 use DateTime;
 use Exception;
-use function date_create;
-use function floor;
 
 /**
  * Trait adds dateTime field.
@@ -25,13 +23,13 @@ trait DateTimeTrait
      */
     protected ?DateTime $dateTime = null;
 
-    public function getDaysAgo(?bool $decimal = false): ?int
+    public function getDaysAgo(?bool $decimal = false): ?float
     {
         try {
-            if ($this->getDateTime()) {
-                $ago = $this->getDateTime()->diff(date_create())->days;
+            if (null !== $this->getDateTime()) {
+                $ago = $this->getDateTime()->diff(new DateTime());
 
-                return $decimal ? $ago : floor($ago);
+                return $decimal ? $ago->days : $ago->d;
             }
 
             return null;
@@ -43,7 +41,7 @@ trait DateTimeTrait
     /**
      * Get date and time.
      *
-     * @return DateTime
+     * @return DateTime|null
      */
     public function getDateTime(): ?DateTime
     {
@@ -53,7 +51,7 @@ trait DateTimeTrait
     /**
      * Set date and time.
      *
-     * @param DateTime $dateTime
+     * @param DateTime|null $dateTime
      */
     public function setDateTime(?DateTime $dateTime = null): void
     {
