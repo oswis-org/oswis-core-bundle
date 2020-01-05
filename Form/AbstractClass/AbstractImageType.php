@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection MethodShouldBeFinalInspection */
 
 namespace Zakjakub\OswisCoreBundle\Form\AbstractClass;
 
@@ -11,7 +11,7 @@ use Zakjakub\OswisCoreBundle\Utils\FileUtils;
 
 abstract class AbstractImageType extends AbstractType
 {
-    final public function buildForm(FormBuilderInterface $builder, array $options): void
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $maxSize = FileUtils::humanReadableFileUploadMaxSize();
         $maxSize = $maxSize ? ' (max. '.$maxSize.')' : '';
@@ -33,7 +33,7 @@ abstract class AbstractImageType extends AbstractType
     /**
      * @throws AccessException
      */
-    final public function configureOptions(OptionsResolver $resolver): void
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults(
             [
