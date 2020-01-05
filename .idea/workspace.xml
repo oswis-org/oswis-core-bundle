@@ -7,39 +7,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api/EventSubscriber/AppUserActionSubscriber.php" beforeDir="false" afterPath="$PROJECT_DIR$/Api/EventSubscriber/AppUserActionSubscriber.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/AppUserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/AppUserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DependencyInjection/Configuration.php" beforeDir="false" afterPath="$PROJECT_DIR$/DependencyInjection/Configuration.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DependencyInjection/ZakjakubOswisCoreExtension.php" beforeDir="false" afterPath="$PROJECT_DIR$/DependencyInjection/ZakjakubOswisCoreExtension.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AppUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUser.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AppUserFlag.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUserFlag.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AppUserFlagConnection.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUserFlagConnection.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AppUserRole.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUserRole.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Exceptions/BirthDateMissingException.php" beforeDir="false" afterPath="$PROJECT_DIR$/Exceptions/BirthDateMissingException.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Exceptions/OswisException.php" beforeDir="false" afterPath="$PROJECT_DIR$/Exceptions/OswisException.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Exceptions/OswisNotFoundException.php" beforeDir="false" afterPath="$PROJECT_DIR$/Exceptions/OswisNotFoundException.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Exceptions/OswisNotImplementedException.php" beforeDir="false" afterPath="$PROJECT_DIR$/Exceptions/OswisNotImplementedException.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Exceptions/OswisUserNotFoundException.php" beforeDir="false" afterPath="$PROJECT_DIR$/Exceptions/OswisUserNotFoundException.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Exceptions/OswisUserNotUniqueException.php" beforeDir="false" afterPath="$PROJECT_DIR$/Exceptions/OswisUserNotUniqueException.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Exceptions/PriceInvalidArgumentException.php" beforeDir="false" afterPath="$PROJECT_DIR$/Exceptions/PriceInvalidArgumentException.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Exceptions/PriceListNotFoundException.php" beforeDir="false" afterPath="$PROJECT_DIR$/Exceptions/PriceListNotFoundException.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Exceptions/RevisionMissingException.php" beforeDir="false" afterPath="$PROJECT_DIR$/Exceptions/RevisionMissingException.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Filter/SearchFilter.php" beforeDir="false" afterPath="$PROJECT_DIR$/Filter/SearchFilter.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Repository/AppUserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/Repository/AppUserRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/config/services.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/public/favicons/safari-pinned-tab.svg" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/public/favicons/safari-pinned-tab.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/AppUserRoleService.php" beforeDir="false" afterPath="$PROJECT_DIR$/Service/AppUserRoleService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/AppUserService.php" beforeDir="false" afterPath="$PROJECT_DIR$/Service/AppUserService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/AppUserTypeService.php" beforeDir="false" afterPath="$PROJECT_DIR$/Service/AppUserTypeService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/BasicMailConfirmationTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/BasicMailConfirmationTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/DateTimeTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/DateTimeTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/DeletedTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/DeletedTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/FullNameTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/FullNameTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/TimestampableTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/TimestampableTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZakjakubOswisCoreBundle.php" beforeDir="false" afterPath="$PROJECT_DIR$/ZakjakubOswisCoreBundle.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/phpstan.neon" beforeDir="false" afterPath="$PROJECT_DIR$/phpstan.neon" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -219,6 +190,11 @@
       <path value="$PROJECT_DIR$/vendor/phpstan/phpstan" />
       <path value="$PROJECT_DIR$/vendor/phpstan/extension-installer" />
       <path value="$PROJECT_DIR$/vendor/twig/extra-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/translation" />
+      <path value="$PROJECT_DIR$/vendor/symfony/proxy-manager-bridge" />
+      <path value="$PROJECT_DIR$/vendor/symfony/asset" />
+      <path value="$PROJECT_DIR$/vendor/imagine/imagine" />
+      <path value="$PROJECT_DIR$/vendor/liip/imagine-bundle" />
     </include_path>
   </component>
   <component name="ProjectId" id="1OdNRiB7J91AH4isXqLMtDEiNnC" />
@@ -235,7 +211,7 @@
     <property name="add_unversioned_files" value="$PROJECT_DIR$/vendor/symfony/swiftmailer-bundle/composer.json" />
     <property name="editor.config.ad.shown" value="true" />
     <property name="javascript.nodejs.core.library.configured.version" value="10.17.0" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Traits/Entity" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../oswis-ticket-bundle" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -566,14 +542,9 @@
       <workItem from="1577117511515" duration="3477000" />
       <workItem from="1577177125033" duration="21414000" />
       <workItem from="1577482638337" duration="19432000" />
-      <workItem from="1577650340678" duration="5228000" />
-    </task>
-    <task id="LOCAL-00374" summary="Some changes and updates.">
-      <created>1574249070193</created>
-      <option name="number" value="00374" />
-      <option name="presentableId" value="LOCAL-00374" />
-      <option name="project" value="LOCAL" />
-      <updated>1574249070194</updated>
+      <workItem from="1577650340678" duration="6767000" />
+      <workItem from="1577973586625" duration="2110000" />
+      <workItem from="1578258681064" duration="692000" />
     </task>
     <task id="LOCAL-00375" summary="Update to Symfony 4.4.0">
       <created>1574332396032</created>
@@ -911,7 +882,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577628785221</updated>
     </task>
-    <option name="localTasksCounter" value="423" />
+    <task id="LOCAL-00423" summary="Some changes.">
+      <created>1577741507420</created>
+      <option name="number" value="00423" />
+      <option name="presentableId" value="LOCAL-00423" />
+      <option name="project" value="LOCAL" />
+      <updated>1577741507420</updated>
+    </task>
+    <option name="localTasksCounter" value="424" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1021,25 +999,26 @@
     </state>
     <state x="288" y="257" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.741@0.0.1366.741" timestamp="1576592396590" />
     <state x="693" y="257" width="526" height="478" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.3286.741@0.0.3286.741" timestamp="1577120924839" />
-    <state x="499" y="381" width="389" height="318" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1577741360982">
+    <state x="499" y="381" width="389" height="318" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1578259139483">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="499" y="381" width="389" height="318" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1366.741@0.0.1366.741" timestamp="1577741360982" />
+    <state x="499" y="381" width="389" height="318" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1366.741@0.0.1366.741" timestamp="1578259139483" />
     <state x="1003" y="381" width="917" height="318" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.3286.741@0.0.3286.741" timestamp="1577631607858" />
-    <state x="499" y="381" width="389" height="318" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1575745872477" />
+    <state x="499" y="381" width="389" height="318" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1578082328250" />
     <state x="701" y="381" width="509" height="318" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1576403639749" />
     <state x="2419" y="395" width="509" height="318" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1574963553143" />
-    <state x="1920" y="0" width="904" height="735" key="CommitChangelistDialog2" timestamp="1577628784986">
-      <screen x="0" y="0" width="3286" height="741" />
+    <state x="369" y="0" width="904" height="735" key="CommitChangelistDialog2" timestamp="1577741507133">
+      <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="369" y="0" width="904" height="735" key="CommitChangelistDialog2/0.0.1366.741@0.0.1366.741" timestamp="1577311877663" />
+    <state x="369" y="0" width="904" height="735" key="CommitChangelistDialog2/0.0.1366.741@0.0.1366.741" timestamp="1577741507133" />
     <state x="1920" y="0" width="1366" height="735" key="CommitChangelistDialog2/0.0.3286.741@0.0.3286.741" timestamp="1577628784986" />
     <state x="369" y="0" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1575745900400" />
     <state x="518" y="0" width="876" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1576408475185" />
-    <state x="386" y="128" width="308" height="496" key="FileChooserDialogImpl" timestamp="1576588790964">
+    <state x="386" y="128" width="316" height="496" key="FileChooserDialogImpl" timestamp="1578089539922">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="386" y="128" width="308" height="496" key="FileChooserDialogImpl/0.0.1366.741@0.0.1366.741" timestamp="1576588790964" />
+    <state x="386" y="128" width="316" height="496" key="FileChooserDialogImpl/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1578089539922" />
     <state x="542" y="128" width="426" height="478" key="FileChooserDialogImpl/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1574965549612" />
     <state x="2306" y="133" width="308" height="496" key="FileChooserDialogImpl/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1574963051930" />
     <state width="1638" height="626" key="GridCell.Tab.0.bottom" timestamp="1574964971364">
@@ -1077,10 +1056,10 @@
       <screen x="0" y="0" width="1920" height="741" />
     </state>
     <state x="842" y="455" width="228" height="163" key="VCS.EditChangelistDialog/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1574453185964" />
-    <state x="0" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1577628786887">
-      <screen x="0" y="0" width="3286" height="741" />
+    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1577741509605">
+      <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1577311902371" />
+    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1577741509605" />
     <state x="0" y="213" width="1920" height="522" key="Vcs.Push.Dialog.v2/0.0.3286.741@0.0.3286.741" timestamp="1577628786887" />
     <state x="395" y="213" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1575745902932" />
     <state x="555" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1576408477204" />
