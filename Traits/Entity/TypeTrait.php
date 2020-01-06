@@ -16,11 +16,14 @@ trait TypeTrait
 {
     /**
      * Type of this event.
-     *
-     * @var string|null
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
     protected ?string $type = null;
+
+    public function isType(?string $type): bool
+    {
+        return $type === $this->getType();
+    }
 
     public function getType(): ?string
     {
