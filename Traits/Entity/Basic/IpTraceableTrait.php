@@ -9,8 +9,6 @@ namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 trait IpTraceableTrait
 {
     /**
-     * @var string|null
-     *
      * @Gedmo\Mapping\Annotation\IpTraceable(on="create")
      * @Doctrine\ORM\Mapping\Column(length=45, nullable=true)
      * @Symfony\Component\Validator\Constraints\Ip(
@@ -21,8 +19,6 @@ trait IpTraceableTrait
     protected ?string $createdIp = null;
 
     /**
-     * @var string|null
-     *
      * @Gedmo\Mapping\Annotation\IpTraceable(on="update")
      * @Doctrine\ORM\Mapping\Column(length=45, nullable=true)
      * @Symfony\Component\Validator\Constraints\Ip(

@@ -21,7 +21,6 @@ trait TimestampableTrait
     /**
      * Date and time of entity creation.
      *
-     * @var DateTime|null
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true)
      * @Gedmo\Mapping\Annotation\Timestampable(on="create")
      */
@@ -30,7 +29,6 @@ trait TimestampableTrait
     /**
      * Date and time of entity update.
      *
-     * @var DateTime|null
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true, options={"default" : null})
      * @Gedmo\Mapping\Annotation\Timestampable(on="update")
      */

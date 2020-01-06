@@ -1,5 +1,9 @@
 <?php
 /**
+ * @noinspection PhpUnused
+ */
+
+/**
  * @noinspection PhpUndefinedMethodInspection
  * @noinspection MethodShouldBeFinalInspection
  */
