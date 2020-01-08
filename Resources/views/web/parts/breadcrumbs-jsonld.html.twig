@@ -1,1 +1,3 @@
-<script type="application/ld+json">{% include '@ZakjakubOswisCore/schema-json/breadcrumbs.json.twig' %}</script>
+{% if breadcrumbs is defined and breadcrumbs|length > 0 %}
+    <script type="application/ld+json">{% include '@ZakjakubOswisCore/schema-json/breadcrumbs.json.twig' %}</script>
+{% endif %}
