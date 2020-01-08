@@ -46,7 +46,7 @@ final class AppUserActionRequest
     public ?string $password = null;
 
     /**
-     * Type of action.
+     * Form of action.
      * @Symfony\Component\Validator\Constraints\Choice(
      *     choices=AppUserActionRequest::ALLOWED_TYPES,
      *     message="Požadovaný typ akce není implementovaný."

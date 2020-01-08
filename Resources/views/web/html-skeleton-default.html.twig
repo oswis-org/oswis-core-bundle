@@ -71,7 +71,9 @@
     {% block stylesheets %}
         {{ encore_entry_link_tags('app') }}
         {% if css is defined and css %}
-            <style type="text/css">{{ css|default }}</style>
+            {% autoescape false %}
+                <style type="text/css">{{ css|default }}</style>
+            {% endautoescape %}
         {% endif %}
     {% endblock stylesheets %}
 </head>
@@ -97,9 +99,11 @@
     {% block javascripts %}
         {{ encore_entry_script_tags('app') }}
         {% if js is defined and js %}
+        {% autoescape false %}
         <script>{{ js|default }}</script>
+        {% endautoescape %}
         {% endif %}
-    {% endblock javascript %}
+    {% endblock javascripts %}
 
     {% endblock body_outer %}
     {% include '@ZakjakubOswisCore/web/parts/breadcrumbs-jsonld.html.twig' %}

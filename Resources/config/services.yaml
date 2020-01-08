@@ -181,7 +181,7 @@ services:
         alias: zakjakub_oswis_core.app_user_role_service
         public: true
 
-    ### AppUser Type Service
+    ### AppUser Form Service
     zakjakub_oswis_core.app_user_type_service:
         class: Zakjakub\OswisCoreBundle\Service\AppUserTypeService
         autowire: true

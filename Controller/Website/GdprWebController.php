@@ -1,4 +1,7 @@
-<?php /** @noinspection PhpUnused */
+<?php
+/**
+ * @noinspection PhpUnused
+ */
 
 namespace Zakjakub\OswisCoreBundle\Controller\Website;
 
@@ -13,8 +16,6 @@ class GdprWebController extends AbstractController
      */
     final public function gdprAction(): Response
     {
-        return $this->render(
-            '@ZakjakubOswisCore/web/pages/gdpr.html.twig'
-        );
+        return $this->render('@ZakjakubOswisCore/web/pages/gdpr.html.twig');
     }
 }

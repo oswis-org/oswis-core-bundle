@@ -1,4 +1,7 @@
-<?php /** @noinspection MethodShouldBeFinalInspection */
+<?php
+/**
+ * @noinspection MethodShouldBeFinalInspection
+ */
 
 namespace Zakjakub\OswisCoreBundle\Form\AbstractClass;
 
@@ -11,8 +14,6 @@ use Zakjakub\OswisCoreBundle\Utils\FileUtils;
 
 abstract class AbstractImageType extends AbstractType
 {
-    abstract public static function getImageClassName(): string;
-
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $maxSize = FileUtils::humanReadableFileUploadMaxSize();
@@ -45,7 +46,8 @@ abstract class AbstractImageType extends AbstractType
         );
     }
 
-    /** @noinspection MethodShouldBeFinalInspection */
+    abstract public static function getImageClassName(): string;
+
     public function getBlockPrefix(): string
     {
         return 'oswis_core_abstract_image';

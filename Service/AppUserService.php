@@ -59,11 +59,6 @@ class AppUserService
         $this->oswisCoreSettings = $oswisCoreSettings;
     }
 
-    private static function mimeEnc(?string $input = null): string
-    {
-        return EmailUtils::mime_header_encode($input);
-    }
-
     /**
      * Create and save new user of application.
      *
@@ -153,6 +148,24 @@ class AppUserService
     }
 
     /**
+     * @param AppUser|null $appUser
+     * @param bool         $sendConfirmation
+     *
+     * @throws OswisException
+     */
+    private function passwordChangeRequest(?AppUser $appUser, bool $sendConfirmation): void
+    {
+        if (null === $appUser) {
+            throw new OswisUserNotFoundException();
+        }
+        $token = $appUser->generatePasswordRequestToken();
+        if ($sendConfirmation) {
+            $this->sendPasswordEmail($appUser, self::PASSWORD_CHANGE_REQUEST, $token);
+        }
+        $this->logger->info('[OK] Created password change request for app user '.$appUser->getId().'');
+    }
+
+    /**
      * @throws OswisException
      */
     final public function sendPasswordEmail(AppUser $appUser, string $type, ?string $token = null, string $password = null): void
@@ -190,58 +203,9 @@ class AppUserService
         }
     }
 
-    /**
-     * @throws OswisException
-     */
-    final public function sendAppUserEmail(AppUser $appUser, string $type, ?string $token = null, ?string $password = null): void
+    private static function mimeEnc(?string $input = null): string
     {
-        try {
-            if (self::ACTIVATION_REQUEST === $type) { // Send e-mail about activation request. Include token for activation.
-                $title = 'Aktivace uživatelského účtu';
-            } elseif (self::ACTIVATION === $type) {
-                // Send e-mail about account activation. Include password if present (it means that it's generated randomly).
-                $title = 'Účet byl aktivován';
-            } else {
-                throw new OswisException('Akce "'.$type.'" není u uživatelských účtů implementována.');
-            }
-            $data = [
-                'appUser'  => $appUser,
-                'type'     => $type,
-                'token'    => $token,
-                'password' => $password,
-                'logo'     => 'cid_logo',
-                'oswis'    => $this->oswisCoreSettings,
-            ];
-            $email = new TemplatedEmail();
-            try {
-                $email->to(new Address($appUser->getEmail() ?? '', self::mimeEnc($appUser->getName())));
-            } catch (LogicException $e) {
-                $email->to($appUser->getEmail() ?? '');
-            }
-            $email->subject(self::mimeEnc($title));
-            $email->htmlTemplate('@ZakjakubOswisCore/e-mail/app-user.html.twig')->context($data);
-            $this->mailer->send($email);
-        } catch (TransportExceptionInterface $e) {
-            throw new OswisException('Problém s odesláním zprávy o změně účtu.  '.$e->getMessage());
-        }
-    }
-
-    /**
-     * @param AppUser|null $appUser
-     * @param bool         $sendConfirmation
-     *
-     * @throws OswisException
-     */
-    private function passwordChangeRequest(?AppUser $appUser, bool $sendConfirmation): void
-    {
-        if (null === $appUser) {
-            throw new OswisUserNotFoundException();
-        }
-        $token = $appUser->generatePasswordRequestToken();
-        if ($sendConfirmation) {
-            $this->sendPasswordEmail($appUser, self::PASSWORD_CHANGE_REQUEST, $token);
-        }
-        $this->logger->info('[OK] Created password change request for app user '.$appUser->getId().'');
+        return EmailUtils::mime_header_encode($input);
     }
 
     /**
@@ -286,6 +250,42 @@ class AppUserService
         }
         $this->sendAppUserEmail($appUser, self::ACTIVATION_REQUEST, $appUser->generateAccountActivationRequestToken());
         $this->logger->info('[OK] Created activation request for app user '.$appUser->getId().'');
+    }
+
+    /**
+     * @throws OswisException
+     */
+    final public function sendAppUserEmail(AppUser $appUser, string $type, ?string $token = null, ?string $password = null): void
+    {
+        try {
+            if (self::ACTIVATION_REQUEST === $type) { // Send e-mail about activation request. Include token for activation.
+                $title = 'Aktivace uživatelského účtu';
+            } elseif (self::ACTIVATION === $type) {
+                // Send e-mail about account activation. Include password if present (it means that it's generated randomly).
+                $title = 'Účet byl aktivován';
+            } else {
+                throw new OswisException('Akce "'.$type.'" není u uživatelských účtů implementována.');
+            }
+            $data = [
+                'appUser'  => $appUser,
+                'type'     => $type,
+                'token'    => $token,
+                'password' => $password,
+                'logo'     => 'cid_logo',
+                'oswis'    => $this->oswisCoreSettings,
+            ];
+            $email = new TemplatedEmail();
+            try {
+                $email->to(new Address($appUser->getEmail() ?? '', self::mimeEnc($appUser->getName())));
+            } catch (LogicException $e) {
+                $email->to($appUser->getEmail() ?? '');
+            }
+            $email->subject(self::mimeEnc($title));
+            $email->htmlTemplate('@ZakjakubOswisCore/e-mail/app-user.html.twig')->context($data);
+            $this->mailer->send($email);
+        } catch (TransportExceptionInterface $e) {
+            throw new OswisException('Problém s odesláním zprávy o změně účtu.  '.$e->getMessage());
+        }
     }
 
     /**

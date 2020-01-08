@@ -13,7 +13,7 @@ use Zakjakub\OswisCoreBundle\Traits\Entity\BasicEntityTrait;
 use Zakjakub\OswisCoreBundle\Traits\Entity\NameableBasicTrait;
 
 /**
- * Type of user (customer, manager, admin etc.).
+ * Form of user (customer, manager, admin etc.).
  *
  * @Doctrine\ORM\Mapping\Entity
  * @Doctrine\ORM\Mapping\Table(name="core_app_user_type")
