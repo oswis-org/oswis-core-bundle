@@ -4,7 +4,7 @@
     "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
     "This file is @generated automatically"
   ],
-  "content-hash": "2f22133026ca6f8a7fcd3625064153ea",
+  "content-hash": "793fa9fe84aedf1b8d4c594a5cd8e6e8",
   "packages": [
     {
       "name": "adci/full-name-parser",
@@ -506,16 +506,16 @@
     },
     {
       "name": "doctrine/common",
-      "version": "v2.11.0",
+      "version": "2.12.0",
       "source": {
         "type": "git",
         "url": "https://github.com/doctrine/common.git",
-        "reference": "b8ca1dcf6b0dc8a2af7a09baac8d0c48345df4ff"
+        "reference": "2053eafdf60c2172ee1373d1b9289ba1db7f1fc6"
       },
       "dist": {
         "type": "zip",
-        "url": "https://api.github.com/repos/doctrine/common/zipball/b8ca1dcf6b0dc8a2af7a09baac8d0c48345df4ff",
-        "reference": "b8ca1dcf6b0dc8a2af7a09baac8d0c48345df4ff",
+        "url": "https://api.github.com/repos/doctrine/common/zipball/2053eafdf60c2172ee1373d1b9289ba1db7f1fc6",
+        "reference": "2053eafdf60c2172ee1373d1b9289ba1db7f1fc6",
         "shasum": ""
       },
       "require": {
@@ -585,7 +585,7 @@
         "doctrine",
         "php"
       ],
-      "time": "2019-09-10T10:10:14+00:00"
+      "time": "2020-01-10T15:49:25+00:00"
     },
     {
       "name": "doctrine/dbal",
@@ -1101,16 +1101,16 @@
     },
     {
       "name": "doctrine/migrations",
-      "version": "2.2.0",
+      "version": "2.2.1",
       "source": {
         "type": "git",
         "url": "https://github.com/doctrine/migrations.git",
-        "reference": "8e124252d2f6be1124017d746d5994dd4095d66f"
+        "reference": "a3987131febeb0e9acb3c47ab0df0af004588934"
       },
       "dist": {
         "type": "zip",
-        "url": "https://api.github.com/repos/doctrine/migrations/zipball/8e124252d2f6be1124017d746d5994dd4095d66f",
-        "reference": "8e124252d2f6be1124017d746d5994dd4095d66f",
+        "url": "https://api.github.com/repos/doctrine/migrations/zipball/a3987131febeb0e9acb3c47ab0df0af004588934",
+        "reference": "a3987131febeb0e9acb3c47ab0df0af004588934",
         "shasum": ""
       },
       "require": {
@@ -1179,7 +1179,7 @@
         "migrations",
         "php"
       ],
-      "time": "2019-11-13T11:06:31+00:00"
+      "time": "2019-12-04T06:09:14+00:00"
     },
     {
       "name": "doctrine/orm",
@@ -1266,16 +1266,16 @@
     },
     {
       "name": "doctrine/persistence",
-      "version": "1.3.3",
+      "version": "1.3.4",
       "source": {
         "type": "git",
         "url": "https://github.com/doctrine/persistence.git",
-        "reference": "99b196bbd4715a94fa100fac664a351ffa46d6a5"
+        "reference": "ff7e08b0f814be2cd20c52dc3c8a262579376b94"
       },
       "dist": {
         "type": "zip",
-        "url": "https://api.github.com/repos/doctrine/persistence/zipball/99b196bbd4715a94fa100fac664a351ffa46d6a5",
-        "reference": "99b196bbd4715a94fa100fac664a351ffa46d6a5",
+        "url": "https://api.github.com/repos/doctrine/persistence/zipball/ff7e08b0f814be2cd20c52dc3c8a262579376b94",
+        "reference": "ff7e08b0f814be2cd20c52dc3c8a262579376b94",
         "shasum": ""
       },
       "require": {
@@ -1345,20 +1345,20 @@
         "orm",
         "persistence"
       ],
-      "time": "2019-12-13T10:43:02+00:00"
+      "time": "2020-01-09T19:49:17+00:00"
     },
     {
       "name": "doctrine/reflection",
-      "version": "v1.0.0",
+      "version": "v1.1.0",
       "source": {
         "type": "git",
         "url": "https://github.com/doctrine/reflection.git",
-        "reference": "02538d3f95e88eb397a5f86274deb2c6175c2ab6"
+        "reference": "bc420ead87fdfe08c03ecc3549db603a45b06d4c"
       },
       "dist": {
         "type": "zip",
-        "url": "https://api.github.com/repos/doctrine/reflection/zipball/02538d3f95e88eb397a5f86274deb2c6175c2ab6",
-        "reference": "02538d3f95e88eb397a5f86274deb2c6175c2ab6",
+        "url": "https://api.github.com/repos/doctrine/reflection/zipball/bc420ead87fdfe08c03ecc3549db603a45b06d4c",
+        "reference": "bc420ead87fdfe08c03ecc3549db603a45b06d4c",
         "shasum": ""
       },
       "require": {
@@ -1366,13 +1366,15 @@
         "ext-tokenizer": "*",
         "php": "^7.1"
       },
+      "conflict": {
+        "doctrine/common": "<2.9"
+      },
       "require-dev": {
-        "doctrine/coding-standard": "^4.0",
-        "doctrine/common": "^2.8",
-        "phpstan/phpstan": "^0.9.2",
-        "phpstan/phpstan-phpunit": "^0.9.4",
-        "phpunit/phpunit": "^7.0",
-        "squizlabs/php_codesniffer": "^3.0"
+        "doctrine/coding-standard": "^5.0",
+        "doctrine/common": "^2.10",
+        "phpstan/phpstan": "^0.11.0",
+        "phpstan/phpstan-phpunit": "^0.11.0",
+        "phpunit/phpunit": "^7.0"
       },
       "type": "library",
       "extra": {
@@ -1391,16 +1393,16 @@
       ],
       "authors": [
         {
+          "name": "Guilherme Blanco",
+          "email": "guilhermeblanco@gmail.com"
+        },
+        {
           "name": "Roman Borschel",
           "email": "roman@code-factory.org"
         },
         {
           "name": "Benjamin Eberlei",
           "email": "kontakt@beberlei.de"
-        },
-        {
-          "name": "Guilherme Blanco",
-          "email": "guilhermeblanco@gmail.com"
         },
         {
           "name": "Jonathan Wage",
@@ -1415,12 +1417,13 @@
           "email": "ocramius@gmail.com"
         }
       ],
-      "description": "Doctrine Reflection component",
+      "description": "The Doctrine Reflection project is a simple library used by the various Doctrine projects which adds some additional functionality on top of the reflection functionality that comes with PHP. It allows you to get the reflection information about classes, methods and properties statically.",
       "homepage": "https://www.doctrine-project.org/projects/reflection.html",
       "keywords": [
-        "reflection"
+        "reflection",
+        "static"
       ],
-      "time": "2018-06-14T14:45:07+00:00"
+      "time": "2020-01-08T19:53:19+00:00"
     },
     {
       "name": "egulias/email-validator",
@@ -2279,16 +2282,16 @@
     },
     {
       "name": "league/commonmark",
-      "version": "1.1.2",
+      "version": "1.2.0",
       "source": {
         "type": "git",
         "url": "https://github.com/thephpleague/commonmark.git",
-        "reference": "772e03fa9c6477ef5ef2d154fefd8a2a8d8ed03c"
+        "reference": "2533c389fd2a7573d4f7be279b1c33cf941c8dfc"
       },
       "dist": {
         "type": "zip",
-        "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/772e03fa9c6477ef5ef2d154fefd8a2a8d8ed03c",
-        "reference": "772e03fa9c6477ef5ef2d154fefd8a2a8d8ed03c",
+        "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/2533c389fd2a7573d4f7be279b1c33cf941c8dfc",
+        "reference": "2533c389fd2a7573d4f7be279b1c33cf941c8dfc",
         "shasum": ""
       },
       "require": {
@@ -2300,7 +2303,7 @@
       },
       "require-dev": {
         "cebe/markdown": "~1.0",
-        "commonmark/commonmark.js": "0.29.0",
+        "commonmark/commonmark.js": "0.29.1",
         "erusev/parsedown": "~1.0",
         "ext-json": "*",
         "michelf/php-markdown": "~1.4",
@@ -2319,7 +2322,7 @@
       "type": "library",
       "extra": {
         "branch-alias": {
-          "dev-master": "1.2-dev"
+          "dev-master": "1.3-dev"
         }
       },
       "autoload": {
@@ -2346,7 +2349,7 @@
         "markdown",
         "parser"
       ],
-      "time": "2019-12-10T02:55:03+00:00"
+      "time": "2020-01-09T22:41:09+00:00"
     },
     {
       "name": "league/commonmark-ext-autolink",
@@ -4151,68 +4154,6 @@
         "tree"
       ],
       "time": "2017-12-24T16:06:50+00:00"
-    },
-    {
-      "name": "swiftmailer/swiftmailer",
-      "version": "v6.2.3",
-      "source": {
-        "type": "git",
-        "url": "https://github.com/swiftmailer/swiftmailer.git",
-        "reference": "149cfdf118b169f7840bbe3ef0d4bc795d1780c9"
-      },
-      "dist": {
-        "type": "zip",
-        "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/149cfdf118b169f7840bbe3ef0d4bc795d1780c9",
-        "reference": "149cfdf118b169f7840bbe3ef0d4bc795d1780c9",
-        "shasum": ""
-      },
-      "require": {
-        "egulias/email-validator": "~2.0",
-        "php": ">=7.0.0",
-        "symfony/polyfill-iconv": "^1.0",
-        "symfony/polyfill-intl-idn": "^1.10",
-        "symfony/polyfill-mbstring": "^1.0"
-      },
-      "require-dev": {
-        "mockery/mockery": "~0.9.1",
-        "symfony/phpunit-bridge": "^3.4.19|^4.1.8"
-      },
-      "suggest": {
-        "ext-intl": "Needed to support internationalized email addresses",
-        "true/punycode": "Needed to support internationalized email addresses, if ext-intl is not installed"
-      },
-      "type": "library",
-      "extra": {
-        "branch-alias": {
-          "dev-master": "6.2-dev"
-        }
-      },
-      "autoload": {
-        "files": [
-          "lib/swift_required.php"
-        ]
-      },
-      "notification-url": "https://packagist.org/downloads/",
-      "license": [
-        "MIT"
-      ],
-      "authors": [
-        {
-          "name": "Chris Corbyn"
-        },
-        {
-          "name": "Fabien Potencier",
-          "email": "fabien@symfony.com"
-        }
-      ],
-      "description": "Swiftmailer, free feature-rich PHP mailer",
-      "homepage": "https://swiftmailer.symfony.com",
-      "keywords": [
-        "email",
-        "mail",
-        "mailer"
-      ],
-      "time": "2019-11-12T09:31:26+00:00"
     },
     {
       "name": "symfony/asset",
@@ -6171,65 +6112,6 @@
       "time": "2019-11-27T13:56:44+00:00"
     },
     {
-      "name": "symfony/polyfill-iconv",
-      "version": "v1.13.1",
-      "source": {
-        "type": "git",
-        "url": "https://github.com/symfony/polyfill-iconv.git",
-        "reference": "a019efccc03f1a335af6b4f20c30f5ea8060be36"
-      },
-      "dist": {
-        "type": "zip",
-        "url": "https://api.github.com/repos/symfony/polyfill-iconv/zipball/a019efccc03f1a335af6b4f20c30f5ea8060be36",
-        "reference": "a019efccc03f1a335af6b4f20c30f5ea8060be36",
-        "shasum": ""
-      },
-      "require": {
-        "php": ">=5.3.3"
-      },
-      "suggest": {
-        "ext-iconv": "For best performance"
-      },
-      "type": "library",
-      "extra": {
-        "branch-alias": {
-          "dev-master": "1.13-dev"
-        }
-      },
-      "autoload": {
-        "psr-4": {
-          "Symfony\\Polyfill\\Iconv\\": ""
-        },
-        "files": [
-          "bootstrap.php"
-        ]
-      },
-      "notification-url": "https://packagist.org/downloads/",
-      "license": [
-        "MIT"
-      ],
-      "authors": [
-        {
-          "name": "Nicolas Grekas",
-          "email": "p@tchwork.com"
-        },
-        {
-          "name": "Symfony Community",
-          "homepage": "https://symfony.com/contributors"
-        }
-      ],
-      "description": "Symfony polyfill for the Iconv extension",
-      "homepage": "https://symfony.com",
-      "keywords": [
-        "compatibility",
-        "iconv",
-        "polyfill",
-        "portable",
-        "shim"
-      ],
-      "time": "2019-11-27T13:56:44+00:00"
-    },
-    {
       "name": "symfony/polyfill-intl-icu",
       "version": "v1.13.1",
       "source": {
@@ -7510,71 +7392,6 @@
       "time": "2019-11-18T17:27:11+00:00"
     },
     {
-      "name": "symfony/swiftmailer-bundle",
-      "version": "v3.4.0",
-      "source": {
-        "type": "git",
-        "url": "https://github.com/symfony/swiftmailer-bundle.git",
-        "reference": "553d2474288349faed873da8ab7c1551a00d26ae"
-      },
-      "dist": {
-        "type": "zip",
-        "url": "https://api.github.com/repos/symfony/swiftmailer-bundle/zipball/553d2474288349faed873da8ab7c1551a00d26ae",
-        "reference": "553d2474288349faed873da8ab7c1551a00d26ae",
-        "shasum": ""
-      },
-      "require": {
-        "php": ">=7.1",
-        "swiftmailer/swiftmailer": "^6.1.3",
-        "symfony/config": "^4.3.8|^5.0",
-        "symfony/dependency-injection": "^4.3.8|^5.0",
-        "symfony/http-kernel": "^4.3.8|^5.0"
-      },
-      "conflict": {
-        "twig/twig": "<1.41|<2.10"
-      },
-      "require-dev": {
-        "symfony/console": "^4.3.8|^5.0",
-        "symfony/framework-bundle": "^4.3.8|^5.0",
-        "symfony/phpunit-bridge": "^4.3.8|^5.0",
-        "symfony/yaml": "^4.3.8|^5.0"
-      },
-      "suggest": {
-        "psr/log": "Allows logging"
-      },
-      "type": "symfony-bundle",
-      "extra": {
-        "branch-alias": {
-          "dev-master": "3.4-dev"
-        }
-      },
-      "autoload": {
-        "psr-4": {
-          "Symfony\\Bundle\\SwiftmailerBundle\\": ""
-        },
-        "exclude-from-classmap": [
-          "/Tests/"
-        ]
-      },
-      "notification-url": "https://packagist.org/downloads/",
-      "license": [
-        "MIT"
-      ],
-      "authors": [
-        {
-          "name": "Fabien Potencier",
-          "email": "fabien@symfony.com"
-        },
-        {
-          "name": "Symfony Community",
-          "homepage": "http://symfony.com/contributors"
-        }
-      ],
-      "description": "Symfony SwiftmailerBundle",
-      "homepage": "http://symfony.com",
-      "time": "2019-11-14T16:18:31+00:00"
-    },
-    {
       "name": "symfony/templating",
       "version": "v5.0.2",
       "source": {
@@ -8243,6 +8060,70 @@
         "push"
       ],
       "time": "2019-10-12T00:35:04+00:00"
+    },
+    {
+      "name": "symfony/web-profiler-bundle",
+      "version": "v4.4.2",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/symfony/web-profiler-bundle.git",
+        "reference": "92453ec17c365c561d9e65b06050b9e2a65e9306"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/symfony/web-profiler-bundle/zipball/92453ec17c365c561d9e65b06050b9e2a65e9306",
+        "reference": "92453ec17c365c561d9e65b06050b9e2a65e9306",
+        "shasum": ""
+      },
+      "require": {
+        "php": "^7.1.3",
+        "symfony/config": "^4.2|^5.0",
+        "symfony/framework-bundle": "^4.4|^5.0",
+        "symfony/http-kernel": "^4.4",
+        "symfony/routing": "^3.4|^4.0|^5.0",
+        "symfony/twig-bundle": "^4.2|^5.0",
+        "twig/twig": "^1.41|^2.10|^3.0"
+      },
+      "conflict": {
+        "symfony/form": "<4.3",
+        "symfony/messenger": "<4.2"
+      },
+      "require-dev": {
+        "symfony/console": "^3.4|^4.0|^5.0",
+        "symfony/dependency-injection": "^3.4|^4.0|^5.0",
+        "symfony/stopwatch": "^3.4|^4.0|^5.0"
+      },
+      "type": "symfony-bundle",
+      "extra": {
+        "branch-alias": {
+          "dev-master": "4.4-dev"
+        }
+      },
+      "autoload": {
+        "psr-4": {
+          "Symfony\\Bundle\\WebProfilerBundle\\": ""
+        },
+        "exclude-from-classmap": [
+          "/Tests/"
+        ]
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
+      "authors": [
+        {
+          "name": "Fabien Potencier",
+          "email": "fabien@symfony.com"
+        },
+        {
+          "name": "Symfony Community",
+          "homepage": "https://symfony.com/contributors"
+        }
+      ],
+      "description": "Symfony WebProfilerBundle",
+      "homepage": "https://symfony.com",
+      "time": "2019-11-20T10:44:55+00:00"
     },
     {
       "name": "symfony/yaml",
