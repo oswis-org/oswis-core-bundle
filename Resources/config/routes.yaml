@@ -27,13 +27,14 @@ zakjakub_oswis_core_app_user_activation:
     controller: zakjakub_oswis_core.app_user_controller::appUserActivationAction
     path: "/app-user-activation/{token}"
 
-### Index page.
-zakjakub_oswis_core_index_action:
-    controller: zakjakub_oswis_core.index_web_controller::indexAction
-    path: "/gdpr"
+### Homepage page.
+zakjakub_oswis_core_homepage_action:
+    controller: zakjakub_oswis_core.homepage_web_controller::homepageAction
+    path: "/{page}"
+    requirements:
+        page: '\d+'
 
 ### GDPR page (for forms etc.).
 zakjakub_oswis_core_gdpr_action:
     controller: zakjakub_oswis_core.gdpr_web_controller::gdprAction
     path: "/gdpr"
-

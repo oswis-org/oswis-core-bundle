@@ -136,13 +136,13 @@ services:
         alias: zakjakub_oswis_core.app_user_controller
         public: true
 
-    ### Index Web Controller
-    zakjakub_oswis_core.index_web_controller:
-        class: Zakjakub\OswisCoreBundle\Controller\Website\IndexWebController
+    ### Homepage Web Controller
+    zakjakub_oswis_core.homepage_web_controller:
+        class: Zakjakub\OswisCoreBundle\Controller\Website\HomepageWebController
         autowire: true
         public: true
-    Zakjakub\OswisCoreBundle\Controller\Website\IndexWebController:
-        alias: zakjakub_oswis_core.index_web_controller
+    Zakjakub\OswisCoreBundle\Controller\Website\HomepageWebController:
+        alias: zakjakub_oswis_core.homepage_web_controller
         public: true
 
     ### GDPR Web Controller
