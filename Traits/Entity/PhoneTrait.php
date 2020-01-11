@@ -13,8 +13,6 @@ trait PhoneTrait
 {
     /**
      * Phone number.
-     *
-     * @var string|null
      * @Doctrine\ORM\Mapping\Column(type="string", unique=false, length=60, nullable=true)
      * @Symfony\Component\Validator\Constraints\Regex(
      *     pattern="/^(\+420|\+421)? ?[1-9][0-9]{2} ?[0-9]{3} ?[0-9]{3}$/",
@@ -27,17 +25,11 @@ trait PhoneTrait
      */
     protected ?string $phone = null;
 
-    /**
-     * Get phone number.
-     */
     public function getPhone(): string
     {
         return $this->phone ?? '';
     }
 
-    /**
-     * Set phone number.
-     */
     public function setPhone(?string $phone): void
     {
         $this->phone = preg_replace('/\s+/', '', $phone);

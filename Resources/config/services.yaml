@@ -130,7 +130,6 @@ services:
         autowire: true
         public: true
         arguments:
-            - '@monolog.logger'
             - '@zakjakub_oswis_core.app_user_service'
     Zakjakub\OswisCoreBundle\Controller\AppUserController:
         alias: zakjakub_oswis_core.app_user_controller

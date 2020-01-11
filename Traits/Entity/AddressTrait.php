@@ -14,56 +14,42 @@ use Zakjakub\OswisCoreBundle\Entity\Address;
 trait AddressTrait
 {
     /**
-     * First line of street.
-     *
      * @var string|null First line of street
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
     protected ?string $street = null;
 
     /**
-     * Second line of street.
-     *
      * @var string|null Second line of street
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
     protected ?string $street2 = null;
 
     /**
-     * City.
-     *
      * @var string|null City
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
     protected ?string $city = null;
 
     /**
-     * Postal code.
-     *
      * @var string|null Postal code
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
     protected ?string $postalCode = null;
 
     /**
-     * House number.
-     *
      * @var int|null House number
      * @Doctrine\ORM\Mapping\Column(type="integer", nullable=true)
      */
     protected ?int $houseNumber = null;
 
     /**
-     * Door number.
-     *
      * @var int|null Door number
      * @Doctrine\ORM\Mapping\Column(type="integer", nullable=true)
      */
     protected ?int $doorNumber = null;
 
     /**
-     * Orientation number.
-     *
      * @var int|null Door number
      * @Doctrine\ORM\Mapping\Column(type="integer", nullable=true)
      */

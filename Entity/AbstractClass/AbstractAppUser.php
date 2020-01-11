@@ -1,4 +1,8 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection MethodShouldBeFinalInspection
+ */
 
 namespace Zakjakub\OswisCoreBundle\Entity\AbstractClass;
 
@@ -11,7 +15,6 @@ use Zakjakub\OswisCoreBundle\Traits\Entity\UserTrait;
 
 /**
  * Abstract class containing basic properties for user of application.
- *
  * @author Jakub Zak <mail@jakubzak.eu>
  */
 abstract class AbstractAppUser implements UserInterface, Serializable, EquatableInterface
@@ -19,23 +22,17 @@ abstract class AbstractAppUser implements UserInterface, Serializable, Equatable
     use BasicEntityTrait;
     use UserTrait;
 
-    /** @see \Serializable::serialize() */
-    final public function serialize(): string
+    public function serialize(): string
     {
         return serialize([$this->id, $this->username, $this->email, $this->password, $this->deleted]);
     }
 
-    /**
-     * @param string $serialized
-     *
-     * @see \Serializable::unserialize()
-     */
-    final public function unserialize(/* @noinspection MissingParameterTypeDeclarationInspection */ $serialized): void
+    public function unserialize(/* @noinspection MissingParameterTypeDeclarationInspection */ $serialized): void
     {
         [$this->id, $this->username, $this->email, $this->password, $this->deleted] = unserialize($serialized, ['allowed_classes' => ['AppUser']]);
     }
 
-    final public function isEqualTo(UserInterface $user): bool
+    public function isEqualTo(UserInterface $user): bool
     {
         if (!($user instanceof self)) {
             return false;
@@ -52,21 +49,18 @@ abstract class AbstractAppUser implements UserInterface, Serializable, Equatable
 
     /**
      * Removes sensitive data from the user.
-     *
-     * This is important if, at any given point, sensitive information like
-     * the plain-text password is stored on this object.
+     * This is important if, at any given point, sensitive information like the plain-text password is stored on this object.
      */
-    final public function eraseCredentials(): void
+    public function eraseCredentials(): void
     {
     }
 
-    /** @noinspection PhpUnused */
-    final public function hasRole(string $roleName): bool
+    public function hasRole(string $roleName): bool
     {
         return $this->containsRole($roleName);
     }
 
-    final public function containsRole(string $roleName): bool
+    public function containsRole(string $roleName): bool
     {
         foreach ($this->getRoles() as $role) {
             if ((is_string($role) && $role === $roleName) || ($role instanceof AppUserRole && $role->getRoleString() === $roleName)) {
