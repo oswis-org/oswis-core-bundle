@@ -30,6 +30,9 @@ zakjakub_oswis_core_app_user_activation:
 ### Homepage page.
 zakjakub_oswis_core_homepage_action:
     controller: zakjakub_oswis_core.homepage_web_controller::homepageAction
+    path: "/"
+zakjakub_oswis_core_homepage_page_action:
+    controller: zakjakub_oswis_core.homepage_web_controller::homepageAction
     path: "/{page}"
     requirements:
         page: '\d+'
