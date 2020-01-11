@@ -207,7 +207,6 @@ services:
         autowire: true
         public: true
         arguments:
-            - '@doctrine.orm.entity_manager'
             - '@zakjakub_oswis_core.app_user_service'
     Zakjakub\OswisCoreBundle\Api\EventSubscriber\AppUserActionSubscriber:
         alias: zakjakub_oswis_core.app_user_action_subscriber
