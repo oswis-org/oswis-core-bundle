@@ -73,9 +73,9 @@ class Configuration implements ConfigurationInterface
                 'John\'s personal website'
             )->end()->scalarNode('description')->info('Description of website.')->defaultValue('Simple modular information system based on ApiPlatform.')->example(
                 'Personal website of John Doe. Contains some info.'
-            )->end()->scalarNode('geo')->info('Geo coordinates.')->defaultValue('')->example('49.5923997,17.2635003')->end()->scalarNode('color')->info(
-                'Theme color.'
-            )->defaultValue(
+            )->end()->scalarNode('geo_x')->info('Geo coordinates - x.')->defaultValue('49.5923997')->example('49.5923997')->end()->scalarNode('geo_y')->info(
+                'Geo coordinates - y.'
+            )->defaultValue('17.2635003')->example('17.2635003')->end()->scalarNode('color')->info('Theme color.')->defaultValue(
                 '#006FAD'
             )->example('#006FAD')->end()->scalarNode('logo')->defaultValue('@ZakjakubOswisCore/Resources/public/logo.png')->info('Path to app logo.')->example(
                 ['@ZakjakubOswisCore/Resources/public/logo.png', '../assets/assets/images/logo.png']
