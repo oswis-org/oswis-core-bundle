@@ -1,6 +1,5 @@
 ### OSWIS Core - routes
 
-
 ### Endpoint for log in by front-end app.
 login_check:
     path:     /api/login_check
@@ -26,6 +25,10 @@ controllers:
 zakjakub_oswis_core_app_user_activation:
     controller: zakjakub_oswis_core.app_user_controller::appUserActivationAction
     path: "/app-user-activation/{token}"
+
+zakjakub_oswis_core_app_user_register_root:
+    controller: zakjakub_oswis_core.app_user_controller::registerRoot
+    path: "/internal/register-root"
 
 ### Homepage page.
 zakjakub_oswis_core_homepage_action:

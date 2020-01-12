@@ -31,14 +31,9 @@ final class AppUserActionSubscriber implements EventSubscriberInterface
         $this->appUserService = $appUserService;
     }
 
-    /**
-     * @return array<string, array<int, int|string>>
-     */
     public static function getSubscribedEvents(): array
     {
-        return [
-            KernelEvents::VIEW => ['appUserAction', EventPriorities::POST_VALIDATE],
-        ];
+        return [KernelEvents::VIEW => ['appUserAction', EventPriorities::POST_VALIDATE]];
     }
 
     /**

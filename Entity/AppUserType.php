@@ -1,4 +1,8 @@
-<?php /** @noinspection PhpUnused */
+<?php
+/**
+ * @noinspection MethodShouldBeFinalInspection
+ * @noinspection PhpUnused
+ */
 
 namespace Zakjakub\OswisCoreBundle\Entity;
 
@@ -80,32 +84,22 @@ class AppUserType
     /**
      * Contained app user role.
      *
-     * @var AppUserRole|null
      * @Doctrine\ORM\Mapping\ManyToOne(
      *     targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUserRole",
      *     fetch="EAGER"
      * )
      * @Doctrine\ORM\Mapping\JoinColumn(name="user_role_id", referencedColumnName="id")
-     *
      * @todo Refactor for use of multiple roles.
      */
     protected ?AppUserRole $appUserRole = null;
 
     /**
      * User has access to administration/IS.
-     *
-     * @var bool|null
      * @Doctrine\ORM\Mapping\Column(type="boolean", nullable=true)
-     *
      * @todo Make property used (probably has not effect now).
      */
     protected ?bool $adminUser = null;
 
-    /**
-     * Constructor of app user type.
-     *
-     * @param AppUserRole $appUserRole
-     */
     public function __construct(?Nameable $nameable = null, ?AppUserRole $appUserRole = null, ?bool $adminUser = false)
     {
         $this->setAppUserRole($appUserRole);
@@ -118,7 +112,7 @@ class AppUserType
      *
      * @todo Make property used (probably has not effect now).
      */
-    final public function getAdminUser(): bool
+    public function getAdminUser(): bool
     {
         return $this->adminUser ?? false;
     }
@@ -128,7 +122,7 @@ class AppUserType
      *
      * @todo Make property used (probably has not effect now).
      */
-    final public function setAdminUser(?bool $adminUser): void
+    public function setAdminUser(?bool $adminUser): void
     {
         $this->adminUser = $adminUser ?? null;
     }
@@ -136,7 +130,7 @@ class AppUserType
     /**
      * Get name/string of role of this type.
      */
-    final public function getRoleName(): string
+    public function getRoleName(): string
     {
         return $this->getAppUserRole() ? $this->getAppUserRole()->getRoleName() : '';
     }
@@ -146,7 +140,7 @@ class AppUserType
      *
      * @return AppUserRole
      */
-    final public function getAppUserRole(): ?AppUserRole
+    public function getAppUserRole(): ?AppUserRole
     {
         return $this->appUserRole;
     }
@@ -154,7 +148,7 @@ class AppUserType
     /**
      * Set role of this type.
      */
-    final public function setAppUserRole(?AppUserRole $appUserRole): void
+    public function setAppUserRole(?AppUserRole $appUserRole): void
     {
         $this->appUserRole = $appUserRole;
     }
@@ -162,7 +156,7 @@ class AppUserType
     /**
      * Get names of all roles contained in this type.
      */
-    final public function getAllRoleNames(): Collection
+    public function getAllRoleNames(): Collection
     {
         return $this->getAppUserRole() ? $this->getAppUserRole()->getAllRoleNames() : new ArrayCollection();
     }

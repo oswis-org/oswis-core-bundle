@@ -13,25 +13,15 @@ namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 trait NoteTrait
 {
     /**
-     * Note.
-     *
-     * @var string|null
-     *
      * @Doctrine\ORM\Mapping\Column(type="text", nullable=true)
      */
     protected ?string $note = null;
 
-    /**
-     * Get note.
-     */
     public function getNote(): ?string
     {
         return $this->note;
     }
 
-    /**
-     * Set note.
-     */
     public function setNote(?string $note): void
     {
         $this->note = $note;

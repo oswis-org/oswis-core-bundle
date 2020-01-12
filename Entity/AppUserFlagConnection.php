@@ -1,4 +1,8 @@
-<?php /** @noinspection PhpUnused */
+<?php
+/**
+ * @noinspection MethodShouldBeFinalInspection
+ * @noinspection PhpUnused
+ */
 
 namespace Zakjakub\OswisCoreBundle\Entity;
 
@@ -46,18 +50,12 @@ class AppUserFlagConnection
      */
     protected ?AppUser $appUser = null;
 
-    /**
-     * Get app user.
-     */
-    final public function getAppUser(): ?AppUser
+    public function getAppUser(): ?AppUser
     {
         return $this->appUser;
     }
 
-    /**
-     * Set app user.
-     */
-    final public function setAppUser(?AppUser $appUser): void
+    public function setAppUser(?AppUser $appUser): void
     {
         if ($this->appUser && $appUser !== $this->appUser) {
             $this->appUser->removeAppUserFlag($this);
@@ -68,18 +66,12 @@ class AppUserFlagConnection
         }
     }
 
-    /**
-     * Get flag of app user.
-     */
-    final public function getAppUserFlag(): ?AppUserFlag
+    public function getAppUserFlag(): ?AppUserFlag
     {
         return $this->appUserFlag;
     }
 
-    /**
-     * Set flag of app user.
-     */
-    final public function setAppUserFlag(?AppUserFlag $appUserFlag): void
+    public function setAppUserFlag(?AppUserFlag $appUserFlag): void
     {
         $this->appUserFlag = $appUserFlag;
     }

@@ -1,6 +1,8 @@
-<?php /** @noinspection MethodShouldBeFinalInspection */
-
-/** @noinspection PhpUnused */
+<?php
+/**
+ * @noinspection MethodShouldBeFinalInspection
+ * @noinspection PhpUnused
+ */
 
 namespace Zakjakub\OswisCoreBundle\Provider;
 
@@ -82,6 +84,8 @@ class OswisCoreSettingsProvider
      */
     public function getArchiveMailerAddress(): Address
     {
-        return new Address($mailSettings['archive_address'] ?? '', EmailUtils::mime_header_encode($mailSettings['archive_name'] ?? ''));
+        return new Address(
+            $mailSettings['archive_address'] ?? '', EmailUtils::mime_header_encode($mailSettings['archive_name'] ?? '')
+        );
     }
 }

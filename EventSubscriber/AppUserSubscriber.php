@@ -1,4 +1,7 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ */
 
 namespace Zakjakub\OswisCoreBundle\EventSubscriber;
 
@@ -28,7 +31,6 @@ final class AppUserSubscriber implements EventSubscriberInterface
 
     /**
      * @throws OswisException
-     * @noinspection PhpUnused
      */
     public function makeAppUser(ViewEvent $event): void
     {

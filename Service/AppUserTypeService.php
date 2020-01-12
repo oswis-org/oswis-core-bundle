@@ -1,4 +1,7 @@
 <?php
+/**
+ * @noinspection MethodShouldBeFinalInspection
+ */
 
 namespace Zakjakub\OswisCoreBundle\Service;
 
@@ -7,11 +10,8 @@ use Psr\Log\LoggerInterface;
 use Zakjakub\OswisCoreBundle\Entity\AppUserRole;
 use Zakjakub\OswisCoreBundle\Entity\AppUserType;
 use Zakjakub\OswisCoreBundle\Entity\Nameable;
+use Zakjakub\OswisCoreBundle\Repository\AppUserTypeRepository;
 
-/**
- * AppUserType service.
- * @noinspection PhpUnused
- */
 class AppUserTypeService
 {
     protected EntityManagerInterface $em;
@@ -24,16 +24,22 @@ class AppUserTypeService
         $this->logger = $logger;
     }
 
-    final public function create(?Nameable $nameable = null, ?AppUserRole $role = null, ?bool $adminUser = null): AppUserType
+    public function create(?Nameable $nameable = null, ?AppUserRole $role = null, ?bool $adminUser = null): AppUserType
     {
-        $type = $this->em->getRepository(AppUserType::class)->findOneBy(['slug' => $nameable ? $nameable->slug : null]);
+        $type = $nameable ? $this->getRepository()->findBySlug($nameable->slug) : null;
         if (null === $type || !($type instanceof AppUserType)) {
-            $type = new AppUserType($nameable, $role, $adminUser);
-            $this->em->persist($type);
+            $this->em->persist(new AppUserType($nameable, $role, $adminUser));
         }
         $this->em->flush();
 
-        // TODO: Log it.
         return $type;
+    }
+
+    public function getRepository(): AppUserTypeRepository
+    {
+        $repo = $this->em->getRepository(AppUserType::class);
+        assert($repo instanceof AppUserTypeRepository);
+
+        return $repo;
     }
 }

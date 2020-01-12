@@ -1,5 +1,6 @@
 <?php
 /**
+ * @noinspection PhpUnused
  * @noinspection MethodShouldBeFinalInspection
  */
 
@@ -16,6 +17,7 @@ use Symfony\Component\Mime\Address;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Zakjakub\OswisCoreBundle\Entity\AppUser;
 use Zakjakub\OswisCoreBundle\Entity\AppUserType;
+use Zakjakub\OswisCoreBundle\Entity\Nameable;
 use Zakjakub\OswisCoreBundle\Exceptions\OswisException;
 use Zakjakub\OswisCoreBundle\Exceptions\OswisNotImplementedException;
 use Zakjakub\OswisCoreBundle\Exceptions\OswisUserNotFoundException;
@@ -45,18 +47,52 @@ class AppUserService
 
     private OswisCoreSettingsProvider $oswisCoreSettings;
 
+    private AppUserTypeService $appUserTypeService;
+
+    private AppUserRoleService $appUserRoleService;
+
     public function __construct(
         UserPasswordEncoderInterface $encoder,
         EntityManagerInterface $em,
         LoggerInterface $logger,
         MailerInterface $mailer,
-        OswisCoreSettingsProvider $oswisCoreSettings
+        OswisCoreSettingsProvider $oswisCoreSettings,
+        AppUserTypeService $appUserTypeService,
+        AppUserRoleService $appUserRoleService
     ) {
         $this->em = $em;
         $this->encoder = $encoder;
         $this->logger = $logger;
         $this->mailer = $mailer;
         $this->oswisCoreSettings = $oswisCoreSettings;
+        $this->appUserTypeService = $appUserTypeService;
+        $this->appUserRoleService = $appUserRoleService;
+    }
+
+    /**
+     * @throws OswisException
+     */
+    public function registerRoot(): void
+    {
+        $role = $this->appUserRoleService->create(
+            new Nameable('Superuživatel', 'Root', null, null, 'root'),
+            'ROOT'
+        );
+        $type = $this->appUserTypeService->create(
+            new Nameable('Root', null, null, null, 'root'),
+            $role,
+            true
+        );
+        $this->create(
+            $this->oswisCoreSettings->getAdmin()['name'] ?? $this->oswisCoreSettings->getEmail()['name'],
+            $type,
+            'admin',
+            null,
+            $this->oswisCoreSettings->getAdmin()['email'] ?? $this->oswisCoreSettings->getEmail()['email'],
+            null,
+            true,
+            false
+        );
     }
 
     /**
@@ -66,7 +102,7 @@ class AppUserService
      *
      * @throws OswisException
      */
-    final public function create(
+    public function create(
         ?string $fullName = null,
         ?AppUserType $appUserType = null,
         ?string $username = null,
@@ -108,7 +144,7 @@ class AppUserService
         return $appUser;
     }
 
-    final public function getRepository(): AppUserRepository
+    public function getRepository(): AppUserRepository
     {
         $repository = $this->em->getRepository(AppUser::class);
         assert($repository instanceof AppUserRepository);
@@ -119,7 +155,7 @@ class AppUserService
     /**
      * @throws OswisException
      */
-    final public function appUserAction(
+    public function appUserAction(
         ?AppUser $appUser,
         string $type,
         ?string $password = null,
@@ -168,7 +204,7 @@ class AppUserService
     /**
      * @throws OswisException
      */
-    final public function sendPasswordEmail(AppUser $appUser, string $type, ?string $token = null, string $password = null): void
+    public function sendPasswordEmail(AppUser $appUser, string $type, ?string $token = null, string $password = null): void
     {
         try {
             if (self::PASSWORD_CHANGE === $type) { // Send e-mail about password change. Include password if present (it means that it's generated randomly).
@@ -255,7 +291,7 @@ class AppUserService
     /**
      * @throws OswisException
      */
-    final public function sendAppUserEmail(AppUser $appUser, string $type, ?string $token = null, ?string $password = null): void
+    public function sendAppUserEmail(AppUser $appUser, string $type, ?string $token = null, ?string $password = null): void
     {
         try {
             if (self::ACTIVATION_REQUEST === $type) { // Send e-mail about activation request. Include token for activation.

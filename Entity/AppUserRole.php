@@ -1,4 +1,6 @@
-<?php /** @noinspection PhpUnused */
+<?php /** @noinspection MethodShouldBeFinalInspection */
+
+/** @noinspection PhpUnused */
 
 namespace Zakjakub\OswisCoreBundle\Entity;
 
@@ -77,38 +79,23 @@ class AppUserRole
     use NameableBasicTrait;
 
     /**
-     * @var string|null
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
     protected ?string $roleString = null;
 
     /**
-     * Parent role (also included in this role).
-     *
-     * @var AppUserRole|null
      * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUserRole", inversedBy="children", fetch="EAGER")
      * @Doctrine\ORM\Mapping\JoinColumn(name="parent_id", referencedColumnName="id")
      */
     protected ?AppUserRole $parent = null;
 
     /**
-     * Child roles (which includes this role).
-     *
-     * @var Collection|null
      * @Doctrine\ORM\Mapping\OneToMany(targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUserRole", mappedBy="parent")
      */
     protected ?Collection $children = null;
 
-    /**
-     * AppUserRole constructor.
-     *
-     * @param AppUserRole|null $parent
-     */
-    public function __construct(
-        ?Nameable $nameable = null,
-        ?string $roleString = null,
-        ?self $parent = null
-    ) {
+    public function __construct(?Nameable $nameable = null, ?string $roleString = null, ?self $parent = null)
+    {
         $this->parent = null;
         $this->children = new ArrayCollection();
         $this->setFieldsFromNameable($nameable);
@@ -116,10 +103,7 @@ class AppUserRole
         $this->setParent($parent);
     }
 
-    /**
-     * Get child roles.
-     */
-    final public function getChildren(): Collection
+    public function getChildren(): Collection
     {
         return $this->children ?? new ArrayCollection();
     }
@@ -127,7 +111,7 @@ class AppUserRole
     /**
      * Get names of all contained roles.
      */
-    final public function getAllRoleNames(): Collection
+    public function getAllRoleNames(): Collection
     {
         return $this->getRoles()->map(fn(self $role) => $role->getRoleName());
     }
@@ -135,7 +119,7 @@ class AppUserRole
     /**
      * Get all contained roles.
      */
-    final public function getRoles(): Collection
+    public function getRoles(): Collection
     {
         $roles = new ArrayCollection([$this]);
         if ($this->getParent()) {
@@ -149,20 +133,12 @@ class AppUserRole
         return $roles;
     }
 
-    /**
-     * Get parent role (or null of parent is not set).
-     */
-    final public function getParent(): ?self
+    public function getParent(): ?self
     {
         return $this->parent;
     }
 
-    /**
-     * Set parent role.
-     *
-     * @param AppUserRole|null $appUserRole
-     */
-    final public function setParent(?self $appUserRole): void
+    public function setParent(?self $appUserRole): void
     {
         if (null !== $this->parent) {
             $this->parent->removeChild($this);
@@ -175,42 +151,31 @@ class AppUserRole
 
     /**
      * Get name/string of role.
-     *
      * @example ROLE_USER
      */
-    final public function getRoleName(): string
+    public function getRoleName(): string
     {
         return empty($this->getRoleString()) ? '' : 'ROLE_'.$this->getRoleString();
     }
 
-    final public function getRoleString(): string
+    public function getRoleString(): string
     {
         return $this->roleString ?? '';
     }
 
-    final public function setRoleString(string $roleString): void
+    public function setRoleString(string $roleString): void
     {
         $this->roleString = $roleString ?? '';
     }
 
-    /**
-     * Remove child role from this role.
-     *
-     * @param AppUserRole|null $appUserRole
-     */
-    final public function removeChild(?self $appUserRole): void
+    public function removeChild(?self $appUserRole): void
     {
         if ($appUserRole && $this->children->removeElement($appUserRole)) {
             $appUserRole->setParent(null);
         }
     }
 
-    /**
-     * Add child role to this role.
-     *
-     * @param AppUserRole|null $appUserRole
-     */
-    final public function addChild(?self $appUserRole): void
+    public function addChild(?self $appUserRole): void
     {
         if ($appUserRole && !$this->children->contains($appUserRole)) {
             $this->children->add($appUserRole);

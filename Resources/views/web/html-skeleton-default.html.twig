@@ -62,8 +62,8 @@
                 <!-- <meta property="og:image" content="http://ia.media-imdb.com/images/rock.jpg"> -->
             {% endblock meta_og_image %}
             {% block meta_og_geo %}
-                <meta property="og:latitude" content="{% block meta_geo_x %}{{ geo_lat|default('49.5922829') }}{% endblock %}"/>
-                <meta property="og:longitude" content="{% block meta_geo_y %}{{ geo_lon|default('17.2633168') }}{% endblock %}"/>
+                <meta property="og:latitude" content="{% block meta_geo_x %}{{ geo_lat|default(oswis_core_settings.web.geo_x) }}{% endblock %}"/>
+                <meta property="og:longitude" content="{% block meta_geo_y %}{{ geo_lon|default(oswis_core_settings.web.geo_x) }}{% endblock %}"/>
             {% endblock meta_og_geo %}
             {% block meta_og_additional %}{% endblock meta_og_additional %}
         {% endblock %}

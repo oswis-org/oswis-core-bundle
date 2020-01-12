@@ -1,4 +1,8 @@
 <?php
+/**
+ * @noinspection MethodShouldBeFinalInspection
+ * @noinspection PhpUnused
+ */
 
 namespace Zakjakub\OswisCoreBundle\EventSubscriber;
 
@@ -21,17 +25,12 @@ class MailerSubscriber implements EventSubscriberInterface
         $this->oswisCoreSettings = $oswisCoreSettings;
     }
 
-    final public static function getSubscribedEvents(): array
+    public static function getSubscribedEvents(): array
     {
-        return [
-            MessageEvent::class => ['onMessageSend', 0],
-        ];
+        return [MessageEvent::class => ['onMessageSend', 0]];
     }
 
-    /**
-     * @noinspection PhpUnused
-     */
-    final public function onMessageSend(MessageEvent $event): void
+    public function onMessageSend(MessageEvent $event): void
     {
         $message = $event->getMessage();
         if (!($message instanceof Email)) {

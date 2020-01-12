@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection MethodShouldBeFinalInspection */
 
 namespace Zakjakub\OswisCoreBundle\Service;
 
@@ -6,6 +6,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Psr\Log\LoggerInterface;
 use Zakjakub\OswisCoreBundle\Entity\AppUserRole;
 use Zakjakub\OswisCoreBundle\Entity\Nameable;
+use Zakjakub\OswisCoreBundle\Repository\AppUserRoleRepository;
 
 /**
  * AppUserRole service.
@@ -23,16 +24,23 @@ class AppUserRoleService
         $this->logger = $logger;
     }
 
-    final public function create(?Nameable $nameable = null, ?string $roleString = null, ?AppUserRole $parent = null): AppUserRole
+    public function create(?Nameable $nameable = null, ?string $roleString = null, ?AppUserRole $parent = null): AppUserRole
     {
-        $role = $this->em->getRepository(AppUserRole::class)->findOneBy(['name' => $nameable ? $nameable->name : null]);
+        $role = $nameable ? $this->getRepository()->findBySlug($nameable->slug) : null;
         if (null === $role || !($role instanceof AppUserRole)) {
             $role = new AppUserRole($nameable, $roleString, $parent);
             $this->em->persist($role);
         }
         $this->em->flush();
 
-        // TODO: Log it.
         return $role;
+    }
+
+    public function getRepository(): AppUserRoleRepository
+    {
+        $repo = $this->em->getRepository(AppUserRole::class);
+        assert($repo instanceof AppUserRoleRepository);
+
+        return $repo;
     }
 }

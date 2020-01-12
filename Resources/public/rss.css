@@ -33,6 +33,7 @@ docs {
 }
 
 /* all hidden elements */
+/*noinspection CssInvalidHtmlTagReference*/
 language, lastBuildDate, ttl, guid, category, description, pubDate {
     display: none;
 }

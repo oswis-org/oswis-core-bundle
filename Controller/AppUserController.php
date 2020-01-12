@@ -1,10 +1,12 @@
 <?php
 /**
+ * @noinspection MethodShouldBeFinalInspection
  * @noinspection PhpUnused
  */
 
 namespace Zakjakub\OswisCoreBundle\Controller;
 
+use Exception;
 use LogicException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -41,6 +43,17 @@ class AppUserController extends AbstractController
             ];
         } finally {
             return $this->render('@ZakjakubOswisCore/web/pages/message.html.twig', $data ?? []);
+        }
+    }
+
+    public function registerRoot(): Response
+    {
+        try {
+            $this->appUserService->registerRoot();
+
+            return new Response('Uživatel byl vytvořen, pokud ještě neexistoval.');
+        } catch (Exception $e) {
+            return new Response('Nastala chyba při vytváření uživatele.');
         }
     }
 }

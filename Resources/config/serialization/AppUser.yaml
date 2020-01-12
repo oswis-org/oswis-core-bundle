@@ -30,7 +30,7 @@ Zakjakub\OswisCoreBundle\Entity\AppUser:
             groups: ['app_users_post', 'app_user_get', 'app_user_put']
         description:
             groups: ['app_users_post', 'app_user_get', 'app_user_put']
-        singleNote:
+        note:
             groups: ['app_users_post', 'app_user_get', 'app_user_put']
         roles:
             groups: ['app_user_get']

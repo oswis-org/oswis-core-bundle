@@ -171,7 +171,7 @@ class AppUser extends AbstractAppUser
 
     /**
      * Returns the roles granted to the user.
-     * @return array<AppUserRole|string> The user roles
+     * @return array<string> The user roles.
      */
     public function getRoles(): array
     {
