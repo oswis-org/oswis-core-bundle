@@ -117,6 +117,7 @@ class DateTimeUtils
      */
     public static function getDateTimeByRange(?DateTime $dateTime, ?string $range, ?bool $isEnd = false): DateTime
     {
+        $dateTime ??= new DateTime();
         if (empty($range) || self::RANGE_ALL === $range) {
             return $dateTime;
         }

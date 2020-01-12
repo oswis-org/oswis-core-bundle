@@ -107,12 +107,14 @@
 
     {% endblock body_outer %}
     {% include '@ZakjakubOswisCore/web/parts/breadcrumbs-jsonld.html.twig' %}
+    {#
     {% block ie %}
         <!--[if lt IE 9]>
         {{ encore_entry_link_tags('ie') }}
         {{ encore_entry_script_tags('ie') }}
         <![endif]-->
     {% endblock ie %}
+    #}
     </body>
 {% endblock html_inner %}
 </html>
