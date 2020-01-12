@@ -144,6 +144,15 @@ services:
         alias: zakjakub_oswis_core.homepage_web_controller
         public: true
 
+    ### Portal Web Controller
+    zakjakub_oswis_core.portal_web_controller:
+        class: Zakjakub\OswisCoreBundle\Controller\Website\PortalWebController
+        autowire: true
+        public: true
+    Zakjakub\OswisCoreBundle\Controller\Website\PortalWebController:
+        alias: zakjakub_oswis_core.portal_web_controller
+        public: true
+
     ### GDPR Web Controller
     zakjakub_oswis_core.gdpr_web_controller:
         class: Zakjakub\OswisCoreBundle\Controller\Website\GdprWebController

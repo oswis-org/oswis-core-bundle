@@ -1,4 +1,7 @@
-<?php /** @noinspection PhpUnused */
+<?php
+/**
+ * @noinspection PhpUnused
+ */
 
 namespace Zakjakub\OswisCoreBundle\Entity\AbstractClass;
 
@@ -9,7 +12,8 @@ use Zakjakub\OswisCoreBundle\Traits\Entity\BasicEntityTrait;
 /**
  * Abstract image file class for use in uploads and forms.
  *
- * @author Jakub Zak <mail@jakubzak.eu>
+ * @author       Jakub Zak <mail@jakubzak.eu>
+ * @noinspection ClassNameCollisionInspection
  */
 abstract class AbstractImage
 {

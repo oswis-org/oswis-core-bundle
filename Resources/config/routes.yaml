@@ -30,6 +30,10 @@ zakjakub_oswis_core_app_user_register_root:
     controller: zakjakub_oswis_core.app_user_controller::registerRoot
     path: "/internal/register-root"
 
+zakjakub_oswis_core_web_portal:
+    controller: zakjakub_oswis_core.portal_web_controller::portal
+    path: "/portal"
+
 ### Homepage page.
 zakjakub_oswis_core_homepage_action:
     controller: zakjakub_oswis_core.homepage_web_controller::homepageAction
