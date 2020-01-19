@@ -3,7 +3,7 @@
 {% set salName = salutationName is defined and salutationName ? salutationName : '' %}
 {% set logo_src = logo is defined and logo ? logo : absolute_url(asset('@ZakjakubOswisCoreBundle/Resources/public/logo.png')) %}
 
-{% apply inky|inline_css(source('@ZakjakubOswisCore/e-mail/foundation-emails.css.twig' )) %}
+{% apply inky_to_html|inline_css(source('@ZakjakubOswisCore/e-mail/foundation-emails.css.twig' )) %}
     <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
     <html xmlns="http://www.w3.org/1999/xhtml" lang='{% block html_lang %}cs-CZ{% endblock %}' dir="ltr">
     <head>
