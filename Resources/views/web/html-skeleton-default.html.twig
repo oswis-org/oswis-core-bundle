@@ -63,7 +63,7 @@
             {% endblock meta_og_image %}
             {% block meta_og_geo %}
                 <meta property="og:latitude" content="{% block meta_geo_x %}{{ geo_lat|default(oswis_core_settings.web.geo_x) }}{% endblock %}"/>
-                <meta property="og:longitude" content="{% block meta_geo_y %}{{ geo_lon|default(oswis_core_settings.web.geo_x) }}{% endblock %}"/>
+                <meta property="og:longitude" content="{% block meta_geo_y %}{{ geo_lon|default(oswis_core_settings.web.geo_y) }}{% endblock %}"/>
             {% endblock meta_og_geo %}
             {% block meta_og_additional %}{% endblock meta_og_additional %}
         {% endblock %}
