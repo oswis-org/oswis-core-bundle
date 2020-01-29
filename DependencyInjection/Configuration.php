@@ -51,35 +51,6 @@ class Configuration implements ConfigurationInterface
         )->end()->end()->end()->end();
     }
 
-    private function addWebConfig(NodeDefinition $rootNode): void
-    {
-        $rootNode->children() /// Web settings.
-        ->arrayNode('web')->info('Website settings.')->addDefaultsIfNotSet()->children()->scalarNode('title')->info('Title of website.')->defaultValue(
-            'One Simple Web IS'
-        )->example(
-            'John\'s personal website'
-        )->end()->scalarNode('url')->info('Base URL of website.')->defaultValue('https://oswis.org')->example('https://oswis.org')->end()->scalarNode('title_short')->info(
-            'Shortened title of website.'
-        )->defaultValue('OSWIS')->example('John\'s web')->end()->scalarNode('title_long')->info('Long (full) title of application.')->defaultValue(
-            'One Simple Web IS'
-        )->example(
-            'John\'s personal website'
-        )->end()->scalarNode('description')->info('Description of website.')->defaultValue('Simple modular information system based on ApiPlatform.')->example(
-            'Personal website of John Doe. Contains some info.'
-        )->end()->scalarNode('geo_x')->info('Geo coordinates - x.')->defaultValue('49.5923997')->example('49.5923997')->end()->scalarNode('geo_y')->info(
-            'Geo coordinates - y.'
-        )->defaultValue('17.2635003')->example('17.2635003')->end()->scalarNode('color')->info('Theme color.')->defaultValue(
-            '#006FAD'
-        )->example('#006FAD')->end()->scalarNode('logo')->defaultValue('@ZakjakubOswisCore/Resources/public/logo.png')->info('Path to app logo.')->example(
-            ['@ZakjakubOswisCore/Resources/public/logo.png', '../assets/assets/images/logo.png']
-        )->end()->scalarNode('social_image')->defaultValue('@ZakjakubOswisCore/Resources/public/logo.png')->info('Path to app logo.')->example(
-            ['@ZakjakubOswisCore/Resources/public/logo.png', '../assets/assets/images/logo.png']
-        )->end()->scalarNode('author')->info('Author of application.')->defaultValue('Jakub Zak (https://jakubzak.cz)')->example('Jakub Zak (https://jakubzak.cz)')->end(
-        )->scalarNode(
-            'copyright'
-        )->info('Copyright owner of application.')->defaultValue('Jakub Zak (https://jakubzak.cz)')->example('Jakub Zak (https://jakubzak.cz)')->end()->end()->end();
-    }
-
     private function addEmailConfig(NodeDefinition $rootNode): void
     {
         $rootNode->children() /// System e-mails settings.
@@ -111,5 +82,34 @@ class Configuration implements ConfigurationInterface
         )->scalarNode('web')->info('Website of administrator.')->defaultValue(null)->example('https://oswis.org')->end()->scalarNode('phone')->info(
             'Phone of administrator.'
         )->defaultValue(null)->example('+000 000 000 000')->end()->end()->end();
+    }
+
+    private function addWebConfig(NodeDefinition $rootNode): void
+    {
+        $rootNode->children() /// Web settings.
+        ->arrayNode('web')->info('Website settings.')->addDefaultsIfNotSet()->children()->scalarNode('title')->info('Title of website.')->defaultValue(
+            'One Simple Web IS'
+        )->example(
+            'John\'s personal website'
+        )->end()->scalarNode('url')->info('Base URL of website.')->defaultValue('https://oswis.org')->example('https://oswis.org')->end()->scalarNode('title_short')->info(
+            'Shortened title of website.'
+        )->defaultValue('OSWIS')->example('John\'s web')->end()->scalarNode('title_long')->info('Long (full) title of application.')->defaultValue(
+            'One Simple Web IS'
+        )->example(
+            'John\'s personal website'
+        )->end()->scalarNode('description')->info('Description of website.')->defaultValue('Simple modular information system based on ApiPlatform.')->example(
+            'Personal website of John Doe. Contains some info.'
+        )->end()->scalarNode('geo_x')->info('Geo coordinates - x.')->defaultValue('49.5923997')->example('49.5923997')->end()->scalarNode('geo_y')->info(
+            'Geo coordinates - y.'
+        )->defaultValue('17.2635003')->example('17.2635003')->end()->scalarNode('color')->info('Theme color.')->defaultValue(
+            '#006FAD'
+        )->example('#006FAD')->end()->scalarNode('logo')->defaultValue('@ZakjakubOswisCore/Resources/public/logo.png')->info('Path to app logo.')->example(
+            ['@ZakjakubOswisCore/Resources/public/logo.png', '../assets/assets/images/logo.png']
+        )->end()->scalarNode('social_image')->defaultValue('@ZakjakubOswisCore/Resources/public/logo.png')->info('Path to app logo.')->example(
+            ['@ZakjakubOswisCore/Resources/public/logo.png', '../assets/assets/images/logo.png']
+        )->end()->scalarNode('author')->info('Author of application.')->defaultValue('Jakub Zak (https://jakubzak.cz)')->example('Jakub Zak (https://jakubzak.cz)')->end(
+        )->scalarNode(
+            'copyright'
+        )->info('Copyright owner of application.')->defaultValue('Jakub Zak (https://jakubzak.cz)')->example('Jakub Zak (https://jakubzak.cz)')->end()->end()->end();
     }
 }
