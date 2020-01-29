@@ -101,6 +101,7 @@ class AppUserService
      * @param bool|null $activate
      *
      * @throws OswisException
+     * @todo Refactor: AppUser instance instead of single arguments.
      */
     public function create(
         ?string $fullName = null,

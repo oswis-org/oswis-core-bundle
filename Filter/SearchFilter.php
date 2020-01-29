@@ -1,6 +1,8 @@
 <?php
 /**
  * @noinspection PhpComposerExtensionStubsInspection
+ * @noinspection MissingParameterTypeDeclarationInspection
+ * @noinspection ForeachInvariantsInspection
  */
 
 namespace Zakjakub\OswisCoreBundle\Filter;
@@ -44,8 +46,6 @@ final class SearchFilter extends AbstractContextAwareFilter
      * @throws AnnotationException
      * @throws ReflectionException
      * @throws HttpInvalidParamException
-     * @noinspection MissingParameterTypeDeclarationInspection
-     * @noinspection ForeachInvariantsInspection
      */
     public function filterProperty(
         string $property,
