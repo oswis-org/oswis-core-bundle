@@ -1,5 +1,6 @@
 <?php
 /**
+ * @noinspection PhpUnusedPrivateMethodInspection
  * @noinspection MethodShouldBeFinalInspection
  * @noinspection PhpUnused
  */
@@ -19,15 +20,17 @@ class Configuration implements ConfigurationInterface
 {
     /**
      * @throws RuntimeException
-     * @noinspection PhpUndefinedMethodInspection NullPointerExceptionInspection
      */
     final public function getConfigTreeBuilder(): TreeBuilder
     {
         $treeBuilder = new TreeBuilder('zakjakub_oswis_core');
         $rootNode = $treeBuilder->getRootNode();
         $rootNode->info('Default configuration for core module of OSWIS (One Simple Web IS).');
+        $this->addGeneralConfig($rootNode);
+        $this->addEmailConfig($rootNode);
+        $this->addAdminConfig($rootNode);
+        $this->addWebConfig($rootNode);
 
-        // end
         return $treeBuilder;
     }
 
@@ -109,5 +112,4 @@ class Configuration implements ConfigurationInterface
             'Phone of administrator.'
         )->defaultValue(null)->example('+000 000 000 000')->end()->end()->end();
     }
-
 }
