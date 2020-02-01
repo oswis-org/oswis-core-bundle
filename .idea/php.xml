@@ -162,7 +162,7 @@
   </component>
   <component name="PhpInterpreters">
     <interpreters>
-      <interpreter id="9a7553dd-6275-4596-b7f3-00aec4906344" name="PHP latest" home="$USER_HOME$/.PhpStorm2019.3/system/plugins/idea-php-latest-plugin/php-v7.3.1/php.sh" debugger_id="php.debugger.XDebug" />
+      <interpreter id="0397ea30-efae-446d-b644-86d702f21d2c" name="PHP latest" home="$USER_HOME$/.cache/JetBrains/PhpStorm2020.1/plugins/idea-php-latest-plugin/php-v7.3.1/php.sh" debugger_id="php.debugger.XDebug" />
     </interpreters>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.4" />

@@ -9,7 +9,6 @@ namespace Zakjakub\OswisCoreBundle\Filter;
 
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\AbstractContextAwareFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Util\QueryNameGeneratorInterface;
-use Doctrine\Common\Annotations\AnnotationException;
 use Doctrine\Common\Annotations\AnnotationReader;
 use Doctrine\ORM\QueryBuilder;
 use HttpInvalidParamException;
@@ -25,7 +24,6 @@ use function in_array;
 final class SearchFilter extends AbstractContextAwareFilter
 {
     /**
-     * @throws AnnotationException
      * @throws ReflectionException
      */
     public function getDescription(string $resourceClass): array
@@ -43,7 +41,6 @@ final class SearchFilter extends AbstractContextAwareFilter
     }
 
     /**
-     * @throws AnnotationException
      * @throws ReflectionException
      * @throws HttpInvalidParamException
      */
@@ -55,16 +52,12 @@ final class SearchFilter extends AbstractContextAwareFilter
         string $resourceClass,
         string $operationName = null
     ): void {
-        if ('search' === $property) {
-            $this->logger->info('Search for: '.$value);
-        } else {
+        if ('search' !== $property) {
             return;
         }
+        $this->logger->info('Search for: "'.$value.'"');
         $reader = new AnnotationReader();
-        $annotation = $reader->getClassAnnotation(
-            new ReflectionClass(new $resourceClass()),
-            SearchAnnotation::class
-        );
+        $annotation = $reader->getClassAnnotation(new ReflectionClass(new $resourceClass()), SearchAnnotation::class);
         if (!$annotation) {
             throw new HttpInvalidParamException('No Search implemented.');
         }

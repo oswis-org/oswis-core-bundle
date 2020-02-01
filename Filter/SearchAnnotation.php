@@ -17,8 +17,6 @@ final class SearchAnnotation
     public array $fields = [];
 
     /**
-     * Constructor.
-     *
      * @param array $data key-value for properties to be defined in this class
      *
      * @throws AnnotationException
@@ -29,11 +27,10 @@ final class SearchAnnotation
             throw new AnnotationException('Options must be a array of strings.');
         }
         foreach ($data['value'] as $key => $value) {
-            if (is_string($value)) {
-                $this->fields[] = $value;
-            } else {
+            if (!is_string($value)) {
                 throw new AnnotationException('Options must be a array of strings.');
             }
+            $this->fields[] = $value;
         }
     }
 }

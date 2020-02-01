@@ -1,12 +1,12 @@
 <?php
+/**
+ * @noinspection ClassNameCollisionInspection
+ */
 
 namespace Zakjakub\OswisCoreBundle\Entity;
 
-/** @noinspection ClassNameCollisionInspection */
-
 /**
  * Postal address.
- *
  * @author Jakub Zak <mail@jakubzak.eu>
  */
 class Address
