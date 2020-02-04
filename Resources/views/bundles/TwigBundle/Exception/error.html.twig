@@ -1,19 +1,25 @@
 {% extends '@ZakjakubOswisCore/web/page-skeleton-default.html.twig' %}
 
+{% block title %}Chyba{% endblock %}
 {% block html_description %}V aplikaci nastala chyba.{% endblock %}
 {% block og_description %}{{ block('html_description') }}{% endblock %}
-{% block title %}Chyba{% endblock %}
 
 {% block body_content %}
     <main class="container" id="main-content-container">
         <div class="row text-justify">
             <div class="col-lg-9">
                 <header>
-                    <h2 class="text-uppercase">Chyba</h2>
+                    <h2 class="text-uppercase">
+                        {% block error_title %}
+                            Chyba
+                        {% endblock error_title %}
+                    </h2>
                 </header>
-                <p>Nastala chyba. Zkuste to znovu nebo nás kontaktujte.</p>
+                {% block error_content %}
+                    <p>Nastala chyba. Zkuste to znovu nebo nás kontaktujte.</p>
+                {% endblock error_content %}
+                <p><small>{{ status_code }} {{ status_text }}</small></p>
             </div>
         </div>
     </main>
-{% endblock %}
-
+{% endblock body_content %}

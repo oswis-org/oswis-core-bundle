@@ -25,11 +25,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Entity/Web/Breadcrumb.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/views/bundles/TwigBundle/Exception/error403.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/views/web/html-parts/html-body.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/views/web/html-parts/html-head.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/Address.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Address.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Filter/SearchAnnotation.php" beforeDir="false" afterPath="$PROJECT_DIR$/Filter/SearchAnnotation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Filter/SearchFilter.php" beforeDir="false" afterPath="$PROJECT_DIR$/Filter/SearchFilter.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/views/bundles/TwigBundle/Exception/error.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/bundles/TwigBundle/Exception/error.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/views/web/html-skeleton-default.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/html-skeleton-default.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/views/web/pages/gdpr.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/pages/gdpr.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -228,7 +233,7 @@
     <property name="add_unversioned_files" value="$PROJECT_DIR$/vendor/symfony/swiftmailer-bundle/composer.json" />
     <property name="editor.config.ad.shown" value="true" />
     <property name="javascript.nodejs.core.library.configured.version" value="10.17.0" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Controller/Website" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Resources/views/bundles/TwigBundle/Exception" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -240,19 +245,19 @@
     <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/Controller/Website" />
-      <recent name="$PROJECT_DIR$/Resources/views/web/pages" />
-      <recent name="$PROJECT_DIR$/Resources/views/web/parts" />
-      <recent name="$PROJECT_DIR$/Repository" />
-      <recent name="$PROJECT_DIR$/Traits/Entity" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Resources/views/web/html-parts" />
       <recent name="$PROJECT_DIR$/Traits/Entity" />
       <recent name="$PROJECT_DIR$/Traits/Entity/Basic" />
       <recent name="$PROJECT_DIR$/Traits/Entity/Deprecated" />
       <recent name="$PROJECT_DIR$/Resources/views/web/parts" />
-      <recent name="$PROJECT_DIR$/Resources/views" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Resources/views/bundles/TwigBundle/Exception" />
+      <recent name="$PROJECT_DIR$/Resources/views/web/parts" />
+      <recent name="$PROJECT_DIR$/Entity/Web" />
+      <recent name="$PROJECT_DIR$/Controller/Website" />
+      <recent name="$PROJECT_DIR$/Resources/views/web/pages" />
     </key>
   </component>
   <component name="RunManager">
@@ -579,14 +584,13 @@
       <workItem from="1580247188614" duration="257000" />
       <workItem from="1580258012579" duration="644000" />
       <workItem from="1580312446704" duration="3729000" />
-      <workItem from="1580574057186" duration="718000" />
-    </task>
-    <task id="LOCAL-00401" summary="Some changes.">
-      <created>1576495363970</created>
-      <option name="number" value="00401" />
-      <option name="presentableId" value="LOCAL-00401" />
-      <option name="project" value="LOCAL" />
-      <updated>1576495363970</updated>
+      <workItem from="1580574057186" duration="2282000" />
+      <workItem from="1580640339875" duration="48000" />
+      <workItem from="1580753274950" duration="4190000" />
+      <workItem from="1580842043210" duration="2854000" />
+      <workItem from="1580845669809" duration="103000" />
+      <workItem from="1580845795423" duration="289000" />
+      <workItem from="1580846239537" duration="1200000" />
     </task>
     <task id="LOCAL-00402" summary="Some changes.">
       <created>1576500785841</created>
@@ -924,7 +928,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580316778390</updated>
     </task>
-    <option name="localTasksCounter" value="450" />
+    <task id="LOCAL-00450" summary="Some changes, fixes and updates.">
+      <created>1580574863814</created>
+      <option name="number" value="00450" />
+      <option name="presentableId" value="LOCAL-00450" />
+      <option name="project" value="LOCAL" />
+      <updated>1580574863814</updated>
+    </task>
+    <option name="localTasksCounter" value="451" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -965,7 +976,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Added blameable." />
     <MESSAGE value="Fixed AppUser's namespace." />
     <MESSAGE value="Changed traits, their names and namespaces." />
     <MESSAGE value="Fixed namespace." />
@@ -990,7 +1000,8 @@
     <MESSAGE value="Some changes and updates." />
     <MESSAGE value="Update to Symfony 4.4.0" />
     <MESSAGE value="Some changes." />
-    <option name="LAST_COMMIT_MESSAGE" value="Some changes." />
+    <MESSAGE value="Some changes, fixes and updates." />
+    <option name="LAST_COMMIT_MESSAGE" value="" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -1000,19 +1011,20 @@
       <screen x="1920" y="0" width="1366" height="768" />
     </state>
     <state x="2166" y="69" width="826" height="613" key="#CLI_Interpreters/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1574961516246" />
-    <state x="1920" y="64" width="1366" height="671" key="#Inspections" timestamp="1578509445191">
-      <screen x="0" y="0" width="3286" height="741" />
+    <state x="395" y="64" width="722" height="619" key="#Inspections" timestamp="1580843497453">
+      <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="395" y="64" key="#Inspections/0.0.1366.741@0.0.1366.741" timestamp="1577299822902" />
+    <state x="395" y="64" width="722" height="619" key="#Inspections/0.0.1366.741@0.0.1366.741" timestamp="1580843497453" />
     <state x="1920" y="64" width="1366" height="671" key="#Inspections/0.0.3286.741@0.0.3286.741" timestamp="1578509445191" />
     <state x="555" y="64" width="1093" height="671" key="#Inspections/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1575386812139" />
     <state x="2186" y="28" width="826" height="678" key="#PHP_CS_Fixer" timestamp="1574961550663">
       <screen x="1920" y="0" width="1366" height="768" />
     </state>
     <state x="2186" y="28" width="826" height="678" key="#PHP_CS_Fixer/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1574961550663" />
-    <state x="586" y="162" width="540" height="398" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1576402647182">
-      <screen x="0" y="0" width="1920" height="741" />
+    <state x="417" y="162" width="522" height="398" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1580760207783">
+      <screen x="0" y="0" width="1366" height="741" />
     </state>
+    <state x="417" y="162" width="522" height="398" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.741@0.0.1366.741" timestamp="1580760207783" />
     <state x="586" y="162" width="540" height="398" key="#com.intellij.fileTypes.FileTypeChooser/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1576402647182" />
     <state x="2337" y="168" width="524" height="398" key="#com.intellij.fileTypes.FileTypeChooser/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1574962657468" />
     <state x="768" y="179" width="323" height="556" key="#com.intellij.ide.util.MemberChooser" timestamp="1578317471525">
@@ -1025,10 +1037,10 @@
     </state>
     <state x="366" y="97" width="626" height="532" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1366.741@0.0.1366.741" timestamp="1575110630773" />
     <state x="2286" y="101" width="626" height="532" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1574961230812" />
-    <state x="251" y="0" width="855" height="735" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1578771050029">
+    <state x="251" y="0" width="855" height="735" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1580758894043">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="251" y="0" width="855" height="735" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.741@0.0.1366.741" timestamp="1576450845205" />
+    <state x="251" y="0" width="855" height="735" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.741@0.0.1366.741" timestamp="1580758894043" />
     <state x="251" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1578771050029" />
     <state x="353" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1578317009570" />
     <state x="624" y="199" width="660" height="488" key="#com.intellij.tools.ToolEditorDialog" timestamp="1574963939379">
@@ -1042,10 +1054,10 @@
     <state x="288" y="257" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.741@0.0.1366.741" timestamp="1576592396590" />
     <state x="693" y="257" width="526" height="478" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.3286.741@0.0.3286.741" timestamp="1577120924839" />
     <state x="288" y="257" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1578854840270" />
-    <state x="499" y="381" width="389" height="318" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1580314043517">
+    <state x="499" y="381" width="389" height="318" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1580843335540">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="499" y="381" width="389" height="318" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1366.741@0.0.1366.741" timestamp="1580314043517" />
+    <state x="499" y="381" width="389" height="318" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1366.741@0.0.1366.741" timestamp="1580843335540" />
     <state x="1003" y="381" width="917" height="318" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.3286.741@0.0.3286.741" timestamp="1578507453064" />
     <state x="499" y="381" width="389" height="318" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1578859558320" />
     <state x="701" y="381" width="509" height="318" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1578318268179" />
@@ -1101,10 +1113,10 @@
       <screen x="0" y="0" width="1920" height="741" />
     </state>
     <state x="842" y="455" width="228" height="163" key="VCS.EditChangelistDialog/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1574453185964" />
-    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1580316784377">
+    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1580574867413">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1580316784377" />
+    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1580574867413" />
     <state x="0" y="213" width="1920" height="522" key="Vcs.Push.Dialog.v2/0.0.3286.741@0.0.3286.741" timestamp="1578512689288" />
     <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1579972492811" />
     <state x="555" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1579453188295" />

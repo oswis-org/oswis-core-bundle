@@ -1,0 +1,14 @@
+{% extends '@ZakjakubOswisCore/bundles/TwigBundle/Exception/error.html.twig' %}
+
+{% block title %}Stránka nenalezena{% endblock %}
+{% block html_description %}Požadovaná stránka nebyla nalezena.{% endblock %}
+{% block og_description %}{{ block('html_description') }}{% endblock %}
+
+{% block error_title %}
+    Stránka nenalezena
+{% endblock error_title %}
+
+{% block error_content %}
+    <p>Požadovaná stránka nebyla nalezena.</p>
+    <p>Zkuste to znovu nebo nás kontaktujte.</p>
+{% endblock error_content %}

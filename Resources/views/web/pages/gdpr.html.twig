@@ -1,8 +1,11 @@
 {% extends '@ZakjakubOswisCore/web/page-skeleton-default.html.twig' %}
 
-{% block html_description %}Souhlas se zpracováním osobních údajů{% endblock %}
-{% block og_description %}{{ block('html_description') }}{% endblock %}
+{% set page = "gdpr" %}
+
 {% block title %}Souhlas se zpracováním osobních údajů{% endblock %}
+{% block html_description %}{{ block('title') }}{% endblock %}
+{% block og_description %}{{ block('html_description') }}{% endblock %}
+
 {% block body_content %}
     <main class="container" id="main-content-container">
         {% include '@ZakjakubOswisCore/web/parts/gdpr.html.twig' %}
