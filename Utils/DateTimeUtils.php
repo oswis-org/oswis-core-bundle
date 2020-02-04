@@ -105,6 +105,15 @@ class DateTimeUtils
         }
     }
 
+    private static function getByRangeAll(?DateTime $dateTime, ?bool $isEnd = false): DateTime
+    {
+        if (null === $dateTime) {
+            return new DateTime($isEnd ? self::MAX_DATE_TIME_STRING : self::MIN_DATE_TIME_STRING);
+        }
+
+        return $dateTime;
+    }
+
     /**
      * Converts DateTime to start (or end) of some range (year, month, day).
      *
@@ -117,9 +126,8 @@ class DateTimeUtils
      */
     public static function getDateTimeByRange(?DateTime $dateTime, ?string $range, ?bool $isEnd = false): DateTime
     {
-        $dateTime ??= new DateTime();
         if (empty($range) || self::RANGE_ALL === $range) {
-            return $dateTime;
+            return self::getByRangeAll($dateTime, $isEnd);
         }
         if (in_array($range, [self::RANGE_YEAR, self::RANGE_MONTH, self::RANGE_DAY], true)) {
             $dateTime ??= new DateTime();
