@@ -25,16 +25,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Entity/Web/Breadcrumb.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/views/bundles/TwigBundle/Exception/error403.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/views/web/html-parts/html-body.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/views/web/html-parts/html-head.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/bundles/TwigBundle/Exception/error.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/bundles/TwigBundle/Exception/error.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Resources/views/web/html-skeleton-default.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/html-skeleton-default.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/web/pages/gdpr.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/pages/gdpr.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -591,13 +583,8 @@
       <workItem from="1580845669809" duration="103000" />
       <workItem from="1580845795423" duration="289000" />
       <workItem from="1580846239537" duration="1200000" />
-    </task>
-    <task id="LOCAL-00402" summary="Some changes.">
-      <created>1576500785841</created>
-      <option name="number" value="00402" />
-      <option name="presentableId" value="LOCAL-00402" />
-      <option name="project" value="LOCAL" />
-      <updated>1576500785842</updated>
+      <workItem from="1580847921199" duration="123000" />
+      <workItem from="1580849909236" duration="232000" />
     </task>
     <task id="LOCAL-00403" summary="Some changes.">
       <created>1576500830202</created>
@@ -935,7 +922,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580574863814</updated>
     </task>
-    <option name="localTasksCounter" value="451" />
+    <task id="LOCAL-00451" summary="Some changes and updates.">
+      <created>1580848007993</created>
+      <option name="number" value="00451" />
+      <option name="presentableId" value="LOCAL-00451" />
+      <option name="project" value="LOCAL" />
+      <updated>1580848007994</updated>
+    </task>
+    <option name="localTasksCounter" value="452" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -997,11 +991,11 @@
     <MESSAGE value="Try to return activeRevision in some cases." />
     <MESSAGE value="Upgrade of Symfony." />
     <MESSAGE value="Some changes, update to 4.4RC." />
-    <MESSAGE value="Some changes and updates." />
     <MESSAGE value="Update to Symfony 4.4.0" />
     <MESSAGE value="Some changes." />
     <MESSAGE value="Some changes, fixes and updates." />
-    <option name="LAST_COMMIT_MESSAGE" value="" />
+    <MESSAGE value="Some changes and updates." />
+    <option name="LAST_COMMIT_MESSAGE" value="Some changes and updates." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -1113,10 +1107,10 @@
       <screen x="0" y="0" width="1920" height="741" />
     </state>
     <state x="842" y="455" width="228" height="163" key="VCS.EditChangelistDialog/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1574453185964" />
-    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1580574867413">
+    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1580848016411">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1580574867413" />
+    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1580848016411" />
     <state x="0" y="213" width="1920" height="522" key="Vcs.Push.Dialog.v2/0.0.3286.741@0.0.3286.741" timestamp="1578512689288" />
     <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1579972492811" />
     <state x="555" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1579453188295" />
