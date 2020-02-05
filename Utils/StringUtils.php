@@ -3,6 +3,7 @@
 namespace Zakjakub\OswisCoreBundle\Utils;
 
 use Exception;
+use Symfony\Component\String\Slugger\AsciiSlugger;
 use function chr;
 use function ord;
 
@@ -122,11 +123,7 @@ class StringUtils
 
     public static function hyphenize(?string $text): ?string
     {
-        if (empty($text)) {
-            return null;
-        }
-
-        return preg_replace('//-{2,}/u{2,}/u', '-', preg_replace('/[^a-z0-9]/u', '-', mb_strtolower(self::removeAccents($text))));
+        return empty($text) ? null : (new AsciiSlugger())->slug($text)->lower()->toString();
     }
 
     public static function removeAccents(string $text): string

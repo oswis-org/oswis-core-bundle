@@ -6,8 +6,8 @@
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
+use Symfony\Component\String\Slugger\AsciiSlugger;
 use Zakjakub\OswisCoreBundle\Entity\Nameable;
-use Zakjakub\OswisCoreBundle\Utils\StringUtils;
 
 trait NameableBasicTrait
 {
@@ -41,7 +41,7 @@ trait NameableBasicTrait
 
     public function getAutoSlug(): ?string
     {
-        return StringUtils::hyphenize($this->getName() ?? $this->getShortName());
+        return (new AsciiSlugger())->slug(($this->getName() ?? $this->getShortName()))->lower()->toString();
     }
 
 }

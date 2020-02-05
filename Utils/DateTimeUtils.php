@@ -105,15 +105,6 @@ class DateTimeUtils
         }
     }
 
-    private static function getByRangeAll(?DateTime $dateTime, ?bool $isEnd = false): DateTime
-    {
-        if (null === $dateTime) {
-            return new DateTime($isEnd ? self::MAX_DATE_TIME_STRING : self::MIN_DATE_TIME_STRING);
-        }
-
-        return $dateTime;
-    }
-
     /**
      * Converts DateTime to start (or end) of some range (year, month, day).
      *
@@ -139,6 +130,15 @@ class DateTimeUtils
             return $dateTime->setTime($isEnd ? 23 : 0, $minute, $minute, $isEnd ? 999 : 0);
         }
         throw new InvalidArgumentException("Rozsah '$range' není povolen.");
+    }
+
+    private static function getByRangeAll(?DateTime $dateTime, ?bool $isEnd = false): DateTime
+    {
+        if (null === $dateTime) {
+            return new DateTime($isEnd ? self::MAX_DATE_TIME_STRING : self::MIN_DATE_TIME_STRING);
+        }
+
+        return $dateTime;
     }
 
     public static function getMonthByRange(DateTime $dateTime, ?string $range, ?bool $isEnd = false): int
