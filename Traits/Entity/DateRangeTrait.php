@@ -98,16 +98,16 @@ trait DateRangeTrait
             return null;
         }
         if ($this->isInOnePeriod(DateTimeUtils::DATE_TIME_DAYS)) {
-            return $this->getStartByFormat('d. m. y');
+            return $this->getStartByFormat('j. n. Y');
         }
         if ($this->isInOnePeriod(DateTimeUtils::DATE_TIME_MONTHS)) {
-            return $this->getStartByFormat('d. ').$this->getEndByFormat('až d. m. y');
+            return $this->getStartByFormat('j. ').$this->getEndByFormat('až j. n. Y');
         }
         if ($this->isInOnePeriod(DateTimeUtils::DATE_TIME_YEARS)) {
-            return $this->getStartByFormat('d. m. ').$this->getEndByFormat('až d. m. y');
+            return $this->getStartByFormat('j. n. ').$this->getEndByFormat('až j. n. Y');
         }
 
-        return $this->getStartByFormat('d. m. y').$this->getEndByFormat(' až d. m. y');
+        return $this->getStartByFormat('j. n. Y').$this->getEndByFormat(' až j. n. Y');
     }
 
     public function isInOnePeriod(string $period): ?bool

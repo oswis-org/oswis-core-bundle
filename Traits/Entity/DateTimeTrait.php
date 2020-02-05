@@ -38,21 +38,11 @@ trait DateTimeTrait
         }
     }
 
-    /**
-     * Get date and time.
-     *
-     * @return DateTime|null
-     */
     public function getDateTime(): ?DateTime
     {
         return $this->dateTime;
     }
 
-    /**
-     * Set date and time.
-     *
-     * @param DateTime|null $dateTime
-     */
     public function setDateTime(?DateTime $dateTime = null): void
     {
         $this->dateTime = $dateTime ? clone $dateTime : null;

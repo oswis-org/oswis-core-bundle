@@ -33,7 +33,7 @@ class DateTimeUtils
     public const DATE_TIME_DAYS = 'd';
     public const DATE_TIME_DAYS_ALL = 'days';
     public const DATE_TIME_MONTHS = 'm';
-    public const DATE_TIME_YEARS = 'y';
+    public const DATE_TIME_YEARS = 'Y';
 
     public const LENGTH_TYPES_ALLOWED = [
         self::DATE_TIME_SECONDS,
@@ -145,14 +145,14 @@ class DateTimeUtils
     {
         $month = $isEnd ? 12 : 1;
 
-        return ($range === self::RANGE_MONTH || $range === self::RANGE_DAY) ? (int)$dateTime->format('m') : $month;
+        return ($range === self::RANGE_MONTH || $range === self::RANGE_DAY) ? (int)$dateTime->format('n') : $month;
     }
 
     public static function getDayByRange(DateTime $dateTime, ?string $range, ?bool $isEnd = false): int
     {
         $day = $isEnd ? (int)$dateTime->format('t') : 1;
 
-        return ($range === self::RANGE_DAY) ? (int)$dateTime->format('d') : $day;
+        return ($range === self::RANGE_DAY) ? (int)$dateTime->format('j') : $day;
     }
 
     public static function isWeekend(DateTime $dateTime): bool
@@ -234,28 +234,24 @@ class DateTimeUtils
         return null;
     }
 
-
     public static function isInOnePeriod(string $period, ?DateTime $start, ?DateTime $end): ?bool
     {
-        if (empty($period) || $start === null || null === $end || !in_array($period, self::PERIOD_TYPES_ALLOWED, true)) {
+        if (empty($period) || null === $start || null === $end || !in_array($period, self::PERIOD_TYPES_ALLOWED, true)) {
             return null;
         }
         if ($period === self::DATE_TIME_YEARS) {
-            $format = 'y';
+            $format = 'Y';
         }
         if ($period === self::DATE_TIME_MONTHS) {
-            $format = 'y-m';
+            $format = 'Y-m';
         }
         if ($period === self::DATE_TIME_DAYS) {
-            $format = 'y-m-d';
+            $format = 'Y-m-d';
         }
         if ($period === self::DATE_TIME_HOURS) {
-            $format = 'y-m-d h';
+            $format = 'Y-m-d H';
         }
 
         return !empty($format) && ($start->format($format) === $end->format($format));
-
     }
-
-
 }
