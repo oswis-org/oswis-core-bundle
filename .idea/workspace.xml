@@ -26,7 +26,7 @@
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AppUserType.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUserType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Service/AppUserTypeService.php" beforeDir="false" afterPath="$PROJECT_DIR$/Service/AppUserTypeService.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -598,14 +598,7 @@
       <workItem from="1581159791945" duration="2290000" />
       <workItem from="1581326077140" duration="1085000" />
       <workItem from="1581338551599" duration="7097000" />
-      <workItem from="1581375972691" duration="573000" />
-    </task>
-    <task id="LOCAL-00414" summary="Some changes.">
-      <created>1577389024075</created>
-      <option name="number" value="00414" />
-      <option name="presentableId" value="LOCAL-00414" />
-      <option name="project" value="LOCAL" />
-      <updated>1577389024075</updated>
+      <workItem from="1581375972691" duration="1225000" />
     </task>
     <task id="LOCAL-00415" summary="Some changes.">
       <created>1577389128807</created>
@@ -943,7 +936,14 @@
       <option name="project" value="LOCAL" />
       <updated>1581376063153</updated>
     </task>
-    <option name="localTasksCounter" value="463" />
+    <task id="LOCAL-00463" summary="Fixed AppUserRole and AppUserType repository.">
+      <created>1581376690720</created>
+      <option name="number" value="00463" />
+      <option name="presentableId" value="LOCAL-00463" />
+      <option name="project" value="LOCAL" />
+      <updated>1581376690720</updated>
+    </task>
+    <option name="localTasksCounter" value="464" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -984,7 +984,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Reformated code." />
     <MESSAGE value="Updated dependency league/csv to 9.3." />
     <MESSAGE value="Reformat of code." />
     <MESSAGE value="Reformat of code. Fixed return of revision from revision container." />
@@ -1009,7 +1008,8 @@
     <MESSAGE value="Fixed exception message." />
     <MESSAGE value="Fixed nullable at customId column." />
     <MESSAGE value="Fixed AppUserRole repository." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed AppUserRole repository." />
+    <MESSAGE value="Fixed AppUserRole and AppUserType repository." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed AppUserRole and AppUserType repository." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -1121,10 +1121,10 @@
       <screen x="0" y="0" width="1920" height="741" />
     </state>
     <state x="842" y="455" width="228" height="163" key="VCS.EditChangelistDialog/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1574453185964" />
-    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1581376067320">
+    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1581376721486">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1581376067320" />
+    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1581376721486" />
     <state x="0" y="213" width="1920" height="522" key="Vcs.Push.Dialog.v2/0.0.3286.741@0.0.3286.741" timestamp="1578512689288" />
     <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1580923855988" />
     <state x="555" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1579453188295" />
