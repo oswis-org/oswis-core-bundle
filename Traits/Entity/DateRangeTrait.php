@@ -117,7 +117,7 @@ trait DateRangeTrait
 
     public function getEndDate(): ?DateTime
     {
-        return $this->getStartDateTime();
+        return $this->getEndDateTime();
     }
 
     public function getStartByFormat(string $format): ?string
