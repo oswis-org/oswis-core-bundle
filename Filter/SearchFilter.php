@@ -34,7 +34,7 @@ final class SearchFilter extends AbstractContextAwareFilter
             'property' => 'search',
             'type'     => 'string',
             'required' => false,
-            'swagger'  => ['description' => 'FullTextFilter on '.implode(', ', $annotation ? $annotation->fields : [])],
+            'swagger'  => ['description' => 'FullTextFilter on '.implode(', ', $annotation instanceof SearchAnnotation ? $annotation->fields : [])],
         ];
 
         return $description;
@@ -58,7 +58,7 @@ final class SearchFilter extends AbstractContextAwareFilter
         $this->logger->info('Search for: "'.$value.'"');
         $reader = new AnnotationReader();
         $annotation = $reader->getClassAnnotation(new ReflectionClass(new $resourceClass()), SearchAnnotation::class);
-        if (!$annotation) {
+        if (!$annotation || !($annotation instanceof SearchAnnotation)) {
             throw new HttpInvalidParamException('No Search implemented.');
         }
         $parameterName = $queryNameGenerator->generateParameterName($property);

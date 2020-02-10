@@ -17,7 +17,6 @@ class ZakjakubOswisCoreExtension extends Extension implements PrependExtensionIn
      *
      * @throws ServiceNotFoundException
      * @throws Exception
-     * @throws Exception
      */
     final public function load(array $configs, ContainerBuilder $container): void
     {

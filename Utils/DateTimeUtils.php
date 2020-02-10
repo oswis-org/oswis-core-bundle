@@ -134,11 +134,7 @@ class DateTimeUtils
 
     private static function getByRangeAll(?DateTime $dateTime, ?bool $isEnd = false): DateTime
     {
-        if (null === $dateTime) {
-            return new DateTime($isEnd ? self::MAX_DATE_TIME_STRING : self::MIN_DATE_TIME_STRING);
-        }
-
-        return $dateTime;
+        return $dateTime ?? new DateTime($isEnd ? self::MAX_DATE_TIME_STRING : self::MIN_DATE_TIME_STRING);
     }
 
     public static function getMonthByRange(DateTime $dateTime, ?string $range, ?bool $isEnd = false): int

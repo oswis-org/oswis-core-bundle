@@ -8,6 +8,7 @@
 namespace Zakjakub\OswisCoreBundle\DependencyInjection;
 
 use RuntimeException;
+use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\NodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -23,8 +24,9 @@ class Configuration implements ConfigurationInterface
      */
     final public function getConfigTreeBuilder(): TreeBuilder
     {
-        $treeBuilder = new TreeBuilder('zakjakub_oswis_core');
+        $treeBuilder = new TreeBuilder('zakjakub_oswis_core', 'array');
         $rootNode = $treeBuilder->getRootNode();
+        assert($rootNode instanceof ArrayNodeDefinition);
         $rootNode->info('Default configuration for core module of OSWIS (One Simple Web IS).');
         $this->addGeneralConfig($rootNode);
         $this->addEmailConfig($rootNode);
@@ -34,7 +36,7 @@ class Configuration implements ConfigurationInterface
         return $treeBuilder;
     }
 
-    private function addGeneralConfig(NodeDefinition $rootNode): void
+    private function addGeneralConfig(ArrayNodeDefinition $rootNode): void
     {
         $rootNode->children()->arrayNode('app')->info('General settings.')->addDefaultsIfNotSet()->children()->scalarNode('name')->info('Name of application.')->defaultValue(
             'OSWIS'
