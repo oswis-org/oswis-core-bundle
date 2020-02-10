@@ -19,7 +19,7 @@ use Zakjakub\OswisCoreBundle\Traits\Entity\NameableBasicTrait;
 /**
  * Form of user (customer, manager, admin etc.).
  *
- * @Doctrine\ORM\Mapping\Entity
+ * @Doctrine\ORM\Mapping\Entity(repositoryClass="Zakjakub\OswisCoreBundle\Repository\AppUserTypeRepository")
  * @Doctrine\ORM\Mapping\Table(name="core_app_user_type")
  * @ApiResource(
  *   attributes={
