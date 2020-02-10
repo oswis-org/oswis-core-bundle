@@ -15,8 +15,7 @@ use Zakjakub\OswisCoreBundle\Traits\Entity\NameableBasicTrait;
 
 /**
  * Role of app user.
- *
- * @Doctrine\ORM\Mapping\Entity()
+ * @Doctrine\ORM\Mapping\Entity(repositoryClass="Zakjakub\OswisCoreBundle\Repository\AppUserRoleRepository")
  * @Doctrine\ORM\Mapping\Table(name="core_app_user_role")
  * @ApiResource(
  *   attributes={

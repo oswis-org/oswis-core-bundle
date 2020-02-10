@@ -26,7 +26,7 @@
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/DateRangeTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/DateRangeTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AppUserRole.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUserRole.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -597,28 +597,8 @@
       <workItem from="1581084030704" duration="303000" />
       <workItem from="1581159791945" duration="2290000" />
       <workItem from="1581326077140" duration="1085000" />
-      <workItem from="1581338551599" duration="1280000" />
-    </task>
-    <task id="LOCAL-00410" summary="Some changes.">
-      <created>1577310685404</created>
-      <option name="number" value="00410" />
-      <option name="presentableId" value="LOCAL-00410" />
-      <option name="project" value="LOCAL" />
-      <updated>1577310685405</updated>
-    </task>
-    <task id="LOCAL-00411" summary="Some changes.">
-      <created>1577310887017</created>
-      <option name="number" value="00411" />
-      <option name="presentableId" value="LOCAL-00411" />
-      <option name="project" value="LOCAL" />
-      <updated>1577310887017</updated>
-    </task>
-    <task id="LOCAL-00412" summary="Some changes.">
-      <created>1577311877846</created>
-      <option name="number" value="00412" />
-      <option name="presentableId" value="LOCAL-00412" />
-      <option name="project" value="LOCAL" />
-      <updated>1577311877847</updated>
+      <workItem from="1581338551599" duration="7097000" />
+      <workItem from="1581375972691" duration="35000" />
     </task>
     <task id="LOCAL-00413" summary="Some changes.">
       <created>1577358226493</created>
@@ -942,7 +922,28 @@
       <option name="project" value="LOCAL" />
       <updated>1581338653780</updated>
     </task>
-    <option name="localTasksCounter" value="459" />
+    <task id="LOCAL-00459" summary="Escape &quot;a&quot; in date format string.">
+      <created>1581341772588</created>
+      <option name="number" value="00459" />
+      <option name="presentableId" value="LOCAL-00459" />
+      <option name="project" value="LOCAL" />
+      <updated>1581341772588</updated>
+    </task>
+    <task id="LOCAL-00460" summary="Fixed exception message.">
+      <created>1581351631246</created>
+      <option name="number" value="00460" />
+      <option name="presentableId" value="LOCAL-00460" />
+      <option name="project" value="LOCAL" />
+      <updated>1581351631246</updated>
+    </task>
+    <task id="LOCAL-00461" summary="Fixed nullable at customId column.">
+      <created>1581351664999</created>
+      <option name="number" value="00461" />
+      <option name="presentableId" value="LOCAL-00461" />
+      <option name="project" value="LOCAL" />
+      <updated>1581351664999</updated>
+    </task>
+    <option name="localTasksCounter" value="462" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -983,9 +984,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Created EntityPublicTrait." />
-    <MESSAGE value="Added TypeTrait." />
-    <MESSAGE value="Added ValueTrait and ValueContainerTrait." />
     <MESSAGE value="Added DepositValueTrait." />
     <MESSAGE value="Reformated code." />
     <MESSAGE value="Updated dependency league/csv to 9.3." />
@@ -1008,7 +1006,10 @@
     <MESSAGE value="Changes, updates and fixes." />
     <MESSAGE value="Some changes and fixes." />
     <MESSAGE value="Fixed getEndDate()." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed getEndDate()." />
+    <MESSAGE value="Escape &quot;a&quot; in date format string." />
+    <MESSAGE value="Fixed exception message." />
+    <MESSAGE value="Fixed nullable at customId column." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed nullable at customId column." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -1120,10 +1121,10 @@
       <screen x="0" y="0" width="1920" height="741" />
     </state>
     <state x="842" y="455" width="228" height="163" key="VCS.EditChangelistDialog/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1574453185964" />
-    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1581338655267">
+    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1581351671595">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1581338655267" />
+    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1581351671595" />
     <state x="0" y="213" width="1920" height="522" key="Vcs.Push.Dialog.v2/0.0.3286.741@0.0.3286.741" timestamp="1578512689288" />
     <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1580923855988" />
     <state x="555" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1579453188295" />
