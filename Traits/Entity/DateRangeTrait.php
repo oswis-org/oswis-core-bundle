@@ -100,14 +100,14 @@ trait DateRangeTrait
         if ($this->isInOnePeriod(DateTimeUtils::DATE_TIME_DAYS)) {
             return $this->getStartByFormat('j. n. Y');
         }
-        if ($this->isInOnePeriod(DateTimeUtils::DATE_TIME_MONTHS)) {
-            return $this->getStartByFormat('j. ').$this->getEndByFormat('až j. n. Y');
+        if ($this->isInOnePeriod(DateTimeUtils::DATE_TIME_MONTHS)) { // TODO: až => amž - escape it!!
+            return $this->getStartByFormat('j. ').$this->getEndByFormat('\až j. n. Y');
         }
         if ($this->isInOnePeriod(DateTimeUtils::DATE_TIME_YEARS)) {
-            return $this->getStartByFormat('j. n. ').$this->getEndByFormat('až j. n. Y');
+            return $this->getStartByFormat('j. n. ').$this->getEndByFormat('\až j. n. Y');
         }
 
-        return $this->getStartByFormat('j. n. Y').$this->getEndByFormat(' až j. n. Y');
+        return $this->getStartByFormat('j. n. Y').$this->getEndByFormat(' \až j. n. Y');
     }
 
     public function isInOnePeriod(string $period): ?bool
