@@ -28,7 +28,8 @@ class AppUserTypeService
     {
         $type = $nameable ? $this->getRepository()->findBySlug($nameable->slug) : null;
         if (null === $type || !($type instanceof AppUserType)) {
-            $this->em->persist(new AppUserType($nameable, $role, $adminUser));
+            $type = new AppUserType($nameable, $role, $adminUser);
+            $this->em->persist($type);
         }
         $this->em->flush();
 
