@@ -16,7 +16,7 @@ namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 trait CustomIdTrait
 {
     /**
-     * @Doctrine\ORM\Mapping\Column(type="string", length=255)
+     * @Doctrine\ORM\Mapping\Column(type="string", length=255, nullable=true)
      */
     protected ?string $customId = null;
 
