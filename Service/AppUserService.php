@@ -24,7 +24,6 @@ use Zakjakub\OswisCoreBundle\Exceptions\OswisUserNotFoundException;
 use Zakjakub\OswisCoreBundle\Exceptions\OswisUserNotUniqueException;
 use Zakjakub\OswisCoreBundle\Provider\OswisCoreSettingsProvider;
 use Zakjakub\OswisCoreBundle\Repository\AppUserRepository;
-use Zakjakub\OswisCoreBundle\Utils\EmailUtils;
 use Zakjakub\OswisCoreBundle\Utils\StringUtils;
 use function random_int;
 
@@ -227,22 +226,17 @@ class AppUserService
             ];
             $email = new TemplatedEmail();
             try {
-                $email->to(new Address($appUser->getEmail() ?? '', self::mimeEnc($appUser->getName())));
+                $email->to(new Address($appUser->getEmail() ?? '', $appUser->getName()));
             } catch (LogicException $e) {
                 $email->to($appUser->getEmail() ?? '');
             }
-            $email->subject(self::mimeEnc($title));
+            $email->subject($title);
             $email->htmlTemplate('@ZakjakubOswisCore/e-mail/password.html.twig')->context($data);
             $this->mailer->send($email);
         } catch (TransportExceptionInterface $e) {
             $this->logger->error($e->getMessage());
             throw new OswisException('Problém s odesláním zprávy o změně hesla.  '.$e->getMessage());
         }
-    }
-
-    private static function mimeEnc(?string $input = null): string
-    {
-        return EmailUtils::mime_header_encode($input);
     }
 
     /**
@@ -313,11 +307,11 @@ class AppUserService
             ];
             $email = new TemplatedEmail();
             try {
-                $email->to(new Address($appUser->getEmail() ?? '', self::mimeEnc($appUser->getName())));
+                $email->to(new Address($appUser->getEmail() ?? '', $appUser->getName()));
             } catch (LogicException $e) {
                 $email->to($appUser->getEmail() ?? '');
             }
-            $email->subject(self::mimeEnc($title));
+            $email->subject($title);
             $email->htmlTemplate('@ZakjakubOswisCore/e-mail/app-user.html.twig')->context($data);
             $this->mailer->send($email);
         } catch (TransportExceptionInterface $e) {
@@ -351,5 +345,4 @@ class AppUserService
         }
         $this->logger->info('[OK] App user '.$appUser->getId().' successfully activated.');
     }
-
 }

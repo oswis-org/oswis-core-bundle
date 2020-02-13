@@ -1,6 +1,8 @@
-<?php /** @noinspection MethodShouldBeFinalInspection */
-
-/** @noinspection PhpUnused */
+<?php
+/**
+ * @noinspection MethodShouldBeFinalInspection
+ * @noinspection PhpUnused
+ */
 
 namespace Zakjakub\OswisCoreBundle\Entity;
 
@@ -67,8 +69,7 @@ use Zakjakub\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
  *     "note",
  *     "appUserType.name",
  *     "appUserType.shortName",
- *     "appUserType.slug",
- *     "city"
+ *     "appUserType.slug"
  * })
  * @ApiFilter(ExistsFilter::class, properties={"active", "deleted"})
  * @ApiFilter(DateFilter::class, properties={"createdDateTime", "updatedDateTime", "startDateTime", "endDateTime"})
@@ -86,8 +87,7 @@ use Zakjakub\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
  *     "note",
  *     "appUserType.name",
  *     "appUserType.shortName",
- *     "appUserType.slug",
- *     "city"
+ *     "appUserType.slug"
  * })
  * @author Jakub Zak <mail@jakubzak.eu>
  * @Doctrine\ORM\Mapping\Cache(usage="NONSTRICT_READ_WRITE", region="core_app_user")

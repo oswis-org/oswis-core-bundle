@@ -73,9 +73,6 @@ trait DeletedTrait
         return $this->deleted;
     }
 
-    /**
-     * Set date and time of delete.
-     */
     public function setDeleted(?DateTime $deleted = null): void
     {
         if (null === $deleted || (null === $this->deleted && null !== $deleted)) {
@@ -84,17 +81,10 @@ trait DeletedTrait
         $this->deleted = $deleted;
     }
 
-    /**
-     * True if user is deleted.
-     *
-     * @param DateTime|null $referenceDateTime Reference date and time ('now' if not specified).
-     */
     public function isDeleted(?DateTime $referenceDateTime = null): bool
     {
         try {
-            $referenceDateTime ??= new DateTime();
-
-            return ($referenceDateTime) > $this->deleted;
+            return $this->deleted && ($referenceDateTime ?? new DateTime()) > $this->deleted;
         } catch (Exception $e) {
             return false;
         }

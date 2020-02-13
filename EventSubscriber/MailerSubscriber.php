@@ -18,11 +18,11 @@ use Zakjakub\OswisCoreBundle\Utils\EmailUtils;
 
 class MailerSubscriber implements EventSubscriberInterface
 {
-    protected OswisCoreSettingsProvider $oswisCoreSettings;
+    protected OswisCoreSettingsProvider $coreSettings;
 
     public function __construct(OswisCoreSettingsProvider $oswisCoreSettings)
     {
-        $this->oswisCoreSettings = $oswisCoreSettings;
+        $this->coreSettings = $oswisCoreSettings;
     }
 
     public static function getSubscribedEvents(): array
@@ -32,43 +32,62 @@ class MailerSubscriber implements EventSubscriberInterface
 
     public function onMessageSend(MessageEvent $event): void
     {
-        $message = $event->getMessage();
-        if (!($message instanceof Email)) {
+        $email = $event->getMessage();
+        if (!($email instanceof Email)) {
             return;
         }
-        $oswisCoreSettings = $this->oswisCoreSettings;
-        if (!$message->getFrom() && $oswisCoreSettings->getEmail()['address']) {
+        $this->processFromAddresses($email);
+        $this->processRecipients($email);
+        $email->returnPath($email->getReturnPath() ?? $this->coreSettings->getEmail()['return_path']);
+        $email->addReplyTo($email->getReplyTo()[0] ?? $this->coreSettings->getEmail()['reply_path']);
+        $email->subject(self::mimeEnc($email->getSubject() ?? $this->coreSettings->getEmail()['default_subject'] ?? ''));
+        if ($email instanceof TemplatedEmail) {
+            $email->embedFromPath('../assets/assets/images/logo.png', 'logo');
+            $email->getContext()['logo'] = $email->getContext()['logo'] ?? 'cid:logo';
+            $email->getContext()['oswis'] = $this->coreSettings->getArray();
+        }
+        $event->setMessage($email);
+    }
+
+    private function processFromAddresses(Email $email): void
+    {
+        if (!empty($email->getFrom())) {
+            $originalSenders = $email->getFrom();
+            $email->from();
+            foreach ($originalSenders as $singleFrom) {
+                try {
+                    $email->addFrom(new Address($singleFrom->getAddress(), self::mimeEnc($singleFrom->getName())));
+                } catch (LogicException | RfcComplianceException $e) {
+                    $email->addFrom($singleFrom);
+                }
+            }
+        }
+        if (empty($email->getFrom()) && $this->coreSettings->getEmail()['address']) {
+            $fromAddress = $this->coreSettings->getEmail()['address'] ?? null;
+            $fromName = self::mimeEnc($this->coreSettings->getEmail()['name'] ?? null);
             try {
-                $fromAddress = $oswisCoreSettings->getEmail()['address'] ?? null;
-                $fromName = EmailUtils::mime_header_encode($oswisCoreSettings->getEmail()['name'] ?? null);
-                $message->from(new Address($fromAddress, $fromName));
-            } catch (LogicException $e) {
-                /// TODO: Catch.
-            } catch (RfcComplianceException $e) {
-                /// TODO: Catch.
+                $email->from(new Address($fromAddress, $fromName));
+            } catch (LogicException | RfcComplianceException $e) {
+                $email->from($fromAddress);
             }
         }
-        if (!$message->getReturnPath() && $oswisCoreSettings->getEmail()['return_path']) {
-            $message->returnPath($oswisCoreSettings->getEmail()['return_path']);
-        }
-        if (!$message->getReplyTo() && $oswisCoreSettings->getEmail()['reply_path']) {
-            $message->addReplyTo($oswisCoreSettings->getEmail()['reply_path']);
-        }
-        if ($message->getSubject()) {
-            $message->subject(EmailUtils::mime_header_encode($message->getSubject()));
-        }
-        if (!$message->getSubject() && $oswisCoreSettings->getEmail()['default_subject']) {
-            $message->subject(EmailUtils::mime_header_encode($oswisCoreSettings->getEmail()['default_subject']));
-        }
-        if ($message instanceof TemplatedEmail) {
-            $message->embedFromPath('../assets/assets/images/logo.png', 'logo');
-            if ($message->getContext()['logo']) {
-                $message->getContext()['logo'] = 'cid:logo';
+    }
+
+    private static function mimeEnc(string $value): string
+    {
+        return EmailUtils::mime_header_encode($value);
+    }
+
+    private function processRecipients(Email $email): void
+    {
+        $originalRecipients = $email->getTo();
+        $email->to();
+        foreach ($originalRecipients as $singleTo) {
+            try {
+                $email->addTo(new Address($singleTo->getAddress(), self::mimeEnc($singleTo->getName())));
+            } catch (LogicException | RfcComplianceException $e) {
+                $email->addTo($singleTo->getAddress());
             }
-            if ($message->getContext()['oswis']) {
-                $message->getContext()['oswis'] = $oswisCoreSettings->getArray();
-            }
-            $event->setMessage($message);
         }
     }
 }

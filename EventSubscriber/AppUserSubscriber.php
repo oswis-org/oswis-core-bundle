@@ -6,8 +6,8 @@
 namespace Zakjakub\OswisCoreBundle\EventSubscriber;
 
 use ApiPlatform\Core\EventListener\EventPriorities;
-use Exception;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Symfony\Component\HttpFoundation\Exception\SuspiciousOperationException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\ViewEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
@@ -40,7 +40,7 @@ final class AppUserSubscriber implements EventSubscriberInterface
         }
         try {
             $method = $event->getRequest()->getMethod();
-        } catch (Exception $e) {
+        } catch (SuspiciousOperationException $e) {
             return;
         }
         if (Request::METHOD_POST !== $method) {

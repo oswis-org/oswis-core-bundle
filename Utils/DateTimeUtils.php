@@ -132,6 +132,14 @@ class DateTimeUtils
         throw new InvalidArgumentException("Rozsah '$range' není povolen.");
     }
 
+    /**
+     * @param DateTime|null $dateTime
+     * @param bool|null     $isEnd
+     *
+     * @return DateTime
+     * @throws Exception
+     * @noinspection PhpUndefinedClassInspection
+     */
     private static function getByRangeAll(?DateTime $dateTime, ?bool $isEnd = false): DateTime
     {
         return $dateTime ?? new DateTime($isEnd ? self::MAX_DATE_TIME_STRING : self::MIN_DATE_TIME_STRING);
