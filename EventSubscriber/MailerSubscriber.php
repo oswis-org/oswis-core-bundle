@@ -14,7 +14,6 @@ use Symfony\Component\Mime\Email;
 use Symfony\Component\Mime\Exception\LogicException;
 use Symfony\Component\Mime\Exception\RfcComplianceException;
 use Zakjakub\OswisCoreBundle\Provider\OswisCoreSettingsProvider;
-use Zakjakub\OswisCoreBundle\Utils\EmailUtils;
 
 class MailerSubscriber implements EventSubscriberInterface
 {
@@ -44,7 +43,7 @@ class MailerSubscriber implements EventSubscriberInterface
         if ($email->getReplyTo()[0] ?? $this->coreSettings->getEmail()['reply_path']) {
             $email->replyTo($email->getReplyTo()[0] ?? $this->coreSettings->getEmail()['reply_path']);
         }
-        $email->subject(self::mimeEnc($email->getSubject() ?? $this->coreSettings->getEmail()['default_subject'] ?? ''));
+        $email->subject($email->getSubject() ?? $this->coreSettings->getEmail()['default_subject'] ?? '');
         if ($email instanceof TemplatedEmail) {
             $email->embedFromPath('../assets/assets/images/logo.png', 'logo');
             $email->getContext()['logo'] = $email->getContext()['logo'] ?? 'cid:logo';
@@ -60,7 +59,7 @@ class MailerSubscriber implements EventSubscriberInterface
             $email->from();
             foreach ($originalSenders as $singleFrom) {
                 try {
-                    $email->addFrom(new Address($singleFrom->getAddress(), self::mimeEnc($singleFrom->getName())));
+                    $email->addFrom(new Address($singleFrom->getAddress(), $singleFrom->getName()));
                 } catch (LogicException | RfcComplianceException $e) {
                     $email->addFrom($singleFrom);
                 }
@@ -68,7 +67,7 @@ class MailerSubscriber implements EventSubscriberInterface
         }
         if (empty($email->getFrom()) && $this->coreSettings->getEmail()['address']) {
             $fromAddress = $this->coreSettings->getEmail()['address'] ?? null;
-            $fromName = self::mimeEnc($this->coreSettings->getEmail()['name'] ?? null);
+            $fromName = $this->coreSettings->getEmail()['name'] ?? null;
             try {
                 $email->from(new Address($fromAddress, $fromName));
             } catch (LogicException | RfcComplianceException $e) {
@@ -77,18 +76,13 @@ class MailerSubscriber implements EventSubscriberInterface
         }
     }
 
-    private static function mimeEnc(string $value): string
-    {
-        return EmailUtils::mime_header_encode($value);
-    }
-
     private function processRecipients(Email $email): void
     {
         $originalRecipients = $email->getTo();
         $email->to();
         foreach ($originalRecipients as $singleTo) {
             try {
-                $email->addTo(new Address($singleTo->getAddress(), self::mimeEnc($singleTo->getName())));
+                $email->addTo(new Address($singleTo->getAddress(), $singleTo->getName()));
             } catch (LogicException | RfcComplianceException $e) {
                 $email->addTo($singleTo->getAddress());
             }
