@@ -38,8 +38,12 @@ class MailerSubscriber implements EventSubscriberInterface
         }
         $this->processFromAddresses($email);
         $this->processRecipients($email);
-        $email->returnPath($email->getReturnPath() ?? $this->coreSettings->getEmail()['return_path']);
-        $email->addReplyTo($email->getReplyTo()[0] ?? $this->coreSettings->getEmail()['reply_path']);
+        if ($email->getReturnPath() ?? $this->coreSettings->getEmail()['return_path']) {
+            $email->returnPath($email->getReturnPath() ?? $this->coreSettings->getEmail()['return_path']);
+        }
+        if ($email->getReplyTo()[0] ?? $this->coreSettings->getEmail()['reply_path']) {
+            $email->replyTo($email->getReplyTo()[0] ?? $this->coreSettings->getEmail()['reply_path']);
+        }
         $email->subject(self::mimeEnc($email->getSubject() ?? $this->coreSettings->getEmail()['default_subject'] ?? ''));
         if ($email instanceof TemplatedEmail) {
             $email->embedFromPath('../assets/assets/images/logo.png', 'logo');
