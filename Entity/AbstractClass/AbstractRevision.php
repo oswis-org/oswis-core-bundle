@@ -2,7 +2,7 @@
 
 namespace Zakjakub\OswisCoreBundle\Entity\AbstractClass;
 
-use DateTime;
+use DateTimeInterface;
 use Zakjakub\OswisCoreBundle\Exceptions\RevisionMissingException;
 use Zakjakub\OswisCoreBundle\Interfaces\RevisionInterface;
 use Zakjakub\OswisCoreBundle\Utils\DateTimeUtils;
@@ -45,7 +45,7 @@ abstract class AbstractRevision implements RevisionInterface
     /**
      * Date and time of revision creation.
      */
-    abstract public function getCreatedDateTime(): ?DateTime;
+    abstract public function getCreatedDateTime(): ?DateTimeInterface;
 
     /**
      * Helper function for sorting by id of revisions.
@@ -97,7 +97,7 @@ abstract class AbstractRevision implements RevisionInterface
     /**
      * Check if this revision is actual/active in specified datetime (or now if datetime is not specified).
      */
-    final public function isActive(?DateTime $dateTime = null): bool
+    final public function isActive(?DateTimeInterface $dateTime = null): bool
     {
         try {
             return $this === $this->container->getRevision($dateTime);

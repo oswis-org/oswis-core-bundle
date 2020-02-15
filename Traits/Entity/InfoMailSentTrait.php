@@ -7,16 +7,17 @@
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
 use DateTime;
+use DateTimeInterface;
 
 trait InfoMailSentTrait
 {
     /**
      * Date and time of last info e-mail.
      *
-     * @var DateTime|null
+     * @var DateTimeInterface|null
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true)
      */
-    protected ?DateTime $infoMailSentDateTime = null;
+    protected ?DateTimeInterface $infoMailSentDateTime = null;
 
     /**
      * Number of info e-mails sent.
@@ -37,7 +38,7 @@ trait InfoMailSentTrait
     /**
      * Get date and time of last info e-mail.
      */
-    public function getInfoMailSentDateTime(): ?DateTime
+    public function getInfoMailSentDateTime(): ?DateTimeInterface
     {
         return $this->infoMailSentDateTime;
     }
@@ -45,7 +46,7 @@ trait InfoMailSentTrait
     /**
      * (DO NOT USE!) Set last info e-mail date and time.
      */
-    public function setInfoMailSentDateTime(?DateTime $infoMailSentDateTime): void
+    public function setInfoMailSentDateTime(?DateTimeInterface $infoMailSentDateTime): void
     {
         $this->infoMailSentDateTime = $infoMailSentDateTime;
     }

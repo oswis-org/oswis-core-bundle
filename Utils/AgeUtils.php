@@ -3,6 +3,7 @@
 namespace Zakjakub\OswisCoreBundle\Utils;
 
 use DateTime;
+use DateTimeInterface;
 use Exception;
 use function floor;
 use const PHP_INT_MAX;
@@ -26,40 +27,42 @@ class AgeUtils
      *
      * @throws Exception
      */
-    public static function isBirthDateInRange(?DateTime $birthDate, int $minAge = null, int $maxAge = null, DateTime $referenceDateTime = null): bool
-    {
+    public static function isBirthDateInRange(
+        ?DateTimeInterface $birthDate,
+        int $minAge = null,
+        int $maxAge = null,
+        DateTimeInterface $referenceDateTime = null
+    ): bool {
         if (null === $birthDate) {
             return false;
         }
         $referenceDateTime ??= new DateTime();
         $age = self::getAgeFromBirthDate($birthDate, $referenceDateTime);
-        $minAge ??= 0;
-        $maxAge ??= PHP_INT_MAX;
 
-        return $age >= $minAge && $age <= $maxAge;
+        return $age >= ($minAge ?? 0) && $age <= ($maxAge ?? PHP_INT_MAX);
     }
 
     /**
      * @throws Exception
      */
-    public static function getAgeFromBirthDate(?DateTime $birthDate, DateTime $referenceDateTime = null): ?int
+    public static function getAgeFromBirthDate(?DateTimeInterface $birthDate, DateTimeInterface $referenceDateTime = null): ?int
     {
         return $birthDate ? (int)floor(self::getAgeDecimalFromBirthDate($birthDate, $referenceDateTime)) : null;
     }
 
     /**
-     * @param DateTime $birthDate
+     * @param DateTimeInterface $birthDate
      *
      * @return int
-     *
      * @throws Exception
      */
-    public static function getAgeDecimalFromBirthDate(?DateTime $birthDate, ?DateTime $referenceDateTime = null): ?int
+    public static function getAgeDecimalFromBirthDate(?DateTimeInterface $birthDate, ?DateTimeInterface $referenceDateTime = null): ?int
     {
-        if (!$birthDate) {
+        if (!($birthDate instanceof DateTime)) {
             return null;
         }
         $referenceDateTime ??= new DateTime();
+        assert($referenceDateTime instanceof DateTime);
         $referenceDateTime->setTime(0, 0);
         $birthDate->setTime(0, 0);
 

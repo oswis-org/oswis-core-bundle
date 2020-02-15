@@ -7,6 +7,7 @@
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
 use DateTime;
+use DateTimeInterface;
 use Zakjakub\OswisCoreBundle\Utils\DateTimeUtils;
 
 /**
@@ -19,39 +20,33 @@ trait DateRangeTrait
      *
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true, options={"default": null})
      */
-    protected ?DateTime $startDateTime = null;
+    protected ?DateTimeInterface $startDateTime = null;
 
     /**
      * Date and time of range end.
      *
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true, options={"default": null})
      */
-    protected ?DateTime $endDateTime = null;
+    protected ?DateTimeInterface $endDateTime = null;
 
     /**
      * True if datetime belongs to this datetime range.
      *
-     * @param DateTime $dateTime Checked date and time ('now' if not set).
+     * @param DateTimeInterface $dateTime Checked date and time ('now' if not set).
      *
      * @return bool True if belongs to date range.
      */
-    public function containsDateTimeInRange(?DateTime $dateTime = null): bool
+    public function containsDateTimeInRange(?DateTimeInterface $dateTime = null): bool
     {
         return DateTimeUtils::isDateTimeInRange($this->getStartDateTime(), $this->getEndDateTime(), $dateTime);
     }
 
-    /**
-     * @return DateTime
-     */
-    public function getStartDateTime(): ?DateTime
+    public function getStartDateTime(): ?DateTimeInterface
     {
         return $this->startDateTime;
     }
 
-    /**
-     * @param DateTime $startDateTime
-     */
-    public function setStartDateTime(?DateTime $startDateTime): void
+    public function setStartDateTime(?DateTimeInterface $startDateTime): void
     {
         $this->startDateTime = $startDateTime;
     }
@@ -59,25 +54,25 @@ trait DateRangeTrait
     /**
      * @return DateTime
      */
-    public function getEndDateTime(): ?DateTime
+    public function getEndDateTime(): ?DateTimeInterface
     {
         return $this->endDateTime;
     }
 
     /**
-     * @param DateTime $endDateTime
+     * @param DateTimeInterface $endDateTime
      */
-    public function setEndDateTime(?DateTime $endDateTime): void
+    public function setEndDateTime(?DateTimeInterface $endDateTime): void
     {
         $this->endDateTime = $endDateTime;
     }
 
-    public function setStartDate(?DateTime $dateTime): void
+    public function setStartDate(?DateTimeInterface $dateTime): void
     {
         $this->setStartDateTime($dateTime);
     }
 
-    public function setEndDate(?DateTime $dateTime): void
+    public function setEndDate(?DateTimeInterface $dateTime): void
     {
         $this->setEndDateTime($dateTime);
     }
@@ -87,7 +82,7 @@ trait DateRangeTrait
         return DateTimeUtils::getLength($this->getStartDate(), $this->getEndDateTime(), $type);
     }
 
-    public function getStartDate(): ?DateTime
+    public function getStartDate(): ?DateTimeInterface
     {
         return $this->getStartDateTime();
     }
@@ -115,7 +110,7 @@ trait DateRangeTrait
         return DateTimeUtils::isInOnePeriod($period, $this->getStartDate(), $this->getEndDate());
     }
 
-    public function getEndDate(): ?DateTime
+    public function getEndDate(): ?DateTimeInterface
     {
         return $this->getEndDateTime();
     }

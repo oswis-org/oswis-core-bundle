@@ -3,6 +3,7 @@
 namespace Zakjakub\OswisCoreBundle\Interfaces;
 
 use DateTime;
+use DateTimeInterface;
 
 interface TimestampableInterface
 {
@@ -19,7 +20,7 @@ interface TimestampableInterface
     /**
      * Set date and time of entity update.
      */
-    public function setUpdatedDateTime(DateTime $updatedDateTime): void;
+    public function setUpdatedDateTime(DateTimeInterface $updatedDateTime): void;
 
     public function getCreatedDaysAgo(?bool $decimal = false): int;
 

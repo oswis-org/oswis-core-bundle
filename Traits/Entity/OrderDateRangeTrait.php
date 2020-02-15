@@ -7,6 +7,7 @@
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
 use DateTime;
+use DateTimeInterface;
 use Exception;
 use Zakjakub\OswisCoreBundle\Utils\DateTimeUtils;
 
@@ -15,27 +16,27 @@ trait OrderDateRangeTrait
     /**
      * Date and time of range start.
      *
-     * @var DateTime|null
+     * @var DateTimeInterface|null
      *
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true, options={"default": null})
      */
-    protected ?DateTime $startOrderDateTime = null;
+    protected ?DateTimeInterface $startOrderDateTime = null;
 
     /**
      * Date and time of range end.
      *
-     * @var DateTime|null
+     * @var DateTimeInterface|null
      *
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true, options={"default": null})
      */
-    protected ?DateTime $endOrderDateTime = null;
+    protected ?DateTimeInterface $endOrderDateTime = null;
 
-    public function getStartOrderDateTime(): ?DateTime
+    public function getStartOrderDateTime(): ?DateTimeInterface
     {
         return $this->startOrderDateTime;
     }
 
-    public function setStartOrderDateTime(?DateTime $startOrderDateTime): void
+    public function setStartOrderDateTime(?DateTimeInterface $startOrderDateTime): void
     {
         $this->startOrderDateTime = $startOrderDateTime;
     }
@@ -48,17 +49,17 @@ trait OrderDateRangeTrait
      * @return bool True if belongs to date range
      * @throws Exception
      */
-    public function containsOrderDateTime(DateTime $dateTime): bool
+    public function containsOrderDateTime(DateTimeInterface $dateTime): bool
     {
         return DateTimeUtils::isDateTimeInRange($this->startOrderDateTime, $this->getEndOrderDateTime(), $dateTime);
     }
 
-    public function getEndOrderDateTime(): ?DateTime
+    public function getEndOrderDateTime(): ?DateTimeInterface
     {
         return $this->endOrderDateTime;
     }
 
-    public function setEndOrderDateTime(?DateTime $endOrderDateTime): void
+    public function setEndOrderDateTime(?DateTimeInterface $endOrderDateTime): void
     {
         $this->endOrderDateTime = $endOrderDateTime;
     }

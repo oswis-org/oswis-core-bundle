@@ -3,6 +3,7 @@
 namespace Zakjakub\OswisCoreBundle\Entity\AbstractClass;
 
 use DateTime;
+use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Exception;
@@ -118,7 +119,7 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
      *
      * @throws RevisionMissingException
      */
-    final public function getRevision(DateTime $dateTime = null, ?bool $force = false): AbstractRevision
+    final public function getRevision(DateTimeInterface $dateTime = null, ?bool $force = false): AbstractRevision
     {
         if (!$force && !$dateTime && $this->activeRevision) {
             return $this->activeRevision;
@@ -135,12 +136,7 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
         return $revisions[0];
     }
 
-    /**
-     * @param DateTime|null $dateTime
-     *
-     * @return array<AbstractRevision>
-     */
-    final public function getRevisionsOlderThanDateTime(DateTime $dateTime = null): array
+    final public function getRevisionsOlderThanDateTime(DateTimeInterface $dateTime = null): array
     {
         try {
             $dateTime ??= new DateTime() ?? null;
@@ -169,10 +165,9 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
 
     /**
      * Get date and time of active/actual revision/version in some date and time (or now if referenceDateTime is not specified).
-     *
      * @throws RevisionMissingException
      */
-    final public function getLastRevisionDateTime(?DateTime $referenceDateTime = null): ?DateTime
+    final public function getLastRevisionDateTime(?DateTimeInterface $referenceDateTime = null): ?DateTimeInterface
     {
         return $this->getRevision($referenceDateTime)->getCreatedDateTime();
     }

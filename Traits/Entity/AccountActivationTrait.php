@@ -6,6 +6,7 @@
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
 use DateTime;
+use DateTimeInterface;
 use Exception;
 use Zakjakub\OswisCoreBundle\Utils\StringUtils;
 
@@ -24,13 +25,13 @@ trait AccountActivationTrait
      * Date and time of password reset request (and token generation).
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true)
      */
-    protected ?DateTime $accountActivationRequestDateTime = null;
+    protected ?DateTimeInterface $accountActivationRequestDateTime = null;
 
     /**
      * Date and time of account activation.
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true)
      */
-    protected ?DateTime $accountActivationDateTime = null;
+    protected ?DateTimeInterface $accountActivationDateTime = null;
 
     public function checkAndDestroyAccountActivationRequestToken(?string $token, int $validHours = 24): bool
     {
@@ -53,12 +54,12 @@ trait AccountActivationTrait
         return false;
     }
 
-    public function getAccountActivationRequestDateTime(): ?DateTime
+    public function getAccountActivationRequestDateTime(): ?DateTimeInterface
     {
         return $this->accountActivationRequestDateTime;
     }
 
-    public function setAccountActivationRequestDateTime(?DateTime $accountActivationRequestDateTime): void
+    public function setAccountActivationRequestDateTime(?DateTimeInterface $accountActivationRequestDateTime): void
     {
         $this->accountActivationRequestDateTime = $accountActivationRequestDateTime;
     }
@@ -98,12 +99,12 @@ trait AccountActivationTrait
         }
     }
 
-    public function getAccountActivationDateTime(): ?DateTime
+    public function getAccountActivationDateTime(): ?DateTimeInterface
     {
         return $this->accountActivationDateTime;
     }
 
-    public function setAccountActivationDateTime(?DateTime $accountActivationDateTime): void
+    public function setAccountActivationDateTime(?DateTimeInterface $accountActivationDateTime): void
     {
         $this->accountActivationDateTime = $accountActivationDateTime;
     }

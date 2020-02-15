@@ -2,15 +2,15 @@
 
 namespace Zakjakub\OswisCoreBundle\Interfaces;
 
-use DateTime;
+use DateTimeInterface;
 
 interface BirthDateInterface
 {
-    public function getBirthDate(): ?DateTime;
+    public function getBirthDate(): ?DateTimeInterface;
 
-    public function setBirthDate(?DateTime $birthDate): void;
+    public function setBirthDate(?DateTimeInterface $birthDate): void;
 
-    public function getAge(?DateTime $referenceDateTime = null): ?int;
+    public function getAge(?DateTimeInterface $referenceDateTime = null): ?int;
 
-    public function getAgeDecimal(?DateTime $referenceDateTime = null): ?int;
+    public function getAgeDecimal(?DateTimeInterface $referenceDateTime = null): ?int;
 }

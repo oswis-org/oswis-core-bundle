@@ -7,6 +7,7 @@
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
 use DateTime;
+use DateTimeInterface;
 
 /**
  * Trait EntityBasicMailConfirmationTrait.
@@ -16,10 +17,10 @@ trait BasicMailConfirmationTrait
     /**
      * Date and time of last confirmation e-mail.
      *
-     * @var DateTime|null
+     * @var DateTimeInterface|null
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true)
      */
-    protected ?DateTime $eMailConfirmationDateTime = null;
+    protected ?DateTimeInterface $eMailConfirmationDateTime = null;
 
     /**
      * Number of confirmation e-mails sent.
@@ -40,7 +41,7 @@ trait BasicMailConfirmationTrait
     /**
      * Get date and time of last confirmation e-mail.
      */
-    public function getEMailConfirmationDateTime(): ?DateTime
+    public function getEMailConfirmationDateTime(): ?DateTimeInterface
     {
         return $this->eMailConfirmationDateTime;
     }
@@ -48,7 +49,7 @@ trait BasicMailConfirmationTrait
     /**
      * (DO NOT USE!) Set last confirmation date and time.
      */
-    public function setEMailConfirmationDateTime(?DateTime $eMailConfirmationDateTime): void
+    public function setEMailConfirmationDateTime(?DateTimeInterface $eMailConfirmationDateTime): void
     {
         $this->eMailConfirmationDateTime = $eMailConfirmationDateTime;
     }
