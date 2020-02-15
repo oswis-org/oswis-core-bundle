@@ -4,7 +4,7 @@
     "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
     "This file is @generated automatically"
   ],
-  "content-hash": "911720a078cd17d9f10aab0ee507734b",
+  "content-hash": "7c4a83cf0c5c22d700fa2a366c5f7370",
   "packages": [
     {
       "name": "adci/full-name-parser",
@@ -52,6 +52,79 @@
         "php"
       ],
       "time": "2019-11-05T05:32:16+00:00"
+    },
+    {
+      "name": "antishov/doctrine-extensions-bundle",
+      "version": "v1.4.2",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/antishov/StofDoctrineExtensionsBundle.git",
+        "reference": "19c8d45e7ceb6477ef490f21ab4279e549c1e828"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/antishov/StofDoctrineExtensionsBundle/zipball/19c8d45e7ceb6477ef490f21ab4279e549c1e828",
+        "reference": "19c8d45e7ceb6477ef490f21ab4279e549c1e828",
+        "shasum": ""
+      },
+      "require": {
+        "gedmo/doctrine-extensions": "^2.3.4",
+        "php": ">=7.1",
+        "symfony/framework-bundle": "^4.3|^5.0"
+      },
+      "conflict": {
+        "stof/doctrine-extensions-bundle": "*"
+      },
+      "require-dev": {
+        "symfony/phpunit-bridge": "^4.3|^5.0",
+        "symfony/security-bundle": "^4.3|^5.0"
+      },
+      "suggest": {
+        "doctrine/doctrine-bundle": "to use the ORM extensions",
+        "doctrine/mongodb-odm-bundle": "to use the MongoDB ODM extensions"
+      },
+      "type": "symfony-bundle",
+      "extra": {
+        "branch-alias": {
+          "dev-master": "2.0-dev"
+        }
+      },
+      "autoload": {
+        "psr-4": {
+          "Stof\\DoctrineExtensionsBundle\\": ""
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
+      "authors": [
+        {
+          "name": "Antishov Viktor",
+          "email": "antishov.viktor@gmail.com"
+        },
+        {
+          "name": "Christophe Coevoet",
+          "email": "stof@notk.org"
+        }
+      ],
+      "description": "Forked from stof/doctrine-extensions-bundle integration of the gedmo/doctrine-extensions with Symfony 4",
+      "homepage": "https://github.com/antishov/StofDoctrineExtensionsBundle",
+      "keywords": [
+        "behaviors",
+        "doctrine2",
+        "extensions",
+        "gedmo",
+        "loggable",
+        "nestedset",
+        "sluggable",
+        "sortable",
+        "stof",
+        "timestampable",
+        "translatable",
+        "tree"
+      ],
+      "time": "2019-12-03T19:50:27+00:00"
     },
     {
       "name": "api-platform/core",
@@ -1432,16 +1505,16 @@
     },
     {
       "name": "egulias/email-validator",
-      "version": "2.1.16",
+      "version": "2.1.17",
       "source": {
         "type": "git",
         "url": "https://github.com/egulias/EmailValidator.git",
-        "reference": "5065fafc8c29d229ff207f2a89b02175f479a909"
+        "reference": "ade6887fd9bd74177769645ab5c474824f8a418a"
       },
       "dist": {
         "type": "zip",
-        "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/5065fafc8c29d229ff207f2a89b02175f479a909",
-        "reference": "5065fafc8c29d229ff207f2a89b02175f479a909",
+        "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/ade6887fd9bd74177769645ab5c474824f8a418a",
+        "reference": "ade6887fd9bd74177769645ab5c474824f8a418a",
         "shasum": ""
       },
       "require": {
@@ -1486,25 +1559,25 @@
         "validation",
         "validator"
       ],
-      "time": "2020-02-12T22:28:28+00:00"
+      "time": "2020-02-13T22:36:52+00:00"
     },
     {
       "name": "elasticsearch/elasticsearch",
-      "version": "v7.5.0",
+      "version": "v7.6.1",
       "source": {
         "type": "git",
         "url": "https://github.com/elastic/elasticsearch-php.git",
-        "reference": "81fbecb1046b801729fc10e2c494fffd683b0518"
+        "reference": "d4f24bc43c2af60aece3df20eb689d322f9c8acf"
       },
       "dist": {
         "type": "zip",
-        "url": "https://api.github.com/repos/elastic/elasticsearch-php/zipball/81fbecb1046b801729fc10e2c494fffd683b0518",
-        "reference": "81fbecb1046b801729fc10e2c494fffd683b0518",
+        "url": "https://api.github.com/repos/elastic/elasticsearch-php/zipball/d4f24bc43c2af60aece3df20eb689d322f9c8acf",
+        "reference": "d4f24bc43c2af60aece3df20eb689d322f9c8acf",
         "shasum": ""
       },
       "require": {
         "ext-json": ">=1.3.7",
-        "guzzlehttp/ringphp": "~1.0",
+        "ezimuel/ringphp": "^1.1.2",
         "php": "^7.1",
         "psr/log": "~1.0"
       },
@@ -1512,7 +1585,7 @@
         "cpliakas/git-wrapper": "~2.0",
         "doctrine/inflector": "^1.3",
         "mockery/mockery": "^1.2",
-        "phpstan/phpstan-shim": "^0.11",
+        "phpstan/phpstan": "^0.12",
         "phpunit/phpunit": "^7.5",
         "squizlabs/php_codesniffer": "^3.4",
         "symfony/finder": "~4.0",
@@ -1549,7 +1622,108 @@
         "elasticsearch",
         "search"
       ],
-      "time": "2019-12-19T15:48:35+00:00"
+      "time": "2020-02-15T00:09:00+00:00"
+    },
+    {
+      "name": "ezimuel/guzzlestreams",
+      "version": "3.0.1",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/ezimuel/guzzlestreams.git",
+        "reference": "abe3791d231167f14eb80d413420d1eab91163a8"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/ezimuel/guzzlestreams/zipball/abe3791d231167f14eb80d413420d1eab91163a8",
+        "reference": "abe3791d231167f14eb80d413420d1eab91163a8",
+        "shasum": ""
+      },
+      "require": {
+        "php": ">=5.4.0"
+      },
+      "require-dev": {
+        "phpunit/phpunit": "~4.0"
+      },
+      "type": "library",
+      "extra": {
+        "branch-alias": {
+          "dev-master": "3.0-dev"
+        }
+      },
+      "autoload": {
+        "psr-4": {
+          "GuzzleHttp\\Stream\\": "src/"
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
+      "authors": [
+        {
+          "name": "Michael Dowling",
+          "email": "mtdowling@gmail.com",
+          "homepage": "https://github.com/mtdowling"
+        }
+      ],
+      "description": "Fork of guzzle/streams (abandoned) to be used with elasticsearch-php",
+      "homepage": "http://guzzlephp.org/",
+      "keywords": [
+        "Guzzle",
+        "stream"
+      ],
+      "time": "2020-02-14T23:11:50+00:00"
+    },
+    {
+      "name": "ezimuel/ringphp",
+      "version": "1.1.2",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/ezimuel/ringphp.git",
+        "reference": "0b78f89d8e0bb9e380046c31adfa40347e9f663b"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/ezimuel/ringphp/zipball/0b78f89d8e0bb9e380046c31adfa40347e9f663b",
+        "reference": "0b78f89d8e0bb9e380046c31adfa40347e9f663b",
+        "shasum": ""
+      },
+      "require": {
+        "ezimuel/guzzlestreams": "^3.0.1",
+        "php": ">=5.4.0",
+        "react/promise": "~2.0"
+      },
+      "require-dev": {
+        "ext-curl": "*",
+        "phpunit/phpunit": "~4.0"
+      },
+      "suggest": {
+        "ext-curl": "Guzzle will use specific adapters if cURL is present"
+      },
+      "type": "library",
+      "extra": {
+        "branch-alias": {
+          "dev-master": "1.1-dev"
+        }
+      },
+      "autoload": {
+        "psr-4": {
+          "GuzzleHttp\\Ring\\": "src/"
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
+      "authors": [
+        {
+          "name": "Michael Dowling",
+          "email": "mtdowling@gmail.com",
+          "homepage": "https://github.com/mtdowling"
+        }
+      ],
+      "description": "Fork of guzzle/RingPHP (abandoned) to be used with elasticsearch-php",
+      "time": "2020-02-14T23:51:21+00:00"
     },
     {
       "name": "fig/link-util",
@@ -1742,109 +1916,6 @@
         "jwt refresh token bundle symfony json web"
       ],
       "time": "2019-11-12T16:03:22+00:00"
-    },
-    {
-      "name": "guzzlehttp/ringphp",
-      "version": "1.1.1",
-      "source": {
-        "type": "git",
-        "url": "https://github.com/guzzle/RingPHP.git",
-        "reference": "5e2a174052995663dd68e6b5ad838afd47dd615b"
-      },
-      "dist": {
-        "type": "zip",
-        "url": "https://api.github.com/repos/guzzle/RingPHP/zipball/5e2a174052995663dd68e6b5ad838afd47dd615b",
-        "reference": "5e2a174052995663dd68e6b5ad838afd47dd615b",
-        "shasum": ""
-      },
-      "require": {
-        "guzzlehttp/streams": "~3.0",
-        "php": ">=5.4.0",
-        "react/promise": "~2.0"
-      },
-      "require-dev": {
-        "ext-curl": "*",
-        "phpunit/phpunit": "~4.0"
-      },
-      "suggest": {
-        "ext-curl": "Guzzle will use specific adapters if cURL is present"
-      },
-      "type": "library",
-      "extra": {
-        "branch-alias": {
-          "dev-master": "1.1-dev"
-        }
-      },
-      "autoload": {
-        "psr-4": {
-          "GuzzleHttp\\Ring\\": "src/"
-        }
-      },
-      "notification-url": "https://packagist.org/downloads/",
-      "license": [
-        "MIT"
-      ],
-      "authors": [
-        {
-          "name": "Michael Dowling",
-          "email": "mtdowling@gmail.com",
-          "homepage": "https://github.com/mtdowling"
-        }
-      ],
-      "description": "Provides a simple API and specification that abstracts away the details of HTTP into a single PHP function.",
-      "abandoned": true,
-      "time": "2018-07-31T13:22:33+00:00"
-    },
-    {
-      "name": "guzzlehttp/streams",
-      "version": "3.0.0",
-      "source": {
-        "type": "git",
-        "url": "https://github.com/guzzle/streams.git",
-        "reference": "47aaa48e27dae43d39fc1cea0ccf0d84ac1a2ba5"
-      },
-      "dist": {
-        "type": "zip",
-        "url": "https://api.github.com/repos/guzzle/streams/zipball/47aaa48e27dae43d39fc1cea0ccf0d84ac1a2ba5",
-        "reference": "47aaa48e27dae43d39fc1cea0ccf0d84ac1a2ba5",
-        "shasum": ""
-      },
-      "require": {
-        "php": ">=5.4.0"
-      },
-      "require-dev": {
-        "phpunit/phpunit": "~4.0"
-      },
-      "type": "library",
-      "extra": {
-        "branch-alias": {
-          "dev-master": "3.0-dev"
-        }
-      },
-      "autoload": {
-        "psr-4": {
-          "GuzzleHttp\\Stream\\": "src/"
-        }
-      },
-      "notification-url": "https://packagist.org/downloads/",
-      "license": [
-        "MIT"
-      ],
-      "authors": [
-        {
-          "name": "Michael Dowling",
-          "email": "mtdowling@gmail.com",
-          "homepage": "https://github.com/mtdowling"
-        }
-      ],
-      "description": "Provides a simple abstraction over streams of data",
-      "homepage": "http://guzzlephp.org/",
-      "keywords": [
-        "Guzzle",
-        "stream"
-      ],
-      "abandoned": true,
-      "time": "2014-10-12T19:18:40+00:00"
     },
     {
       "name": "hirak/prestissimo",
@@ -4099,71 +4170,6 @@
         "pdf"
       ],
       "time": "2019-01-30T14:11:19+00:00"
-    },
-    {
-      "name": "stof/doctrine-extensions-bundle",
-      "version": "v1.3.0",
-      "source": {
-        "type": "git",
-        "url": "https://github.com/stof/StofDoctrineExtensionsBundle.git",
-        "reference": "46db71ec7ffee9122eca3cdddd4ef8d84bae269c"
-      },
-      "dist": {
-        "type": "zip",
-        "url": "https://api.github.com/repos/stof/StofDoctrineExtensionsBundle/zipball/46db71ec7ffee9122eca3cdddd4ef8d84bae269c",
-        "reference": "46db71ec7ffee9122eca3cdddd4ef8d84bae269c",
-        "shasum": ""
-      },
-      "require": {
-        "gedmo/doctrine-extensions": "^2.3.4",
-        "php": ">=5.3.2",
-        "symfony/framework-bundle": "~2.7|~3.2|~4.0"
-      },
-      "require-dev": {
-        "symfony/phpunit-bridge": "^4.0",
-        "symfony/security-bundle": "^2.7 || ^3.2 || ^4.0"
-      },
-      "suggest": {
-        "doctrine/doctrine-bundle": "to use the ORM extensions",
-        "doctrine/mongodb-odm-bundle": "to use the MongoDB ODM extensions"
-      },
-      "type": "symfony-bundle",
-      "extra": {
-        "branch-alias": {
-          "dev-master": "1.3.x-dev"
-        }
-      },
-      "autoload": {
-        "psr-4": {
-          "Stof\\DoctrineExtensionsBundle\\": ""
-        }
-      },
-      "notification-url": "https://packagist.org/downloads/",
-      "license": [
-        "MIT"
-      ],
-      "authors": [
-        {
-          "name": "Christophe Coevoet",
-          "email": "stof@notk.org"
-        }
-      ],
-      "description": "Integration of the gedmo/doctrine-extensions with Symfony2",
-      "homepage": "https://github.com/stof/StofDoctrineExtensionsBundle",
-      "keywords": [
-        "behaviors",
-        "doctrine2",
-        "extensions",
-        "gedmo",
-        "loggable",
-        "nestedset",
-        "sluggable",
-        "sortable",
-        "timestampable",
-        "translatable",
-        "tree"
-      ],
-      "time": "2017-12-24T16:06:50+00:00"
     },
     {
       "name": "symfony/asset",
@@ -8920,16 +8926,16 @@
     },
     {
       "name": "webmozart/assert",
-      "version": "1.6.0",
+      "version": "1.7.0",
       "source": {
         "type": "git",
         "url": "https://github.com/webmozart/assert.git",
-        "reference": "573381c0a64f155a0d9a23f4b0c797194805b925"
+        "reference": "aed98a490f9a8f78468232db345ab9cf606cf598"
       },
       "dist": {
         "type": "zip",
-        "url": "https://api.github.com/repos/webmozart/assert/zipball/573381c0a64f155a0d9a23f4b0c797194805b925",
-        "reference": "573381c0a64f155a0d9a23f4b0c797194805b925",
+        "url": "https://api.github.com/repos/webmozart/assert/zipball/aed98a490f9a8f78468232db345ab9cf606cf598",
+        "reference": "aed98a490f9a8f78468232db345ab9cf606cf598",
         "shasum": ""
       },
       "require": {
@@ -8964,7 +8970,7 @@
         "check",
         "validate"
       ],
-      "time": "2019-11-24T13:36:37+00:00"
+      "time": "2020-02-14T12:15:55+00:00"
     },
     {
       "name": "willdurand/negotiation",
