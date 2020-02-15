@@ -1,0 +1,12 @@
+<row>
+    <columns small="12" large="12">
+        {% block footer_inner %}
+            <hr>
+            <small style='font-size:0.7em;' class="footer_disclaimer">
+                Tento automatický e-mail jste obdrželi, jelikož se s&nbsp;Vaší adresou někdo zaregistroval
+                v&nbsp;aplikaci&nbsp;<a href='{{ oswis.app.url }}' title='{{ oswis.app.name_long }}'>{{ oswis.app.name_short }}</a>.
+                Pokud jste to nebyli Vy, informujte nás, prosím.
+            </small>
+        {% endblock footer_inner %}
+    </columns>
+</row>

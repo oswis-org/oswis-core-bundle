@@ -49,11 +49,17 @@ class ZakjakubOswisCoreExtension extends Extension implements PrependExtensionIn
 
     private function prependTwig(ContainerBuilder $container): void
     {
-        $twigGlobals = [
-            'globals' => [
-                'oswis_core_settings' => '@zakjakub_oswis_core.oswis_core_settings_provider',
+        $twigConfig = [
+            'paths'       => [
+                'assets/images' => 'images',
+            ],
+            'globals'     => [
+                'oswis' => '@zakjakub_oswis_core.oswis_core_settings_provider',
+            ],
+            'form_themes' => [
+                'bootstrap_4_layout.html.twig',
             ],
         ];
-        $container->prependExtensionConfig('twig', $twigGlobals);
+        $container->prependExtensionConfig('twig', $twigConfig);
     }
 }

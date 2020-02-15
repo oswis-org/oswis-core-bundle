@@ -221,8 +221,6 @@ class AppUserService
                 'appUser'  => $appUser,
                 'token'    => $token,
                 'password' => $password,
-                'logo'     => 'cid:logo',
-                'oswis'    => $this->oswisCoreSettings,
             ];
             $email = new TemplatedEmail();
             try {
@@ -302,8 +300,6 @@ class AppUserService
                 'type'     => $type,
                 'token'    => $token,
                 'password' => $password,
-                'logo'     => 'cid_logo',
-                'oswis'    => $this->oswisCoreSettings,
             ];
             $email = new TemplatedEmail();
             try {

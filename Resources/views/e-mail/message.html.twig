@@ -36,21 +36,7 @@
         {% block body_outer %}
             <container class="header">
                 {% block header_outer %}
-                    <row>
-                        <columns small="2" large="2"></columns>
-                        <columns small="8" large="8">
-                            {% block header_inner %}
-                                <center>
-                                    {% block header_logo %}
-                                        {% if logo_src %}
-                                            <img alt='{{ oswis.app.name_short }}' src='{{ logo_src }}' class="logo">
-                                        {% endif %}
-                                    {% endblock header_logo %}
-                                </center>
-                            {% endblock header_inner %}
-                        </columns>
-                        <columns small="2" large="2"></columns>
-                    </row>
+                    {% include '@ZakjakubOswisCore/e-mail/message_header.html.twig' %}
                 {% endblock header_outer %}
             </container>
 
@@ -91,18 +77,7 @@
 
             <container class="footer">
                 {% block footer_outer %}
-                    <row>
-                        <columns small="12" large="12">
-                            {% block footer_inner %}
-                                <hr>
-                                <small style='font-size:0.7em;' class="footer_disclaimer">
-                                    Tento automatický e-mail jste obdrželi, jelikož se s&nbsp;Vaší adresou někdo zaregistroval
-                                    v&nbsp;aplikaci&nbsp;<a href='{{ oswis.app.url }}' title='{{ oswis.app.name_long }}'>{{ oswis.app.name_short }}</a>.
-                                    Pokud jste to nebyli Vy, informujte nás, prosím.
-                                </small>
-                            {% endblock footer_inner %}
-                        </columns>
-                    </row>
+                    {% include '@ZakjakubOswisCore/e-mail/message_footer.html.twig' %}
                 {% endblock footer_outer %}
             </container>
         {% endblock body_outer %}

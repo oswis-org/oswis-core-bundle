@@ -8,9 +8,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name='format-detection' content='telephone=yes'>
         <meta name='DC.Language' content='{{ block('html_lang') }}'>
-        <title>{% block html_title %}{{ title|default(oswis_core_settings.web.title) }}{% endblock html_title %}</title>
+        <title>{% block html_title %}{{ title|default(oswis.web.title) }}{% endblock html_title %}</title>
         {% block tag_manager_script %}{% endblock tag_manager_script %}
-        <meta name="description" content="{% block html_description %}{{ description|default(oswis_core_settings.web.description) }}{% endblock html_description %}">
+        <meta name="description" content="{% block html_description %}{{ description|default(oswis.web.description) }}{% endblock html_description %}">
         <meta name='author' content='{% block meta_author %}{{ author|default('Jakub Zak (https://jakubzak.cz)') }}{% endblock meta_author %}'>
         <meta name='copyright' content='{% block meta_copyright %}{{ copyright|default('Jakub Zak (https://jakubzak.cz)') }}{% endblock meta_copyright %}'>
         <meta name='generator' content='{% block meta_generator %}OSWIS (One Simple Web IS){% endblock meta_generator %}'>
@@ -62,8 +62,8 @@
                 <!-- <meta property="og:image" content="http://ia.media-imdb.com/images/rock.jpg"> -->
             {% endblock meta_og_image %}
             {% block meta_og_geo %}
-                <meta property="og:latitude" content="{% block meta_geo_x %}{{ geo_lat|default(oswis_core_settings.web.geo_x) }}{% endblock %}"/>
-                <meta property="og:longitude" content="{% block meta_geo_y %}{{ geo_lon|default(oswis_core_settings.web.geo_y) }}{% endblock %}"/>
+                <meta property="og:latitude" content="{% block meta_geo_x %}{{ geo_lat|default(oswis.web.geo_x) }}{% endblock %}"/>
+                <meta property="og:longitude" content="{% block meta_geo_y %}{{ geo_lon|default(oswis.web.geo_y) }}{% endblock %}"/>
             {% endblock meta_og_geo %}
             {% block meta_og_additional %}{% endblock meta_og_additional %}
         {% endblock %}

@@ -1,0 +1,20 @@
+<row>
+    <columns small="2" large="2"></columns>
+    <columns small="8" large="8">
+        {% block header_inner %}
+            <center>
+                {% block header_logo %}
+                    {% if logo_disabled is defined and logo_disabled %}
+                    {% elseif logo_src is defined and logo_src %}
+                        <img alt='{{ oswis.app.name }}' title='{{ oswis.app.name }}' src='{{ logo_src }}' class="logo">
+                    {% elseif logo is defined and logo %}
+                        <img alt='{{ oswis.app.name }}' title='{{ oswis.app.name }}' src='{{ email.image(logo) }}' class="logo">
+                    {% elseif oswis.app.logo is defined and oswis.app.logo %}
+                        <img alt='{{ oswis.app.name }}' title='{{ oswis.app.name }}' class="logo" src='{{ email.image(oswis.app.logo) }}'>
+                    {% endif %}
+                {% endblock header_logo %}
+            </center>
+        {% endblock header_inner %}
+    </columns>
+    <columns small="2" large="2"></columns>
+</row>

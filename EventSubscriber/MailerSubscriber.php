@@ -6,7 +6,6 @@
 
 namespace Zakjakub\OswisCoreBundle\EventSubscriber;
 
-use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Mailer\Event\MessageEvent;
 use Symfony\Component\Mime\Address;
@@ -44,11 +43,11 @@ class MailerSubscriber implements EventSubscriberInterface
             $email->replyTo($email->getReplyTo()[0] ?? $this->coreSettings->getEmail()['reply_path']);
         }
         $email->subject($email->getSubject() ?? $this->coreSettings->getEmail()['default_subject'] ?? '');
-        if ($email instanceof TemplatedEmail) {
-            $email->embedFromPath('../assets/assets/images/logo.png', 'logo');
-            $email->getContext()['logo'] = $email->getContext()['logo'] ?? 'cid:logo';
-            $email->getContext()['oswis'] = $this->coreSettings->getArray();
-        }
+        // if ($email instanceof TemplatedEmail) {
+        // $email->embedFromPath('../assets/assets/images/logo.png', 'logo');
+        // $email->getContext()['logo'] = $email->getContext()['logo'] ?? 'cid:logo';
+        // $email->getContext()['oswis'] = $this->coreSettings->getArray();
+        // }
         $event->setMessage($email);
     }
 
