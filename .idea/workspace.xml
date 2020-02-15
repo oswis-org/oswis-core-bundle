@@ -26,6 +26,7 @@
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/TimestampableTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/TimestampableTrait.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -599,14 +600,7 @@
       <workItem from="1581697378603" duration="12384000" />
       <workItem from="1581779108615" duration="152000" />
       <workItem from="1581779293250" duration="182000" />
-      <workItem from="1581781709804" duration="7002000" />
-    </task>
-    <task id="LOCAL-00426" summary="Some changes.">
-      <created>1578318316031</created>
-      <option name="number" value="00426" />
-      <option name="presentableId" value="LOCAL-00426" />
-      <option name="project" value="LOCAL" />
-      <updated>1578318316032</updated>
+      <workItem from="1581781709804" duration="7587000" />
     </task>
     <task id="LOCAL-00427" summary="Some changes.">
       <created>1578332826908</created>
@@ -944,7 +938,14 @@
       <option name="project" value="LOCAL" />
       <updated>1581793972018</updated>
     </task>
-    <option name="localTasksCounter" value="475" />
+    <task id="LOCAL-00475" summary="Use knplabs/doctrine-behaviors instead of Gedmo.">
+      <created>1581794458444</created>
+      <option name="number" value="00475" />
+      <option name="presentableId" value="LOCAL-00475" />
+      <option name="project" value="LOCAL" />
+      <updated>1581794458444</updated>
+    </task>
+    <option name="localTasksCounter" value="476" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1131,12 +1132,12 @@
       <screen x="0" y="0" width="1920" height="741" />
     </state>
     <state x="842" y="455" width="228" height="163" key="VCS.EditChangelistDialog/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1574453185964" />
-    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1581793973657">
+    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1581794459686">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1581377506724" />
     <state x="0" y="213" width="1920" height="522" key="Vcs.Push.Dialog.v2/0.0.3286.741@0.0.3286.741" timestamp="1578512689288" />
-    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1581793973657" />
+    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1581794459686" />
     <state x="555" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1581786886743" />
     <state x="2315" y="199" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1581765029031" />
     <state x="139" y="96" width="1642" height="522" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1581786670866">

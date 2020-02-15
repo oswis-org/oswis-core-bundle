@@ -3,6 +3,7 @@
 namespace Zakjakub\OswisCoreBundle\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use Zakjakub\OswisCoreBundle\Interfaces\BasicEntityInterface;
 use Zakjakub\OswisCoreBundle\Traits\Entity\BasicEntityTrait;
 
 /**

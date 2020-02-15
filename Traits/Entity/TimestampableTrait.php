@@ -23,9 +23,6 @@ trait TimestampableTrait
 
     public function getCreatedDaysAgo(?bool $decimal = false): ?int
     {
-        if (!$this->getCreatedAt()) {
-            return null;
-        }
         $ago = $this->getCreatedAt()->diff(new DateTime())->days;
         if (!$ago) {
             return null;
@@ -45,9 +42,6 @@ trait TimestampableTrait
 
     public function getUpdatedDaysAgo(?bool $decimal = false): ?int
     {
-        if (!$this->getUpdatedAt()) {
-            return null;
-        }
         $ago = $this->getUpdatedAt()->diff(new DateTime())->days;
         if (!$ago) {
             return null;
