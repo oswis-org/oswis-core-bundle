@@ -128,7 +128,7 @@ class AppUserService
         if (null !== $appUser && $errorWhenExist) {
             throw new OswisUserNotUniqueException('Uživatel '.$appUser->getUsername().' již existuje.');
         }
-        $appUser = new AppUser($fullName, $username, $email, null, null);
+        $appUser = new AppUser($fullName, $username, $email, null);
         $appUser->setAppUserType($appUserType);
         if ($activate) {
             $password ??= StringUtils::generatePassword();

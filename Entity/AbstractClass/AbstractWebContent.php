@@ -3,6 +3,7 @@
 namespace Zakjakub\OswisCoreBundle\Entity\AbstractClass;
 
 use InvalidArgumentException;
+use Zakjakub\OswisCoreBundle\Interfaces\BasicEntityInterface;
 use Zakjakub\OswisCoreBundle\Traits\Entity\BasicEntityTrait;
 use Zakjakub\OswisCoreBundle\Traits\Entity\TextValueTrait;
 use Zakjakub\OswisCoreBundle\Traits\Entity\TypeTrait;
@@ -11,7 +12,7 @@ use Zakjakub\OswisCoreBundle\Traits\Entity\TypeTrait;
  * Abstract class containing basic properties for web pages contents.
  * @author Jakub Zak <mail@jakubzak.eu>
  */
-abstract class AbstractWebContent
+abstract class AbstractWebContent implements BasicEntityInterface
 {
     public const HTML = 'html';
     public const CSS = 'css';

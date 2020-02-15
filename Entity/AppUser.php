@@ -95,12 +95,7 @@ use Zakjakub\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
 class AppUser extends AbstractAppUser
 {
     /**
-     * @Doctrine\ORM\Mapping\OneToMany(
-     *     targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUserFlagConnection",
-     *     cascade={"all"},
-     *     mappedBy="appUser",
-     *     fetch="EAGER"
-     * )
+     * @Doctrine\ORM\Mapping\OneToMany(targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUserFlagConnection", cascade={"all"},mappedBy="appUser")
      */
     protected ?Collection $appUserFlags = null;
 
@@ -110,25 +105,17 @@ class AppUser extends AbstractAppUser
      */
     protected ?AppUserType $appUserType = null;
 
-    public function __construct(
-        ?string $fullName = null,
-        ?string $username = null,
-        ?string $email = null,
-        ?Address $address = null,
-        ?DateTime $deleted = null,
-        ?string $encryptedPassword = null
-    ) {
+    public function __construct(?string $fullName = null, ?string $username = null, ?string $email = null, ?string $encryptedPassword = null)
+    {
         $this->appUserFlags = new ArrayCollection();
         $this->setFullName($fullName);
         $this->setUsername($username);
         $this->setEmail($email);
-        $this->setFieldsFromAddress($address);
         $this->setPassword($encryptedPassword);
-        $this->setDeleted($deleted);
     }
 
     /**
-     * Can user visit administration?
+     * Can user visit administration? TODO: Is used somewhere now?
      */
     public function isAdminUser(): bool
     {
@@ -178,6 +165,14 @@ class AppUser extends AbstractAppUser
         return $this->getAppUserType() ? $this->getAppUserType()->getAllRoleNames()->toArray() : [];
     }
 
+    public function addAppUserFlag(?AppUserFlagConnection $flagInJobFairUser): void
+    {
+        if ($flagInJobFairUser && !$this->getAppUserFlags()->contains($flagInJobFairUser)) {
+            $this->getAppUserFlags()->add($flagInJobFairUser);
+            $flagInJobFairUser->setAppUser($this);
+        }
+    }
+
     /**
      * @return Collection<AppUserFlag>
      */
@@ -186,19 +181,9 @@ class AppUser extends AbstractAppUser
         return $this->appUserFlags ?? new ArrayCollection();
     }
 
-    public function addAppUserFlag(?AppUserFlagConnection $flagInJobFairUser): void
-    {
-        $this->appUserFlags ??= new ArrayCollection();
-        if ($flagInJobFairUser && !$this->appUserFlags->contains($flagInJobFairUser)) {
-            $this->appUserFlags->add($flagInJobFairUser);
-            $flagInJobFairUser->setAppUser($this);
-        }
-    }
-
     public function removeAppUserFlag(?AppUserFlagConnection $flagInEmployer): void
     {
-        $this->appUserFlags ??= new ArrayCollection();
-        if ($flagInEmployer && $this->appUserFlags->removeElement($flagInEmployer)) {
+        if ($flagInEmployer && $this->getAppUserFlags()->removeElement($flagInEmployer)) {
             $flagInEmployer->setAppUser(null);
         }
     }

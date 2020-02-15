@@ -3,6 +3,7 @@
 namespace Zakjakub\OswisCoreBundle\Entity\AbstractClass;
 
 use Zakjakub\OswisCoreBundle\Entity\AppUser;
+use Zakjakub\OswisCoreBundle\Interfaces\BasicEntityInterface;
 use Zakjakub\OswisCoreBundle\Traits\Entity\BasicEntityTrait;
 use Zakjakub\OswisCoreBundle\Traits\Entity\DeletedTrait;
 
@@ -11,7 +12,7 @@ use Zakjakub\OswisCoreBundle\Traits\Entity\DeletedTrait;
  *
  * @author Jakub Zak <mail@jakubzak.eu>
  */
-abstract class AbstractBundleUser
+abstract class AbstractBundleUser implements BasicEntityInterface
 {
     use BasicEntityTrait;
     use DeletedTrait;

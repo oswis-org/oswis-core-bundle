@@ -10,6 +10,7 @@ use Serializable;
 use Symfony\Component\Security\Core\User\EquatableInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Zakjakub\OswisCoreBundle\Entity\AppUserRole;
+use Zakjakub\OswisCoreBundle\Interfaces\BasicEntityInterface;
 use Zakjakub\OswisCoreBundle\Traits\Entity\BasicEntityTrait;
 use Zakjakub\OswisCoreBundle\Traits\Entity\UserTrait;
 
@@ -17,7 +18,7 @@ use Zakjakub\OswisCoreBundle\Traits\Entity\UserTrait;
  * Abstract class containing basic properties for user of application.
  * @author Jakub Zak <mail@jakubzak.eu>
  */
-abstract class AbstractAppUser implements UserInterface, Serializable, EquatableInterface
+abstract class AbstractAppUser implements UserInterface, Serializable, EquatableInterface, BasicEntityInterface
 {
     use BasicEntityTrait;
     use UserTrait;

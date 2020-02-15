@@ -9,6 +9,7 @@ namespace Zakjakub\OswisCoreBundle\Entity;
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use Zakjakub\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
+use Zakjakub\OswisCoreBundle\Interfaces\BasicEntityInterface;
 use Zakjakub\OswisCoreBundle\Traits\Entity\BasicEntityTrait;
 
 /**
@@ -27,25 +28,18 @@ use Zakjakub\OswisCoreBundle\Traits\Entity\BasicEntityTrait;
  * @author Jakub Zak <mail@jakubzak.eu>
  * @Doctrine\ORM\Mapping\Cache(usage="NONSTRICT_READ_WRITE", region="core_app_user")
  */
-class AppUserFlagConnection
+class AppUserFlagConnection implements BasicEntityInterface
 {
     use BasicEntityTrait;
 
     /**
-     * @Doctrine\ORM\Mapping\ManyToOne(
-     *     targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUserFlag",
-     *     fetch="EAGER"
-     * )
+     * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUserFlag")
      * @Doctrine\ORM\Mapping\JoinColumn(nullable=true)
      */
     protected ?AppUserFlag $appUserFlag = null;
 
     /**
-     * @Doctrine\ORM\Mapping\ManyToOne(
-     *     targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUser",
-     *     inversedBy="appUserFlags",
-     *     fetch="EAGER"
-     * )
+     * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUser", inversedBy="appUserFlags")
      * @Doctrine\ORM\Mapping\JoinColumn(nullable=true)
      */
     protected ?AppUser $appUser = null;
@@ -57,11 +51,11 @@ class AppUserFlagConnection
 
     public function setAppUser(?AppUser $appUser): void
     {
-        if ($this->appUser && $appUser !== $this->appUser) {
+        if (null !== $this->appUser && $appUser !== $this->appUser) {
             $this->appUser->removeAppUserFlag($this);
         }
         $this->appUser = $appUser;
-        if ($this->appUser) {
+        if (null !== $this->appUser) {
             $this->appUser->addAppUserFlag($this);
         }
     }

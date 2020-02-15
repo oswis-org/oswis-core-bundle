@@ -282,33 +282,3 @@ services:
     Zakjakub\OswisCoreBundle\Security\:
         resource: '../../Security/*'
         public: true
-
-    ### GEDMO
-    gedmo.listener.timestampable:
-        class: Gedmo\Timestampable\TimestampableListener
-        tags:
-            - { name: doctrine.event_subscriber, connection: default }
-        calls:
-            - [ setAnnotationReader, [ '@annotation_reader' ] ]
-        public: true
-    gedmo.listener.blameable:
-        class: Gedmo\Blameable\BlameableListener
-        tags:
-            - { name: doctrine.event_subscriber, connection: default }
-        calls:
-            - [ setAnnotationReader, [ '@annotation_reader' ] ]
-        public: true
-    gedmo.listener.sluggable:
-        class: Gedmo\Sluggable\SluggableListener
-        tags:
-            - { name: doctrine.event_subscriber, connection: default }
-        calls:
-            - [ setAnnotationReader, [ "@annotation_reader" ] ]
-        public: true
-    gedmo.listener.iptraceable:
-        class: Gedmo\IpTraceable\IpTraceableListener
-        tags:
-            - { name: doctrine.event_subscriber, connection: default }
-        calls:
-            - [ setAnnotationReader, [ '@annotation_reader' ] ]
-        public: true

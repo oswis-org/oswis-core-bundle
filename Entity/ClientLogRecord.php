@@ -34,7 +34,7 @@ use Zakjakub\OswisCoreBundle\Traits\Entity\BasicEntityTrait;
  * @author Jakub Zak <mail@jakubzak.eu>
  * @Doctrine\ORM\Mapping\Cache(usage="NONSTRICT_READ_WRITE", region="core_log")
  */
-class ClientLogRecord
+class ClientLogRecord implements BasicEntityInterface
 {
     use BasicEntityTrait;
 
