@@ -6,11 +6,11 @@
                 {% block header_logo %}
                     {% if logo_disabled is defined and logo_disabled %}
                     {% elseif logo_src is defined and logo_src %}
-                        <img alt='{{ oswis.app.name }}' title='{{ oswis.app.name }}' src='{{ logo_src }}' class="logo">
+                        <img alt='{{ oswis.app.name }}' title='{{ oswis.app.name }}' src='{{ logo_src }}' class="logo logo_src">
                     {% elseif logo is defined and logo %}
-                        <img alt='{{ oswis.app.name }}' title='{{ oswis.app.name }}' src='{{ email.image(logo) }}' class="logo">
+                        <img alt='{{ oswis.app.name }}' title='{{ oswis.app.name }}' src='{{ email.image(logo) }}' class="logo logo">
                     {% elseif oswis.app.logo is defined and oswis.app.logo %}
-                        <img alt='{{ oswis.app.name }}' title='{{ oswis.app.name }}' class="logo" src='{{ email.image(oswis.app.logo) }}'>
+                        <img alt='{{ oswis.app.name }}' title='{{ oswis.app.name }}' class="logo logo_app" src='{{ email.image(oswis.app.logo) }}'>
                     {% endif %}
                 {% endblock header_logo %}
             </center>

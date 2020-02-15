@@ -51,7 +51,7 @@ trait AgeRangeTrait
 
     public function agesDiff(): int
     {
-        return ($this->getMaxAge() && $this->getMinAge()) ? $this->getMaxAge() - $this->getMinAge() : null;
+        return ($this->getMaxAge() && $this->getMinAge()) ? $this->getMaxAge() - $this->getMinAge() : 0;
     }
 
     public function getMaxAge(): ?int

@@ -39,7 +39,7 @@ abstract class AbstractBundleUser
 
     final public function getUsername(): string
     {
-        return $this->getAppUser() ? $this->getAppUser()->getUsername() : null;
+        return $this->getAppUser() ? $this->getAppUser()->getUsername() : '';
     }
 
     final public function getAppUser(): ?AppUser
@@ -59,16 +59,16 @@ abstract class AbstractBundleUser
 
     final public function getFullAddress(): string
     {
-        return $this->getAppUser() ? $this->getAppUser()->getFullAddress() : null;
+        return $this->getAppUser() ? $this->getAppUser()->getFullAddress() : '';
     }
 
     final public function getEmail(): string
     {
-        return $this->getAppUser() ? $this->getAppUser()->getEmail() : null;
+        return $this->getAppUser() ? $this->getAppUser()->getEmail() : '';
     }
 
     final public function getPhone(): string
     {
-        return $this->getAppUser() ? $this->getAppUser()->getPhone() : null;
+        return $this->getAppUser() ? $this->getAppUser()->getPhone() : '';
     }
 }

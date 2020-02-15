@@ -1,7 +1,7 @@
 {% set base_url = 'https://oswis.org' %}
 {% set f = f is defined ? f : true %}
 {% set salName = salutationName is defined and salutationName ? salutationName : '' %}
-{% set logo_src = logo is defined and logo ? logo : absolute_url(asset('@ZakjakubOswisCoreBundle/Resources/public/logo.png')) %}
+{# {% set logo_src = logo is defined and logo ? logo : absolute_url(asset('@ZakjakubOswisCoreBundle/Resources/public/logo.png')) %} #}
 
 {% apply inky_to_html|inline_css(source('@ZakjakubOswisCore/e-mail/foundation-emails.css.twig' )) %}
     <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">

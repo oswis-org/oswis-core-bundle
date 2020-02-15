@@ -48,8 +48,8 @@ class Configuration implements ConfigurationInterface
             'John\'s personal information system'
         )->end()->scalarNode('description')->info('Description of application.')->defaultValue('Simple modular information system based on ApiPlatform.')->example(
             'Personal information system used by John Doe for information management.'
-        )->end()->scalarNode('logo')->defaultValue('@ZakjakubOswisCore/Resources/public/logo.png')->info('Path to app logo.')->example(
-            ['@ZakjakubOswisCore/Resources/public/logo.png', '../assets/assets/images/logo.png']
+        )->end()->scalarNode('logo')->defaultValue('@images/logo.png')->info('Path to app logo.')->example(
+            ['@images/logo.png', '../assets/assets/images/logo.png']
         )->end()->end()->end()->end();
     }
 
@@ -105,10 +105,10 @@ class Configuration implements ConfigurationInterface
             'Geo coordinates - y.'
         )->defaultValue('17.2635003')->example('17.2635003')->end()->scalarNode('color')->info('Theme color.')->defaultValue(
             '#006FAD'
-        )->example('#006FAD')->end()->scalarNode('logo')->defaultValue('@ZakjakubOswisCore/Resources/public/logo.png')->info('Path to app logo.')->example(
-            ['@ZakjakubOswisCore/Resources/public/logo.png', '../assets/assets/images/logo.png']
-        )->end()->scalarNode('social_image')->defaultValue('@ZakjakubOswisCore/Resources/public/logo.png')->info('Path to app logo.')->example(
-            ['@ZakjakubOswisCore/Resources/public/logo.png', '../assets/assets/images/logo.png']
+        )->example('#006FAD')->end()->scalarNode('logo')->defaultValue('@images/logo.png')->info('Path to app logo.')->example(
+            ['@images/logo.png', '../assets/assets/images/logo.png']
+        )->end()->scalarNode('social_image')->defaultValue('@images/logo.png')->info('Path to app logo.')->example(
+            ['@images/logo.png', '../assets/assets/images/logo.png']
         )->end()->scalarNode('author')->info('Author of application.')->defaultValue('Jakub Zak (https://jakubzak.cz)')->example('Jakub Zak (https://jakubzak.cz)')->end(
         )->scalarNode(
             'copyright'

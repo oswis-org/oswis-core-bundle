@@ -51,7 +51,7 @@ class ZakjakubOswisCoreExtension extends Extension implements PrependExtensionIn
     {
         $twigConfig = [
             'paths'       => [
-                'assets/images' => 'images',
+                'assets/assets/images' => 'images',
             ],
             'globals'     => [
                 'oswis' => '@zakjakub_oswis_core.oswis_core_settings_provider',

@@ -228,8 +228,7 @@ class AppUserService
             } catch (LogicException $e) {
                 $email->to($appUser->getEmail() ?? '');
             }
-            $email->subject($title);
-            $email->htmlTemplate('@ZakjakubOswisCore/e-mail/password.html.twig')->context($data);
+            $email->subject($title)->htmlTemplate('@ZakjakubOswisCore/e-mail/password.html.twig')->context($data);
             $this->mailer->send($email);
         } catch (TransportExceptionInterface $e) {
             $this->logger->error($e->getMessage());
@@ -307,8 +306,7 @@ class AppUserService
             } catch (LogicException $e) {
                 $email->to($appUser->getEmail() ?? '');
             }
-            $email->subject($title);
-            $email->htmlTemplate('@ZakjakubOswisCore/e-mail/app-user.html.twig')->context($data);
+            $email->subject($title)->htmlTemplate('@ZakjakubOswisCore/e-mail/app-user.html.twig')->context($data);
             $this->mailer->send($email);
         } catch (TransportExceptionInterface $e) {
             throw new OswisException('Problém s odesláním zprávy o změně účtu.  '.$e->getMessage());
