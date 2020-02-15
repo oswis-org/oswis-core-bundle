@@ -7,6 +7,7 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: 'cs'
+    doctrine_behaviors_blameable_user_entity: Zakjakub\OswisCoreBundle\Entity\AppUser
 
 services:
     # default configuration for services in *this* file

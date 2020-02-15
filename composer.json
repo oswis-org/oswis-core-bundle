@@ -68,7 +68,8 @@
     "twig/extra-bundle": "^3.0",
     "symfony/string": "^5.0",
     "twig/string-extra": "^3.0",
-    "antishov/doctrine-extensions-bundle": "^1.4"
+    "antishov/doctrine-extensions-bundle": "^1.4",
+    "knplabs/doctrine-behaviors": "^2.0"
   },
   "require-dev": {
     "roave/security-advisories": "dev-master",

@@ -7,6 +7,7 @@
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
 use DateTime;
+use DateTimeInterface;
 use function floor;
 
 /**
@@ -18,28 +19,14 @@ use function floor;
  */
 trait TimestampableTrait
 {
-    /**
-     * Date and time of entity creation.
-     *
-     * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true)
-     * @Gedmo\Mapping\Annotation\Timestampable(on="create")
-     */
-    protected ?DateTime $createdDateTime = null;
-
-    /**
-     * Date and time of entity update.
-     *
-     * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true, options={"default" : null})
-     * @Gedmo\Mapping\Annotation\Timestampable(on="update")
-     */
-    protected ?DateTime $updatedDateTime = null;
+    use \Knp\DoctrineBehaviors\Model\Timestampable\TimestampableTrait;
 
     public function getCreatedDaysAgo(?bool $decimal = false): ?int
     {
-        if (!$this->getCreatedDateTime()) {
+        if (!$this->getCreatedAt()) {
             return null;
         }
-        $ago = $this->getCreatedDateTime()->diff(new DateTime())->days;
+        $ago = $this->getCreatedAt()->diff(new DateTime())->days;
         if (!$ago) {
             return null;
         }
@@ -49,20 +36,19 @@ trait TimestampableTrait
 
     /**
      * Get date and time of entity creation.
-     *
-     * @return DateTime
+     * @return DateTimeInterface
      */
-    public function getCreatedDateTime(): ?DateTime
+    public function getCreatedDateTime(): ?DateTimeInterface
     {
-        return $this->createdDateTime;
+        return $this->getCreatedAt();
     }
 
     public function getUpdatedDaysAgo(?bool $decimal = false): ?int
     {
-        if (!$this->getUpdatedDateTime()) {
+        if (!$this->getUpdatedAt()) {
             return null;
         }
-        $ago = $this->getUpdatedDateTime()->diff(new DateTime())->days;
+        $ago = $this->getUpdatedAt()->diff(new DateTime())->days;
         if (!$ago) {
             return null;
         }
@@ -72,11 +58,10 @@ trait TimestampableTrait
 
     /**
      * Get date and time of entity update.
-     *
-     * @return DateTime
+     * @return DateTimeInterface
      */
-    public function getUpdatedDateTime(): ?DateTime
+    public function getUpdatedDateTime(): ?DateTimeInterface
     {
-        return $this->updatedDateTime;
+        return $this->getUpdatedAt();
     }
 }

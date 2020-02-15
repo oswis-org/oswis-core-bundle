@@ -5,7 +5,7 @@ namespace Zakjakub\OswisCoreBundle\Interfaces;
 /**
  * Interface PaymentInterface.
  */
-interface PaymentInterface extends DateTimeInterface, TimestampableInterface
+interface PaymentInterfaceMy extends MyDateTimeInterface, TimestampableInterface
 {
     /**
      * Get value of payment (CZK).

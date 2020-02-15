@@ -4,7 +4,7 @@ namespace Zakjakub\OswisCoreBundle\Interfaces;
 
 use DateTime;
 
-interface DateTimeInterface
+interface MyDateTimeInterface
 {
     public function getDateTime(): ?DateTime;
 
