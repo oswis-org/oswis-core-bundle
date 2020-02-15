@@ -42,7 +42,6 @@
     "symfony/web-profiler-bundle": "^4.4",
     "liip/imagine-bundle": "^2.3",
     "egulias/email-validator": "^2.1",
-    "gedmo/doctrine-extensions": "^2.4",
     "symfony/asset": "^4.4",
     "adci/full-name-parser": "^0.2",
     "gesdinet/jwt-refresh-token-bundle": "^0.8",
