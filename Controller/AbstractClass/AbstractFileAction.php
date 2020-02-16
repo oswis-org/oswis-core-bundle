@@ -1,4 +1,7 @@
 <?php
+/**
+ * @noinspection MethodShouldBeFinalInspection
+ */
 
 namespace Zakjakub\OswisCoreBundle\Controller\AbstractClass;
 
@@ -14,11 +17,11 @@ use Zakjakub\OswisCoreBundle\Entity\AbstractClass\AbstractFile;
 
 abstract class AbstractFileAction
 {
-    private ValidatorInterface $validator;
+    protected ValidatorInterface $validator;
 
-    private ManagerRegistry $doctrine;
+    protected ManagerRegistry $doctrine;
 
-    private FormFactoryInterface $factory;
+    protected FormFactoryInterface $factory;
 
     public function __construct(ManagerRegistry $doctrine, FormFactoryInterface $factory, ValidatorInterface $validator)
     {
@@ -36,7 +39,7 @@ abstract class AbstractFileAction
      * @throws ValidationException
      * @throws InvalidArgumentException
      */
-    final public function __invoke(Request $request): AbstractFile
+    public function __invoke(Request $request): AbstractFile
     {
         $mediaObject = $this::getFileNewInstance();
         $form = $this->factory->create($this::getFileClassName(), $mediaObject);

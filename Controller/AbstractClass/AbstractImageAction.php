@@ -1,31 +1,21 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection MethodShouldBeFinalInspection
+ */
 
 namespace Zakjakub\OswisCoreBundle\Controller\AbstractClass;
 
 use ApiPlatform\Core\Bridge\Symfony\Validator\Exception\ValidationException;
-use Doctrine\Common\Persistence\ManagerRegistry;
 use InvalidArgumentException;
 use Symfony\Component\Form\Exception\LogicException;
-use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\OptionsResolver\Exception\InvalidOptionsException;
-use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Zakjakub\OswisCoreBundle\Entity\AbstractClass\AbstractImage;
 
-abstract class AbstractImageAction
+abstract class AbstractImageAction extends AbstractFileAction
 {
-    private ValidatorInterface $validator;
-
-    private ManagerRegistry $doctrine;
-
-    private FormFactoryInterface $factory;
-
-    public function __construct(ManagerRegistry $doctrine, FormFactoryInterface $factory, ValidatorInterface $validator)
-    {
-        $this->validator = $validator;
-        $this->doctrine = $doctrine;
-        $this->factory = $factory;
-    }
+    abstract public static function getFileNewInstance(): AbstractImage;
 
     /**
      * @param Request $request
@@ -36,23 +26,11 @@ abstract class AbstractImageAction
      * @throws ValidationException
      * @throws InvalidArgumentException
      */
-    final public function __invoke(Request $request): AbstractImage
+    public function __invoke(Request $request): AbstractImage
     {
-        $mediaObject = static::getImageNewInstance();
-        $form = $this->factory->create($this::getImageClassName(), $mediaObject);
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->doctrine->getManager();
-            $em->persist($mediaObject);
-            $em->flush();
-            $mediaObject->file = null; // Prevent the serialization of the file property.
+        $result = parent::__invoke($request);
+        assert($result instanceof AbstractImage);
 
-            return $mediaObject;
-        }
-        throw new ValidationException($this->validator->validate($mediaObject)); // This will be handled by API Platform and returns a validation error.
+        return $result;
     }
-
-    abstract public static function getImageNewInstance(): AbstractImage;
-
-    abstract public static function getImageClassName(): string;
 }
