@@ -14,12 +14,8 @@ class ColorUtils
 {
     final public static function isOppositeWhite(string $color): bool
     {
-        if (4 === strlen($color)) {
-            [$r, $g, $b] = sscanf($color, '#%1x%1x%1x');
-        } else {
-            [$r, $g, $b] = sscanf($color, '#%2x%2x%2x');
-        }
+        [$red, $green, $blue] = sscanf($color, (4 === strlen($color)) ? '#%1x%1x%1x' : '#%2x%2x%2x');
 
-        return ($r * 0.299 + $g * 0.587 + $b * 0.114) > 186;
+        return ($red * 0.299 + $green * 0.587 + $blue * 0.114) > 186;
     }
 }

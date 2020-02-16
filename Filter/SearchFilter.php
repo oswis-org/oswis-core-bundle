@@ -58,7 +58,7 @@ final class SearchFilter extends AbstractContextAwareFilter
         $this->logger->info('Search for: "'.$value.'"');
         $reader = new AnnotationReader();
         $annotation = $reader->getClassAnnotation(new ReflectionClass(new $resourceClass()), SearchAnnotation::class);
-        if (!$annotation || !($annotation instanceof SearchAnnotation)) {
+        if (empty($annotation) || !($annotation instanceof SearchAnnotation)) {
             throw new HttpInvalidParamException('No Search implemented.');
         }
         $parameterName = $queryNameGenerator->generateParameterName($property);
@@ -73,7 +73,8 @@ final class SearchFilter extends AbstractContextAwareFilter
                 // $currentAlias = $joins[$i];
                 if ($i === $num - 1) {
                     $search[] = "LOWER({$lastAlias}.{$currentAlias}) LIKE LOWER(:{$parameterName})";
-                } else {
+                }
+                if ($i !== $num - 1) {
                     $join = "{$lastAlias}.{$currentAlias}";
                     if (!in_array($join, $mappedJoins, true)) {
                         $queryBuilder->leftJoin($join, $currentAliasRenamed);

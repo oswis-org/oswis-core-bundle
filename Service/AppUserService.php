@@ -118,7 +118,6 @@ class AppUserService
             $username ??= 'user';
         }
         $email ??= $username.'@jakubzak.eu'; // TODO: Change to @oswis.org and redirect mails.
-        $token = null;
         $appUser = $this->getRepository()->findOneBy(['email' => $email]) ?? $this->getRepository()->findOneBy(['username' => $username]);
         if (null !== $appUser && !$errorWhenExist) {
             $this->logger->notice('Skipped existing user '.$appUser->getUsername().' '.$appUser->getEmail().'.');
