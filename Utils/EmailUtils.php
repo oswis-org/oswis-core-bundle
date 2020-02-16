@@ -1,4 +1,7 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ */
 
 namespace Zakjakub\OswisCoreBundle\Utils;
 

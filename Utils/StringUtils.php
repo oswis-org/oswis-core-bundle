@@ -96,7 +96,6 @@ class StringUtils
         'Ź' => 'Z',
     ];
 
-
     public static function startsWith(string $haystack, string $needle): bool
     {
         return 0 === mb_strpos($haystack, $needle);

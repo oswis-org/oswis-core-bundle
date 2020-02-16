@@ -1,8 +1,11 @@
-<?php /** @noinspection PhpUnused */
-/** @noinspection UnknownInspectionInspection */
-/** @noinspection RequiredAttributes */
-/** @noinspection HtmlRequiredAltAttribute */
-/** @noinspection HtmlUnknownTag */
+<?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection UnknownInspectionInspection
+ * @noinspection RequiredAttributes
+ * @noinspection HtmlRequiredAltAttribute
+ * @noinspection HtmlUnknownTag
+ */
 
 namespace Zakjakub\OswisCoreBundle\Utils;
 
