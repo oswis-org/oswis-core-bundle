@@ -6,7 +6,6 @@
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
 use DateTime;
-use DateTimeInterface;
 use Exception;
 use Zakjakub\OswisCoreBundle\Utils\StringUtils;
 
@@ -26,10 +25,10 @@ trait PasswordResetTrait
     /**
      * Date and time of password reset request (and token generation).
      *
-     * @var DateTimeInterface|null
+     * @var DateTime|null
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true)
      */
-    protected ?DateTimeInterface $passwordResetRequestDateTime = null;
+    protected ?DateTime $passwordResetRequestDateTime = null;
 
     public function checkAndDestroyPasswordResetRequestToken(?string $token, int $validHours = 24): bool
     {
@@ -51,12 +50,12 @@ trait PasswordResetTrait
         return false;
     }
 
-    public function getPasswordResetRequestDateTime(): ?DateTimeInterface
+    public function getPasswordResetRequestDateTime(): ?DateTime
     {
         return $this->passwordResetRequestDateTime;
     }
 
-    public function setPasswordResetRequestDateTime(?DateTimeInterface $passwordResetRequestDateTime): void
+    public function setPasswordResetRequestDateTime(?DateTime $passwordResetRequestDateTime): void
     {
         $this->passwordResetRequestDateTime = $passwordResetRequestDateTime;
     }

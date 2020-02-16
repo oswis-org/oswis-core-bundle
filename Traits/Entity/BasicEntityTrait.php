@@ -1,4 +1,7 @@
 <?php
+/**
+ * @noinspection PhpUnusedAliasInspection
+ */
 
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 

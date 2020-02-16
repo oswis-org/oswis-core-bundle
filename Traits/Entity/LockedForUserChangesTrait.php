@@ -7,7 +7,6 @@
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
 use DateTime;
-use DateTimeInterface;
 use Exception;
 
 trait LockedForUserChangesTrait
@@ -15,10 +14,10 @@ trait LockedForUserChangesTrait
     /**
      * Locked for user changes (edge datetime).
      *
-     * @var DateTimeInterface|null
+     * @var DateTime|null
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true)
      */
-    protected ?DateTimeInterface $lockedForUserChanges = null;
+    protected ?DateTime $lockedForUserChanges = null;
 
     /**
      * @throws Exception
@@ -28,12 +27,12 @@ trait LockedForUserChangesTrait
         return $this->lockedForUserChanges ? new DateTime() > $this->lockedForUserChanges : false;
     }
 
-    public function getLockedForUserChanges(): ?DateTimeInterface
+    public function getLockedForUserChanges(): ?DateTime
     {
         return $this->lockedForUserChanges;
     }
 
-    public function setLockedForUserChanges(?DateTimeInterface $lockedForUserChanges): void
+    public function setLockedForUserChanges(?DateTime $lockedForUserChanges): void
     {
         $this->lockedForUserChanges = $lockedForUserChanges;
     }

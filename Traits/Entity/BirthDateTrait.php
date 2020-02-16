@@ -7,7 +7,6 @@
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
 use DateTime;
-use DateTimeInterface;
 use Exception;
 use Zakjakub\OswisCoreBundle\Utils\AgeUtils;
 
@@ -18,15 +17,15 @@ trait BirthDateTrait
 {
     /**
      * Birth date.
-     * @var DateTimeInterface|null
+     * @var DateTime|null
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true, options={"default" : null})
      */
-    protected ?DateTimeInterface $birthDate = null;
+    protected ?DateTime $birthDate = null;
 
     /**
      * @throws Exception
      */
-    public function getAge(?DateTimeInterface $referenceDateTime = null): ?int
+    public function getAge(?DateTime $referenceDateTime = null): ?int
     {
         return AgeUtils::getAgeFromBirthDate($this->birthDate, $referenceDateTime);
     }
@@ -34,7 +33,7 @@ trait BirthDateTrait
     /**
      * @throws Exception
      */
-    public function getAgeDecimal(?DateTimeInterface $referenceDateTime = null): ?int
+    public function getAgeDecimal(?DateTime $referenceDateTime = null): ?int
     {
         return AgeUtils::getAgeDecimalFromBirthDate($this->birthDate, $referenceDateTime);
     }
@@ -42,7 +41,7 @@ trait BirthDateTrait
     /**
      * Get birth date.
      */
-    public function getBirthDate(): ?DateTimeInterface
+    public function getBirthDate(): ?DateTime
     {
         if ($this->birthDate instanceof DateTime) {
             $this->birthDate->setTime(0, 0);
@@ -54,7 +53,7 @@ trait BirthDateTrait
     /**
      * Set date and time of entity update.
      */
-    public function setBirthDate(?DateTimeInterface $birthDate): void
+    public function setBirthDate(?DateTime $birthDate): void
     {
         if ($birthDate instanceof DateTime) {
             $birthDate->setTime(0, 0);

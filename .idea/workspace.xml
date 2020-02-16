@@ -25,9 +25,42 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Entity/Publicity.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/EntityPublicTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/EntityPublicTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.php_cs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/.php_cs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controller/AbstractClass/AbstractFileAction.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/AbstractClass/AbstractFileAction.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DependencyInjection/ZakjakubOswisCoreExtension.php" beforeDir="false" afterPath="$PROJECT_DIR$/DependencyInjection/ZakjakubOswisCoreExtension.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractRevision.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractRevision.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractRevisionContainer.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractRevisionContainer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AppUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUser.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Form/AbstractClass/AbstractFileType.php" beforeDir="false" afterPath="$PROJECT_DIR$/Form/AbstractClass/AbstractFileType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interfaces/AgeRangeInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/Interfaces/AgeRangeInterface.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interfaces/BasicEntityInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/Interfaces/BasicEntityInterface.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interfaces/BirthDateInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/Interfaces/BirthDateInterface.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interfaces/MyDateTimeInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/Interfaces/MyDateTimeInterface.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interfaces/PaymentInterfaceMy.php" beforeDir="false" afterPath="$PROJECT_DIR$/Interfaces/PaymentInterface.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interfaces/RevisionContainerInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/Interfaces/RevisionContainerInterface.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interfaces/TimestampableInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/Interfaces/TimestampableInterface.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Service/AppUserService.php" beforeDir="false" afterPath="$PROJECT_DIR$/Service/AppUserService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/AccountActivationTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/AccountActivationTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/AgeRangeTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/AgeRangeTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/BasicEntityTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/BasicEntityTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/BasicMailConfirmationTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/BasicMailConfirmationTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/BirthDateTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/BirthDateTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/ConfirmedByManagerTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/ConfirmedByManagerTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/ConfirmedByUserTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/ConfirmedByUserTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/DateRangeTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/DateRangeTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/DateTimeTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/DateTimeTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/DeletedTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/DeletedTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/InfoMailSentTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/InfoMailSentTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/LockedForUserChangesTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/LockedForUserChangesTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/OrderDateRangeTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/OrderDateRangeTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/PasswordResetTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/PasswordResetTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/ReservationDateRangeTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/ReservationDateRangeTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/TimestampableTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/TimestampableTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/TypeTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/TypeTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Utils/AgeUtils.php" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/AgeUtils.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Utils/DateTimeUtils.php" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/DateTimeUtils.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Utils/StringUtils.php" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/StringUtils.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -602,14 +635,8 @@
       <workItem from="1581779293250" duration="182000" />
       <workItem from="1581781709804" duration="8420000" />
       <workItem from="1581802809243" duration="9174000" />
-      <workItem from="1581850960618" duration="6315000" />
-    </task>
-    <task id="LOCAL-00436" summary="Some changes.">
-      <created>1578778216502</created>
-      <option name="number" value="00436" />
-      <option name="presentableId" value="LOCAL-00436" />
-      <option name="project" value="LOCAL" />
-      <updated>1578778216502</updated>
+      <workItem from="1581850960618" duration="7765000" />
+      <workItem from="1581889343564" duration="4510000" />
     </task>
     <task id="LOCAL-00437" summary="Some changes.">
       <created>1578778919071</created>
@@ -947,7 +974,14 @@
       <option name="project" value="LOCAL" />
       <updated>1581855868783</updated>
     </task>
-    <option name="localTasksCounter" value="485" />
+    <task id="LOCAL-00485" summary="Introduced Publicity settings entity.">
+      <created>1581867601883</created>
+      <option name="number" value="00485" />
+      <option name="presentableId" value="LOCAL-00485" />
+      <option name="project" value="LOCAL" />
+      <updated>1581867601883</updated>
+    </task>
+    <option name="localTasksCounter" value="486" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -988,7 +1022,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Some changes, update to 4.4RC." />
     <MESSAGE value="Update to Symfony 4.4.0" />
     <MESSAGE value="Some changes, fixes and updates." />
     <MESSAGE value="Some changes and updates." />
@@ -1013,7 +1046,8 @@
     <MESSAGE value="Some changes." />
     <MESSAGE value="AbstractImageType extends AbstractFileType." />
     <MESSAGE value="AbstractImageAction extends AbstractFileAction." />
-    <option name="LAST_COMMIT_MESSAGE" value="AbstractImageAction extends AbstractFileAction." />
+    <MESSAGE value="Introduced Publicity settings entity." />
+    <option name="LAST_COMMIT_MESSAGE" value="Introduced Publicity settings entity." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -1054,11 +1088,11 @@
     </state>
     <state x="366" y="97" width="626" height="532" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1366.741@0.0.1366.741" timestamp="1581452871969" />
     <state x="2286" y="101" width="626" height="532" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1574961230812" />
-    <state x="353" y="0" width="478" height="735" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1581782294622">
-      <screen x="0" y="0" width="1920" height="741" />
+    <state x="251" y="0" width="624" height="735" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1581893837802">
+      <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="251" y="0" width="855" height="735" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.741@0.0.1366.741" timestamp="1580758894043" />
-    <state x="251" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1578771050029" />
+    <state x="251" y="0" width="624" height="735" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1581893837802" />
     <state x="353" y="0" width="478" height="735" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1581782294622" />
     <state x="624" y="199" width="660" height="488" key="#com.intellij.tools.ToolEditorDialog" timestamp="1574963939379">
       <screen x="0" y="0" width="1920" height="741" />
@@ -1072,12 +1106,12 @@
     <state x="693" y="257" width="526" height="478" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.3286.741@0.0.3286.741" timestamp="1577120924839" />
     <state x="288" y="257" width="526" height="478" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1581630489271" />
     <state x="405" y="257" width="526" height="478" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1581867123678" />
-    <state x="701" y="381" width="389" height="318" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1581867353617">
-      <screen x="0" y="0" width="1920" height="741" />
+    <state x="499" y="381" width="389" height="318" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1581894122325">
+      <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="499" y="381" width="389" height="318" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1366.741@0.0.1366.741" timestamp="1581376619687" />
     <state x="1003" y="381" width="917" height="318" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.3286.741@0.0.3286.741" timestamp="1578507453064" />
-    <state x="499" y="381" width="389" height="318" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1581810785186" />
+    <state x="499" y="381" width="389" height="318" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1581894122325" />
     <state x="701" y="381" width="509" height="318" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1581867353617" />
     <state x="2419" y="395" width="509" height="318" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1574963553143" />
     <state x="369" y="0" width="877" height="741" key="CommitChangelistDialog2" timestamp="1580316778221">
@@ -1124,25 +1158,25 @@
       <screen x="0" y="0" width="1920" height="741" />
     </state>
     <state x="543" y="217" width="826" height="518" key="IDE.errors.dialog/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1575386414620" />
-    <state x="263" y="5" key="SettingsEditor" timestamp="1581851843701">
-      <screen x="0" y="0" width="1920" height="741" />
+    <state x="187" y="5" key="SettingsEditor" timestamp="1581889588218">
+      <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="187" y="5" key="SettingsEditor/0.0.1366.741@0.0.1366.741" timestamp="1575650394431" />
     <state x="450" y="5" key="SettingsEditor/0.0.3286.741@0.0.3286.741" timestamp="1578513262014" />
-    <state x="187" y="5" key="SettingsEditor/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1578855870266" />
+    <state x="187" y="5" key="SettingsEditor/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1581889588218" />
     <state x="263" y="5" key="SettingsEditor/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1581851843701" />
     <state x="2107" y="5" key="SettingsEditor/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1574963719981" />
     <state x="842" y="455" width="228" height="163" key="VCS.EditChangelistDialog" timestamp="1574453185964">
       <screen x="0" y="0" width="1920" height="741" />
     </state>
     <state x="842" y="455" width="228" height="163" key="VCS.EditChangelistDialog/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1574453185964" />
-    <state x="555" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1581855870368">
+    <state x="555" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1581867603646">
       <screen x="0" y="0" width="1920" height="741" />
     </state>
     <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1581377506724" />
     <state x="0" y="213" width="1920" height="522" key="Vcs.Push.Dialog.v2/0.0.3286.741@0.0.3286.741" timestamp="1578512689288" />
     <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1581810912299" />
-    <state x="555" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1581855870368" />
+    <state x="555" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1581867603646" />
     <state x="2315" y="199" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1581765029031" />
     <state x="139" y="96" width="1642" height="522" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1581786670866">
       <screen x="0" y="0" width="1920" height="741" />
@@ -1154,12 +1188,12 @@
     </state>
     <state x="479" y="285" width="400" height="164" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1575745627477" />
     <state x="673" y="285" width="563" height="174" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1581782424578" />
-    <state x="222" y="54" width="1142" height="687" key="find.popup" timestamp="1581852550668">
-      <screen x="0" y="0" width="1920" height="741" />
+    <state x="158" y="54" width="812" height="687" key="find.popup" timestamp="1581893805726">
+      <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="158" y="54" width="812" height="687" key="find.popup/0.0.1366.741@0.0.1366.741" timestamp="1577298860918" />
     <state x="381" y="54" width="1331" height="687" key="find.popup/0.0.3286.741@0.0.3286.741" timestamp="1574707139434" />
-    <state x="158" y="54" width="812" height="687" key="find.popup/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1581809808321" />
+    <state x="158" y="54" width="812" height="687" key="find.popup/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1581893805726" />
     <state x="222" y="54" width="1142" height="687" key="find.popup/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1581852550668" />
     <state x="1107" y="0" width="813" height="741" key="find.popup/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1581770211377" />
     <state x="346" y="164" key="run.anything.popup" timestamp="1576518303320">

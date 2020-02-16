@@ -7,7 +7,6 @@
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
 use DateTime;
-use DateTimeInterface;
 use function floor;
 
 /**
@@ -31,13 +30,12 @@ trait TimestampableTrait
         return $decimal ? $ago : floor($ago);
     }
 
-    /**
-     * Get date and time of entity creation.
-     * @return DateTimeInterface
-     */
-    public function getCreatedDateTime(): ?DateTimeInterface
+    public function getCreatedDateTime(): ?DateTime
     {
-        return $this->getCreatedAt();
+        $createdAt = $this->getCreatedAt();
+        assert($createdAt instanceof DateTime);
+
+        return $createdAt;
     }
 
     public function getUpdatedDaysAgo(?bool $decimal = false): ?int
@@ -50,12 +48,11 @@ trait TimestampableTrait
         return $decimal ? $ago : floor($ago);
     }
 
-    /**
-     * Get date and time of entity update.
-     * @return DateTimeInterface
-     */
-    public function getUpdatedDateTime(): ?DateTimeInterface
+    public function getUpdatedDateTime(): ?DateTime
     {
-        return $this->getUpdatedAt();
+        $updatedAt = $this->getUpdatedAt();
+        assert($updatedAt instanceof DateTime);
+
+        return $updatedAt;
     }
 }

@@ -3,7 +3,6 @@
 namespace Zakjakub\OswisCoreBundle\Utils;
 
 use DateTime;
-use DateTimeInterface;
 use Exception;
 use function floor;
 use const PHP_INT_MAX;
@@ -28,10 +27,10 @@ class AgeUtils
      * @throws Exception
      */
     public static function isBirthDateInRange(
-        ?DateTimeInterface $birthDate,
+        ?DateTime $birthDate,
         int $minAge = null,
         int $maxAge = null,
-        DateTimeInterface $referenceDateTime = null
+        DateTime $referenceDateTime = null
     ): bool {
         if (null === $birthDate) {
             return false;
@@ -45,18 +44,18 @@ class AgeUtils
     /**
      * @throws Exception
      */
-    public static function getAgeFromBirthDate(?DateTimeInterface $birthDate, DateTimeInterface $referenceDateTime = null): ?int
+    public static function getAgeFromBirthDate(?DateTime $birthDate, DateTime $referenceDateTime = null): ?int
     {
         return $birthDate ? (int)floor(self::getAgeDecimalFromBirthDate($birthDate, $referenceDateTime)) : null;
     }
 
     /**
-     * @param DateTimeInterface $birthDate
+     * @param DateTime $birthDate
      *
      * @return int
      * @throws Exception
      */
-    public static function getAgeDecimalFromBirthDate(?DateTimeInterface $birthDate, ?DateTimeInterface $referenceDateTime = null): ?int
+    public static function getAgeDecimalFromBirthDate(?DateTime $birthDate, ?DateTime $referenceDateTime = null): ?int
     {
         if (!($birthDate instanceof DateTime)) {
             return null;

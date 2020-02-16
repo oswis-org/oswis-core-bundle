@@ -30,6 +30,11 @@ class ZakjakubOswisCoreExtension extends Extension implements PrependExtensionIn
         }
     }
 
+    final public function prepend(ContainerBuilder $container): void
+    {
+        $this->prependTwig($container);
+    }
+
     /**
      * @throws ServiceNotFoundException
      */
@@ -40,11 +45,6 @@ class ZakjakubOswisCoreExtension extends Extension implements PrependExtensionIn
         $definition->setArgument(1, $config['admin']);
         $definition->setArgument(2, $config['email']);
         $definition->setArgument(3, $config['web']);
-    }
-
-    final public function prepend(ContainerBuilder $container): void
-    {
-        $this->prependTwig($container);
     }
 
     private function prependTwig(ContainerBuilder $container): void

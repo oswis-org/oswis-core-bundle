@@ -3,7 +3,6 @@
 namespace Zakjakub\OswisCoreBundle\Entity\AbstractClass;
 
 use DateTime;
-use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Exception;
@@ -33,6 +32,16 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
     protected ?AbstractRevision $activeRevision = null;
 
     /**
+     * Check validity of some revision/version (ie. for use before adding revision).
+     */
+    abstract public static function checkRevision(?AbstractRevision $revision): void;
+
+    /**
+     * Class name of revisions/versions stored in this container.
+     */
+    abstract public static function getRevisionClassName(): string;
+
+    /**
      * Add some revision/version to this container.
      */
     final public function addRevision(?AbstractRevision $revision): void
@@ -50,11 +59,6 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
         }
         $this->setActiveRevision($revision);
     }
-
-    /**
-     * Check validity of some revision/version (ie. for use before adding revision).
-     */
-    abstract public static function checkRevision(?AbstractRevision $revision): void;
 
     /**
      * Remove some revision/version from this container.
@@ -119,7 +123,7 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
      *
      * @throws RevisionMissingException
      */
-    final public function getRevision(DateTimeInterface $dateTime = null, ?bool $force = false): AbstractRevision
+    final public function getRevision(DateTime $dateTime = null, ?bool $force = false): AbstractRevision
     {
         if (!$force && !$dateTime && $this->activeRevision) {
             return $this->activeRevision;
@@ -136,7 +140,7 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
         return $revisions[0];
     }
 
-    final public function getRevisionsOlderThanDateTime(DateTimeInterface $dateTime = null): array
+    final public function getRevisionsOlderThanDateTime(DateTime $dateTime = null): array
     {
         try {
             $dateTime ??= new DateTime() ?? null;
@@ -159,15 +163,10 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
     }
 
     /**
-     * Class name of revisions/versions stored in this container.
-     */
-    abstract public static function getRevisionClassName(): string;
-
-    /**
      * Get date and time of active/actual revision/version in some date and time (or now if referenceDateTime is not specified).
      * @throws RevisionMissingException
      */
-    final public function getLastRevisionDateTime(?DateTimeInterface $referenceDateTime = null): ?DateTimeInterface
+    final public function getLastRevisionDateTime(?DateTime $referenceDateTime = null): ?DateTime
     {
         return $this->getRevision($referenceDateTime)->getCreatedDateTime();
     }

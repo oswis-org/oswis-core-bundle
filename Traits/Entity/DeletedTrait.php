@@ -7,7 +7,6 @@
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
 use DateTime;
-use DateTimeInterface;
 use Exception;
 
 /**
@@ -19,18 +18,18 @@ trait DeletedTrait
      * Date and time of delete (null if not deleted).
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true, options={"default" : null})
      */
-    protected ?DateTimeInterface $deleted = null;
+    protected ?DateTime $deleted = null;
 
     /**
      * Date and time of delete confirmation e-mail.
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true)
      */
-    protected ?DateTimeInterface $eMailDeleteConfirmationDateTime = null;
+    protected ?DateTime $eMailDeleteConfirmationDateTime = null;
 
     /**
      * Get date and time of delete confirmation e-mail.
      */
-    public function getEMailDeleteConfirmationDateTime(): ?DateTimeInterface
+    public function getEMailDeleteConfirmationDateTime(): ?DateTime
     {
         return $this->eMailDeleteConfirmationDateTime = null;
     }
@@ -38,7 +37,7 @@ trait DeletedTrait
     /**
      * Set delete confirmation date and time.
      */
-    public function setEMailDeleteConfirmationDateTime(?DateTimeInterface $eMailDeleteConfirmationDateTime): void
+    public function setEMailDeleteConfirmationDateTime(?DateTime $eMailDeleteConfirmationDateTime): void
     {
         $this->eMailDeleteConfirmationDateTime = $eMailDeleteConfirmationDateTime;
     }
@@ -61,7 +60,7 @@ trait DeletedTrait
     /**
      * @throws Exception
      */
-    public function delete(?DateTimeInterface $dateTime = null): void
+    public function delete(?DateTime $dateTime = null): void
     {
         $this->setDeleted($this->getDeleted() ?? $dateTime ?? new DateTime());
     }
@@ -69,12 +68,12 @@ trait DeletedTrait
     /**
      * Get date and time when entity was deleted.
      */
-    public function getDeleted(): ?DateTimeInterface
+    public function getDeleted(): ?DateTime
     {
         return $this->deleted;
     }
 
-    public function setDeleted(?DateTimeInterface $deleted = null): void
+    public function setDeleted(?DateTime $deleted = null): void
     {
         if (null === $deleted || (null === $this->deleted && null !== $deleted)) {
             $this->setEMailDeleteConfirmationDateTime(null);
@@ -82,7 +81,7 @@ trait DeletedTrait
         $this->deleted = $deleted;
     }
 
-    public function isDeleted(?DateTimeInterface $referenceDateTime = null): bool
+    public function isDeleted(?DateTime $referenceDateTime = null): bool
     {
         try {
             return $this->deleted && ($referenceDateTime ?? new DateTime()) > $this->deleted;

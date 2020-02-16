@@ -2,7 +2,7 @@
 
 namespace Zakjakub\OswisCoreBundle\Interfaces;
 
-use DateTimeInterface;
+use DateTime;
 use Exception;
 
 interface AgeRangeInterface
@@ -20,12 +20,12 @@ interface AgeRangeInterface
     /**
      * True if person belongs to this age range (at some moment - referenceDateTime).
      *
-     * @param DateTimeInterface      $birthDate         BirthDate for age calculation
-     * @param DateTimeInterface|null $referenceDateTime Reference date, default is _now_
+     * @param DateTime      $birthDate         BirthDate for age calculation
+     * @param DateTime|null $referenceDateTime Reference date, default is _now_
      *
      * @return bool True if belongs to age range
      *
      * @throws Exception
      */
-    public function containsAccommodatedPerson(DateTimeInterface $birthDate, DateTimeInterface $referenceDateTime = null): bool;
+    public function containsAccommodatedPerson(DateTime $birthDate, DateTime $referenceDateTime = null): bool;
 }

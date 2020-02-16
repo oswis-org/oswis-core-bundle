@@ -7,7 +7,6 @@
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
 use DateTime;
-use DateTimeInterface;
 use Exception;
 
 /**
@@ -18,22 +17,22 @@ trait ConfirmedByUserTrait
     /**
      * Confirmed by user.
      *
-     * @var DateTimeInterface|null
+     * @var DateTime|null
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true)
      */
-    protected ?DateTimeInterface $confirmedByUser = null;
+    protected ?DateTime $confirmedByUser = null;
 
     public function isConfirmedByUser(): bool
     {
         return $this->confirmedByUser ? true : false;
     }
 
-    public function getConfirmedByUser(): ?DateTimeInterface
+    public function getConfirmedByUser(): ?DateTime
     {
         return $this->confirmedByUser;
     }
 
-    public function setConfirmedByUser(?DateTimeInterface $confirmedByUser): void
+    public function setConfirmedByUser(?DateTime $confirmedByUser): void
     {
         $this->confirmedByUser = $confirmedByUser;
     }

@@ -7,7 +7,6 @@
 namespace Zakjakub\OswisCoreBundle\Traits\Entity;
 
 use DateTime;
-use DateTimeInterface;
 use Exception;
 
 /**
@@ -18,11 +17,11 @@ trait DateTimeTrait
     /**
      * Date and time.
      *
-     * @var DateTimeInterface|null
+     * @var DateTime|null
      *
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true, options={"default" : null})
      */
-    protected ?DateTimeInterface $dateTime = null;
+    protected ?DateTime $dateTime = null;
 
     public function getDaysAgo(?bool $decimal = false): ?float
     {
@@ -39,12 +38,12 @@ trait DateTimeTrait
         }
     }
 
-    public function getDateTime(): ?DateTimeInterface
+    public function getDateTime(): ?DateTime
     {
         return $this->dateTime;
     }
 
-    public function setDateTime(?DateTimeInterface $dateTime = null): void
+    public function setDateTime(?DateTime $dateTime = null): void
     {
         $this->dateTime = $dateTime ? clone $dateTime : null;
     }

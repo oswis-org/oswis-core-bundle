@@ -11,7 +11,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\ExistsFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
-use DateTimeInterface;
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Zakjakub\OswisCoreBundle\Entity\AbstractClass\AbstractAppUser;
@@ -135,7 +135,7 @@ class AppUser extends AbstractAppUser
     /**
      * True if user is active.
      */
-    public function isActive(?DateTimeInterface $referenceDateTime = null): bool
+    public function isActive(?DateTime $referenceDateTime = null): bool
     {
         return !$this->getAccountActivationDateTime() ? false : $this->containsDateTimeInRange($referenceDateTime);
     }

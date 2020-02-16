@@ -7,7 +7,6 @@ namespace Zakjakub\OswisCoreBundle\Utils;
 
 use DateInterval;
 use DateTime;
-use DateTimeInterface;
 use Exception;
 use InvalidArgumentException;
 use function array_key_exists;
@@ -87,13 +86,13 @@ class DateTimeUtils
     /**
      * True if datetime belongs to this datetime range.
      *
-     * @param DateTimeInterface      $start    Start of range.
-     * @param DateTimeInterface      $end      End of range.
-     * @param DateTimeInterface|null $dateTime Checked date and time ('now' if it's not set).
+     * @param DateTime      $start    Start of range.
+     * @param DateTime      $end      End of range.
+     * @param DateTime|null $dateTime Checked date and time ('now' if it's not set).
      *
      * @return bool True if belongs to date range.
      */
-    public static function isDateTimeInRange(?DateTimeInterface $start, ?DateTimeInterface $end, ?DateTimeInterface $dateTime = null): bool
+    public static function isDateTimeInRange(?DateTime $start, ?DateTime $end, ?DateTime $dateTime = null): bool
     {
         try {
             $dateTime ??= new DateTime();
@@ -109,14 +108,14 @@ class DateTimeUtils
     /**
      * Converts DateTime to start (or end) of some range (year, month, day).
      *
-     * @param DateTimeInterface|null $dateTime
-     * @param string|null            $range
-     * @param bool|null              $isEnd
+     * @param DateTime|null $dateTime
+     * @param string|null   $range
+     * @param bool|null     $isEnd
      *
-     * @return DateTimeInterface
+     * @return DateTime
      * @throws Exception
      */
-    public static function getDateTimeByRange(?DateTimeInterface $dateTime, ?string $range, ?bool $isEnd = false): DateTimeInterface
+    public static function getDateTimeByRange(?DateTime $dateTime, ?string $range, ?bool $isEnd = false): DateTime
     {
         if (empty($range) || self::RANGE_ALL === $range) {
             return self::getByRangeAll($dateTime, $isEnd);
@@ -134,44 +133,31 @@ class DateTimeUtils
         throw new InvalidArgumentException("Rozsah '$range' není povolen.");
     }
 
-    /**
-     * @param DateTimeInterface|null $dateTime
-     * @param bool|null              $isEnd
-     *
-     * @return DateTimeInterface
-     * @throws Exception
-     * @noinspection PhpUndefinedClassInspection
-     */
-    private static function getByRangeAll(?DateTimeInterface $dateTime, ?bool $isEnd = false): DateTimeInterface
-    {
-        return $dateTime ?? new DateTime($isEnd ? self::MAX_DATE_TIME_STRING : self::MIN_DATE_TIME_STRING);
-    }
-
-    public static function getMonthByRange(DateTimeInterface $dateTime, ?string $range, ?bool $isEnd = false): int
+    public static function getMonthByRange(DateTime $dateTime, ?string $range, ?bool $isEnd = false): int
     {
         $month = $isEnd ? 12 : 1;
 
         return ($range === self::RANGE_MONTH || $range === self::RANGE_DAY) ? (int)$dateTime->format('n') : $month;
     }
 
-    public static function getDayByRange(DateTimeInterface $dateTime, ?string $range, ?bool $isEnd = false): int
+    public static function getDayByRange(DateTime $dateTime, ?string $range, ?bool $isEnd = false): int
     {
         $day = $isEnd ? (int)$dateTime->format('t') : 1;
 
         return ($range === self::RANGE_DAY) ? (int)$dateTime->format('j') : $day;
     }
 
-    public static function isWeekend(DateTimeInterface $dateTime): bool
+    public static function isWeekend(DateTime $dateTime): bool
     {
         return $dateTime->format('N') > 6;
     }
 
-    public static function isPublicHolidays(DateTimeInterface $dateTime): bool
+    public static function isPublicHolidays(DateTime $dateTime): bool
     {
         return !empty(self::getPublicHolidays($dateTime));
     }
 
-    public static function getPublicHolidays(DateTimeInterface $dateTime): ?string
+    public static function getPublicHolidays(DateTime $dateTime): ?string
     {
         $publicHolidays = [];
         $publicHolidays[1][1] = 'Den obnovy samostatného českého státu';
@@ -197,9 +183,9 @@ class DateTimeUtils
         }
 
         return null;
-    } // Counts all included days.
+    }
 
-    public static function getEaster(DateTimeInterface $dateTime): ?string
+    public static function getEaster(DateTime $dateTime): ?string
     {
         assert($dateTime instanceof DateTime);
         $dateTime->setTime(0, 0, 0, 0);
@@ -212,14 +198,14 @@ class DateTimeUtils
         }
 
         return null;
-    }
+    } // Counts all included days.
 
-    public static function isEaster(DateTimeInterface $dateTime): bool
+    public static function isEaster(DateTime $dateTime): bool
     {
         return self::getEaster($dateTime) ? true : false;
     }
 
-    public static function cmpDate(?DateTimeInterface $a, ?DateTimeInterface $b): int
+    public static function cmpDate(?DateTime $a, ?DateTime $b): int
     {
         if ($a === $b) {
             return 0;
@@ -228,7 +214,7 @@ class DateTimeUtils
         return $a < $b ? -1 : 1;
     }
 
-    public static function getLength(?DateTimeInterface $start, ?DateTimeInterface $end, string $type = self::DATE_TIME_HOURS): ?int
+    public static function getLength(?DateTime $start, ?DateTime $end, string $type = self::DATE_TIME_HOURS): ?int
     {
         if (null === $start || null === $end || !in_array($type, self::LENGTH_TYPES_ALLOWED, true)) {
             return null;
@@ -241,7 +227,7 @@ class DateTimeUtils
         return null;
     }
 
-    public static function isInOnePeriod(string $period, ?DateTimeInterface $start, ?DateTimeInterface $end): ?bool
+    public static function isInOnePeriod(string $period, ?DateTime $start, ?DateTime $end): ?bool
     {
         if (empty($period) || null === $start || null === $end || !in_array($period, self::PERIOD_TYPES_ALLOWED, true)) {
             return null;
@@ -260,5 +246,18 @@ class DateTimeUtils
         }
 
         return !empty($format) && ($start->format($format) === $end->format($format));
+    }
+
+    /**
+     * @param DateTime|null $dateTime
+     * @param bool|null     $isEnd
+     *
+     * @return DateTime
+     * @throws Exception
+     * @noinspection PhpUndefinedClassInspection
+     */
+    private static function getByRangeAll(?DateTime $dateTime, ?bool $isEnd = false): DateTime
+    {
+        return $dateTime ?? new DateTime($isEnd ? self::MAX_DATE_TIME_STRING : self::MIN_DATE_TIME_STRING);
     }
 }

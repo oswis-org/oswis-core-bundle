@@ -1,11 +1,14 @@
-<?php /** @noinspection PhpUnused */
+<?php
+/**
+ * @noinspection PhpUnused
+ */
 
 namespace Zakjakub\OswisCoreBundle\Interfaces;
 
 /**
  * Interface PaymentInterface.
  */
-interface PaymentInterfaceMy extends MyDateTimeInterface, TimestampableInterface
+interface PaymentInterface extends MyDateTimeInterface, TimestampableInterface
 {
     /**
      * Get value of payment (CZK).
