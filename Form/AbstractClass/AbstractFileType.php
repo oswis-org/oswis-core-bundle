@@ -14,13 +14,15 @@ use Zakjakub\OswisCoreBundle\Utils\FileUtils;
 
 abstract class AbstractFileType extends AbstractType
 {
+    public const VICH_TYPE_CLASS = VichFileType::class;
+
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $maxSize = FileUtils::humanReadableFileUploadMaxSize();
         $maxSize = $maxSize ? ' (max. '.$maxSize.')' : '';
         $builder->add(
             'file',
-            VichFileType::class,
+            self::VICH_TYPE_CLASS,
             [
                 'label'          => false,
                 'download_label' => true,
