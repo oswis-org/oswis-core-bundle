@@ -26,21 +26,9 @@
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/AbstractClass/AbstractFileAction.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/AbstractClass/AbstractFileAction.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DependencyInjection/ZakjakubOswisCoreExtension.php" beforeDir="false" afterPath="$PROJECT_DIR$/DependencyInjection/ZakjakubOswisCoreExtension.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractRevision.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractRevision.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractRevisionContainer.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractRevisionContainer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Form/AbstractClass/AbstractFileType.php" beforeDir="false" afterPath="$PROJECT_DIR$/Form/AbstractClass/AbstractFileType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Interfaces/BasicEntityInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/Interfaces/BasicEntityInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Interfaces/TimestampableInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/Interfaces/TimestampableInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/config/services.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/AppUserService.php" beforeDir="false" afterPath="$PROJECT_DIR$/Service/AppUserService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/TimestampableTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/TimestampableTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/TypeTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/TypeTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Utils/DateTimeUtils.php" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/DateTimeUtils.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Utils/StringUtils.php" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/StringUtils.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AppUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUser.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AppUserFlagConnection.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUserFlagConnection.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/ClientLogRecord.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/ClientLogRecord.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -617,14 +605,8 @@
       <workItem from="1581802809243" duration="9174000" />
       <workItem from="1581850960618" duration="7765000" />
       <workItem from="1581889343564" duration="5250000" />
-      <workItem from="1581933288308" duration="904000" />
-    </task>
-    <task id="LOCAL-00438" summary="Some changes.">
-      <created>1578780494719</created>
-      <option name="number" value="00438" />
-      <option name="presentableId" value="LOCAL-00438" />
-      <option name="project" value="LOCAL" />
-      <updated>1578780494719</updated>
+      <workItem from="1581933288308" duration="1086000" />
+      <workItem from="1581937831367" duration="752000" />
     </task>
     <task id="LOCAL-00439" summary="Some changes.">
       <created>1578821063168</created>
@@ -962,7 +944,14 @@
       <option name="project" value="LOCAL" />
       <updated>1581894293923</updated>
     </task>
-    <option name="localTasksCounter" value="487" />
+    <task id="LOCAL-00487" summary="Back to Gedmo from Knp for Timestampable.">
+      <created>1581934440766</created>
+      <option name="number" value="00487" />
+      <option name="presentableId" value="LOCAL-00487" />
+      <option name="project" value="LOCAL" />
+      <updated>1581934440767</updated>
+    </task>
+    <option name="localTasksCounter" value="488" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1003,7 +992,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Some changes, fixes and updates." />
     <MESSAGE value="Some changes and updates." />
     <MESSAGE value="Changed count of date by DATE_RANGE_ALL." />
     <MESSAGE value="Changes, updates and fixes." />
@@ -1028,7 +1016,8 @@
     <MESSAGE value="AbstractImageAction extends AbstractFileAction." />
     <MESSAGE value="Introduced Publicity settings entity." />
     <MESSAGE value="Change DateTimeInterface back to DateTime." />
-    <option name="LAST_COMMIT_MESSAGE" value="Change DateTimeInterface back to DateTime." />
+    <MESSAGE value="Back to Gedmo from Knp for Timestampable." />
+    <option name="LAST_COMMIT_MESSAGE" value="Back to Gedmo from Knp for Timestampable." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -1139,25 +1128,25 @@
       <screen x="0" y="0" width="1920" height="741" />
     </state>
     <state x="543" y="217" width="826" height="518" key="IDE.errors.dialog/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1581933725687" />
-    <state x="263" y="0" width="1418" height="741" key="SettingsEditor" timestamp="1581933366864">
+    <state x="263" y="0" width="1418" height="741" key="SettingsEditor" timestamp="1581937850921">
       <screen x="0" y="0" width="1920" height="741" />
     </state>
     <state x="187" y="5" key="SettingsEditor/0.0.1366.741@0.0.1366.741" timestamp="1575650394431" />
     <state x="450" y="5" key="SettingsEditor/0.0.3286.741@0.0.3286.741" timestamp="1578513262014" />
     <state x="187" y="5" key="SettingsEditor/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1581889588218" />
-    <state x="263" y="0" width="1418" height="741" key="SettingsEditor/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1581933366864" />
+    <state x="263" y="0" width="1418" height="741" key="SettingsEditor/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1581937850921" />
     <state x="2107" y="5" key="SettingsEditor/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1574963719981" />
     <state x="842" y="455" width="228" height="163" key="VCS.EditChangelistDialog" timestamp="1574453185964">
       <screen x="0" y="0" width="1920" height="741" />
     </state>
     <state x="842" y="455" width="228" height="163" key="VCS.EditChangelistDialog/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1574453185964" />
-    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1581894314117">
-      <screen x="0" y="0" width="1366" height="741" />
+    <state x="555" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1581934443215">
+      <screen x="0" y="0" width="1920" height="741" />
     </state>
     <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1581377506724" />
     <state x="0" y="213" width="1920" height="522" key="Vcs.Push.Dialog.v2/0.0.3286.741@0.0.3286.741" timestamp="1578512689288" />
     <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1581894314117" />
-    <state x="555" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1581867603646" />
+    <state x="555" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1581934443215" />
     <state x="2315" y="199" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1581765029031" />
     <state x="139" y="96" width="1626" height="510" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1581933517818">
       <screen x="0" y="0" width="1920" height="741" />

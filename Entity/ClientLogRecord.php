@@ -40,13 +40,11 @@ class ClientLogRecord implements BasicEntityInterface
     use BasicEntityTrait;
 
     /**
-     * @var int|null
      * @Doctrine\ORM\Mapping\Column(type="integer", nullable=true)
      */
     public ?int $level = null;
 
     /**
-     * @var string|null
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
     public ?string $message = null;

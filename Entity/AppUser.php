@@ -95,7 +95,12 @@ use Zakjakub\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
 class AppUser extends AbstractAppUser
 {
     /**
-     * @Doctrine\ORM\Mapping\OneToMany(targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUserFlagConnection", cascade={"all"},mappedBy="appUser")
+     * @Doctrine\ORM\Mapping\OneToMany(
+     *     targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUserFlagConnection",
+     *     cascade={"all"},
+     *     mappedBy="appUser",
+     *     fetch="EAGER"
+     * )
      */
     protected ?Collection $appUserFlags = null;
 

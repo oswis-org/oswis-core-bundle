@@ -33,7 +33,7 @@ class AppUserFlagConnection implements BasicEntityInterface
     use BasicEntityTrait;
 
     /**
-     * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUserFlag")
+     * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUserFlag", fetch="EAGER")
      * @Doctrine\ORM\Mapping\JoinColumn(nullable=true)
      */
     protected ?AppUserFlag $appUserFlag = null;
