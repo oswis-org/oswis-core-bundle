@@ -44,6 +44,7 @@
     "egulias/email-validator": "^2.1",
     "symfony/asset": "^4.4",
     "adci/full-name-parser": "^0.2",
+    "gedmo/doctrine-extensions": "^2.4",
     "gesdinet/jwt-refresh-token-bundle": "^0.8",
     "lexik/jwt-authentication-bundle": "^2.6",
     "vich/uploader-bundle": "^1.13",

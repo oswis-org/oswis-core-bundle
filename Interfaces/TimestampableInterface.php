@@ -9,13 +9,11 @@ use DateTime;
 
 interface TimestampableInterface
 {
-    public function getCreatedDateTime(): DateTime;
+    public function getCreatedDateTime(): ?DateTime;
 
-    public function getUpdatedDateTime(): DateTime;
+    public function getUpdatedDateTime(): ?DateTime;
 
-    public function setUpdatedDateTime(DateTime $updatedDateTime): void;
+    public function getCreatedDaysAgo(?bool $decimal = false): ?int;
 
-    public function getCreatedDaysAgo(?bool $decimal = false): int;
-
-    public function getUpdatedDaysAgo(?bool $decimal = false): int;
+    public function getUpdatedDaysAgo(?bool $decimal = false): ?int;
 }

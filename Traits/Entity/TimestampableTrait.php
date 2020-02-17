@@ -18,11 +18,28 @@ use function floor;
  */
 trait TimestampableTrait
 {
-    use \Knp\DoctrineBehaviors\Model\Timestampable\TimestampableTrait;
+    /**
+     * Date and time of entity creation.
+     *
+     * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true)
+     * @Gedmo\Mapping\Annotation\Timestampable(on="create")
+     */
+    protected ?DateTime $createdDateTime = null;
+
+    /**
+     * Date and time of entity update.
+     *
+     * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true, options={"default" : null})
+     * @Gedmo\Mapping\Annotation\Timestampable(on="update")
+     */
+    protected ?DateTime $updatedDateTime = null;
 
     public function getCreatedDaysAgo(?bool $decimal = false): ?int
     {
-        $ago = $this->getCreatedAt()->diff(new DateTime())->days;
+        if (!$this->getCreatedDateTime()) {
+            return null;
+        }
+        $ago = $this->getCreatedDateTime()->diff(new DateTime())->days;
         if (!$ago) {
             return null;
         }
@@ -32,15 +49,15 @@ trait TimestampableTrait
 
     public function getCreatedDateTime(): ?DateTime
     {
-        $createdAt = $this->getCreatedAt();
-        assert($createdAt instanceof DateTime);
-
-        return $createdAt;
+        return $this->createdDateTime;
     }
 
     public function getUpdatedDaysAgo(?bool $decimal = false): ?int
     {
-        $ago = $this->getUpdatedAt()->diff(new DateTime())->days;
+        if (!$this->getUpdatedDateTime()) {
+            return null;
+        }
+        $ago = $this->getUpdatedDateTime()->diff(new DateTime())->days;
         if (!$ago) {
             return null;
         }
@@ -50,9 +67,6 @@ trait TimestampableTrait
 
     public function getUpdatedDateTime(): ?DateTime
     {
-        $updatedAt = $this->getUpdatedAt();
-        assert($updatedAt instanceof DateTime);
-
-        return $updatedAt;
+        return $this->updatedDateTime;
     }
 }

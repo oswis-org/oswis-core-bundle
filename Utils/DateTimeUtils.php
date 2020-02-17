@@ -133,6 +133,19 @@ class DateTimeUtils
         throw new InvalidArgumentException("Rozsah '$range' není povolen.");
     }
 
+    /**
+     * @param DateTime|null $dateTime
+     * @param bool|null     $isEnd
+     *
+     * @return DateTime
+     * @throws Exception
+     * @noinspection PhpUndefinedClassInspection
+     */
+    private static function getByRangeAll(?DateTime $dateTime, ?bool $isEnd = false): DateTime
+    {
+        return $dateTime ?? new DateTime($isEnd ? self::MAX_DATE_TIME_STRING : self::MIN_DATE_TIME_STRING);
+    }
+
     public static function getMonthByRange(DateTime $dateTime, ?string $range, ?bool $isEnd = false): int
     {
         $month = $isEnd ? 12 : 1;
@@ -183,7 +196,7 @@ class DateTimeUtils
         }
 
         return null;
-    }
+    } // Counts all included days.
 
     public static function getEaster(DateTime $dateTime): ?string
     {
@@ -198,7 +211,7 @@ class DateTimeUtils
         }
 
         return null;
-    } // Counts all included days.
+    }
 
     public static function isEaster(DateTime $dateTime): bool
     {
@@ -246,18 +259,5 @@ class DateTimeUtils
         }
 
         return !empty($format) && ($start->format($format) === $end->format($format));
-    }
-
-    /**
-     * @param DateTime|null $dateTime
-     * @param bool|null     $isEnd
-     *
-     * @return DateTime
-     * @throws Exception
-     * @noinspection PhpUndefinedClassInspection
-     */
-    private static function getByRangeAll(?DateTime $dateTime, ?bool $isEnd = false): DateTime
-    {
-        return $dateTime ?? new DateTime($isEnd ? self::MAX_DATE_TIME_STRING : self::MIN_DATE_TIME_STRING);
     }
 }
