@@ -7,9 +7,7 @@ namespace Zakjakub\OswisCoreBundle\Service;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\Log\LoggerInterface;
-use Zakjakub\OswisCoreBundle\Entity\AppUserRole;
 use Zakjakub\OswisCoreBundle\Entity\AppUserType;
-use Zakjakub\OswisCoreBundle\Entity\Nameable;
 use Zakjakub\OswisCoreBundle\Repository\AppUserTypeRepository;
 
 class AppUserTypeService
@@ -24,11 +22,10 @@ class AppUserTypeService
         $this->logger = $logger;
     }
 
-    public function create(?Nameable $nameable = null, ?AppUserRole $role = null, ?bool $adminUser = null): AppUserType
+    public function create(AppUserType $type): AppUserType
     {
-        $type = $nameable ? $this->getRepository()->findBySlug($nameable->slug) : null;
-        if (null === $type || !($type instanceof AppUserType)) {
-            $type = new AppUserType($nameable, $role, $adminUser);
+        $existing = $this->getRepository()->findBySlug($type->getSlug());
+        if (null === $existing || !($existing instanceof AppUserType)) {
             $this->em->persist($type);
         }
         $this->em->flush();

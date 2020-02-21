@@ -19,19 +19,19 @@ trait NameableBasicTrait
 
     public function setFieldsFromNameable(?Nameable $nameable = null): void
     {
-        if ($nameable) {
+        if (null !== $nameable) {
             $this->setName($nameable->name);
             $this->setDescription($nameable->description);
             $this->setShortName($nameable->shortName);
             $this->setNote($nameable->note);
-            $this->setSlug($nameable->slug);
+            $this->setForcedSlug($nameable->forcedSlug);
             $this->setInternalNote($nameable->internalNote);
         }
     }
 
     public function getNameable(): Nameable
     {
-        return new Nameable($this->getName(), $this->getShortName(), $this->getDescription(), $this->getNote(), $this->getSlug(), $this->getInternalNote());
+        return new Nameable($this->getName(), $this->getShortName(), $this->getDescription(), $this->getNote(), $this->getForcedSlug(), $this->getInternalNote());
     }
 
     public function updateSlug(): string
@@ -43,5 +43,4 @@ trait NameableBasicTrait
     {
         return (new AsciiSlugger())->slug(($this->getName() ?? $this->getShortName()))->lower()->toString();
     }
-
 }

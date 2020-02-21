@@ -9,52 +9,31 @@ namespace Zakjakub\OswisCoreBundle\Entity;
  */
 class Nameable
 {
-    /**
-     * Full name.
-     */
     public ?string $name = null;
 
-    /**
-     * Shortened name.
-     */
     public ?string $shortName = null;
 
-    /**
-     * Description.
-     */
     public ?string $description = null;
 
-    /**
-     * Note.
-     */
     public ?string $note = null;
 
-    /**
-     * Internal note.
-     */
     public ?string $internalNote = null;
 
-    /**
-     * Slug (string for ie. url).
-     */
-    public ?string $slug = null;
+    public ?string $forcedSlug = null;
 
-    /**
-     * Constructor of nameable.
-     */
     public function __construct(
         ?string $name = null,
         ?string $shortName = null,
         ?string $description = null,
         ?string $note = null,
-        ?string $slug = null,
+        ?string $forcedSlug = null,
         ?string $internalNote = null
     ) {
         $this->name = $name;
         $this->shortName = $shortName;
         $this->description = $description;
         $this->note = $note;
-        $this->slug = $slug;
+        $this->forcedSlug = $forcedSlug;
         $this->internalNote = $internalNote;
     }
 }

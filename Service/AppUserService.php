@@ -16,6 +16,7 @@ use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Address;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Zakjakub\OswisCoreBundle\Entity\AppUser;
+use Zakjakub\OswisCoreBundle\Entity\AppUserRole;
 use Zakjakub\OswisCoreBundle\Entity\AppUserType;
 use Zakjakub\OswisCoreBundle\Entity\Nameable;
 use Zakjakub\OswisCoreBundle\Exceptions\OswisException;
@@ -74,13 +75,14 @@ class AppUserService
     public function registerRoot(): void
     {
         $role = $this->appUserRoleService->create(
-            new Nameable('Superuživatel', 'Root', null, null, 'root'),
-            'ROOT'
+            new AppUserRole(
+                new Nameable('Superuživatel', 'Root', null, null, 'root'), 'ROOT'
+            )
         );
         $type = $this->appUserTypeService->create(
-            new Nameable('Root', null, null, null, 'root'),
-            $role,
-            true
+            new AppUserType(
+                new Nameable('Root', null, null, null, 'root'), $role, true
+            )
         );
         $this->create(
             $this->oswisCoreSettings->getAdmin()['name'] ?? $this->oswisCoreSettings->getEmail()['name'],
