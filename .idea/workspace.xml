@@ -25,12 +25,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/Nameable.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Nameable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/AppUserRoleService.php" beforeDir="false" afterPath="$PROJECT_DIR$/Service/AppUserRoleService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/AppUserService.php" beforeDir="false" afterPath="$PROJECT_DIR$/Service/AppUserService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/AppUserTypeService.php" beforeDir="false" afterPath="$PROJECT_DIR$/Service/AppUserTypeService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/NameableBasicTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/NameableBasicTrait.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -215,6 +211,7 @@
       <path value="$PROJECT_DIR$/vendor/elasticsearch/elasticsearch" />
       <path value="$PROJECT_DIR$/vendor/tijsverkoyen/css-to-inline-styles" />
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/type-resolver" />
+      <path value="$PROJECT_DIR$/vendor/phpstan/phpstan" />
     </include_path>
   </component>
   <component name="ProjectId" id="1OdNRiB7J91AH4isXqLMtDEiNnC" />
@@ -611,14 +608,8 @@
       <workItem from="1581937831367" duration="804000" />
       <workItem from="1581967378037" duration="1596000" />
       <workItem from="1582292294655" duration="532000" />
-      <workItem from="1582295878048" duration="1071000" />
-    </task>
-    <task id="LOCAL-00440" summary="Some changes.">
-      <created>1578822530151</created>
-      <option name="number" value="00440" />
-      <option name="presentableId" value="LOCAL-00440" />
-      <option name="project" value="LOCAL" />
-      <updated>1578822530151</updated>
+      <workItem from="1582295878048" duration="1604000" />
+      <workItem from="1582298828526" duration="587000" />
     </task>
     <task id="LOCAL-00441" summary="Some changes.">
       <created>1578855948578</created>
@@ -956,7 +947,14 @@
       <option name="project" value="LOCAL" />
       <updated>1581941169997</updated>
     </task>
-    <option name="localTasksCounter" value="489" />
+    <task id="LOCAL-00489" summary="Fixed slugs in Nameable, fixed some services.">
+      <created>1582297095873</created>
+      <option name="number" value="00489" />
+      <option name="presentableId" value="LOCAL-00489" />
+      <option name="project" value="LOCAL" />
+      <updated>1582297095873</updated>
+    </task>
+    <option name="localTasksCounter" value="490" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -997,7 +995,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Changed count of date by DATE_RANGE_ALL." />
     <MESSAGE value="Changes, updates and fixes." />
     <MESSAGE value="Some changes and fixes." />
     <MESSAGE value="Fixed getEndDate()." />
@@ -1022,7 +1019,8 @@
     <MESSAGE value="Change DateTimeInterface back to DateTime." />
     <MESSAGE value="Back to Gedmo from Knp for Timestampable." />
     <MESSAGE value="Changes in annotations." />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes in annotations." />
+    <MESSAGE value="Fixed slugs in Nameable, fixed some services." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed slugs in Nameable, fixed some services." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -1145,10 +1143,10 @@
       <screen x="0" y="0" width="1920" height="741" />
     </state>
     <state x="842" y="455" width="228" height="163" key="VCS.EditChangelistDialog/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1574453185964" />
-    <state x="555" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1581941172081">
-      <screen x="0" y="0" width="1920" height="741" />
+    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1582297098062">
+      <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1581377506724" />
+    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1582297098062" />
     <state x="0" y="213" width="1920" height="522" key="Vcs.Push.Dialog.v2/0.0.3286.741@0.0.3286.741" timestamp="1578512689288" />
     <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1581894314117" />
     <state x="555" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1581941172081" />
