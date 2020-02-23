@@ -176,7 +176,9 @@ class AppUserService
             } else { // Action type is not recognized.
                 throw new OswisNotImplementedException($type, 'u uživatelských účtů');
             }
-            $this->em->persist($appUser);
+            if ($appUser) {
+                $this->em->persist($appUser);
+            }
             $this->em->flush();
         } catch (OswisException $e) {
             $this->logger->error('[ERROR] '.$e->getMessage());
@@ -338,6 +340,7 @@ class AppUserService
         if ($sendConfirmation) {
             $this->sendAppUserEmail($appUser, self::ACTIVATION, $token, $random ? $password : null);
         }
+        $this->em->persist($appUser);
         $this->logger->info('[OK] App user '.$appUser->getId().' successfully activated.');
     }
 }

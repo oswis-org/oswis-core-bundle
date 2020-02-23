@@ -25,10 +25,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/web/parts/message.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/parts/message.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/AccountActivationTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/AccountActivationTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controller/AppUserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/AppUserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Service/AppUserService.php" beforeDir="false" afterPath="$PROJECT_DIR$/Service/AppUserService.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -613,14 +612,7 @@
       <workItem from="1582298828526" duration="587000" />
       <workItem from="1582302405542" duration="110000" />
       <workItem from="1582384934147" duration="574000" />
-      <workItem from="1582387998703" duration="2763000" />
-    </task>
-    <task id="LOCAL-00442" summary="Some changes.">
-      <created>1578858249787</created>
-      <option name="number" value="00442" />
-      <option name="presentableId" value="LOCAL-00442" />
-      <option name="project" value="LOCAL" />
-      <updated>1578858249787</updated>
+      <workItem from="1582387998703" duration="4099000" />
     </task>
     <task id="LOCAL-00443" summary="Some changes.">
       <created>1578859596426</created>
@@ -958,7 +950,14 @@
       <option name="project" value="LOCAL" />
       <updated>1582302461493</updated>
     </task>
-    <option name="localTasksCounter" value="491" />
+    <task id="LOCAL-00491" summary="Fixed some bugs.">
+      <created>1582492155445</created>
+      <option name="number" value="00491" />
+      <option name="presentableId" value="LOCAL-00491" />
+      <option name="project" value="LOCAL" />
+      <updated>1582492155446</updated>
+    </task>
+    <option name="localTasksCounter" value="492" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -999,7 +998,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Some changes and fixes." />
     <MESSAGE value="Fixed getEndDate()." />
     <MESSAGE value="Escape &quot;a&quot; in date format string." />
     <MESSAGE value="Fixed exception message." />
@@ -1024,7 +1022,8 @@
     <MESSAGE value="Changes in annotations." />
     <MESSAGE value="Fixed slugs in Nameable, fixed some services." />
     <MESSAGE value="Added assets." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added assets." />
+    <MESSAGE value="Fixed some bugs." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed some bugs." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -1147,12 +1146,12 @@
       <screen x="0" y="0" width="1920" height="741" />
     </state>
     <state x="842" y="455" width="228" height="163" key="VCS.EditChangelistDialog/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1574453185964" />
-    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1582302464329">
+    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1582492157454">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1582302464329" />
     <state x="0" y="213" width="1920" height="522" key="Vcs.Push.Dialog.v2/0.0.3286.741@0.0.3286.741" timestamp="1578512689288" />
-    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1581894314117" />
+    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1582492157454" />
     <state x="555" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1581941172081" />
     <state x="2315" y="199" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1581765029031" />
     <state x="139" y="96" width="1626" height="510" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1581933517818">

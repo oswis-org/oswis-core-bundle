@@ -36,12 +36,14 @@ class AppUserController extends AbstractController
                 'title'   => 'Účet aktivován!',
                 'message' => 'Účet byl úspěšně aktivován.',
             ];
+
+            return $this->render('@ZakjakubOswisCore/web/pages/message.html.twig', $data ?? []);
         } catch (OswisException $e) {
             $data = [
                 'title'   => 'Účet nebyl aktivován!',
                 'message' => $e->getMessage(),
             ];
-        } finally {
+
             return $this->render('@ZakjakubOswisCore/web/pages/message.html.twig', $data ?? []);
         }
     }
