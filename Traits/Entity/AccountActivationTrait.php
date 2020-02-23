@@ -35,7 +35,7 @@ trait AccountActivationTrait
     public function checkAndDestroyAccountActivationRequestToken(?string $token, int $validHours = 24): bool
     {
         $diff = null;
-        if ($this->getAccountActivationRequestDateTime()) {
+        if (null !== $this->getAccountActivationRequestDateTime()) {
             $diff = $this->getAccountActivationRequestDateTime()->diff(new DateTime());
         }
         if ($diff && ($validHours < $diff->h)) {
