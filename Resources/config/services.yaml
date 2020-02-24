@@ -291,3 +291,11 @@ services:
         calls:
             - [ setAnnotationReader, [ '@annotation_reader' ] ]
         public: true
+
+    gedmo.listener.blameable:
+        class: Gedmo\Blameable\BlameableListener
+        tags:
+            - { name: doctrine.event_subscriber, connection: default }
+        calls:
+            - [ setAnnotationReader, [ '@annotation_reader' ] ]
+        public: true

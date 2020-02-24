@@ -10,15 +10,27 @@ use Zakjakub\OswisCoreBundle\Entity\AppUser;
 
 trait BlameableTrait
 {
-    use \Knp\DoctrineBehaviors\Model\Blameable\BlameableTrait;
+    /**
+     * @Gedmo\Mapping\Annotation\Blameable(on="create")
+     * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUser")
+     * @Doctrine\ORM\Mapping\JoinColumn(name="created_author_id", referencedColumnName="id")
+     */
+    protected ?AppUser $createdAuthor = null;
+
+    /**
+     * @Gedmo\Mapping\Annotation\Blameable(on="update")
+     * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUser")
+     * @Doctrine\ORM\Mapping\JoinColumn(name="updated_author_id", referencedColumnName="id")
+     */
+    protected ?AppUser $updatedAuthor = null;
 
     public function getUpdatedAuthor(): ?AppUser
     {
-        return $this->getUpdatedBy();
+        return $this->updatedAuthor;
     }
 
     public function getCreatedAuthor(): ?AppUser
     {
-        return $this->getCreatedBy();
+        return $this->createdAuthor;
     }
 }
