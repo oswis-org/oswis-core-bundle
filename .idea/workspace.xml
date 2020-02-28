@@ -26,7 +26,11 @@
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractPayment.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractPayment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AppUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUser.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/Web/Breadcrumb.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Web/Breadcrumb.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/BasicMailConfirmationTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/BasicMailConfirmationTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/ReservationDateRangeTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/ReservationDateRangeTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -238,7 +242,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
+    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -614,14 +618,8 @@
       <workItem from="1582563920644" duration="514000" />
       <workItem from="1582567625041" duration="3141000" />
       <workItem from="1582632625888" duration="3159000" />
-      <workItem from="1582900375826" duration="2651000" />
-    </task>
-    <task id="LOCAL-00446" summary="Some changes.">
-      <created>1580314085640</created>
-      <option name="number" value="00446" />
-      <option name="presentableId" value="LOCAL-00446" />
-      <option name="project" value="LOCAL" />
-      <updated>1580314085640</updated>
+      <workItem from="1582900375826" duration="2669000" />
+      <workItem from="1582925018894" duration="1185000" />
     </task>
     <task id="LOCAL-00447" summary="Some changes.">
       <created>1580314335930</created>
@@ -959,7 +957,14 @@
       <option name="project" value="LOCAL" />
       <updated>1582904912183</updated>
     </task>
-    <option name="localTasksCounter" value="495" />
+    <task id="LOCAL-00495" summary="Changes.">
+      <created>1582910300806</created>
+      <option name="number" value="00495" />
+      <option name="presentableId" value="LOCAL-00495" />
+      <option name="project" value="LOCAL" />
+      <updated>1582910300806</updated>
+    </task>
+    <option name="localTasksCounter" value="496" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -994,6 +999,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
@@ -1084,10 +1090,10 @@
     <state x="693" y="257" width="526" height="478" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.3286.741@0.0.3286.741" timestamp="1577120924839" />
     <state x="288" y="257" width="526" height="478" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1581630489271" />
     <state x="405" y="257" width="526" height="478" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1581867123678" />
-    <state x="499" y="381" width="402" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1582904859010">
+    <state x="499" y="381" width="402" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1582925458618">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="499" y="381" width="402" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1366.741@0.0.1366.741" timestamp="1582904859010" />
+    <state x="499" y="381" width="402" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1366.741@0.0.1366.741" timestamp="1582925458618" />
     <state x="1003" y="381" width="917" height="318" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.3286.741@0.0.3286.741" timestamp="1578507453064" />
     <state x="499" y="381" width="389" height="318" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1581894122325" />
     <state x="701" y="381" width="509" height="318" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1581934405321" />
@@ -1136,10 +1142,10 @@
       <screen x="0" y="0" width="1920" height="741" />
     </state>
     <state x="543" y="217" width="826" height="518" key="IDE.errors.dialog/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1581933725687" />
-    <state x="187" y="5" width="1418" height="741" key="SettingsEditor" timestamp="1582900577091">
+    <state x="187" y="5" width="1418" height="741" key="SettingsEditor" timestamp="1582926206454">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="187" y="5" key="SettingsEditor/0.0.1366.741@0.0.1366.741" timestamp="1582900577091" />
+    <state x="187" y="5" key="SettingsEditor/0.0.1366.741@0.0.1366.741" timestamp="1582926206454" />
     <state x="450" y="5" key="SettingsEditor/0.0.3286.741@0.0.3286.741" timestamp="1578513262014" />
     <state x="187" y="5" key="SettingsEditor/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1582491417264" />
     <state x="263" y="0" width="1418" height="741" key="SettingsEditor/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1581937850921" />
@@ -1148,11 +1154,11 @@
       <screen x="0" y="0" width="1920" height="741" />
     </state>
     <state x="842" y="455" width="228" height="163" key="VCS.EditChangelistDialog/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1574453185964" />
-    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1582904921060">
-      <screen x="0" y="0" width="1366" height="741" />
+    <state x="0" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1582910305041">
+      <screen x="0" y="0" width="3286" height="741" />
     </state>
     <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1582904921060" />
-    <state x="0" y="213" width="1920" height="522" key="Vcs.Push.Dialog.v2/0.0.3286.741@0.0.3286.741" timestamp="1578512689288" />
+    <state x="0" y="213" width="1920" height="522" key="Vcs.Push.Dialog.v2/0.0.3286.741@0.0.3286.741" timestamp="1582910305041" />
     <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1582493500736" />
     <state x="555" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1581941172081" />
     <state x="2315" y="199" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1581765029031" />

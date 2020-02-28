@@ -17,19 +17,15 @@ trait ReservationDateRangeTrait
 {
     /**
      * Date and time of range start.
-     *
-     * @var DateTime
-     *
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true, options={"default": null})
      */
-    protected DateTime $startReservationDateTime;
+    protected ?DateTime $startReservationDateTime;
 
     /**
      * Date and time of range end.
-     * @var DateTime
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true, options={"default": null})
      */
-    protected DateTime $endReservationDateTime;
+    protected ?DateTime $endReservationDateTime;
 
     public function getStartReservationDateTime(): ?DateTime
     {

@@ -23,16 +23,12 @@ trait BasicMailConfirmationTrait
 
     /**
      * Number of confirmation e-mails sent.
-     *
-     * @var int
      * @Doctrine\ORM\Mapping\Column(type="integer", nullable=true)
      */
-    protected int $eMailConfirmationCount = 0;
+    protected ?int $eMailConfirmationCount = 0;
 
     /**
      * Source/reason/author of last e-mail confirmation (cron, manual...).
-     *
-     * @var string|null
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
     protected ?string $eMailConfirmationSource = null;
@@ -63,8 +59,6 @@ trait BasicMailConfirmationTrait
 
     /**
      * (DO NOT USE!) Set number of confirmations sent.
-     *
-     * @param int $eMailConfirmationCount
      */
     public function setEMailConfirmationCount(?int $eMailConfirmationCount): void
     {
