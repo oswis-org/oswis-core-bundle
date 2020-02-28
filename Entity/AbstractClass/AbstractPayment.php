@@ -6,6 +6,7 @@ use Zakjakub\OswisCoreBundle\Interfaces\BasicEntityInterface;
 use Zakjakub\OswisCoreBundle\Traits\Entity\BasicEntityTrait;
 use Zakjakub\OswisCoreBundle\Traits\Entity\BasicMailConfirmationTrait;
 use Zakjakub\OswisCoreBundle\Traits\Entity\DateTimeTrait;
+use Zakjakub\OswisCoreBundle\Traits\Entity\ExternalIdTrait;
 use Zakjakub\OswisCoreBundle\Traits\Entity\InternalNoteTrait;
 use Zakjakub\OswisCoreBundle\Traits\Entity\NoteTrait;
 use Zakjakub\OswisCoreBundle\Traits\Entity\NumericValueTrait;
@@ -24,6 +25,7 @@ abstract class AbstractPayment implements BasicEntityInterface
     use NoteTrait;
     use InternalNoteTrait;
     use BasicMailConfirmationTrait;
+    use ExternalIdTrait;
 
     public static function getAllowedTypesDefault(): array
     {
