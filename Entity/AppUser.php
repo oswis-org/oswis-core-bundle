@@ -60,19 +60,19 @@ use Zakjakub\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
  *     "username",
  *     "email",
  *     "givenName",
- *     "additionalName",
  *     "familyName",
  *     "nickname",
- *     "honorificPrefix",
- *     "honorificSuffix",
- *     "description",
- *     "note",
  *     "appUserType.name",
  *     "appUserType.shortName",
  *     "appUserType.slug"
  * })
  * @ApiFilter(ExistsFilter::class, properties={"active", "deleted"})
  * @ApiFilter(DateFilter::class, properties={"createdDateTime", "updatedDateTime", "startDateTime", "endDateTime"})
+ * @ApiFilter(SearchFilter::class, properties={
+ *     "id": "exact",
+ *     "appUserType": "exact",
+ *     "description": "partial"
+ * })
  * @Searchable({
  *     "id",
  *     "username",
@@ -96,10 +96,7 @@ class AppUser extends AbstractAppUser
 {
     /**
      * @Doctrine\ORM\Mapping\OneToMany(
-     *     targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUserFlagConnection",
-     *     cascade={"all"},
-     *     mappedBy="appUser",
-     *     fetch="EAGER"
+     *     targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUserFlagConnection", cascade={"all"}, mappedBy="appUser", fetch="EAGER"
      * )
      */
     protected ?Collection $appUserFlags = null;

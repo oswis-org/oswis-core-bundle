@@ -13,7 +13,6 @@ use Zakjakub\OswisCoreBundle\Traits\Entity\TypeTrait;
 
 /**
  * Abstract class containing basic properties for payment.
- *
  * @author Jakub Zak <mail@jakubzak.eu>
  */
 abstract class AbstractPayment implements BasicEntityInterface

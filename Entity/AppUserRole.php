@@ -21,13 +21,13 @@ use Zakjakub\OswisCoreBundle\Traits\Entity\NameableBasicTrait;
  * @ApiResource(
  *   attributes={
  *     "filters"={"search"},
- *     "access_control"="is_granted('ROLE_MANAGER')",
+ *     "access_control"="is_granted('ROLE_ADMIN')",
  *     "normalization_context"={"groups"={"app_user_roles_get"}},
  *     "denormalization_context"={"groups"={"app_user_roles_post"}}
  *   },
  *   collectionOperations={
  *     "get"={
- *       "access_control"="is_granted('ROLE_MANAGER')",
+ *       "access_control"="is_granted('ROLE_ADMIN')",
  *       "normalization_context"={"groups"={"app_user_roles_get"}},
  *     },
  *     "post"={
@@ -37,7 +37,7 @@ use Zakjakub\OswisCoreBundle\Traits\Entity\NameableBasicTrait;
  *   },
  *   itemOperations={
  *     "get"={
- *       "access_control"="is_granted('ROLE_MANAGER')",
+ *       "access_control"="is_granted('ROLE_ADMIN')",
  *       "normalization_context"={"groups"={"app_user_role_get"}},
  *     },
  *     "put"={
@@ -54,6 +54,7 @@ use Zakjakub\OswisCoreBundle\Traits\Entity\NameableBasicTrait;
  *     "id": "ASC",
  *     "dateTime": "ASC",
  *     "slug",
+ *     "forcedSlug",
  *     "name",
  *     "shortName",
  *     "description",
@@ -63,13 +64,13 @@ use Zakjakub\OswisCoreBundle\Traits\Entity\NameableBasicTrait;
  * @Searchable({
  *     "id",
  *     "slug",
+ *     "forcedSlug",
  *     "name",
  *     "shortName",
  *     "description",
  *     "note",
  *     "roleString"
  * })
- *
  * @author Jakub Zak <mail@jakubzak.eu>
  * @Doctrine\ORM\Mapping\Cache(usage="NONSTRICT_READ_WRITE", region="core_app_user")
  */

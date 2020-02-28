@@ -25,11 +25,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Traits/Entity/ExternalIdTrait.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Interfaces/BasicEntityInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/Interfaces/BasicEntityInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/config/services.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/BlameableTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/BlameableTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractPayment.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractPayment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AppUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUser.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AppUserRole.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUserRole.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/UserTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/UserTrait.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -233,7 +234,7 @@
     <property name="add_unversioned_files" value="$PROJECT_DIR$/vendor/symfony/swiftmailer-bundle/composer.json" />
     <property name="editor.config.ad.shown" value="true" />
     <property name="javascript.nodejs.core.library.configured.version" value="10.17.0" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Resources/public/system" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Traits/Entity" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -245,19 +246,19 @@
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Traits/Entity" />
+      <recent name="$PROJECT_DIR$/Resources/public/system" />
+      <recent name="$PROJECT_DIR$/Entity" />
+      <recent name="$PROJECT_DIR$/Interfaces" />
+      <recent name="$PROJECT_DIR$/Resources/views/e-mail" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Resources/views/web/html-parts" />
       <recent name="$PROJECT_DIR$/Traits/Entity" />
       <recent name="$PROJECT_DIR$/Traits/Entity/Basic" />
       <recent name="$PROJECT_DIR$/Traits/Entity/Deprecated" />
       <recent name="$PROJECT_DIR$/Resources/views/web/parts" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/Resources/public/system" />
-      <recent name="$PROJECT_DIR$/Entity" />
-      <recent name="$PROJECT_DIR$/Interfaces" />
-      <recent name="$PROJECT_DIR$/Resources/views/e-mail" />
-      <recent name="$PROJECT_DIR$/Resources/views/bundles/TwigBundle/Exception" />
     </key>
   </component>
   <component name="RunManager">
@@ -616,14 +617,9 @@
       <workItem from="1582384934147" duration="574000" />
       <workItem from="1582387998703" duration="5729000" />
       <workItem from="1582563920644" duration="514000" />
-      <workItem from="1582567625041" duration="962000" />
-    </task>
-    <task id="LOCAL-00444" summary="Some changes.">
-      <created>1579453186388</created>
-      <option name="number" value="00444" />
-      <option name="presentableId" value="LOCAL-00444" />
-      <option name="project" value="LOCAL" />
-      <updated>1579453186389</updated>
+      <workItem from="1582567625041" duration="3141000" />
+      <workItem from="1582632625888" duration="3159000" />
+      <workItem from="1582900375826" duration="1572000" />
     </task>
     <task id="LOCAL-00445" summary="Some changes.">
       <created>1579972489481</created>
@@ -961,7 +957,14 @@
       <option name="project" value="LOCAL" />
       <updated>1582493495282</updated>
     </task>
-    <option name="localTasksCounter" value="493" />
+    <task id="LOCAL-00493" summary="Use Gedmo again. KnpLabs/DoctrineBehaviors is very unstable and unusable.">
+      <created>1582569345166</created>
+      <option name="number" value="00493" />
+      <option name="presentableId" value="LOCAL-00493" />
+      <option name="project" value="LOCAL" />
+      <updated>1582569345167</updated>
+    </task>
+    <option name="localTasksCounter" value="494" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1002,7 +1005,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Fixed getEndDate()." />
     <MESSAGE value="Escape &quot;a&quot; in date format string." />
     <MESSAGE value="Fixed exception message." />
     <MESSAGE value="Fixed nullable at customId column." />
@@ -1027,7 +1029,8 @@
     <MESSAGE value="Fixed slugs in Nameable, fixed some services." />
     <MESSAGE value="Added assets." />
     <MESSAGE value="Fixed some bugs." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed some bugs." />
+    <MESSAGE value="Use Gedmo again. KnpLabs/DoctrineBehaviors is very unstable and unusable." />
+    <option name="LAST_COMMIT_MESSAGE" value="Use Gedmo again. KnpLabs/DoctrineBehaviors is very unstable and unusable." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -1068,10 +1071,10 @@
     </state>
     <state x="366" y="97" width="626" height="532" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1366.741@0.0.1366.741" timestamp="1581452871969" />
     <state x="2286" y="101" width="626" height="532" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1574961230812" />
-    <state x="251" y="0" width="624" height="735" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1581893837802">
+    <state x="251" y="0" width="624" height="735" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1582900463682">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="251" y="0" width="855" height="735" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.741@0.0.1366.741" timestamp="1580758894043" />
+    <state x="251" y="0" width="855" height="735" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.741@0.0.1366.741" timestamp="1582900463682" />
     <state x="251" y="0" width="624" height="735" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1581893837802" />
     <state x="353" y="0" width="478" height="735" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1581782294622" />
     <state x="624" y="199" width="660" height="488" key="#com.intellij.tools.ToolEditorDialog" timestamp="1574963939379">
@@ -1086,10 +1089,10 @@
     <state x="693" y="257" width="526" height="478" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.3286.741@0.0.3286.741" timestamp="1577120924839" />
     <state x="288" y="257" width="526" height="478" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1581630489271" />
     <state x="405" y="257" width="526" height="478" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1581867123678" />
-    <state x="499" y="381" width="402" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1582569224188">
+    <state x="499" y="381" width="402" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1582904859010">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="499" y="381" width="402" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1366.741@0.0.1366.741" timestamp="1582569224188" />
+    <state x="499" y="381" width="402" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1366.741@0.0.1366.741" timestamp="1582904859010" />
     <state x="1003" y="381" width="917" height="318" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.3286.741@0.0.3286.741" timestamp="1578507453064" />
     <state x="499" y="381" width="389" height="318" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1581894122325" />
     <state x="701" y="381" width="509" height="318" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1581934405321" />
@@ -1138,10 +1141,10 @@
       <screen x="0" y="0" width="1920" height="741" />
     </state>
     <state x="543" y="217" width="826" height="518" key="IDE.errors.dialog/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1581933725687" />
-    <state x="187" y="5" width="1418" height="741" key="SettingsEditor" timestamp="1582569125755">
+    <state x="187" y="5" width="1418" height="741" key="SettingsEditor" timestamp="1582900577091">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="187" y="5" key="SettingsEditor/0.0.1366.741@0.0.1366.741" timestamp="1582569125755" />
+    <state x="187" y="5" key="SettingsEditor/0.0.1366.741@0.0.1366.741" timestamp="1582900577091" />
     <state x="450" y="5" key="SettingsEditor/0.0.3286.741@0.0.3286.741" timestamp="1578513262014" />
     <state x="187" y="5" key="SettingsEditor/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1582491417264" />
     <state x="263" y="0" width="1418" height="741" key="SettingsEditor/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1581937850921" />
@@ -1150,10 +1153,10 @@
       <screen x="0" y="0" width="1920" height="741" />
     </state>
     <state x="842" y="455" width="228" height="163" key="VCS.EditChangelistDialog/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1574453185964" />
-    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1582493500736">
+    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1582569351742">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1582302464329" />
+    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1582569351742" />
     <state x="0" y="213" width="1920" height="522" key="Vcs.Push.Dialog.v2/0.0.3286.741@0.0.3286.741" timestamp="1578512689288" />
     <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1582493500736" />
     <state x="555" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1581941172081" />
