@@ -67,7 +67,17 @@ trait AddressTrait
 
     public function getOrientation(): ?int
     {
+        return $this->getOrientationNumber();
+    }
+
+    public function getOrientationNumber(): ?int
+    {
         return $this->orientationNumber;
+    }
+
+    public function setOrientationNumber(?int $orientationNumber): void
+    {
+        $this->orientationNumber = $orientationNumber;
     }
 
     public function getStreet2(): ?string
@@ -108,11 +118,6 @@ trait AddressTrait
     public function setHouseNumber(?int $houseNumber): void
     {
         $this->houseNumber = $houseNumber;
-    }
-
-    public function setOrientationNumber(?int $orientationNumber): void
-    {
-        $this->orientationNumber = $orientationNumber;
     }
 
     public function getDoorNumber(): ?int

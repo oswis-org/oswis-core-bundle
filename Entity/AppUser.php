@@ -20,7 +20,6 @@ use Zakjakub\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
 
 /**
  * User of application.
- *
  * @Doctrine\ORM\Mapping\Entity(repositoryClass="Zakjakub\OswisCoreBundle\Repository\AppUserRepository")
  * @Doctrine\ORM\Mapping\Table(name="core_app_user")
  * @ApiResource(
