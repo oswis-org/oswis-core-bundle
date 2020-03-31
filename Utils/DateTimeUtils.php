@@ -35,21 +35,18 @@ class DateTimeUtils
     public const DATE_TIME_MONTHS = 'm';
     public const DATE_TIME_YEARS = 'Y';
 
-    public const LENGTH_TYPES_ALLOWED = [
-        self::DATE_TIME_SECONDS,
-        self::DATE_TIME_MINUTES,
-        self::DATE_TIME_HOURS,
-        self::DATE_TIME_DAYS,
-        self::DATE_TIME_DAYS_ALL,
-        self::DATE_TIME_MONTHS,
-        self::DATE_TIME_YEARS,
-    ];
-
     public const PERIOD_TYPES_ALLOWED = [
         self::DATE_TIME_HOURS,
         self::DATE_TIME_DAYS,
         self::DATE_TIME_MONTHS,
         self::DATE_TIME_YEARS,
+    ];
+
+    public const LENGTH_TYPES_ALLOWED = [
+        ...self::PERIOD_TYPES_ALLOWED,
+        self::DATE_TIME_SECONDS,
+        self::DATE_TIME_MINUTES,
+        self::DATE_TIME_DAYS_ALL,
     ];
 
     /**

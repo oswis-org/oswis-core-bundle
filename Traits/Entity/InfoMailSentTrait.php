@@ -84,11 +84,7 @@ trait InfoMailSentTrait
 
     public function setInfoMailSent(?string $source = null): void
     {
-        if ($this->infoMailSentCount && $this->infoMailSentCount > 0) {
-            ++$this->infoMailSentCount;
-        } else {
-            $this->infoMailSentCount = 1;
-        }
+        $this->infoMailSentCount = $this->infoMailSentCount > 0 ? $this->infoMailSentCount + 1 : 1;
         $this->infoMailSentDateTime = new DateTime();
         $this->infoMailSentSource = $source;
     }
