@@ -25,9 +25,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/oswis-core-bundle.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/oswis-core-bundle.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/InfoMailSentTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/InfoMailSentTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Utils/DateTimeUtils.php" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/DateTimeUtils.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/Dto/AppUserActionRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/Api/Dto/AppUserActionRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,18 +89,13 @@
       <path value="$PROJECT_DIR$/vendor/nette/utils" />
       <path value="$PROJECT_DIR$/vendor/lexik/jwt-authentication-bundle" />
       <path value="$PROJECT_DIR$/vendor/jdorn/sql-formatter" />
-      <path value="$PROJECT_DIR$/vendor/league/commonmark-ext-strikethrough" />
-      <path value="$PROJECT_DIR$/vendor/league/commonmark-ext-autolink" />
       <path value="$PROJECT_DIR$/vendor/league/html-to-markdown" />
       <path value="$PROJECT_DIR$/vendor/react/promise" />
       <path value="$PROJECT_DIR$/vendor/league/csv" />
-      <path value="$PROJECT_DIR$/vendor/league/commonmark-ext-table" />
       <path value="$PROJECT_DIR$/vendor/league/commonmark-extras" />
-      <path value="$PROJECT_DIR$/vendor/league/commonmark-ext-task-list" />
       <path value="$PROJECT_DIR$/vendor/ramsey/uuid" />
       <path value="$PROJECT_DIR$/vendor/namshi/jose" />
       <path value="$PROJECT_DIR$/vendor/league/commonmark" />
-      <path value="$PROJECT_DIR$/vendor/league/commonmark-ext-smartpunct" />
       <path value="$PROJECT_DIR$/vendor/ezimuel/ringphp" />
       <path value="$PROJECT_DIR$/vendor/ezimuel/guzzlestreams" />
       <path value="$PROJECT_DIR$/vendor/egulias/email-validator" />
@@ -627,14 +624,8 @@
       <workItem from="1585559719739" duration="2903000" />
       <workItem from="1585583984195" duration="2741000" />
       <workItem from="1585687800062" duration="167000" />
-      <workItem from="1585689019472" duration="572000" />
-    </task>
-    <task id="LOCAL-00452" summary="Some changes and updates.">
-      <created>1580850243136</created>
-      <option name="number" value="00452" />
-      <option name="presentableId" value="LOCAL-00452" />
-      <option name="project" value="LOCAL" />
-      <updated>1580850243137</updated>
+      <workItem from="1585689019472" duration="935000" />
+      <workItem from="1586636985738" duration="603000" />
     </task>
     <task id="LOCAL-00453" summary="Some changes and updates.">
       <created>1580853244608</created>
@@ -972,7 +963,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585687886698</updated>
     </task>
-    <option name="localTasksCounter" value="501" />
+    <task id="LOCAL-00501" summary="Some fixes, updates and changes.">
+      <created>1585689821639</created>
+      <option name="number" value="00501" />
+      <option name="presentableId" value="LOCAL-00501" />
+      <option name="project" value="LOCAL" />
+      <updated>1585689821639</updated>
+    </task>
+    <option name="localTasksCounter" value="502" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1086,10 +1084,10 @@
     <state x="1003" y="381" width="917" height="318" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.3286.741@0.0.3286.741" timestamp="1578507453064" />
     <state x="499" y="381" width="402" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1583147414936" />
     <state x="701" y="381" width="509" height="318" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1585586453682" />
-    <state x="369" y="0" width="881" height="735" key="CommitChangelistDialog2" timestamp="1585687886197">
+    <state x="369" y="0" width="881" height="735" key="CommitChangelistDialog2" timestamp="1585689821507">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="369" y="0" width="904" height="735" key="CommitChangelistDialog2/0.0.1366.741@0.0.1366.741" timestamp="1585687886197" />
+    <state x="369" y="0" width="904" height="735" key="CommitChangelistDialog2/0.0.1366.741@0.0.1366.741" timestamp="1585689821507" />
     <state x="1920" y="0" width="1366" height="735" key="CommitChangelistDialog2/0.0.3286.741@0.0.3286.741" timestamp="1578512687204" />
     <state x="369" y="0" width="877" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1583147495436" />
     <state x="518" y="0" width="881" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1585586808172" />
@@ -1114,10 +1112,10 @@
     <state x="450" y="5" key="SettingsEditor/0.0.3286.741@0.0.3286.741" timestamp="1578513262014" />
     <state x="187" y="5" key="SettingsEditor/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1583147442215" />
     <state x="263" y="0" width="1418" height="741" key="SettingsEditor/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1581937850921" />
-    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1585687920378">
+    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1585689829821">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1585687920378" />
+    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1585689829821" />
     <state x="0" y="213" width="1920" height="522" key="Vcs.Push.Dialog.v2/0.0.3286.741@0.0.3286.741" timestamp="1582910305041" />
     <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1583147500239" />
     <state x="555" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1585586816428" />

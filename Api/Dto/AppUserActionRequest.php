@@ -11,7 +11,6 @@ use Zakjakub\OswisCoreBundle\Service\AppUserService;
 
 /**
  * Endpoint for actions with users (activation, password changes...).
- *
  * @ApiResource(
  *      collectionOperations={
  *          "post"={
