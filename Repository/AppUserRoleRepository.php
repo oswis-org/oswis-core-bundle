@@ -14,8 +14,9 @@ class AppUserRoleRepository extends EntityRepository
 {
     final public function findBySlug(string $slug): ?AppUserRole
     {
+        $query = $this->createQueryBuilder('r')->where('r.slug = :slug')->setParameter('slug', $slug)->getQuery();
         try {
-            return $this->createQueryBuilder('r')->where('r.slug = :slug')->setParameter('slug', $slug)->getQuery()->getOneOrNullResult(Query::HYDRATE_OBJECT);
+            return $query->getOneOrNullResult(Query::HYDRATE_OBJECT);
         } catch (Exception $e) {
             return null;
         }
@@ -27,5 +28,4 @@ class AppUserRoleRepository extends EntityRepository
 
         return $result instanceof AppUserRole ? $result : null;
     }
-
 }

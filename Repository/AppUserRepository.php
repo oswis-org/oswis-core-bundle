@@ -1,4 +1,8 @@
-<?php /** @noinspection PhpUnused */
+<?php
+/**
+ * @noinspection MethodShouldBeFinalInspection
+ * @noinspection PhpUnused
+ */
 
 namespace Zakjakub\OswisCoreBundle\Repository;
 
@@ -11,10 +15,6 @@ use Symfony\Bridge\Doctrine\Security\User\UserLoaderInterface;
 use Zakjakub\OswisCoreBundle\Entity\AppUser;
 use Zakjakub\OswisCoreBundle\Exceptions\OswisUserNotUniqueException;
 
-/**
- * Repository of application users.
- * @todo Optimize queries!
- */
 class AppUserRepository extends EntityRepository implements UserLoaderInterface
 {
     /**
@@ -23,14 +23,15 @@ class AppUserRepository extends EntityRepository implements UserLoaderInterface
      * @throws OswisUserNotUniqueException
      * @noinspection MissingParameterTypeDeclarationInspection
      */
-    final public function loadUserByUsername($username): ?AppUser
+    public function loadUserByUsername($username): ?AppUser
     {
         if (!$username) {
             return null;
         }
         try {
             $builder = $this->createQueryBuilder('u')->where('(u.username = :username OR u.email = :email) AND (u.deleted IS NULL OR u.deleted = false)');
-            $appUser = $builder->setParameter('username', $username)->setParameter('email', $username)->getQuery()->getOneOrNullResult(Query::HYDRATE_OBJECT);
+            $query = $builder->setParameter('username', $username)->setParameter('email', $username)->getQuery();
+            $appUser = $query->getOneOrNullResult(Query::HYDRATE_OBJECT);
         } catch (NonUniqueResultException $e) {
             throw new OswisUserNotUniqueException();
         }
@@ -43,7 +44,7 @@ class AppUserRepository extends EntityRepository implements UserLoaderInterface
      *
      * @throws OswisUserNotUniqueException
      */
-    final public function loadUserById(?int $id): ?AppUser
+    public function loadUserById(?int $id): ?AppUser
     {
         if (!$id) {
             return null;
@@ -58,11 +59,11 @@ class AppUserRepository extends EntityRepository implements UserLoaderInterface
         return ($appUser && ($appUser instanceof AppUser) && $appUser->isActive()) ? $appUser : null;
     }
 
-    final public function findByEmail(string $email): Collection
+    public function findByEmail(string $email): Collection
     {
-        return new ArrayCollection(
-            $this->createQueryBuilder('app_user')->where('app_user.email = :email')->setParameter('email', $email)->getQuery()->getResult(Query::HYDRATE_OBJECT)
-        );
+        $builder = $this->createQueryBuilder('app_user')->where('app_user.email = :email')->setParameter('email', $email);
+
+        return new ArrayCollection($builder->getQuery()->getResult(Query::HYDRATE_OBJECT));
     }
 
     final public function findOneBy(array $criteria, array $orderBy = null): ?AppUser
@@ -71,5 +72,4 @@ class AppUserRepository extends EntityRepository implements UserLoaderInterface
 
         return $result instanceof AppUser ? $result : null;
     }
-
 }
