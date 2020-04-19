@@ -1,5 +1,5 @@
 {
-  "name": "zakjakub/oswis-core-bundle",
+  "name": "oswis-org/oswis-core-bundle",
   "description": "Core module for One Simple Web IS.",
   "homepage": "https://oswis.org",
   "type": "symfony-bundle",
