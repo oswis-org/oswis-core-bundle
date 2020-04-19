@@ -34,17 +34,14 @@ trait TimestampableTrait
      */
     protected ?DateTime $updatedDateTime = null;
 
-    public function getCreatedDaysAgo(?bool $decimal = false): ?int
+    public function getCreatedDaysAgo(): ?int
     {
         if (!$this->getCreatedDateTime()) {
             return null;
         }
         $ago = $this->getCreatedDateTime()->diff(new DateTime())->days;
-        if (!$ago) {
-            return null;
-        }
 
-        return $decimal ? $ago : floor($ago);
+        return $ago ? (int)floor($ago) : null;
     }
 
     public function getCreatedDateTime(): ?DateTime
@@ -52,17 +49,14 @@ trait TimestampableTrait
         return $this->createdDateTime;
     }
 
-    public function getUpdatedDaysAgo(?bool $decimal = false): ?int
+    public function getUpdatedDaysAgo(): ?int
     {
         if (!$this->getUpdatedDateTime()) {
             return null;
         }
         $ago = $this->getUpdatedDateTime()->diff(new DateTime())->days;
-        if (!$ago) {
-            return null;
-        }
 
-        return $decimal ? $ago : floor($ago);
+        return $ago ? (int)floor($ago) : null;
     }
 
     public function getUpdatedDateTime(): ?DateTime

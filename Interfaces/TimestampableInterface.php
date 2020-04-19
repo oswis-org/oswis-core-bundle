@@ -13,7 +13,7 @@ interface TimestampableInterface
 
     public function getUpdatedDateTime(): ?DateTime;
 
-    public function getCreatedDaysAgo(?bool $decimal = false): ?int;
+    public function getCreatedDaysAgo(): ?int;
 
-    public function getUpdatedDaysAgo(?bool $decimal = false): ?int;
+    public function getUpdatedDaysAgo(): ?int;
 }

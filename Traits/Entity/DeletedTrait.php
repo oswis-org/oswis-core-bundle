@@ -47,14 +47,9 @@ trait DeletedTrait
         $this->eMailDeleteConfirmationDateTime = new DateTime();
     }
 
-    public function getDeletedDaysAgo(?bool $decimal = false): ?float
+    public function getDeletedDaysAgo(): ?int
     {
-        if (null === $this->deleted) {
-            return null;
-        }
-        $interval = $this->deleted->diff(new DateTime());
-
-        return $decimal ? $interval->days : $interval->d;
+        return $this->deleted ? $this->deleted->diff(new DateTime())->d : null;
     }
 
     /**

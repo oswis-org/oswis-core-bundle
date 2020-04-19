@@ -26,9 +26,11 @@
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Repository/AppUserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/Repository/AppUserRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Repository/AppUserRoleRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/Repository/AppUserRoleRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Repository/AppUserTypeRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/Repository/AppUserTypeRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interfaces/TimestampableInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/Interfaces/TimestampableInterface.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/DateTimeTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/DateTimeTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/DeletedTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/DeletedTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/TimestampableTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/TimestampableTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -624,14 +626,14 @@
       <workItem from="1585583984195" duration="2741000" />
       <workItem from="1585687800062" duration="167000" />
       <workItem from="1585689019472" duration="935000" />
-      <workItem from="1586636985738" duration="1993000" />
-    </task>
-    <task id="LOCAL-00454" summary="Changed count of date by DATE_RANGE_ALL.">
-      <created>1580855055584</created>
-      <option name="number" value="00454" />
-      <option name="presentableId" value="LOCAL-00454" />
-      <option name="project" value="LOCAL" />
-      <updated>1580855055584</updated>
+      <workItem from="1586636985738" duration="2397000" />
+      <workItem from="1586640119561" duration="642000" />
+      <workItem from="1586642531886" duration="1871000" />
+      <workItem from="1586777922443" duration="698000" />
+      <workItem from="1586902559314" duration="69000" />
+      <workItem from="1586902653497" duration="121000" />
+      <workItem from="1586903727877" duration="95000" />
+      <workItem from="1587328755205" duration="3864000" />
     </task>
     <task id="LOCAL-00455" summary="Changes, updates and fixes.">
       <created>1580922617569</created>
@@ -969,7 +971,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586637779447</updated>
     </task>
-    <option name="localTasksCounter" value="503" />
+    <task id="LOCAL-00503" summary="Some fixes, updates and changes.">
+      <created>1586639023941</created>
+      <option name="number" value="00503" />
+      <option name="presentableId" value="LOCAL-00503" />
+      <option name="project" value="LOCAL" />
+      <updated>1586639023941</updated>
+    </task>
+    <option name="localTasksCounter" value="504" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1046,7 +1055,6 @@
       <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="395" y="64" width="722" height="619" key="#Inspections/0.0.1366.741@0.0.1366.741" timestamp="1580843497453" />
-    <state x="1920" y="64" width="1366" height="671" key="#Inspections/0.0.3286.741@0.0.3286.741" timestamp="1578509445191" />
     <state x="555" y="29" width="802" height="706" key="#Plugins" timestamp="1581779259340">
       <screen x="0" y="0" width="1920" height="741" />
     </state>
@@ -1075,18 +1083,16 @@
     </state>
     <state x="288" y="257" width="526" height="478" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1581630489271" />
     <state x="405" y="257" width="526" height="478" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1581867123678" />
-    <state x="499" y="381" width="402" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1586637655378">
+    <state x="499" y="381" width="402" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1587332917214">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="499" y="381" width="402" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1366.741@0.0.1366.741" timestamp="1586637655378" />
-    <state x="1003" y="381" width="917" height="318" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.3286.741@0.0.3286.741" timestamp="1578507453064" />
+    <state x="499" y="381" width="402" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1366.741@0.0.1366.741" timestamp="1587332917214" />
     <state x="499" y="381" width="402" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1583147414936" />
     <state x="701" y="381" width="509" height="318" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1585586453682" />
-    <state x="369" y="0" width="881" height="735" key="CommitChangelistDialog2" timestamp="1586637779238">
+    <state x="369" y="0" width="881" height="735" key="CommitChangelistDialog2" timestamp="1586639023796">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="369" y="0" width="904" height="735" key="CommitChangelistDialog2/0.0.1366.741@0.0.1366.741" timestamp="1586637779238" />
-    <state x="1920" y="0" width="1366" height="735" key="CommitChangelistDialog2/0.0.3286.741@0.0.3286.741" timestamp="1578512687204" />
+    <state x="369" y="0" width="904" height="735" key="CommitChangelistDialog2/0.0.1366.741@0.0.1366.741" timestamp="1586639023796" />
     <state x="369" y="0" width="877" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1583147495436" />
     <state x="518" y="0" width="881" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1585586808172" />
     <state x="2289" y="0" width="877" height="741" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1578822529915" />
@@ -1095,10 +1101,6 @@
     </state>
     <state x="99" y="100" width="1168" height="541" maximized="true" key="DiffContextDialog/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1581793236312" />
     <state x="99" y="100" width="1160" height="535" maximized="true" key="DiffContextDialog/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1581854208388" />
-    <state x="386" y="128" width="316" height="496" key="FileChooserDialogImpl" timestamp="1578089539922">
-      <screen x="0" y="0" width="1366" height="741" />
-    </state>
-    <state x="386" y="128" width="316" height="496" key="FileChooserDialogImpl/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1578089539922" />
     <state x="543" y="217" width="826" height="518" key="IDE.errors.dialog" timestamp="1585583923391">
       <screen x="0" y="0" width="1920" height="741" />
     </state>
@@ -1107,13 +1109,12 @@
       <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="187" y="5" key="SettingsEditor/0.0.1366.741@0.0.1366.741" timestamp="1582926206454" />
-    <state x="450" y="5" key="SettingsEditor/0.0.3286.741@0.0.3286.741" timestamp="1578513262014" />
     <state x="187" y="5" key="SettingsEditor/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1583147442215" />
     <state x="263" y="0" width="1418" height="741" key="SettingsEditor/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1581937850921" />
-    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1586637783711">
+    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1586639025278">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1586637783711" />
+    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1586639025278" />
     <state x="0" y="213" width="1920" height="522" key="Vcs.Push.Dialog.v2/0.0.3286.741@0.0.3286.741" timestamp="1582910305041" />
     <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1583147500239" />
     <state x="555" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1585586816428" />
