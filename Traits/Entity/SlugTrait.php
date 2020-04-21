@@ -4,9 +4,9 @@
  * @noinspection MethodShouldBeFinalInspection
  */
 
-namespace Zakjakub\OswisCoreBundle\Traits\Entity;
+namespace OswisOrg\OswisCoreBundle\Traits\Entity;
 
-use Zakjakub\OswisCoreBundle\Utils\StringUtils;
+use OswisOrg\OswisCoreBundle\Utils\StringUtils;
 
 /**
  * Trait that adds slug field.

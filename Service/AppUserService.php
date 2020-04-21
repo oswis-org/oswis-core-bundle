@@ -4,28 +4,28 @@
  * @noinspection MethodShouldBeFinalInspection
  */
 
-namespace Zakjakub\OswisCoreBundle\Service;
+namespace OswisOrg\OswisCoreBundle\Service;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Exception;
 use LogicException;
+use OswisOrg\OswisCoreBundle\Entity\AppUser;
+use OswisOrg\OswisCoreBundle\Entity\AppUserRole;
+use OswisOrg\OswisCoreBundle\Entity\AppUserType;
+use OswisOrg\OswisCoreBundle\Entity\Nameable;
+use OswisOrg\OswisCoreBundle\Exceptions\OswisException;
+use OswisOrg\OswisCoreBundle\Exceptions\OswisNotImplementedException;
+use OswisOrg\OswisCoreBundle\Exceptions\OswisUserNotFoundException;
+use OswisOrg\OswisCoreBundle\Exceptions\OswisUserNotUniqueException;
+use OswisOrg\OswisCoreBundle\Provider\OswisCoreSettingsProvider;
+use OswisOrg\OswisCoreBundle\Repository\AppUserRepository;
+use OswisOrg\OswisCoreBundle\Utils\StringUtils;
 use Psr\Log\LoggerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Address;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use Zakjakub\OswisCoreBundle\Entity\AppUser;
-use Zakjakub\OswisCoreBundle\Entity\AppUserRole;
-use Zakjakub\OswisCoreBundle\Entity\AppUserType;
-use Zakjakub\OswisCoreBundle\Entity\Nameable;
-use Zakjakub\OswisCoreBundle\Exceptions\OswisException;
-use Zakjakub\OswisCoreBundle\Exceptions\OswisNotImplementedException;
-use Zakjakub\OswisCoreBundle\Exceptions\OswisUserNotFoundException;
-use Zakjakub\OswisCoreBundle\Exceptions\OswisUserNotUniqueException;
-use Zakjakub\OswisCoreBundle\Provider\OswisCoreSettingsProvider;
-use Zakjakub\OswisCoreBundle\Repository\AppUserRepository;
-use Zakjakub\OswisCoreBundle\Utils\StringUtils;
 use function random_int;
 
 class AppUserService
@@ -231,7 +231,7 @@ class AppUserService
             } catch (LogicException $e) {
                 $email->to($appUser->getEmail() ?? '');
             }
-            $email->subject($title)->htmlTemplate('@ZakjakubOswisCore/e-mail/password.html.twig')->context($data);
+            $email->subject($title)->htmlTemplate('@OswisOrgOswisCore/e-mail/password.html.twig')->context($data);
             $this->mailer->send($email);
         } catch (TransportExceptionInterface $e) {
             $this->logger->error($e->getMessage());
@@ -309,7 +309,7 @@ class AppUserService
             } catch (LogicException $e) {
                 $email->to($appUser->getEmail() ?? '');
             }
-            $email->subject($title)->htmlTemplate('@ZakjakubOswisCore/e-mail/app-user.html.twig')->context($data);
+            $email->subject($title)->htmlTemplate('@OswisOrgOswisCore/e-mail/app-user.html.twig')->context($data);
             $this->mailer->send($email);
         } catch (TransportExceptionInterface $e) {
             throw new OswisException('Problém s odesláním zprávy o změně účtu.  '.$e->getMessage());

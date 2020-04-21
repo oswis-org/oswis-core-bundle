@@ -4,11 +4,11 @@
  * @noinspection PhpUnused
  */
 
-namespace Zakjakub\OswisCoreBundle\Traits\Entity;
+namespace OswisOrg\OswisCoreBundle\Traits\Entity;
 
 use DateTime;
 use Exception;
-use Zakjakub\OswisCoreBundle\Utils\DateTimeUtils;
+use OswisOrg\OswisCoreBundle\Utils\DateTimeUtils;
 
 trait OrderDateRangeTrait
 {

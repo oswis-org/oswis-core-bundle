@@ -4,15 +4,15 @@
  * @noinspection PhpUnused
  */
 
-namespace Zakjakub\OswisCoreBundle\EventSubscriber;
+namespace OswisOrg\OswisCoreBundle\EventSubscriber;
 
+use OswisOrg\OswisCoreBundle\Provider\OswisCoreSettingsProvider;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Mailer\Event\MessageEvent;
 use Symfony\Component\Mime\Address;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Mime\Exception\LogicException;
 use Symfony\Component\Mime\Exception\RfcComplianceException;
-use Zakjakub\OswisCoreBundle\Provider\OswisCoreSettingsProvider;
 
 class MailerSubscriber implements EventSubscriberInterface
 {

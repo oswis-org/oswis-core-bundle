@@ -1,25 +1,25 @@
 <?php
 
-namespace Zakjakub\OswisCoreBundle\Service;
+namespace OswisOrg\OswisCoreBundle\Service;
 
 use DateTime;
 use Mpdf\Mpdf;
 use Mpdf\MpdfException;
+use OswisOrg\OswisCoreBundle\Provider\OswisCoreSettingsProvider;
 use Psr\Log\LoggerInterface;
 use Twig\Environment;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
-use Zakjakub\OswisCoreBundle\Provider\OswisCoreSettingsProvider;
 
 /**
  * Service for generating pdf documents.
  */
 class PdfGenerator
 {
-    public const DEFAULT_TEMPLATE = '@ZakjakubOswisCore/documents/pdf-document.html.twig';
-    public const DEFAULT_HEADER_TEMPLATE = '@ZakjakubOswisCore/documents/parts/header.html.twig';
-    public const DEFAULT_FOOTER_TEMPLATE = '@ZakjakubOswisCore/documents/parts/footer.html.twig';
+    public const DEFAULT_TEMPLATE = '@OswisOrgOswisCore/documents/pdf-document.html.twig';
+    public const DEFAULT_HEADER_TEMPLATE = '@OswisOrgOswisCore/documents/parts/header.html.twig';
+    public const DEFAULT_FOOTER_TEMPLATE = '@OswisOrgOswisCore/documents/parts/footer.html.twig';
     public const DEFAULT_PAPER_FORMAT = 'A4';
     public const DEFAULT_PAPER_LANDSCAPE = false;
 

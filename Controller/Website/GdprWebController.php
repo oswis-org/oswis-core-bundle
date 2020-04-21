@@ -3,7 +3,7 @@
  * @noinspection PhpUnused
  */
 
-namespace Zakjakub\OswisCoreBundle\Controller\Website;
+namespace OswisOrg\OswisCoreBundle\Controller\Website;
 
 use LogicException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -16,6 +16,6 @@ class GdprWebController extends AbstractController
      */
     final public function gdprAction(): Response
     {
-        return $this->render('@ZakjakubOswisCore/web/pages/gdpr.html.twig');
+        return $this->render('@OswisOrgOswisCore/web/pages/gdpr.html.twig');
     }
 }

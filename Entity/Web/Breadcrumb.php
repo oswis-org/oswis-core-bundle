@@ -1,6 +1,6 @@
 <?php
 
-namespace Zakjakub\OswisCoreBundle\Entity\Web;
+namespace OswisOrg\OswisCoreBundle\Entity\Web;
 
 class Breadcrumb
 {

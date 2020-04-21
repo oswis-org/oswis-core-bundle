@@ -7,7 +7,7 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: 'cs'
-    doctrine_behaviors_blameable_user_entity: Zakjakub\OswisCoreBundle\Entity\AppUser
+    doctrine_behaviors_blameable_user_entity: OswisOrg\OswisCoreBundle\Entity\AppUser
 
 services:
     # default configuration for services in *this* file
@@ -20,7 +20,7 @@ services:
 
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
-    #    Zakjakub\OswisCoreBundle\:
+    #    OswisOrg\OswisCoreBundle\:
     #        resource: '../../*'
     #        exclude: '../../{DependencyInjection,Entity,Migrations,Repository,Filter,Tests,Kernel.php}'
     #        public: true
@@ -28,144 +28,144 @@ services:
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
 
-    #    Zakjakub\OswisCoreBundle\Filter\SearchFilter:
-    #        class: Zakjakub\OswisCoreBundle\Filter\SearchFilter
+    #    OswisOrg\OswisCoreBundle\Filter\SearchFilter:
+    #        class: OswisOrg\OswisCoreBundle\Filter\SearchFilter
     #        autowire: true
     #        tags: [ { name: 'api_platform.filter', id: 'search' } ]
     #        public: true
 
     ### Search Filter
-    zakjakub_oswis_core.search_filter:
-        class: Zakjakub\OswisCoreBundle\Filter\SearchFilter
+    oswis_org_oswis_core.search_filter:
+        class: OswisOrg\OswisCoreBundle\Filter\SearchFilter
         autowire: true
         tags: [ { name: 'api_platform.filter', id: 'search' } ]
         public: true
-    Zakjakub\OswisCoreBundle\Filter\SearchFilter:
-        alias: zakjakub_oswis_core.search_filter
+    OswisOrg\OswisCoreBundle\Filter\SearchFilter:
+        alias: oswis_org_oswis_core.search_filter
         public: true
 
     ### OSWIS Core Settings Provider
-    zakjakub_oswis_core.oswis_core_settings_provider:
-        class: Zakjakub\OswisCoreBundle\Provider\OswisCoreSettingsProvider
+    oswis_org_oswis_core.oswis_core_settings_provider:
+        class: OswisOrg\OswisCoreBundle\Provider\OswisCoreSettingsProvider
         autowire: true
         public: true
-    Zakjakub\OswisCoreBundle\Provider\OswisCoreSettingsProvider:
-        alias: zakjakub_oswis_core.oswis_core_settings_provider
+    OswisOrg\OswisCoreBundle\Provider\OswisCoreSettingsProvider:
+        alias: oswis_org_oswis_core.oswis_core_settings_provider
         public: true
 
     ### AGE UTILS
-    zakjakub_oswis_core.oswis_core_age_utils:
-        class: Zakjakub\OswisCoreBundle\Utils\AgeUtils
+    oswis_org_oswis_core.oswis_core_age_utils:
+        class: OswisOrg\OswisCoreBundle\Utils\AgeUtils
         autowire: true
         public: true
-    Zakjakub\OswisCoreBundle\Utils\AgeUtils:
-        alias: zakjakub_oswis_core.oswis_core_age_utils
+    OswisOrg\OswisCoreBundle\Utils\AgeUtils:
+        alias: oswis_org_oswis_core.oswis_core_age_utils
         public: true
 
     ### COLOR UTILS
-    zakjakub_oswis_core.oswis_core_color_utils:
-        class: Zakjakub\OswisCoreBundle\Utils\ColorUtils
+    oswis_org_oswis_core.oswis_core_color_utils:
+        class: OswisOrg\OswisCoreBundle\Utils\ColorUtils
         autowire: true
         public: true
-    Zakjakub\OswisCoreBundle\Utils\ColorUtils:
-        alias: zakjakub_oswis_core.oswis_core_color_utils
+    OswisOrg\OswisCoreBundle\Utils\ColorUtils:
+        alias: oswis_org_oswis_core.oswis_core_color_utils
         public: true
 
     ### DateTime UTILS
-    zakjakub_oswis_core.oswis_core_date_time_utils:
-        class: Zakjakub\OswisCoreBundle\Utils\DateTimeUtils
+    oswis_org_oswis_core.oswis_core_date_time_utils:
+        class: OswisOrg\OswisCoreBundle\Utils\DateTimeUtils
         autowire: true
         public: true
-    Zakjakub\OswisCoreBundle\Utils\DateTimeUtils:
-        alias: zakjakub_oswis_core.oswis_core_date_time_utils
+    OswisOrg\OswisCoreBundle\Utils\DateTimeUtils:
+        alias: oswis_org_oswis_core.oswis_core_date_time_utils
         public: true
 
     ### Email UTILS
-    zakjakub_oswis_core.oswis_core_email_utils:
-        class: Zakjakub\OswisCoreBundle\Utils\EmailUtils
+    oswis_org_oswis_core.oswis_core_email_utils:
+        class: OswisOrg\OswisCoreBundle\Utils\EmailUtils
         autowire: true
         public: true
-    Zakjakub\OswisCoreBundle\Utils\EmailUtils:
-        alias: zakjakub_oswis_core.oswis_core_email_utils
+    OswisOrg\OswisCoreBundle\Utils\EmailUtils:
+        alias: oswis_org_oswis_core.oswis_core_email_utils
         public: true
 
     ### File UTILS
-    zakjakub_oswis_core.oswis_core_file_utils:
-        class: Zakjakub\OswisCoreBundle\Utils\FileUtils
+    oswis_org_oswis_core.oswis_core_file_utils:
+        class: OswisOrg\OswisCoreBundle\Utils\FileUtils
         autowire: true
         public: true
-    Zakjakub\OswisCoreBundle\Utils\FileUtils:
-        alias: zakjakub_oswis_core.oswis_core_file_utils
+    OswisOrg\OswisCoreBundle\Utils\FileUtils:
+        alias: oswis_org_oswis_core.oswis_core_file_utils
         public: true
 
     ### SourceCode UTILS
-    zakjakub_oswis_core.oswis_core_source_code_utils:
-        class: Zakjakub\OswisCoreBundle\Utils\SourceCodeUtils
+    oswis_org_oswis_core.oswis_core_source_code_utils:
+        class: OswisOrg\OswisCoreBundle\Utils\SourceCodeUtils
         autowire: true
         public: true
-    Zakjakub\OswisCoreBundle\Utils\SourceCodeUtils:
-        alias: zakjakub_oswis_core.oswis_core_source_code_utils
+    OswisOrg\OswisCoreBundle\Utils\SourceCodeUtils:
+        alias: oswis_org_oswis_core.oswis_core_source_code_utils
         public: true
 
     ### AGE UTILS
-    zakjakub_oswis_core.oswis_core_spam_date_time_encoder:
-        class: Zakjakub\OswisCoreBundle\Utils\SpamDateTimeEncoder
+    oswis_org_oswis_core.oswis_core_spam_date_time_encoder:
+        class: OswisOrg\OswisCoreBundle\Utils\SpamDateTimeEncoder
         autowire: true
         public: true
-    Zakjakub\OswisCoreBundle\Utils\SpamDateTimeEncoder:
-        alias: zakjakub_oswis_core.oswis_core_spam_date_time_encoder
+    OswisOrg\OswisCoreBundle\Utils\SpamDateTimeEncoder:
+        alias: oswis_org_oswis_core.oswis_core_spam_date_time_encoder
         public: true
 
     ### String UTILS
-    zakjakub_oswis_core.oswis_core_source_string_utils:
-        class: Zakjakub\OswisCoreBundle\Utils\StringUtils
+    oswis_org_oswis_core.oswis_core_source_string_utils:
+        class: OswisOrg\OswisCoreBundle\Utils\StringUtils
         autowire: true
         public: true
-    Zakjakub\OswisCoreBundle\Utils\StringUtils:
-        alias: zakjakub_oswis_core.oswis_core_source_string_utils
+    OswisOrg\OswisCoreBundle\Utils\StringUtils:
+        alias: oswis_org_oswis_core.oswis_core_source_string_utils
         public: true
 
     ### AppUser Controller
-    zakjakub_oswis_core.app_user_controller:
-        class: Zakjakub\OswisCoreBundle\Controller\AppUserController
+    oswis_org_oswis_core.app_user_controller:
+        class: OswisOrg\OswisCoreBundle\Controller\AppUserController
         autowire: true
         public: true
         arguments:
-            - '@zakjakub_oswis_core.app_user_service'
-    Zakjakub\OswisCoreBundle\Controller\AppUserController:
-        alias: zakjakub_oswis_core.app_user_controller
+            - '@oswis_org_oswis_core.app_user_service'
+    OswisOrg\OswisCoreBundle\Controller\AppUserController:
+        alias: oswis_org_oswis_core.app_user_controller
         public: true
 
     ### Homepage Web Controller
-    zakjakub_oswis_core.homepage_web_controller:
-        class: Zakjakub\OswisCoreBundle\Controller\Website\HomepageWebController
+    oswis_org_oswis_core.homepage_web_controller:
+        class: OswisOrg\OswisCoreBundle\Controller\Website\HomepageWebController
         autowire: true
         public: true
-    Zakjakub\OswisCoreBundle\Controller\Website\HomepageWebController:
-        alias: zakjakub_oswis_core.homepage_web_controller
+    OswisOrg\OswisCoreBundle\Controller\Website\HomepageWebController:
+        alias: oswis_org_oswis_core.homepage_web_controller
         public: true
 
     ### Portal Web Controller
-    zakjakub_oswis_core.portal_web_controller:
-        class: Zakjakub\OswisCoreBundle\Controller\Website\PortalWebController
+    oswis_org_oswis_core.portal_web_controller:
+        class: OswisOrg\OswisCoreBundle\Controller\Website\PortalWebController
         autowire: true
         public: true
-    Zakjakub\OswisCoreBundle\Controller\Website\PortalWebController:
-        alias: zakjakub_oswis_core.portal_web_controller
+    OswisOrg\OswisCoreBundle\Controller\Website\PortalWebController:
+        alias: oswis_org_oswis_core.portal_web_controller
         public: true
 
     ### GDPR Web Controller
-    zakjakub_oswis_core.gdpr_web_controller:
-        class: Zakjakub\OswisCoreBundle\Controller\Website\GdprWebController
+    oswis_org_oswis_core.gdpr_web_controller:
+        class: OswisOrg\OswisCoreBundle\Controller\Website\GdprWebController
         autowire: true
         public: true
-    Zakjakub\OswisCoreBundle\Controller\Website\GdprWebController:
-        alias: zakjakub_oswis_core.gdpr_web_controller
+    OswisOrg\OswisCoreBundle\Controller\Website\GdprWebController:
+        alias: oswis_org_oswis_core.gdpr_web_controller
         public: true
 
     ### AppUser Service
-    zakjakub_oswis_core.app_user_service:
-        class: Zakjakub\OswisCoreBundle\Service\AppUserService
+    oswis_org_oswis_core.app_user_service:
+        class: OswisOrg\OswisCoreBundle\Service\AppUserService
         autowire: true
         public: true
         arguments:
@@ -173,97 +173,97 @@ services:
             - '@doctrine.orm.entity_manager'
             - '@monolog.logger'
             - '@mailer.mailer'
-            - '@zakjakub_oswis_core.oswis_core_settings_provider'
-    Zakjakub\OswisCoreBundle\Service\AppUserService:
-        alias: zakjakub_oswis_core.app_user_service
+            - '@oswis_org_oswis_core.oswis_core_settings_provider'
+    OswisOrg\OswisCoreBundle\Service\AppUserService:
+        alias: oswis_org_oswis_core.app_user_service
         public: true
 
     ### AppUser Role Service
-    zakjakub_oswis_core.app_user_role_service:
-        class: Zakjakub\OswisCoreBundle\Service\AppUserRoleService
+    oswis_org_oswis_core.app_user_role_service:
+        class: OswisOrg\OswisCoreBundle\Service\AppUserRoleService
         autowire: true
         public: true
         arguments:
             - '@doctrine.orm.entity_manager'
             - '@monolog.logger'
-    Zakjakub\OswisCoreBundle\Service\AppUserRoleService:
-        alias: zakjakub_oswis_core.app_user_role_service
+    OswisOrg\OswisCoreBundle\Service\AppUserRoleService:
+        alias: oswis_org_oswis_core.app_user_role_service
         public: true
 
     ### AppUser Form Service
-    zakjakub_oswis_core.app_user_type_service:
-        class: Zakjakub\OswisCoreBundle\Service\AppUserTypeService
+    oswis_org_oswis_core.app_user_type_service:
+        class: OswisOrg\OswisCoreBundle\Service\AppUserTypeService
         autowire: true
         public: true
         arguments:
             - '@doctrine.orm.entity_manager'
             - '@monolog.logger'
-    Zakjakub\OswisCoreBundle\Service\AppUserTypeService:
-        alias: zakjakub_oswis_core.app_user_type_service
+    OswisOrg\OswisCoreBundle\Service\AppUserTypeService:
+        alias: oswis_org_oswis_core.app_user_type_service
         public: true
 
     ### AppUser Action Request
-    zakjakub_oswis_core.app_user_action_request:
-        class: Zakjakub\OswisCoreBundle\Api\Dto\AppUserActionRequest
+    oswis_org_oswis_core.app_user_action_request:
+        class: OswisOrg\OswisCoreBundle\Api\Dto\AppUserActionRequest
         autowire: true
         public: true
-    Zakjakub\OswisCoreBundle\Api\Dto\AppUserActionRequest:
-        alias: zakjakub_oswis_core.app_user_action_request
+    OswisOrg\OswisCoreBundle\Api\Dto\AppUserActionRequest:
+        alias: oswis_org_oswis_core.app_user_action_request
         public: true
 
     ### AppUser Action Subscriber
-    zakjakub_oswis_core.app_user_action_subscriber:
-        class: Zakjakub\OswisCoreBundle\Api\EventSubscriber\AppUserActionSubscriber
+    oswis_org_oswis_core.app_user_action_subscriber:
+        class: OswisOrg\OswisCoreBundle\Api\EventSubscriber\AppUserActionSubscriber
         autowire: true
         public: true
         arguments:
-            - '@zakjakub_oswis_core.app_user_service'
-    Zakjakub\OswisCoreBundle\Api\EventSubscriber\AppUserActionSubscriber:
-        alias: zakjakub_oswis_core.app_user_action_subscriber
+            - '@oswis_org_oswis_core.app_user_service'
+    OswisOrg\OswisCoreBundle\Api\EventSubscriber\AppUserActionSubscriber:
+        alias: oswis_org_oswis_core.app_user_action_subscriber
         public: true
 
     ### Mailer Subscriber
-    zakjakub_oswis_core.mailer_subscriber:
-        class: Zakjakub\OswisCoreBundle\EventSubscriber\MailerSubscriber
+    oswis_org_oswis_core.mailer_subscriber:
+        class: OswisOrg\OswisCoreBundle\EventSubscriber\MailerSubscriber
         autowire: true
         public: true
         arguments:
-            - '@zakjakub_oswis_core.oswis_core_settings_provider'
-    Zakjakub\OswisCoreBundle\EventSubscriber\MailerSubscriber:
-        alias: zakjakub_oswis_core.mailer_subscriber
+            - '@oswis_org_oswis_core.oswis_core_settings_provider'
+    OswisOrg\OswisCoreBundle\EventSubscriber\MailerSubscriber:
+        alias: oswis_org_oswis_core.mailer_subscriber
         public: true
 
     ### AppUser Subscriber
-    zakjakub_oswis_core.app_user_subscriber:
-        class: Zakjakub\OswisCoreBundle\EventSubscriber\AppUserSubscriber
+    oswis_org_oswis_core.app_user_subscriber:
+        class: OswisOrg\OswisCoreBundle\EventSubscriber\AppUserSubscriber
         autowire: true
         public: true
         arguments:
-            - '@zakjakub_oswis_core.app_user_service'
-    Zakjakub\OswisCoreBundle\EventSubscriber\AppUserSubscriber:
-        alias: zakjakub_oswis_core.app_user_subscriber
+            - '@oswis_org_oswis_core.app_user_service'
+    OswisOrg\OswisCoreBundle\EventSubscriber\AppUserSubscriber:
+        alias: oswis_org_oswis_core.app_user_subscriber
         public: true
 
     ### PDF Generator
-    zakjakub_oswis_core.pdf_generator:
-        class: Zakjakub\OswisCoreBundle\Service\PdfGenerator
+    oswis_org_oswis_core.pdf_generator:
+        class: OswisOrg\OswisCoreBundle\Service\PdfGenerator
         autowire: true
         public: true
         arguments:
             - '@monolog.logger'
             - '@twig'
-            - '@zakjakub_oswis_core.oswis_core_settings_provider'
-    Zakjakub\OswisCoreBundle\Service\PdfGenerator:
-        alias: zakjakub_oswis_core.pdf_generator
+            - '@oswis_org_oswis_core.oswis_core_settings_provider'
+    OswisOrg\OswisCoreBundle\Service\PdfGenerator:
+        alias: oswis_org_oswis_core.pdf_generator
         public: true
 
     ### Traits folder
-    Zakjakub\OswisCoreBundle\Traits\:
+    OswisOrg\OswisCoreBundle\Traits\:
         resource: '../../Traits/*'
         public: true
 
     ### EventSubscriber folder
-    Zakjakub\OswisCoreBundle\EventSubscriber\:
+    OswisOrg\OswisCoreBundle\EventSubscriber\:
         resource: '../../EventSubscriber/*'
         tags: [ { name: 'kernel.view'} ]
         # arguments:
@@ -271,15 +271,15 @@ services:
         public: true
 
     ### AppUser Provider
-    Zakjakub\OswisCoreBundle\Security\AppUserProvider:
-        class: Zakjakub\OswisCoreBundle\Security\AppUserProvider
+    OswisOrg\OswisCoreBundle\Security\AppUserProvider:
+        class: OswisOrg\OswisCoreBundle\Security\AppUserProvider
         autowire: true
         public: true
         arguments:
           ['@doctrine.orm.entity_manager.abstract']
 
     ### Security folder
-    Zakjakub\OswisCoreBundle\Security\:
+    OswisOrg\OswisCoreBundle\Security\:
         resource: '../../Security/*'
         public: true
 

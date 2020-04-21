@@ -4,15 +4,15 @@
  * @noinspection MethodShouldBeFinalInspection
  */
 
-namespace Zakjakub\OswisCoreBundle\Entity\AbstractClass;
+namespace OswisOrg\OswisCoreBundle\Entity\AbstractClass;
 
+use OswisOrg\OswisCoreBundle\Entity\AppUserRole;
+use OswisOrg\OswisCoreBundle\Interfaces\BasicEntityInterface;
+use OswisOrg\OswisCoreBundle\Traits\Entity\BasicEntityTrait;
+use OswisOrg\OswisCoreBundle\Traits\Entity\UserTrait;
 use Serializable;
 use Symfony\Component\Security\Core\User\EquatableInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
-use Zakjakub\OswisCoreBundle\Entity\AppUserRole;
-use Zakjakub\OswisCoreBundle\Interfaces\BasicEntityInterface;
-use Zakjakub\OswisCoreBundle\Traits\Entity\BasicEntityTrait;
-use Zakjakub\OswisCoreBundle\Traits\Entity\UserTrait;
 
 /**
  * Abstract class containing basic properties for user of application.

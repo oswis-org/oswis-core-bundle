@@ -3,7 +3,7 @@
  * @noinspection PhpUnused
  */
 
-namespace Zakjakub\OswisCoreBundle\Entity\AbstractClass;
+namespace OswisOrg\OswisCoreBundle\Entity\AbstractClass;
 
 use Symfony\Component\HttpFoundation\File\File;
 

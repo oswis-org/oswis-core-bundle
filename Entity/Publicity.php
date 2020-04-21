@@ -1,6 +1,6 @@
 <?php
 
-namespace Zakjakub\OswisCoreBundle\Entity;
+namespace OswisOrg\OswisCoreBundle\Entity;
 
 class Publicity
 {

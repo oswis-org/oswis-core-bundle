@@ -3,7 +3,7 @@
  * @noinspection PhpUnusedAliasInspection
  */
 
-namespace Zakjakub\OswisCoreBundle\Traits\Entity;
+namespace OswisOrg\OswisCoreBundle\Traits\Entity;
 
 /**
  * Trait adds **common basic fields** for entities (id, created/updatedDateTime...).

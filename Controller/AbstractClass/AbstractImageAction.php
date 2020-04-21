@@ -4,14 +4,14 @@
  * @noinspection MethodShouldBeFinalInspection
  */
 
-namespace Zakjakub\OswisCoreBundle\Controller\AbstractClass;
+namespace OswisOrg\OswisCoreBundle\Controller\AbstractClass;
 
 use ApiPlatform\Core\Bridge\Symfony\Validator\Exception\ValidationException;
 use InvalidArgumentException;
+use OswisOrg\OswisCoreBundle\Entity\AbstractClass\AbstractImage;
 use Symfony\Component\Form\Exception\LogicException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\OptionsResolver\Exception\InvalidOptionsException;
-use Zakjakub\OswisCoreBundle\Entity\AbstractClass\AbstractImage;
 
 abstract class AbstractImageAction extends AbstractFileAction
 {

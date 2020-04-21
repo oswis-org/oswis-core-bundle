@@ -4,7 +4,7 @@
  * @noinspection PhpUnused
  */
 
-namespace Zakjakub\OswisCoreBundle\Entity;
+namespace OswisOrg\OswisCoreBundle\Entity;
 
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
@@ -15,12 +15,12 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Zakjakub\OswisCoreBundle\Entity\AbstractClass\AbstractAppUser;
-use Zakjakub\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
+use OswisOrg\OswisCoreBundle\Entity\AbstractClass\AbstractAppUser;
+use OswisOrg\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
 
 /**
  * User of application.
- * @Doctrine\ORM\Mapping\Entity(repositoryClass="Zakjakub\OswisCoreBundle\Repository\AppUserRepository")
+ * @Doctrine\ORM\Mapping\Entity(repositoryClass="OswisOrg\OswisCoreBundle\Repository\AppUserRepository")
  * @Doctrine\ORM\Mapping\Table(name="core_app_user")
  * @ApiResource(
  *   attributes={
@@ -96,13 +96,13 @@ class AppUser extends AbstractAppUser
 {
     /**
      * @Doctrine\ORM\Mapping\OneToMany(
-     *     targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUserFlagConnection", cascade={"all"}, mappedBy="appUser", fetch="EAGER"
+     *     targetEntity="OswisOrg\OswisCoreBundle\Entity\AppUserFlagConnection", cascade={"all"}, mappedBy="appUser", fetch="EAGER"
      * )
      */
     protected ?Collection $appUserFlags = null;
 
     /**
-     * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="Zakjakub\OswisCoreBundle\Entity\AppUserType", fetch="EAGER")
+     * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="OswisOrg\OswisCoreBundle\Entity\AppUserType", fetch="EAGER")
      * @Doctrine\ORM\Mapping\JoinColumn(name="app_user_type_id", referencedColumnName="id")
      */
     protected ?AppUserType $appUserType = null;

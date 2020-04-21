@@ -1,12 +1,12 @@
 <?php
 
-namespace Zakjakub\OswisCoreBundle\Entity\AbstractClass;
+namespace OswisOrg\OswisCoreBundle\Entity\AbstractClass;
 
-use Zakjakub\OswisCoreBundle\Interfaces\PersonInterface;
-use Zakjakub\OswisCoreBundle\Traits\Entity\BasicEntityTrait;
-use Zakjakub\OswisCoreBundle\Traits\Entity\ForeignNationalityTrait;
-use Zakjakub\OswisCoreBundle\Traits\Entity\IdCardTrait;
-use Zakjakub\OswisCoreBundle\Traits\Entity\PersonBasicTrait;
+use OswisOrg\OswisCoreBundle\Interfaces\PersonInterface;
+use OswisOrg\OswisCoreBundle\Traits\Entity\BasicEntityTrait;
+use OswisOrg\OswisCoreBundle\Traits\Entity\ForeignNationalityTrait;
+use OswisOrg\OswisCoreBundle\Traits\Entity\IdCardTrait;
+use OswisOrg\OswisCoreBundle\Traits\Entity\PersonBasicTrait;
 
 /**
  * Abstract class containing basic properties for person.

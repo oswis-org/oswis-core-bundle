@@ -4,9 +4,9 @@
  * @noinspection PhpUnused
  */
 
-namespace Zakjakub\OswisCoreBundle\Traits\Entity;
+namespace OswisOrg\OswisCoreBundle\Traits\Entity;
 
-use Zakjakub\OswisCoreBundle\Entity\Publicity;
+use OswisOrg\OswisCoreBundle\Entity\Publicity;
 
 /**
  * Trait adds fields that describing visibility of entity.

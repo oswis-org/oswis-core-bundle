@@ -1,16 +1,16 @@
 <?php
 
-namespace Zakjakub\OswisCoreBundle\Entity\AbstractClass;
+namespace OswisOrg\OswisCoreBundle\Entity\AbstractClass;
 
-use Zakjakub\OswisCoreBundle\Interfaces\BasicEntityInterface;
-use Zakjakub\OswisCoreBundle\Traits\Entity\BasicEntityTrait;
-use Zakjakub\OswisCoreBundle\Traits\Entity\BasicMailConfirmationTrait;
-use Zakjakub\OswisCoreBundle\Traits\Entity\DateTimeTrait;
-use Zakjakub\OswisCoreBundle\Traits\Entity\ExternalIdTrait;
-use Zakjakub\OswisCoreBundle\Traits\Entity\InternalNoteTrait;
-use Zakjakub\OswisCoreBundle\Traits\Entity\NoteTrait;
-use Zakjakub\OswisCoreBundle\Traits\Entity\NumericValueTrait;
-use Zakjakub\OswisCoreBundle\Traits\Entity\TypeTrait;
+use OswisOrg\OswisCoreBundle\Interfaces\BasicEntityInterface;
+use OswisOrg\OswisCoreBundle\Traits\Entity\BasicEntityTrait;
+use OswisOrg\OswisCoreBundle\Traits\Entity\BasicMailConfirmationTrait;
+use OswisOrg\OswisCoreBundle\Traits\Entity\DateTimeTrait;
+use OswisOrg\OswisCoreBundle\Traits\Entity\ExternalIdTrait;
+use OswisOrg\OswisCoreBundle\Traits\Entity\InternalNoteTrait;
+use OswisOrg\OswisCoreBundle\Traits\Entity\NoteTrait;
+use OswisOrg\OswisCoreBundle\Traits\Entity\NumericValueTrait;
+use OswisOrg\OswisCoreBundle\Traits\Entity\TypeTrait;
 
 /**
  * Abstract class containing basic properties for payment.

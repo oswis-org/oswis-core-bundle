@@ -5,7 +5,7 @@
  * @noinspection ForeachInvariantsInspection
  */
 
-namespace Zakjakub\OswisCoreBundle\Filter;
+namespace OswisOrg\OswisCoreBundle\Filter;
 
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\AbstractContextAwareFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Util\QueryNameGeneratorInterface;

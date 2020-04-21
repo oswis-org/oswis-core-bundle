@@ -1,6 +1,6 @@
 <?php /** @noinspection PhpUnused */
 
-namespace Zakjakub\OswisCoreBundle\Interfaces;
+namespace OswisOrg\OswisCoreBundle\Interfaces;
 
 use DateTime;
 

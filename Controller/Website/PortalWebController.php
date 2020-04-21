@@ -3,7 +3,7 @@
  * @noinspection PhpUnused
  */
 
-namespace Zakjakub\OswisCoreBundle\Controller\Website;
+namespace OswisOrg\OswisCoreBundle\Controller\Website;
 
 use LogicException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -19,6 +19,6 @@ class PortalWebController extends AbstractController
      */
     final public function portal(): Response
     {
-        return $this->render('@ZakjakubOswisCore/web/pages/portal.html.twig');
+        return $this->render('@OswisOrgOswisCore/web/pages/portal.html.twig');
     }
 }

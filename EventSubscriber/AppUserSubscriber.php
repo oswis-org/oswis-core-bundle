@@ -3,17 +3,17 @@
  * @noinspection PhpUnused
  */
 
-namespace Zakjakub\OswisCoreBundle\EventSubscriber;
+namespace OswisOrg\OswisCoreBundle\EventSubscriber;
 
 use ApiPlatform\Core\EventListener\EventPriorities;
+use OswisOrg\OswisCoreBundle\Entity\AppUser;
+use OswisOrg\OswisCoreBundle\Exceptions\OswisException;
+use OswisOrg\OswisCoreBundle\Service\AppUserService;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Exception\SuspiciousOperationException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\ViewEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
-use Zakjakub\OswisCoreBundle\Entity\AppUser;
-use Zakjakub\OswisCoreBundle\Exceptions\OswisException;
-use Zakjakub\OswisCoreBundle\Service\AppUserService;
 
 final class AppUserSubscriber implements EventSubscriberInterface
 {

@@ -3,7 +3,7 @@
  * @noinspection MethodShouldBeFinalInspection
  */
 
-namespace Zakjakub\OswisCoreBundle\Traits\Entity;
+namespace OswisOrg\OswisCoreBundle\Traits\Entity;
 
 /**
  * Trait adds name field and __toString().

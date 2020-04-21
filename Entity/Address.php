@@ -3,7 +3,7 @@
  * @noinspection ClassNameCollisionInspection
  */
 
-namespace Zakjakub\OswisCoreBundle\Entity;
+namespace OswisOrg\OswisCoreBundle\Entity;
 
 /**
  * Postal address.

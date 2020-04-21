@@ -3,17 +3,17 @@
  * @noinspection MethodShouldBeFinalInspection
  */
 
-namespace Zakjakub\OswisCoreBundle\Controller\AbstractClass;
+namespace OswisOrg\OswisCoreBundle\Controller\AbstractClass;
 
 use ApiPlatform\Core\Bridge\Symfony\Validator\Exception\ValidationException;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use InvalidArgumentException;
+use OswisOrg\OswisCoreBundle\Entity\AbstractClass\AbstractFile;
 use Symfony\Component\Form\Exception\LogicException;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\OptionsResolver\Exception\InvalidOptionsException;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
-use Zakjakub\OswisCoreBundle\Entity\AbstractClass\AbstractFile;
 
 abstract class AbstractFileAction
 {

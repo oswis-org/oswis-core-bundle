@@ -4,10 +4,10 @@
  * @noinspection PhpUnused
  */
 
-namespace Zakjakub\OswisCoreBundle\Traits\Entity;
+namespace OswisOrg\OswisCoreBundle\Traits\Entity;
 
 use DateTime;
-use Zakjakub\OswisCoreBundle\Utils\DateTimeUtils;
+use OswisOrg\OswisCoreBundle\Utils\DateTimeUtils;
 
 /**
  * Trait adds startDateTime and endDateTime fields and some other functions.

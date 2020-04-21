@@ -3,7 +3,7 @@
 <head>
     <meta charset='UTF-8'>
     <title>{% block title %}{{ title|default('Dokument z OSWIS') }}{% endblock %}</title>
-    <style>{% block css %}{% include '@ZakjakubOswisCore/documents/pdf-document.css.twig' %}{% endblock css %}</style>
+    <style>{% block css %}{% include '@OswisOrgOswisCore/documents/pdf-document.css.twig' %}{% endblock css %}</style>
     <style>{% block additional_css %}{% endblock additional_css %}</style>
 </head>
 <body>
@@ -13,7 +13,7 @@
         {% block content_logo %}
             <div class="document-images">
                 <div class="document-logo">
-                    <img src="{{ absolute_url(asset('bundles/zakjakuboswiscore/logo.png')) }}" alt="Logo"/>
+                    <img src="{{ absolute_url(asset('bundles/oswisorgoswiscore/logo.png')) }}" alt="Logo"/>
                 </div>
             </div>
         {% endblock content_logo %}

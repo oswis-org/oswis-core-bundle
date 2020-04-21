@@ -4,14 +4,14 @@
  * @noinspection PhpUnused
  */
 
-namespace Zakjakub\OswisCoreBundle\Controller;
+namespace OswisOrg\OswisCoreBundle\Controller;
 
 use Exception;
 use LogicException;
+use OswisOrg\OswisCoreBundle\Exceptions\OswisException;
+use OswisOrg\OswisCoreBundle\Service\AppUserService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Zakjakub\OswisCoreBundle\Exceptions\OswisException;
-use Zakjakub\OswisCoreBundle\Service\AppUserService;
 
 class AppUserController extends AbstractController
 {
@@ -37,14 +37,14 @@ class AppUserController extends AbstractController
                 'message' => 'Účet byl úspěšně aktivován.',
             ];
 
-            return $this->render('@ZakjakubOswisCore/web/pages/message.html.twig', $data ?? []);
+            return $this->render('@OswisOrgOswisCore/web/pages/message.html.twig', $data ?? []);
         } catch (OswisException $e) {
             $data = [
                 'title'   => 'Účet nebyl aktivován!',
                 'message' => $e->getMessage(),
             ];
 
-            return $this->render('@ZakjakubOswisCore/web/pages/message.html.twig', $data ?? []);
+            return $this->render('@OswisOrgOswisCore/web/pages/message.html.twig', $data ?? []);
         }
     }
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Zakjakub\OswisCoreBundle\Utils;
+namespace OswisOrg\OswisCoreBundle\Utils;
 
 use function strlen;
 

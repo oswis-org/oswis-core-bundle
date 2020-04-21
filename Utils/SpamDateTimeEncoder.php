@@ -3,7 +3,7 @@
  * @noinspection PhpUnused
  */
 
-namespace Zakjakub\OswisCoreBundle\Utils;
+namespace OswisOrg\OswisCoreBundle\Utils;
 
 use Psr\Log\LoggerInterface;
 

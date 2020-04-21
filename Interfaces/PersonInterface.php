@@ -1,6 +1,6 @@
 <?php
 
-namespace Zakjakub\OswisCoreBundle\Interfaces;
+namespace OswisOrg\OswisCoreBundle\Interfaces;
 
 interface PersonInterface extends IdInterface, BirthDateInterface, FullNameInterface, BasicEntityInterface
 {

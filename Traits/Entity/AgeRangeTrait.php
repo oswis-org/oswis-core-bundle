@@ -5,11 +5,11 @@
  * @noinspection PhpUnused
  */
 
-namespace Zakjakub\OswisCoreBundle\Traits\Entity;
+namespace OswisOrg\OswisCoreBundle\Traits\Entity;
 
 use DateTime;
 use Exception;
-use Zakjakub\OswisCoreBundle\Utils\AgeUtils;
+use OswisOrg\OswisCoreBundle\Utils\AgeUtils;
 
 /**
  * Trait adds createdDateTime and updatedDateTime fields.

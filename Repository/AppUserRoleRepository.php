@@ -3,12 +3,12 @@
  * @noinspection PhpUnused
  */
 
-namespace Zakjakub\OswisCoreBundle\Repository;
+namespace OswisOrg\OswisCoreBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Query;
 use Exception;
-use Zakjakub\OswisCoreBundle\Entity\AppUserRole;
+use OswisOrg\OswisCoreBundle\Entity\AppUserRole;
 
 class AppUserRoleRepository extends EntityRepository
 {

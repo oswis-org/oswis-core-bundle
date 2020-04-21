@@ -4,12 +4,12 @@
  * @noinspection MethodShouldBeFinalInspection
  */
 
-namespace Zakjakub\OswisCoreBundle\Entity\AbstractClass;
+namespace OswisOrg\OswisCoreBundle\Entity\AbstractClass;
 
 use ApiPlatform\Core\Annotation\ApiProperty;
+use OswisOrg\OswisCoreBundle\Interfaces\BasicEntityInterface;
+use OswisOrg\OswisCoreBundle\Traits\Entity\BasicEntityTrait;
 use Symfony\Component\HttpFoundation\File\File;
-use Zakjakub\OswisCoreBundle\Interfaces\BasicEntityInterface;
-use Zakjakub\OswisCoreBundle\Traits\Entity\BasicEntityTrait;
 
 /**
  * Abstract file class for use in uploads and forms.

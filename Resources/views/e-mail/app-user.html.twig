@@ -1,4 +1,4 @@
-{% extends '@ZakjakubOswisCore/e-mail/message.html.twig' %}
+{% extends '@OswisOrgOswisCore/e-mail/message.html.twig' %}
 
 {% block html_title %}{{ email.subject|default('Změna v uživatelském účtu') }}{% endblock %}
 {% block meta_description %}{{ block('html_title') }}{% endblock meta_description %}
@@ -16,8 +16,8 @@
 
     {% if type == 'activation-request' and token %}
         Ještě je nutné provést aktivaci uživatelského účtu. Aktivaci provede{{ f ? 'te' : 'š' }} na následujícím odkazu:<br>
-        <a href="{{ absolute_url(path('zakjakub_oswis_core_app_user_activation', {'token': token})) }}" title="Odkaz pro aktivaci účtu"
-           target="_blank">{{ absolute_url(path('zakjakub_oswis_core_app_user_activation', {'token': token})) }}</a>.<br>
+        <a href="{{ absolute_url(path('oswis_org_oswis_core_app_user_activation', {'token': token})) }}" title="Odkaz pro aktivaci účtu"
+           target="_blank">{{ absolute_url(path('oswis_org_oswis_core_app_user_activation', {'token': token})) }}</a>.<br>
         <small>Odkaz je platný 24 hodin od vygenerování.</small>
     {% endif %}
 

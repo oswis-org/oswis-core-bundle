@@ -5,7 +5,7 @@
  * @noinspection PhpUnused
  */
 
-namespace Zakjakub\OswisCoreBundle\DependencyInjection;
+namespace OswisOrg\OswisCoreBundle\DependencyInjection;
 
 use RuntimeException;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
@@ -24,7 +24,7 @@ class Configuration implements ConfigurationInterface
      */
     final public function getConfigTreeBuilder(): TreeBuilder
     {
-        $treeBuilder = new TreeBuilder('zakjakub_oswis_core', 'array');
+        $treeBuilder = new TreeBuilder('oswis_org_oswis_core', 'array');
         $rootNode = $treeBuilder->getRootNode();
         assert($rootNode instanceof ArrayNodeDefinition);
         $rootNode->info('Default configuration for core module of OSWIS (One Simple Web IS).');

@@ -1,8 +1,8 @@
 <?php
 
-namespace Zakjakub\OswisCoreBundle\Interfaces;
+namespace OswisOrg\OswisCoreBundle\Interfaces;
 
-use Zakjakub\OswisCoreBundle\Entity\AbstractClass\AbstractRevisionContainer;
+use OswisOrg\OswisCoreBundle\Entity\AbstractClass\AbstractRevisionContainer;
 
 interface RevisionInterface
 {

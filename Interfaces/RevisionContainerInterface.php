@@ -1,10 +1,10 @@
 <?php
 
-namespace Zakjakub\OswisCoreBundle\Interfaces;
+namespace OswisOrg\OswisCoreBundle\Interfaces;
 
 use DateTime;
 use Doctrine\Common\Collections\Collection;
-use Zakjakub\OswisCoreBundle\Entity\AbstractClass\AbstractRevision;
+use OswisOrg\OswisCoreBundle\Entity\AbstractClass\AbstractRevision;
 
 interface RevisionContainerInterface
 {

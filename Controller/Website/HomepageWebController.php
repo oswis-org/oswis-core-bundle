@@ -4,7 +4,7 @@
  * @noinspection MethodShouldBeFinalInspection
  */
 
-namespace Zakjakub\OswisCoreBundle\Controller\Website;
+namespace OswisOrg\OswisCoreBundle\Controller\Website;
 
 use LogicException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -21,6 +21,6 @@ class HomepageWebController extends AbstractController
      */
     public function homepageAction(int $page = 0): Response
     {
-        return $this->render('@ZakjakubOswisCore/web/pages/homepage.html.twig', ['page' => $page + 0]);
+        return $this->render('@OswisOrgOswisCore/web/pages/homepage.html.twig', ['page' => $page + 0]);
     }
 }

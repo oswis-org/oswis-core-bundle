@@ -1,15 +1,15 @@
 <?php
 
-namespace Zakjakub\OswisCoreBundle\Security;
+namespace OswisOrg\OswisCoreBundle\Security;
 
 use Doctrine\ORM\EntityManagerInterface;
+use OswisOrg\OswisCoreBundle\Entity\AppUser;
+use OswisOrg\OswisCoreBundle\Exceptions\OswisUserNotUniqueException;
+use OswisOrg\OswisCoreBundle\Repository\AppUserRepository;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
-use Zakjakub\OswisCoreBundle\Entity\AppUser;
-use Zakjakub\OswisCoreBundle\Exceptions\OswisUserNotUniqueException;
-use Zakjakub\OswisCoreBundle\Repository\AppUserRepository;
 use function get_class;
 
 class AppUserProvider implements UserProviderInterface

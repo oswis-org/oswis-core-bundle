@@ -1,12 +1,12 @@
 <?php /** @noinspection PhpUnused */
 
-namespace Zakjakub\OswisCoreBundle\Entity\AbstractClass;
+namespace OswisOrg\OswisCoreBundle\Entity\AbstractClass;
 
 use InvalidArgumentException;
-use Zakjakub\OswisCoreBundle\Interfaces\BasicEntityInterface;
-use Zakjakub\OswisCoreBundle\Traits\Entity\BasicEntityTrait;
-use Zakjakub\OswisCoreBundle\Traits\Entity\TextValueTrait;
-use Zakjakub\OswisCoreBundle\Traits\Entity\TypeTrait;
+use OswisOrg\OswisCoreBundle\Interfaces\BasicEntityInterface;
+use OswisOrg\OswisCoreBundle\Traits\Entity\BasicEntityTrait;
+use OswisOrg\OswisCoreBundle\Traits\Entity\TextValueTrait;
+use OswisOrg\OswisCoreBundle\Traits\Entity\TypeTrait;
 
 /**
  * Abstract class containing basic properties for web pages contents.

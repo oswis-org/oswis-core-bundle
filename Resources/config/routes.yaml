@@ -22,21 +22,21 @@ controllers:
     type: annotation
 
 ### Endpoint for user activation requests.
-zakjakub_oswis_core_app_user_activation:
-    controller: zakjakub_oswis_core.app_user_controller::appUserActivationAction
+oswis_org_oswis_core_app_user_activation:
+    controller: oswis_org_oswis_core.app_user_controller::appUserActivationAction
     path: "/app-user-activation/{token}"
 
-zakjakub_oswis_core_app_user_register_root:
-    controller: zakjakub_oswis_core.app_user_controller::registerRoot
+oswis_org_oswis_core_app_user_register_root:
+    controller: oswis_org_oswis_core.app_user_controller::registerRoot
     path: "/internal/register-root"
 
-zakjakub_oswis_core_web_portal:
-    controller: zakjakub_oswis_core.portal_web_controller::portal
+oswis_org_oswis_core_web_portal:
+    controller: oswis_org_oswis_core.portal_web_controller::portal
     path: "/portal"
 
 ### Homepage page.
-zakjakub_oswis_core_homepage_action:
-    controller: zakjakub_oswis_core.homepage_web_controller::homepageAction
+oswis_org_oswis_core_homepage_action:
+    controller: oswis_org_oswis_core.homepage_web_controller::homepageAction
     path: "/{page}"
     defaults:
         page: 0
@@ -44,6 +44,6 @@ zakjakub_oswis_core_homepage_action:
         page: '\d+'
 
 ### GDPR page (for forms etc.).
-zakjakub_oswis_core_gdpr_action:
-    controller: zakjakub_oswis_core.gdpr_web_controller::gdprAction
+oswis_org_oswis_core_gdpr_action:
+    controller: oswis_org_oswis_core.gdpr_web_controller::gdprAction
     path: "/gdpr"

@@ -1,6 +1,6 @@
 # /config/serialization/AppUser.yaml
 
-Zakjakub\OswisCoreBundle\Entity\AppUser:
+OswisOrg\OswisCoreBundle\Entity\AppUser:
     attributes:
         id:
             groups: ['app_users_get', 'app_user_get']
@@ -35,7 +35,7 @@ Zakjakub\OswisCoreBundle\Entity\AppUser:
         roles:
             groups: ['app_user_get']
 
-Zakjakub\OswisCoreBundle\Entity\AppUserType:
+OswisOrg\OswisCoreBundle\Entity\AppUserType:
     attributes:
         id:
             groups: ['app_users_get', 'app_users_post', 'app_user_get', 'app_user_put']

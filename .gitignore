@@ -1,4 +1,4 @@
-###> zakjakub/oswis-core-bundle ###
+###> oswis-org/oswis-core-bundle ###
 /vendor/
 ###< symfony/framework-bundle ###
 /.idea/php-inspections-ea-ultimate.xml

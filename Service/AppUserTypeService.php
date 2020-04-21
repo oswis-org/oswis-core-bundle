@@ -3,12 +3,12 @@
  * @noinspection MethodShouldBeFinalInspection
  */
 
-namespace Zakjakub\OswisCoreBundle\Service;
+namespace OswisOrg\OswisCoreBundle\Service;
 
 use Doctrine\ORM\EntityManagerInterface;
+use OswisOrg\OswisCoreBundle\Entity\AppUserType;
+use OswisOrg\OswisCoreBundle\Repository\AppUserTypeRepository;
 use Psr\Log\LoggerInterface;
-use Zakjakub\OswisCoreBundle\Entity\AppUserType;
-use Zakjakub\OswisCoreBundle\Repository\AppUserTypeRepository;
 
 class AppUserTypeService
 {

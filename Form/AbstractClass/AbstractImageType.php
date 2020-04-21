@@ -3,7 +3,7 @@
  * @noinspection MethodShouldBeFinalInspection
  */
 
-namespace Zakjakub\OswisCoreBundle\Form\AbstractClass;
+namespace OswisOrg\OswisCoreBundle\Form\AbstractClass;
 
 use Vich\UploaderBundle\Form\Type\VichImageType;
 

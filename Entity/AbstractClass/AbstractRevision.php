@@ -1,11 +1,11 @@
 <?php /** @noinspection PhpUnused */
 
-namespace Zakjakub\OswisCoreBundle\Entity\AbstractClass;
+namespace OswisOrg\OswisCoreBundle\Entity\AbstractClass;
 
 use DateTime;
-use Zakjakub\OswisCoreBundle\Exceptions\RevisionMissingException;
-use Zakjakub\OswisCoreBundle\Interfaces\RevisionInterface;
-use Zakjakub\OswisCoreBundle\Utils\DateTimeUtils;
+use OswisOrg\OswisCoreBundle\Exceptions\RevisionMissingException;
+use OswisOrg\OswisCoreBundle\Interfaces\RevisionInterface;
+use OswisOrg\OswisCoreBundle\Utils\DateTimeUtils;
 use function array_reverse;
 use function usort;
 

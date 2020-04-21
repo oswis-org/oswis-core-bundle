@@ -1,11 +1,11 @@
 <?php /** @noinspection MethodShouldBeFinalInspection */
 
-namespace Zakjakub\OswisCoreBundle\Service;
+namespace OswisOrg\OswisCoreBundle\Service;
 
 use Doctrine\ORM\EntityManagerInterface;
+use OswisOrg\OswisCoreBundle\Entity\AppUserRole;
+use OswisOrg\OswisCoreBundle\Repository\AppUserRoleRepository;
 use Psr\Log\LoggerInterface;
-use Zakjakub\OswisCoreBundle\Entity\AppUserRole;
-use Zakjakub\OswisCoreBundle\Repository\AppUserRoleRepository;
 
 /**
  * AppUserRole service.

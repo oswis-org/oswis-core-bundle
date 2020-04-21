@@ -7,7 +7,7 @@
  * @noinspection HtmlUnknownTag
  */
 
-namespace Zakjakub\OswisCoreBundle\Utils;
+namespace OswisOrg\OswisCoreBundle\Utils;
 
 /**
  * Utilities for source codes.

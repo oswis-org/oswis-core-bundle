@@ -4,9 +4,9 @@
  * @noinspection PhpUnused
  */
 
-namespace Zakjakub\OswisCoreBundle\Traits\Entity;
+namespace OswisOrg\OswisCoreBundle\Traits\Entity;
 
-use Zakjakub\OswisCoreBundle\Entity\Address;
+use OswisOrg\OswisCoreBundle\Entity\Address;
 
 /**
  * Trait adds fields for postal address.

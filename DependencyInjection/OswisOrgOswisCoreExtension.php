@@ -1,6 +1,6 @@
 <?php
 
-namespace Zakjakub\OswisCoreBundle\DependencyInjection;
+namespace OswisOrg\OswisCoreBundle\DependencyInjection;
 
 use Exception;
 use Symfony\Component\Config\FileLocator;
@@ -10,7 +10,7 @@ use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
-class ZakjakubOswisCoreExtension extends Extension implements PrependExtensionInterface
+class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionInterface
 {
     /**
      * Loads a specific configuration.
@@ -35,7 +35,7 @@ class ZakjakubOswisCoreExtension extends Extension implements PrependExtensionIn
      */
     private function oswisCoreSettingsProvider(ContainerBuilder $container, array $config): void
     {
-        $definition = $container->getDefinition('zakjakub_oswis_core.oswis_core_settings_provider');
+        $definition = $container->getDefinition('oswis_org_oswis_core.oswis_core_settings_provider');
         $definition->setArgument(0, $config['app']);
         $definition->setArgument(1, $config['admin']);
         $definition->setArgument(2, $config['email']);
@@ -54,7 +54,7 @@ class ZakjakubOswisCoreExtension extends Extension implements PrependExtensionIn
                 'assets/assets/images' => 'images',
             ],
             'globals'     => [
-                'oswis' => '@zakjakub_oswis_core.oswis_core_settings_provider',
+                'oswis' => '@oswis_org_oswis_core.oswis_core_settings_provider',
             ],
             'form_themes' => [
                 'bootstrap_4_layout.html.twig',

@@ -1,6 +1,6 @@
 <?php /** @noinspection PhpUnused */
 
-namespace Zakjakub\OswisCoreBundle\Entity;
+namespace OswisOrg\OswisCoreBundle\Entity;
 
 /**
  * Definition for column in PDF export file.

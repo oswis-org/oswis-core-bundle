@@ -3,11 +3,11 @@
  * @noinspection MethodShouldBeFinalInspection
  */
 
-namespace Zakjakub\OswisCoreBundle\Traits\Entity;
+namespace OswisOrg\OswisCoreBundle\Traits\Entity;
 
 use DateTime;
 use Exception;
-use Zakjakub\OswisCoreBundle\Utils\StringUtils;
+use OswisOrg\OswisCoreBundle\Utils\StringUtils;
 
 /**
  * Trait adds fields for account activation.

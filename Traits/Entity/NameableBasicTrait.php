@@ -4,10 +4,10 @@
  * @noinspection PhpUnused
  */
 
-namespace Zakjakub\OswisCoreBundle\Traits\Entity;
+namespace OswisOrg\OswisCoreBundle\Traits\Entity;
 
+use OswisOrg\OswisCoreBundle\Entity\Nameable;
 use Symfony\Component\String\Slugger\AsciiSlugger;
-use Zakjakub\OswisCoreBundle\Entity\Nameable;
 
 trait NameableBasicTrait
 {

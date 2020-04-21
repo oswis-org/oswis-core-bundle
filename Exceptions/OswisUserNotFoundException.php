@@ -1,6 +1,6 @@
 <?php
 
-namespace Zakjakub\OswisCoreBundle\Exceptions;
+namespace OswisOrg\OswisCoreBundle\Exceptions;
 
 class OswisUserNotFoundException extends OswisException
 {

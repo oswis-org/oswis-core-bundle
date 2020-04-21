@@ -3,19 +3,19 @@
  * @noinspection PhpUnused
  */
 
-namespace Zakjakub\OswisCoreBundle\Api\EventSubscriber;
+namespace OswisOrg\OswisCoreBundle\Api\EventSubscriber;
 
 use ApiPlatform\Core\EventListener\EventPriorities;
+use OswisOrg\OswisCoreBundle\Entity\AppUser;
+use OswisOrg\OswisCoreBundle\Exceptions\OswisException;
+use OswisOrg\OswisCoreBundle\Exceptions\OswisNotImplementedException;
+use OswisOrg\OswisCoreBundle\Exceptions\OswisUserNotFoundException;
+use OswisOrg\OswisCoreBundle\Exceptions\OswisUserNotUniqueException;
+use OswisOrg\OswisCoreBundle\Service\AppUserService;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpKernel\Event\ViewEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
-use Zakjakub\OswisCoreBundle\Entity\AppUser;
-use Zakjakub\OswisCoreBundle\Exceptions\OswisException;
-use Zakjakub\OswisCoreBundle\Exceptions\OswisNotImplementedException;
-use Zakjakub\OswisCoreBundle\Exceptions\OswisUserNotFoundException;
-use Zakjakub\OswisCoreBundle\Exceptions\OswisUserNotUniqueException;
-use Zakjakub\OswisCoreBundle\Service\AppUserService;
 use function assert;
 use function in_array;
 

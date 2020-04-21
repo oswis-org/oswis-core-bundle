@@ -1,14 +1,14 @@
 <?php /** @noinspection PhpUnused */
 
-namespace Zakjakub\OswisCoreBundle\Entity\AbstractClass;
+namespace OswisOrg\OswisCoreBundle\Entity\AbstractClass;
 
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Exception;
-use Zakjakub\OswisCoreBundle\Exceptions\RevisionMissingException;
-use Zakjakub\OswisCoreBundle\Interfaces\RevisionContainerInterface;
-use Zakjakub\OswisCoreBundle\Interfaces\RevisionInterface;
+use OswisOrg\OswisCoreBundle\Exceptions\RevisionMissingException;
+use OswisOrg\OswisCoreBundle\Interfaces\RevisionContainerInterface;
+use OswisOrg\OswisCoreBundle\Interfaces\RevisionInterface;
 
 /**
  * Abstract class representing container of revisions/versions of some entity (of some entity which extends AbstractRevision).

@@ -3,14 +3,14 @@
  * @noinspection MethodShouldBeFinalInspection
  */
 
-namespace Zakjakub\OswisCoreBundle\Form\AbstractClass;
+namespace OswisOrg\OswisCoreBundle\Form\AbstractClass;
 
+use OswisOrg\OswisCoreBundle\Utils\FileUtils;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\Exception\AccessException;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Vich\UploaderBundle\Form\Type\VichFileType;
-use Zakjakub\OswisCoreBundle\Utils\FileUtils;
 
 abstract class AbstractFileType extends AbstractType
 {

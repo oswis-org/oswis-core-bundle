@@ -4,16 +4,16 @@
  * @noinspection PhpUnused
  */
 
-namespace Zakjakub\OswisCoreBundle\Repository;
+namespace OswisOrg\OswisCoreBundle\Repository;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\Query;
+use OswisOrg\OswisCoreBundle\Entity\AppUser;
+use OswisOrg\OswisCoreBundle\Exceptions\OswisUserNotUniqueException;
 use Symfony\Bridge\Doctrine\Security\User\UserLoaderInterface;
-use Zakjakub\OswisCoreBundle\Entity\AppUser;
-use Zakjakub\OswisCoreBundle\Exceptions\OswisUserNotUniqueException;
 
 class AppUserRepository extends EntityRepository implements UserLoaderInterface
 {

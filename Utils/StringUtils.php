@@ -1,6 +1,6 @@
 <?php /** @noinspection PhpUnused */
 
-namespace Zakjakub\OswisCoreBundle\Utils;
+namespace OswisOrg\OswisCoreBundle\Utils;
 
 use Exception;
 use Symfony\Component\String\Slugger\AsciiSlugger;
