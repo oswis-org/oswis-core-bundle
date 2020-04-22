@@ -23,21 +23,25 @@ class OswisCoreSettingsProvider
 
     protected ?array $web = null;
 
-    public function __construct(?array $app, ?array $admin, ?array $email, ?array $web)
+    protected ?array $adminIPs = null;
+
+    public function __construct(?array $app, ?array $admin, ?array $email, ?array $web, ?array $adminIPs)
     {
         $this->app = $app;
         $this->admin = $admin;
         $this->email = $email;
         $this->web = $web;
+        $this->adminIPs = $adminIPs;
     }
 
     final public function getArray(): array
     {
         return [
-            'app'   => $this->getApp(),
-            'admin' => $this->getAdmin(),
-            'email' => $this->getEmail(),
-            'web'   => $this->getWeb(),
+            'app'       => $this->getApp(),
+            'admin'     => $this->getAdmin(),
+            'email'     => $this->getEmail(),
+            'web'       => $this->getWeb(),
+            'admin_ips' => $this->getAdminIPs(),
         ];
     }
 
@@ -49,6 +53,11 @@ class OswisCoreSettingsProvider
     final public function getAdmin(): array
     {
         return $this->admin;
+    }
+
+    final public function getAdminIPs(): array
+    {
+        return $this->adminIPs;
     }
 
     final public function getEmail(): array
