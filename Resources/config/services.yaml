@@ -145,6 +145,15 @@ services:
         alias: oswis_org_oswis_core.homepage_web_controller
         public: true
 
+    ### Internal Actions Web Controller
+    oswis_org_oswis_core.internal_actions_web_controller:
+        class: OswisOrg\OswisCoreBundle\Controller\Website\InternalActionsWebController
+        autowire: true
+        public: true
+    OswisOrg\OswisCoreBundle\Controller\Website\InternalActionsWebController:
+        alias: oswis_org_oswis_core.internal_actions_web_controller
+        public: true
+
     ### Portal Web Controller
     oswis_org_oswis_core.portal_web_controller:
         class: OswisOrg\OswisCoreBundle\Controller\Website\PortalWebController

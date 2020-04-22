@@ -47,3 +47,8 @@ oswis_org_oswis_core_homepage_action:
 oswis_org_oswis_core_gdpr_action:
     controller: oswis_org_oswis_core.gdpr_web_controller::gdprAction
     path: "/gdpr"
+
+oswis_org_oswis_core_internal_action_clear_cache:
+    controller: oswis_org_oswis_core.internal_actions_web_controller::clearCache
+    path: "/internal/actions/clear_cache"
+
