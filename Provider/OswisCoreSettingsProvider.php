@@ -55,11 +55,6 @@ class OswisCoreSettingsProvider
         return $this->admin;
     }
 
-    final public function getAdminIPs(): array
-    {
-        return $this->adminIPs;
-    }
-
     final public function getEmail(): array
     {
         return $this->email;
@@ -68,6 +63,11 @@ class OswisCoreSettingsProvider
     final public function getWeb(): array
     {
         return $this->web;
+    }
+
+    final public function getAdminIPs(): array
+    {
+        return $this->adminIPs;
     }
 
     final public function getCoreAppName(): string

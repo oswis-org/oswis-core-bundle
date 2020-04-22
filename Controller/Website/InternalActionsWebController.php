@@ -13,13 +13,10 @@ use Symfony\Component\HttpFoundation\IpUtils;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
-use Symfony\Component\Routing\Annotation\Route;
 
 class InternalActionsWebController extends AbstractController
 {
     /**
-     * @Route("/internal/actions/clear_cache", name="internal_actions_clear_cache")
-     *
      * @param Request $request
      *
      * @return Response
