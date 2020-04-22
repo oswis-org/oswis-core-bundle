@@ -62,11 +62,13 @@ final class AppUserActionSubscriber implements EventSubscriberInterface
         $appUserRepository = $this->appUserService->getRepository();
         $appUser ??= $appUserRepository->loadUserById($uid) ?? $appUserRepository->loadUserByUsername($username);
         if (!$appUser && $token) {
-            $appUserByToken = $this->appUserService->getRepository()->findOneBy(['passwordResetRequestToken' => $token]);
+            $appUserByToken = $this->appUserService->getRepository()
+                ->findOneBy(['passwordResetRequestToken' => $token]);
             $appUser = $appUserByToken && $appUserByToken->checkPasswordResetRequestToken($token) ? $appUserByToken : null;
         }
         if (!$appUser && $token) {
-            $appUserByToken = $this->appUserService->getRepository()->findOneBy(['accountActivationRequestToken' => $token]);
+            $appUserByToken = $this->appUserService->getRepository()
+                ->findOneBy(['accountActivationRequestToken' => $token]);
             $appUser = $appUserByToken && $appUserByToken->checkAccountActivationRequestToken($token) ? $appUserByToken : null;
         }
         if (!$appUser) {

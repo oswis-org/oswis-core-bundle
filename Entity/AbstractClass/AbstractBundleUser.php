@@ -40,7 +40,8 @@ abstract class AbstractBundleUser implements BasicEntityInterface
 
     final public function getUsername(): string
     {
-        return $this->getAppUser() ? $this->getAppUser()->getUsername() : '';
+        return $this->getAppUser() ? $this->getAppUser()
+            ->getUsername() : '';
     }
 
     final public function getAppUser(): ?AppUser
@@ -55,21 +56,26 @@ abstract class AbstractBundleUser implements BasicEntityInterface
 
     final public function getFullName(): string
     {
-        return $this->getAppUser() ? ($this->getAppUser()->getFullName() ?? $this->getAppUser()->getUsername()) : '';
+        return $this->getAppUser() ? ($this->getAppUser()
+                ->getFullName() ?? $this->getAppUser()
+                ->getUsername()) : '';
     }
 
     final public function getFullAddress(): string
     {
-        return $this->getAppUser() ? $this->getAppUser()->getFullAddress() : '';
+        return $this->getAppUser() ? $this->getAppUser()
+            ->getFullAddress() : '';
     }
 
     final public function getEmail(): string
     {
-        return $this->getAppUser() ? $this->getAppUser()->getEmail() : '';
+        return $this->getAppUser() ? $this->getAppUser()
+            ->getEmail() : '';
     }
 
     final public function getPhone(): string
     {
-        return $this->getAppUser() ? $this->getAppUser()->getPhone() : '';
+        return $this->getAppUser() ? $this->getAppUser()
+            ->getPhone() : '';
     }
 }

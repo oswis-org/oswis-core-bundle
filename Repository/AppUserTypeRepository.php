@@ -14,7 +14,10 @@ class AppUserTypeRepository extends EntityRepository
 {
     final public function findBySlug(string $slug): ?AppUserType
     {
-        $query = $this->createQueryBuilder('t')->where('t.slug = :slug')->setParameter('slug', $slug)->getQuery();
+        $query = $this->createQueryBuilder('t')
+            ->where('t.slug = :slug')
+            ->setParameter('slug', $slug)
+            ->getQuery();
         try {
             return $query->getOneOrNullResult(Query::HYDRATE_OBJECT);
         } catch (Exception $e) {

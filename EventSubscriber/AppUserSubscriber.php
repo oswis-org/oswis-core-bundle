@@ -39,7 +39,8 @@ final class AppUserSubscriber implements EventSubscriberInterface
             return;
         }
         try {
-            $method = $event->getRequest()->getMethod();
+            $method = $event->getRequest()
+                ->getMethod();
         } catch (SuspiciousOperationException $e) {
             return;
         }

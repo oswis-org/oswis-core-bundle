@@ -122,7 +122,11 @@ class StringUtils
 
     public static function hyphenize(?string $text): ?string
     {
-        return empty($text) ? null : (new AsciiSlugger())->slug($text)->lower()->toString();
+        return empty($text)
+            ? null
+            : (new AsciiSlugger())->slug($text)
+                ->lower()
+                ->toString();
     }
 
     public static function removeAccents(string $text): string

@@ -114,7 +114,8 @@ class AppUserRole implements BasicEntityInterface
      */
     public function getAllRoleNames(): Collection
     {
-        return $this->getRoles()->map(fn(self $role) => $role->getRoleName());
+        return $this->getRoles()
+            ->map(fn(self $role) => $role->getRoleName());
     }
 
     /**
@@ -124,7 +125,8 @@ class AppUserRole implements BasicEntityInterface
     {
         $roles = new ArrayCollection([$this]);
         if ($this->getParent()) {
-            foreach ($this->getParent()->getRoles() as $role) {
+            foreach ($this->getParent()
+                         ->getRoles() as $role) {
                 if (!$roles->contains($role)) {
                     $roles->add($role);
                 }

@@ -121,7 +121,10 @@ class AppUser extends AbstractAppUser
      */
     public function isAdminUser(): bool
     {
-        return !$this->getAppUserType() ? false : ($this->getAppUserType()->getAdminUser() ?? false);
+        return !$this->getAppUserType()
+            ? false
+            : ($this->getAppUserType()
+                    ->getAdminUser() ?? false);
     }
 
     public function getAppUserType(): ?AppUserType
@@ -164,13 +167,17 @@ class AppUser extends AbstractAppUser
      */
     public function getRoles(): array
     {
-        return $this->getAppUserType() ? $this->getAppUserType()->getAllRoleNames()->toArray() : [];
+        return $this->getAppUserType() ? $this->getAppUserType()
+            ->getAllRoleNames()
+            ->toArray() : [];
     }
 
     public function addAppUserFlag(?AppUserFlagConnection $flagInJobFairUser): void
     {
-        if ($flagInJobFairUser && !$this->getAppUserFlags()->contains($flagInJobFairUser)) {
-            $this->getAppUserFlags()->add($flagInJobFairUser);
+        if ($flagInJobFairUser && !$this->getAppUserFlags()
+                ->contains($flagInJobFairUser)) {
+            $this->getAppUserFlags()
+                ->add($flagInJobFairUser);
             $flagInJobFairUser->setAppUser($this);
         }
     }
@@ -185,7 +192,8 @@ class AppUser extends AbstractAppUser
 
     public function removeAppUserFlag(?AppUserFlagConnection $flagInEmployer): void
     {
-        if ($flagInEmployer && $this->getAppUserFlags()->removeElement($flagInEmployer)) {
+        if ($flagInEmployer && $this->getAppUserFlags()
+                ->removeElement($flagInEmployer)) {
             $flagInEmployer->setAppUser(null);
         }
     }

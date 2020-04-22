@@ -120,7 +120,9 @@ class AppUserService
             $username ??= 'user';
         }
         $email ??= $username.'@jakubzak.eu'; // TODO: Change to @oswis.org and redirect mails.
-        $appUser = $this->getRepository()->findOneBy(['email' => $email]) ?? $this->getRepository()->findOneBy(['username' => $username]);
+        $appUser = $this->getRepository()
+                ->findOneBy(['email' => $email]) ?? $this->getRepository()
+                ->findOneBy(['username' => $username]);
         if (null !== $appUser && !$errorWhenExist) {
             $this->logger->notice('Skipped existing user '.$appUser->getUsername().' '.$appUser->getEmail().'.');
 
@@ -231,7 +233,9 @@ class AppUserService
             } catch (LogicException $e) {
                 $email->to($appUser->getEmail() ?? '');
             }
-            $email->subject($title)->htmlTemplate('@OswisOrgOswisCore/e-mail/password.html.twig')->context($data);
+            $email->subject($title)
+                ->htmlTemplate('@OswisOrgOswisCore/e-mail/password.html.twig')
+                ->context($data);
             $this->mailer->send($email);
         } catch (TransportExceptionInterface $e) {
             $this->logger->error($e->getMessage());
@@ -250,7 +254,8 @@ class AppUserService
      */
     private function passwordChange(?AppUser $appUser, ?string $password, ?string $token, bool $sendConfirmation, bool $withoutToken): void
     {
-        $appUser ??= $this->getRepository()->findOneBy(['passwordResetRequestToken' => $token]);
+        $appUser ??= $this->getRepository()
+            ->findOneBy(['passwordResetRequestToken' => $token]);
         if (null === $appUser) {
             throw new OswisUserNotFoundException();
         }
@@ -309,7 +314,9 @@ class AppUserService
             } catch (LogicException $e) {
                 $email->to($appUser->getEmail() ?? '');
             }
-            $email->subject($title)->htmlTemplate('@OswisOrgOswisCore/e-mail/app-user.html.twig')->context($data);
+            $email->subject($title)
+                ->htmlTemplate('@OswisOrgOswisCore/e-mail/app-user.html.twig')
+                ->context($data);
             $this->mailer->send($email);
         } catch (TransportExceptionInterface $e) {
             throw new OswisException('Problém s odesláním zprávy o změně účtu.  '.$e->getMessage());
@@ -330,7 +337,8 @@ class AppUserService
         if (!$withoutToken && !$token) {
             throw new OswisException('Token pro aktivaci účtu nebyl zadán. Otevřete odkaz znovu.');
         }
-        $appUser ??= $this->getRepository()->findOneBy(['accountActivationRequestToken' => $token]);
+        $appUser ??= $this->getRepository()
+            ->findOneBy(['accountActivationRequestToken' => $token]);
         if (!$withoutToken && (!($appUser instanceof AppUser) || !$appUser->checkAndDestroyAccountActivationRequestToken($token))) {
             throw new OswisException('Token pro aktivaci účtu není platný (neexistuje nebo vypršela jeho platnost).');
         }

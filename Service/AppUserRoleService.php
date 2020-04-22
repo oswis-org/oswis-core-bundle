@@ -25,7 +25,8 @@ class AppUserRoleService
 
     public function create(AppUserRole $role): AppUserRole
     {
-        $existing = $this->getRepository()->findBySlug($role->getSlug());
+        $existing = $this->getRepository()
+            ->findBySlug($role->getSlug());
         if (null === $existing || !($existing instanceof AppUserRole)) {
             $this->em->persist($role);
         }

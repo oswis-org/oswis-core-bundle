@@ -29,8 +29,11 @@ class AppUserRepository extends EntityRepository implements UserLoaderInterface
             return null;
         }
         try {
-            $builder = $this->createQueryBuilder('u')->where('(u.username = :username OR u.email = :email) AND (u.deleted IS NULL OR u.deleted = false)');
-            $query = $builder->setParameter('username', $username)->setParameter('email', $username)->getQuery();
+            $builder = $this->createQueryBuilder('u')
+                ->where('(u.username = :username OR u.email = :email) AND (u.deleted IS NULL OR u.deleted = false)');
+            $query = $builder->setParameter('username', $username)
+                ->setParameter('email', $username)
+                ->getQuery();
             $appUser = $query->getOneOrNullResult(Query::HYDRATE_OBJECT);
         } catch (NonUniqueResultException $e) {
             throw new OswisUserNotUniqueException();
@@ -50,8 +53,11 @@ class AppUserRepository extends EntityRepository implements UserLoaderInterface
             return null;
         }
         try {
-            $builder = $this->createQueryBuilder('u')->where('(u.id = :id) AND (u.deleted IS NULL OR u.deleted = false)');
-            $appUser = $builder->setParameter('id', $id)->getQuery()->getOneOrNullResult(Query::HYDRATE_OBJECT);
+            $builder = $this->createQueryBuilder('u')
+                ->where('(u.id = :id) AND (u.deleted IS NULL OR u.deleted = false)');
+            $appUser = $builder->setParameter('id', $id)
+                ->getQuery()
+                ->getOneOrNullResult(Query::HYDRATE_OBJECT);
         } catch (NonUniqueResultException $e) {
             throw new OswisUserNotUniqueException();
         }
@@ -61,9 +67,14 @@ class AppUserRepository extends EntityRepository implements UserLoaderInterface
 
     public function findByEmail(string $email): Collection
     {
-        $builder = $this->createQueryBuilder('app_user')->where('app_user.email = :email')->setParameter('email', $email);
+        $builder = $this->createQueryBuilder('app_user')
+            ->where('app_user.email = :email')
+            ->setParameter('email', $email);
 
-        return new ArrayCollection($builder->getQuery()->getResult(Query::HYDRATE_OBJECT));
+        return new ArrayCollection(
+            $builder->getQuery()
+                ->getResult(Query::HYDRATE_OBJECT)
+        );
     }
 
     final public function findOneBy(array $criteria, array $orderBy = null): ?AppUser
