@@ -1,11 +1,13 @@
 <?php
 /**
+ * @noinspection MethodShouldBeFinalInspection
  * @noinspection PhpUnused
  */
 
 namespace OswisOrg\OswisCoreBundle\Controller\Website;
 
 use LogicException;
+use OswisOrg\OswisCoreBundle\Provider\OswisCoreSettingsProvider;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Filesystem\Exception\IOException;
 use Symfony\Component\Filesystem\Filesystem;
@@ -16,6 +18,13 @@ use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 class InternalActionsWebController extends AbstractController
 {
+    protected OswisCoreSettingsProvider $coreSettings;
+
+    public function __construct(OswisCoreSettingsProvider $coreSettings)
+    {
+        $this->coreSettings = $coreSettings;
+    }
+
     /**
      * @param Request $request
      *
@@ -41,9 +50,9 @@ class InternalActionsWebController extends AbstractController
      *
      * @throws AccessDeniedHttpException
      */
-    public static function checkIP(Request $request): void
+    public function checkIP(Request $request): void
     {
-        $allowedIPs = ['127.0.0.1', '::1', '93.93.35.182'];
+        $allowedIPs = $this->coreSettings->getAdminIPs();
         if (!IpUtils::checkIp($request->getClientIp(), $allowedIPs)) {
             throw new AccessDeniedHttpException('Nedostatečná oprávnění.');
         }
