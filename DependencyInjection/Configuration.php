@@ -32,6 +32,7 @@ class Configuration implements ConfigurationInterface
         $this->addEmailConfig($rootNode);
         $this->addAdminConfig($rootNode);
         $this->addWebConfig($rootNode);
+        $this->addAdminIPs($rootNode);
 
         return $treeBuilder;
     }
@@ -114,4 +115,10 @@ class Configuration implements ConfigurationInterface
             'copyright'
         )->info('Copyright owner of application.')->defaultValue('Jakub Zak (https://jakubzak.cz)')->example('Jakub Zak (https://jakubzak.cz)')->end()->end()->end();
     }
+
+    private function addAdminIPs(ArrayNodeDefinition $rootNode): void
+    {
+        $rootNode->fixXmlConfig('admin_ip')->children()->arrayNode('admin_ips')->scalarPrototype()->end()->end()->end();
+    }
+
 }
