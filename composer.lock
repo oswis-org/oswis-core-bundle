@@ -4,7 +4,7 @@
     "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
     "This file is @generated automatically"
   ],
-  "content-hash": "913eefdd24b190484cc28995211dfa87",
+  "content-hash": "85b07d5bbb41d63c7b637efa7e07d5f6",
   "packages": [
     {
       "name": "adci/full-name-parser",
@@ -807,16 +807,16 @@
     },
     {
       "name": "doctrine/doctrine-bundle",
-      "version": "2.0.7",
+      "version": "2.0.8",
       "source": {
         "type": "git",
         "url": "https://github.com/doctrine/DoctrineBundle.git",
-        "reference": "6926771140ee87a823c3b2c72602de9dda4490d3"
+        "reference": "b0e0deb6e700438401ede433a15a6372d2285202"
       },
       "dist": {
         "type": "zip",
-        "url": "https://api.github.com/repos/doctrine/DoctrineBundle/zipball/6926771140ee87a823c3b2c72602de9dda4490d3",
-        "reference": "6926771140ee87a823c3b2c72602de9dda4490d3",
+        "url": "https://api.github.com/repos/doctrine/DoctrineBundle/zipball/b0e0deb6e700438401ede433a15a6372d2285202",
+        "reference": "b0e0deb6e700438401ede433a15a6372d2285202",
         "shasum": ""
       },
       "require": {
@@ -895,7 +895,21 @@
         "orm",
         "persistence"
       ],
-      "time": "2020-01-18T11:56:15+00:00"
+      "funding": [
+        {
+          "url": "https://www.doctrine-project.org/sponsorship.html",
+          "type": "custom"
+        },
+        {
+          "url": "https://www.patreon.com/phpdoctrine",
+          "type": "patreon"
+        },
+        {
+          "url": "https://tidelift.com/funding/github/packagist/doctrine%2Fdoctrine-bundle",
+          "type": "tidelift"
+        }
+      ],
+      "time": "2020-04-23T10:52:09+00:00"
     },
     {
       "name": "doctrine/doctrine-migrations-bundle",
