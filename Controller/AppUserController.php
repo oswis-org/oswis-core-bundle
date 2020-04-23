@@ -7,7 +7,6 @@
 namespace OswisOrg\OswisCoreBundle\Controller;
 
 use Exception;
-use LogicException;
 use OswisOrg\OswisCoreBundle\Exceptions\OswisException;
 use OswisOrg\OswisCoreBundle\Service\AppUserService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -26,7 +25,6 @@ class AppUserController extends AbstractController
      * @param string|null $token Secret token for user activation (sent by e-mail).
      *
      * @return Response
-     * @throws LogicException
      */
     final public function appUserActivationAction(?string $token = null): Response
     {

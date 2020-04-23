@@ -6,7 +6,6 @@
 
 namespace OswisOrg\OswisCoreBundle\Controller\Website;
 
-use LogicException;
 use OswisOrg\OswisCoreBundle\Provider\OswisCoreSettingsProvider;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Filesystem\Exception\IOException;
@@ -31,11 +30,10 @@ class InternalActionsWebController extends AbstractController
      * @return Response
      * @throws AccessDeniedHttpException
      * @throws IOException
-     * @throws LogicException
      */
     final public function clearCache(Request $request): Response
     {
-        self::checkIP($request);
+        $this->checkIP($request);
         $filesystem = new Filesystem();
         $filesystem->remove('../var/cache');
 
