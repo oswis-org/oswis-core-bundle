@@ -4,7 +4,7 @@
     "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
     "This file is @generated automatically"
   ],
-  "content-hash": "85b07d5bbb41d63c7b637efa7e07d5f6",
+  "content-hash": "a9bf3beee8e0f0e0c19a050a56cde238",
   "packages": [
     {
       "name": "adci/full-name-parser",
@@ -2517,16 +2517,16 @@
     },
     {
       "name": "league/commonmark",
-      "version": "1.4.1",
+      "version": "1.4.2",
       "source": {
         "type": "git",
         "url": "https://github.com/thephpleague/commonmark.git",
-        "reference": "c995966d35424bae20f76f8b31248099487a3f57"
+        "reference": "9e780d972185e4f737a03bade0fd34a9e67bbf31"
       },
       "dist": {
         "type": "zip",
-        "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/c995966d35424bae20f76f8b31248099487a3f57",
-        "reference": "c995966d35424bae20f76f8b31248099487a3f57",
+        "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/9e780d972185e4f737a03bade0fd34a9e67bbf31",
+        "reference": "9e780d972185e4f737a03bade0fd34a9e67bbf31",
         "shasum": ""
       },
       "require": {
@@ -2587,62 +2587,19 @@
         "md",
         "parser"
       ],
-      "time": "2020-04-20T13:36:51+00:00"
-    },
-    {
-      "name": "league/commonmark-extras",
-      "version": "1.2.0",
-      "source": {
-        "type": "git",
-        "url": "https://github.com/thephpleague/commonmark-extras.git",
-        "reference": "b1961aa4a85465bf884235106a7517e315f14f41"
-      },
-      "dist": {
-        "type": "zip",
-        "url": "https://api.github.com/repos/thephpleague/commonmark-extras/zipball/b1961aa4a85465bf884235106a7517e315f14f41",
-        "reference": "b1961aa4a85465bf884235106a7517e315f14f41",
-        "shasum": ""
-      },
-      "require": {
-        "league/commonmark": "^1.3",
-        "php": "^7.1"
-      },
-      "require-dev": {
-        "phpunit/phpunit": "^7.5"
-      },
-      "type": "commonmark-extension",
-      "extra": {
-        "branch-alias": {
-          "dev-master": "1.3-dev"
-        }
-      },
-      "autoload": {
-        "psr-4": {
-          "League\\CommonMark\\Extras\\": "src"
-        }
-      },
-      "notification-url": "https://packagist.org/downloads/",
-      "license": [
-        "BSD-3-Clause"
-      ],
-      "authors": [
-        {
-          "name": "Colin O'Dell",
-          "email": "colinodell@gmail.com",
-          "homepage": "https://www.colinodell.com",
-          "role": "Lead Developer"
-        }
-      ],
-      "description": "Useful extensions for customizing the league/commonmark Markdown parser",
-      "homepage": "https://github.com/thephpleague/commonmark-extras",
-      "keywords": [
-        "Extras",
-        "commonmark",
-        "extensions",
-        "gfm",
-        "markdown"
-      ],
       "funding": [
+        {
+          "url": "https://enjoy.gitstore.app/repositories/thephpleague/commonmark",
+          "type": "custom"
+        },
+        {
+          "url": "https://www.colinodell.com/sponsor",
+          "type": "custom"
+        },
+        {
+          "url": "https://www.paypal.me/colinpodell/10.00",
+          "type": "custom"
+        },
         {
           "url": "https://github.com/colinodell",
           "type": "github"
@@ -2650,10 +2607,13 @@
         {
           "url": "https://www.patreon.com/colinodell",
           "type": "patreon"
+        },
+        {
+          "url": "https://tidelift.com/funding/github/packagist/league/commonmark",
+          "type": "tidelift"
         }
       ],
-      "abandoned": "league/commonmark",
-      "time": "2020-04-04T16:03:32+00:00"
+      "time": "2020-04-24T13:39:56+00:00"
     },
     {
       "name": "league/csv",
@@ -8900,16 +8860,16 @@
     },
     {
       "name": "symplify/package-builder",
-      "version": "v7.2.17",
+      "version": "v7.2.19",
       "source": {
         "type": "git",
         "url": "https://github.com/symplify/package-builder.git",
-        "reference": "ab54eb67173b238a8c479d49393a57e852058abf"
+        "reference": "0da9a241760fbbb785473541a899d7570e457c89"
       },
       "dist": {
         "type": "zip",
-        "url": "https://api.github.com/repos/symplify/package-builder/zipball/ab54eb67173b238a8c479d49393a57e852058abf",
-        "reference": "ab54eb67173b238a8c479d49393a57e852058abf",
+        "url": "https://api.github.com/repos/symplify/package-builder/zipball/0da9a241760fbbb785473541a899d7570e457c89",
+        "reference": "0da9a241760fbbb785473541a899d7570e457c89",
         "shasum": ""
       },
       "require": {
@@ -8942,6 +8902,16 @@
         "MIT"
       ],
       "description": "Dependency Injection, Console and Kernel toolkit for Symplify packages.",
+      "funding": [
+        {
+          "url": "https://github.com/tomasvotruba",
+          "type": "github"
+        },
+        {
+          "url": "https://www.patreon.com/rectorphp",
+          "type": "patreon"
+        }
+      ],
       "time": "2020-04-19T11:07:36+00:00"
     },
     {

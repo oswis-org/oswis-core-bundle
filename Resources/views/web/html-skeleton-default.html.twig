@@ -8,9 +8,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name='format-detection' content='telephone=yes'>
         <meta name='DC.Language' content='{{ block('html_lang') }}'>
-        <title>{% block html_title %}{{ title|default(oswis.web.title) }}{% endblock html_title %}</title>
+        <title>{% block html_title %}{{ title|default(default_title|default(oswis.web.title)) }}{% endblock html_title %}</title>
         {% block tag_manager_script %}{% endblock tag_manager_script %}
-        <meta name="description" content="{% block html_description %}{{ description|default(oswis.web.description) }}{% endblock html_description %}">
+        <meta name="description" content="{% block html_description %}{{ description|default(default_description|default(oswis.web.description)) }}{% endblock html_description %}">
         <meta name='author' content='{% block meta_author %}{{ author|default('Jakub Zak (https://jakubzak.cz)') }}{% endblock meta_author %}'>
         <meta name='copyright' content='{% block meta_copyright %}{{ copyright|default('Jakub Zak (https://jakubzak.cz)') }}{% endblock meta_copyright %}'>
         <meta name='generator' content='{% block meta_generator %}OSWIS (One Simple Web IS){% endblock meta_generator %}'>
