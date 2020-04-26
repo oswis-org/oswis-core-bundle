@@ -32,7 +32,15 @@ oswis_org_oswis_core_app_user_register_root:
 
 oswis_org_oswis_core_web_portal:
     controller: oswis_org_oswis_core.portal_web_controller::portal
-    path: "/portal"
+    path: "/portal/{foo?}"
+    requirements:
+        foo: .+
+
+oswis_org_oswis_core_web_admin:
+    controller: oswis_org_oswis_core.admin_web_controller::admin
+    path: "/admin/{foo?}"
+    requirements:
+        foo: .+
 
 ### Homepage page.
 oswis_org_oswis_core_homepage_action:

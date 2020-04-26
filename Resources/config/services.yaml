@@ -139,6 +139,15 @@ services:
         alias: oswis_org_oswis_core.portal_web_controller
         public: true
 
+    ### Admin Web Controller
+    oswis_org_oswis_core.admin_web_controller:
+        class: OswisOrg\OswisCoreBundle\Controller\Website\AdminWebController
+        autowire: true
+        public: true
+    OswisOrg\OswisCoreBundle\Controller\Website\AdminWebController:
+        alias: oswis_org_oswis_core.admin_web_controller
+        public: true
+
     ### GDPR Web Controller
     oswis_org_oswis_core.gdpr_web_controller:
         class: OswisOrg\OswisCoreBundle\Controller\Website\GdprWebController
