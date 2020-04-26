@@ -51,6 +51,7 @@
                 <meta name="msapplication-TileImage" content="{{ preload(asset('@OswisOrgOswisCoreBundle/Resources/public/favicons/mstile-144x144.png')) }}">
             {% endblock meta_tags_icons %}
             {% block meta_tags_canonical %}{% endblock meta_tags_canonical %}
+            {% block meta_tags_links %}{% endblock meta_tags_links %}
         {% endblock meta_tags_inner %}
         {% block meta_og %}
             <meta property="og:site_name" content="{{ block('meta_app_name') }}">
