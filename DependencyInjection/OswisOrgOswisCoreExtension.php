@@ -46,6 +46,7 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
     final public function prepend(ContainerBuilder $container): void
     {
         $this->prependTwig($container);
+        $this->prependFramework($container);
     }
 
     private function prependTwig(ContainerBuilder $container): void
@@ -62,5 +63,10 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
             ],
         ];
         $container->prependExtensionConfig('twig', $twigConfig);
+    }
+
+    private function prependFramework(ContainerBuilder $container): void
+    {
+        $container->prependExtensionConfig('framework', ['esi' => ['enabled' => true]]);
     }
 }

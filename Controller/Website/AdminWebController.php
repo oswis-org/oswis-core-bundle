@@ -17,6 +17,6 @@ class AdminWebController extends AbstractController
      */
     final public function admin(): Response
     {
-        return $this->render('@OswisOrgOswisCore/web/pages/portal.html.twig');
+        return $this->render('@OswisOrgOswisCore/web/pages/admin.html.twig');
     }
 }
