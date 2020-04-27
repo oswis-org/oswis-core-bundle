@@ -25,13 +25,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Resources/views/web/parts/breadcrumb-item.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/views/web/parts/breadcrumbs.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/schema-json/breadcrumbs.json.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/web/html-skeleton-default.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/html-skeleton-default.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Resources/views/web/page-skeleton-default.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/page-skeleton-default.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/web/parts/breadcrumbs-jsonld.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/views/web/parts/breadcrumb-item.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/parts/breadcrumb-item.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/views/web/parts/breadcrumbs.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/parts/breadcrumbs.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -648,14 +645,8 @@
       <workItem from="1587807595402" duration="641000" />
       <workItem from="1587842515410" duration="10000" />
       <workItem from="1587920526525" duration="4221000" />
-      <workItem from="1587976529145" duration="3364000" />
-    </task>
-    <task id="LOCAL-00470" summary="Some changes, updates and fixes.">
-      <created>1581770714815</created>
-      <option name="number" value="00470" />
-      <option name="presentableId" value="LOCAL-00470" />
-      <option name="project" value="LOCAL" />
-      <updated>1581770714815</updated>
+      <workItem from="1587976529145" duration="3464000" />
+      <workItem from="1587988587623" duration="1289000" />
     </task>
     <task id="LOCAL-00471" summary="Some changes, updates and fixes.">
       <created>1581778236082</created>
@@ -993,7 +984,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587927064400</updated>
     </task>
-    <option name="localTasksCounter" value="519" />
+    <task id="LOCAL-00519" summary="Some fixes, updates and changes.">
+      <created>1587982808914</created>
+      <option name="number" value="00519" />
+      <option name="presentableId" value="LOCAL-00519" />
+      <option name="project" value="LOCAL" />
+      <updated>1587982808916</updated>
+    </task>
+    <option name="localTasksCounter" value="520" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1099,21 +1097,22 @@
     </state>
     <state x="288" y="257" width="526" height="478" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1581630489271" />
     <state x="405" y="257" width="526" height="478" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1581867123678" />
-    <state x="1048" y="381" width="509" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1587921517680">
-      <screen x="0" y="0" width="3286" height="741" />
+    <state x="2356" y="395" width="402" height="332" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1587982776551">
+      <screen x="1920" y="0" width="1366" height="768" />
     </state>
     <state x="499" y="381" width="402" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1366.741@0.0.1366.741" timestamp="1587332917214" />
     <state x="1048" y="381" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.3286.741@0.0.3286.741" timestamp="1587921517680" />
     <state x="499" y="381" width="402" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1587593550304" />
     <state x="701" y="381" width="509" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1587636415483" />
-    <state x="1920" y="0" width="1366" height="741" key="CommitChangelistDialog2" timestamp="1587927064261">
-      <screen x="0" y="0" width="3286" height="741" />
+    <state x="2356" y="395" width="402" height="332" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1587982776551" />
+    <state x="2289" y="0" width="1366" height="741" key="CommitChangelistDialog2" timestamp="1587982808670">
+      <screen x="1920" y="0" width="1366" height="768" />
     </state>
     <state x="369" y="0" width="904" height="735" key="CommitChangelistDialog2/0.0.1366.741@0.0.1366.741" timestamp="1587334698904" />
     <state x="1920" y="0" width="1366" height="741" key="CommitChangelistDialog2/0.0.3286.741@0.0.3286.741" timestamp="1587927064261" />
     <state x="369" y="0" width="881" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1587662078930" />
     <state x="518" y="0" width="881" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1587636646812" />
-    <state x="2289" y="0" width="881" height="741" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1587577677760" />
+    <state x="2289" y="0" width="881" height="741" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1587982808670" />
     <state x="99" y="100" width="1160" height="535" maximized="true" key="DiffContextDialog" timestamp="1581854208388">
       <screen x="0" y="0" width="1920" height="741" />
     </state>
@@ -1133,14 +1132,14 @@
     <state x="187" y="5" key="SettingsEditor/0.0.1366.741@0.0.1366.741" timestamp="1582926206454" />
     <state x="33" y="0" width="1280" height="730" key="SettingsEditor/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1587589952804" />
     <state x="263" y="0" width="1418" height="741" key="SettingsEditor/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1581937850921" />
-    <state x="0" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1587927068201">
-      <screen x="0" y="0" width="3286" height="741" />
+    <state x="2315" y="199" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1587982811903">
+      <screen x="1920" y="0" width="1366" height="768" />
     </state>
     <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1587334703804" />
     <state x="0" y="213" width="1920" height="522" key="Vcs.Push.Dialog.v2/0.0.3286.741@0.0.3286.741" timestamp="1587927068201" />
     <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1587662080716" />
     <state x="555" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1587636648699" />
-    <state x="2315" y="199" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1587577679680" />
+    <state x="2315" y="199" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1587982811903" />
     <state x="99" y="96" width="1149" height="504" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1582568894076">
       <screen x="0" y="0" width="1366" height="741" />
     </state>

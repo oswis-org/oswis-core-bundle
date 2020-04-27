@@ -4,8 +4,8 @@
     <a itemprop="item" itemscope itemtype="https://schema.org/WebPage" itemid="{{- b_url|default -}}" href="{{- b_url|default -}}">
         {{- null -}}<span itemprop="name">{{- b_title|default('Nepojmenovaná stránka') -}}</span>{{- null -}}
     </a>
-    {% if b_position is defined and b_position %}
-        <meta itemprop="position" content="{{ b_position }}">
-    {% endif %}
+    <meta itemprop="position" content="{{ b_position|default(breadcrumb_index|default) }}">
 </li>
+{{- null -}}
+{% set breadcrumb_index = breadcrumb_index + 1 %}
 {{- null -}}
