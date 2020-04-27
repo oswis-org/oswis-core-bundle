@@ -1,0 +1,11 @@
+{{- null -}}
+<li class="breadcrumb-item {{ b_active is defined and b_active ? 'active' : '' }}" {{ b_active is defined and b_active ? 'aria-current="page"' : '' }}
+    itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <a itemprop="item" itemscope itemtype="https://schema.org/WebPage" itemid="{{- b_url|default -}}" href="{{- b_url|default -}}">
+        {{- null -}}<span itemprop="name">{{- b_title|default('Nepojmenovaná stránka') -}}</span>{{- null -}}
+    </a>
+    {% if b_position is defined and b_position %}
+        <meta itemprop="position" content="{{ b_position }}">
+    {% endif %}
+</li>
+{{- null -}}

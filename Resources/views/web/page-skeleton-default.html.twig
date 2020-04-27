@@ -8,11 +8,14 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <!-- <p>Obsah stránky nebyl načten.</p> -->
+                    <p>Na této stránce zatím nic není.</p>
                 </div>
             </div>
         </div>
     {% endblock body_content %}
+    {% block body_breadcrumbs %}
+        {% include '@OswisOrgOswisCore/web/parts/breadcrumbs.html.twig' %}
+    {% endblock body_breadcrumbs %}
     {% block body_footer %}
         {% include '@OswisOrgOswisCore/web/parts/footer.html.twig' %}
     {% endblock body_footer %}
