@@ -60,3 +60,48 @@ oswis_org_oswis_core_internal_action_clear_cache:
     controller: oswis_org_oswis_core.internal_actions_web_controller::clearCache
     path: "/internal/actions/clear_cache"
 
+oswis_org_oswis_core_site_web_manifest_action:
+    controller: oswis_org_oswis_core.site_web_manifest_controller::siteWebManifest
+    path: "/site.webmanifest"
+
+oswis_org_oswis_core_browserconfig_action:
+    controller: oswis_org_oswis_core.site_web_manifest_controller::browserconfig
+    path: "/browserconfig.xml"
+
+oswis_org_oswis_core_robots_action:
+    controller: oswis_org_oswis_core.site_web_manifest_controller::robots
+    path: "/robots.txt"
+
+oswis_org_oswis_core_sitemap_index_action:
+    controller: oswis_org_oswis_core.site_web_manifest_controller::sitemapIndex
+    path: "/sitemap_index.xml"
+
+oswis_org_oswis_core_sitemap_core_action:
+    controller: oswis_org_oswis_core.site_web_manifest_controller::sitemapCore
+    path: "/sitemap_core.xml"
+
+oswis_org_oswis_rss:
+    controller: oswis_org_oswis_web.rss_feed_controller::showRss
+    path: "/rss"
+
+oswis_org_oswis_sitemap_core_xml:
+    controller: oswis_org_oswis_web.site_map_web_controller::showSitemapXml
+    path: "/sitemap_core.xml"
+
+oswis_org_oswis_sitemap_index_xml:
+    controller: oswis_org_oswis_web.site_map_web_controller::showSitemapIndexXml
+    path: "/sitemap_index.xml"
+
+oswis_org_oswis_sitemap_xsl:
+    controller: oswis_org_oswis_web.site_map_web_controller::showSitemapXsl
+    path: "/sitemap.xsl"
+
+oswis_org_oswis_sitemap_xml_redir:
+    controller: oswis_org_oswis_web.site_map_web_controller::sitemapRedir
+    path: "/sitemap.xml"
+
+#oswis_org_oswis_sitemap:
+#    controller: oswis_org_oswis_web.site_map_controller::showSitemap
+#    path: "/sitemap"
+
+

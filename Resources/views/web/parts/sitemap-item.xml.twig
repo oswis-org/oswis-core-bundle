@@ -1,0 +1,18 @@
+<url>
+    <loc>{{ path }}</loc>
+    <changefreq>{{ changeFrequency|default('daily') }}</changefreq>
+    <priority>{{ priority|default('0.5000') }}</priority>
+    {% if changed %}
+        <lastmod>{{ changed|date('c') }}</lastmod>
+    {% endif %}
+    {% if isActuality is defined and isActuality %}
+        <news:news>
+            <news:publication>
+                <news:name>Novinky{{ oswis.app.name ? ' :: '~oswis.app.name : '' }}</news:name>
+                <news:language>{{ lang|default('cs') }}</news:language>
+            </news:publication>
+            <news:publication_date>{{ created|date('c') }}</news:publication_date>
+            <news:title>{{ title }}</news:title>
+        </news:news>
+    {% endif %}
+</url>

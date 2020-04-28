@@ -25,9 +25,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Controller/Website/RssFeedController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Controller/Website/SiteMapWebController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Controller/Website/SiteWebManifestController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/views/web/pages/browserconfig.xml.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/views/web/pages/robots.txt.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/views/web/pages/rss-items.xml.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/views/web/pages/rss.xml.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/views/web/pages/sitemap-index.xml.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/views/web/pages/sitemap-items.xml.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/views/web/pages/sitemap.xml.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/views/web/pages/sitemap.xsl.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/views/web/parts/rss-item.xml.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/views/web/parts/sitemap-index-item.xml.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/views/web/parts/sitemap-item.xml.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/oswis-core-bundle.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/oswis-core-bundle.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/Website/AdminWebController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/Website/AdminWebController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DependencyInjection/OswisOrgOswisCoreExtension.php" beforeDir="false" afterPath="$PROJECT_DIR$/DependencyInjection/OswisOrgOswisCoreExtension.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/config/routes.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/config/services.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/views/web/html-skeleton-default.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/html-skeleton-default.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -229,7 +246,7 @@
     <property name="add_unversioned_files" value="$PROJECT_DIR$/vendor/symfony/swiftmailer-bundle/composer.json" />
     <property name="editor.config.ad.shown" value="true" />
     <property name="javascript.nodejs.core.library.configured.version" value="10.17.0" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Resources/views/web/parts" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Resources/views/web/pages" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -241,19 +258,19 @@
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.PHP" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Resources/views/web/pages" />
+      <recent name="$PROJECT_DIR$/Resources/views/web/parts" />
+      <recent name="$PROJECT_DIR$/Resources/views/web" />
+      <recent name="$PROJECT_DIR$/Controller/Website" />
+      <recent name="$PROJECT_DIR$/Traits/Entity" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Resources/views/web/pages" />
+      <recent name="$PROJECT_DIR$/Controller/Website" />
       <recent name="$PROJECT_DIR$/Resources/views/web/html-parts" />
       <recent name="$PROJECT_DIR$/Traits/Entity" />
       <recent name="$PROJECT_DIR$/Traits/Entity/Basic" />
-      <recent name="$PROJECT_DIR$/Traits/Entity/Deprecated" />
-      <recent name="$PROJECT_DIR$/Resources/views/web/parts" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/Resources/views/web/parts" />
-      <recent name="$PROJECT_DIR$/Resources/views/web/pages" />
-      <recent name="$PROJECT_DIR$/Controller/Website" />
-      <recent name="$PROJECT_DIR$/Traits/Entity" />
-      <recent name="$PROJECT_DIR$/Resources/public/system" />
     </key>
   </component>
   <component name="RunManager">
@@ -647,14 +664,8 @@
       <workItem from="1587976529145" duration="3464000" />
       <workItem from="1587988587623" duration="1353000" />
       <workItem from="1587996203363" duration="676000" />
-      <workItem from="1587997537609" duration="3737000" />
-    </task>
-    <task id="LOCAL-00472" summary="Use knplabs/doctrine-behaviors instead of Gedmo.">
-      <created>1581784145564</created>
-      <option name="number" value="00472" />
-      <option name="presentableId" value="LOCAL-00472" />
-      <option name="project" value="LOCAL" />
-      <updated>1581784145565</updated>
+      <workItem from="1587997537609" duration="4871000" />
+      <workItem from="1588081531742" duration="14132000" />
     </task>
     <task id="LOCAL-00473" summary="Use knplabs/doctrine-behaviors instead of Gedmo.">
       <created>1581786884856</created>
@@ -992,7 +1003,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587994086462</updated>
     </task>
-    <option name="localTasksCounter" value="521" />
+    <task id="LOCAL-00521" summary="Some fixes, updates and changes.">
+      <created>1588013847325</created>
+      <option name="number" value="00521" />
+      <option name="presentableId" value="LOCAL-00521" />
+      <option name="project" value="LOCAL" />
+      <updated>1588013847325</updated>
+    </task>
+    <option name="localTasksCounter" value="522" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1073,10 +1091,10 @@
       <screen x="0" y="0" width="1920" height="741" />
     </state>
     <state x="555" y="29" width="802" height="706" key="#Plugins/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1581779259340" />
-    <state x="417" y="162" width="522" height="398" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1580760207783">
+    <state x="396" y="187" width="671" height="398" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1588084778890">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="417" y="162" width="522" height="398" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.741@0.0.1366.741" timestamp="1580760207783" />
+    <state x="396" y="187" width="671" height="398" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.741@0.0.1366.741" timestamp="1588084778890" />
     <state x="768" y="179" width="397" height="556" key="#com.intellij.ide.util.MemberChooser" timestamp="1581867031197">
       <screen x="0" y="0" width="1920" height="741" />
     </state>
@@ -1098,20 +1116,20 @@
     </state>
     <state x="288" y="257" width="526" height="478" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1581630489271" />
     <state x="405" y="257" width="526" height="478" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1581867123678" />
-    <state x="2356" y="395" width="402" height="332" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1587982776551">
-      <screen x="1920" y="0" width="1366" height="768" />
+    <state x="499" y="381" width="402" height="332" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1588101764747">
+      <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="499" y="381" width="402" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1366.741@0.0.1366.741" timestamp="1587332917214" />
+    <state x="499" y="381" width="402" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1366.741@0.0.1366.741" timestamp="1588101764747" />
     <state x="1048" y="381" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.3286.741@0.0.3286.741" timestamp="1587921517680" />
     <state x="499" y="381" width="402" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1587593550304" />
     <state x="701" y="381" width="509" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1587636415483" />
     <state x="2356" y="395" width="402" height="332" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1587982776551" />
-    <state x="369" y="0" width="1366" height="741" key="CommitChangelistDialog2" timestamp="1587994086374">
+    <state x="369" y="0" width="1366" height="741" key="CommitChangelistDialog2" timestamp="1588013847166">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="369" y="0" width="904" height="735" key="CommitChangelistDialog2/0.0.1366.741@0.0.1366.741" timestamp="1587334698904" />
     <state x="1920" y="0" width="1366" height="741" key="CommitChangelistDialog2/0.0.3286.741@0.0.3286.741" timestamp="1587927064261" />
-    <state x="369" y="0" width="881" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1587994086374" />
+    <state x="369" y="0" width="881" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1588013847166" />
     <state x="518" y="0" width="881" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1587636646812" />
     <state x="2289" y="0" width="881" height="741" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1587982808670" />
     <state x="99" y="100" width="1160" height="535" maximized="true" key="DiffContextDialog" timestamp="1581854208388">
@@ -1133,12 +1151,12 @@
     <state x="187" y="5" key="SettingsEditor/0.0.1366.741@0.0.1366.741" timestamp="1582926206454" />
     <state x="33" y="0" width="1280" height="730" key="SettingsEditor/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1587589952804" />
     <state x="263" y="0" width="1418" height="741" key="SettingsEditor/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1581937850921" />
-    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1587994087761">
+    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1588013848958">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1587334703804" />
     <state x="0" y="213" width="1920" height="522" key="Vcs.Push.Dialog.v2/0.0.3286.741@0.0.3286.741" timestamp="1587927068201" />
-    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1587994087761" />
+    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1588013848958" />
     <state x="555" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1587636648699" />
     <state x="2315" y="199" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1587982811903" />
     <state x="99" y="96" width="1149" height="504" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1582568894076">

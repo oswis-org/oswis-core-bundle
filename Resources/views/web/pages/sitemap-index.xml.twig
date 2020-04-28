@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    {% block sitemap_core %}
+        {% include '@OswisOrgOswisCore/web/parts/sitemap-index-item.xml.twig'
+            with {'sitemap_path': path('oswis_org_oswis_core_sitemap_core_action')} %}
+    {% endblock sitemap_core %}
+    {% block sitemap_additional %}
+    {% endblock sitemap_additional %}
+</sitemapindex>
