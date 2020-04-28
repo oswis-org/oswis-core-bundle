@@ -73,35 +73,35 @@ oswis_org_oswis_core_robots_action:
     path: "/robots.txt"
 
 oswis_org_oswis_core_sitemap_index_action:
-    controller: oswis_org_oswis_core.site_web_manifest_controller::sitemapIndex
+    controller: oswis_org_oswis_core.site_map_web_controller::sitemapIndex
     path: "/sitemap_index.xml"
 
 oswis_org_oswis_core_sitemap_core_action:
-    controller: oswis_org_oswis_core.site_web_manifest_controller::sitemapCore
+    controller: oswis_org_oswis_core.site_map_web_controller::sitemapCore
     path: "/sitemap_core.xml"
 
 oswis_org_oswis_rss:
-    controller: oswis_org_oswis_web.rss_feed_controller::showRss
+    controller: oswis_org_oswis_core.rss_feed_controller::showRss
     path: "/rss"
 
 oswis_org_oswis_sitemap_core_xml:
-    controller: oswis_org_oswis_web.site_map_web_controller::showSitemapXml
+    controller: oswis_org_oswis_core.site_map_web_controller::showSitemapXml
     path: "/sitemap_core.xml"
 
 oswis_org_oswis_sitemap_index_xml:
-    controller: oswis_org_oswis_web.site_map_web_controller::showSitemapIndexXml
+    controller: oswis_org_oswis_core.site_map_web_controller::showSitemapIndexXml
     path: "/sitemap_index.xml"
 
 oswis_org_oswis_sitemap_xsl:
-    controller: oswis_org_oswis_web.site_map_web_controller::showSitemapXsl
+    controller: oswis_org_oswis_core.site_map_web_controller::showSitemapXsl
     path: "/sitemap.xsl"
 
 oswis_org_oswis_sitemap_xml_redir:
-    controller: oswis_org_oswis_web.site_map_web_controller::sitemapRedir
+    controller: oswis_org_oswis_core.site_map_web_controller::sitemapRedir
     path: "/sitemap.xml"
 
 #oswis_org_oswis_sitemap:
-#    controller: oswis_org_oswis_web.site_map_controller::showSitemap
+#    controller: oswis_org_oswis_core.site_map_controller::showSitemap
 #    path: "/sitemap"
 
 
