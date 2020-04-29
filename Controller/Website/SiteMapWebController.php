@@ -37,6 +37,11 @@ class SiteMapWebController extends AbstractController
         return $this->render('@OswisOrgOswisCore/web/pages/sitemap.xsl.twig');
     }
 
+    public function showSitemapIndex(): Response
+    {
+        return $this->render('@OswisOrgOswisCore/web/pages/sitemap-index.xml.twig');
+    }
+
     public function sitemapRedirect(): Response
     {
         return $this->redirectToRoute('oswis_org_oswis_core_sitemap_index_action');

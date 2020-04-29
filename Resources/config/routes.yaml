@@ -96,8 +96,8 @@ oswis_org_oswis_sitemap_xsl:
     controller: oswis_org_oswis_core.site_map_web_controller::showSitemapXsl
     path: "/sitemap.xsl"
 
-oswis_org_oswis_sitemap_xml_redir:
-    controller: oswis_org_oswis_core.site_map_web_controller::sitemapRedir
+oswis_org_oswis_sitemap_xml_redirect:
+    controller: oswis_org_oswis_core.site_map_web_controller::sitemapRedirect
     path: "/sitemap.xml"
 
 #oswis_org_oswis_sitemap:
