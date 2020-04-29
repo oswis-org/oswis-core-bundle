@@ -53,7 +53,8 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
     {
         $twigConfig = [
             'paths'       => [
-                'assets/assets/images' => 'images',
+                'assets/assets/images'                  => 'images',
+                '%kernel.project_dir%/vendor/xx/yy/zzz' => 'OriginalVNamespace',
             ],
             'globals'     => [
                 'oswis' => '@oswis_org_oswis_core.oswis_core_settings_provider',

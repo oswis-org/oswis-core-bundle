@@ -7,7 +7,7 @@
         <description>{{ description|default('Přehled nejnovějších aktualit ve formě RSS kanálu.') }}</description>
         <webMaster>
             {%- block admin -%}
-                {{- oswis.admin ? oswis.admin.email~' ('~oswis.admin.name~','~oswis.admin.url~')'~ : 'webmaster@oswis.org (Jakub ZAK, https://jakubzak.cz)' -}}
+                {{- oswis.admin ? oswis.admin.email~' ('~oswis.admin.name~','~oswis.admin.web~')' : 'webmaster@oswis.org (Jakub ZAK, https://jakubzak.cz)' -}}
             {%- endblock admin -%}
         </webMaster>
         <managingEditor>{{ block('admin') }}</managingEditor>
@@ -21,7 +21,7 @@
         <sy:updatePeriod>{{ updatePeriod|default('hourly') }}</sy:updatePeriod>
         <sy:updateFrequency>{{ updateFrequency|default('1') }}</sy:updateFrequency>
         <image>
-            <url>{{ absolute_url(path(image|default ? image.url : oswis.app.logo)) }}</url>
+            <url>{{ absolute_url(asset(image|default ? image.url : oswis.app.logo)) }}</url>
             {% if image.width|default %}
                 <width>{{ image.width|default }}</width>{% endif %}
             {% if image.height|default %}
