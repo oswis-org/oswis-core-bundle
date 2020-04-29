@@ -68,8 +68,8 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
             'strict_variables'     => '%kernel.debug%',
             'exception_controller' => null,
             'paths'                => [
-                'assets/assets/images'      => 'images',
-                'bundles/oswisorgoswiscore' => 'oswis',
+                'assets/assets/images'             => 'images',
+                'public/bundles/oswisorgoswiscore' => 'oswis',
             ],
             'globals'              => ['oswis' => '@oswis_org_oswis_core.oswis_core_settings_provider'],
             'form_themes'          => ['bootstrap_4_layout.html.twig'],
