@@ -1,8 +1,7 @@
 {% extends '@OswisOrgOswisCore/web/page-skeleton-default.html.twig' %}
 
-{% block title %}Chyba{% endblock %}
-{% block html_description %}V aplikaci nastala chyba.{% endblock %}
-{% block og_description %}{{ block('html_description') }}{% endblock %}
+{% block html_title %}{{ block('error_title') }} :: {{ oswis.web.title }}{% endblock %}
+{% block html_description %}{{ block('error_content') }}{% endblock %}
 
 {% block body_content %}
     <main class="container" id="main-content-container">
@@ -16,7 +15,7 @@
                     </h2>
                 </header>
                 {% block error_content %}
-                    <p>Nastala chyba. Zkuste to znovu nebo nás kontaktujte.</p>
+                    <p>V aplikaci nastala chyba. Zkuste to znovu nebo nás kontaktujte.</p>
                 {% endblock error_content %}
                 <p><small>{{ status_code }} {{ status_text }}</small></p>
             </div>

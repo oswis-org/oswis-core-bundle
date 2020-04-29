@@ -10,6 +10,7 @@ use Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
+use function dirname;
 
 class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionInterface
 {
@@ -56,6 +57,7 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
         $this->prependFramework($container);
         $this->prependNelmioCors($container);
         $this->prependApiPlatform($container, $config);
+        self::prependForBundleTemplatesOverride($container, ['Twig']);
     }
 
     private function prependTwig(ContainerBuilder $container): void
@@ -170,5 +172,27 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
                 'patch_formats' => ['json' => ['application/merge-patch+json']],
             ]
         );
+    }
+
+    /**
+     * This work-around allows overriding of other bundles templates OswisCore.
+     *
+     * @param ContainerBuilder $container
+     * @param array            $bundleNames
+     */
+    final public static function prependForBundleTemplatesOverride(ContainerBuilder $container, array $bundleNames): void
+    {
+        $twigConfigs = $container->getExtensionConfig('twig');
+        $paths = [];
+        foreach ($twigConfigs as $twigConfig) {
+            if (isset($twigConfig['paths'])) {
+                $paths += $twigConfig['paths'];
+            }
+        }
+        foreach ($bundleNames as $bundleName) {
+            $paths['templates/bundles/'.$bundleName.'Bundle/'] = $bundleName;
+            $paths[dirname(__DIR__).'/Resources/views/bundles/'.$bundleName.'Bundle/'] = $bundleName;
+        }
+        $container->prependExtensionConfig('twig', ['paths' => $paths]);
     }
 }

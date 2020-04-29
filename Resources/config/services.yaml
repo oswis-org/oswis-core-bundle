@@ -150,6 +150,15 @@ services:
         alias: oswis_org_oswis_core.site_web_manifest_controller
         public: true
 
+    ### Web Banner Controller
+    oswis_org_oswis_core.web_banner_controller:
+        class: OswisOrg\OswisCoreBundle\Controller\Website\WebBannerController
+        autowire: true
+        public: true
+    OswisOrg\OswisCoreBundle\Controller\Website\WebBannerController:
+        alias: oswis_org_oswis_core.web_banner_controller
+        public: true
+
     ### Internal Actions Web Controller
     oswis_org_oswis_core.internal_actions_web_controller:
         class: OswisOrg\OswisCoreBundle\Controller\Website\InternalActionsWebController

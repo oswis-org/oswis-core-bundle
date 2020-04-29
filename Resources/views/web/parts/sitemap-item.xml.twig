@@ -1,5 +1,5 @@
 <url>
-    <loc>{{ path }}</loc>
+    <loc>{{ absolute_url(path) }}</loc>
     <changefreq>{{ changeFrequency|default('daily') }}</changefreq>
     <priority>{{ priority|default('0.5000') }}</priority>
     {% if changed %}

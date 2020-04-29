@@ -1,7 +1,7 @@
 <item>
-    <title>{{ item.name }}</title>
-    <link>{% block item_path %}{{ item.path }}{% endblock item_path %}</link>
-    <guid>{{ block('item_path') }}</guid>
-    <description>{{ item.textValue|markdown_to_html|striptags|u.truncate(200,'…') }}</description>
-    <pubDate>{{ item.dateTime|date("D, d M Y H:i:s O") }}</pubDate>
+    <title>{{- item.name -}}</title>
+    <link>{% block item_path %}{{- item.path -}}{% endblock item_path %}</link>
+    <guid>{{- block('item_path') -}}</guid>
+    <description>{{- item.textValue|markdown_to_html|striptags|u.truncate(220,'…') -}}</description>
+    <pubDate>{{- item.dateTime|date("D, d M Y H:i:s O") -}}</pubDate>
 </item>

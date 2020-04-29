@@ -72,14 +72,6 @@ oswis_org_oswis_core_robots_action:
     controller: oswis_org_oswis_core.site_web_manifest_controller::robots
     path: "/robots.txt"
 
-oswis_org_oswis_core_sitemap_index_action:
-    controller: oswis_org_oswis_core.site_map_web_controller::sitemapIndex
-    path: "/sitemap_index.xml"
-
-oswis_org_oswis_core_sitemap_core_action:
-    controller: oswis_org_oswis_core.site_map_web_controller::sitemapCore
-    path: "/sitemap_core.xml"
-
 oswis_org_oswis_rss:
     controller: oswis_org_oswis_core.rss_feed_controller::showRss
     path: "/rss"

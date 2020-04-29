@@ -1,8 +1,4 @@
-{% extends '@OswisOrgOswisCore/bundles/TwigBundle/Exception/error.html.twig' %}
-
-{% block title %}Přístup odepřen{% endblock %}
-{% block html_description %}Přístup ke stránce byl odepřen.{% endblock %}
-{% block og_description %}{{ block('html_description') }}{% endblock %}
+{% extends '@Twig/Exception/error.html.twig' %}
 
 {% block error_title %}
     Přístup odepřen

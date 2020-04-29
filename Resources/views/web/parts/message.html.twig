@@ -1,12 +1,14 @@
-<article id="message" class="container bg-white-tra60 pt-5 pb-5">
-    <div class="row">
-        <div class="col-12">
-            <header>
-                <h2 class="big">{{ title|default }}</h2>
-            </header>
-            <section>
-                <p>{{ message|default }}</p>
-            </section>
-        </div>
+<div class="row text-justify">
+    <div class="col-lg-9">
+        <header>
+            <h2 class="text-uppercase">{{ title|default }}</h2>
+        </header>
+        <section>
+            <p>{{ message|default }}</p>
+        </section>
     </div>
-</article>
+</div>
+<div class="d-lg-none col-md-4 col-sm-3 col-xs-2"></div>
+<div class="col-lg-3 col-md-4 col-sm-6 col-xs-8">
+    {{ render_hinclude(controller('OswisOrg\\OswisCoreBundle\\Controller\\Website\\WebBannerController::showWebBanner')) }}
+</div>
