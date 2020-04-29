@@ -61,24 +61,14 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
     private function prependTwig(ContainerBuilder $container): void
     {
         $twigConfig = [
-            'paths'       => [
-                'assets/assets/images' => 'images',
-            ],
-            'globals'     => [
-                'oswis' => '@oswis_org_oswis_core.oswis_core_settings_provider',
-            ],
-            'form_themes' => [
-                'bootstrap_4_layout.html.twig',
-            ],
-            'date'        => [
-                'format' => 'j. n. Y H:i',
-            ],
-            'twig'        => [
-                'default_path'         => '%kernel.project_dir%/templates',
-                'debug'                => '%kernel.debug%',
-                'strict_variables'     => '%kernel.debug%',
-                'exception_controller' => null,
-            ],
+            'default_path'         => '%kernel.project_dir%/templates',
+            'debug'                => '%kernel.debug%',
+            'strict_variables'     => '%kernel.debug%',
+            'exception_controller' => null,
+            'paths'                => ['assets/assets/images' => 'images'],
+            'globals'              => ['oswis' => '@oswis_org_oswis_core.oswis_core_settings_provider'],
+            'form_themes'          => ['bootstrap_4_layout.html.twig'],
+            'date'                 => ['format' => 'j. n. Y H:i'],
         ];
         $container->prependExtensionConfig('twig', $twigConfig);
     }
