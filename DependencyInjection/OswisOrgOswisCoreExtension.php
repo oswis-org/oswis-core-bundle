@@ -5,6 +5,7 @@ namespace OswisOrg\OswisCoreBundle\DependencyInjection;
 use Exception;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Exception\BadMethodCallException;
 use Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
@@ -45,17 +46,23 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
 
     final public function prepend(ContainerBuilder $container): void
     {
+        try {
+            $configs = $container->getExtensionConfig($this->getAlias());
+        } catch (BadMethodCallException $e) {
+            $configs = [];
+        }
+        $config = $this->processConfiguration(new Configuration(), $configs);
         $this->prependTwig($container);
         $this->prependFramework($container);
         $this->prependNelmioCors($container);
+        $this->prependApiPlatform($container, $config);
     }
 
     private function prependTwig(ContainerBuilder $container): void
     {
         $twigConfig = [
             'paths'       => [
-                'assets/assets/images'                  => 'images',
-                '%kernel.project_dir%/vendor/xx/yy/zzz' => 'OriginalVNamespace',
+                'assets/assets/images' => 'images',
             ],
             'globals'     => [
                 'oswis' => '@oswis_org_oswis_core.oswis_core_settings_provider',
@@ -107,6 +114,43 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
                 ],
                 'paths'    => [
                     '^/' => null,
+                ],
+            ]
+        );
+    }
+
+    private function prependApiPlatform(ContainerBuilder $container, array $config): void
+    {
+        $container->prependExtensionConfig(
+            'api_platform',
+            [
+                'title'                   => $config['app']['name'] ?? null,
+                'description'             => $config['app']['description'] ?? null,
+                'version'                 => $config['app']['version'] ?? null,
+                'allow_plain_identifiers' => true,
+                'eager_loading'           => [
+                    'enabled'       => true,
+                    'fetch_partial' => false,
+                    'max_joins'     => 40,
+                    'force_eager'   => true,
+                ],
+                'swagger'                 => [
+                    'versions' => [3],
+                    'api_keys' => [
+                        'apiKey' => [
+                            'name' => 'Authorization',
+                            'type' => 'header',
+                        ],
+                    ],
+                ],
+                'collection'              => [
+                    'pagination' => [
+                        'items_per_page'                => 5000,
+                        'client_enabled'                => true,
+                        'client_items_per_page'         => true,
+                        'items_per_page_parameter_name' => 'itemsPerPage',
+                        'enabled_parameter_name'        => 'pagination',
+                    ],
                 ],
             ]
         );
