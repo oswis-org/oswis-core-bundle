@@ -26,7 +26,7 @@ final class SearchAnnotation
         if (!isset($data['value']) || !is_array($data['value'])) {
             throw new AnnotationException('Options must be a array of strings.');
         }
-        foreach ($data['value'] as $key => $value) {
+        foreach ($data['value'] as $value) {
             if (!is_string($value)) {
                 throw new AnnotationException('Options must be a array of strings.');
             }

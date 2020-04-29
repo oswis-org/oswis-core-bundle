@@ -102,10 +102,13 @@
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
             {% if js is defined and js %}
-                {% autoescape false %}
-                    <script>{{ js|default }}</script>
-                {% endautoescape %}
+            {% autoescape false %}
+            <script>{{ js|default }}</script>
+            {% endautoescape %}
             {% endif %}
+        {% block javascripts_hinclude %}
+            <script src="https://cdn.jsdelivr.net/npm/Hinclude@1.2.0/hinclude.js"></script>
+        {% endblock javascripts_hinclude %}
         {% endblock javascripts %}
 
     {% endblock body_outer %}

@@ -47,6 +47,7 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
     {
         $this->prependTwig($container);
         $this->prependFramework($container);
+        $this->prependNelmioCors($container);
     }
 
     private function prependTwig(ContainerBuilder $container): void
@@ -62,12 +63,52 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
             'form_themes' => [
                 'bootstrap_4_layout.html.twig',
             ],
+            'date'        => [
+                'format' => 'j. n. Y H:i',
+            ],
         ];
         $container->prependExtensionConfig('twig', $twigConfig);
     }
 
     private function prependFramework(ContainerBuilder $container): void
     {
-        $container->prependExtensionConfig('framework', ['esi' => ['enabled' => true]]);
+        $container->prependExtensionConfig(
+            'framework',
+            [
+                'router'     => ['utf8' => true],
+                'php_errors' => ['log' => true],
+                'esi'        => ['enabled' => true],
+                'fragments'  => [
+                    'path'                      => '/_fragment',
+                    'hinclude_default_template' => '@OswisOrgOswisCore/web/parts/hinclude.html.twig',
+                ],
+                'validation' => ['email_validation_mode' => 'html5'],
+                'serializer' => [
+                    'mapping' => [
+                        'paths' => ['%kernel.project_dir%/config/serialization'],
+                    ],
+                ],
+            ]
+        );
+    }
+
+    private function prependNelmioCors(ContainerBuilder $container): void
+    {
+        $container->prependExtensionConfig(
+            'nelmio_cors',
+            [
+                'defaults' => [
+                    'origin_regex'   => true,
+                    'allow_origin'   => ['%env(CORS_ALLOW_ORIGIN)%'],
+                    'allow_methods'  => ['GET', 'OPTIONS', 'POST', 'PUT', 'PATCH', 'DELETE'],
+                    'allow_headers'  => ['Content-Type', 'Authorization'],
+                    'expose_headers' => ['Link'],
+                    'max_age'        => 3600,
+                ],
+                'paths'    => [
+                    '^/' => null,
+                ],
+            ]
+        );
     }
 }

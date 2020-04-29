@@ -6,7 +6,7 @@
 
 namespace OswisOrg\OswisCoreBundle\Traits\Entity;
 
-use function strlen;
+use OswisOrg\OswisCoreBundle\Utils\ColorUtils;
 
 trait ColorTrait
 {
@@ -16,6 +16,11 @@ trait ColorTrait
      */
     protected ?string $color = null;
 
+    public function getForegroundColor(): string
+    {
+        return ColorUtils::isOppositeWhite($this->getColor()) ? '#ffffff' : '#000000';
+    }
+
     public function getColor(): ?string
     {
         return $this->color;
@@ -24,21 +29,5 @@ trait ColorTrait
     public function setColor(?string $color): void
     {
         $this->color = $color;
-    }
-
-    public function getForegroundColor(): string
-    {
-        return $this->isForegroundWhite() ? '#ffffff' : '#000000';
-    }
-
-    public function isForegroundWhite(): bool
-    {
-        if (4 === strlen($this->color)) {
-            [$r, $g, $b] = sscanf($this->color, '#%1x%1x%1x');
-        } else {
-            [$r, $g, $b] = sscanf($this->color, '#%2x%2x%2x');
-        }
-
-        return ($r * 0.299 + $g * 0.587 + $b * 0.114) > 186;
     }
 }
