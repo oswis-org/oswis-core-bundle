@@ -73,6 +73,12 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
             'date'        => [
                 'format' => 'j. n. Y H:i',
             ],
+            'twig'        => [
+                'default_path'         => '%kernel.project_dir%/templates',
+                'debug'                => '%kernel.debug%',
+                'strict_variables'     => '%kernel.debug%',
+                'exception_controller' => null,
+            ],
         ];
         $container->prependExtensionConfig('twig', $twigConfig);
     }
@@ -94,6 +100,9 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
                     'mapping' => [
                         'paths' => ['%kernel.project_dir%/config/serialization'],
                     ],
+                ],
+                'mailer'     => [
+                    'dsn' => '%env(MAILER_DSN)%',
                 ],
             ]
         );
@@ -128,13 +137,13 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
                 'description'             => $config['app']['description'] ?? null,
                 'version'                 => $config['app']['version'] ?? null,
                 'allow_plain_identifiers' => true,
-                'eager_loading'           => [
+                'eager_loading' => [
                     'enabled'       => true,
                     'fetch_partial' => false,
                     'max_joins'     => 40,
                     'force_eager'   => true,
                 ],
-                'swagger'                 => [
+                'swagger'       => [
                     'versions' => [3],
                     'api_keys' => [
                         'apiKey' => [
@@ -143,7 +152,7 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
                         ],
                     ],
                 ],
-                'collection'              => [
+                'collection'    => [
                     'pagination' => [
                         'items_per_page'                => 5000,
                         'client_enabled'                => true,
@@ -152,6 +161,18 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
                         'enabled_parameter_name'        => 'pagination',
                     ],
                 ],
+                'formats'       => [
+                    'json'    => ['mime_types' => ['application/json']],
+                    'jsonld'  => ['mime_types' => ['application/ld+json']],
+                    'jsonapi' => ['mime_types' => ['application/vnd.api+json']],
+                    'html'    => ['mime_types' => ['text/html']],
+                ],
+                'error_formats' => [
+                    'jsonproblem' => ['mime_types' => ['application/problem+json']],
+                    'jsonapi'     => ['mime_types' => ['application/vnd.api+json']],
+                    'jsonld'      => ['mime_types' => ['application/ld+json']],
+                ],
+                'patch_formats' => ['json' => ['application/merge-patch+json']],
             ]
         );
     }
