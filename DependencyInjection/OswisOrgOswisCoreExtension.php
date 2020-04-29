@@ -81,6 +81,7 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
                 'router'     => ['utf8' => true],
                 'php_errors' => ['log' => true],
                 'esi'        => ['enabled' => true],
+                'secret'     => '%env(APP_SECRET)%',
                 'fragments'  => [
                     'path'                      => '/_fragment',
                     'hinclude_default_template' => '@OswisOrgOswisCore/web/parts/hinclude.html.twig',
@@ -94,6 +95,7 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
                 'mailer'     => [
                     'dsn' => '%env(MAILER_DSN)%',
                 ],
+                'assets'     => ['json_manifest_path' => '%kernel.project_dir%/public/build/manifest.json'],
             ]
         );
     }
