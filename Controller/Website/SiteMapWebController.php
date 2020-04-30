@@ -44,6 +44,6 @@ class SiteMapWebController extends AbstractController
 
     public function sitemapRedirect(): Response
     {
-        return $this->redirectToRoute('oswis_org_oswis_core_sitemap_index_action');
+        return $this->redirectToRoute('oswis_org_oswis_sitemap_index_xml');
     }
 }

@@ -2,7 +2,7 @@
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     {% block sitemap_core %}
         {% include '@OswisOrgOswisCore/web/parts/sitemap-index-item.xml.twig'
-            with {'sitemap_path': absolute_url(path('oswis_org_oswis_core_sitemap_core_action'))} %}
+            with {'sitemap_path': absolute_url(path('oswis_org_oswis_sitemap_core_xml'))} %}
     {% endblock sitemap_core %}
     {% block sitemap_additional %}
     {% endblock sitemap_additional %}
