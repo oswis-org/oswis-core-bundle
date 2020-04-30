@@ -86,22 +86,22 @@ trait DateRangeTrait
         return $this->getStartDateTime();
     }
 
-    public function getRangeAsText(): ?string
+    public function getRangeAsText(bool $withoutYear = true): ?string
     {
         if (null === $this->getStartDate()) {
             return null;
         }
         if ($this->isInOnePeriod(DateTimeUtils::DATE_TIME_DAYS)) {
-            return $this->getStartByFormat('j. n. Y');
+            return $this->getStartByFormat($withoutYear ? 'j. n.' : 'j. n. Y');
         }
         if ($this->isInOnePeriod(DateTimeUtils::DATE_TIME_MONTHS)) { // TODO: až => amž - escape it!!
-            return $this->getStartByFormat('j. ').$this->getEndByFormat('\až j. n. Y');
+            return $this->getStartByFormat('j. ').$this->getEndByFormat($withoutYear ? '\až j. n.' : '\až j. n. Y');
         }
         if ($this->isInOnePeriod(DateTimeUtils::DATE_TIME_YEARS)) {
-            return $this->getStartByFormat('j. n. ').$this->getEndByFormat('\až j. n. Y');
+            return $this->getStartByFormat('j. n. ').$this->getEndByFormat($withoutYear ? '\až j. n.' : '\až j. n. Y');
         }
 
-        return $this->getStartByFormat('j. n. Y').$this->getEndByFormat(' \až j. n. Y');
+        return $this->getStartByFormat($withoutYear ? 'j. n.' : 'j. n. Y').$this->getEndByFormat($withoutYear ? ' \až j. n.' : ' \až j. n. Y');
     }
 
     public function isInOnePeriod(string $period): ?bool
