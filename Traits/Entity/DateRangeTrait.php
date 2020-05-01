@@ -86,7 +86,7 @@ trait DateRangeTrait
         return $this->getStartDateTime();
     }
 
-    public function getRangeAsText(bool $withoutYear = true): ?string
+    public function getRangeAsText(bool $withoutYear = false): ?string
     {
         if (null === $this->getStartDate()) {
             return null;
@@ -94,7 +94,7 @@ trait DateRangeTrait
         if ($this->isInOnePeriod(DateTimeUtils::DATE_TIME_DAYS)) {
             return $this->getStartByFormat($withoutYear ? 'j. n.' : 'j. n. Y');
         }
-        if ($this->isInOnePeriod(DateTimeUtils::DATE_TIME_MONTHS)) { // TODO: až => amž - escape it!!
+        if ($this->isInOnePeriod(DateTimeUtils::DATE_TIME_MONTHS)) {
             return $this->getStartByFormat('j. ').$this->getEndByFormat($withoutYear ? '\až j. n.' : '\až j. n. Y');
         }
         if ($this->isInOnePeriod(DateTimeUtils::DATE_TIME_YEARS)) {

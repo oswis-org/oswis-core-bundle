@@ -9324,12 +9324,12 @@
       "source": {
         "type": "git",
         "url": "https://github.com/symplify/package-builder.git",
-        "reference": "608528685d82919e47d5b30873f46d563a39dcb8"
+        "reference": "0b46fa5cb11a537439f8784f5727a5cdcbad9fd0"
       },
       "dist": {
         "type": "zip",
-        "url": "https://api.github.com/repos/symplify/package-builder/zipball/608528685d82919e47d5b30873f46d563a39dcb8",
-        "reference": "608528685d82919e47d5b30873f46d563a39dcb8",
+        "url": "https://api.github.com/repos/symplify/package-builder/zipball/0b46fa5cb11a537439f8784f5727a5cdcbad9fd0",
+        "reference": "0b46fa5cb11a537439f8784f5727a5cdcbad9fd0",
         "shasum": ""
       },
       "require": {
