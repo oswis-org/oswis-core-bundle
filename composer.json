@@ -27,6 +27,7 @@
     "ext-mbstring": "*",
     "ext-openssl": "*",
     "ext-calendar": "*",
+    "ext-exif": "*",
     "api-platform/core": "^2.5",
     "sensio/framework-extra-bundle": "^5.5",
     "doctrine/collections": "^1.6",

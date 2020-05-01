@@ -43,6 +43,11 @@ abstract class AbstractRevision implements RevisionInterface
     }
 
     /**
+     * Date and time of revision creation.
+     */
+    abstract public function getCreatedDateTime(): ?DateTime;
+
+    /**
      * Helper function for sorting by id of revisions.
      */
     public static function cmpId(?int $a, ?int $b): int
@@ -53,16 +58,6 @@ abstract class AbstractRevision implements RevisionInterface
 
         return $a < $b ? -1 : 1;
     }
-
-    /**
-     * Check validity of container (ie. for check before setting container).
-     */
-    abstract public static function checkRevisionContainer(?AbstractRevisionContainer $revision): void;
-
-    /**
-     * Date and time of revision creation.
-     */
-    abstract public function getCreatedDateTime(): ?DateTime;
 
     /**
      * ID of this revision (version).
@@ -93,6 +88,11 @@ abstract class AbstractRevision implements RevisionInterface
             $container->addRevision($this);
         }
     }
+
+    /**
+     * Check validity of container (ie. for check before setting container).
+     */
+    abstract public static function checkRevisionContainer(?AbstractRevisionContainer $revision): void;
 
     /**
      * Check if this revision is actual/active in specified datetime (or now if datetime is not specified).
