@@ -45,7 +45,7 @@ class SiteWebManifestController extends AbstractController
                     'lang'             => 'cs',
                     'dir'              => 'ltr',
                     'name'             => $this->coreSettings->getWeb()['title'],
-                    'short_name'       => $this->coreSettings->getWeb()['short_title'],
+                    'short_name'       => $this->coreSettings->getWeb()['title_short'],
                     'start_url'        => '.',
                     'display'          => 'fullscreen',
                     'description'      => $this->coreSettings->getWeb()['description'],
