@@ -22,7 +22,7 @@ class SiteMapWebController extends AbstractController
                     'priority'        => 1.000,
                 ],
                 ['path' => $this->generateUrl('oswis_org_oswis_core_gdpr_action'), 'changeFrequency' => 'weekly'],
-                ['path' => $this->generateUrl('oswis_org_oswis_core_robots_action'), 'changeFrequency' => 'weekly'],
+                ['path' => $this->generateUrl('oswis_org_oswis_core_robots_txt'), 'changeFrequency' => 'weekly'],
                 ['path' => $this->generateUrl('oswis_org_oswis_core_web_portal'), 'changeFrequency' => 'weekly'],
             ],
         ];
@@ -34,12 +34,19 @@ class SiteMapWebController extends AbstractController
 
     public function showSitemapXsl(): Response
     {
-        return $this->render('@OswisOrgOswisCore/web/pages/sitemap.xsl.twig');
+        return $this->renderXml($this->render('@OswisOrgOswisCore/web/pages/sitemap.xsl.twig'));
+    }
+
+    public function renderXml(Response $response): Response
+    {
+        $response->headers->set('Content-Type', 'application/xml; charset=utf-8');
+
+        return $response;
     }
 
     public function showSitemapIndexXml(): Response
     {
-        return $this->render('@OswisOrgOswisCore/web/pages/sitemap-index.xml.twig');
+        return $this->renderXml($this->render('@OswisOrgOswisCore/web/pages/sitemap-index.xml.twig'));
     }
 
     public function sitemapRedirect(): Response

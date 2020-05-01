@@ -21,23 +21,23 @@ class SiteWebManifestController extends AbstractController
         $this->coreSettings = $coreSettings;
     }
 
-    public function browserconfig(): Response
+    public function showBrowserConfigXml(): Response
     {
         $response = $this->render('@OswisOrgOswisCore/web/pages/browserconfig.xml.twig');
-        $response->headers->set('Content-Type', 'xml');
+        $response->headers->set('Content-Type', 'application/xml; charset=utf-8');
 
         return $response;
     }
 
-    public function robots(): Response
+    public function showRobotsTxt(): Response
     {
-        $response = $this->render('@OswisOrgOswisCore/web/pages/browserconfig.xml.twig');
-        $response->headers->set('Content-Type', 'xml');
+        $response = $this->render('@OswisOrgOswisCore/web/pages/robots.txt.twig');
+        $response->headers->set('Content-Type', 'text/plain');
 
         return $response;
     }
 
-    public function siteWebManifest(Request $request): Response
+    public function showSiteWebManifest(Request $request): Response
     {
         return new JsonResponse(
             [

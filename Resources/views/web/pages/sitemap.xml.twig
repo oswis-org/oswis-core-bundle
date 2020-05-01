@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="{{ path('oswis_org_oswis_sitemap_xsl') }}" ?>
+<?xml-stylesheet type="text/xsl" href="{{ absolute_url(path('oswis_org_oswis_sitemap_xsl')) }}" ?>
 <urlset xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
->
-    {% block items_core %}
-        {% include '@OswisOrgOswisCore/web/pages/sitemap-items.xml.twig' %}
-    {% endblock items_core %}
-    {% block items_additional %}
-    {% endblock items_additional %}
+        {{- ' xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" ' -}}
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    {%- block items_core -%}
+        {%- include '@OswisOrgOswisCore/web/pages/sitemap-items.xml.twig' -%}
+    {%- endblock items_core -%}
+    {%- block items_additional -%}
+    {%- endblock items_additional -%}
 </urlset>
