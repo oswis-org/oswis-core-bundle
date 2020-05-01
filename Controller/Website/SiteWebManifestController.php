@@ -39,7 +39,7 @@ class SiteWebManifestController extends AbstractController
 
     public function showSiteWebManifest(Request $request): Response
     {
-        return new JsonResponse(
+        $response = new JsonResponse(
             [
                 [
                     'lang'             => 'cs',
@@ -53,37 +53,37 @@ class SiteWebManifestController extends AbstractController
                     'theme_color'      => $this->coreSettings->getWeb()['color'],
                     'icons'            => [
                         [
-                            'src'   => $request->getRelativeUriForPath('@OswisOrgOswisCoreBundle/Resources/public/favicons/apple-touch-icon.png'),
+                            'src'   => $request->getUriForPath('/bundles/oswisorgoswiscore/favicons/apple-touch-icon.png'),
                             'sizes' => '180x180',
                             'type'  => 'image/png',
                         ],
                         [
-                            'src'   => $request->getRelativeUriForPath('@OswisOrgOswisCoreBundle/Resources/public/favicons/favicon-32x32.png'),
+                            'src'   => $request->getUriForPath('/bundles/oswisorgoswiscore/favicons/favicon-32x32.png'),
                             'sizes' => '32x32',
                             'type'  => 'image/png',
                         ],
                         [
-                            'src'   => $request->getRelativeUriForPath('@OswisOrgOswisCoreBundle/Resources/public/favicons/favicon-194x194.png'),
+                            'src'   => $request->getUriForPath('/bundles/oswisorgoswiscore/favicons/favicon-194x194.png'),
                             'sizes' => '194x194',
                             'type'  => 'image/png',
                         ],
                         [
-                            'src'   => $request->getRelativeUriForPath('@OswisOrgOswisCoreBundle/Resources/public/favicons/android-chrome-192x192.png'),
+                            'src'   => $request->getUriForPath('/bundles/oswisorgoswiscore/favicons/android-chrome-192x192.png'),
                             'sizes' => '192x192',
                             'type'  => 'image/png',
                         ],
                         [
-                            'src'   => $request->getRelativeUriForPath('@OswisOrgOswisCoreBundle/Resources/public/favicons/favicon-16x16.png'),
+                            'src'   => $request->getUriForPath('/bundles/oswisorgoswiscore/favicons/favicon-16x16.png'),
                             'sizes' => '16x16',
                             'type'  => 'image/png',
                         ],
                         [
-                            'src'   => $request->getRelativeUriForPath('@OswisOrgOswisCoreBundle/Resources/public/favicons/android-chrome-192x192.png'),
+                            'src'   => $request->getUriForPath('/bundles/oswisorgoswiscore/favicons/android-chrome-192x192.png'),
                             'sizes' => '192x192',
                             'type'  => 'image/png',
                         ],
                         [
-                            'src'   => $request->getRelativeUriForPath('@OswisOrgOswisCoreBundle/Resources/public/favicons/android-chrome-512x512.png'),
+                            'src'   => $request->getUriForPath('/bundles/oswisorgoswiscore/favicons/android-chrome-512x512.png'),
                             'sizes' => '512x512',
                             'type'  => 'image/png',
                         ],
@@ -91,5 +91,8 @@ class SiteWebManifestController extends AbstractController
                 ],
             ]
         );
+        $response->headers->set('Content-Type', 'application/manifest+json');
+
+        return $response;
     }
 }
