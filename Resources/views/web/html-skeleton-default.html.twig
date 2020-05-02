@@ -1,6 +1,5 @@
 <!doctype html>
 <html class="no-js" lang="{% block html_lang %}{{ language|default('cs-CZ') }}{% endblock html_lang %}">
-<!--suppress HtmlRequiredTitleElement -->
 <head>
     {% block meta_tags_outer %}
         <meta charset="utf-8">
@@ -24,10 +23,9 @@
         {% endblock meta_revisit_after_outer %}
         {% block meta_tags_inner %}
             {% block meta_dns_prefetch %}
-                <link rel="dns-prefetch" href="//www.googletagmanager.com">
-                <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
-                <link rel="dns-prefetch" href="//piwik.dwarf.jakubzak.cz">
-                <link rel="dns-prefetch" href="//www.google-analytics.com">
+                <link rel="dns-prefetch" href="{{ preconnect('https://www.googletagmanager.com') }}">
+                <link rel="dns-prefetch" href="{{ preconnect('https://cdnjs.cloudflare.com') }}">
+                <link rel="dns-prefetch" href="{{ preconnect('https://www.google-analytics.com') }}">
             {% endblock meta_dns_prefetch %}
             {% block meta_geo %}
                 <meta name='geo.position' content='{% block meta_geo_position %}{{ block('meta_geo_x') }},{{ block('meta_geo_y') }}{% endblock %}'>
@@ -108,7 +106,7 @@
             {% endautoescape %}
             {% endif %}
         {% block javascripts_hinclude %}
-            <script src="https://cdn.jsdelivr.net/npm/Hinclude@1.2.0/hinclude.js"></script>
+            <script src="{{ preload('https://cdn.jsdelivr.net/npm/Hinclude@1.2.0/hinclude.js', {as: 'script'}) }}" rel="prefetch"></script>
         {% endblock javascripts_hinclude %}
         {% endblock javascripts %}
 
