@@ -1,20 +1,20 @@
 {
-    "_readme": [
-        "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
-        "This file is @generated automatically"
-    ],
-    "content-hash": "63d0533e6354ef282fa32dfdd23e2a28",
-    "packages": [
-        {
-            "name": "adci/full-name-parser",
-            "version": "0.2.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ADCI/full-name-parser.git",
-                "reference": "2c59942d97195bbdc101e3d1a0ad01519577edb0"
-            },
-            "dist": {
+  "_readme": [
+    "This file locks the dependencies of your project to a known state",
+    "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+    "This file is @generated automatically"
+  ],
+  "content-hash": "63d0533e6354ef282fa32dfdd23e2a28",
+  "packages": [
+    {
+      "name": "adci/full-name-parser",
+      "version": "0.2.4",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/ADCI/full-name-parser.git",
+        "reference": "2c59942d97195bbdc101e3d1a0ad01519577edb0"
+      },
+      "dist": {
         "type": "zip",
         "url": "https://api.github.com/repos/ADCI/full-name-parser/zipball/2c59942d97195bbdc101e3d1a0ad01519577edb0",
         "reference": "2c59942d97195bbdc101e3d1a0ad01519577edb0",
@@ -9318,20 +9318,20 @@
       ],
       "time": "2020-04-28T17:58:55+00:00"
     },
-        {
-            "name": "symplify/package-builder",
-            "version": "v7.3.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symplify/package-builder.git",
-                "reference": "497701448dfd5d32a70d4241b51641582c296a12"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symplify/package-builder/zipball/497701448dfd5d32a70d4241b51641582c296a12",
-                "reference": "497701448dfd5d32a70d4241b51641582c296a12",
-                "shasum": ""
-            },
+    {
+      "name": "symplify/package-builder",
+      "version": "v7.3.3",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/symplify/package-builder.git",
+        "reference": "497701448dfd5d32a70d4241b51641582c296a12"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/symplify/package-builder/zipball/497701448dfd5d32a70d4241b51641582c296a12",
+        "reference": "497701448dfd5d32a70d4241b51641582c296a12",
+        "shasum": ""
+      },
       "require": {
         "nette/finder": "^2.5",
         "nette/utils": "^3.0",
@@ -9349,7 +9349,7 @@
       "type": "library",
       "extra": {
         "branch-alias": {
-            "dev-master": "7.4-dev"
+          "dev-master": "7.4-dev"
         }
       },
       "autoload": {
@@ -9368,7 +9368,7 @@
           "type": "github"
         }
       ],
-            "time": "2020-05-01T22:34:00+00:00"
+      "time": "2020-05-01T22:34:00+00:00"
     },
     {
       "name": "tijsverkoyen/css-to-inline-styles",
@@ -10760,13 +10760,13 @@
   "prefer-stable": false,
   "prefer-lowest": false,
   "platform": {
-      "php": "^7.4",
-      "ext-ctype": "*",
-      "ext-iconv": "*",
-      "ext-mbstring": "*",
-      "ext-openssl": "*",
-      "ext-calendar": "*",
-      "ext-exif": "*"
+    "php": "^7.4",
+    "ext-ctype": "*",
+    "ext-iconv": "*",
+    "ext-mbstring": "*",
+    "ext-openssl": "*",
+    "ext-calendar": "*",
+    "ext-exif": "*"
   },
   "platform-dev": [],
   "plugin-api-version": "1.1.0"

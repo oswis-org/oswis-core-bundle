@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="{% block html_lang %}{{ language|default('cs-CZ') }}{% endblock html_lang %}">
+<html class="no-js" lang="{% block html_lang %}{{ language|default('cs-CZ') }}{% endblock html_lang %}" prefix="og: http://ogp.me/ns#">
 <head>
     {% block meta_tags_outer %}
         <meta charset="utf-8">
@@ -67,6 +67,11 @@
             <meta property="og:url" content="{{ absolute_url(app.request.pathInfo) }}">
             {% block meta_og_image %}
             {% endblock meta_og_image %}
+            {% block meta_og_twitter %}
+                <meta name="twitter:card" content="summary">
+                <meta name="twitter:site" content="{{ block('meta_app_name') }}">
+                <meta name="twitter:creator" content="{{ block('meta_author') }}">
+            {% endblock meta_og_twitter %}
             {% block meta_og_geo %}
                 <meta property="og:latitude" content="{% block meta_geo_x %}{{ geo_lat|default(oswis.web.geo_x) }}{% endblock %}"/>
                 <meta property="og:longitude" content="{% block meta_geo_y %}{{ geo_lon|default(oswis.web.geo_y) }}{% endblock %}"/>
