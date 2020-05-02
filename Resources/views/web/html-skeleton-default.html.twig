@@ -40,21 +40,20 @@
                 <meta name="msapplication-TileColor" content="{% block meta_tile_color %}{{ block('meta_theme_color') }}{% endblock %}">
             {% endblock meta_tags_color %}
             {% block meta_tags_icons %}
-                <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('@OswisOrgOswisCoreBundle/Resources/public/favicons/apple-touch-icon.png') }}">
-                <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('@OswisOrgOswisCoreBundle/Resources/public/favicons/favicon-32x32.png') }}">
-                <link rel="icon" type="image/png" sizes="194x194" href="{{ asset('@OswisOrgOswisCoreBundle/Resources/public/favicons/favicon-194x194.png') }}">
-                <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('@OswisOrgOswisCoreBundle/Resources/public/favicons/android-chrome-192x192.png') }}">
-                <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('@OswisOrgOswisCoreBundle/Resources/public/favicons/favicon-16x16.png') }}">
-                <link rel="mask-icon" href="{{ asset('@OswisOrgOswisCoreBundle/Resources/public/favicons/safari-pinned-tab.svg') }}"
-                      color="{{ oswis.web.color|default('#3498d0') }}">
-                <link rel="shortcut icon" href="{{ asset('@OswisOrgOswisCoreBundle/Resources/public/favicons/favicon.ico') }}">
-                <meta name="msapplication-TileImage" content="{{ asset('@OswisOrgOswisCoreBundle/Resources/public/favicons/mstile-144x144.png') }}">
+                <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/images/icons/apple-touch-icon.png') }}">
+                <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/images/icons/favicon-32x32.png') }}">
+                <link rel="icon" type="image/png" sizes="194x194" href="{{ asset('assets/images/icons/favicon-194x194.png') }}">
+                <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('assets/images/icons/android-chrome-192x192.png') }}">
+                <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/images/icons/favicon-16x16.png') }}">
+                <link rel="mask-icon" href="{{ asset('assets/images/icons/safari-pinned-tab.svg') }}" color="{{ oswis.web.color|default('#3498d0') }}">
+                <link rel="shortcut icon" href="{{ asset('assets/images/icons/favicon.ico') }}">
+                <meta name="msapplication-TileImage" content="{{ asset('assets/images/icons/mstile-144x144.png') }}">
             {% endblock meta_tags_icons %}
             {% block meta_tags_web_manifest %}
                 <link rel="manifest" href="{{ path('oswis_org_oswis_core_site_web_manifest') }}">
             {% endblock meta_tags_web_manifest %}
             {% block meta_tags_browserconfig %}
-                <meta name="msapplication-config" content="{{ asset('@OswisOrgOswisCoreBundle/Resources/public/favicons/browserconfig.xml') }}">
+                <meta name="msapplication-config" content="{{ path('oswis_org_oswis_core_browserconfig_xml') }}">
             {% endblock meta_tags_browserconfig %}
             {% block meta_tags_canonical %}{% endblock meta_tags_canonical %}
             {% block meta_tags_links %}{% endblock meta_tags_links %}
@@ -65,8 +64,9 @@
             <meta property="og:description" content="{{ block('html_description') }}">
             <meta property="og:locale" content="{{ block('html_lang') }}">
             <meta property="og:type" content="{% block og_type %}{{ og_type|default('website') }}{% endblock %}">
-            <!-- <meta property="og:url" content="http://www.imdb.com/title/tt0117500/"> -->
+            <meta property="og:url" content="{{ absolute_url(app.request.pathInfo) }}">
             {% block meta_og_image %}
+                <meta property="og:image:alt" content="{{ block('html_title') }}">
                 <!-- <meta property="og:image" content="http://ia.media-imdb.com/images/rock.jpg"> -->
             {% endblock meta_og_image %}
             {% block meta_og_geo %}
@@ -75,6 +75,9 @@
             {% endblock meta_og_geo %}
             {% block meta_og_additional %}{% endblock meta_og_additional %}
         {% endblock %}
+        {% block meta_hinclude_config %}
+            <meta name="include_mode" content="async"/>
+        {% endblock meta_hinclude_config %}
     {% endblock meta_tags_outer %}
     {% block stylesheets %}
         {{ encore_entry_link_tags('app') }}
@@ -96,19 +99,36 @@
         {% block body_inner %}
         {% endblock body_inner %}
 
+    {% block body_add_to_homescreen %}
+        <div id="addtohomescreen">PŘIDAT NA PLOCHU</div>
+    {% endblock body_add_to_homescreen %}
+
+    {% block body_scroll_to_top %}
+        <div id=scroll-top-button class="d-print-none"><i class="far fa-arrow-alt-circle-up"></i></div>
+    {% endblock body_scroll_to_top %}
+
         {% block body_end %}{% endblock body_end %}
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-            {% if js is defined and js %}
-            {% autoescape false %}
-            <script>{{ js|default }}</script>
-            {% endautoescape %}
-            {% endif %}
-        {% block javascripts_hinclude %}
-            <script src="{{ preload('https://cdn.jsdelivr.net/npm/Hinclude@1.2.0/hinclude.js', {as: 'script'}) }}" rel="prefetch"></script>
-        {% endblock javascripts_hinclude %}
-        {% endblock javascripts %}
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+        {% if js is defined and js %}
+        {% autoescape false %}
+        <script>{{ js|default }}</script>
+        {% endautoescape %}
+        {% endif %}
+    {% endblock javascripts %}
+
+    {% block javascript_hinclude %}
+        <script src="{{ preload('https://cdn.jsdelivr.net/npm/Hinclude@1.2.0/hinclude.js', {as: 'script'}) }}" rel="prefetch"></script>
+    {% endblock javascript_hinclude %}
+    {% block javascript_service_worker %}
+        <script>
+          if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js', {scope: '/'}).then(function (registration) {console.log('Service Worker Registered');});
+            navigator.serviceWorker.ready.then(function (registration) {console.log('Service Worker Ready');});
+          }
+        </script>
+    {% endblock javascript_service_worker %}
 
     {% endblock body_outer %}
 
