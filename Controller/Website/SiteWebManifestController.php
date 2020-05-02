@@ -41,52 +41,50 @@ class SiteWebManifestController extends AbstractController
     {
         $response = new JsonResponse(
             [
-                [
-                    'lang'             => 'cs',
-                    'dir'              => 'ltr',
-                    'name'             => $this->coreSettings->getWeb()['title'],
-                    'short_name'       => $this->coreSettings->getWeb()['title_short'],
-                    'start_url'        => '.',
-                    'display'          => 'fullscreen',
-                    'description'      => $this->coreSettings->getWeb()['description'],
-                    'background_color' => '#FFFFFF',
-                    'theme_color'      => $this->coreSettings->getWeb()['color'],
-                    'icons'            => [
-                        [
-                            'src'   => $request->getUriForPath('/bundles/oswisorgoswiscore/favicons/apple-touch-icon.png'),
-                            'sizes' => '180x180',
-                            'type'  => 'image/png',
-                        ],
-                        [
-                            'src'   => $request->getUriForPath('/bundles/oswisorgoswiscore/favicons/favicon-32x32.png'),
-                            'sizes' => '32x32',
-                            'type'  => 'image/png',
-                        ],
-                        [
-                            'src'   => $request->getUriForPath('/bundles/oswisorgoswiscore/favicons/favicon-194x194.png'),
-                            'sizes' => '194x194',
-                            'type'  => 'image/png',
-                        ],
-                        [
-                            'src'   => $request->getUriForPath('/bundles/oswisorgoswiscore/favicons/android-chrome-192x192.png'),
-                            'sizes' => '192x192',
-                            'type'  => 'image/png',
-                        ],
-                        [
-                            'src'   => $request->getUriForPath('/bundles/oswisorgoswiscore/favicons/favicon-16x16.png'),
-                            'sizes' => '16x16',
-                            'type'  => 'image/png',
-                        ],
-                        [
-                            'src'   => $request->getUriForPath('/bundles/oswisorgoswiscore/favicons/android-chrome-192x192.png'),
-                            'sizes' => '192x192',
-                            'type'  => 'image/png',
-                        ],
-                        [
-                            'src'   => $request->getUriForPath('/bundles/oswisorgoswiscore/favicons/android-chrome-512x512.png'),
-                            'sizes' => '512x512',
-                            'type'  => 'image/png',
-                        ],
+                'lang'             => 'cs',
+                'dir'              => 'ltr',
+                'name'             => $this->coreSettings->getWeb()['title'],
+                'short_name'       => $this->coreSettings->getWeb()['title_short'],
+                'start_url'        => '.',
+                'display'          => 'fullscreen',
+                'description'      => $this->coreSettings->getWeb()['description'],
+                'background_color' => '#FFFFFF',
+                'theme_color'      => $this->coreSettings->getWeb()['color'],
+                'icons'            => [
+                    [
+                        'src'   => $request->getUriForPath('/bundles/oswisorgoswiscore/favicons/apple-touch-icon.png'),
+                        'sizes' => '180x180',
+                        'type'  => 'image/png',
+                    ],
+                    [
+                        'src'   => $request->getUriForPath('/bundles/oswisorgoswiscore/favicons/favicon-32x32.png'),
+                        'sizes' => '32x32',
+                        'type'  => 'image/png',
+                    ],
+                    [
+                        'src'   => $request->getUriForPath('/bundles/oswisorgoswiscore/favicons/favicon-194x194.png'),
+                        'sizes' => '194x194',
+                        'type'  => 'image/png',
+                    ],
+                    [
+                        'src'   => $request->getUriForPath('/bundles/oswisorgoswiscore/favicons/android-chrome-192x192.png'),
+                        'sizes' => '192x192',
+                        'type'  => 'image/png',
+                    ],
+                    [
+                        'src'   => $request->getUriForPath('/bundles/oswisorgoswiscore/favicons/favicon-16x16.png'),
+                        'sizes' => '16x16',
+                        'type'  => 'image/png',
+                    ],
+                    [
+                        'src'   => $request->getUriForPath('/bundles/oswisorgoswiscore/favicons/android-chrome-192x192.png'),
+                        'sizes' => '192x192',
+                        'type'  => 'image/png',
+                    ],
+                    [
+                        'src'   => $request->getUriForPath('/bundles/oswisorgoswiscore/favicons/android-chrome-512x512.png'),
+                        'sizes' => '512x512',
+                        'type'  => 'image/png',
                     ],
                 ],
             ]
