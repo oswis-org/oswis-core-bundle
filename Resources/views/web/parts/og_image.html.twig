@@ -2,7 +2,7 @@
 <link rel="image_src" href="{{ absolute_url(ogImg) }}">
 <link rel="previewimage" href="{{ absolute_url(ogImg) }}">
 <meta property="og:image" content="{{ absolute_url(ogImg) }}">
-<meta property="og:image:alt" content="{{ title|default(block('html_title')|default) }}">
+<meta property="og:image:alt" content="{{ title|default(oswis.web.title)|default) }}">
 <meta property="og:image:type" content="{{ image_mime_type(ogImg) }}">
 <meta property="og:image:height" content="{{ image_height(ogImg) }}">
 <meta property="og:image:width" content="{{ image_width(ogImg) }}">
