@@ -1,7 +1,7 @@
 <!doctype html>
 <html class="no-js" lang="{% block html_lang %}{{ language|default('cs-CZ') }}{% endblock html_lang %}" prefix="og: http://ogp.me/ns#">
 <head>
-    {% block meta_tags_outer %}
+    {%- block meta_tags_outer %}
         <meta charset="utf-8">
         <meta http-equiv='X-UA-Compatible' content='IE=edge'>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -135,14 +135,6 @@
 
     {% endblock body_outer %}
 
-    {#
-    {% block ie %}
-    <!--[if lt IE 9]>
-    {{ encore_entry_link_tags('ie') }}
-    {{ encore_entry_script_tags('ie') }}
-    <![endif]-->
-    {% endblock ie %}
-    #}
     </body>
 {% endblock html_inner %}
 </html>
