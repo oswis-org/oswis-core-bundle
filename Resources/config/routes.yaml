@@ -42,6 +42,7 @@ oswis_org_oswis_core_web_admin:
     requirements:
         foo: .+
 
+
 ### Homepage page.
 oswis_org_oswis_core_homepage_action:
     controller: oswis_org_oswis_core.homepage_web_controller::homepageAction

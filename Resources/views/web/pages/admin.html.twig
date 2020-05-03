@@ -15,9 +15,9 @@
     <base href="{{ path('oswis_org_oswis_core_web_admin') }}/">
 {% endblock html_meta_base %}
 
-{% block html_title %}
-    {{ title|default(oswis.app.title) }}
-{% endblock html_title %}
+{% block html_title -%}
+    {{ title|default(oswis.app.name) }}
+{%- endblock html_title %}
 
 {% block meta_tags_browserconfig %}
     <meta name="msapplication-config" content="browserconfig.xml">
@@ -29,7 +29,7 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    {% for style, options in oswis.angularAdmin.styles|default %}
+    {% for style in oswis.angularAdmin.styles|default %}
         <link rel="stylesheet" href="{{ style.name|default }}" {{ style.options|default|raw }}>
     {% endfor %}
 {% endblock stylesheets %}
@@ -55,7 +55,7 @@
             </div>
         </div>
     </app-root>
-    {% for script, options in oswis.angularAdmin.scripts|default %}
+    {% for script in oswis.angularAdmin.scripts|default %}
         <script src="{{ script.name|default }}" {{ script.options|default }}></script>
     {% endfor %}
 {% endblock body_outer %}

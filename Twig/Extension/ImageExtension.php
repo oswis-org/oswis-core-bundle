@@ -60,9 +60,9 @@ final class ImageExtension extends AbstractExtension
     {
         $path = $this->getCorrectRelativePath($object, $path);
         try {
-            return $this->fileSystem->exists($path) ? (getimagesize($path) ?: []) : [];
+            return $this->fileSystem->exists($path) ? (getimagesize($path) ?: [null, null, null, null]) : [null, null, null, null];
         } catch (IOException $e) {
-            return [];
+            return [null, null, null, null];
         }
     }
 
