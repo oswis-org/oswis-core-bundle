@@ -20,11 +20,11 @@
 {%- endblock html_title %}
 
 {% block meta_tags_browserconfig %}
-    <meta name="msapplication-config" content="browserconfig.xml">
+    <meta name="msapplication-config" content="{{ path('oswis_org_oswis_core_browserconfig_xml') }}">
 {% endblock meta_tags_browserconfig %}
 
 {% block meta_tags_web_manifest %}
-    <link rel="manifest" href="{{ 'site.webmanifest' }}">
+    <link rel="manifest" href="{{ path('oswis_org_oswis_core_admin_site_web_manifest') }}">
 {% endblock meta_tags_web_manifest %}
 
 {% block stylesheets %}

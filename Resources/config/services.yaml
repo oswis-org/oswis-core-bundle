@@ -182,6 +182,8 @@ services:
         class: OswisOrg\OswisCoreBundle\Controller\Website\AdminWebController
         autowire: true
         public: true
+        arguments:
+            - '@oswis_org_oswis_core.oswis_core_settings_provider'
     OswisOrg\OswisCoreBundle\Controller\Website\AdminWebController:
         alias: oswis_org_oswis_core.admin_web_controller
         public: true

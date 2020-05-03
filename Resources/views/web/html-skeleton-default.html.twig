@@ -24,9 +24,9 @@
         {% endblock meta_revisit_after_outer %}
         {% block meta_tags_inner %}
             {% block meta_dns_prefetch %}
-                <link rel="dns-prefetch" href="{{ preconnect('https://www.googletagmanager.com') }}">
-                <link rel="dns-prefetch" href="{{ preconnect('https://cdnjs.cloudflare.com') }}">
-                <link rel="dns-prefetch" href="{{ preconnect('https://www.google-analytics.com') }}">
+                <link rel="dns-prefetch" href="{{ preconnect(dns_prefetch('https://www.googletagmanager.com')) }}">
+                <link rel="dns-prefetch" href="{{ preconnect(dns_prefetch('https://cdnjs.cloudflare.com')) }}">
+                <link rel="dns-prefetch" href="{{ preconnect(dns_prefetch('https://www.google-analytics.com')) }}">
             {% endblock meta_dns_prefetch %}
             {% block meta_geo %}
                 <meta name='geo.position' content='{% block meta_geo_position %}{{ block('meta_geo_x') }},{{ block('meta_geo_y') }}{% endblock %}'>
