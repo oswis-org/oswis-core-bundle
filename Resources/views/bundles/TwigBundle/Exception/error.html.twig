@@ -17,7 +17,8 @@
                 {% block error_content %}
                     <p>V aplikaci nastala chyba. Zkuste to znovu nebo nás kontaktujte.</p>
                 {% endblock error_content %}
-                <p><small>{{ status_code }} {{ status_text }}</small></p>
+                <p><small><strong>HTTP {{ status_code }}</strong> {{ status_text }}</small></p>
+                <p><small>Požadovaná URL: <strong>{{ app.request.requestUri }}</strong></small></p>
             </div>
         </div>
     </main>

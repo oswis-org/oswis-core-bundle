@@ -1,10 +1,10 @@
 {% extends '@OswisOrgOswisCore/bundles/TwigBundle/Exception/error.html.twig' %}
 
-{% block error_title %}
+{% block error_title -%}
     Stránka nenalezena
-{% endblock error_title %}
+{%- endblock error_title %}
 
-{% block error_content %}
+{% block error_content -%}
     <p>Požadovaná stránka nebyla nalezena.</p>
     <p>Zkuste to znovu nebo nás kontaktujte.</p>
-{% endblock error_content %}
+{%- endblock error_content %}
