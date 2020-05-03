@@ -21,7 +21,7 @@ class RssFeedController extends AbstractController
 
     public function showRssCss(): Response
     {
-        $response = $this->render('@OswisOrgOswisCore/web/pages/rss.css.twig');
+        $response = $this->render('@OswisOrgOswisCore/web/styles/rss.css.twig');
         $response->headers->set('Content-Type', 'text/css; charset=utf-8');
 
         return $response;

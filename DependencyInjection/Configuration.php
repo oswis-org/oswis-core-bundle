@@ -29,6 +29,7 @@ class Configuration implements ConfigurationInterface
         $this->addAdminConfig($rootNode);
         $this->addWebConfig($rootNode);
         $this->addAdminIPs($rootNode);
+        $this->addAngularAdmin($rootNode);
 
         return $treeBuilder;
     }
@@ -239,6 +240,39 @@ class Configuration implements ConfigurationInterface
             ->children()
             ->arrayNode('admin_ips')
             ->scalarPrototype()
+            ->end()
+            ->end()
+            ->end();
+    }
+
+
+    private function addAngularAdmin(ArrayNodeDefinition $rootNode): void
+    {
+        $rootNode->children()
+            ->arrayNode('angular_admin')
+            ->info('Settings for angular admin front-end.')
+            ->addDefaultsIfNotSet()
+            ->children()
+            ->arrayNode('scripts')
+            ->arrayPrototype()
+            ->children()
+            ->scalarNode('name')
+            ->end()
+            ->scalarNode('options')
+            ->end()
+            ->end()
+            ->end()
+            ->end()
+            ->arrayNode('styles')
+            ->arrayPrototype()
+            ->children()
+            ->scalarNode('name')
+            ->end()
+            ->scalarNode('options')
+            ->end()
+            ->end()
+            ->end()
+            ->end()
             ->end()
             ->end()
             ->end();

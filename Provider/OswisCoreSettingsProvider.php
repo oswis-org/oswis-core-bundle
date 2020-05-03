@@ -11,37 +11,41 @@ use Symfony\Component\Mime\Exception\LogicException;
 use Symfony\Component\Mime\Exception\RfcComplianceException;
 
 /**
- * Provider of settings for core module of OSWIS.
+ * Provider of settings for OSWIS core module.
  */
 class OswisCoreSettingsProvider
 {
-    protected ?array $app = null;
+    protected array $app = [];
 
-    protected ?array $admin = null;
+    protected array $admin = [];
 
-    protected ?array $email = null;
+    protected array $email = [];
 
-    protected ?array $web = null;
+    protected array $web = [];
 
-    protected ?array $adminIPs = null;
+    protected array $adminIPs = [];
 
-    public function __construct(?array $app, ?array $admin, ?array $email, ?array $web, ?array $adminIPs)
+    protected array $angularAdmin = [];
+
+    public function __construct(array $app, array $admin, array $email, array $web, array $adminIPs, array $angularAdmin)
     {
         $this->app = $app;
         $this->admin = $admin;
         $this->email = $email;
         $this->web = $web;
         $this->adminIPs = $adminIPs;
+        $this->angularAdmin = $angularAdmin;
     }
 
     final public function getArray(): array
     {
         return [
-            'app'       => $this->getApp(),
-            'admin'     => $this->getAdmin(),
-            'email'     => $this->getEmail(),
-            'web'       => $this->getWeb(),
-            'admin_ips' => $this->getAdminIPs(),
+            'app'           => $this->getApp(),
+            'admin'         => $this->getAdmin(),
+            'email'         => $this->getEmail(),
+            'web'           => $this->getWeb(),
+            'admin_ips'     => $this->getAdminIPs(),
+            'angular_admin' => $this->getAngularAdmin(),
         ];
     }
 
@@ -68,6 +72,11 @@ class OswisCoreSettingsProvider
     final public function getAdminIPs(): array
     {
         return $this->adminIPs;
+    }
+
+    final public function getAngularAdmin(): array
+    {
+        return $this->angularAdmin;
     }
 
     final public function getCoreAppName(): string

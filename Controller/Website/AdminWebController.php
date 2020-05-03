@@ -1,7 +1,4 @@
 <?php
-/**
- * @noinspection PhpUnused
- */
 
 namespace OswisOrg\OswisCoreBundle\Controller\Website;
 
@@ -11,7 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 class AdminWebController extends AbstractController
 {
     /**
-     * Administration frontend placement wildcard route.
+     * Angular front-end administration.
      *
      * @return Response
      */
