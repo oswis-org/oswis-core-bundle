@@ -7,6 +7,9 @@ use Symfony\Component\String\Slugger\AsciiSlugger;
 use function chr;
 use function ord;
 
+/**
+ * @todo Refactor to use Symfony String component.
+ */
 class StringUtils
 {
     private const ACCENTS_TABLE = [
@@ -205,9 +208,6 @@ class StringUtils
         }
     }
 
-    /**
-     * @throws Exception
-     */
     public static function generateToken(): string
     {
         $numbers = self::randomString('0', '9', 4);

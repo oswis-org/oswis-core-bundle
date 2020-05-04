@@ -132,18 +132,25 @@ trait AddressTrait
 
     public function getFullAddress(): string
     {
-        $fullAddress = '';
-        $fullAddress .= $this->street ?? null;
-        $fullAddress .= ($this->doorNumber || $this->houseNumber) ? ' ' : null;
-        $fullAddress .= $this->houseNumber ?? null;
-        $fullAddress .= ($this->doorNumber && $this->houseNumber) ? '/' : null;
-        $fullAddress .= $this->doorNumber ?? null;
+        $fullAddress = $this->getFirstStreetLine();
         $fullAddress .= $this->street2 ? ', '.$this->street2 : null;
         $fullAddress .= ($this->city || $this->postalCode) ? ',' : null;
         $fullAddress .= $this->city ? ' '.$this->city : null;
         $fullAddress .= $this->postalCode ? ' '.$this->postalCode : null;
 
         return $fullAddress;
+    }
+
+    public function getFirstStreetLine(): string
+    {
+        $firstStreetLine = '';
+        $firstStreetLine .= $this->street ?? null;
+        $firstStreetLine .= ($this->doorNumber || $this->houseNumber) ? ' ' : null;
+        $firstStreetLine .= $this->houseNumber ?? null;
+        $firstStreetLine .= ($this->doorNumber && $this->houseNumber) ? '/' : null;
+        $firstStreetLine .= $this->doorNumber ?? null;
+
+        return $firstStreetLine;
     }
 
     public function setFieldsFromAddress(?Address $address = null): void

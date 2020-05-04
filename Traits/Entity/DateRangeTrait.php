@@ -92,13 +92,13 @@ trait DateRangeTrait
             return null;
         }
         if ($this->isInOnePeriod(DateTimeUtils::DATE_TIME_DAYS)) {
-            return $this->getStartByFormat($withoutYear ? 'j. n.' : 'j. n. Y');
+            return $this->getRangeAsTextDays($withoutYear);
         }
         if ($this->isInOnePeriod(DateTimeUtils::DATE_TIME_MONTHS)) {
-            return $this->getStartByFormat('j. ').$this->getEndByFormat($withoutYear ? '\až j. n.' : '\až j. n. Y');
+            return $this->getRangeAsTextMonths($withoutYear);
         }
         if ($this->isInOnePeriod(DateTimeUtils::DATE_TIME_YEARS)) {
-            return $this->getStartByFormat('j. n. ').$this->getEndByFormat($withoutYear ? '\až j. n.' : '\až j. n. Y');
+            return $this->getRangeAsTextYears($withoutYear);
         }
 
         return $this->getStartByFormat($withoutYear ? 'j. n.' : 'j. n. Y').$this->getEndByFormat($withoutYear ? ' \až j. n.' : ' \až j. n. Y');
@@ -114,15 +114,30 @@ trait DateRangeTrait
         return $this->getEndDateTime();
     }
 
+    public function getRangeAsTextDays(?bool $withoutYear = false): ?string
+    {
+        return $this->getStartByFormat($withoutYear ? 'j. n.' : 'j. n. Y');
+    }
+
     public function getStartByFormat(string $format): ?string
     {
         return $this->getStartDate() ? $this->getStartDate()
             ->format($format) : null;
     }
 
+    public function getRangeAsTextMonths(?bool $withoutYear = false): ?string
+    {
+        return $this->getStartByFormat('j. ').$this->getEndByFormat($withoutYear ? '\až j. n.' : '\až j. n. Y');
+    }
+
     public function getEndByFormat(string $format): ?string
     {
         return $this->getEndDate() ? $this->getEndDate()
             ->format($format) : null;
+    }
+
+    public function getRangeAsTextYears(?bool $withoutYear = false): ?string
+    {
+        return $this->getStartByFormat('j. n. ').$this->getEndByFormat($withoutYear ? '\až j. n.' : '\až j. n. Y');
     }
 }

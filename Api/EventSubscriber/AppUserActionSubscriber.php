@@ -46,41 +46,65 @@ final class AppUserActionSubscriber implements EventSubscriberInterface
      */
     public function appUserAction(ViewEvent $event): void
     {
-        $out = null;
         $request = $event->getRequest();
         if ('api_app_user_action_requests_post_collection' !== $request->attributes->get('_route')) {
             return;
         }
-        $controllerResult = $event->getControllerResult();
+        $properties = $this->getRequestProperties($event->getControllerResult());
         // TODO: Refactor to array ($data[]).
-        $uid = $controllerResult->uid;
-        $username = $controllerResult->username;
-        $type = $controllerResult->type;
-        $token = $controllerResult->token;
-        $password = $controllerResult->password;
-        $appUser = $controllerResult->appUser;
-        $appUserRepository = $this->appUserService->getRepository();
-        $appUser ??= $appUserRepository->loadUserById($uid) ?? $appUserRepository->loadUserByUsername($username);
-        if (!$appUser && $token) {
-            $appUserByToken = $this->appUserService->getRepository()
-                ->findOneBy(['passwordResetRequestToken' => $token]);
-            $appUser = $appUserByToken && $appUserByToken->checkPasswordResetRequestToken($token) ? $appUserByToken : null;
-        }
-        if (!$appUser && $token) {
-            $appUserByToken = $this->appUserService->getRepository()
-                ->findOneBy(['accountActivationRequestToken' => $token]);
-            $appUser = $appUserByToken && $appUserByToken->checkAccountActivationRequestToken($token) ? $appUserByToken : null;
-        }
-        if (!$appUser) {
+        if (!($appUser = $this->loadAppUser($properties))) {
             throw new OswisUserNotFoundException();
         }
         assert($appUser instanceof AppUser);
-        if (in_array($type, AppUserService::ALLOWED_TYPES, true)) {
-            $this->appUserService->appUserAction($appUser, $type, $password, $token);
-        } else {
-            throw new OswisNotImplementedException($type, 'u uživatelských účtů');
+        if (in_array($properties['type'], AppUserService::ALLOWED_TYPES, true)) {
+            $this->appUserService->appUserAction($appUser, $properties['type'], $properties['password'], $properties['token']);
+            $event->setResponse(new JsonResponse([], 201));
+
+            return;
         }
-        $data = [];
-        $event->setResponse(new JsonResponse($data, 201));
+        throw new OswisNotImplementedException($properties['type'], 'u uživatelských účtů');
+    }
+
+    /**
+     * @param mixed $controllerResult
+     *
+     * @return array
+     * @noinspection MissingParameterTypeDeclarationInspection
+     */
+    public function getRequestProperties($controllerResult): array
+    {
+        return [
+            'uid'      => $controllerResult->uid ?: null,
+            'username' => $controllerResult->username ?: null,
+            'token'    => $controllerResult->token ?: null,
+            'appUser'  => $controllerResult->appUser ?: null,
+            'type'     => $controllerResult->type ?: null,
+            'password' => $controllerResult->password ?: null,
+        ];
+    }
+
+    /**
+     * @param $controllerResult
+     *
+     * @return AppUser|null
+     * @throws OswisUserNotUniqueException
+     */
+    private function loadAppUser(array $properties): ?AppUser
+    {
+        $appUserRepository = $this->appUserService->getRepository();
+        $appUser = $properties['appUser'];
+        $appUser ??= $appUserRepository->loadUserById($properties['uid']) ?? $appUserRepository->loadUserByUsername($properties['username']);
+        if (!$appUser && $properties['token']) {
+            $appUserByToken = $this->appUserService->getRepository()
+                ->findOneBy(['passwordResetRequestToken' => $properties['token']]);
+            $appUser = $appUserByToken && $appUserByToken->checkPasswordResetRequestToken($properties['token']) ? $appUserByToken : null;
+        }
+        if (!$appUser && $properties['token']) {
+            $appUserByToken = $this->appUserService->getRepository()
+                ->findOneBy(['accountActivationRequestToken' => $properties['token']]);
+            $appUser = $appUserByToken && $appUserByToken->checkAccountActivationRequestToken($properties['token']) ? $appUserByToken : null;
+        }
+
+        return $appUser;
     }
 }
