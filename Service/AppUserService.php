@@ -41,15 +41,15 @@ class AppUserService
 
     protected LoggerInterface $logger;
 
-    private UserPasswordEncoderInterface $encoder;
+    protected UserPasswordEncoderInterface $encoder;
 
-    private MailerInterface $mailer;
+    protected MailerInterface $mailer;
 
-    private OswisCoreSettingsProvider $oswisCoreSettings;
+    protected OswisCoreSettingsProvider $oswisCoreSettings;
 
-    private AppUserTypeService $appUserTypeService;
+    protected AppUserTypeService $appUserTypeService;
 
-    private AppUserRoleService $appUserRoleService;
+    protected AppUserRoleService $appUserRoleService;
 
     public function __construct(
         UserPasswordEncoderInterface $encoder,

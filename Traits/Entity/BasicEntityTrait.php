@@ -22,5 +22,4 @@ trait BasicEntityTrait
     use CustomIdTrait;
     use TimestampableTrait;
     use BlameableTrait;
-    use DeletedTrait;
 }
