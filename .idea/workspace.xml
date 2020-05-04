@@ -25,9 +25,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Traits/Entity/PasswordSaltTrait.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/AppUserService.php" beforeDir="false" afterPath="$PROJECT_DIR$/Service/AppUserService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Entity/BasicEntityTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/BasicEntityTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractAppUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractAppUser.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AppUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUser.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/UserTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/UserTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Entity/UsernameTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Entity/UsernameTrait.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -229,7 +232,7 @@
     <property name="add_unversioned_files" value="$PROJECT_DIR$/vendor/symfony/swiftmailer-bundle/composer.json" />
     <property name="editor.config.ad.shown" value="true" />
     <property name="javascript.nodejs.core.library.configured.version" value="10.17.0" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Resources/views/web/pages" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Traits/Entity" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -241,19 +244,19 @@
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.PHP" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/Resources/views/web/pages" />
-      <recent name="$PROJECT_DIR$/Twig/Extension" />
-      <recent name="$PROJECT_DIR$/Controller/Website" />
-      <recent name="$PROJECT_DIR$/Resources/views/bundles" />
-      <recent name="$PROJECT_DIR$/Resources/views/web/parts" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Resources/views/web/styles" />
       <recent name="$PROJECT_DIR$/Resources/views/web/pages" />
       <recent name="$PROJECT_DIR$/Controller/Website" />
       <recent name="$PROJECT_DIR$/Resources/views/web/html-parts" />
       <recent name="$PROJECT_DIR$/Traits/Entity" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Traits/Entity" />
+      <recent name="$PROJECT_DIR$/Resources/views/web/pages" />
+      <recent name="$PROJECT_DIR$/Twig/Extension" />
+      <recent name="$PROJECT_DIR$/Controller/Website" />
+      <recent name="$PROJECT_DIR$/Resources/views/bundles" />
     </key>
   </component>
   <component name="RunManager">
@@ -671,14 +674,8 @@
       <workItem from="1588547666509" duration="46000" />
       <workItem from="1588588172455" duration="2517000" />
       <workItem from="1588594567206" duration="19000" />
-      <workItem from="1588614344384" duration="343000" />
-    </task>
-    <task id="LOCAL-00517" summary="Some fixes, updates and changes.">
-      <created>1587921635464</created>
-      <option name="number" value="00517" />
-      <option name="presentableId" value="LOCAL-00517" />
-      <option name="project" value="LOCAL" />
-      <updated>1587921635464</updated>
+      <workItem from="1588614344384" duration="383000" />
+      <workItem from="1588615001702" duration="1364000" />
     </task>
     <task id="LOCAL-00518" summary="Some fixes, updates and changes.">
       <created>1587927064400</created>
@@ -1016,7 +1013,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588614453642</updated>
     </task>
-    <option name="localTasksCounter" value="566" />
+    <task id="LOCAL-00566" summary="Some fixes, updates and changes.">
+      <created>1588614694332</created>
+      <option name="number" value="00566" />
+      <option name="presentableId" value="LOCAL-00566" />
+      <option name="project" value="LOCAL" />
+      <updated>1588614694332</updated>
+    </task>
+    <option name="localTasksCounter" value="567" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1131,12 +1135,12 @@
     <state x="499" y="381" width="402" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1588351287544" />
     <state x="701" y="381" width="509" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1588530306829" />
     <state x="2356" y="395" width="402" height="332" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1588330934960" />
-    <state x="369" y="0" width="1366" height="741" key="CommitChangelistDialog2" timestamp="1588614453421">
+    <state x="369" y="0" width="1366" height="741" key="CommitChangelistDialog2" timestamp="1588614694203">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="369" y="0" width="904" height="735" key="CommitChangelistDialog2/0.0.1366.741@0.0.1366.741" timestamp="1588252631246" />
     <state x="1920" y="0" width="1366" height="741" key="CommitChangelistDialog2/0.0.3286.741@0.0.3286.741" timestamp="1588168860490" />
-    <state x="369" y="0" width="881" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1588614453421" />
+    <state x="369" y="0" width="881" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1588614694203" />
     <state x="518" y="0" width="881" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1588530496576" />
     <state x="2289" y="0" width="881" height="741" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1588590323107" />
     <state x="99" y="100" width="1160" height="535" maximized="true" key="DiffContextDialog" timestamp="1588442572785">
@@ -1158,19 +1162,20 @@
     <state x="187" y="5" key="SettingsEditor/0.0.1366.741@0.0.1366.741" timestamp="1582926206454" />
     <state x="33" y="0" width="1280" height="730" key="SettingsEditor/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1587589952804" />
     <state x="263" y="0" width="1418" height="741" key="SettingsEditor/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1581937850921" />
-    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1588614455270">
+    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1588614696524">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1588252632741" />
     <state x="0" y="213" width="1920" height="522" key="Vcs.Push.Dialog.v2/0.0.3286.741@0.0.3286.741" timestamp="1588168862336" />
-    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1588614455270" />
+    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1588614696524" />
     <state x="555" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1588530497825" />
     <state x="2315" y="199" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1588590324991" />
-    <state x="0" y="96" width="1920" height="498" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1588167724899">
-      <screen x="0" y="0" width="3286" height="741" />
+    <state x="0" y="96" width="775" height="480" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1588616007244">
+      <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="99" y="96" width="1149" height="504" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1366.741@0.0.1366.741" timestamp="1582568894076" />
     <state x="0" y="96" width="1920" height="498" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.3286.741@0.0.3286.741" timestamp="1588167724899" />
+    <state x="0" y="96" width="775" height="480" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1588616007244" />
     <state x="139" y="96" width="1626" height="510" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1581933517818" />
     <state x="673" y="285" width="563" height="174" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1581782424578">
       <screen x="0" y="0" width="1920" height="741" />

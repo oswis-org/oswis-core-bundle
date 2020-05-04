@@ -25,12 +25,12 @@ abstract class AbstractAppUser implements UserInterface, Serializable, Equatable
 
     public function serialize(): string
     {
-        return serialize([$this->id, $this->username, $this->email, $this->password, $this->deleted]);
+        return serialize([$this->id, $this->username, $this->email, $this->password]);
     }
 
     public function unserialize(/* @noinspection MissingParameterTypeDeclarationInspection */ $serialized): void
     {
-        [$this->id, $this->username, $this->email, $this->password, $this->deleted] = unserialize($serialized, ['allowed_classes' => ['AppUser']]);
+        [$this->id, $this->username, $this->email, $this->password] = unserialize($serialized, ['allowed_classes' => ['AppUser']]);
     }
 
     public function isEqualTo(UserInterface $user): bool
@@ -42,6 +42,9 @@ abstract class AbstractAppUser implements UserInterface, Serializable, Equatable
             return false;
         }
         if ($this->email !== $user->getEmail() || $this->password !== $user->getPassword()) {
+            return false;
+        }
+        if ($this->startDateTime !== $user->getStartDateTime() || $this->endDateTime !== $user->getEndDateTime()) {
             return false;
         }
 

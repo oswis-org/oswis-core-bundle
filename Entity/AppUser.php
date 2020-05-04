@@ -20,6 +20,15 @@ use OswisOrg\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
 
 /**
  * User of application.
+ *
+ * AppUser is user of this application.
+ *
+ * Every **user must be activated** by activating e-mail with link that is containing special token.
+ *
+ * User is **active in interval** given by *startDateTime* and *endDateTime* (no need to use *deleted* property).
+ *
+ * @todo Generate username from real name if username is not given.
+ *
  * @Doctrine\ORM\Mapping\Entity(repositoryClass="OswisOrg\OswisCoreBundle\Repository\AppUserRepository")
  * @Doctrine\ORM\Mapping\Table(name="core_app_user")
  * @ApiResource(
@@ -66,7 +75,7 @@ use OswisOrg\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
  *     "appUserType.shortName",
  *     "appUserType.slug"
  * })
- * @ApiFilter(ExistsFilter::class, properties={"active", "deleted"})
+ * @ApiFilter(ExistsFilter::class, properties={})
  * @ApiFilter(DateFilter::class, properties={"createdDateTime", "updatedDateTime", "startDateTime", "endDateTime"})
  * @ApiFilter(SearchFilter::class, properties={
  *     "id": "exact",
