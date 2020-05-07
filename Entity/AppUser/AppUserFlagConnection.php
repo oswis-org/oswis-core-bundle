@@ -37,6 +37,29 @@ class AppUserFlagConnection implements BasicEntityInterface
      */
     protected ?AppUserFlag $appUserFlag = null;
 
+    /**
+     * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser", inversedBy="appUserFlags")
+     * @Doctrine\ORM\Mapping\JoinColumn(nullable=true)
+     */
+    protected ?AppUser $appUser = null;
+
+    public function getAppUser(): ?AppUser
+    {
+        return $this->appUser;
+    }
+
+    public function setAppUser(?AppUser $appUser): void
+    {
+        if (null !== $this->appUser && $appUser !== $this->appUser) {
+            $this->appUser->removeAppUserFlag($this);
+        }
+        $this->appUser = $appUser;
+        if (null !== $this->appUser) {
+            $this->appUser->addAppUserFlag($this);
+        }
+    }
+
+
     public function getAppUserFlag(): ?AppUserFlag
     {
         return $this->appUserFlag;

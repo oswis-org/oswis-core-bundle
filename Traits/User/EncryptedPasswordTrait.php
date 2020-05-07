@@ -19,6 +19,12 @@ trait EncryptedPasswordTrait
     protected ?string $password = null;
 
     /**
+     * Salt that was originally used to encode the password.
+     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
+     */
+    protected ?string $salt;
+
+    /**
      * Get encrypted password.
      */
     public function getPassword(): ?string
@@ -33,12 +39,6 @@ trait EncryptedPasswordTrait
     {
         $this->password = empty($password) ? null : $password;
     }
-
-    /**
-     * Salt that was originally used to encode the password.
-     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
-     */
-    protected ?string $salt;
 
     /**
      * Returns the salt that was originally used to encode the password.

@@ -105,7 +105,7 @@ class AppUser extends AbstractAppUser
 {
     /**
      * @Doctrine\ORM\Mapping\OneToMany(
-     *     targetEntity="OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserFlagConnection", cascade={"all"}, fetch="EAGER"
+     *     targetEntity="OswisOrg\OswisCoreBundle\Entity\AppUserFlagConnection", cascade={"all"}, mappedBy="appUser", fetch="EAGER"
      * )
      */
     protected ?Collection $appUserFlags = null;
@@ -182,10 +182,16 @@ class AppUser extends AbstractAppUser
         return $this->getAppUserType() ? $this->getAppUserType()->getAllRoleNames()->toArray() : [];
     }
 
+    public function getName(): string
+    {
+        return $this->getFullName() ?? $this->getUsername();
+    }
+
     public function addAppUserFlag(?AppUserFlagConnection $flagInJobFairUser): void
     {
         if ($flagInJobFairUser && !$this->getAppUserFlags()->contains($flagInJobFairUser)) {
             $this->getAppUserFlags()->add($flagInJobFairUser);
+            $flagInJobFairUser->setAppUser($this);
         }
     }
 
@@ -199,11 +205,9 @@ class AppUser extends AbstractAppUser
 
     public function removeAppUserFlag(?AppUserFlagConnection $flagInEmployer): void
     {
-        $flagInEmployer && $this->getAppUserFlags()->removeElement($flagInEmployer);
+        if ($flagInEmployer && $this->getAppUserFlags()->removeElement($flagInEmployer)) {
+            $flagInEmployer->setAppUser(null);
+        }
     }
 
-    public function getName(): string
-    {
-        return $this->getFullName() ?? $this->getUsername();
-    }
 }
