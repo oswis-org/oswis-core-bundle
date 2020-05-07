@@ -15,5 +15,4 @@ trait UserTrait
     use PasswordResetTrait;
     use AccountActivationTrait;
     use DateRangeTrait;
-    use PasswordSaltTrait;
 }
