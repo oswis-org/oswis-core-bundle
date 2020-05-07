@@ -1,0 +1,14 @@
+OswisOrg\OswisCoreBundle\Traits\Entity\BasicEntityTrait:
+    attributes:
+        id:
+            groups: ['basics_get', 'basic_get']
+        customId:
+            groups: ['basics_get', 'basics_post', 'basic_get', 'basic_put']
+        createdDateTime:
+            groups: ['basic_get']
+        updatedDateTime:
+            groups: ['basic_get']
+        createdAuthor:
+            groups: ['basic_get']
+        updatedAuthor:
+            groups: ['basic_get']

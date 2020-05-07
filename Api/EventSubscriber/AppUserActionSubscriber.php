@@ -84,7 +84,7 @@ final class AppUserActionSubscriber implements EventSubscriberInterface
     }
 
     /**
-     * @param $controllerResult
+     * @param array $properties
      *
      * @return AppUser|null
      * @throws OswisUserNotUniqueException
