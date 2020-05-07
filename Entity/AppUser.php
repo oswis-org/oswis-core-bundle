@@ -13,8 +13,6 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\ExistsFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use DateTime;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use OswisOrg\OswisCoreBundle\Entity\AbstractClass\AbstractAppUser;
 use OswisOrg\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
 
@@ -103,13 +101,12 @@ use OswisOrg\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
  */
 class AppUser extends AbstractAppUser
 {
-    /**
-     * @Doctrine\ORM\Mapping\OneToMany(
-     *     targetEntity="OswisOrg\OswisCoreBundle\Entity\AppUserFlagConnection", cascade={"all"}, mappedBy="appUser", fetch="EAGER"
-     * )
-     */
-    protected ?Collection $appUserFlags = null;
-
+//    /**
+//     * @Doctrine\ORM\Mapping\OneToMany(
+//     *     targetEntity="OswisOrg\OswisCoreBundle\Entity\AppUserFlagConnection", cascade={"all"}, mappedBy="appUser", fetch="EAGER"
+//     * )
+//     */
+//    protected ?Collection $appUserFlags = null;
     /**
      * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="OswisOrg\OswisCoreBundle\Entity\AppUserType", fetch="EAGER")
      * @Doctrine\ORM\Mapping\JoinColumn(name="app_user_type_id", referencedColumnName="id")
@@ -118,7 +115,7 @@ class AppUser extends AbstractAppUser
 
     public function __construct(?string $fullName = null, ?string $username = null, ?string $email = null, ?string $encryptedPassword = null)
     {
-        $this->appUserFlags = new ArrayCollection();
+        // $this->appUserFlags = new ArrayCollection();
         $this->setFullName($fullName);
         $this->setUsername($username);
         $this->setEmail($email);
@@ -130,7 +127,7 @@ class AppUser extends AbstractAppUser
      */
     public function isAdminUser(): bool
     {
-        return !$this->getAppUserType()
+        return null === $this->getAppUserType()
             ? false
             : ($this->getAppUserType()
                     ->getAdminUser() ?? false);
@@ -181,32 +178,31 @@ class AppUser extends AbstractAppUser
             ->toArray() : [];
     }
 
-    public function addAppUserFlag(?AppUserFlagConnection $flagInJobFairUser): void
-    {
-        if ($flagInJobFairUser && !$this->getAppUserFlags()
-                ->contains($flagInJobFairUser)) {
-            $this->getAppUserFlags()
-                ->add($flagInJobFairUser);
-            $flagInJobFairUser->setAppUser($this);
-        }
-    }
-
-    /**
-     * @return Collection<AppUserFlag>
-     */
-    public function getAppUserFlags(): Collection
-    {
-        return $this->appUserFlags ?? new ArrayCollection();
-    }
-
-    public function removeAppUserFlag(?AppUserFlagConnection $flagInEmployer): void
-    {
-        if ($flagInEmployer && $this->getAppUserFlags()
-                ->removeElement($flagInEmployer)) {
-            $flagInEmployer->setAppUser(null);
-        }
-    }
-
+//    public function addAppUserFlag(?AppUserFlagConnection $flagInJobFairUser): void
+//    {
+//        if ($flagInJobFairUser && !$this->getAppUserFlags()
+//                ->contains($flagInJobFairUser)) {
+//            $this->getAppUserFlags()
+//                ->add($flagInJobFairUser);
+//            $flagInJobFairUser->setAppUser($this);
+//        }
+//    }
+//
+//    /**
+//     * @return Collection<AppUserFlag>
+//     */
+//    public function getAppUserFlags(): Collection
+//    {
+//        return $this->appUserFlags ?? new ArrayCollection();
+//    }
+//
+//    public function removeAppUserFlag(?AppUserFlagConnection $flagInEmployer): void
+//    {
+//        if ($flagInEmployer && $this->getAppUserFlags()
+//                ->removeElement($flagInEmployer)) {
+//            $flagInEmployer->setAppUser(null);
+//        }
+//    }
     public function getName(): string
     {
         return $this->getFullName() ?? $this->getUsername();

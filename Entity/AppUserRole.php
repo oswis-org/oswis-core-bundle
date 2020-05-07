@@ -9,6 +9,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use InvalidArgumentException;
 use OswisOrg\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
 use OswisOrg\OswisCoreBundle\Interfaces\BasicEntityInterface;
 use OswisOrg\OswisCoreBundle\Traits\Entity\BasicEntityTrait;
@@ -85,30 +86,32 @@ class AppUserRole implements BasicEntityInterface
     protected ?string $roleString = null;
 
     /**
-     * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="OswisOrg\OswisCoreBundle\Entity\AppUserRole", inversedBy="children", fetch="EAGER")
+     * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="OswisOrg\OswisCoreBundle\Entity\AppUserRole", fetch="EAGER")
      * @Doctrine\ORM\Mapping\JoinColumn(name="parent_id", referencedColumnName="id")
      */
     protected ?AppUserRole $parent = null;
 
     /**
-     * @Doctrine\ORM\Mapping\OneToMany(targetEntity="OswisOrg\OswisCoreBundle\Entity\AppUserRole", mappedBy="parent")
+     * AppUserRole constructor.
+     *
+     * @param Nameable|null    $nameable
+     * @param string|null      $roleString
+     * @param AppUserRole|null $parent
+     *
+     * @throws InvalidArgumentException
      */
-    protected ?Collection $children = null;
-
     public function __construct(?Nameable $nameable = null, ?string $roleString = null, ?self $parent = null)
     {
         $this->parent = null;
-        $this->children = new ArrayCollection();
-        $this->setFieldsFromNameable($nameable);
         $this->roleString = $roleString;
+        $this->setFieldsFromNameable($nameable);
         $this->setParent($parent);
     }
 
-    public function getChildren(): Collection
-    {
-        return $this->children ?? new ArrayCollection();
-    }
-
+//    public function getChildren(): Collection
+//    {
+//        return $this->children ?? new ArrayCollection();
+//    }
     /**
      * Get names of all contained roles.
      */
@@ -141,15 +144,17 @@ class AppUserRole implements BasicEntityInterface
         return $this->parent;
     }
 
+    /**
+     * @param AppUserRole|null $appUserRole
+     *
+     * @throws InvalidArgumentException
+     */
     public function setParent(?self $appUserRole): void
     {
-        if (null !== $this->parent) {
-            $this->parent->removeChild($this);
+        if ($this === $appUserRole) {
+            throw new InvalidArgumentException('Role nemůže být nadřazenou sama sobě.');
         }
-        if ($appUserRole && $this->parent !== $appUserRole) {
-            $appUserRole->addChild($this);
-            $this->parent = $appUserRole;
-        }
+        $this->parent = $appUserRole;
     }
 
     /**
@@ -169,20 +174,5 @@ class AppUserRole implements BasicEntityInterface
     public function setRoleString(string $roleString): void
     {
         $this->roleString = $roleString ?? '';
-    }
-
-    public function removeChild(?self $appUserRole): void
-    {
-        if ($appUserRole && $this->children->removeElement($appUserRole)) {
-            $appUserRole->setParent(null);
-        }
-    }
-
-    public function addChild(?self $appUserRole): void
-    {
-        if ($appUserRole && !$this->children->contains($appUserRole)) {
-            $this->children->add($appUserRole);
-            $appUserRole->setParent($this);
-        }
     }
 }
