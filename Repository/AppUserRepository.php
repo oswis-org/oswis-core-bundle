@@ -29,8 +29,8 @@ class AppUserRepository extends EntityRepository implements UserLoaderInterface
             return null;
         }
         try {
-            $builder = $this->createQueryBuilder('u')
-                ->where('(u.username = :username OR u.email = :email) AND (u.deleted IS NULL OR u.deleted = false)');
+            $builder = $this->createQueryBuilder('u') // TODO: Is in range??????!!!!!!
+            ->where('(u.username = :username OR u.email = :email)');
             $query = $builder->setParameter('username', $username)
                 ->setParameter('email', $username)
                 ->getQuery();
@@ -53,8 +53,8 @@ class AppUserRepository extends EntityRepository implements UserLoaderInterface
             return null;
         }
         try {
-            $builder = $this->createQueryBuilder('u')
-                ->where('(u.id = :id) AND (u.deleted IS NULL OR u.deleted = false)');
+            $builder = $this->createQueryBuilder('u') // TODO: Is in range??????!!!!!!
+            ->where('(u.id = :id) AND');
             $appUser = $builder->setParameter('id', $id)
                 ->getQuery()
                 ->getOneOrNullResult(Query::HYDRATE_OBJECT);

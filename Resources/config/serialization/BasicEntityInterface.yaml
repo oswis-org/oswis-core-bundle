@@ -1,4 +1,4 @@
-OswisOrg\OswisCoreBundle\Traits\Entity\BasicEntityTrait:
+OswisOrg\OswisCoreBundle\Interfaces\BasicEntityInterface:
     attributes:
         id:
             groups: ['basics_get', 'basic_get']
