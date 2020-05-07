@@ -6,7 +6,7 @@
 namespace OswisOrg\OswisCoreBundle\Api\Dto;
 
 use ApiPlatform\Core\Annotation\ApiResource;
-use OswisOrg\OswisCoreBundle\Entity\AppUser;
+use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser;
 use OswisOrg\OswisCoreBundle\Service\AppUserService;
 
 /**

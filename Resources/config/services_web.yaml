@@ -1,0 +1,97 @@
+services:
+
+    ### AppUser Controller
+    oswis_org_oswis_core.app_user_controller:
+        class: OswisOrg\OswisCoreBundle\Controller\AppUserController
+        autowire: true
+        public: true
+        arguments:
+            - '@oswis_org_oswis_core.app_user_service'
+    OswisOrg\OswisCoreBundle\Controller\AppUserController:
+        alias: oswis_org_oswis_core.app_user_controller
+        public: true
+
+    ### Homepage Web Controller
+    oswis_org_oswis_core.homepage_web_controller:
+        class: OswisOrg\OswisCoreBundle\Controller\Website\HomepageWebController
+        autowire: true
+        public: true
+    OswisOrg\OswisCoreBundle\Controller\Website\HomepageWebController:
+        alias: oswis_org_oswis_core.homepage_web_controller
+        public: true
+
+    ### Sitemap
+    oswis_org_oswis_core.site_map_web_controller:
+        class: OswisOrg\OswisCoreBundle\Controller\Website\SiteMapWebController
+        autowire: true
+        public: true
+    OswisOrg\OswisCoreBundle\Controller\Website\SiteMapWebController:
+        alias: oswis_org_oswis_core.site_map_web_controller
+        public: true
+
+    ### RSS
+    oswis_org_oswis_core.rss_feed_controller:
+        class: OswisOrg\OswisCoreBundle\Controller\Website\RssFeedController
+        autowire: true
+        public: true
+        arguments:
+            - '@oswis_org_oswis_core.oswis_core_settings_provider'
+    OswisOrg\OswisCoreBundle\Controller\Website\RssFeedController:
+        alias: oswis_org_oswis_core.rss_feed_controller
+        public: true
+
+    ### Site WebManifest Web Controller
+    oswis_org_oswis_core.site_web_manifest_controller:
+        class: OswisOrg\OswisCoreBundle\Controller\Website\SiteWebManifestController
+        autowire: true
+        public: true
+    OswisOrg\OswisCoreBundle\Controller\Website\SiteWebManifestController:
+        alias: oswis_org_oswis_core.site_web_manifest_controller
+        public: true
+
+    ### Web Banner Controller
+    oswis_org_oswis_core.web_banner_controller:
+        class: OswisOrg\OswisCoreBundle\Controller\Website\WebBannerController
+        autowire: true
+        public: true
+    OswisOrg\OswisCoreBundle\Controller\Website\WebBannerController:
+        alias: oswis_org_oswis_core.web_banner_controller
+        public: true
+
+    ### Internal Actions Web Controller
+    oswis_org_oswis_core.internal_actions_web_controller:
+        class: OswisOrg\OswisCoreBundle\Controller\Website\InternalActionsWebController
+        autowire: true
+        public: true
+    OswisOrg\OswisCoreBundle\Controller\Website\InternalActionsWebController:
+        alias: oswis_org_oswis_core.internal_actions_web_controller
+        public: true
+
+    ### Portal Web Controller
+    oswis_org_oswis_core.portal_web_controller:
+        class: OswisOrg\OswisCoreBundle\Controller\Website\PortalWebController
+        autowire: true
+        public: true
+    OswisOrg\OswisCoreBundle\Controller\Website\PortalWebController:
+        alias: oswis_org_oswis_core.portal_web_controller
+        public: true
+
+    ### Admin Web Controller
+    oswis_org_oswis_core.admin_web_controller:
+        class: OswisOrg\OswisCoreBundle\Controller\Website\AdminWebController
+        autowire: true
+        public: true
+        arguments:
+            - '@oswis_org_oswis_core.oswis_core_settings_provider'
+    OswisOrg\OswisCoreBundle\Controller\Website\AdminWebController:
+        alias: oswis_org_oswis_core.admin_web_controller
+        public: true
+
+    ### GDPR Web Controller
+    oswis_org_oswis_core.gdpr_web_controller:
+        class: OswisOrg\OswisCoreBundle\Controller\Website\GdprWebController
+        autowire: true
+        public: true
+    OswisOrg\OswisCoreBundle\Controller\Website\GdprWebController:
+        alias: oswis_org_oswis_core.gdpr_web_controller
+        public: true

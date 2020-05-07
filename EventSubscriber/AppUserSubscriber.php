@@ -6,7 +6,7 @@
 namespace OswisOrg\OswisCoreBundle\EventSubscriber;
 
 use ApiPlatform\Core\EventListener\EventPriorities;
-use OswisOrg\OswisCoreBundle\Entity\AppUser;
+use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser;
 use OswisOrg\OswisCoreBundle\Exceptions\OswisException;
 use OswisOrg\OswisCoreBundle\Service\AppUserService;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
@@ -39,8 +39,7 @@ final class AppUserSubscriber implements EventSubscriberInterface
             return;
         }
         try {
-            $method = $event->getRequest()
-                ->getMethod();
+            $method = $event->getRequest()->getMethod();
         } catch (SuspiciousOperationException $e) {
             return;
         }

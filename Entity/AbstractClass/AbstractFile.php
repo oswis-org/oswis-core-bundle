@@ -7,8 +7,8 @@
 namespace OswisOrg\OswisCoreBundle\Entity\AbstractClass;
 
 use ApiPlatform\Core\Annotation\ApiProperty;
-use OswisOrg\OswisCoreBundle\Interfaces\BasicEntityInterface;
-use OswisOrg\OswisCoreBundle\Traits\Entity\BasicEntityTrait;
+use OswisOrg\OswisCoreBundle\Interfaces\Common\BasicEntityInterface;
+use OswisOrg\OswisCoreBundle\Traits\Common\BasicEntityTrait;
 use Symfony\Component\HttpFoundation\File\File;
 
 /**

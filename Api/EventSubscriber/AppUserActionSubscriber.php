@@ -6,7 +6,7 @@
 namespace OswisOrg\OswisCoreBundle\Api\EventSubscriber;
 
 use ApiPlatform\Core\EventListener\EventPriorities;
-use OswisOrg\OswisCoreBundle\Entity\AppUser;
+use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser;
 use OswisOrg\OswisCoreBundle\Exceptions\OswisException;
 use OswisOrg\OswisCoreBundle\Exceptions\OswisNotImplementedException;
 use OswisOrg\OswisCoreBundle\Exceptions\OswisUserNotFoundException;
@@ -95,13 +95,11 @@ final class AppUserActionSubscriber implements EventSubscriberInterface
         $appUser = $properties['appUser'];
         $appUser ??= $appUserRepository->loadUserById($properties['uid']) ?? $appUserRepository->loadUserByUsername($properties['username']);
         if (!$appUser && $properties['token']) {
-            $appUserByToken = $this->appUserService->getRepository()
-                ->findOneBy(['passwordResetRequestToken' => $properties['token']]);
+            $appUserByToken = $this->appUserService->getRepository()->findOneBy(['passwordResetRequestToken' => $properties['token']]);
             $appUser = $appUserByToken && $appUserByToken->checkPasswordResetRequestToken($properties['token']) ? $appUserByToken : null;
         }
         if (!$appUser && $properties['token']) {
-            $appUserByToken = $this->appUserService->getRepository()
-                ->findOneBy(['accountActivationRequestToken' => $properties['token']]);
+            $appUserByToken = $this->appUserService->getRepository()->findOneBy(['accountActivationRequestToken' => $properties['token']]);
             $appUser = $appUserByToken && $appUserByToken->checkAccountActivationRequestToken($properties['token']) ? $appUserByToken : null;
         }
 

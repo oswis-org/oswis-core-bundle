@@ -3,10 +3,10 @@
 namespace OswisOrg\OswisCoreBundle\Entity\AbstractClass;
 
 use InvalidArgumentException;
-use OswisOrg\OswisCoreBundle\Interfaces\BasicEntityInterface;
-use OswisOrg\OswisCoreBundle\Traits\Entity\BasicEntityTrait;
-use OswisOrg\OswisCoreBundle\Traits\Entity\TextValueTrait;
-use OswisOrg\OswisCoreBundle\Traits\Entity\TypeTrait;
+use OswisOrg\OswisCoreBundle\Interfaces\Common\BasicEntityInterface;
+use OswisOrg\OswisCoreBundle\Traits\Common\BasicEntityTrait;
+use OswisOrg\OswisCoreBundle\Traits\Common\TextValueTrait;
+use OswisOrg\OswisCoreBundle\Traits\Common\TypeTrait;
 
 /**
  * Abstract class containing basic properties for web pages contents.

@@ -3,7 +3,7 @@
 namespace OswisOrg\OswisCoreBundle\Service;
 
 use Doctrine\ORM\EntityManagerInterface;
-use OswisOrg\OswisCoreBundle\Entity\AppUserRole;
+use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserRole;
 use OswisOrg\OswisCoreBundle\Repository\AppUserRoleRepository;
 use Psr\Log\LoggerInterface;
 
@@ -25,8 +25,7 @@ class AppUserRoleService
 
     public function create(AppUserRole $role): AppUserRole
     {
-        $existing = $this->getRepository()
-            ->findBySlug($role->getSlug());
+        $existing = $this->getRepository()->findBySlug($role->getSlug());
         if (null === $existing || !($existing instanceof AppUserRole)) {
             $this->em->persist($role);
         }

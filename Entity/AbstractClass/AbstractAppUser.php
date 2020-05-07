@@ -6,10 +6,9 @@
 
 namespace OswisOrg\OswisCoreBundle\Entity\AbstractClass;
 
-use OswisOrg\OswisCoreBundle\Entity\AppUserRole;
-use OswisOrg\OswisCoreBundle\Interfaces\BasicEntityInterface;
-use OswisOrg\OswisCoreBundle\Traits\Entity\BasicEntityTrait;
-use OswisOrg\OswisCoreBundle\Traits\Entity\UserTrait;
+use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserRole;
+use OswisOrg\OswisCoreBundle\Interfaces\AddressBook\PersonInterface;
+use OswisOrg\OswisCoreBundle\Traits\User\UserTrait;
 use Serializable;
 use Symfony\Component\Security\Core\User\EquatableInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -18,9 +17,8 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * Abstract class containing basic properties for user of application.
  * @author Jakub Zak <mail@jakubzak.eu>
  */
-abstract class AbstractAppUser implements UserInterface, Serializable, EquatableInterface, BasicEntityInterface
+abstract class AbstractAppUser implements UserInterface, Serializable, EquatableInterface, PersonInterface
 {
-    use BasicEntityTrait;
     use UserTrait;
 
     public function serialize(): string

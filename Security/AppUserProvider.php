@@ -3,7 +3,7 @@
 namespace OswisOrg\OswisCoreBundle\Security;
 
 use Doctrine\ORM\EntityManagerInterface;
-use OswisOrg\OswisCoreBundle\Entity\AppUser;
+use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser;
 use OswisOrg\OswisCoreBundle\Exceptions\OswisUserNotUniqueException;
 use OswisOrg\OswisCoreBundle\Repository\AppUserRepository;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;

@@ -11,7 +11,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\Query;
-use OswisOrg\OswisCoreBundle\Entity\AppUser;
+use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser;
 use OswisOrg\OswisCoreBundle\Exceptions\OswisUserNotUniqueException;
 use Symfony\Bridge\Doctrine\Security\User\UserLoaderInterface;
 
@@ -30,10 +30,8 @@ class AppUserRepository extends EntityRepository implements UserLoaderInterface
         }
         try {
             $builder = $this->createQueryBuilder('u') // TODO: Is in range??????!!!!!!
-            ->where('(u.username = :username OR u.email = :email)');
-            $query = $builder->setParameter('username', $username)
-                ->setParameter('email', $username)
-                ->getQuery();
+                            ->where('(u.username = :username OR u.email = :email)');
+            $query = $builder->setParameter('username', $username)->setParameter('email', $username)->getQuery();
             $appUser = $query->getOneOrNullResult(Query::HYDRATE_OBJECT);
         } catch (NonUniqueResultException $e) {
             throw new OswisUserNotUniqueException();
@@ -54,10 +52,8 @@ class AppUserRepository extends EntityRepository implements UserLoaderInterface
         }
         try {
             $builder = $this->createQueryBuilder('u') // TODO: Is in range??????!!!!!!
-            ->where('(u.id = :id) AND');
-            $appUser = $builder->setParameter('id', $id)
-                ->getQuery()
-                ->getOneOrNullResult(Query::HYDRATE_OBJECT);
+                            ->where('(u.id = :id) AND');
+            $appUser = $builder->setParameter('id', $id)->getQuery()->getOneOrNullResult(Query::HYDRATE_OBJECT);
         } catch (NonUniqueResultException $e) {
             throw new OswisUserNotUniqueException();
         }
@@ -67,13 +63,10 @@ class AppUserRepository extends EntityRepository implements UserLoaderInterface
 
     public function findByEmail(string $email): Collection
     {
-        $builder = $this->createQueryBuilder('app_user')
-            ->where('app_user.email = :email')
-            ->setParameter('email', $email);
+        $builder = $this->createQueryBuilder('app_user')->where('app_user.email = :email')->setParameter('email', $email);
 
         return new ArrayCollection(
-            $builder->getQuery()
-                ->getResult(Query::HYDRATE_OBJECT)
+            $builder->getQuery()->getResult(Query::HYDRATE_OBJECT)
         );
     }
 
