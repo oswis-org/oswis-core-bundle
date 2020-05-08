@@ -35,8 +35,8 @@ use OswisOrg\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
  *   attributes={
  *     "filters"={"search"},
  *     "access_control"="is_granted('ROLE_USER')",
- *     "normalization_context"={"groups"={"nameables_get", "app_users_get"}},
- *     "denormalization_context"={"groups"={"nameables_post", "app_users_post"}}
+ *     "normalization_context"={"groups"={"nameables_get", "app_users_get"}, "enable_max_depth"=true},
+ *     "denormalization_context"={"groups"={"nameables_post", "app_users_post"}, "enable_max_depth"=true}
  *   },
  *   collectionOperations={
  *     "get"={

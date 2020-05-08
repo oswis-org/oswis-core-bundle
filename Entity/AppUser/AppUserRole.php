@@ -1,6 +1,8 @@
-<?php /** @noinspection MethodShouldBeFinalInspection */
-
-/** @noinspection PhpUnused */
+<?php
+/**
+ * @noinspection MethodShouldBeFinalInspection
+ * @noinspection PhpUnused
+ */
 
 namespace OswisOrg\OswisCoreBundle\Entity\AppUser;
 
@@ -23,8 +25,8 @@ use OswisOrg\OswisCoreBundle\Traits\Common\NameableBasicTrait;
  *   attributes={
  *     "filters"={"search"},
  *     "access_control"="is_granted('ROLE_ADMIN')",
- *     "normalization_context"={"groups"={"app_user_roles_get"}},
- *     "denormalization_context"={"groups"={"app_user_roles_post"}}
+ *     "normalization_context"={"groups"={"app_user_roles_get"}, "enable_max_depth"=true},
+ *     "denormalization_context"={"groups"={"app_user_roles_post"}, "enable_max_depth"=true}
  *   },
  *   collectionOperations={
  *     "get"={
@@ -85,7 +87,7 @@ class AppUserRole implements NameableEntityInterface
     protected ?string $roleString = null;
 
     /**
-     * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserRole", fetch="EAGER")
+     * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserRole")
      * @Doctrine\ORM\Mapping\JoinColumn(name="parent_id", referencedColumnName="id")
      */
     protected ?AppUserRole $parent = null;

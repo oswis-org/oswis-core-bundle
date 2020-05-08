@@ -14,6 +14,7 @@ trait BlameableTrait
      * @Gedmo\Mapping\Annotation\Blameable(on="create")
      * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser")
      * @Doctrine\ORM\Mapping\JoinColumn(name="created_author_id", referencedColumnName="id")
+     * @Symfony\Component\Serializer\Annotation\MaxDepth(1)
      */
     protected ?AppUser $createdAuthor = null;
 
@@ -21,6 +22,7 @@ trait BlameableTrait
      * @Gedmo\Mapping\Annotation\Blameable(on="update")
      * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser")
      * @Doctrine\ORM\Mapping\JoinColumn(name="updated_author_id", referencedColumnName="id")
+     * @Symfony\Component\Serializer\Annotation\MaxDepth(1)
      */
     protected ?AppUser $updatedAuthor = null;
 
