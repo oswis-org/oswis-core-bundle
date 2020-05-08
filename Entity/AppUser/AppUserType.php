@@ -32,25 +32,21 @@ use OswisOrg\OswisCoreBundle\Traits\Common\NameableBasicTrait;
  *   collectionOperations={
  *     "get"={
  *       "access_control"="is_granted('ROLE_MANAGER')",
- *       "normalization_context"={"groups"={"app_user_types_get"}},
+ *       "normalization_context"={"groups"={"app_user_types_get"}, "enable_max_depth"=true},
  *     },
  *     "post"={
  *       "access_control"="is_granted('ROLE_ROOT')",
- *       "denormalization_context"={"groups"={"app_user_types_post"}}
+ *       "denormalization_context"={"groups"={"app_user_types_post"}, "enable_max_depth"=true}
  *     }
  *   },
  *   itemOperations={
  *     "get"={
  *       "access_control"="is_granted('ROLE_MANAGER')",
- *       "normalization_context"={"groups"={"app_user_type_get"}},
+ *       "normalization_context"={"groups"={"app_user_type_get"}, "enable_max_depth"=true},
  *     },
  *     "put"={
  *       "access_control"="is_granted('ROLE_ROOT')",
- *       "denormalization_context"={"groups"={"app_user_type_put"}}
- *     },
- *     "delete"={
- *       "access_control"="is_granted('ROLE_ROOT')",
- *       "denormalization_context"={"groups"={"app_user_type_delete"}}
+ *       "denormalization_context"={"groups"={"app_user_type_put"}, "enable_max_depth"=true}
  *     }
  *   }
  * )

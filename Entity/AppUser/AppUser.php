@@ -41,21 +41,21 @@ use OswisOrg\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
  *   collectionOperations={
  *     "get"={
  *       "access_control"="is_granted('ROLE_MANAGER')",
- *       "normalization_context"={"groups"={"nameables_get", "app_users_get"}},
+ *       "normalization_context"={"groups"={"nameables_get", "app_users_get"}, "enable_max_depth"=true},
  *     },
  *     "post"={
  *       "access_control"="is_granted('ROLE_ADMIN')",
- *       "denormalization_context"={"groups"={"nameables_post", "app_users_post"}}
+ *       "denormalization_context"={"groups"={"nameables_post", "app_users_post"}, "enable_max_depth"=true}
  *     }
  *   },
  *   itemOperations={
  *     "get"={
  *       "access_control"="is_granted('ROLE_MANAGER') or object.canRead(user)",
- *       "normalization_context"={"groups"={"nameable_get", "app_user_get"}},
+ *       "normalization_context"={"groups"={"nameable_get", "app_user_get"}, "enable_max_depth"=true},
  *     },
  *     "put"={
  *       "access_control"="is_granted('ROLE_ADMIN') or object.canEdit(user)",
- *       "denormalization_context"={"groups"={"nameable_put", "app_user_put"}}
+ *       "denormalization_context"={"groups"={"nameable_put", "app_user_put"}, "enable_max_depth"=true}
  *     }
  *   }
  * )
