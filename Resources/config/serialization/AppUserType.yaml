@@ -1,4 +1,4 @@
-OswisOrg\OswisCoreBundle\Entity\AppUserType:
+OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserType:
     attributes:
         id:
             groups: ['app_user_types_get', 'app_user_type_get']
@@ -13,7 +13,7 @@ OswisOrg\OswisCoreBundle\Entity\AppUserType:
         roleName:
             groups: ['app_user_types_get', 'app_user_type_get']
 
-OswisOrg\OswisCoreBundle\Entity\AppUserRole:
+OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserRole:
     attributes:
         id:
             groups: ['app_user_types_post', 'app_user_type_get', 'app_user_type_put']

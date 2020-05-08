@@ -1,4 +1,4 @@
-OswisOrg\OswisCoreBundle\Entity\ClientLogRecord:
+OswisOrg\OswisCoreBundle\Entity\Logger\ClientLogRecord:
     attributes:
         level:
             groups: ['client_log_records_post']

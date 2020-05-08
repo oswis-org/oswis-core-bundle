@@ -1,4 +1,4 @@
-OswisOrg\OswisCoreBundle\Interfaces\BasicEntityInterface:
+OswisOrg\OswisCoreBundle\Interfaces\Common\BasicEntityInterface:
     attributes:
         id:
             groups:
