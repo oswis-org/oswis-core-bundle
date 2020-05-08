@@ -1,29 +1,12 @@
 # /config/serialization/AppUser.yaml
-
 OswisOrg\OswisCoreBundle\Entity\AppUser:
     attributes:
-        #        id:
-        #            groups: ['app_users_get', 'app_user_get']
-        #        customId:
-        #            groups: ['app_users_get', 'app_users_post', 'app_user_get', 'app_user_put']
-        #        createdDateTime:
-        #            groups: ['app_user_get']
-        #        updatedDateTime:
-        #            groups: ['app_user_get']
-        #        createdAuthor:
-        #            groups: ['app_user_get']
-        #        updatedAuthor:
-        #            groups: ['app_user_get']
         username:
             groups: ['app_users_get', 'app_users_post', 'app_user_get', 'app_user_put']
         email:
             groups: ['app_users_get', 'app_users_post', 'app_user_get', 'app_user_put']
-        password:
-            groups: []
-        deleted:
-            groups: ['app_users_get', 'app_user_get']
         active:
-            groups: ['app_users_get', 'app_users_post', 'app_user_get', 'app_user_put']
+            groups: ['app_users_get', 'app_user_get']
         adminUser:
             groups: ['app_users_get', 'app_users_post', 'app_user_get', 'app_user_put']
         fullName:
@@ -31,22 +14,16 @@ OswisOrg\OswisCoreBundle\Entity\AppUser:
         appUserType:
             groups: ['app_users_get', 'app_user_get']
         startDateTime:
-            groups: ['app_users_post', 'app_user_get', 'app_user_put']
+            groups: ['app_users_get', 'app_users_post', 'app_user_get', 'app_user_put']
         endDateTime:
-            groups: ['app_users_post', 'app_user_get', 'app_user_put']
-        description:
-            groups: ['app_users_post', 'app_user_get', 'app_user_put']
-        note:
-            groups: ['app_users_post', 'app_user_get', 'app_user_put']
+            groups: ['app_users_get', 'app_user_get', 'app_user_put']
         roles:
             groups: ['app_user_get']
 
 OswisOrg\OswisCoreBundle\Entity\AppUserType:
     attributes:
         id:
-            groups: ['app_users_get', 'app_users_post', 'app_user_get', 'app_user_put']
-        name:
-            groups: ['app_users_get', 'app_user_get']
+            groups: ['app_users_post', 'app_user_put']
         roleName:
             groups: ['app_user_get']
 

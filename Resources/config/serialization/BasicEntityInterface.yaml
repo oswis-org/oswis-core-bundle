@@ -1,14 +1,36 @@
 OswisOrg\OswisCoreBundle\Interfaces\BasicEntityInterface:
     attributes:
         id:
-            groups: ['basics_get', 'basic_get']
+            groups:
+                - 'basics_get'
+                - 'basic_get'
+                - 'nameables_get'
+                - 'nameable_get'
         customId:
-            groups: ['basics_get', 'basics_post', 'basic_get', 'basic_put']
+            groups:
+                - 'basics_get'
+                - 'basics_post'
+                - 'basic_get'
+                - 'nameables_get'
+                - 'nameables_post'
+                - 'nameable_get'
         createdDateTime:
-            groups: ['basic_get']
+            groups:
+                - 'basics_get'
+                - 'basic_get'
+                - 'nameables_get'
+                - 'nameable_get'
         updatedDateTime:
-            groups: ['basic_get']
+            groups:
+                - 'basics_get'
+                - 'basic_get'
+                - 'nameables_get'
+                - 'nameable_get'
         createdAuthor:
-            groups: ['basic_get']
+            groups:
+                - 'basic_get'
+                - 'nameable_get'
         updatedAuthor:
-            groups: ['basic_get']
+            groups:
+                - 'basic_get'
+                - 'nameable_get'

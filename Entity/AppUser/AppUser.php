@@ -35,31 +35,27 @@ use OswisOrg\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
  *   attributes={
  *     "filters"={"search"},
  *     "access_control"="is_granted('ROLE_USER')",
- *     "normalization_context"={"groups"={"basics_get", "app_users_get"}},
- *     "denormalization_context"={"groups"={"basics_post", "app_users_post"}}
+ *     "normalization_context"={"groups"={"nameables_get", "app_users_get"}},
+ *     "denormalization_context"={"groups"={"nameables_post", "app_users_post"}}
  *   },
  *   collectionOperations={
  *     "get"={
  *       "access_control"="is_granted('ROLE_MANAGER')",
- *       "normalization_context"={"groups"={"basics_get", "app_users_get"}},
+ *       "normalization_context"={"groups"={"nameables_get", "app_users_get"}},
  *     },
  *     "post"={
  *       "access_control"="is_granted('ROLE_ADMIN')",
- *       "denormalization_context"={"groups"={"basics_post", "app_users_post"}}
+ *       "denormalization_context"={"groups"={"nameables_post", "app_users_post"}}
  *     }
  *   },
  *   itemOperations={
  *     "get"={
  *       "access_control"="is_granted('ROLE_MANAGER') or object.canRead(user)",
- *       "normalization_context"={"groups"={"basic_get", "app_user_get"}},
+ *       "normalization_context"={"groups"={"nameable_get", "app_user_get"}},
  *     },
  *     "put"={
  *       "access_control"="is_granted('ROLE_ADMIN') or object.canEdit(user)",
- *       "denormalization_context"={"groups"={"basic_put", "app_user_put"}}
- *     },
- *     "delete"={
- *       "access_control"="is_granted('ROLE_ADMIN')",
- *       "denormalization_context"={"groups"={"basic_delete", "app_user_delete"}}
+ *       "denormalization_context"={"groups"={"nameable_put", "app_user_put"}}
  *     }
  *   }
  * )

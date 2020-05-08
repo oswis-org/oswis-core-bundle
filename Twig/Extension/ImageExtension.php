@@ -34,7 +34,7 @@ final class ImageExtension extends AbstractExtension
             new TwigFunction('image_height', [$this, 'getImageHeight']),
             new TwigFunction('image_path', [$this, 'getImagePath']),
             new TwigFunction('image_comment', [$this, 'getImageComment']),
-            new TwigFunction('image_size', [$this, 'getImageHtmlSizeAttributes']),
+            new TwigFunction('image_size', [$this, 'getImageHtmlSizeAttributes'], ['is_safe' => ['html']]),
             new TwigFunction('image_mime_type', [$this, 'getImageMimeType']),
         ];
     }
@@ -46,7 +46,7 @@ final class ImageExtension extends AbstractExtension
             new TwigFilter('image_height', [$this, 'getImageHeight']),
             new TwigFilter('image_path', [$this, 'getImagePath']),
             new TwigFilter('image_comment', [$this, 'getImageComment']),
-            new TwigFilter('image_size', [$this, 'getImageHtmlSizeAttributes']),
+            new TwigFilter('image_size', [$this, 'getImageHtmlSizeAttributes'], ['is_safe' => ['html']]),
             new TwigFilter('image_mime_type', [$this, 'getImageMimeType']),
         ];
     }
