@@ -76,7 +76,7 @@ trait NameablePersonTrait
 
     /**
      * Full name of person.
-     * @ORM\Column(type="string", nullable=true)
+     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
     protected ?string $name = null;
 

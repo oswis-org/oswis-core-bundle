@@ -20,7 +20,7 @@ trait NameTrait
 
     /**
      * Sortable variation of name.
-     * @ORM\Column(type="string", nullable=true)
+     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
     protected string $sortableName = '';
 
