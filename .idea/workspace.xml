@@ -24,36 +24,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Interfaces/AddressBook/ContactInterface.php" afterDir="false" />
+    <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="Some fixes, updates and changes.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DependencyInjection/OswisOrgOswisCoreExtension.php" beforeDir="false" afterPath="$PROJECT_DIR$/DependencyInjection/OswisOrgOswisCoreExtension.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractFile.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractFile.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractPayment.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractPayment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractWebContent.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractWebContent.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AppUser/AppUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUser/AppUser.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AppUser/AppUserFlag.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUser/AppUserFlag.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AppUser/AppUserFlagConnection.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUser/AppUserFlagConnection.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AppUser/AppUserRole.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUser/AppUserRole.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AppUser/AppUserType.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUser/AppUserType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/Logger/ClientLogRecord.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Logger/ClientLogRecord.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Interfaces/AddressBook/FullNameInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/Interfaces/AddressBook/PersonInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Interfaces/Common/BasicEntityInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/Interfaces/Common/BasicInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Interfaces/Common/NameableEntityInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/Interfaces/Common/NameableInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Interfaces/Payment/PaymentInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/Interfaces/Payment/PaymentInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/AddressBook/AddressTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/AddressBook/PostalAddressTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/AddressBook/FullNameTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/AddressBook/NameablePersonTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/AddressBook/PersonBasicTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/AddressBook/PersonTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Common/BasicEntityTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/BasicTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Common/BlameableTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/BlameableTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Common/CustomIdTrait.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Common/DateTimeTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/DateTimeTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Common/IdTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/IdTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Common/NameTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/NameTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Common/NameableBasicTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/NameableTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/User/UserTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/User/UserTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Twig/Extension/ImageExtension.php" beforeDir="false" afterPath="$PROJECT_DIR$/Twig/Extension/ImageExtension.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interfaces/AddressBook/ContactInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/Interfaces/AddressBook/ContactInterface.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -729,14 +702,9 @@
       <workItem from="1589012690580" duration="7091000" />
       <workItem from="1589047219237" duration="497000" />
       <workItem from="1589053410625" duration="17953000" />
-      <workItem from="1589133692339" duration="2139000" />
-    </task>
-    <task id="LOCAL-00534" summary="Some fixes, updates and changes.">
-      <created>1588181472751</created>
-      <option name="number" value="00534" />
-      <option name="presentableId" value="LOCAL-00534" />
-      <option name="project" value="LOCAL" />
-      <updated>1588181472751</updated>
+      <workItem from="1589133692339" duration="2288000" />
+      <workItem from="1589136537182" duration="87000" />
+      <workItem from="1589136843330" duration="1202000" />
     </task>
     <task id="LOCAL-00535" summary="Some fixes, updates and changes.">
       <created>1588185450409</created>
@@ -1074,7 +1042,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589103566618</updated>
     </task>
-    <option name="localTasksCounter" value="583" />
+    <task id="LOCAL-00583" summary="Some fixes, updates and changes.">
+      <created>1589135938348</created>
+      <option name="number" value="00583" />
+      <option name="presentableId" value="LOCAL-00583" />
+      <option name="project" value="LOCAL" />
+      <updated>1589135938349</updated>
+    </task>
+    <option name="localTasksCounter" value="584" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1159,9 +1134,10 @@
       <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="396" y="187" width="671" height="398" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.741@0.0.1366.741" timestamp="1588084778890" />
-    <state x="2466" y="164" width="349" height="577" key="#com.intellij.ide.util.MemberChooser" timestamp="1588590248828">
-      <screen x="1920" y="0" width="1366" height="768" />
+    <state x="546" y="158" width="349" height="577" key="#com.intellij.ide.util.MemberChooser" timestamp="1589135905483">
+      <screen x="0" y="0" width="1366" height="741" />
     </state>
+    <state x="546" y="158" key="#com.intellij.ide.util.MemberChooser/0.0.1366.741@0.0.1366.741" timestamp="1589135905483" />
     <state x="546" y="179" width="397" height="556" key="#com.intellij.ide.util.MemberChooser/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1581807811802" />
     <state x="768" y="179" width="376" height="556" key="#com.intellij.ide.util.MemberChooser/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1581867031197" />
     <state x="2466" y="164" width="349" height="577" key="#com.intellij.ide.util.MemberChooser/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1588590248828" />
@@ -1189,10 +1165,10 @@
     <state x="499" y="381" width="402" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1588891203709" />
     <state x="701" y="381" width="509" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1588880649242" />
     <state x="2356" y="395" width="402" height="332" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1588872805427" />
-    <state x="369" y="0" width="1366" height="741" key="CommitChangelistDialog2" timestamp="1589103566234">
+    <state x="369" y="0" width="1366" height="741" key="CommitChangelistDialog2" timestamp="1589135963372">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="369" y="0" width="904" height="735" key="CommitChangelistDialog2/0.0.1366.741@0.0.1366.741" timestamp="1589103566234" />
+    <state x="369" y="0" width="904" height="735" key="CommitChangelistDialog2/0.0.1366.741@0.0.1366.741" timestamp="1589135963372" />
     <state x="1920" y="0" width="1366" height="741" key="CommitChangelistDialog2/0.0.3286.741@0.0.3286.741" timestamp="1588168860490" />
     <state x="369" y="0" width="881" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1588970683507" />
     <state x="518" y="0" width="881" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1588882825048" />
@@ -1216,10 +1192,10 @@
     <state x="187" y="5" key="SettingsEditor/0.0.1366.741@0.0.1366.741" timestamp="1582926206454" />
     <state x="33" y="0" width="1280" height="730" key="SettingsEditor/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1587589952804" />
     <state x="263" y="0" width="1418" height="741" key="SettingsEditor/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1588877720285" />
-    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1589103571122">
+    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1589135951765">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1589103571122" />
+    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1589135951765" />
     <state x="0" y="213" width="1920" height="522" key="Vcs.Push.Dialog.v2/0.0.3286.741@0.0.3286.741" timestamp="1588168862336" />
     <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1588970685245" />
     <state x="555" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1588882826900" />
