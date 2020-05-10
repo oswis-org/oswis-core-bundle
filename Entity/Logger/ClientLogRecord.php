@@ -3,8 +3,8 @@
 namespace OswisOrg\OswisCoreBundle\Entity\Logger;
 
 use ApiPlatform\Core\Annotation\ApiResource;
-use OswisOrg\OswisCoreBundle\Interfaces\Common\BasicEntityInterface;
-use OswisOrg\OswisCoreBundle\Traits\Common\BasicEntityTrait;
+use OswisOrg\OswisCoreBundle\Interfaces\Common\BasicInterface;
+use OswisOrg\OswisCoreBundle\Traits\Common\BasicTrait;
 
 /**
  * Log record from client.
@@ -35,9 +35,9 @@ use OswisOrg\OswisCoreBundle\Traits\Common\BasicEntityTrait;
  * @author Jakub Zak <mail@jakubzak.eu>
  * @Doctrine\ORM\Mapping\Cache(usage="NONSTRICT_READ_WRITE", region="core_log")
  */
-class ClientLogRecord implements BasicEntityInterface
+class ClientLogRecord implements BasicInterface
 {
-    use BasicEntityTrait;
+    use BasicTrait;
 
     /**
      * @Doctrine\ORM\Mapping\Column(type="integer", nullable=true)

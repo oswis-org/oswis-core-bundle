@@ -13,11 +13,16 @@ namespace OswisOrg\OswisCoreBundle\Traits\Common;
 trait NameTrait
 {
     /**
-     * Name/title.
-     *
+     * Name or title of something.
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
     protected ?string $name = null;
+
+    /**
+     * Sortable variation of name.
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected string $sortableName = '';
 
     /**
      * Shortened name/shortcut.
@@ -27,7 +32,7 @@ trait NameTrait
     protected ?string $shortName = null;
 
     /**
-     * Get short name.
+     * Get shortened name.
      */
     public function getShortName(): ?string
     {
@@ -42,19 +47,34 @@ trait NameTrait
         $this->shortName = $shortName;
     }
 
-    /**
-     * Get name/title.
-     */
     public function getName(): ?string
     {
-        return $this->name;
+        return $this->updateName();
     }
 
-    /**
-     * Set name/title.
-     */
-    public function setName(?string $name): void
+    public function setName(?string $name): ?string
     {
         $this->name = $name;
+
+        return $this->updateName();
     }
+
+    public function updateName(): ?string
+    {
+        $this->setSortableName($this->getSortableName());
+
+        return $this->getName();
+    }
+
+    public function getSortableName(): string
+    {
+        return $this->getName() ?? '';
+    }
+
+    public function setSortableName(?string $sortableName): string
+    {
+        return $this->sortableName = $sortableName ?? '';
+    }
+
+
 }

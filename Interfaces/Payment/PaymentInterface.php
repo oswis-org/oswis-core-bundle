@@ -5,13 +5,13 @@
 
 namespace OswisOrg\OswisCoreBundle\Interfaces\Payment;
 
-use OswisOrg\OswisCoreBundle\Interfaces\Common\BasicEntityInterface;
+use OswisOrg\OswisCoreBundle\Interfaces\Common\BasicInterface;
 use OswisOrg\OswisCoreBundle\Interfaces\Common\MyDateTimeInterface;
 
 /**
  * Interface PaymentInterface.
  */
-interface PaymentInterface extends BasicEntityInterface, MyDateTimeInterface
+interface PaymentInterface extends BasicInterface, MyDateTimeInterface
 {
     public function getNumericValue(): ?int;
 

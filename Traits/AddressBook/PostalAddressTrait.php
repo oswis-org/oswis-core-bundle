@@ -11,7 +11,7 @@ use OswisOrg\OswisCoreBundle\Entity\NonPersistent\PostalAddress;
 /**
  * Trait adds fields for postal address.
  */
-trait AddressTrait
+trait PostalAddressTrait
 {
     /**
      * @var string|null First line of street

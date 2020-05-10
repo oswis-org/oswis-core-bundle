@@ -7,6 +7,8 @@
 
 namespace OswisOrg\OswisCoreBundle\Twig\Extension;
 
+use Nette\InvalidArgumentException;
+use Nette\Utils\Callback;
 use Symfony\Component\Filesystem\Exception\IOException;
 use Symfony\Component\Filesystem\Filesystem;
 use Twig\Extension\AbstractExtension;
@@ -20,6 +22,7 @@ use Twig\TwigFunction;
  */
 final class ImageExtension extends AbstractExtension
 {
+
     private Filesystem $fileSystem;
 
     public function __construct()
@@ -29,36 +32,50 @@ final class ImageExtension extends AbstractExtension
 
     public function getFunctions(): array
     {
+        $functions = [];
+        foreach ($this->getFunctionsArray() as $key => $fn) {
+            try {
+                $functions[] = new TwigFunction($key, Callback::check($fn['fn']), $fn['opts'] ?? null);
+            } catch (InvalidArgumentException $e) {
+            }
+        }
+
+        return $functions;
+    }
+
+    public function getFunctionsArray(): array
+    {
         return [
-            new TwigFunction('image_width', [$this, 'getImageWidth']),
-            new TwigFunction('image_height', [$this, 'getImageHeight']),
-            new TwigFunction('image_path', [$this, 'getImagePath']),
-            new TwigFunction('image_comment', [$this, 'getImageComment']),
-            new TwigFunction('image_size', [$this, 'getImageHtmlSizeAttributes'], ['is_safe' => ['html']]),
-            new TwigFunction('image_mime_type', [$this, 'getImageMimeType']),
+            'image_width'     => ['fn' => [$this, 'getImageWidth']],
+            'image_height'    => ['fn' => [$this, 'getImageHeight']],
+            'image_path'      => ['fn' => [$this, 'getImagePath']],
+            'image_comment'   => ['fn' => [$this, 'getImageComment']],
+            'image_size'      => ['fn' => [$this, 'getImageHtmlSizeAttributes'], 'opts' => ['is_safe' => ['html']]],
+            'image_mime_type' => ['fn' => [$this, 'getImageMimeType']],
         ];
     }
 
     public function getFilters(): array
     {
-        return [
-            new TwigFilter('image_width', [$this, 'getImageWidth']),
-            new TwigFilter('image_height', [$this, 'getImageHeight']),
-            new TwigFilter('image_path', [$this, 'getImagePath']),
-            new TwigFilter('image_comment', [$this, 'getImageComment']),
-            new TwigFilter('image_size', [$this, 'getImageHtmlSizeAttributes'], ['is_safe' => ['html']]),
-            new TwigFilter('image_mime_type', [$this, 'getImageMimeType']),
-        ];
+        $functions = [];
+        foreach ($this->getFunctionsArray() as $key => $fn) {
+            try {
+                $functions[] = new TwigFilter($key, Callback::check($fn['fn']), $fn['opts'] ?? null);
+            } catch (InvalidArgumentException $e) {
+            }
+        }
+
+        return $functions;
     }
 
-    public function getImageWidth($object, ?string $imagePath = null): ?int
+    public function getImageWidth(?string $imagePath = null): ?int
     {
-        return $this->getImageSize($object, $imagePath)[0] ?: null;
+        return $this->getImageSize($imagePath)[0] ?: null;
     }
 
-    private function getImageSize($object, ?string $path = null): array
+    private function getImageSize(?string $path = null): array
     {
-        $path = $this->getCorrectRelativePath($object, $path);
+        $path = $this->getCorrectRelativePath($path);
         try {
             return $this->fileSystem->exists($path) ? (getimagesize($path) ?: [null, null, null, null]) : [null, null, null, null];
         } catch (IOException $e) {
@@ -66,50 +83,54 @@ final class ImageExtension extends AbstractExtension
         }
     }
 
-    public function getCorrectRelativePath($object, ?string $imagePath = null): string
+    public function getCorrectRelativePath(?string $imagePath = null): string
     {
-        return realpath('../public'.(is_string($object) ? $object : $imagePath));
+        return realpath('../public'.$imagePath) ?: '';
     }
 
-    public function getImageHeight($object, ?string $imagePath = null): ?int
+    public function getImageHeight(?string $imagePath = null): ?int
     {
-        return $this->getImageSize($object, $imagePath)[1] ?: null;
+        return $this->getImageSize($imagePath)[1] ?: null;
     }
 
-    public function getImageHtmlSizeAttributes($object, ?string $imagePath = null): ?string
+    public function getImageHtmlSizeAttributes(?string $imagePath = null): ?string
     {
-        return $this->getImageSize($object, $imagePath)[3] ?: null;
+        return $this->getImageSize($imagePath)[3] ?: null;
     }
 
-    public function getImageExifComment($object, ?string $imagePath = null): ?string
+    public function getImageComment(?string $imagePath = null): ?string
     {
-        $comments = @exif_read_data($this->getCorrectRelativePath($object, $imagePath), 'COMMENT')['COMMENT'];
-
-        return is_array($comments) ? implode("\n", $comments) : $comments;
+        return $this->getImageComputedComment($imagePath) ?: $this->getImageExifComment($imagePath) ?: $this->getImageIfdComment($imagePath) ?: null;
     }
 
-    public function getImageComment($object, ?string $imagePath = null): ?string
+    public function getImageComputedComment(?string $imagePath = null): ?string
     {
-        return $this->getImageComputedComment($object, $imagePath) /*?: $this->getImageExifComment($object, $imagePath)*/ ?: $this->getImageIfdComment($object, $imagePath) ?: null;
+        $result = @exif_read_data($this->getCorrectRelativePath($imagePath), 'COMPUTED');
+
+        return is_array($result) ? $result['COMPUTED']['UserComment'] : null;
     }
 
-    public function getImageComputedComment($object, ?string $imagePath = null): ?string
+    public function getImageExifComment(?string $imagePath = null): ?string
     {
-        return @exif_read_data($this->getCorrectRelativePath($object, $imagePath), 'COMPUTED')['COMPUTED']['UserComment'];
+        $comments = @exif_read_data($this->getCorrectRelativePath($imagePath), 'COMMENT') ?: null;
+
+        return $comments && is_array($comments) && is_array($comments['COMMENT']) ? implode("\n", $comments['COMMENT']) : $comments['COMMENT'];
     }
 
-    public function getImageIfdComment($object, ?string $imagePath = null): ?string
+    public function getImageIfdComment(?string $imagePath = null): ?string
     {
-        return @exif_read_data($this->getCorrectRelativePath($object, $imagePath), 'IFD0')['IFD0']['UserComment'];
+        $result = @exif_read_data($this->getCorrectRelativePath($imagePath), 'IFD0');
+
+        return is_array($result) ? $result['IFD0']['UserComment'] : null;
     }
 
-    public function getImageMimeType($object, ?string $imagePath = null): ?string
+    public function getImageMimeType(?string $imagePath = null): ?string
     {
-        return @image_type_to_mime_type($this->getImageTypeConstant($object, $imagePath)) ?: null;
+        return @image_type_to_mime_type($this->getImageTypeConstant($imagePath)) ?: null;
     }
 
-    public function getImageTypeConstant($object, ?string $imagePath = null): ?int
+    public function getImageTypeConstant(?string $imagePath = null): ?int
     {
-        return @exif_imagetype($this->getCorrectRelativePath($object, $imagePath)) ?: $this->getImageSize($object, $imagePath)[2] ?: null;
+        return @exif_imagetype($this->getCorrectRelativePath($imagePath)) ?: $this->getImageSize($imagePath)[2] ?: null;
     }
 }

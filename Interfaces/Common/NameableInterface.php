@@ -5,11 +5,11 @@
 
 namespace OswisOrg\OswisCoreBundle\Interfaces\Common;
 
-interface NameableEntityInterface extends BasicEntityInterface
+interface NameableInterface extends BasicInterface
 {
     public function getName(): ?string;
 
-    public function setName(?string $name): void;
+    public function setName(?string $name): ?string;
 
     public function getSlug(): ?string;
 
@@ -34,4 +34,10 @@ interface NameableEntityInterface extends BasicEntityInterface
     public function getInternalNote(): ?string;
 
     public function setInternalNote(?string $internalNote): void;
+
+    public function updateName(): ?string;
+
+    public function getSortableName(): string;
+
+    public function setSortableName(?string $sortableName): string;
 }

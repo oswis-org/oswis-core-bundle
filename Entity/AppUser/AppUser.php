@@ -120,7 +120,7 @@ class AppUser extends AbstractAppUser
         ?AppUserType $type = null
     ) {
         $this->appUserFlags = new ArrayCollection();
-        $this->setFullName($fullName);
+        $this->setName($fullName);
         $this->setUsername($username);
         $this->setEmail($email);
         $this->setPassword($encryptedPassword);

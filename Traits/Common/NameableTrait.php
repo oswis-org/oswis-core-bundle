@@ -9,9 +9,9 @@ namespace OswisOrg\OswisCoreBundle\Traits\Common;
 use OswisOrg\OswisCoreBundle\Entity\NonPersistent\Nameable;
 use Symfony\Component\String\Slugger\AsciiSlugger;
 
-trait NameableBasicTrait
+trait NameableTrait
 {
-    use BasicEntityTrait;
+    use BasicTrait;
     use SlugTrait;
     use NameTrait;
     use DescriptionTrait;

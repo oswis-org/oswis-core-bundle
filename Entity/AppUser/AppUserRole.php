@@ -14,8 +14,8 @@ use Doctrine\Common\Collections\Collection;
 use InvalidArgumentException;
 use OswisOrg\OswisCoreBundle\Entity\NonPersistent\Nameable;
 use OswisOrg\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
-use OswisOrg\OswisCoreBundle\Interfaces\Common\NameableEntityInterface;
-use OswisOrg\OswisCoreBundle\Traits\Common\NameableBasicTrait;
+use OswisOrg\OswisCoreBundle\Interfaces\Common\NameableInterface;
+use OswisOrg\OswisCoreBundle\Traits\Common\NameableTrait;
 
 /**
  * Role of app user.
@@ -73,9 +73,9 @@ use OswisOrg\OswisCoreBundle\Traits\Common\NameableBasicTrait;
  * @author Jakub Zak <mail@jakubzak.eu>
  * @Doctrine\ORM\Mapping\Cache(usage="NONSTRICT_READ_WRITE", region="core_app_user")
  */
-class AppUserRole implements NameableEntityInterface
+class AppUserRole implements NameableInterface
 {
-    use NameableBasicTrait;
+    use NameableTrait;
 
     /**
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)

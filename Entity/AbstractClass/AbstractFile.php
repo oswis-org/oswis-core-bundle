@@ -7,17 +7,17 @@
 namespace OswisOrg\OswisCoreBundle\Entity\AbstractClass;
 
 use ApiPlatform\Core\Annotation\ApiProperty;
-use OswisOrg\OswisCoreBundle\Interfaces\Common\BasicEntityInterface;
-use OswisOrg\OswisCoreBundle\Traits\Common\BasicEntityTrait;
+use OswisOrg\OswisCoreBundle\Interfaces\Common\BasicInterface;
+use OswisOrg\OswisCoreBundle\Traits\Common\BasicTrait;
 use Symfony\Component\HttpFoundation\File\File;
 
 /**
  * Abstract file class for use in uploads and forms.
  * @author Jakub Zak <mail@jakubzak.eu>
  */
-abstract class AbstractFile implements BasicEntityInterface
+abstract class AbstractFile implements BasicInterface
 {
-    use BasicEntityTrait;
+    use BasicTrait;
 
     /**
      * @Symfony\Component\Validator\Constraints\NotNull()

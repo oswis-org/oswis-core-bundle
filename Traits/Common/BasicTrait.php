@@ -16,10 +16,9 @@ namespace OswisOrg\OswisCoreBundle\Traits\Common;
  *
  * @author Jakub Zak <mail@jakubzak.eu>
  */
-trait BasicEntityTrait
+trait BasicTrait
 {
     use IdTrait;
-    use CustomIdTrait;
     use TimestampableTrait;
     use BlameableTrait;
 }

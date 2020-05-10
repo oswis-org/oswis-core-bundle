@@ -3,12 +3,12 @@
 namespace OswisOrg\OswisCoreBundle\Traits\User;
 
 use OswisOrg\OswisCoreBundle\Traits\AddressBook\EmailTrait;
-use OswisOrg\OswisCoreBundle\Traits\AddressBook\PersonBasicTrait;
+use OswisOrg\OswisCoreBundle\Traits\AddressBook\PersonTrait;
 use OswisOrg\OswisCoreBundle\Traits\Common\DateRangeTrait;
 
 trait UserTrait
 {
-    use PersonBasicTrait;
+    use PersonTrait;
     use EmailTrait;
     use UsernameTrait;
     use EncryptedPasswordTrait;

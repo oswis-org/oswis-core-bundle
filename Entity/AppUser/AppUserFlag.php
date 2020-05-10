@@ -10,8 +10,8 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use OswisOrg\OswisCoreBundle\Entity\NonPersistent\Nameable;
 use OswisOrg\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
-use OswisOrg\OswisCoreBundle\Interfaces\Common\NameableEntityInterface;
-use OswisOrg\OswisCoreBundle\Traits\Common\NameableBasicTrait;
+use OswisOrg\OswisCoreBundle\Interfaces\Common\NameableInterface;
+use OswisOrg\OswisCoreBundle\Traits\Common\NameableTrait;
 
 /**
  * Flag for app user.
@@ -28,9 +28,9 @@ use OswisOrg\OswisCoreBundle\Traits\Common\NameableBasicTrait;
  * @author Jakub Zak <mail@jakubzak.eu>
  * @Doctrine\ORM\Mapping\Cache(usage="NONSTRICT_READ_WRITE", region="core_app_user")
  */
-class AppUserFlag implements NameableEntityInterface
+class AppUserFlag implements NameableInterface
 {
-    use NameableBasicTrait;
+    use NameableTrait;
 
     public function __construct(?Nameable $nameable = null)
     {

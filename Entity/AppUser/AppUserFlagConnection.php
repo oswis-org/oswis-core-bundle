@@ -9,8 +9,8 @@ namespace OswisOrg\OswisCoreBundle\Entity\AppUser;
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use OswisOrg\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
-use OswisOrg\OswisCoreBundle\Interfaces\Common\BasicEntityInterface;
-use OswisOrg\OswisCoreBundle\Traits\Common\BasicEntityTrait;
+use OswisOrg\OswisCoreBundle\Interfaces\Common\BasicInterface;
+use OswisOrg\OswisCoreBundle\Traits\Common\BasicTrait;
 
 /**
  * Connection between app user and used app user flag.
@@ -27,9 +27,9 @@ use OswisOrg\OswisCoreBundle\Traits\Common\BasicEntityTrait;
  * @author Jakub Zak <mail@jakubzak.eu>
  * @Doctrine\ORM\Mapping\Cache(usage="NONSTRICT_READ_WRITE", region="core_app_user")
  */
-class AppUserFlagConnection implements BasicEntityInterface
+class AppUserFlagConnection implements BasicInterface
 {
-    use BasicEntityTrait;
+    use BasicTrait;
 
     /**
      * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserFlag", fetch="EAGER")

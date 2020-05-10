@@ -7,7 +7,7 @@ namespace OswisOrg\OswisCoreBundle\Interfaces\Common;
 
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser;
 
-interface BasicEntityInterface extends TimestampableInterface
+interface BasicInterface extends TimestampableInterface
 {
     public function getId(): ?int;
 

@@ -7,8 +7,8 @@ namespace OswisOrg\OswisCoreBundle\Entity\AbstractClass;
 
 use DateTime;
 use OswisOrg\OswisCoreBundle\Interfaces\Payment\PaymentInterface;
-use OswisOrg\OswisCoreBundle\Traits\Common\BasicEntityTrait;
 use OswisOrg\OswisCoreBundle\Traits\Common\BasicMailConfirmationTrait;
+use OswisOrg\OswisCoreBundle\Traits\Common\BasicTrait;
 use OswisOrg\OswisCoreBundle\Traits\Common\DateTimeTrait;
 use OswisOrg\OswisCoreBundle\Traits\Common\ExternalIdTrait;
 use OswisOrg\OswisCoreBundle\Traits\Common\InternalNoteTrait;
@@ -22,7 +22,7 @@ use OswisOrg\OswisCoreBundle\Traits\Common\TypeTrait;
  */
 abstract class AbstractPayment implements PaymentInterface
 {
-    use BasicEntityTrait;
+    use BasicTrait;
     use NumericValueTrait;
     use TypeTrait;
     use NoteTrait;
