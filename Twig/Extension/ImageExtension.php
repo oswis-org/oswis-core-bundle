@@ -35,7 +35,7 @@ final class ImageExtension extends AbstractExtension
         $functions = [];
         foreach ($this->getFunctionsArray() as $key => $fn) {
             try {
-                $functions[] = new TwigFunction($key, Callback::check($fn['fn']), $fn['opts'] ?? null);
+                $functions[] = new TwigFunction($key, Callback::check($fn['fn']), $fn['opts'] ?? []);
             } catch (InvalidArgumentException $e) {
             }
         }
