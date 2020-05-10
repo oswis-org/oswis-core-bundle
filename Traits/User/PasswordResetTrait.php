@@ -35,7 +35,7 @@ trait PasswordResetTrait
     {
         try {
             $diff = (new DateTime())->diff($this->getPasswordResetRequestDateTime());
-            if ($validHours < $diff->h) {
+            if (empty($diff) || $validHours < $diff->h) {
                 $this->destroyPasswordResetRequestToken();
 
                 return false;

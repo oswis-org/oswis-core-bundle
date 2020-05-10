@@ -123,7 +123,7 @@ class DateTimeUtils
             $month = self::getMonthByRange($dateTime, $range, $isEnd);
             $day = self::getDayByRange($dateTime, $range, $isEnd);
             $minute = $isEnd ? 59 : 0;
-            $dateTime = $dateTime->setDate((int)$dateTime->format('Y'), $month, $day);
+            $dateTime->setDate((int)$dateTime->format('Y'), $month, $day);
 
             return $dateTime->setTime($isEnd ? 23 : 0, $minute, $minute, $isEnd ? 999 : 0);
         }
@@ -230,11 +230,8 @@ class DateTimeUtils
             return null;
         }
         $interval = $end->diff($start);
-        if (false !== $interval && !$interval->invert) {
-            return (int)$interval->$type;
-        }
 
-        return null;
+        return empty($interval) || empty($interval->invert) ? null : (int)$interval->$type;
     }
 
     public static function isInOnePeriod(string $period, ?DateTime $start, ?DateTime $end): ?bool

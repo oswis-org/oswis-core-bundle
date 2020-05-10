@@ -16,7 +16,11 @@ namespace OswisOrg\OswisCoreBundle\Traits\Common;
 trait CustomIdTrait
 {
     /**
-     * @Doctrine\ORM\Mapping\Column(type="string", length=255, nullable=true)
+     * @Doctrine\ORM\Mapping\Column(type="string", length=255, nullable=true, unique=true)
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class, strategy="exact")
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class, )
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\NumericFilter::class)
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\RangeFilter::class)
      */
     protected ?string $customId = null;
 

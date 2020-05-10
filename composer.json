@@ -3,7 +3,7 @@
   "description": "Core module for One Simple Web IS.",
   "homepage": "https://oswis.org",
   "type": "symfony-bundle",
-  "minimum-stability": "stable",
+  "minimum-stability": "beta",
   "keywords": [
     "php",
     "information-system",
@@ -34,27 +34,27 @@
     "league/csv": "^9.6",
     "symfony/monolog-bundle": "^3.5",
     "symfony/orm-pack": "^1.0",
-    "symfony/process": "^5.0",
+    "symfony/process": "5.1.*@beta",
     "symfony/serializer-pack": "^1.0",
-    "symfony/twig-bundle": "^5.0",
-    "symfony/dependency-injection": "^5.0",
-    "symfony/proxy-manager-bridge": "^5.0",
-    "symfony/security-bundle": "^5.0",
-    "symfony/web-profiler-bundle": "^5.0",
+    "symfony/twig-bundle": "5.1.*@beta",
+    "symfony/dependency-injection": "5.1.*@beta",
+    "symfony/proxy-manager-bridge": "5.1.*@beta",
+    "symfony/security-bundle": "5.1.*@beta",
+    "symfony/web-profiler-bundle": "5.1.*@beta",
     "liip/imagine-bundle": "^2.3",
     "egulias/email-validator": "^2.1",
-    "symfony/asset": "^5.0",
+    "symfony/asset": "5.1.*@beta",
     "adci/full-name-parser": "^0.2",
     "gedmo/doctrine-extensions": "^2.4",
     "gesdinet/jwt-refresh-token-bundle": "^0.9",
     "lexik/jwt-authentication-bundle": "^2.6",
     "vich/uploader-bundle": "^1.13",
     "mpdf/mpdf": "^8.0",
-    "symfony/web-link": "^5.0",
+    "symfony/web-link": "5.1.*@beta",
     "hirak/prestissimo": "^0.3",
     "bigit/vokativ": "dev-master",
-    "symfony/mailer": "^5.0",
-    "symfony/mime": "^5.0",
+    "symfony/mailer": "5.1.*@beta",
+    "symfony/mime": "5.1.*@beta",
     "league/commonmark": "^1.4",
     "league/html-to-markdown": "^4.9",
     "twig/cssinliner-extra": "^3.0",
@@ -62,15 +62,17 @@
     "twig/inky-extra": "^3.0",
     "elasticsearch/elasticsearch": "^7.6",
     "psr/event-dispatcher": "^1.0",
-    "symfony/browser-kit": "^5.0",
-    "symfony/yaml": "^5.0",
-    "symfony/expression-language": "^5.0",
+    "symfony/browser-kit": "5.1.*@beta",
+    "symfony/yaml": "5.1.*@beta",
+    "symfony/expression-language": "5.1.*@beta",
     "twig/extra-bundle": "^3.0",
-    "symfony/string": "^5.0",
+    "symfony/string": "5.1.*@beta",
     "twig/string-extra": "^3.0",
     "antishov/doctrine-extensions-bundle": "^1.4",
     "knplabs/doctrine-behaviors": "^2.0",
-    "php-console/php-console": "^3.1"
+    "php-console/php-console": "^3.1",
+    "symfony/polyfill-php80": "^1.16",
+    "amphp/http-client": "^4.3"
   },
   "require-dev": {
     "roave/security-advisories": "dev-master",
@@ -92,7 +94,7 @@
   "extra": {
     "symfony": {
       "allow-contrib": true,
-      "require": "^5.0"
+      "require": "5.1.*@beta"
     }
   }
 }
