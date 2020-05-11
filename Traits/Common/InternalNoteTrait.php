@@ -9,16 +9,15 @@ namespace OswisOrg\OswisCoreBundle\Traits\Common;
 /**
  * Trait adds internalNote field.
  *
- * Trait adds field *note* that contains some note for entity and allows access to it.
+ * Trait adds field *note* that contains some note for entity + getter and setter.
  */
 trait InternalNoteTrait
 {
     /**
-     * Internal note.
-     *
-     * @var string|null
-     *
-     * @Doctrine\ORM\Mapping\Column(nullable=true)
+     * Internal (non-public) note.
+     * @Doctrine\ORM\Mapping\Column(type="text", nullable=true)
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class, strategy="ipartial")
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
      */
     protected ?string $internalNote = null;
 

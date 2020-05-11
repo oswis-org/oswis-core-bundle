@@ -15,10 +15,15 @@ trait BlameableTrait
      * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser")
      * @Doctrine\ORM\Mapping\JoinColumn(name="created_author_id", referencedColumnName="id")
      * @Symfony\Component\Serializer\Annotation\MaxDepth(1)
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class, strategy="exact")
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\NumericFilter::class)
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\RangeFilter::class)
+     * @ApiPlatform\Core\Annotation\ApiFilter(
+     *     ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class,
+     *     properties={"createdAuthor.id": "exact", "createdAuthor.username": "ipartial", "createdAuthor.name": "ipartial"}
+     * )
+     * @ApiPlatform\Core\Annotation\ApiFilter(
+     *     ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class,
+     *     properties={"createdAuthor.id", "createdAuthor.username", "createdAuthor.name"}
+     * )
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\ExistsFilter::class)
      */
     protected ?AppUser $createdAuthor = null;
 
@@ -29,10 +34,13 @@ trait BlameableTrait
      * @Symfony\Component\Serializer\Annotation\MaxDepth(1)
      * @ApiPlatform\Core\Annotation\ApiFilter(
      *     ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class,
-     *     strategy="exact",
-     *     properties={"updatedAuthor.id", "updatedAuthor.username", "updatedAuthor.username"}
+     *     properties={"updatedAuthor.id": "exact", "updatedAuthor.username": "ipartial", "updatedAuthor.name": "ipartial"}
      * )
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
+     * @ApiPlatform\Core\Annotation\ApiFilter(
+     *     ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class,
+     *     properties={"updatedAuthor.id", "updatedAuthor.username", "updatedAuthor.name"}
+     * )
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\ExistsFilter::class)
      */
     protected ?AppUser $updatedAuthor = null;
 

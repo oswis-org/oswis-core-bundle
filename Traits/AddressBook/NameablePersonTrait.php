@@ -28,55 +28,57 @@ trait NameablePersonTrait
 
     /**
      * Nickname.
-     *
-     * @var string|null
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class, strategy="ipartial")
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
      */
     protected ?string $nickname = null;
 
     /**
      * First (given) name.
-     *
-     * @var string|null
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class, strategy="ipartial")
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
      */
     protected ?string $givenName = null;
 
     /**
      * Middle (additional) name.
-     *
-     * @var string|null
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class, strategy="ipartial")
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
      */
     protected ?string $additionalName = null;
 
     /**
      * Last (family) name.
-     *
-     * @var string|null
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class, strategy="ipartial")
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
      */
     protected ?string $familyName = null;
 
     /**
      * Prefix (title before name).
-     *
-     * @var string|null
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class, strategy="ipartial")
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
      */
     protected ?string $honorificPrefix = null;
 
     /**
      * Suffix (title after name).
-     *
-     * @var string|null
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class, strategy="ipartial")
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
      */
     protected ?string $honorificSuffix = null;
 
     /**
      * Full name of person.
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class, strategy="ipartial")
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
      */
     protected ?string $name = null;
 

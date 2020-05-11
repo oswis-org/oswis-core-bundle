@@ -1,5 +1,6 @@
 <?php
 /**
+ * @noinspection PhpUnused
  * @noinspection MethodShouldBeFinalInspection
  */
 
@@ -8,7 +9,11 @@ namespace OswisOrg\OswisCoreBundle\Traits\Common;
 trait ExternalIdTrait
 {
     /**
+     * External unique identifier.
      * @Doctrine\ORM\Mapping\Column(type="text", nullable=true)
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class, strategy="ipartial")
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\ExistsFilter::class)
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
      */
     protected ?string $externalId = null;
 

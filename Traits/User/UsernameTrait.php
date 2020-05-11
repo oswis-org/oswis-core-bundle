@@ -12,8 +12,9 @@ trait UsernameTrait
 {
     /**
      * Username.
-     *
      * @Doctrine\ORM\Mapping\Column(name="username", type="string", length=50, unique=true, nullable=true)
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class, strategy="ipartial")
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
      */
     protected ?string $username = null;
 

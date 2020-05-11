@@ -6,9 +6,7 @@
 
 namespace OswisOrg\OswisCoreBundle\Entity\AppUser;
 
-use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
-use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use InvalidArgumentException;
@@ -49,17 +47,6 @@ use OswisOrg\OswisCoreBundle\Traits\Common\NameableTrait;
  *     }
  *   }
  * )
- * @ApiFilter(OrderFilter::class, properties={
- *     "id": "ASC",
- *     "dateTime": "ASC",
- *     "slug",
- *     "forcedSlug",
- *     "name",
- *     "shortName",
- *     "description",
- *     "note",
- *     "roleString"
- * })
  * @Searchable({
  *     "id",
  *     "slug",
@@ -79,12 +66,19 @@ class AppUserRole implements NameableInterface
 
     /**
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class, strategy="ipartial")
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
      */
     protected ?string $roleString = null;
 
     /**
      * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserRole", fetch="EAGER")
      * @Doctrine\ORM\Mapping\JoinColumn(name="parent_id", referencedColumnName="id")
+     * @ApiPlatform\Core\Annotation\ApiFilter(
+     *     ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class,
+     *     properties={"parent.id": "exact", "parent.name": "ipartial", "parent.slug": "ipartial"}
+     * )
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
      */
     protected ?AppUserRole $parent = null;
 

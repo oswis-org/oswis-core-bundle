@@ -6,12 +6,7 @@
 
 namespace OswisOrg\OswisCoreBundle\Entity\AppUser;
 
-use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
-use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
-use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\ExistsFilter;
-use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
-use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -59,25 +54,6 @@ use OswisOrg\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
  *     }
  *   }
  * )
- * @ApiFilter(OrderFilter::class, properties={
- *     "id": "ASC",
- *     "dateTime": "ASC",
- *     "username",
- *     "email",
- *     "givenName",
- *     "familyName",
- *     "nickname",
- *     "appUserType.name",
- *     "appUserType.shortName",
- *     "appUserType.slug"
- * })
- * @ApiFilter(ExistsFilter::class, properties={})
- * @ApiFilter(DateFilter::class, properties={"createdDateTime", "updatedDateTime", "startDateTime", "endDateTime"})
- * @ApiFilter(SearchFilter::class, properties={
- *     "id": "exact",
- *     "appUserType": "exact",
- *     "description": "partial"
- * })
  * @Searchable({
  *     "id",
  *     "username",
@@ -103,12 +79,22 @@ class AppUser extends AbstractAppUser
      * @Doctrine\ORM\Mapping\OneToMany(
      *     targetEntity="OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserFlagConnection", cascade={"all"}, mappedBy="appUser", fetch="EAGER"
      * )
+     * @ApiPlatform\Core\Annotation\ApiFilter(
+     *     ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class,
+     *     properties={"appUserFlags.id": "exact", "appUserFlags.name": "ipartial", "appUserFlags.slug": "ipartial"}
+     * )
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
      */
     protected ?Collection $appUserFlags = null;
 
     /**
      * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserType", fetch="EAGER", fetch="EAGER")
      * @Doctrine\ORM\Mapping\JoinColumn(name="app_user_type_id", referencedColumnName="id")
+     * @ApiPlatform\Core\Annotation\ApiFilter(
+     *     ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class,
+     *     properties={"appUserTypes.id": "exact", "appUserTypes.name": "ipartial", "appUserTypes.slug": "ipartial"}
+     * )
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
      */
     protected ?AppUserType $appUserType = null;
 

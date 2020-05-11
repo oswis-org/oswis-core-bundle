@@ -15,19 +15,23 @@ trait NameTrait
     /**
      * Name or title of something.
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class, strategy="ipartial")
      */
     protected ?string $name = null;
 
     /**
      * Sortable variation of name.
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
      */
-    protected string $sortableName = '';
+    protected ?string $sortableName = '';
 
     /**
      * Shortened name/shortcut.
      *
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class, strategy="ipartial")
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
      */
     protected ?string $shortName = null;
 
@@ -75,6 +79,4 @@ trait NameTrait
     {
         return $this->sortableName = $sortableName ?? '';
     }
-
-
 }

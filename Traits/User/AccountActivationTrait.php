@@ -18,18 +18,25 @@ trait AccountActivationTrait
     /**
      * Token for password reset.
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true, unique=true, length=100)
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\ExistsFilter::class)
      */
     protected ?string $accountActivationRequestToken = null;
 
     /**
      * Date and time of password reset request (and token generation).
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true)
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class, strategy="ipartial")
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter::class)
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
      */
     protected ?DateTime $accountActivationRequestDateTime = null;
 
     /**
      * Date and time of account activation.
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true)
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class, strategy="ipartial")
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter::class)
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
      */
     protected ?DateTime $accountActivationDateTime = null;
 

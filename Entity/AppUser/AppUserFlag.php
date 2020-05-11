@@ -5,9 +5,7 @@
 
 namespace OswisOrg\OswisCoreBundle\Entity\AppUser;
 
-use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
-use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use OswisOrg\OswisCoreBundle\Entity\NonPersistent\Nameable;
 use OswisOrg\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
 use OswisOrg\OswisCoreBundle\Interfaces\Common\NameableInterface;
@@ -18,7 +16,6 @@ use OswisOrg\OswisCoreBundle\Traits\Common\NameableTrait;
  * @Doctrine\ORM\Mapping\Entity()
  * @Doctrine\ORM\Mapping\Table(name="core_app_user_flag")
  * @ApiResource()
- * @ApiFilter(OrderFilter::class)
  * @Searchable({
  *     "id",
  *     "name",

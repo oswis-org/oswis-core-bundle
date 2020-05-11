@@ -21,6 +21,7 @@ abstract class AbstractAppUser implements UserInterface, Serializable, Equatable
 {
     use UserTrait;
 
+    // TODO: Refactor: Wrap slug as username.
     public function serialize(): string
     {
         return serialize([$this->id, $this->username, $this->email, $this->password]);

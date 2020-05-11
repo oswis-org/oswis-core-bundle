@@ -13,17 +13,14 @@ trait TextValueTrait
 {
     /**
      * Text value.
-     *
-     * @var string|null
-     *
      * @Doctrine\ORM\Mapping\Column(type="text", nullable=true)
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class, strategy="ipartial")
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\ExistsFilter::class)
      */
     protected ?string $textValue = null;
 
     /**
      * Get text value.
-     *
-     * @return string
      */
     public function getTextValue(): ?string
     {
@@ -32,8 +29,6 @@ trait TextValueTrait
 
     /**
      * Set text value.
-     *
-     * @param string $textValue
      */
     public function setTextValue(?string $textValue): void
     {

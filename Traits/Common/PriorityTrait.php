@@ -12,11 +12,11 @@ namespace OswisOrg\OswisCoreBundle\Traits\Common;
 trait PriorityTrait
 {
     /**
-     * Priority (numeric).
-     *
-     * @var int|null
+     * Priority (numeric, positive (higher) or negative (lower)).
      *
      * @Doctrine\ORM\Mapping\Column(nullable=true, options={"default": 0})
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class, strategy="exact")
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\RangeFilter::class)
      */
     protected ?int $priority = 0;
 

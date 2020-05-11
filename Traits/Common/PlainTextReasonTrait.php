@@ -13,9 +13,10 @@ trait PlainTextReasonTrait
 {
     /**
      * Reason in plain text.
-     *
-     * @var string|null
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class, strategy="ipartial")
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\ExistsFilter::class)
      */
     protected ?string $reason = null;
 

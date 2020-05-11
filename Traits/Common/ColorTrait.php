@@ -11,8 +11,10 @@ use OswisOrg\OswisCoreBundle\Utils\ColorUtils;
 trait ColorTrait
 {
     /**
-     * @var string|null
+     * Color (hexadecimal HTML notation).
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class, strategy="ipartial")
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
      */
     protected ?string $color = null;
 

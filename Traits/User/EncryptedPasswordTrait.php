@@ -12,9 +12,8 @@ trait EncryptedPasswordTrait
 {
     /**
      * Encrypted password.
-     *
-     * @var string|null
      * @Doctrine\ORM\Mapping\Column(name="password", type="string", length=255, nullable=true)
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\ExistsFilter::class)
      */
     protected ?string $password = null;
 

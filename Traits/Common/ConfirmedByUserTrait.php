@@ -15,10 +15,12 @@ use Exception;
 trait ConfirmedByUserTrait
 {
     /**
-     * Confirmed by user.
-     *
-     * @var DateTime|null
+     * Date and time of user confirmation.
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true)
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class, strategy="ipartial")
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter::class)
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\ExistsFilter::class)
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
      */
     protected ?DateTime $confirmedByUser = null;
 

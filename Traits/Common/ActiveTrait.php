@@ -13,8 +13,9 @@ trait ActiveTrait
 {
     /**
      * Active.
-     *
      * @Doctrine\ORM\Mapping\Column(type="boolean", nullable=true)
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\ExistsFilter::class)
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
      */
     protected ?bool $active = null;
 

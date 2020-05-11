@@ -6,10 +6,7 @@
 
 namespace OswisOrg\OswisCoreBundle\Entity\AppUser;
 
-use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
-use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\ExistsFilter;
-use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use OswisOrg\OswisCoreBundle\Entity\NonPersistent\Nameable;
@@ -50,17 +47,6 @@ use OswisOrg\OswisCoreBundle\Traits\Common\NameableTrait;
  *     }
  *   }
  * )
- * @ApiFilter(OrderFilter::class, properties={
- *     "id": "ASC",
- *     "dateTime": "ASC",
- *     "slug",
- *     "name",
- *     "shortName",
- *     "description",
- *     "note",
- *     "adminUser"
- * })
- * @ApiFilter(ExistsFilter::class, properties={"adminUser"})
  * @Searchable({
  *     "id",
  *     "slug",
@@ -85,6 +71,11 @@ class AppUserType implements NameableInterface
      *     fetch="EAGER"
      * )
      * @Doctrine\ORM\Mapping\JoinColumn(name="user_role_id", referencedColumnName="id")
+     * @ApiPlatform\Core\Annotation\ApiFilter(
+     *     ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class,
+     *     properties={"appUserRole.id": "exact", "appUserRole.name": "ipartial", "appUserRole.slug": "ipartial"}
+     * )
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
      * @todo Refactor for use of multiple roles.
      */
     protected ?AppUserRole $appUserRole = null;
@@ -92,6 +83,8 @@ class AppUserType implements NameableInterface
     /**
      * User has access to administration/IS.
      * @Doctrine\ORM\Mapping\Column(type="boolean", nullable=true)
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter::class)
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
      * @todo Make property used (probably has not effect now).
      */
     protected ?bool $adminUser = null;

@@ -1,12 +1,13 @@
 <?php
 /**
+ * @noinspection PhpUnused
  * @noinspection MethodShouldBeFinalInspection
  */
 
 namespace OswisOrg\OswisCoreBundle\Traits\Common;
 
 /**
- * Trait adds id field.
+ * Trait adds *id* and *customId* fields.
  */
 trait IdTrait
 {
@@ -16,7 +17,7 @@ trait IdTrait
      * @Doctrine\ORM\Mapping\GeneratedValue(strategy="AUTO")
      * @Doctrine\ORM\Mapping\Column(type="integer")
      * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class, strategy="exact")
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class, properties={"id": "ASC"})
      * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\NumericFilter::class)
      * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\RangeFilter::class)
      */

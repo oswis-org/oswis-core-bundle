@@ -12,29 +12,27 @@ namespace OswisOrg\OswisCoreBundle\Traits\Common;
 trait NumericValueTrait
 {
     /**
-     * Numeric value.
-     *
-     * @var int|null
-     *
-     * @Doctrine\ORM\Mapping\Column(type="integer", nullable=false, options={"default": 0})
+     * Numeric value (positive or negative).
+     * @Doctrine\ORM\Mapping\Column(type="integer", nullable=true)
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class, strategy="exact")
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\RangeFilter::class)
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
      */
     protected ?int $numericValue = null;
 
     /**
      * Get numeric value.
      */
-    public function getNumericValue(): int
+    public function getNumericValue(): ?int
     {
-        return $this->numericValue ?? 0;
+        return $this->numericValue;
     }
 
     /**
      * Set numeric value.
-     *
-     * @param int $numericValue
      */
     public function setNumericValue(?int $numericValue): void
     {
-        $this->numericValue = $numericValue ?? 0;
+        $this->numericValue = $numericValue;
     }
 }

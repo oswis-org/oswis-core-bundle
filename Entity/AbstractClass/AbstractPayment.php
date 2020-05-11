@@ -6,6 +6,8 @@
 namespace OswisOrg\OswisCoreBundle\Entity\AbstractClass;
 
 use DateTime;
+use InvalidArgumentException;
+use OswisOrg\OswisCoreBundle\Exceptions\OswisNotImplementedException;
 use OswisOrg\OswisCoreBundle\Interfaces\Payment\PaymentInterface;
 use OswisOrg\OswisCoreBundle\Traits\Common\BasicMailConfirmationTrait;
 use OswisOrg\OswisCoreBundle\Traits\Common\BasicTrait;
@@ -31,6 +33,40 @@ abstract class AbstractPayment implements PaymentInterface
     use ExternalIdTrait;
     use DateTimeTrait {
         getDateTime as protected traitGetDateTime;
+    }
+
+    /**
+     * AbstractPayment constructor.
+     *
+     * @param int|null      $numericValue
+     * @param string|null   $type
+     * @param string|null   $note
+     * @param string|null   $internalNote
+     * @param string|null   $externalId
+     * @param DateTime|null $dateTime
+     *
+     * @throws OswisNotImplementedException
+     * @throws InvalidArgumentException
+     */
+    public function __construct(
+        ?int $numericValue = null,
+        ?string $type = null,
+        ?string $note = null,
+        ?string $internalNote = null,
+        ?string $externalId = null,
+        ?DateTime $dateTime = null
+    ) {
+        $this->setNumericValue($numericValue);
+        $this->setType($type);
+        $this->setNote($note);
+        $this->setInternalNote($internalNote);
+        $this->setExternalId($externalId);
+        $this->setDateTime($dateTime ?? new DateTime());
+    }
+
+    public function setDateTime(?DateTime $dateTime): void
+    {
+        throw new OswisNotImplementedException('Změna data platby není implementována.');
     }
 
     public static function getAllowedTypesDefault(): array

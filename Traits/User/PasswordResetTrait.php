@@ -17,16 +17,12 @@ trait PasswordResetTrait
 {
     /**
      * Token for password reset.
-     *
-     * @var string|null
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true, unique=true, length=100)
      */
     protected ?string $passwordResetRequestToken = null;
 
     /**
      * Date and time of password reset request (and token generation).
-     *
-     * @var DateTime|null
      * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true)
      */
     protected ?DateTime $passwordResetRequestDateTime = null;

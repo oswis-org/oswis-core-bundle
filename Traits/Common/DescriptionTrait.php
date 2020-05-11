@@ -11,11 +11,10 @@ namespace OswisOrg\OswisCoreBundle\Traits\Common;
 trait DescriptionTrait
 {
     /**
-     * Description.
-     *
-     * @var string|null
-     *
+     * Short text description.
      * @Doctrine\ORM\Mapping\Column(type="text", nullable=true)
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class, strategy="ipartial")
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
      */
     protected ?string $description = null;
 

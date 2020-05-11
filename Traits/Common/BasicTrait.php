@@ -12,7 +12,6 @@ namespace OswisOrg\OswisCoreBundle\Traits\Common;
  * * id
  * * createdDateTime, updatedDateTime
  * * createdAuthor, updatedAuthor
- * * createdIp, updatedIp
  *
  * @author Jakub Zak <mail@jakubzak.eu>
  */
