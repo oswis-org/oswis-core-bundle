@@ -138,6 +138,13 @@ class StringUtils
         return self::convertToCamel($text, '-', $uncapitalize);
     }
 
+    private static function convertToCamel(string $text, string $separator, bool $uncapitalize = true): string
+    {
+        $result = str_replace(' ', '', mb_convert_case(str_replace($separator, ' ', $text), MB_CASE_TITLE));
+
+        return $uncapitalize ? self::uncapitalize($result) : $result;
+    }
+
     public static function uncapitalize(string $text): string
     {
         return mb_strtolower(mb_substr($text, 0, 1)).mb_substr($text, 1, mb_strlen($text));
@@ -151,6 +158,11 @@ class StringUtils
     public static function camelToHyphens(string $text): string
     {
         return self::convertFromCamel($text, '-');
+    }
+
+    private static function convertFromCamel(string $text, string $separator): string
+    {
+        return ltrim(mb_strtolower(preg_replace('/[A-Z]/', $separator.'$0', $text)), $separator);
     }
 
     public static function camelToSnake(string $text): string
@@ -172,28 +184,6 @@ class StringUtils
         return str_shuffle($password);
     }
 
-    public static function generateToken(): string
-    {
-        $numbers = self::randomString('0', '9', 4);
-        $lowerCase = self::randomString('a', 'z', 4);
-        $upperCase = self::randomString('A', 'Z', 4);
-        $password = $numbers.$lowerCase.$upperCase;
-
-        return str_shuffle($password);
-    }
-
-    private static function convertToCamel(string $text, string $separator, bool $uncapitalize = true): string
-    {
-        $result = str_replace(' ', '', mb_convert_case(str_replace($separator, ' ', $text), MB_CASE_TITLE));
-
-        return $uncapitalize ? self::uncapitalize($result) : $result;
-    }
-
-    private static function convertFromCamel(string $text, string $separator): string
-    {
-        return ltrim(mb_strtolower(preg_replace('/[A-Z]/', $separator.'$0', $text)), $separator);
-    }
-
     /**
      * @param string $from   Start char
      * @param string $to     End char
@@ -212,5 +202,15 @@ class StringUtils
         } catch (Exception $e) {
             return null;
         }
+    }
+
+    public static function generateToken(): string
+    {
+        $numbers = self::randomString('0', '9', 4);
+        $lowerCase = self::randomString('a', 'z', 4);
+        $upperCase = self::randomString('A', 'Z', 4);
+        $password = $numbers.$lowerCase.$upperCase;
+
+        return str_shuffle($password);
     }
 }

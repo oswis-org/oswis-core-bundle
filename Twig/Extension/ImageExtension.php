@@ -73,6 +73,16 @@ final class ImageExtension extends AbstractExtension
         return $this->getImageSize($imagePath)[0] ?: null;
     }
 
+    private function getImageSize(?string $path = null): array
+    {
+        $path = $this->getCorrectRelativePath($path);
+        try {
+            return $this->fileSystem->exists($path) ? (getimagesize($path) ?: [null, null, null, null]) : [null, null, null, null];
+        } catch (IOException $e) {
+            return [null, null, null, null];
+        }
+    }
+
     public function getCorrectRelativePath(?string $imagePath = null): string
     {
         return realpath('../public'.$imagePath) ?: '';
@@ -122,15 +132,5 @@ final class ImageExtension extends AbstractExtension
     public function getImageTypeConstant(?string $imagePath = null): ?int
     {
         return @exif_imagetype($this->getCorrectRelativePath($imagePath)) ?: $this->getImageSize($imagePath)[2] ?: null;
-    }
-
-    private function getImageSize(?string $path = null): array
-    {
-        $path = $this->getCorrectRelativePath($path);
-        try {
-            return $this->fileSystem->exists($path) ? (getimagesize($path) ?: [null, null, null, null]) : [null, null, null, null];
-        } catch (IOException $e) {
-            return [null, null, null, null];
-        }
     }
 }
