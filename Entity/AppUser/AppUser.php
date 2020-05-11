@@ -29,9 +29,7 @@ use OswisOrg\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
  * @ApiResource(
  *   attributes={
  *     "filters"={"search"},
- *     "access_control"="is_granted('ROLE_USER')",
- *     "normalization_context"={"groups"={"nameables_get", "app_users_get"}, "enable_max_depth"=true},
- *     "denormalization_context"={"groups"={"nameables_post", "app_users_post"}, "enable_max_depth"=true}
+ *     "access_control"="is_granted('ROLE_USER')"
  *   },
  *   collectionOperations={
  *     "get"={
@@ -92,7 +90,7 @@ class AppUser extends AbstractAppUser
      * @Doctrine\ORM\Mapping\JoinColumn(name="app_user_type_id", referencedColumnName="id")
      * @ApiPlatform\Core\Annotation\ApiFilter(
      *     ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class,
-     *     properties={"appUserTypes.id": "exact", "appUserTypes.name": "ipartial", "appUserTypes.slug": "ipartial"}
+     *     properties={"appUserType.id": "exact", "appUserType.name": "ipartial", "appUserType.slug": "ipartial"}
      * )
      * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
      */

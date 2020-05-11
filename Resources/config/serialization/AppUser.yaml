@@ -12,11 +12,11 @@ OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser:
         fullName:
             groups: ['app_users_get', 'app_users_post', 'app_user_get', 'app_user_put']
         appUserType:
-            groups: ['app_users_get', 'app_user_get']
+            groups: ['app_users_get', 'app_users_post', 'app_user_get', 'app_user_put']
         startDateTime:
             groups: ['app_users_get', 'app_users_post', 'app_user_get', 'app_user_put']
         endDateTime:
-            groups: ['app_users_get', 'app_user_get', 'app_user_put']
+            groups: ['app_users_get', 'app_users_post', 'app_user_get', 'app_user_put']
         roles:
             groups: ['app_user_get']
 

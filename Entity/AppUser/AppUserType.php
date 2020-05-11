@@ -22,28 +22,26 @@ use OswisOrg\OswisCoreBundle\Traits\Common\NameableTrait;
  * @ApiResource(
  *   attributes={
  *     "filters"={"search"},
- *     "access_control"="is_granted('ROLE_MANAGER')",
- *     "normalization_context"={"groups"={"app_user_types_get"}, "enable_max_depth"=true},
- *     "denormalization_context"={"groups"={"app_user_types_post"}, "enable_max_depth"=true}
+ *     "access_control"="is_granted('ROLE_MANAGER')"
  *   },
  *   collectionOperations={
  *     "get"={
  *       "access_control"="is_granted('ROLE_MANAGER')",
- *       "normalization_context"={"groups"={"app_user_types_get"}, "enable_max_depth"=true},
+ *       "normalization_context"={"groups"={"nameables_get", "app_user_types_get"}, "enable_max_depth"=true},
  *     },
  *     "post"={
  *       "access_control"="is_granted('ROLE_ROOT')",
- *       "denormalization_context"={"groups"={"app_user_types_post"}, "enable_max_depth"=true}
+ *       "denormalization_context"={"groups"={"nameables_post", "app_user_types_post"}, "enable_max_depth"=true}
  *     }
  *   },
  *   itemOperations={
  *     "get"={
  *       "access_control"="is_granted('ROLE_MANAGER')",
- *       "normalization_context"={"groups"={"app_user_type_get"}, "enable_max_depth"=true},
+ *       "normalization_context"={"groups"={"nameable_get", "app_user_type_get"}, "enable_max_depth"=true},
  *     },
  *     "put"={
  *       "access_control"="is_granted('ROLE_ROOT')",
- *       "denormalization_context"={"groups"={"app_user_type_put"}, "enable_max_depth"=true}
+ *       "denormalization_context"={"groups"={"nameable_put", "app_user_type_put"}, "enable_max_depth"=true}
  *     }
  *   }
  * )

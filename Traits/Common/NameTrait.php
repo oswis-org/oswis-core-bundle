@@ -67,12 +67,12 @@ trait NameTrait
     {
         $this->setSortableName($this->getSortableName());
 
-        return $this->getName();
+        return $this->name;
     }
 
     public function getSortableName(): string
     {
-        return $this->getName() ?? '';
+        return $this->name ?? '';
     }
 
     public function setSortableName(?string $sortableName): string
