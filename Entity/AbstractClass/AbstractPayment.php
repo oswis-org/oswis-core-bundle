@@ -61,12 +61,7 @@ abstract class AbstractPayment implements PaymentInterface
         $this->setNote($note);
         $this->setInternalNote($internalNote);
         $this->setExternalId($externalId);
-        $this->setDateTime($dateTime ?? new DateTime());
-    }
-
-    public function setDateTime(?DateTime $dateTime): void
-    {
-        throw new OswisNotImplementedException('Změna data platby není implementována.');
+        $this->dateTime = $dateTime ?? new DateTime();
     }
 
     public static function getAllowedTypesDefault(): array
@@ -77,6 +72,18 @@ abstract class AbstractPayment implements PaymentInterface
     public static function getAllowedTypesCustom(): array
     {
         return [];
+    }
+
+    /**
+     * @param DateTime|null $dateTime
+     *
+     * @throws OswisNotImplementedException
+     */
+    public function setDateTime(?DateTime $dateTime): void
+    {
+        if ($this->getDateTime() !== $dateTime) {
+            throw new OswisNotImplementedException('změna data platby');
+        }
     }
 
     /**
