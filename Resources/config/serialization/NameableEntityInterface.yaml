@@ -1,4 +1,4 @@
-OswisOrg\OswisCoreBundle\Interfaces\Common\NameableEntityInterface:
+OswisOrg\OswisCoreBundle\Interfaces\Common\NameableInterface:
     attributes:
         slug:
             groups:
