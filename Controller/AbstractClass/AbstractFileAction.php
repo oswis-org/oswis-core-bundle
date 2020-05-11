@@ -30,6 +30,10 @@ abstract class AbstractFileAction
         $this->factory = $factory;
     }
 
+    abstract public static function getFileNewInstance(): AbstractFile;
+
+    abstract public static function getFileClassName(): string;
+
     /**
      * @param Request $request
      *
@@ -54,8 +58,4 @@ abstract class AbstractFileAction
         }
         throw new ValidationException($this->validator->validate($mediaObject)); // This will be handled by API Platform and returns a validation error.
     }
-
-    abstract public static function getFileNewInstance(): AbstractFile;
-
-    abstract public static function getFileClassName(): string;
 }
