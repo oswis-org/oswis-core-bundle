@@ -81,7 +81,10 @@ class AppUser extends AbstractAppUser
      *     ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class,
      *     properties={"appUserFlags.id": "exact", "appUserFlags.name": "ipartial", "appUserFlags.slug": "ipartial"}
      * )
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
+     * @ApiPlatform\Core\Annotation\ApiFilter(
+     *     ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class,
+     *     properties={"appUserFlags.id", "appUserFlags.name", "appUserFlags.slug"}
+     * )
      */
     protected ?Collection $appUserFlags = null;
 
@@ -92,7 +95,10 @@ class AppUser extends AbstractAppUser
      *     ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class,
      *     properties={"appUserType.id": "exact", "appUserType.name": "ipartial", "appUserType.slug": "ipartial"}
      * )
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
+     * @ApiPlatform\Core\Annotation\ApiFilter(
+     *     ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class,
+     *     properties={"appUserType.id", "appUserType.name", "appUserType.slug"}
+     * )
      */
     protected ?AppUserType $appUserType = null;
 
