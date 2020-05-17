@@ -1,10 +1,14 @@
 <?php
+/**
+ * @noinspection MethodShouldBeFinalInspection
+ * @noinspection PhpUnused
+ */
 
 namespace OswisOrg\OswisCoreBundle\Service;
 
-use DateTime;
 use Mpdf\Mpdf;
 use Mpdf\MpdfException;
+use OswisOrg\OswisCoreBundle\Entity\NonPersistent\PdfList;
 use OswisOrg\OswisCoreBundle\Provider\OswisCoreSettingsProvider;
 use Psr\Log\LoggerInterface;
 use Twig\Environment;
@@ -17,12 +21,6 @@ use Twig\Error\SyntaxError;
  */
 class PdfGenerator
 {
-    public const DEFAULT_TEMPLATE = '@OswisOrgOswisCore/documents/pdf-document.html.twig';
-    public const DEFAULT_HEADER_TEMPLATE = '@OswisOrgOswisCore/documents/parts/header.html.twig';
-    public const DEFAULT_FOOTER_TEMPLATE = '@OswisOrgOswisCore/documents/parts/footer.html.twig';
-    public const DEFAULT_PAPER_FORMAT = 'A4';
-    public const DEFAULT_PAPER_LANDSCAPE = false;
-
     protected LoggerInterface $logger;
 
     protected Environment $templating;
@@ -41,40 +39,35 @@ class PdfGenerator
      * @throws MpdfException
      * @throws RuntimeError
      * @throws SyntaxError
-     * @noinspection PhpUnused
      */
-    final public function generatePdfAsString(
-        ?string $title,
-        string $template = self::DEFAULT_TEMPLATE,
-        array $data = [],
-        string $format = self::DEFAULT_PAPER_FORMAT,
-        bool $landscape = self::DEFAULT_PAPER_LANDSCAPE,
-        ?string $headerTemplate = self::DEFAULT_HEADER_TEMPLATE,
-        ?string $footerTemplate = self::DEFAULT_FOOTER_TEMPLATE
-    ): string {
-        $format .= $landscape ? '-L' : null;
-        $context = [
-            'title'    => $title,
-            'dateTime' => new DateTime(),
-            'oswis'    => $this->oswisCoreSettings,
-            'data'     => $data,
-        ];
-        $mPdf = new Mpdf(['format' => $format, 'mode' => 'utf-8', 'logger' => $this->logger]);
-        $mPdf->SetTitle($title);
-        $mPdf->SetSubject($title);
+    final public function getPdfAsString(PdfList $pdfList): string
+    {
+        return $this->getMPdf($pdfList)->Output('', 'S');
+    }
+
+    /**
+     * @param PdfList $pdfList
+     *
+     * @return Mpdf
+     * @throws LoaderError
+     * @throws MpdfException
+     * @throws RuntimeError
+     * @throws SyntaxError
+     */
+    public function getMPdf(PdfList $pdfList): Mpdf
+    {
+        $mPdf = $pdfList->getMPdf();
+        $mPdf->setLogger($this->logger);
         $mPdf->SetAuthor($this->oswisCoreSettings->getApp()['name']);
         $mPdf->SetCreator($this->oswisCoreSettings->getCoreAppName());
-        $mPdf->h2toc = ['H1' => 0, 'H2' => 1, 'H3' => 2, 'H4' => 3, 'H5' => 4, 'H6' => 5];
-        $mPdf->showImageErrors = true;
-        $mPdf->useSubstitutions = true;
-        if ($headerTemplate) {
-            $mPdf->SetHTMLHeader($this->templating->render($headerTemplate, $context));
+        if ($pdfList->getHeaderTemplate()) {
+            $mPdf->SetHTMLHeader($this->templating->render($pdfList->getHeaderTemplate(), $pdfList->getContext()));
         }
-        if ($footerTemplate) {
-            $mPdf->SetHTMLFooter($this->templating->render($footerTemplate, $context));
+        if ($pdfList->getFooterTemplate()) {
+            $mPdf->SetHTMLFooter($this->templating->render($pdfList->getFooterTemplate(), $pdfList->getContext()));
         }
-        $mPdf->WriteHTML($this->templating->render($template, $context));
+        $mPdf->WriteHTML($this->templating->render($pdfList->getTemplate(), $pdfList->getContext()));
 
-        return $mPdf->Output('', 'S');
+        return $mPdf;
     }
 }

@@ -1,4 +1,8 @@
-<?php /** @noinspection PhpUnused */
+<?php
+/**
+ * @noinspection MethodShouldBeFinalInspection
+ * @noinspection PhpUnused
+ */
 
 namespace OswisOrg\OswisCoreBundle\Entity\NonPersistent;
 
@@ -19,94 +23,146 @@ class PdfListColumn
     public const TYPE_ID_DATE = 'id+date';
     public const TYPE_ID_DATETIME = 'id+datetime';
 
+    public const TYPES = [
+        self::TYPE_BASIC,
+        self::TYPE_BOOLEAN,
+        self::TYPE_DATE,
+        self::TYPE_DATETIME,
+        self::TYPE_URL,
+        self::TYPE_EMAIL,
+        self::TYPE_ID,
+        self::TYPE_ID_DATE,
+        self::TYPE_ID_DATETIME,
+    ];
+
     /**
-     * @var string|null
-     *
      * @example dateTime
      */
     public ?string $name = null;
 
     /**
-     * @var string|null
-     *
      * @example Datum a čas
      */
     public ?string $title = null;
 
     /**
-     * @var string|null
-     *
      * @example #006FAD
      * @example rgba(0,0,0,1)
      */
     public ?string $color = null;
 
     /**
-     * @var string|null
-     *
      * @example #006FAD
      * @example rgba(0,0,0,1)
      */
     public ?string $backgroundColor = null;
 
     /**
-     * @var string|null
-     *
      * @example bold
      */
     public ?string $fontWeight = null;
 
     /**
-     * @var string|null
-     *
      * @example center
      */
     public ?string $textAlign = null;
 
     /**
-     * @var string|null
-     *
      * @example middle
      */
     public ?string $verticalAlign = null;
 
     /**
-     * @var string|null
-     *
      * @example datetime
      * @example id+datetime
      */
     public ?string $type = null;
 
-    /**
-     * PdfListColumn constructor.
-     *
-     * @param string $name
-     * @param string $title
-     * @param string $color
-     * @param string $backgroundColor
-     * @param string $fontWeight
-     * @param string $textAlign
-     * @param string $verticalAlign
-     * @param string $type
-     */
-    public function __construct(
-        ?string $name = null,
-        ?string $type = null,
-        ?string $title = null,
-        ?string $textAlign = null,
-        ?string $fontWeight = null,
-        ?string $color = null,
-        ?string $backgroundColor = null,
-        ?string $verticalAlign = null
-    ) {
+    public function __construct(?string $name = null, ?string $type = null, ?string $title = null, ?string $textAlign = null)
+    {
         $this->name = $name;
         $this->title = $title;
-        $this->color = $color;
-        $this->backgroundColor = $backgroundColor;
-        $this->fontWeight = $fontWeight;
         $this->textAlign = $textAlign;
+        $this->type = $type;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(?string $name): void
+    {
+        $this->name = $name;
+    }
+
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
+    public function setTitle(?string $title): void
+    {
+        $this->title = $title;
+    }
+
+    public function getColor(): ?string
+    {
+        return $this->color;
+    }
+
+    public function setColor(?string $color): void
+    {
+        $this->color = $color;
+    }
+
+    public function getBackgroundColor(): ?string
+    {
+        return $this->backgroundColor;
+    }
+
+    public function setBackgroundColor(?string $backgroundColor): void
+    {
+        $this->backgroundColor = $backgroundColor;
+    }
+
+    public function getFontWeight(): ?string
+    {
+        return $this->fontWeight;
+    }
+
+    public function setFontWeight(?string $fontWeight): void
+    {
+        $this->fontWeight = $fontWeight;
+    }
+
+    public function getTextAlign(): ?string
+    {
+        return $this->textAlign;
+    }
+
+    public function setTextAlign(?string $textAlign): void
+    {
+        $this->textAlign = $textAlign;
+    }
+
+    public function getVerticalAlign(): ?string
+    {
+        return $this->verticalAlign;
+    }
+
+    public function setVerticalAlign(?string $verticalAlign): void
+    {
         $this->verticalAlign = $verticalAlign;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setType(?string $type): void
+    {
         $this->type = $type;
     }
 }
