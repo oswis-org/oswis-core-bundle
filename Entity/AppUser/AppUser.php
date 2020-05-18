@@ -11,7 +11,9 @@ use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use OswisOrg\OswisCoreBundle\Entity\AbstractClass\AbstractAppUser;
+use OswisOrg\OswisCoreBundle\Entity\NonPersistent\PdfListColumn;
 use OswisOrg\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
+use OswisOrg\OswisCoreBundle\Interfaces\Export\PdfExportableInterface;
 
 /**
  * User of application.
@@ -33,6 +35,18 @@ use OswisOrg\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
  *   },
  *   collectionOperations={
  *     "get"={
+ *       "access_control"="is_granted('ROLE_MANAGER')",
+ *       "normalization_context"={"groups"={"nameables_get", "app_users_get"}, "enable_max_depth"=true},
+ *     },
+ *     "pdf"={
+ *       "method"="GET",
+ *       "path"="/app_users/export/pdf",
+ *       "access_control"="is_granted('ROLE_MANAGER')",
+ *       "normalization_context"={"groups"={"nameables_get", "app_users_get"}, "enable_max_depth"=true},
+ *     },
+ *     "csv"={
+ *       "method"="GET",
+ *       "path"="/app_users/export/csv",
  *       "access_control"="is_granted('ROLE_MANAGER')",
  *       "normalization_context"={"groups"={"nameables_get", "app_users_get"}, "enable_max_depth"=true},
  *     },
@@ -71,8 +85,26 @@ use OswisOrg\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
  * @author Jakub Zak <mail@jakubzak.eu>
  * @Doctrine\ORM\Mapping\Cache(usage="NONSTRICT_READ_WRITE", region="core_app_user")
  */
-class AppUser extends AbstractAppUser
+class AppUser extends AbstractAppUser implements PdfExportableInterface
 {
+    public const ENTITY_NAME = [1 => 'Uživatel', 11 => 'Uživatelé'];
+
+    public static function getExportEntityName(int $case = 1): string
+    {
+        return self::ENTITY_NAME[$case];
+    }
+
+    public static function getPdfListColumns(bool $complex = false): Collection
+    {
+        $columns = new ArrayCollection();
+        $columns->add(new PdfListColumn('id', PdfListColumn::TYPE_ID_USERNAME, 'Uživatel'));
+        if (true === $complex) {
+            $columns->add(new PdfListColumn('', '', '', ''));
+        }
+
+        return $columns;
+    }
+
     /**
      * @Doctrine\ORM\Mapping\OneToMany(
      *     targetEntity="OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserFlagConnection", cascade={"all"}, mappedBy="appUser", fetch="EAGER"

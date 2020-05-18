@@ -42,10 +42,9 @@ class PdfList
 
     public ?Collection $columns = null;
 
-    public function __construct(string $title = null, array $data = null, ?Collection $columns = null)
+    public function __construct(string $title = null, ?Collection $columns = null)
     {
         $this->setTitle($title);
-        $this->setData($data);
         $this->setColumns($columns);
     }
 

@@ -22,6 +22,8 @@ class PdfListColumn
     public const TYPE_ID = 'id';
     public const TYPE_ID_DATE = 'id+date';
     public const TYPE_ID_DATETIME = 'id+datetime';
+    public const TYPE_ID_USERNAME = 'id+username';
+    public const TYPE_NAME_EMAIL = 'name+email';
 
     public const TYPES = [
         self::TYPE_BASIC,
@@ -33,6 +35,8 @@ class PdfListColumn
         self::TYPE_ID,
         self::TYPE_ID_DATE,
         self::TYPE_ID_DATETIME,
+        self::TYPE_ID_USERNAME,
+        self::TYPE_NAME_EMAIL,
     ];
 
     /**
