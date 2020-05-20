@@ -14,6 +14,7 @@ use OswisOrg\OswisCoreBundle\Entity\AbstractClass\AbstractAppUser;
 use OswisOrg\OswisCoreBundle\Entity\NonPersistent\PdfListColumn;
 use OswisOrg\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
 use OswisOrg\OswisCoreBundle\Interfaces\Export\PdfExportableInterface;
+use OswisOrg\OswisCoreBundle\Traits\Export\PdfExportableTrait;
 
 /**
  * User of application.
@@ -87,23 +88,9 @@ use OswisOrg\OswisCoreBundle\Interfaces\Export\PdfExportableInterface;
  */
 class AppUser extends AbstractAppUser implements PdfExportableInterface
 {
+    use PdfExportableTrait;
+
     public const ENTITY_NAME = [1 => 'Uživatel', 11 => 'Uživatelé'];
-
-    public static function getExportEntityName(int $case = 1): string
-    {
-        return self::ENTITY_NAME[$case];
-    }
-
-    public static function getPdfListColumns(bool $complex = false): Collection
-    {
-        $columns = new ArrayCollection();
-        $columns->add(new PdfListColumn('id', PdfListColumn::TYPE_ID_USERNAME, 'Uživatel'));
-        if (true === $complex) {
-            $columns->add(new PdfListColumn('', '', '', ''));
-        }
-
-        return $columns;
-    }
 
     /**
      * @Doctrine\ORM\Mapping\OneToMany(
@@ -147,6 +134,22 @@ class AppUser extends AbstractAppUser implements PdfExportableInterface
         $this->setEmail($email);
         $this->setPassword($encryptedPassword);
         $this->setAppUserType($type);
+    }
+
+    public static function getExportEntityName(int $case = 1): string
+    {
+        return self::ENTITY_NAME[$case];
+    }
+
+    public static function getPdfListColumns(bool $complex = false): Collection
+    {
+        $columns = new ArrayCollection();
+        $columns->add(new PdfListColumn('id', PdfListColumn::TYPE_ID_USERNAME, 'Uživatel'));
+        if (true === $complex) {
+            $columns->add(new PdfListColumn('', '', '', ''));
+        }
+
+        return $columns;
     }
 
     /**

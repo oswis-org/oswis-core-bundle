@@ -49,6 +49,12 @@ final class AppUserSubscriber implements EventSubscriberInterface
         $this->export($event);
     }
 
+    public function export(ViewEvent $event): void
+    {
+        // $items = $event->getControllerResult();
+        $event->setResponse(new JsonResponse(['data' => chunk_split(base64_encode('foo'))], Response::HTTP_OK));
+    }
+
     public function exportPdf(ViewEvent $event): void
     {
         $request = $event->getRequest();
@@ -56,12 +62,6 @@ final class AppUserSubscriber implements EventSubscriberInterface
             return;
         }
         $this->export($event);
-    }
-
-    public function export(ViewEvent $event): void
-    {
-        // $items = $event->getControllerResult();
-        $event->setResponse(new JsonResponse(['data' => chunk_split(base64_encode('foo'))], Response::HTTP_OK));
     }
 
     /**
