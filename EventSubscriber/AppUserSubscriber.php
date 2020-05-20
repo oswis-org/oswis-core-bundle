@@ -46,8 +46,22 @@ final class AppUserSubscriber implements EventSubscriberInterface
         if ('api_app_users_csv_collection' !== $request->attributes->get('_route')) {
             return;
         }
-        $items = $event->getControllerResult();
-        $event->setResponse(new JsonResponse(['data' => ''], Response::HTTP_OK));
+        $this->export($event);
+    }
+
+    public function exportPdf(ViewEvent $event): void
+    {
+        $request = $event->getRequest();
+        if ('api_app_users_pdf_collection' !== $request->attributes->get('_route')) {
+            return;
+        }
+        $this->export($event);
+    }
+
+    public function export(ViewEvent $event): void
+    {
+        // $items = $event->getControllerResult();
+        $event->setResponse(new JsonResponse(['data' => chunk_split(base64_encode('foo'))], Response::HTTP_OK));
     }
 
     /**
