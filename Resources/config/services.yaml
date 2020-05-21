@@ -2,6 +2,7 @@
 
 imports:
     - { resource: services_services.yaml }
+    - { resource: services_subscribers.yaml }
     - { resource: services_utils.yaml }
     - { resource: services_web.yaml }
     - { resource: services_twig.yaml }
@@ -53,63 +54,22 @@ services:
         alias: oswis_org_oswis_core.app_user_action_request
         public: true
 
-    ### AppUser Action Subscriber
-    oswis_org_oswis_core.app_user_action_subscriber:
-        class: OswisOrg\OswisCoreBundle\Api\EventSubscriber\AppUserActionSubscriber
-        autowire: true
-        public: true
-        arguments:
-            - '@oswis_org_oswis_core.app_user_service'
-    OswisOrg\OswisCoreBundle\Api\EventSubscriber\AppUserActionSubscriber:
-        alias: oswis_org_oswis_core.app_user_action_subscriber
-        public: true
-
-    ### Mailer Subscriber
-    oswis_org_oswis_core.mailer_subscriber:
-        class: OswisOrg\OswisCoreBundle\EventSubscriber\MailerSubscriber
-        autowire: true
-        public: true
-        arguments:
-            - '@oswis_org_oswis_core.oswis_core_settings_provider'
-    OswisOrg\OswisCoreBundle\EventSubscriber\MailerSubscriber:
-        alias: oswis_org_oswis_core.mailer_subscriber
-        public: true
-
-    ### AppUser Subscriber
-    oswis_org_oswis_core.app_user_subscriber:
-        class: OswisOrg\OswisCoreBundle\EventSubscriber\AppUserSubscriber
-        autowire: true
-        public: true
-        arguments:
-            - '@oswis_org_oswis_core.app_user_service'
-    OswisOrg\OswisCoreBundle\EventSubscriber\AppUserSubscriber:
-        alias: oswis_org_oswis_core.app_user_subscriber
-        public: true
-
     ### PDF Generator
-    oswis_org_oswis_core.pdf_generator:
-        class: OswisOrg\OswisCoreBundle\Service\PdfGenerator
+    oswis_org_oswis_core.export_service:
+        class: OswisOrg\OswisCoreBundle\Service\ExportService
         autowire: true
         public: true
         arguments:
             - '@monolog.logger'
             - '@twig'
             - '@oswis_org_oswis_core.oswis_core_settings_provider'
-    OswisOrg\OswisCoreBundle\Service\PdfGenerator:
-        alias: oswis_org_oswis_core.pdf_generator
+    OswisOrg\OswisCoreBundle\Service\ExportService:
+        alias: oswis_org_oswis_core.export_service
         public: true
 
     ### Traits folder
     OswisOrg\OswisCoreBundle\Traits\:
         resource: '../../Traits/*'
-        public: true
-
-    ### EventSubscriber folder
-    OswisOrg\OswisCoreBundle\EventSubscriber\:
-        resource: '../../EventSubscriber/*'
-        tags: [ { name: 'kernel.view'} ]
-        # arguments:
-        #   ['@security.user_password_encoder.generic', '@doctrine.orm.entity_manager.abstract', '@swiftmailer.mailer.abstract', '@monolog.logger_prototype', '@twig', '@security.token_storage']
         public: true
 
     ### AppUser Provider

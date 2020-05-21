@@ -45,7 +45,6 @@ abstract class AbstractPayment implements PaymentInterface
      * @param string|null   $externalId
      * @param DateTime|null $dateTime
      *
-     * @throws OswisNotImplementedException
      * @throws InvalidArgumentException
      */
     public function __construct(

@@ -11,7 +11,7 @@ use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use OswisOrg\OswisCoreBundle\Entity\AbstractClass\AbstractAppUser;
-use OswisOrg\OswisCoreBundle\Entity\NonPersistent\PdfListColumn;
+use OswisOrg\OswisCoreBundle\Entity\NonPersistent\Export\ExportListColumn;
 use OswisOrg\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
 use OswisOrg\OswisCoreBundle\Interfaces\Export\PdfExportableInterface;
 use OswisOrg\OswisCoreBundle\Traits\Export\PdfExportableTrait;
@@ -144,9 +144,9 @@ class AppUser extends AbstractAppUser implements PdfExportableInterface
     public static function getPdfListColumns(bool $complex = false): Collection
     {
         $columns = new ArrayCollection();
-        $columns->add(new PdfListColumn('id', PdfListColumn::TYPE_ID_USERNAME, 'Uživatel'));
+        $columns->add(new ExportListColumn('id', ExportListColumn::TYPE_ID_USERNAME, 'Uživatel'));
         if (true === $complex) {
-            $columns->add(new PdfListColumn('', '', '', ''));
+            $columns->add(new ExportListColumn('', '', '', ''));
         }
 
         return $columns;

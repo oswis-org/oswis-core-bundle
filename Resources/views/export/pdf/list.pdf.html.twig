@@ -1,6 +1,6 @@
-{% extends '@OswisOrgOswisCore/documents/pdf-document.html.twig' %}
+{% extends '@OswisOrgOswisCore/export/pdf/document.pdf.html.twig' %}
 
-{% block css %}{% include '@OswisOrgOswisCore/documents/pages/list.css.twig' %}{% endblock %}
+{% block css %}{% include '@OswisOrgOswisCore/export/pdf/list.pdf.css.twig' %}{% endblock %}
 {% block title %}{{ title|default('Seznam položek') }}{% endblock %}
 
 {% block content_inner %}
@@ -8,7 +8,7 @@
         <table class=list style="width:100%;max-width:100%;">
             {% block list_inner %}
                 {% block list_thead_outer %}
-                    {% include '@OswisOrgOswisCore/documents/parts/list-thead.html.twig' %}
+                    {% include '@OswisOrgOswisCore/export/pdf/list-thead.pdf.html.twig' %}
                 {% endblock list_thead_outer %}
                 {% block list_row_outer %}
                     {% for row in data.items %}
@@ -16,7 +16,7 @@
                         <tr>
                             {% block list_row_inner %}
                                 {% for column in columns %}
-                                    {% include '@OswisOrgOswisCore/documents/parts/list-row.html.twig' %}
+                                    {% include '@OswisOrgOswisCore/export/pdf/list-column.pdf.html.twig' %}
                                 {% endfor %}
                             {% endblock list_row_inner %}
                         </tr>
@@ -24,7 +24,7 @@
                     {% endfor %}
                 {% endblock list_row_outer %}
                 {% block list_tfoot_outer %}
-                    {% include '@OswisOrgOswisCore/documents/parts/list-thead.html.twig' %}
+                    {% include '@OswisOrgOswisCore/export/pdf/list-thead.pdf.html.twig' %}
                 {% endblock list_tfoot_outer %}
             {% endblock list_inner %}
         </table>

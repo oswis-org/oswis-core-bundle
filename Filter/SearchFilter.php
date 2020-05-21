@@ -41,6 +41,8 @@ final class SearchFilter extends AbstractContextAwareFilter
     }
 
     /**
+     * @param mixed $value
+     *
      * @throws ReflectionException
      * @throws HttpInvalidParamException
      */

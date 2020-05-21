@@ -3,7 +3,7 @@
 <head>
     <meta charset='UTF-8'>
     <title>{% block title %}{{ title|default('Dokument z OSWIS') }}{% endblock %}</title>
-    <style>{% block css %}{% include '@OswisOrgOswisCore/documents/pdf-document.css.twig' %}{% endblock css %}</style>
+    <style>{% block css %}{% include '@OswisOrgOswisCore/export/pdf/document.pdf.css.twig' %}{% endblock css %}</style>
     <style>{% block additional_css %}{% endblock additional_css %}</style>
 </head>
 <body>
@@ -26,9 +26,9 @@
                 {% endif %}
             </div>
             <div>
-                {% block header_text %}
+                {% block info_text %}
                     {# Info about list settings etc. #}
-                {% endblock header_text %}
+                {% endblock info_text %}
             </div>
         {% endblock content_header %}
 
@@ -38,6 +38,9 @@
                 <p><strong>Nebyl načten žádný obsah dokumentu.</strong></p>
             </div>
         {% endblock content_inner %}
+
+        {% block content_footer %}
+        {% endblock content_footer %}
 
     </div>
 {% endblock content_outer %}

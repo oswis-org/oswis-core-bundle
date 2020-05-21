@@ -4,14 +4,14 @@
  * @noinspection PhpUnused
  */
 
-namespace OswisOrg\OswisCoreBundle\Entity\NonPersistent;
+namespace OswisOrg\OswisCoreBundle\Entity\NonPersistent\Export;
 
 /**
  * Definition for column in PDF export file.
  *
  * @author Jakub Zak <mail@jakubzak.eu>
  */
-class PdfListColumn
+class ExportListColumn
 {
     public const TYPE_BASIC = '';
     public const TYPE_BOOLEAN = 'bool';

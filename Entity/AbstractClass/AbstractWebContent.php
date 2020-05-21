@@ -9,7 +9,7 @@ use OswisOrg\OswisCoreBundle\Traits\Common\TextValueTrait;
 use OswisOrg\OswisCoreBundle\Traits\Common\TypeTrait;
 
 /**
- * Abstract class containing basic properties for web pages contents.
+ * Abstract class containing basic properties for web pdf contents.
  * @author Jakub Zak <mail@jakubzak.eu>
  */
 abstract class AbstractWebContent implements BasicInterface

@@ -8,7 +8,7 @@ namespace OswisOrg\OswisCoreBundle\Service;
 
 use Mpdf\Mpdf;
 use Mpdf\MpdfException;
-use OswisOrg\OswisCoreBundle\Entity\NonPersistent\PdfList;
+use OswisOrg\OswisCoreBundle\Entity\NonPersistent\Export\PdfExportList;
 use OswisOrg\OswisCoreBundle\Provider\OswisCoreSettingsProvider;
 use Psr\Log\LoggerInterface;
 use Twig\Environment;
@@ -17,9 +17,9 @@ use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
 
 /**
- * Service for generating pdf documents.
+ * Service for generating pdf export.
  */
-class PdfGenerator
+class ExportService
 {
     protected LoggerInterface $logger;
 
@@ -40,13 +40,13 @@ class PdfGenerator
      * @throws RuntimeError
      * @throws SyntaxError
      */
-    final public function getPdfAsString(PdfList $pdfList): string
+    final public function getPdfAsString(PdfExportList $pdfList): string
     {
         return $this->getMPdf($pdfList)->Output('', 'S');
     }
 
     /**
-     * @param PdfList $pdfList
+     * @param PdfExportList $pdfList
      *
      * @return Mpdf
      * @throws LoaderError
@@ -54,7 +54,7 @@ class PdfGenerator
      * @throws RuntimeError
      * @throws SyntaxError
      */
-    public function getMPdf(PdfList $pdfList): Mpdf
+    public function getMPdf(PdfExportList $pdfList): Mpdf
     {
         $mPdf = $pdfList->getMPdf();
         $mPdf->setLogger($this->logger);

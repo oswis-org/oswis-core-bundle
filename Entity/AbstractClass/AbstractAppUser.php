@@ -27,7 +27,13 @@ abstract class AbstractAppUser implements UserInterface, Serializable, Equatable
         return serialize([$this->id, $this->username, $this->email, $this->password]);
     }
 
-    public function unserialize(/* @noinspection MissingParameterTypeDeclarationInspection */ $serialized): void
+    /**
+     * {@inheritDoc}
+     * @param mixed $serialized
+     *
+     * @noinspection MissingParameterTypeDeclarationInspection
+     */
+    public function unserialize($serialized): void
     {
         [$this->id, $this->username, $this->email, $this->password] = unserialize($serialized, ['allowed_classes' => ['AppUser']]);
     }

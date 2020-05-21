@@ -164,6 +164,8 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
                     'jsonld'  => ['mime_types' => ['application/ld+json']],
                     'jsonapi' => ['mime_types' => ['application/vnd.api+json']],
                     'html'    => ['mime_types' => ['text/html']],
+                    'csv'     => ['mime_types' => ['text/csv']],
+                    'xml'     => ['mime_types' => ['application/xml']],
                 ],
                 'error_formats' => [
                     'jsonproblem' => ['mime_types' => ['application/problem+json']],

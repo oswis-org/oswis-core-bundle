@@ -1,0 +1,52 @@
+services:
+
+    ### EventSubscriber folder
+    OswisOrg\OswisCoreBundle\EventSubscriber\:
+        resource: '../../EventSubscriber/*'
+        tags: [ { name: 'kernel.view'} ]
+        public: true
+
+    ### AppUser Action Subscriber
+    oswis_org_oswis_core.app_user_action_subscriber:
+        class: OswisOrg\OswisCoreBundle\Api\EventSubscriber\AppUserActionSubscriber
+        autowire: true
+        public: true
+        arguments:
+            - '@oswis_org_oswis_core.app_user_service'
+    OswisOrg\OswisCoreBundle\Api\EventSubscriber\AppUserActionSubscriber:
+        alias: oswis_org_oswis_core.app_user_action_subscriber
+        public: true
+
+    ### Export Subscriber
+    oswis_org_oswis_core.export_subscriber:
+        class: OswisOrg\OswisCoreBundle\EventSubscriber\ExportSubscriber
+        autowire: true
+        public: true
+        arguments:
+            - '@oswis_org_oswis_core.pdf_generator'
+    OswisOrg\OswisCoreBundle\EventSubscriber\ExportSubscriber:
+        alias: oswis_org_oswis_core.app_user_action_subscriber
+        public: true
+
+    ### Mailer Subscriber
+    oswis_org_oswis_core.mailer_subscriber:
+        class: OswisOrg\OswisCoreBundle\EventSubscriber\MailerSubscriber
+        autowire: true
+        public: true
+        arguments:
+            - '@oswis_org_oswis_core.oswis_core_settings_provider'
+    OswisOrg\OswisCoreBundle\EventSubscriber\MailerSubscriber:
+        alias: oswis_org_oswis_core.mailer_subscriber
+        public: true
+
+    ### AppUser Subscriber
+    oswis_org_oswis_core.app_user_subscriber:
+        class: OswisOrg\OswisCoreBundle\EventSubscriber\AppUserSubscriber
+        autowire: true
+        public: true
+        arguments:
+            - '@oswis_org_oswis_core.app_user_service'
+    OswisOrg\OswisCoreBundle\EventSubscriber\AppUserSubscriber:
+        alias: oswis_org_oswis_core.app_user_subscriber
+        public: true
+

@@ -1,0 +1,22 @@
+{% extends '@OswisOrgOswisCore/export/csv/document.csv.twig' %}
+
+{% block content_header %}
+    {% if header_template|default %}
+        {% include header_template %}
+    {% endif %}
+{% endblock content_header %}
+
+{% block content_inner %}
+    {%- for item in data.items|default -%}
+        {%- for column in columns|default -%}
+            {%- include '@OswisOrgOswisCore/export/csv/list-column.csv.twig' %}
+        {%- endfor -%}
+    {%- endfor -%}
+{% endblock content_inner %}
+
+{% block content_footer %}
+    {% if footer_template|default %}
+        {% include footer_template %}
+    {% endif %}
+{% endblock content_footer %}
+

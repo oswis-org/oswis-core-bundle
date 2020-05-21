@@ -1,0 +1,16 @@
+{%- if row[column.name]|default -%}
+    {%- if column.type == 'x' or column.type == 'X' -%}
+        X
+    {%- elseif column.type == 'bool' or column.type == 'boolean' -%}
+        {{- row[column.name] ? 1 : 0 -}}
+    {%- elseif column.type == 'date' -%}
+        {{- row[column.name]|date("j. n. Y") -}}
+    {%- elseif column.type == 'datetime' or column.type == 'date-time' or column.type == 'dateTime' -%}
+        {{- row[column.name]|date("j. n. Y, H:i") -}}
+    {%- elseif (not column.type) or column.type == '' or column.type == 'basic' or column.type == 'plain' or column.type == 'simple' -%}
+        {{- row[column.name]|default('∅') -}}
+    {%- endif -%}
+    {%- block list_row_inner_extension -%}{%- endblock list_row_inner_extension -%}
+{%- else -%}
+{%- endif -%}
+;
