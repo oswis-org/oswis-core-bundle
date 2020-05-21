@@ -70,22 +70,25 @@ final class ImageExtension extends AbstractExtension
 
     public function getImageWidth(?string $imagePath = null): ?int
     {
-        return $this->getImageSize($imagePath)[0] ?: null;
+        return $this->getImageSize($imagePath)[0];
     }
 
     private function getImageSize(?string $path = null): array
     {
-        $path = $this->getCorrectRelativePath($path);
-        try {
-            return $this->fileSystem->exists($path) ? (getimagesize($path) ?: [null, null, null, null]) : [null, null, null, null];
-        } catch (IOException $e) {
-            return [null, null, null, null];
-        }
+        $path = $this->getPath($path);
+
+        return $path ? (getimagesize($path) ?: [null, null, null, null]) : [null, null, null, null];
     }
 
-    public function getCorrectRelativePath(?string $imagePath = null): string
+    public function getPath(?string $imagePath = null): ?string
     {
-        return realpath('../public'.$imagePath) ?: '';
+        try {
+            $path = realpath('../public'.$imagePath);
+
+            return $this->fileSystem->exists($path) ? $path : null;
+        } catch (IOException $e) {
+            return null;
+        }
     }
 
     public function getImageHeight(?string $imagePath = null): ?int
@@ -105,23 +108,24 @@ final class ImageExtension extends AbstractExtension
 
     public function getImageComputedComment(?string $imagePath = null): ?string
     {
-        $result = @exif_read_data($this->getCorrectRelativePath($imagePath), 'COMPUTED');
+        $result = @exif_read_data($this->getPath($imagePath), 'COMPUTED');
 
-        return is_array($result) ? $result['COMPUTED']['UserComment'] : null;
+        return is_array($result) && is_array($result['COMPUTED']) ? $result['COMPUTED']['UserComment'] : null;
     }
 
     public function getImageExifComment(?string $imagePath = null): ?string
     {
-        $comments = @exif_read_data($this->getCorrectRelativePath($imagePath), 'COMMENT') ?: null;
+        $path = $this->getPath($imagePath);
+        $comments = @exif_read_data($path, 'COMMENT') ?: null;
 
         return $comments && is_array($comments) && is_array($comments['COMMENT']) ? implode("\n", $comments['COMMENT']) : $comments['COMMENT'];
     }
 
     public function getImageIfdComment(?string $imagePath = null): ?string
     {
-        $result = @exif_read_data($this->getCorrectRelativePath($imagePath), 'IFD0');
+        $result = @exif_read_data($this->getPath($imagePath), 'IFD0');
 
-        return is_array($result) ? $result['IFD0']['UserComment'] : null;
+        return $result && is_array($result) && is_array($result['IFD0']) ? $result['IFD0']['UserComment'] : null;
     }
 
     public function getImageMimeType(?string $imagePath = null): ?string
@@ -131,6 +135,6 @@ final class ImageExtension extends AbstractExtension
 
     public function getImageTypeConstant(?string $imagePath = null): ?int
     {
-        return @exif_imagetype($this->getCorrectRelativePath($imagePath)) ?: $this->getImageSize($imagePath)[2] ?: null;
+        return @exif_imagetype($this->getPath($imagePath)) ?: $this->getImageSize($imagePath)[2] ?: null;
     }
 }
