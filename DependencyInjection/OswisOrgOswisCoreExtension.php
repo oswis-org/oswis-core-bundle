@@ -22,12 +22,16 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
      */
     final public function load(array $configs, ContainerBuilder $container): void
     {
-        $configs ??= [];
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
-        $loader->load('services.yaml');
-        $configuration = $this->getConfiguration($configs, $container);
+        $loader->load('services_config.yaml');
+        $loader->load('services_subscribers.yaml');
+        $loader->load('services_services.yaml');
+        $loader->load('services_utils.yaml');
+        $loader->load('services_web.yaml');
+        $loader->load('services_twig.yaml');
+        $configuration = $this->getConfiguration($configs ?? [], $container);
         if ($configuration) {
-            $config = $this->processConfiguration($configuration, $configs);
+            $config = $this->processConfiguration($configuration, $configs ?? []);
             $this->oswisCoreSettingsProvider($container, $config);
         }
     }
