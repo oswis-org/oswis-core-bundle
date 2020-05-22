@@ -10,8 +10,6 @@ services:
         autoconfigure: true
         public: false
 
-
-
     ### Search Filter
     oswis_org_oswis_core.search_filter:
         class: OswisOrg\OswisCoreBundle\Filter\SearchFilter
@@ -68,7 +66,7 @@ services:
         autowire: true
         public: true
         arguments:
-          ['@doctrine.orm.entity_manager.abstract']
+            - '@doctrine.orm.entity_manager'
 
 
     gedmo.listener.timestampable:
