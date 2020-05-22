@@ -25,7 +25,7 @@ class MailerSubscriber implements EventSubscriberInterface
 
     public static function getSubscribedEvents(): array
     {
-        return [MessageEvent::class => ['onMessageSend', 0]];
+        return [MessageEvent::class => 'onMessageSend'];
     }
 
     public function onMessageSend(MessageEvent $event): void

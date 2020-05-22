@@ -5,10 +5,12 @@ parameters:
     doctrine_behaviors_blameable_user_entity: OswisOrg\OswisCoreBundle\Entity\AppUser
 
 services:
-#    _defaults:
-    #        autowire: true
-    #        autoconfigure: true
-    #        public: false
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+
 
     ### Search Filter
     oswis_org_oswis_core.search_filter:
@@ -60,11 +62,6 @@ services:
         alias: oswis_org_oswis_core.export_service
         public: true
 
-    ### Traits folder
-    OswisOrg\OswisCoreBundle\Traits\:
-        resource: '../../Traits/*'
-        public: true
-
     ### AppUser Provider
     OswisOrg\OswisCoreBundle\Security\AppUserProvider:
         class: OswisOrg\OswisCoreBundle\Security\AppUserProvider
@@ -72,11 +69,6 @@ services:
         public: true
         arguments:
           ['@doctrine.orm.entity_manager.abstract']
-
-    ### Security folder
-    OswisOrg\OswisCoreBundle\Security\:
-        resource: '../../Security/*'
-        public: true
 
 
     gedmo.listener.timestampable:
@@ -143,17 +135,13 @@ services:
     ####
     #### SUBSCRIBERS
     ####
-    ### EventSubscriber folder
-    OswisOrg\OswisCoreBundle\EventSubscriber\:
-        resource: '../../EventSubscriber/*'
-        tags: [ { name: 'kernel.view'} ]
-        public: true
 
     ### AppUser Action Subscriber
     oswis_org_oswis_core.app_user_action_subscriber:
         class: OswisOrg\OswisCoreBundle\Api\EventSubscriber\AppUserActionSubscriber
         autowire: true
         public: true
+        tags: [ { name: 'kernel.view'} ]
         arguments:
             - '@oswis_org_oswis_core.app_user_service'
     OswisOrg\OswisCoreBundle\Api\EventSubscriber\AppUserActionSubscriber:
@@ -164,6 +152,7 @@ services:
     oswis_org_oswis_core.export_subscriber:
         class: OswisOrg\OswisCoreBundle\EventSubscriber\ExportSubscriber
         autowire: true
+        tags: [ { name: 'kernel.view'} ]
         public: true
         arguments:
             - '@oswis_org_oswis_core.export_service'
@@ -176,6 +165,7 @@ services:
         class: OswisOrg\OswisCoreBundle\EventSubscriber\MailerSubscriber
         autowire: true
         public: true
+        tags: ['kernel.event_subscriber']
         arguments:
             - '@oswis_org_oswis_core.oswis_core_settings_provider'
     OswisOrg\OswisCoreBundle\EventSubscriber\MailerSubscriber:
@@ -186,6 +176,7 @@ services:
     oswis_org_oswis_core.app_user_subscriber:
         class: OswisOrg\OswisCoreBundle\EventSubscriber\AppUserSubscriber
         autowire: true
+        tags: [ { name: 'kernel.view'} ]
         public: true
         arguments:
             - '@oswis_org_oswis_core.app_user_service'
@@ -268,8 +259,6 @@ services:
     OswisOrg\OswisCoreBundle\Utils\StringUtils:
         alias: oswis_org_oswis_core.oswis_core_source_string_utils
         public: true
-
-
 
 
 
@@ -374,3 +363,15 @@ services:
 
 
 
+
+
+    ### Traits folder
+    OswisOrg\OswisCoreBundle\Traits\:
+        resource: '../../Traits/*'
+        public: true
+
+    ### EventSubscriber folder
+    OswisOrg\OswisCoreBundle\EventSubscriber\:
+        resource: '../../EventSubscriber/*'
+        tags: [ { name: 'kernel.view'} ]
+        public: true
