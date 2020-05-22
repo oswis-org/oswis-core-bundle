@@ -1,12 +1,4 @@
 ### OSWIS Core - services
-
-imports:
-    - { resource: services_services.yaml }
-    - { resource: services_subscribers.yaml }
-    - { resource: services_utils.yaml }
-    - { resource: services_web.yaml }
-    - { resource: services_twig.yaml }
-
 parameters:
     locale: 'cs'
     doctrine_behaviors_blameable_user_entity: OswisOrg\OswisCoreBundle\Entity\AppUser
