@@ -115,10 +115,12 @@ final class ImageExtension extends AbstractExtension
 
     public function getImageExifComment(?string $imagePath = null): ?string
     {
-        $path = $this->getPath($imagePath);
-        $comments = @exif_read_data($path, 'COMMENT') ?: null;
+        $comments = @exif_read_data($this->getPath($imagePath), 'COMMENT') ?: null;
+        if (!is_array($comments)) {
+            return null;
+        }
 
-        return $comments && is_array($comments) && is_array($comments['COMMENT']) ? implode("\n", $comments['COMMENT']) : $comments['COMMENT'];
+        return is_array($comments['COMMENT']) ? implode("\n", $comments['COMMENT']) : $comments['COMMENT'];
     }
 
     public function getImageIfdComment(?string $imagePath = null): ?string
