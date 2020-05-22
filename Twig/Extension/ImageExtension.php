@@ -83,7 +83,7 @@ final class ImageExtension extends AbstractExtension
     public function getPath(?string $imagePath = null): ?string
     {
         try {
-            $path = realpath('../public'.$imagePath);
+            $path = realpath('../public'.$imagePath) ?: null;
 
             return $this->fileSystem->exists($path) ? $path : null;
         } catch (IOException $e) {
