@@ -5,10 +5,10 @@ parameters:
     doctrine_behaviors_blameable_user_entity: OswisOrg\OswisCoreBundle\Entity\AppUser
 
 services:
-    _defaults:
-        autowire: true
-        autoconfigure: true
-        public: false
+#    _defaults:
+    #        autowire: true
+    #        autoconfigure: true
+    #        public: false
 
     ### Search Filter
     oswis_org_oswis_core.search_filter:
@@ -203,6 +203,7 @@ services:
     ####
     oswis_org_oswis_core.twig.image_extension:
         class: OswisOrg\OswisCoreBundle\Twig\Extension\ImageExtension
+        public: true
         tags:
             - { name: twig.extension }
 
