@@ -101,6 +101,6 @@ class OswisCoreSettingsProvider
      */
     public function getArchiveMailerAddress(): Address
     {
-        return new Address($mailSettings['archive_address'] ?? '', $mailSettings['archive_name'] ?? '');
+        return new Address($this->getEmail()['archive_address'] ?? '', $this->getEmail()['archive_name'] ?? '');
     }
 }
