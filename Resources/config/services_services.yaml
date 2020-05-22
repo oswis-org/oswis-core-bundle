@@ -1,3 +1,6 @@
+####
+#### SERVICES
+####
 services:
 
     ### AppUser Service
@@ -37,4 +40,17 @@ services:
             - '@monolog.logger'
     OswisOrg\OswisCoreBundle\Service\AppUserTypeService:
         alias: oswis_org_oswis_core.app_user_type_service
+        public: true
+
+    ### PDF Generator
+    oswis_org_oswis_core.export_service:
+        class: OswisOrg\OswisCoreBundle\Service\ExportService
+        autowire: true
+        public: true
+        arguments:
+            - '@monolog.logger'
+            - '@twig'
+            - '@oswis_org_oswis_core.oswis_core_settings_provider'
+    OswisOrg\OswisCoreBundle\Service\ExportService:
+        alias: oswis_org_oswis_core.export_service
         public: true
