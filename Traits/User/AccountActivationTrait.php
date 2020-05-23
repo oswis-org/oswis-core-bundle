@@ -20,7 +20,7 @@ trait AccountActivationTrait
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true, unique=true, length=100)
      * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\ExistsFilter::class)
      */
-    protected ?string $accountActivationRequestToken = null;
+    protected ?string $activationRequestToken = null;
 
     /**
      * Date and time of password reset request (and token generation).
@@ -29,7 +29,7 @@ trait AccountActivationTrait
      * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter::class)
      * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
      */
-    protected ?DateTime $accountActivationRequestDateTime = null;
+    protected ?DateTime $activationRequestDateTime = null;
 
     /**
      * Date and time of account activation.
@@ -38,22 +38,22 @@ trait AccountActivationTrait
      * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter::class)
      * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
      */
-    protected ?DateTime $accountActivationDateTime = null;
+    protected ?DateTime $activationDateTime = null;
 
     public function checkAndDestroyAccountActivationRequestToken(?string $token, int $validHours = 24): bool
     {
-        $diff = null;
-        if (null !== $this->getAccountActivationRequestDateTime()) {
-            $diff = $this->getAccountActivationRequestDateTime()->diff(new DateTime());
+        if (empty($token) || $this->isAccountActivated() || null === $this->getActivationRequestDateTime()) {
+            return false;
         }
-        if ($diff && ($validHours < $diff->h)) {
+        $diff = $this->getActivationRequestDateTime()->diff(new DateTime())->h;
+        if ($diff > $validHours) {
             $this->destroyAccountActivationRequestToken();
 
             return false;
         }
-        if ($diff && $this->checkAccountActivationRequestToken($token)) {
+        if ($this->checkAccountActivationRequestToken($token)) {
             $this->destroyAccountActivationRequestToken();
-            $this->setAccountActivationDateTime(new DateTime());
+            $this->setActivationDateTime(new DateTime());
 
             return true;
         }
@@ -61,58 +61,63 @@ trait AccountActivationTrait
         return false;
     }
 
-    public function getAccountActivationRequestDateTime(): ?DateTime
+    public function isAccountActivated(): bool
     {
-        return $this->accountActivationRequestDateTime;
+        return null !== $this->getActivationDateTime();
     }
 
-    public function setAccountActivationRequestDateTime(?DateTime $accountActivationRequestDateTime): void
+    public function getActivationDateTime(): ?DateTime
     {
-        $this->accountActivationRequestDateTime = $accountActivationRequestDateTime;
+        return $this->activationDateTime;
+    }
+
+    public function setActivationDateTime(?DateTime $activationDateTime): void
+    {
+        $this->activationDateTime = $activationDateTime;
+    }
+
+    public function getActivationRequestDateTime(): ?DateTime
+    {
+        return $this->activationRequestDateTime;
+    }
+
+    public function setActivationRequestDateTime(?DateTime $activationRequestDateTime): void
+    {
+        $this->activationRequestDateTime = $activationRequestDateTime;
     }
 
     public function destroyAccountActivationRequestToken(): void
     {
-        $this->setAccountActivationRequestDateTime(null);
-        $this->setAccountActivationRequestToken(null);
+        $this->setActivationRequestDateTime(null);
+        $this->setActivationRequestToken(null);
     }
 
     public function checkAccountActivationRequestToken(?string $token): bool
     {
-        return $token && $token === $this->getAccountActivationRequestToken();
+        return !empty($token) && !empty($this->getActivationRequestToken()) && $token === $this->getActivationRequestToken();
     }
 
-    public function getAccountActivationRequestToken(): ?string
+    public function getActivationRequestToken(): ?string
     {
-        return $this->accountActivationRequestToken;
+        return $this->activationRequestToken;
     }
 
-    public function setAccountActivationRequestToken(?string $accountActivationRequestToken): void
+    public function setActivationRequestToken(?string $activationRequestToken): void
     {
-        $this->accountActivationRequestToken = $accountActivationRequestToken;
+        $this->activationRequestToken = $activationRequestToken;
     }
 
     public function generateAccountActivationRequestToken(): ?string
     {
         try {
-            $this->setAccountActivationRequestToken(StringUtils::generateToken());
-            $this->setAccountActivationRequestDateTime(new DateTime());
+            $this->setActivationRequestToken(StringUtils::generateToken());
+            $this->setActivationRequestDateTime(new DateTime());
 
-            return $this->getAccountActivationRequestToken();
+            return $this->getActivationRequestToken();
         } catch (Exception $e) {
             $this->destroyAccountActivationRequestToken();
 
             return null;
         }
-    }
-
-    public function getAccountActivationDateTime(): ?DateTime
-    {
-        return $this->accountActivationDateTime;
-    }
-
-    public function setAccountActivationDateTime(?DateTime $accountActivationDateTime): void
-    {
-        $this->accountActivationDateTime = $accountActivationDateTime;
     }
 }

@@ -26,8 +26,8 @@
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DependencyInjection/OswisOrgOswisCoreExtension.php" beforeDir="false" afterPath="$PROJECT_DIR$/DependencyInjection/OswisOrgOswisCoreExtension.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/config/services.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AppUser/AppUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUser/AppUser.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/User/AccountActivationTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/User/AccountActivationTrait.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -713,6 +713,8 @@
       <workItem from="1590135054413" duration="1556000" />
       <workItem from="1590153057704" duration="212000" />
       <workItem from="1590163702951" duration="7549000" />
+      <workItem from="1590180288820" duration="129000" />
+      <workItem from="1590263112111" duration="2107000" />
     </task>
     <task id="LOCAL-00563" summary="Some fixes, updates and changes.">
       <created>1588547702000</created>
@@ -1145,12 +1147,12 @@
     <state x="546" y="179" width="397" height="556" key="#com.intellij.ide.util.MemberChooser/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1581807811802" />
     <state x="768" y="179" width="376" height="556" key="#com.intellij.ide.util.MemberChooser/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1581867031197" />
     <state x="2466" y="164" width="349" height="577" key="#com.intellij.ide.util.MemberChooser/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1588590248828" />
-    <state x="604" y="0" width="946" height="735" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1590062941287">
-      <screen x="0" y="0" width="3286" height="741" />
+    <state x="251" y="0" width="946" height="735" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1590263329005">
+      <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="251" y="0" width="855" height="735" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.741@0.0.1366.741" timestamp="1589135489770" />
     <state x="604" y="0" width="946" height="735" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.3286.741@0.0.3286.741" timestamp="1590062941287" />
-    <state x="251" y="0" width="624" height="735" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1581893837802" />
+    <state x="251" y="0" width="624" height="735" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1590263329005" />
     <state x="353" y="0" width="478" height="735" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1588877334367" />
     <state x="2171" y="0" width="462" height="741" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1588326607025" />
     <state x="288" y="257" width="526" height="478" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1589986463724">

@@ -175,7 +175,7 @@ class AppUser extends AbstractAppUser implements PdfExportableInterface
      */
     public function isActive(?DateTime $referenceDateTime = null): bool
     {
-        return !$this->getAccountActivationDateTime() ? false : $this->containsDateTimeInRange($referenceDateTime);
+        return !$this->getActivationDateTime() ? false : $this->containsDateTimeInRange($referenceDateTime);
     }
 
     /**
