@@ -14,7 +14,7 @@ use OswisOrg\OswisCoreBundle\Entity\NonPersistent\Publicity;
 trait EntityPublicTrait
 {
     /**
-     * Entity is visible on website.
+     * Indicates whether the item is available on the web.
      * @Doctrine\ORM\Mapping\Column(type="boolean", nullable=true)
      * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class, strategy="exact")
      * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\ExistsFilter::class)
@@ -22,6 +22,11 @@ trait EntityPublicTrait
      */
     protected ?bool $publicOnWeb = null;
 
+    /**
+     * Fill columns related to publicity from Publicity object.
+     *
+     * @param Publicity|null $publicity
+     */
     public function setFieldsFromPublicity(?Publicity $publicity = null): void
     {
         if (null !== $publicity) {
@@ -29,16 +34,29 @@ trait EntityPublicTrait
         }
     }
 
+    /**
+     * Sets whether the item is publicly available on the web.
+     *
+     * @param bool|null $publicOnWeb
+     */
     public function setPublicOnWeb(?bool $publicOnWeb): void
     {
         $this->publicOnWeb = $publicOnWeb;
     }
 
+    /**
+     * Indicates whether the item is publicly available on the web.
+     * @return Publicity
+     */
     public function getPublicity(): Publicity
     {
         return new Publicity($this->isPublicOnWeb());
     }
 
+    /**
+     * Indicates whether the item is available on the web.
+     * @return bool
+     */
     public function isPublicOnWeb(): bool
     {
         return $this->publicOnWeb ?? false;
