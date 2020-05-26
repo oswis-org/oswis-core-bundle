@@ -40,7 +40,12 @@ trait NameableTrait
         return $this->setSlug($this->getForcedSlug() ?? $this->getAutoSlug());
     }
 
-    public function getAutoSlug(): ?string
+    public function setSlug(?string $slug): string
+    {
+        return $this->slug = $this->getForcedSlug() ?? (!empty($slug) ? $slug : ($this->getAutoSlug() ?? ''.$this->getId()));
+    }
+
+    public function getAutoSlug(): string
     {
         return (new AsciiSlugger())->slug(($this->getName() ?? $this->getShortName()))->lower()->toString();
     }
