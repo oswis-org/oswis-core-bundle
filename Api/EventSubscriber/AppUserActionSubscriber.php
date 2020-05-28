@@ -100,7 +100,7 @@ final class AppUserActionSubscriber implements EventSubscriberInterface
         }
         if (!$appUser && $properties['token']) {
             $appUserByToken = $this->appUserService->getRepository()->findOneBy(['accountActivationRequestToken' => $properties['token']]);
-            $appUser = $appUserByToken && $appUserByToken->checkAccountActivationRequestToken($properties['token']) ? $appUserByToken : null;
+            $appUser = $appUserByToken && $appUserByToken->checkActivationRequestToken($properties['token']) ? $appUserByToken : null;
         }
 
         return $appUser;

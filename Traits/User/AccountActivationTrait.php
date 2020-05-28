@@ -40,19 +40,19 @@ trait AccountActivationTrait
      */
     protected ?DateTime $activationDateTime = null;
 
-    public function checkAndDestroyAccountActivationRequestToken(?string $token, int $validHours = 24): bool
+    public function checkAndDestroyActivationRequestToken(?string $token, int $validHours = 24): bool
     {
         if (empty($token) || $this->isAccountActivated() || null === $this->getActivationRequestDateTime()) {
             return false;
         }
         $diff = $this->getActivationRequestDateTime()->diff(new DateTime())->h;
         if ($diff > $validHours) {
-            $this->destroyAccountActivationRequestToken();
+            $this->destroyActivationRequestToken();
 
             return false;
         }
-        if ($this->checkAccountActivationRequestToken($token)) {
-            $this->destroyAccountActivationRequestToken();
+        if ($this->checkActivationRequestToken($token)) {
+            $this->destroyActivationRequestToken();
             $this->setActivationDateTime(new DateTime());
 
             return true;
@@ -86,13 +86,13 @@ trait AccountActivationTrait
         $this->activationRequestDateTime = $activationRequestDateTime;
     }
 
-    public function destroyAccountActivationRequestToken(): void
+    public function destroyActivationRequestToken(): void
     {
         $this->setActivationRequestDateTime(null);
         $this->setActivationRequestToken(null);
     }
 
-    public function checkAccountActivationRequestToken(?string $token): bool
+    public function checkActivationRequestToken(?string $token): bool
     {
         return !empty($token) && !empty($this->getActivationRequestToken()) && $token === $this->getActivationRequestToken();
     }
@@ -107,7 +107,7 @@ trait AccountActivationTrait
         $this->activationRequestToken = $activationRequestToken;
     }
 
-    public function generateAccountActivationRequestToken(): ?string
+    public function generateActivationRequestToken(): ?string
     {
         try {
             $this->setActivationRequestToken(StringUtils::generateToken());
@@ -115,7 +115,7 @@ trait AccountActivationTrait
 
             return $this->getActivationRequestToken();
         } catch (Exception $e) {
-            $this->destroyAccountActivationRequestToken();
+            $this->destroyActivationRequestToken();
 
             return null;
         }

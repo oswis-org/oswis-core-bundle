@@ -281,7 +281,7 @@ class AppUserService
         if (null === $appUser) {
             throw new OswisUserNotFoundException();
         }
-        $this->sendAppUserEmail($appUser, self::ACTIVATION_REQUEST, $appUser->generateAccountActivationRequestToken());
+        $this->sendAppUserEmail($appUser, self::ACTIVATION_REQUEST, $appUser->generateActivationRequestToken());
         $this->logger->info('[OK] Created activation request for app user '.$appUser->getId().'');
     }
 
@@ -332,8 +332,8 @@ class AppUserService
         if (!$withoutToken && !$token) {
             throw new OswisException('Token pro aktivaci účtu nebyl zadán. Otevřete odkaz znovu.');
         }
-        $appUser ??= $this->getRepository()->findOneBy(['accountActivationRequestToken' => $token]);
-        if (!$withoutToken && (!($appUser instanceof AppUser) || !$appUser->checkAndDestroyAccountActivationRequestToken($token))) {
+        $appUser ??= $this->getRepository()->findOneByToken($token);
+        if (!$withoutToken && (!($appUser instanceof AppUser) || !$appUser->checkAndDestroyActivationRequestToken($token))) {
             throw new OswisException('Token pro aktivaci účtu není platný (neexistuje nebo vypršela jeho platnost).');
         }
         $random = empty($password);
