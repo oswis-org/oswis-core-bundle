@@ -1,4 +1,8 @@
 <?php
+/**
+ * @noinspection MethodShouldBeFinalInspection
+ * @noinspection PhpUnused
+ */
 
 namespace OswisOrg\OswisCoreBundle\Traits\User;
 
@@ -15,4 +19,9 @@ trait UserTrait
     use PasswordResetTrait;
     use AccountActivationTrait;
     use DateRangeTrait;
+
+    public function isActivated(): bool
+    {
+        return $this->isAccountActivated();
+    }
 }
