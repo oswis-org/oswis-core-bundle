@@ -40,7 +40,7 @@ trait AccountActivationTrait
      */
     protected ?DateTime $activationDateTime = null;
 
-    public function checkAndDestroyActivationRequestToken(?string $token, int $validHours = 24): bool
+    public function activateByToken(?string $token, int $validHours = 24): bool
     {
         if (empty($token) || $this->isAccountActivated() || null === $this->getActivationRequestDateTime()) {
             return false;
