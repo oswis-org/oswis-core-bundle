@@ -333,7 +333,7 @@ class AppUserService
             throw new OswisException('Token pro aktivaci účtu nebyl zadán. Otevřete odkaz znovu.');
         }
         $appUser ??= $this->getRepository()->findOneByToken($token);
-        if (!$withoutToken && (!($appUser instanceof AppUser) || !$appUser->checkAndDestroyActivationRequestToken($token))) {
+        if (!$withoutToken && (!($appUser instanceof AppUser) || !$appUser->activateByToken($token))) {
             throw new OswisException('Token pro aktivaci účtu není platný (neexistuje nebo vypršela jeho platnost).');
         }
         $random = empty($password);
