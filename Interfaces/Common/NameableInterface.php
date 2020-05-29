@@ -13,7 +13,7 @@ interface NameableInterface extends BasicInterface
 
     public function getSlug(): ?string;
 
-    public function setSlug(?string $slug): ?string;
+    public function setSlug(?string $slug): string;
 
     public function getForcedSlug(): ?string;
 
