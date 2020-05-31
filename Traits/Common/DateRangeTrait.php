@@ -146,7 +146,7 @@ trait DateRangeTrait
         return $this->getStartByFormat('j. n. ').$this->getEndByFormat($withoutYear ? '\až j. n.' : '\až j. n. Y');
     }
 
-    public function setDateTimeRange(DateTimeRange $dateTimeRange = null): void
+    public function setDateTimeRange(?DateTimeRange $dateTimeRange = null): void
     {
         if (null !== $dateTimeRange) {
             $this->setStartDateTime($dateTimeRange->startDateTime);
