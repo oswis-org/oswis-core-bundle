@@ -7,6 +7,7 @@
 namespace OswisOrg\OswisCoreBundle\Traits\Common;
 
 use DateTime;
+use OswisOrg\OswisCoreBundle\Entity\NonPersistent\DateTimeRange;
 use OswisOrg\OswisCoreBundle\Utils\DateTimeUtils;
 
 /**
@@ -143,5 +144,18 @@ trait DateRangeTrait
     public function getRangeAsTextYears(?bool $withoutYear = false): ?string
     {
         return $this->getStartByFormat('j. n. ').$this->getEndByFormat($withoutYear ? '\až j. n.' : '\až j. n. Y');
+    }
+
+    public function setDateTimeRange(DateTimeRange $dateTimeRange = null): void
+    {
+        if (null !== $dateTimeRange) {
+            $this->setStartDateTime($dateTimeRange->startDateTime);
+            $this->setEndDateTime($dateTimeRange->endDateTime);
+        }
+    }
+
+    public function getDateTimeRange(): DateTimeRange
+    {
+        return new DateTimeRange($this->getStartDateTime(), $this->getEndDateTime());
     }
 }
