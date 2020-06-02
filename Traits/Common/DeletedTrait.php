@@ -7,7 +7,6 @@
 namespace OswisOrg\OswisCoreBundle\Traits\Common;
 
 use DateTime;
-use Exception;
 
 /**
  * Trait adds deleted dateTime field.
@@ -29,9 +28,6 @@ trait DeletedTrait
         return $this->deleted ? $this->deleted->diff(new DateTime())->d : null;
     }
 
-    /**
-     * @throws Exception
-     */
     public function delete(?DateTime $dateTime = null): void
     {
         $this->setDeleted($this->getDeleted() ?? $dateTime ?? new DateTime());
@@ -55,10 +51,6 @@ trait DeletedTrait
 
     public function isDeleted(?DateTime $referenceDateTime = null): bool
     {
-        try {
-            return $this->deleted && ($referenceDateTime ?? new DateTime()) > $this->deleted;
-        } catch (Exception $e) {
-            return false;
-        }
+        return $this->deleted && ($referenceDateTime ?? new DateTime()) > $this->deleted;
     }
 }
