@@ -12,7 +12,9 @@ use Symfony\Component\String\Slugger\AsciiSlugger;
 trait NameableTrait
 {
     use BasicTrait;
-    use SlugTrait;
+    use SlugTrait {
+        setSlug as protected traitSetSlug;
+    }
     use NameTrait;
     use DescriptionTrait;
     use NoteTrait;
@@ -35,14 +37,14 @@ trait NameableTrait
         return new Nameable($this->getName(), $this->getShortName(), $this->getDescription(), $this->getNote(), $this->getForcedSlug(), $this->getInternalNote());
     }
 
-    public function updateSlug(): string
-    {
-        return $this->setSlug($this->getForcedSlug() ?? $this->getAutoSlug());
-    }
-
     public function setSlug(?string $slug): string
     {
         return $this->slug = $this->getForcedSlug() ?? (!empty($slug) ? $slug : ($this->getAutoSlug() ?? ''.$this->getId()));
+    }
+
+    public function updateSlug(): string
+    {
+        return $this->setSlug($this->getForcedSlug() ?? $this->getAutoSlug());
     }
 
     public function getAutoSlug(): string

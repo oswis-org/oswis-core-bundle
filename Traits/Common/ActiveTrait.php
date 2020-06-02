@@ -6,39 +6,40 @@
 
 namespace OswisOrg\OswisCoreBundle\Traits\Common;
 
+use DateTime;
+
 /**
  * Trait adds "active" field.
  */
 trait ActiveTrait
 {
     /**
-     * Active.
-     * @Doctrine\ORM\Mapping\Column(type="boolean", nullable=true)
+     * Active after.
+     * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true, options={"default" : null})
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class, strategy="ipartial")
+     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter::class)
      * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\ExistsFilter::class)
      * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
      */
-    protected ?bool $active = null;
+    protected ?DateTime $active = null;
 
-    public function isActive(): bool
+    public function isActive(?DateTime $dateTime = null): bool
     {
-        return $this->getActive();
+        return null !== $this->getActive() && $this->getActive() >= ($dateTime ?? new DateTime());
     }
 
-    /**
-     * Get value of "active" field.
-     */
-    public function getActive(): bool
+    public function getActive(): ?DateTime
     {
-        return $this->active ?? false;
+        return $this->active;
     }
 
-    /**
-     * Set value of "active" field.
-     *
-     * @param bool $active
-     */
-    public function setActive(?bool $active = false): void
+    public function setActive(?DateTime $active): void
     {
-        $this->active = $active ?? false;
+        $this->active = $active;
+    }
+
+    public function activate(?DateTime $dateTime = null): void
+    {
+        $this->setActive($this->getActive() ?? $dateTime ?? new DateTime());
     }
 }
