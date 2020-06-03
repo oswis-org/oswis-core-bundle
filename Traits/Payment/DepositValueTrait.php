@@ -28,7 +28,7 @@ trait DepositValueTrait
     /**
      * Set deposit value.
      */
-    public function setDepositValue(int $depositValue): void
+    public function setDepositValue(?int $depositValue): void
     {
         $this->depositValue = $depositValue ?? 0;
     }
