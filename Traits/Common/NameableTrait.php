@@ -13,7 +13,7 @@ trait NameableTrait
 {
     use BasicTrait;
     use SlugTrait {
-        setSlug as protected traitSetSlug;
+        setSlug as protected slugTraitSetSlug;
     }
     use NameTrait;
     use DescriptionTrait;
