@@ -8,33 +8,58 @@ namespace OswisOrg\OswisCoreBundle\Entity\NonPersistent;
 
 class BankAccount
 {
-    protected ?string $bankAccountNumber = null;
+    protected ?string $prefix = null;
 
-    protected ?string $bankAccountBank = null;
+    protected ?string $accountNumber = null;
 
-    public function __construct(?string $bankAccountNumber, ?string $bankAccountBank)
+    protected ?string $bankCode = null;
+
+    public function __construct(?string $prefix, ?string $bankAccountNumber, ?string $bankAccountBank)
     {
-        $this->bankAccountNumber = $bankAccountNumber;
-        $this->bankAccountBank = $bankAccountBank;
+        $this->prefix = $prefix;
+        $this->accountNumber = $bankAccountNumber;
+        $this->bankCode = $bankAccountBank;
     }
 
-    public function getBankAccountNumber(): ?string
+    public function getAccountNumber(): ?string
     {
-        return $this->bankAccountNumber;
+        return $this->accountNumber;
     }
 
-    public function setBankAccountNumber(?string $bankAccountNumber): void
+    public function setAccountNumber(?string $accountNumber): void
     {
-        $this->bankAccountNumber = $bankAccountNumber;
+        $this->accountNumber = $accountNumber;
     }
 
-    public function getBankAccountBank(): ?string
+    public function getPrefix(): ?string
     {
-        return $this->bankAccountBank;
+        return $this->prefix;
     }
 
-    public function setBankAccountBank(?string $bankAccountBank): void
+    public function setPrefix(?string $prefix): void
     {
-        $this->bankAccountBank = $bankAccountBank;
+        $this->prefix = $prefix;
     }
+
+    public function getBankCode(): ?string
+    {
+        return $this->bankCode;
+    }
+
+    public function setBankCode(?string $bankCode): void
+    {
+        $this->bankCode = $bankCode;
+    }
+
+    public function getFull(): ?string
+    {
+        if (empty($this->getAccountNumber())) {
+            return null;
+        }
+        $account = (empty($this->getPrefix()) ? '' : $this->getPrefix().'-').$this->getAccountNumber();
+        $account .= empty($this->getBankCode()) ? null : ('/'.$this->getBankCode());
+
+        return $account;
+    }
+
 }

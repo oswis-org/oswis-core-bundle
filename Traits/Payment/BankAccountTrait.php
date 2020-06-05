@@ -13,6 +13,11 @@ trait BankAccountTrait
     /**
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
+    protected ?string $bankAccountPrefix = null;
+
+    /**
+     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
+     */
     protected ?string $bankAccountNumber = null;
 
     /**
@@ -22,18 +27,19 @@ trait BankAccountTrait
 
     public function getBankAccount(): BankAccount
     {
-        return new BankAccount($this->getBankAccountNumber(), $this->getBankAccountBank());
+        return new BankAccount($this->bankAccountPrefix, $this->bankAccountNumber, $this->bankAccountBank);
     }
 
     public function setBankAccount(?BankAccount $bankAccount): void
     {
-        $this->setBankAccountNumber($bankAccount ? $bankAccount->getBankAccountNumber() : null);
-        $this->setBankAccountBank($bankAccount ? $bankAccount->getBankAccountBank() : null);
+        $this->bankAccountPrefix = $bankAccount ? $bankAccount->getPrefix() : null;
+        $this->bankAccountNumber = $bankAccount ? $bankAccount->getAccountNumber() : null;
+        $this->bankAccountBank = $bankAccount ? $bankAccount->getBankCode() : null;
     }
 
     public function getBankAccountNumber(): ?string
     {
-        return $this->bankAccountNumber;
+        return $this->getBankAccount()->getAccountNumber();
     }
 
     public function setBankAccountNumber(?string $bankAccountNumber): void
@@ -43,7 +49,7 @@ trait BankAccountTrait
 
     public function getBankAccountBank(): ?string
     {
-        return $this->bankAccountBank;
+        return $this->getBankAccount()->getBankCode();
     }
 
     public function setBankAccountBank(?string $bankAccountBank): void
@@ -51,18 +57,18 @@ trait BankAccountTrait
         $this->bankAccountBank = $bankAccountBank;
     }
 
-    public function getFullBankAccount(): ?string
+    public function getBankAccountPrefix(): ?string
     {
-        return $this->getBankAccountComplete();
+        return $this->getBankAccount()->getPrefix();
     }
 
-    public function getBankAccountComplete(): ?string
+    public function getBankAccountFull(): ?string
     {
-        $fullBankAccount = $this->bankAccountNumber;
-        if ($this->bankAccountNumber && $this->bankAccountBank) {
-            $fullBankAccount .= '/'.$this->bankAccountBank;
-        }
+        return $this->getBankAccount()->getFull();
+    }
 
-        return $fullBankAccount;
+    public function setBankAccountPrefix(?string $bankAccountPrefix): void
+    {
+        $this->bankAccountPrefix = $bankAccountPrefix;
     }
 }
