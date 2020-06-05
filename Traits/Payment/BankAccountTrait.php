@@ -6,21 +6,30 @@
 
 namespace OswisOrg\OswisCoreBundle\Traits\Payment;
 
+use OswisOrg\OswisCoreBundle\Entity\NonPersistent\BankAccount;
+
 trait BankAccountTrait
 {
     /**
-     * @var string|null
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
     protected ?string $bankAccountNumber = null;
 
     /**
-     * Second line of street.
-     *
-     * @var string|null Second line of street
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
     protected ?string $bankAccountBank = null;
+
+    public function getBankAccount(): BankAccount
+    {
+        return new BankAccount($this->getBankAccountNumber(), $this->getBankAccountBank());
+    }
+
+    public function setBankAccount(?BankAccount $bankAccount): void
+    {
+        $this->setBankAccountNumber($bankAccount ? $bankAccount->getBankAccountNumber() : null);
+        $this->setBankAccountBank($bankAccount ? $bankAccount->getBankAccountBank() : null);
+    }
 
     public function getBankAccountNumber(): ?string
     {
@@ -47,9 +56,6 @@ trait BankAccountTrait
         return $this->getBankAccountComplete();
     }
 
-    /**
-     * @return string
-     */
     public function getBankAccountComplete(): ?string
     {
         $fullBankAccount = $this->bankAccountNumber;
@@ -59,5 +65,4 @@ trait BankAccountTrait
 
         return $fullBankAccount;
     }
-
 }

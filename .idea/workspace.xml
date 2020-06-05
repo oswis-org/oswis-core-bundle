@@ -25,8 +25,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Entity/NonPersistent/BankAccount.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Payment/DepositValueTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Payment/DepositValueTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Payment/BankAccountTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Payment/BankAccountTrait.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -230,7 +231,7 @@
     <property name="add_unversioned_files" value="$PROJECT_DIR$/vendor/symfony/swiftmailer-bundle/composer.json" />
     <property name="editor.config.ad.shown" value="true" />
     <property name="javascript.nodejs.core.library.configured.version" value="10.17.0" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Traits/Common" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Entity/NonPersistent" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -243,19 +244,19 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/Traits/Common" />
-      <recent name="$PROJECT_DIR$/Entity/NonPersistent" />
-      <recent name="$PROJECT_DIR$/Serializer/Encoder" />
-      <recent name="$PROJECT_DIR$/Entity/NonPersistent/Export" />
-      <recent name="$PROJECT_DIR$/Resources/config" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Resources/views/export/pdf" />
       <recent name="$PROJECT_DIR$/Entity/NonPersistent/Export" />
       <recent name="$PROJECT_DIR$/Interfaces/Payment" />
       <recent name="$PROJECT_DIR$/Interfaces/AddressBook" />
       <recent name="$PROJECT_DIR$/Interfaces/Common" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Entity/NonPersistent" />
+      <recent name="$PROJECT_DIR$/Traits/Common" />
+      <recent name="$PROJECT_DIR$/Serializer/Encoder" />
+      <recent name="$PROJECT_DIR$/Entity/NonPersistent/Export" />
+      <recent name="$PROJECT_DIR$/Resources/config" />
     </key>
   </component>
   <component name="RunManager">
@@ -731,14 +732,9 @@
       <workItem from="1591105524383" duration="761000" />
       <workItem from="1591121444363" duration="203000" />
       <workItem from="1591177686937" duration="145000" />
-      <workItem from="1591223671814" duration="16000" />
-    </task>
-    <task id="LOCAL-00578" summary="Some fixes, updates and changes.">
-      <created>1588940282941</created>
-      <option name="number" value="00578" />
-      <option name="presentableId" value="LOCAL-00578" />
-      <option name="project" value="LOCAL" />
-      <updated>1588940282942</updated>
+      <workItem from="1591223671814" duration="36000" />
+      <workItem from="1591354977159" duration="51000" />
+      <workItem from="1591359020953" duration="599000" />
     </task>
     <task id="LOCAL-00579" summary="Some fixes, updates and changes.">
       <created>1588957691307</created>
@@ -1076,7 +1072,14 @@
       <option name="project" value="LOCAL" />
       <updated>1591177794939</updated>
     </task>
-    <option name="localTasksCounter" value="627" />
+    <task id="LOCAL-00627" summary="Some fixes, updates and changes.">
+      <created>1591223694424</created>
+      <option name="number" value="00627" />
+      <option name="presentableId" value="LOCAL-00627" />
+      <option name="project" value="LOCAL" />
+      <updated>1591223694424</updated>
+    </task>
+    <option name="localTasksCounter" value="628" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1159,10 +1162,10 @@
       <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="396" y="187" width="671" height="398" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.741@0.0.1366.741" timestamp="1588084778890" />
-    <state x="546" y="158" width="466" height="556" key="#com.intellij.ide.util.MemberChooser" timestamp="1590074559631">
+    <state x="546" y="158" width="466" height="556" key="#com.intellij.ide.util.MemberChooser" timestamp="1591359184250">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="546" y="158" width="466" height="556" key="#com.intellij.ide.util.MemberChooser/0.0.1366.741@0.0.1366.741" timestamp="1590074559631" />
+    <state x="546" y="158" width="466" height="556" key="#com.intellij.ide.util.MemberChooser/0.0.1366.741@0.0.1366.741" timestamp="1591359184250" />
     <state x="2466" y="164" width="349" height="577" key="#com.intellij.ide.util.MemberChooser/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1588590248828" />
     <state x="251" y="0" width="946" height="735" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1590263329005">
       <screen x="0" y="0" width="1366" height="741" />
@@ -1186,10 +1189,10 @@
     <state x="499" y="381" width="402" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1590265305170" />
     <state x="701" y="381" width="509" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1588880649242" />
     <state x="2356" y="395" width="402" height="332" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1588872805427" />
-    <state x="0" y="0" width="1366" height="741" key="CommitChangelistDialog2" timestamp="1591177794732">
+    <state x="0" y="0" width="1366" height="741" key="CommitChangelistDialog2" timestamp="1591223694187">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="0" y="0" width="904" height="735" key="CommitChangelistDialog2/0.0.1366.741@0.0.1366.741" timestamp="1591177794732" />
+    <state x="0" y="0" width="904" height="735" key="CommitChangelistDialog2/0.0.1366.741@0.0.1366.741" timestamp="1591223694187" />
     <state x="1920" y="0" width="1366" height="741" key="CommitChangelistDialog2/0.0.3286.741@0.0.3286.741" timestamp="1588168860490" />
     <state x="369" y="0" width="881" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1590265473464" />
     <state x="518" y="0" width="881" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1589307156395" />
@@ -1212,10 +1215,10 @@
     <state x="187" y="5" key="SettingsEditor/0.0.1366.741@0.0.1366.741" timestamp="1582926206454" />
     <state x="33" y="0" width="1280" height="730" key="SettingsEditor/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1587589952804" />
     <state x="263" y="0" width="1418" height="741" key="SettingsEditor/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1589305333032" />
-    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1591177796473">
+    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1591223695769">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1591177796473" />
+    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1591223695769" />
     <state x="0" y="213" width="1920" height="522" key="Vcs.Push.Dialog.v2/0.0.3286.741@0.0.3286.741" timestamp="1588168862336" />
     <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1590265475769" />
     <state x="555" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1589307158439" />
