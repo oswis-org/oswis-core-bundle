@@ -24,7 +24,7 @@ trait IdTrait
     protected ?int $id = null;
 
     /**
-     * @Doctrine\ORM\Mapping\Column(type="string", length=255, nullable=true, unique=true)
+     * @Doctrine\ORM\Mapping\Column(type="string", length=170, nullable=true, unique=true)
      * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class, strategy="exact")
      * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
      */
