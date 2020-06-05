@@ -4,7 +4,7 @@
     "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
     "This file is @generated automatically"
   ],
-  "content-hash": "63d0533e6354ef282fa32dfdd23e2a28",
+  "content-hash": "f0997221c25454a36c3016cb78bc6a20",
   "packages": [
     {
       "name": "adci/full-name-parser",
@@ -4349,6 +4349,55 @@
         "promises"
       ],
       "time": "2020-05-12T15:16:56+00:00"
+    },
+    {
+      "name": "rikudou/czqrpayment",
+      "version": "v4.0.2",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/RikudouSage/QrPaymentCZ.git",
+        "reference": "937b20308f71980f4dc53b607f3c8f7943275af9"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/RikudouSage/QrPaymentCZ/zipball/937b20308f71980f4dc53b607f3c8f7943275af9",
+        "reference": "937b20308f71980f4dc53b607f3c8f7943275af9",
+        "shasum": ""
+      },
+      "require": {
+        "php": "^7.1"
+      },
+      "require-dev": {
+        "endroid/qr-code": "^3.2",
+        "php-coveralls/php-coveralls": "^2.1",
+        "phpunit/phpunit": "^7.5"
+      },
+      "suggest": {
+        "endroid/qr-code": "^3.2"
+      },
+      "type": "library",
+      "autoload": {
+        "psr-4": {
+          "rikudou\\CzQrPayment\\": "src/"
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "WTFPL"
+      ],
+      "authors": [
+        {
+          "name": "Dominik Chrástecký",
+          "email": "dominik@chrastecky.cz"
+        }
+      ],
+      "description": "QR payment library for Czech accounts",
+      "homepage": "https://github.com/RikudouSage/QrPaymentCZ",
+      "keywords": [
+        "payment",
+        "qr"
+      ],
+      "time": "2020-03-29T01:44:12+00:00"
     },
     {
       "name": "sensio/framework-extra-bundle",
