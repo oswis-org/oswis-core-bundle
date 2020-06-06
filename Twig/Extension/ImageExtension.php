@@ -108,14 +108,22 @@ final class ImageExtension extends AbstractExtension
 
     public function getImageComputedComment(?string $imagePath = null): ?string
     {
-        $result = @exif_read_data($this->getPath($imagePath), 'COMPUTED');
+        $path = $this->getPath($imagePath);
+        if (IMAGETYPE_JPEG !== $this->getImageTypeConstant($path)) {
+            return null;
+        }
+        $result = @exif_read_data($path, 'COMPUTED');
 
         return is_array($result) && is_array($result['COMPUTED']) ? $result['COMPUTED']['UserComment'] : null;
     }
 
     public function getImageExifComment(?string $imagePath = null): ?string
     {
-        $comments = @exif_read_data($this->getPath($imagePath), 'COMMENT') ?: null;
+        $path = $this->getPath($imagePath);
+        if (IMAGETYPE_JPEG !== $this->getImageTypeConstant($path)) {
+            return null;
+        }
+        $comments = @exif_read_data($path, 'COMMENT') ?: null;
         if (!is_array($comments)) {
             return null;
         }
@@ -125,7 +133,11 @@ final class ImageExtension extends AbstractExtension
 
     public function getImageIfdComment(?string $imagePath = null): ?string
     {
-        $result = @exif_read_data($this->getPath($imagePath), 'IFD0');
+        $path = $this->getPath($imagePath);
+        if (IMAGETYPE_JPEG !== $this->getImageTypeConstant($path)) {
+            return null;
+        }
+        $result = @exif_read_data($path, 'IFD0');
 
         return $result && is_array($result) && is_array($result['IFD0']) ? $result['IFD0']['UserComment'] : null;
     }
