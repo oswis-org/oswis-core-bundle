@@ -48,7 +48,9 @@ class Configuration implements ConfigurationInterface
             'Version of application (semantic versioning, major.minor.patch).'
         )->defaultValue('v0.0.1')->example('v1.2.3')->end()->scalarNode('logo')->defaultValue('@images/logo.png')->info('Path to app logo.')->example(
             ['@images/logo.png', '../assets/assets/images/logo.png']
-        )->end()->end()->end()->end();
+        )->end()->children()->scalarNode('portalName')->info('Name of portal application.')->defaultValue(
+            'OSWIS Portal'
+        )->example('John\'s Portal')->end()->end()->end()->end();
     }
 
     private function addEmailConfig(NodeDefinition $rootNode): void
