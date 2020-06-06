@@ -70,6 +70,7 @@ final class ImageExtension extends AbstractExtension
 
     public function getImageWidth(?string $imagePath = null): ?int
     {
+        /** @noinspection PhpExpressionAlwaysNullInspection */
         return $this->getImageSize($imagePath)[0];
     }
 
@@ -77,7 +78,7 @@ final class ImageExtension extends AbstractExtension
     {
         $path = $this->getPath($path);
 
-        return $path ? (getimagesize($path) ?: [null, null, null, null]) : [null, null, null, null];
+        return $path ? (@getimagesize($path) ?: [null, null, null, null]) : [null, null, null, null];
     }
 
     public function getPath(?string $imagePath = null): ?string
@@ -93,11 +94,13 @@ final class ImageExtension extends AbstractExtension
 
     public function getImageHeight(?string $imagePath = null): ?int
     {
+        /** @noinspection PhpExpressionAlwaysNullInspection */
         return $this->getImageSize($imagePath)[1] ?: null;
     }
 
     public function getImageHtmlSizeAttributes(?string $imagePath = null): ?string
     {
+        /** @noinspection PhpExpressionAlwaysNullInspection */
         return $this->getImageSize($imagePath)[3] ?: null;
     }
 
