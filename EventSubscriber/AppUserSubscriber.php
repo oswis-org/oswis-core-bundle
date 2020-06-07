@@ -8,7 +8,9 @@ namespace OswisOrg\OswisCoreBundle\EventSubscriber;
 
 use ApiPlatform\Core\EventListener\EventPriorities;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser;
+use OswisOrg\OswisCoreBundle\Exceptions\NotImplementedException;
 use OswisOrg\OswisCoreBundle\Exceptions\OswisException;
+use OswisOrg\OswisCoreBundle\Exceptions\UserNotFoundException;
 use OswisOrg\OswisCoreBundle\Service\AppUserService;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Exception\SuspiciousOperationException;
@@ -35,7 +37,9 @@ final class AppUserSubscriber implements EventSubscriberInterface
     }
 
     /**
-     * @throws OswisException
+     * @param ViewEvent $event
+     *
+     * @throws OswisException|NotImplementedException|UserNotFoundException
      */
     public function makeAppUser(ViewEvent $event): void
     {

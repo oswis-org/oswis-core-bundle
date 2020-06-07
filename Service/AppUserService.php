@@ -71,8 +71,11 @@ class AppUserService
     }
 
     /**
-     * @throws OswisException
      * @throws InvalidArgumentException
+     * @throws NotImplementedException
+     * @throws OswisException
+     * @throws UserNotFoundException
+     * @throws UserNotUniqueException
      */
     public function registerRoot(): void
     {
@@ -101,9 +104,20 @@ class AppUserService
     /**
      * Create and save new user of application.
      *
-     * @param bool|null $activate
+     * @param string|null      $fullName
+     * @param AppUserType|null $appUserType
+     * @param string|null      $username
+     * @param string|null      $password
+     * @param string|null      $email
+     * @param bool|null        $activate
+     * @param bool|null        $sendMail
+     * @param bool|null        $errorWhenExist
      *
+     * @return AppUser
+     * @throws NotImplementedException
      * @throws OswisException
+     * @throws UserNotFoundException
+     * @throws UserNotUniqueException
      * @todo Refactor: AppUser instance instead of single arguments.
      */
     public function create(
@@ -156,7 +170,16 @@ class AppUserService
     }
 
     /**
+     * @param AppUser|null $appUser
+     * @param string       $type
+     * @param string|null  $password
+     * @param string|null  $token
+     * @param bool|null    $sendConfirmation
+     * @param bool|null    $withoutToken
+     *
+     * @throws NotImplementedException
      * @throws OswisException
+     * @throws UserNotFoundException
      */
     public function appUserAction(
         ?AppUser $appUser,
@@ -193,6 +216,7 @@ class AppUserService
      * @param bool         $sendConfirmation
      *
      * @throws OswisException
+     * @throws UserNotFoundException
      */
     private function passwordChangeRequest(?AppUser $appUser, bool $sendConfirmation): void
     {
@@ -249,6 +273,7 @@ class AppUserService
      * @param bool         $withoutToken
      *
      * @throws OswisException
+     * @throws UserNotFoundException
      */
     private function passwordChange(?AppUser $appUser, ?string $password, ?string $token, bool $sendConfirmation, bool $withoutToken): void
     {
@@ -275,6 +300,7 @@ class AppUserService
      * @param AppUser|null $appUser
      *
      * @throws OswisException
+     * @throws UserNotFoundException
      */
     private function activationRequest(?AppUser $appUser): void
     {
