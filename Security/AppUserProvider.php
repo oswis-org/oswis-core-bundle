@@ -4,7 +4,7 @@ namespace OswisOrg\OswisCoreBundle\Security;
 
 use Doctrine\ORM\EntityManagerInterface;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser;
-use OswisOrg\OswisCoreBundle\Exceptions\OswisUserNotUniqueException;
+use OswisOrg\OswisCoreBundle\Exceptions\UserNotUniqueException;
 use OswisOrg\OswisCoreBundle\Repository\AppUserRepository;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
@@ -22,7 +22,7 @@ class AppUserProvider implements UserProviderInterface
     }
 
     /**
-     * @throws OswisUserNotUniqueException
+     * @throws UserNotUniqueException
      * @throws UnsupportedUserException
      * @throws UsernameNotFoundException
      */
@@ -39,7 +39,7 @@ class AppUserProvider implements UserProviderInterface
      * @param string $username
      *
      * @noinspection MissingParameterTypeDeclarationInspection
-     * @throws OswisUserNotUniqueException
+     * @throws UserNotUniqueException
      * @throws UsernameNotFoundException
      */
     final public function loadUserByUsername($username): ?AppUser

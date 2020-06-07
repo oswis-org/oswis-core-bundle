@@ -12,7 +12,7 @@ use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\Query;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser;
-use OswisOrg\OswisCoreBundle\Exceptions\OswisUserNotUniqueException;
+use OswisOrg\OswisCoreBundle\Exceptions\UserNotUniqueException;
 use Symfony\Bridge\Doctrine\Security\User\UserLoaderInterface;
 
 class AppUserRepository extends EntityRepository implements UserLoaderInterface
@@ -22,7 +22,7 @@ class AppUserRepository extends EntityRepository implements UserLoaderInterface
     /**
      * @param string|null $username
      *
-     * @throws OswisUserNotUniqueException
+     * @throws UserNotUniqueException
      * @noinspection MissingParameterTypeDeclarationInspection
      */
     public function loadUserByUsername($username): ?AppUser
@@ -36,7 +36,7 @@ class AppUserRepository extends EntityRepository implements UserLoaderInterface
             $query = $builder->setParameter('username', $username)->setParameter('email', $username)->getQuery();
             $appUser = $query->getOneOrNullResult(Query::HYDRATE_OBJECT);
         } catch (NonUniqueResultException $e) {
-            throw new OswisUserNotUniqueException();
+            throw new UserNotUniqueException();
         }
 
         return $appUser && ($appUser instanceof AppUser) && $appUser->isActive() ? $appUser : null;
@@ -45,7 +45,7 @@ class AppUserRepository extends EntityRepository implements UserLoaderInterface
     /**
      * @param int $id
      *
-     * @throws OswisUserNotUniqueException
+     * @throws UserNotUniqueException
      */
     public function loadUserById(?int $id): ?AppUser
     {
@@ -56,7 +56,7 @@ class AppUserRepository extends EntityRepository implements UserLoaderInterface
             $builder = $this->createQueryBuilder('u')->where('(u.id = :id) AND'); // TODO: Is in range??????!!!!!!
             $appUser = $builder->setParameter('id', $id)->getQuery()->getOneOrNullResult(Query::HYDRATE_OBJECT);
         } catch (NonUniqueResultException $e) {
-            throw new OswisUserNotUniqueException();
+            throw new UserNotUniqueException();
         }
 
         return ($appUser && ($appUser instanceof AppUser) && $appUser->isActive()) ? $appUser : null;

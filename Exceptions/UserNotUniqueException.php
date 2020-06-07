@@ -2,7 +2,7 @@
 
 namespace OswisOrg\OswisCoreBundle\Exceptions;
 
-class OswisUserNotUniqueException extends OswisException
+class UserNotUniqueException extends OswisException
 {
     public function __construct(?string $message = null)
     {

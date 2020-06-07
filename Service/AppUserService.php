@@ -14,10 +14,10 @@ use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserRole;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserType;
 use OswisOrg\OswisCoreBundle\Entity\NonPersistent\Nameable;
+use OswisOrg\OswisCoreBundle\Exceptions\NotImplementedException;
 use OswisOrg\OswisCoreBundle\Exceptions\OswisException;
-use OswisOrg\OswisCoreBundle\Exceptions\OswisNotImplementedException;
-use OswisOrg\OswisCoreBundle\Exceptions\OswisUserNotFoundException;
-use OswisOrg\OswisCoreBundle\Exceptions\OswisUserNotUniqueException;
+use OswisOrg\OswisCoreBundle\Exceptions\UserNotFoundException;
+use OswisOrg\OswisCoreBundle\Exceptions\UserNotUniqueException;
 use OswisOrg\OswisCoreBundle\Provider\OswisCoreSettingsProvider;
 use OswisOrg\OswisCoreBundle\Repository\AppUserRepository;
 use OswisOrg\OswisCoreBundle\Utils\StringUtils;
@@ -129,7 +129,7 @@ class AppUserService
             return $appUser;
         }
         if (null !== $appUser && $errorWhenExist) {
-            throw new OswisUserNotUniqueException('Uživatel '.$appUser->getUsername().' již existuje.');
+            throw new UserNotUniqueException('Uživatel '.$appUser->getUsername().' již existuje.');
         }
         $appUser = new AppUser($fullName, $username, $email, null);
         $appUser->setAppUserType($appUserType);
@@ -176,7 +176,7 @@ class AppUserService
             } elseif (self::ACTIVATION === $type) { // Check activation token and activate account.
                 $this->activation($appUser, $password, $token, $sendConfirmation, $withoutToken);
             } else { // Action type is not recognized.
-                throw new OswisNotImplementedException($type, 'u uživatelských účtů');
+                throw new NotImplementedException($type, 'u uživatelských účtů');
             }
             if ($appUser) {
                 $this->em->persist($appUser);
@@ -197,7 +197,7 @@ class AppUserService
     private function passwordChangeRequest(?AppUser $appUser, bool $sendConfirmation): void
     {
         if (null === $appUser) {
-            throw new OswisUserNotFoundException();
+            throw new UserNotFoundException();
         }
         $token = $appUser->generatePasswordRequestToken();
         if ($sendConfirmation) {
@@ -219,7 +219,7 @@ class AppUserService
                 $title = 'Požadavek na změnu hesla';
                 $password = null;
             } else {
-                throw new OswisNotImplementedException($type, 'u změny hesla');
+                throw new NotImplementedException($type, 'u změny hesla');
             }
             $data = [
                 'type'     => $type,
@@ -254,7 +254,7 @@ class AppUserService
     {
         $appUser ??= $this->getRepository()->findOneBy(['passwordResetRequestToken' => $token]);
         if (null === $appUser) {
-            throw new OswisUserNotFoundException();
+            throw new UserNotFoundException();
         }
         if (!$withoutToken && !$token) {
             throw new OswisException('Token pro změnu hesla nebyl zadán.');
@@ -279,7 +279,7 @@ class AppUserService
     private function activationRequest(?AppUser $appUser): void
     {
         if (null === $appUser) {
-            throw new OswisUserNotFoundException();
+            throw new UserNotFoundException();
         }
         $this->sendAppUserEmail($appUser, self::ACTIVATION_REQUEST, $appUser->generateActivationRequestToken());
         $this->logger->info('[OK] Created activation request for app user '.$appUser->getId().'');

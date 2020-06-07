@@ -2,7 +2,7 @@
 
 namespace OswisOrg\OswisCoreBundle\Exceptions;
 
-class OswisUserNotFoundException extends OswisException
+class UserNotFoundException extends NotFoundException
 {
     public function __construct(?string $message = null)
     {

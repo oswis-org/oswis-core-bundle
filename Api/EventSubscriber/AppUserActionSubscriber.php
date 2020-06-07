@@ -7,10 +7,10 @@ namespace OswisOrg\OswisCoreBundle\Api\EventSubscriber;
 
 use ApiPlatform\Core\EventListener\EventPriorities;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser;
+use OswisOrg\OswisCoreBundle\Exceptions\NotImplementedException;
 use OswisOrg\OswisCoreBundle\Exceptions\OswisException;
-use OswisOrg\OswisCoreBundle\Exceptions\OswisNotImplementedException;
-use OswisOrg\OswisCoreBundle\Exceptions\OswisUserNotFoundException;
-use OswisOrg\OswisCoreBundle\Exceptions\OswisUserNotUniqueException;
+use OswisOrg\OswisCoreBundle\Exceptions\UserNotFoundException;
+use OswisOrg\OswisCoreBundle\Exceptions\UserNotUniqueException;
 use OswisOrg\OswisCoreBundle\Service\AppUserService;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -40,9 +40,9 @@ final class AppUserActionSubscriber implements EventSubscriberInterface
      * @param ViewEvent $event
      *
      * @throws OswisException
-     * @throws OswisNotImplementedException
-     * @throws OswisUserNotFoundException
-     * @throws OswisUserNotUniqueException
+     * @throws NotImplementedException
+     * @throws UserNotFoundException
+     * @throws UserNotUniqueException
      */
     public function appUserAction(ViewEvent $event): void
     {
@@ -53,7 +53,7 @@ final class AppUserActionSubscriber implements EventSubscriberInterface
         $properties = $this->getRequestProperties($event->getControllerResult());
         // TODO: Refactor to array ($data[]).
         if (!($appUser = $this->loadAppUser($properties))) {
-            throw new OswisUserNotFoundException();
+            throw new UserNotFoundException();
         }
         assert($appUser instanceof AppUser);
         if (in_array($properties['type'], AppUserService::ALLOWED_TYPES, true)) {
@@ -62,7 +62,7 @@ final class AppUserActionSubscriber implements EventSubscriberInterface
 
             return;
         }
-        throw new OswisNotImplementedException($properties['type'], 'u uživatelských účtů');
+        throw new NotImplementedException($properties['type'], 'u uživatelských účtů');
     }
 
     /**
@@ -87,7 +87,7 @@ final class AppUserActionSubscriber implements EventSubscriberInterface
      * @param array $properties
      *
      * @return AppUser|null
-     * @throws OswisUserNotUniqueException
+     * @throws UserNotUniqueException
      */
     private function loadAppUser(array $properties): ?AppUser
     {

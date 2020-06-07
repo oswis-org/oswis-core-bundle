@@ -7,7 +7,7 @@ namespace OswisOrg\OswisCoreBundle\Entity\AbstractClass;
 
 use DateTime;
 use InvalidArgumentException;
-use OswisOrg\OswisCoreBundle\Exceptions\OswisNotImplementedException;
+use OswisOrg\OswisCoreBundle\Exceptions\NotImplementedException;
 use OswisOrg\OswisCoreBundle\Interfaces\Payment\PaymentInterface;
 use OswisOrg\OswisCoreBundle\Traits\Common\BasicMailConfirmationTrait;
 use OswisOrg\OswisCoreBundle\Traits\Common\BasicTrait;
@@ -76,12 +76,12 @@ abstract class AbstractPayment implements PaymentInterface
     /**
      * @param DateTime|null $dateTime
      *
-     * @throws OswisNotImplementedException
+     * @throws NotImplementedException
      */
     public function setDateTime(?DateTime $dateTime): void
     {
         if ($this->getDateTime() !== $dateTime) {
-            throw new OswisNotImplementedException('změna data platby');
+            throw new NotImplementedException('změna data platby');
         }
     }
 

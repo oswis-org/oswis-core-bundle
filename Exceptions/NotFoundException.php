@@ -4,7 +4,7 @@ namespace OswisOrg\OswisCoreBundle\Exceptions;
 
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-class OswisNotFoundException extends NotFoundHttpException
+class NotFoundException extends NotFoundHttpException
 {
     public function __construct(?string $message = null)
     {
