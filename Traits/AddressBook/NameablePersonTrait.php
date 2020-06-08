@@ -25,7 +25,6 @@ use function trim;
 trait NameablePersonTrait
 {
     use NameableTrait {
-        setSlug as traitSetSlug;
         getSortableName as traitSortableName;
         setName as traitName;
         updateName as traitUpdateName;
