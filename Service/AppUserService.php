@@ -73,17 +73,6 @@ class AppUserService
         $this->appUserTokenService = $appUserTokenService;
     }
 
-    public function getNewRandomUsername(): string
-    {
-        try {
-            $number = random_int(1, 9999);
-        } catch (Exception $e) {
-            $number = time();
-        }
-
-        return "user$number";
-    }
-
     /**
      * Create and save new user of application.
      *
@@ -132,12 +121,89 @@ class AppUserService
         return $appUser;
     }
 
+    public function getNewRandomUsername(): string
+    {
+        try {
+            $number = random_int(1, 9999);
+        } catch (Exception $e) {
+            $number = time();
+        }
+
+        return "user$number";
+    }
+
     public function getRepository(): AppUserRepository
     {
         $repository = $this->em->getRepository(AppUser::class);
         assert($repository instanceof AppUserRepository);
 
         return $repository;
+    }
+
+    public function activate(AppUser $appUser, ?string $password, bool $sendConfirmation = true): void
+    {
+        try {
+            $isRandom = empty($password);
+            $password ??= StringUtils::generatePassword();
+            $appUser->setPassword($this->encoder->encodePassword($appUser, $password));
+            if ($sendConfirmation) {
+                $this->sendAppUserEmail($appUser, self::ACTIVATION, null, $isRandom ? $password : null);
+            }
+            $this->em->persist($appUser);
+            $this->logger->info('Successfully activated user ('.$appUser->getId().').');
+        } catch (OswisException $exception) {
+            $this->logger->error('User ('.$appUser->getId().') activation FAILED. '.$exception->getMessage());
+        }
+    }
+
+    /**
+     * @throws OswisException
+     */
+    public function sendAppUserEmail(AppUser $appUser, string $type, ?AppUserToken $appUserToken = null, ?string $newPassword = null): void
+    {
+        try {
+            if (self::ACTIVATION_REQUEST === $type) { // Send e-mail about activation request. Include token for activation.
+                $title = 'Aktivace uživatelského účtu';
+            } elseif (self::ACTIVATION === $type) {
+                // Send e-mail about account activation. Include password if present (it means that it's generated randomly).
+                $title = 'Účet byl aktivován';
+            } else {
+                throw new OswisException('Akce "'.$type.'" není u uživatelských účtů implementována.');
+            }
+            $data = [
+                'appUser'      => $appUser,
+                'type'         => $type,
+                'appUserToken' => $appUserToken,
+                'password'     => $newPassword,
+            ];
+            $email = new TemplatedEmail();
+            try {
+                $email->to(new Address($appUser->getEmail() ?? '', $appUser->getName()));
+            } catch (LogicException $e) {
+                $email->to($appUser->getEmail() ?? '');
+            }
+            $email->subject($title)->htmlTemplate('@OswisOrgOswisCore/e-mail/app-user.html.twig')->context($data);
+            $this->mailer->send($email);
+        } catch (TransportExceptionInterface $e) {
+            throw new OswisException('Problém s odesláním zprávy o změně účtu.  '.$e->getMessage());
+        }
+    }
+
+    /**
+     * @param AppUser|null $appUser
+     *
+     * @throws InvalidTypeException
+     * @throws OswisException
+     * @throws UserNotFoundException
+     */
+    private function requestActivation(?AppUser $appUser): void
+    {
+        if (null === $appUser) {
+            throw new UserNotFoundException();
+        }
+        $appUserToken = $this->appUserTokenService->create($appUser, AppUserToken::TYPE_ACTIVATION, false);
+        $this->sendAppUserEmail($appUser, self::ACTIVATION_REQUEST, $appUserToken);
+        $this->logger->info('Created activation request for user '.$appUser->getId().'.');
     }
 
     /**
@@ -170,20 +236,24 @@ class AppUserService
         }
     }
 
-    public function activate(AppUser $appUser, ?string $password, bool $sendConfirmation = true): void
+    /**
+     * @param AppUser|null $appUser
+     * @param bool         $sendConfirmation
+     *
+     * @throws OswisException
+     * @throws UserNotFoundException
+     * @throws InvalidTypeException
+     */
+    public function requestPasswordChange(?AppUser $appUser, bool $sendConfirmation): void
     {
-        try {
-            $isRandom = empty($password);
-            $password ??= StringUtils::generatePassword();
-            $appUser->setPassword($this->encoder->encodePassword($appUser, $password));
-            if ($sendConfirmation) {
-                $this->sendAppUserEmail($appUser, self::ACTIVATION, null, $isRandom ? $password : null);
-            }
-            $this->em->persist($appUser);
-            $this->logger->info('Successfully activated user ('.$appUser->getId().').');
-        } catch (OswisException $exception) {
-            $this->logger->error('User ('.$appUser->getId().') activation FAILED. '.$exception->getMessage());
+        if (null === $appUser) {
+            throw new UserNotFoundException();
         }
+        $appUserToken = $this->appUserTokenService->create($appUser, AppUserToken::TYPE_PASSWORD_RESET, false);
+        if ($sendConfirmation) {
+            $this->sendPasswordEmail($appUser, self::PASSWORD_CHANGE_REQUEST, $appUserToken);
+        }
+        $this->logger->info('Created password change request for user '.$appUser->getId().'.');
     }
 
     /**
@@ -222,43 +292,6 @@ class AppUserService
     }
 
     /**
-     * @param AppUser|null $appUser
-     * @param string|null  $newPassword
-     * @param string|null  $token
-     * @param bool         $sendConfirmation
-     * @param bool         $withoutToken
-     *
-     * @throws OswisException
-     */
-    public function changePassword(AppUser $appUser, ?string $newPassword, bool $sendConfirmation): void
-    {
-        $random = empty($newPassword);
-        $newPassword ??= StringUtils::generatePassword();
-        $appUser->setPassword($this->encoder->encodePassword($appUser, $newPassword));
-        if ($sendConfirmation) {
-            $this->sendPasswordEmail($appUser, self::PASSWORD_CHANGE, null, $random ? $newPassword : null);
-        }
-        $this->logger->info('Password changed for user '.$appUser->getId().'.');
-    }
-
-    /**
-     * @param AppUser|null $appUser
-     *
-     * @throws InvalidTypeException
-     * @throws OswisException
-     * @throws UserNotFoundException
-     */
-    private function requestActivation(?AppUser $appUser): void
-    {
-        if (null === $appUser) {
-            throw new UserNotFoundException();
-        }
-        $appUserToken = $this->appUserTokenService->create($appUser, AppUserToken::TYPE_ACTIVATION, false);
-        $this->sendAppUserEmail($appUser, self::ACTIVATION_REQUEST, $appUserToken);
-        $this->logger->info('Created activation request for user '.$appUser->getId().'.');
-    }
-
-    /**
      * @param string $token
      * @param int    $appUserId
      *
@@ -267,7 +300,7 @@ class AppUserService
     public function getVerifiedToken(string $token, int $appUserId): AppUserToken
     {
         $appUserToken = $this->getToken($token, $appUserId);
-        if (null === $appUserToken || null === $appUserToken->getAppUser()) {
+        if (null === $appUserToken) {
             throw new TokenInvalidException('zadaný token neexistuje');
         }
         $appUserToken->use(true);
@@ -285,24 +318,22 @@ class AppUserService
      * @param int         $appUserId
      * @param string|null $newPassword
      *
-     * @return string Type of processed action as string (constant from AppUserService).
-     * @throws OswisException
-     * @throws TokenInvalidException
+     * @throws OswisException|TokenInvalidException
      */
     public function processToken(string $token, int $appUserId, ?string $newPassword = null): void
     {
         $appUserToken = $this->getToken($token, $appUserId);
-        if (null === $appUserToken || null === ($appUser = $appUserToken->getAppUser())) {
+        if (null === $appUserToken) {
             throw new TokenInvalidException('zadaný token neexistuje');
         }
         try {
             $type = $appUserToken->getType();
             $appUserToken->use();
             if (AppUserToken::TYPE_ACTIVATION === $type) {
-                $this->activate($appUser, null, true);
+                $this->activate($appUserToken->getAppUser(), null, true);
             }
             if (AppUserToken::TYPE_PASSWORD_RESET === $type) {
-                $this->changePassword($appUser, $newPassword, true);
+                $this->changePassword($appUserToken->getAppUser(), $newPassword, true);
             }
             throw new TokenInvalidException('neznámý typ tokenu', $token);
         } catch (OswisException|TokenInvalidException $exception) {
@@ -312,55 +343,20 @@ class AppUserService
     }
 
     /**
-     * @param AppUser|null $appUser
-     * @param bool         $sendConfirmation
+     * @param AppUser     $appUser
+     * @param string|null $newPassword
+     * @param bool        $sendConfirmation
      *
      * @throws OswisException
-     * @throws UserNotFoundException
-     * @throws InvalidTypeException
      */
-    public function requestPasswordChange(?AppUser $appUser, bool $sendConfirmation): void
+    public function changePassword(AppUser $appUser, ?string $newPassword, bool $sendConfirmation): void
     {
-        if (null === $appUser) {
-            throw new UserNotFoundException();
-        }
-        $appUserToken = $this->appUserTokenService->create($appUser, AppUserToken::TYPE_PASSWORD_RESET, false);
+        $random = empty($newPassword);
+        $newPassword ??= StringUtils::generatePassword();
+        $appUser->setPassword($this->encoder->encodePassword($appUser, $newPassword));
         if ($sendConfirmation) {
-            $this->sendPasswordEmail($appUser, self::PASSWORD_CHANGE_REQUEST, $appUserToken);
+            $this->sendPasswordEmail($appUser, self::PASSWORD_CHANGE, null, $random ? $newPassword : null);
         }
-        $this->logger->info('Created password change request for user '.$appUser->getId().'.');
-    }
-
-    /**
-     * @throws OswisException
-     */
-    public function sendAppUserEmail(AppUser $appUser, string $type, ?AppUserToken $appUserToken = null, ?string $newPassword = null): void
-    {
-        try {
-            if (self::ACTIVATION_REQUEST === $type) { // Send e-mail about activation request. Include token for activation.
-                $title = 'Aktivace uživatelského účtu';
-            } elseif (self::ACTIVATION === $type) {
-                // Send e-mail about account activation. Include password if present (it means that it's generated randomly).
-                $title = 'Účet byl aktivován';
-            } else {
-                throw new OswisException('Akce "'.$type.'" není u uživatelských účtů implementována.');
-            }
-            $data = [
-                'appUser'      => $appUser,
-                'type'         => $type,
-                'appUserToken' => $appUserToken,
-                'password'     => $newPassword,
-            ];
-            $email = new TemplatedEmail();
-            try {
-                $email->to(new Address($appUser->getEmail() ?? '', $appUser->getName()));
-            } catch (LogicException $e) {
-                $email->to($appUser->getEmail() ?? '');
-            }
-            $email->subject($title)->htmlTemplate('@OswisOrgOswisCore/e-mail/app-user.html.twig')->context($data);
-            $this->mailer->send($email);
-        } catch (TransportExceptionInterface $e) {
-            throw new OswisException('Problém s odesláním zprávy o změně účtu.  '.$e->getMessage());
-        }
+        $this->logger->info('Password changed for user '.$appUser->getId().'.');
     }
 }

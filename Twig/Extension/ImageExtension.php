@@ -111,6 +111,14 @@ final class ImageExtension extends AbstractExtension
         return $this->getImageComputedComment($imagePath) ?: $this->getImageExifComment($imagePath) ?: $this->getImageIfdComment($imagePath) ?: null;
     }
 
+    public function getImageTypeConstant(?string $imagePath = null): ?int
+    {
+        $imagePath = $this->getPath($imagePath);
+        $imageType = !empty($imagePath) ? (@exif_imagetype($imagePath) ?: null) : null;
+
+        return $imageType ?: $this->getImageSize($imagePath)[2] ?: null;
+    }
+
     public function getImageComputedComment(?string $imagePath = null): ?string
     {
         $imagePath = $this->getPath($imagePath);
@@ -141,13 +149,5 @@ final class ImageExtension extends AbstractExtension
     public function getImageMimeType(?string $imagePath = null): ?string
     {
         return @image_type_to_mime_type($this->getImageTypeConstant($imagePath)) ?: null;
-    }
-
-    public function getImageTypeConstant(?string $imagePath = null): ?int
-    {
-        $imagePath = $this->getPath($imagePath);
-        $imageType = !empty($imagePath) ? (@exif_imagetype($imagePath) ?: null) : null;
-
-        return $imageType ?: $this->getImageSize($imagePath)[2] ?: null;
     }
 }

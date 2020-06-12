@@ -8,6 +8,7 @@ namespace OswisOrg\OswisCoreBundle\EventSubscriber;
 
 use ApiPlatform\Core\EventListener\EventPriorities;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser;
+use OswisOrg\OswisCoreBundle\Exceptions\InvalidTypeException;
 use OswisOrg\OswisCoreBundle\Exceptions\NotImplementedException;
 use OswisOrg\OswisCoreBundle\Exceptions\OswisException;
 use OswisOrg\OswisCoreBundle\Exceptions\UserNotFoundException;
@@ -39,7 +40,7 @@ final class AppUserSubscriber implements EventSubscriberInterface
     /**
      * @param ViewEvent $event
      *
-     * @throws OswisException|NotImplementedException|UserNotFoundException
+     * @throws NotImplementedException|UserNotFoundException|InvalidTypeException|OswisException
      */
     public function makeAppUser(ViewEvent $event): void
     {

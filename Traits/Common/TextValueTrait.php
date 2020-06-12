@@ -19,6 +19,11 @@ trait TextValueTrait
      */
     protected ?string $textValue = null;
 
+    public function hasTextValue(): bool
+    {
+        return !empty($this->getTextValue());
+    }
+
     /**
      * Get text value.
      */
@@ -33,10 +38,5 @@ trait TextValueTrait
     public function setTextValue(?string $textValue): void
     {
         $this->textValue = $textValue;
-    }
-
-    public function hasTextValue(): bool
-    {
-        return !empty($this->getTextValue());
     }
 }
