@@ -76,8 +76,9 @@ final class ImageExtension extends AbstractExtension
     private function getImageSize(?string $path = null): array
     {
         $path = $this->getPath($path);
+        $imageSize = !empty($path) ? getimagesize($path) : null;
 
-        return $path ? (getimagesize($path) ?: [null, null, null, null]) : [null, null, null, null];
+        return is_array($imageSize) ? $imageSize : [null, null, null, null];
     }
 
     public function getPath(?string $imagePath = null): ?string
@@ -103,19 +104,25 @@ final class ImageExtension extends AbstractExtension
 
     public function getImageComment(?string $imagePath = null): ?string
     {
+        if (IMAGETYPE_JPEG !== $this->getImageTypeConstant()) {
+            return null;
+        }
+
         return $this->getImageComputedComment($imagePath) ?: $this->getImageExifComment($imagePath) ?: $this->getImageIfdComment($imagePath) ?: null;
     }
 
     public function getImageComputedComment(?string $imagePath = null): ?string
     {
-        $result = @exif_read_data($this->getPath($imagePath), 'COMPUTED');
+        $imagePath = $this->getPath($imagePath);
+        $result = !empty($imagePath) ? (@exif_read_data($imagePath, 'COMPUTED') ?: null) : null;
 
         return is_array($result) && is_array($result['COMPUTED']) ? $result['COMPUTED']['UserComment'] : null;
     }
 
     public function getImageExifComment(?string $imagePath = null): ?string
     {
-        $comments = @exif_read_data($this->getPath($imagePath), 'COMMENT') ?: null;
+        $imagePath = $this->getPath($imagePath);
+        $comments = !empty($imagePath) ? (@exif_read_data($imagePath, 'COMMENT') ?: null) : null;
         if (!is_array($comments)) {
             return null;
         }
@@ -125,7 +132,8 @@ final class ImageExtension extends AbstractExtension
 
     public function getImageIfdComment(?string $imagePath = null): ?string
     {
-        $result = @exif_read_data($this->getPath($imagePath), 'IFD0');
+        $imagePath = $this->getPath($imagePath);
+        $result = !empty($imagePath) ? @exif_read_data($imagePath, 'IFD0') : null;
 
         return $result && is_array($result) && is_array($result['IFD0']) ? $result['IFD0']['UserComment'] : null;
     }
@@ -137,6 +145,9 @@ final class ImageExtension extends AbstractExtension
 
     public function getImageTypeConstant(?string $imagePath = null): ?int
     {
-        return @exif_imagetype($this->getPath($imagePath)) ?: $this->getImageSize($imagePath)[2] ?: null;
+        $imagePath = $this->getPath($imagePath);
+        $imageType = !empty($imagePath) ? (@exif_imagetype($imagePath) ?: null) : null;
+
+        return $imageType ?: $this->getImageSize($imagePath)[2] ?: null;
     }
 }

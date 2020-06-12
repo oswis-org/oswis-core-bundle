@@ -25,7 +25,7 @@ trait BlameableTrait
      * )
      * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\ExistsFilter::class)
      */
-    protected ?AppUser $createdAuthor = null;
+    protected ?AppUser $createdBy = null;
 
     /**
      * @Gedmo\Mapping\Annotation\Blameable(on="update")
@@ -42,15 +42,15 @@ trait BlameableTrait
      * )
      * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\ExistsFilter::class)
      */
-    protected ?AppUser $updatedAuthor = null;
+    protected ?AppUser $updatedBy = null;
 
-    public function getUpdatedAuthor(): ?AppUser
+    public function getUpdatedBy(): ?AppUser
     {
-        return $this->updatedAuthor;
+        return $this->updatedBy;
     }
 
-    public function getCreatedAuthor(): ?AppUser
+    public function getCreatedBy(): ?AppUser
     {
-        return $this->createdAuthor;
+        return $this->createdBy;
     }
 }

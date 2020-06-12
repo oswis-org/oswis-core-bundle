@@ -1,7 +1,4 @@
 <?php
-/**
- * @noinspection PhpUnused
- */
 
 namespace OswisOrg\OswisCoreBundle\Interfaces\Common;
 
@@ -17,8 +14,7 @@ interface BasicInterface extends TimestampableInterface
 
     public function setCustomId(?bool $auto = true, ?string $customId = null): void;
 
-    public function getCreatedAuthor(): ?AppUser;
+    public function getCreatedBy(): ?AppUser;
 
-    public function getUpdatedAuthor(): ?AppUser;
-
+    public function getUpdatedBy(): ?AppUser;
 }

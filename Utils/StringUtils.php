@@ -99,6 +99,8 @@ class StringUtils
         'Ź' => 'Z',
     ];
 
+    public const DEFAULT_TOKEN_LEVEL = 6;
+
     public static function startsWith(string $haystack, string $needle): bool
     {
         return 0 === mb_strpos($haystack, $needle);
@@ -204,13 +206,13 @@ class StringUtils
         }
     }
 
-    public static function generateToken(): string
+    public static function generateToken(?int $level = self::DEFAULT_TOKEN_LEVEL): string
     {
-        $numbers = self::randomString('0', '9', 4);
-        $lowerCase = self::randomString('a', 'z', 4);
-        $upperCase = self::randomString('A', 'Z', 4);
-        $password = $numbers.$lowerCase.$upperCase;
+        $level ??= self::DEFAULT_TOKEN_LEVEL;
+        $numbers = self::randomString('0', '9', $level);
+        $lowerCase = self::randomString('a', 'z', $level);
+        $upperCase = self::randomString('A', 'Z', $level);
 
-        return str_shuffle($password);
+        return str_shuffle($numbers.$lowerCase.$upperCase);
     }
 }

@@ -9,9 +9,9 @@ use DateTime;
 
 interface TimestampableInterface
 {
-    public function getCreatedDateTime(): ?DateTime;
+    public function getCreatedAt(): ?DateTime;
 
-    public function getUpdatedDateTime(): ?DateTime;
+    public function getUpdatedAt(): ?DateTime;
 
     public function getCreatedDaysAgo(): ?int;
 

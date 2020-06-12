@@ -34,4 +34,9 @@ trait TextValueTrait
     {
         $this->textValue = $textValue;
     }
+
+    public function hasTextValue(): bool
+    {
+        return !empty($this->getTextValue());
+    }
 }

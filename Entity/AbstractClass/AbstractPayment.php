@@ -95,7 +95,7 @@ abstract class AbstractPayment implements PaymentInterface
      */
     public function getDateTime(): ?DateTime
     {
-        return $this->traitGetDateTime() ?? $this->getCreatedDateTime();
+        return $this->traitGetDateTime() ?? $this->getCreatedAt();
     }
 
 }

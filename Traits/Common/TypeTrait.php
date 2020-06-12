@@ -70,7 +70,13 @@ trait TypeTrait
         return array_merge(static::getAllowedTypesDefault(), static::getAllowedTypesCustom());
     }
 
-    abstract public static function getAllowedTypesDefault(): array;
+    public static function getAllowedTypesDefault(): array
+    {
+        return [''];
+    }
 
-    abstract public static function getAllowedTypesCustom(): array;
+    public static function getAllowedTypesCustom(): array
+    {
+        return [];
+    }
 }

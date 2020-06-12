@@ -7,6 +7,7 @@ namespace OswisOrg\OswisCoreBundle\Api\EventSubscriber;
 
 use ApiPlatform\Core\EventListener\EventPriorities;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser;
+use OswisOrg\OswisCoreBundle\Exceptions\InvalidTypeException;
 use OswisOrg\OswisCoreBundle\Exceptions\NotImplementedException;
 use OswisOrg\OswisCoreBundle\Exceptions\OswisException;
 use OswisOrg\OswisCoreBundle\Exceptions\UserNotFoundException;
@@ -16,8 +17,6 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpKernel\Event\ViewEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
-use function assert;
-use function in_array;
 
 /**
  * Handler for endpoint for actions with users (activation, password changes...).
@@ -51,18 +50,37 @@ final class AppUserActionSubscriber implements EventSubscriberInterface
             return;
         }
         $properties = $this->getRequestProperties($event->getControllerResult());
-        // TODO: Refactor to array ($data[]).
-        if (!($appUser = $this->loadAppUser($properties))) {
+        if (null === ($appUser = $this->loadAppUser($properties)) || !($appUser instanceof AppUser)) {
             throw new UserNotFoundException();
         }
-        assert($appUser instanceof AppUser);
-        if (in_array($properties['type'], AppUserService::ALLOWED_TYPES, true)) {
-            $this->appUserService->appUserAction($appUser, $properties['type'], $properties['password'], $properties['token']);
-            $event->setResponse(new JsonResponse([], 201));
-
-            return;
+        $type = $properties['type'] ?? null;
+        $status = $this->processAction($appUser, $properties['type'], $properties['password'], $properties['token']);
+        if (null === $status) {
+            throw new NotImplementedException($type, 'u uživatelských účtů');
         }
-        throw new NotImplementedException($properties['type'], 'u uživatelských účtů');
+        $event->setResponse(new JsonResponse([], $status));
+    }
+
+    /**
+     * @param AppUser     $appUser
+     * @param string|null $type
+     * @param string|null $password
+     * @param string|null $token
+     *
+     * @return int|null
+     * @throws InvalidTypeException
+     * @throws OswisException
+     * @throws UserNotFoundException
+     */
+    public function processAction(AppUser $appUser, ?string $type, ?string $password, ?string $token): ?int
+    {
+        if (AppUserService::PASSWORD_CHANGE_REQUEST === $type) {
+            $this->appUserService->requestPasswordChange($appUser, true);
+
+            return 201;
+        }
+
+        return null;
     }
 
     /**

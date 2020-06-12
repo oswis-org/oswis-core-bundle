@@ -1,7 +1,6 @@
 <?php
 /**
  * @noinspection MethodShouldBeFinalInspection
- * @noinspection PhpUnused
  */
 
 namespace OswisOrg\OswisCoreBundle\Traits\Common;
@@ -27,7 +26,7 @@ trait TimestampableTrait
      * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter::class)
      * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
      */
-    protected ?DateTime $createdDateTime = null;
+    protected ?DateTime $createdAt = null;
 
     /**
      * Date and time of entity update.
@@ -38,35 +37,35 @@ trait TimestampableTrait
      * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter::class)
      * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
      */
-    protected ?DateTime $updatedDateTime = null;
+    protected ?DateTime $updatedAt = null;
 
     public function getCreatedDaysAgo(): ?int
     {
-        if (!$this->getCreatedDateTime()) {
+        if (!$this->getCreatedAt()) {
             return null;
         }
-        $ago = $this->getCreatedDateTime()->diff(new DateTime())->days;
+        $ago = $this->getCreatedAt()->diff(new DateTime())->days;
 
         return $ago ? (int)floor($ago) : null;
     }
 
-    public function getCreatedDateTime(): ?DateTime
+    public function getCreatedAt(): ?DateTime
     {
-        return $this->createdDateTime;
+        return $this->createdAt;
     }
 
     public function getUpdatedDaysAgo(): ?int
     {
-        if (!$this->getUpdatedDateTime()) {
+        if (!$this->getUpdatedAt()) {
             return null;
         }
-        $ago = $this->getUpdatedDateTime()->diff(new DateTime())->days;
+        $ago = $this->getUpdatedAt()->diff(new DateTime())->days;
 
         return $ago ? (int)floor($ago) : null;
     }
 
-    public function getUpdatedDateTime(): ?DateTime
+    public function getUpdatedAt(): ?DateTime
     {
-        return $this->updatedDateTime;
+        return $this->updatedAt;
     }
 }
