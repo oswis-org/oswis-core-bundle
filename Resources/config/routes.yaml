@@ -1,6 +1,6 @@
 ### OSWIS Core - routes
 
-### Endpoint for log in by front-end app.
+### Endpoint for API log in by front-end app.
 login_check:
     path:     /api/login_check
     methods:  [POST]
@@ -21,10 +21,24 @@ controllers:
     resource: ../../Controller/
     type: annotation
 
-### Endpoint for user activation requests.
-oswis_org_oswis_core_app_user_activation:
-    controller: oswis_org_oswis_core.app_user_controller::appUserActivationAction
-    path: "/app-user-activation/{token}"
+### Endpoint for token processing.
+oswis_org_oswis_core_app_user_process_token:
+    controller: oswis_org_oswis_core.app_user_controller::processToken
+    path: "/uzivatel/aktivace/{token}/{appUserId}"
+    requirements:
+        appUserId: '\d+'
+
+### Endpoint for user activation request.
+oswis_org_oswis_core_app_user_activation_request:
+    controller: oswis_org_oswis_core.app_user_controller::activationRequest
+    path: "/uzivatel/aktivace"
+
+### Endpoint for password change request.
+oswis_org_oswis_core_app_user_password_change_request:
+    controller: oswis_org_oswis_core.app_user_controller::passwordChangeRequest
+    path: "/uzivatel/zmena-hesla/{token}/{appUserId}"
+    requirements:
+        appUserId: '\d+'
 
 oswis_org_oswis_core_app_user_register_root:
     controller: oswis_org_oswis_core.app_user_controller::registerRoot
@@ -108,5 +122,4 @@ oswis_org_oswis_sitemap_xml_redirect:
 oswis_org_oswis_sitemap_redirect:
     controller: oswis_org_oswis_core.site_map_web_controller::sitemapRedirect
     path: "/sitemap"
-
 

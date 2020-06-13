@@ -81,6 +81,33 @@ services:
         alias: oswis_org_oswis_core.app_user_service
         public: true
 
+    ### AppUser Defaults Service
+    oswis_org_oswis_core.app_user_defaults_service:
+        class: OswisOrg\OswisCoreBundle\Service\AppUserDefaultsService
+        autowire: true
+        public: true
+        arguments:
+            - '@oswis_org_oswis_core.oswis_core_settings_provider'
+            - '@oswis_org_oswis_core.app_user_type_service'
+            - '@oswis_org_oswis_core.app_user_role_service'
+            - '@oswis_org_oswis_core.app_user_service'
+    OswisOrg\OswisCoreBundle\Service\AppUserDefaultsService:
+        alias: oswis_org_oswis_core.app_user_defaults_service
+        public: true
+
+    ### AppUser Token Service
+    oswis_org_oswis_core.app_user_token_service:
+        class: OswisOrg\OswisCoreBundle\Service\AppUserTokenService
+        autowire: true
+        public: true
+        arguments:
+            - '@doctrine.orm.entity_manager.abstract'
+            - '@monolog.logger_prototype'
+            - '@oswis_org_oswis_core.app_user_service'
+    OswisOrg\OswisCoreBundle\Service\AppUserTokenService:
+        alias: oswis_org_oswis_core.app_user_token_service
+        public: true
+
     ### AppUser Role Service
     oswis_org_oswis_core.app_user_role_service:
         class: OswisOrg\OswisCoreBundle\Service\AppUserRoleService

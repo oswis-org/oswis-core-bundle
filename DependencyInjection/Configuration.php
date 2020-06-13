@@ -82,9 +82,9 @@ class Configuration implements ConfigurationInterface
     private function addWebConfig(NodeDefinition $rootNode): void
     {
         $rootNode->children() /// Web settings.
-                 ->arrayNode('web')->info('Website settings.')->addDefaultsIfNotSet()->children()->scalarNode('title')->info('Title of website.')->defaultValue('One Simple Web IS')
+                 ->arrayNode('web')->info('Website settings.')->addDefaultsIfNotSet()->children()->scalarNode('name')->info('Title of website.')->defaultValue('One Simple Web IS')
                  ->example('John\'s personal website')->end()->scalarNode('url')->info('Base URL of website.')->defaultValue('https://oswis.org')->example('https://oswis.org')
-                 ->end()->scalarNode('title_short')->info('Shortened title of website.')->defaultValue('OSWIS')->example('John\'s web')->end()->scalarNode('title_long')->info(
+                 ->end()->scalarNode('name_short')->info('Shortened title of website.')->defaultValue('OSWIS')->example('John\'s web')->end()->scalarNode('name_long')->info(
                 'Long (full) title of application.'
             )->defaultValue('One Simple Web IS')->example('John\'s personal website')->end()->scalarNode('description')->info('Description of website.')->defaultValue(
                 'Simple modular information system based on ApiPlatform.'

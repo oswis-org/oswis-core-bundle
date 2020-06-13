@@ -1,4 +1,6 @@
 {% extends '@OswisOrgOswisCore/e-mail/message.html.twig' %}
+{% set tokenUrl = appUserToken|default and appUserToken.appUser|default ? path('oswis_org_oswis_core_app_user_process_token',
+    {'token': appUserToken.token|default, 'appUserId': appUserToken.appUser.id|default}) : null %}
 
 {% block html_title %}{{ email.subject|default('Změna v uživatelském účtu') }}{% endblock %}
 {% block meta_description %}{{ block('html_title') }}{% endblock meta_description %}
@@ -6,27 +8,31 @@
 {% block content_inner %}
     <p>
         {% if type == 'activation-request' %}
-            Byl vytvořen {{ f ? 'Váš' : 'Tvůj' }} nový uživatelský účet v informačním systému.<br>
+            Byl vytvořen {{ f ? 'Váš' : 'Tvůj' }} nový uživatelský účet v aplikaci <b>{{ oswis.app.name }}</b>.<br>
         {% elseif type == 'activation' %}
-            {{ f ? 'Váš' : 'Tvůj' }} uživatelský účet byl aktivován.<br>
+            {{ f ? 'Váš' : 'Tvůj' }} uživatelský účet v aplikaci <b>{{ oswis.app.name }}</b> byl aktivován.<br>
         {% else %}
-            došlo ke změně u {{ f ? 'Vašeho' : 'Tvého' }} uživatelského účtu v informačním systému.
+            došlo ke změně u {{ f ? 'Vašeho' : 'Tvého' }} uživatelského účtu v aplikaci <b>{{ oswis.app.name }}</b>.
         {% endif %}
     </p>
 
-    {% if type == 'activation-request' and token %}
+    {% if type == 'activation-request' and tokenUrl %}
         Ještě je nutné provést aktivaci uživatelského účtu. Aktivaci provede{{ f ? 'te' : 'š' }} na následujícím odkazu:<br>
-        <a href="{{ absolute_url(path('oswis_org_oswis_core_app_user_activation', {'token': token})) }}" title="Odkaz pro aktivaci účtu"
-           target="_blank">{{ absolute_url(path('oswis_org_oswis_core_app_user_activation', {'token': token})) }}</a>.<br>
-        <small>Odkaz je platný 24 hodin od vygenerování.</small>
+        <span style="border: 1px solid lightgrey; padding: .5em 1em;margin: .5em 0;">
+            <a href="{{ tokenUrl }}" title="Odkaz pro aktivaci účtu" target="_blank">{{ tokenUrl }}</a>
+        </span>
+        {% if appUserToken.validHours|default %}
+            <br><small>Odkaz je platný {{ appUserToken.validHours }} hodin od vygenerování.</small>
+        {% endif %}
     {% endif %}
 
     <p>
         Uživatelské jméno u uživatelského účtu je
-        <strong>{{ appUser.username ? appUser.username : appUser.email }}</strong>
-        a hlavní e-mail je nastaven na <strong>{{ appUser.email }}</strong>.
-        {% if password %}
-            Bylo nastaveno nové, náhodně vygenerované, heslo <strong>{{ password }}</strong>.
+        <strong>{{ appUser.username|default ? appUser.username|default : appUser.email|default }}</strong>
+        a&nbsp;hlavní e-mail je nastaven na <strong>{{ appUser.email|default }}</strong>.
+        {% if password|default %}
+            Bylo nastaveno nové, náhodně vygenerované, heslo:
+            <span style="border: 1px solid lightgrey; padding: .5em 1em;margin: .5em 0;">{{ password }}</span>
         {% elseif appUser.password %}
             Heslo bylo nastaveno při registraci.
         {% else %}

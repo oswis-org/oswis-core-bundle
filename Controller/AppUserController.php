@@ -13,6 +13,7 @@ use OswisOrg\OswisCoreBundle\Exceptions\OswisException;
 use OswisOrg\OswisCoreBundle\Exceptions\TokenInvalidException;
 use OswisOrg\OswisCoreBundle\Exceptions\UserNotFoundException;
 use OswisOrg\OswisCoreBundle\Exceptions\UserNotUniqueException;
+use OswisOrg\OswisCoreBundle\Form\AbstractClass\ActivationRequestType;
 use OswisOrg\OswisCoreBundle\Form\AbstractClass\PasswordChangeRequestType;
 use OswisOrg\OswisCoreBundle\Form\AbstractClass\PasswordChangeType;
 use OswisOrg\OswisCoreBundle\Service\AppUserDefaultsService;
@@ -72,6 +73,51 @@ class AppUserController extends AbstractController
             [
                 'title'   => 'Žádost o změnu hesla odeslána!',
                 'message' => 'Žádost o změnu hesla u uživatelského účtu byla úspěšně zpracována a na e-mail byl odeslán odkaz pro jeho změnu.',
+            ]
+        );
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return Response
+     * @throws InvalidTypeException
+     * @throws LogicException
+     * @throws OswisException
+     * @throws RuntimeException
+     * @throws UserNotFoundException
+     * @throws UserNotUniqueException
+     */
+    public function activationRequest(Request $request): Response
+    {
+        $form = $this->createForm(ActivationRequestType::class, []);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $appUser = $this->appUserService->getRepository()->loadUserByUsername($form->getData()['username'] ?? null);
+            if (null === $appUser) {
+                throw new UserNotFoundException();
+            }
+            $this->appUserService->requestActivation($appUser);
+
+            return $this->userActivationRequested();
+        }
+
+        return $this->render(
+            '@OswisOrgOswisCore/web/pages/form.html.twig',
+            [
+                'form'  => $form->createView(),
+                'title' => 'Aktivace účtu',
+            ]
+        );
+    }
+
+    public function userActivationRequested(): Response
+    {
+        return $this->render(
+            '@OswisOrgOswisCore/web/pages/message.html.twig',
+            [
+                'title'   => 'Žádost o aktivaci účtu odeslána!',
+                'message' => 'Žádost o aktivaci uživatelského účtu byla úspěšně zpracována a na e-mail byl odeslán odkaz pro její provedení.',
             ]
         );
     }
@@ -155,17 +201,6 @@ class AppUserController extends AbstractController
             [
                 'title'   => 'Heslo změněno!',
                 'message' => 'Heslo u uživatelského účtu bylo úspěšně změněno.',
-            ]
-        );
-    }
-
-    public function userActivationRequested(): Response
-    {
-        return $this->render(
-            '@OswisOrgOswisCore/web/pages/message.html.twig',
-            [
-                'title'   => 'Žádost o aktivaci účtu odeslána!',
-                'message' => 'Žádost o aktivaci uživatelského účtu byla úspěšně zpracována a na e-mail byl odeslán odkaz pro její provedení.',
             ]
         );
     }

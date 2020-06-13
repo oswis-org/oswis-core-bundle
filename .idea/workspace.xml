@@ -25,17 +25,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractEMail.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Entity/AppUser/AppUserEMail.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Form/AbstractClass/ActivationRequestType.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api/EventSubscriber/AppUserActionSubscriber.php" beforeDir="false" afterPath="$PROJECT_DIR$/Api/EventSubscriber/AppUserActionSubscriber.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controller/AppUserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/AppUserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controller/Website/SiteWebManifestController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/Website/SiteWebManifestController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DependencyInjection/Configuration.php" beforeDir="false" afterPath="$PROJECT_DIR$/DependencyInjection/Configuration.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DependencyInjection/OswisOrgOswisCoreExtension.php" beforeDir="false" afterPath="$PROJECT_DIR$/DependencyInjection/OswisOrgOswisCoreExtension.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventSubscriber/AppUserSubscriber.php" beforeDir="false" afterPath="$PROJECT_DIR$/EventSubscriber/AppUserSubscriber.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractAppUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractAppUser.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OswisOrgOswisCoreBundle.php" beforeDir="false" afterPath="$PROJECT_DIR$/OswisOrgOswisCoreBundle.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/config/routes.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/config/services.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/views/e-mail/app-user.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/e-mail/app-user.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/views/e-mail/message.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/e-mail/message.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/views/e-mail/password.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/e-mail/password.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Resources/views/web/parts/web-banner.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/parts/web-banner.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Service/AppUserService.php" beforeDir="false" afterPath="$PROJECT_DIR$/Service/AppUserService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Common/TextValueTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/TextValueTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Twig/Extension/ImageExtension.php" beforeDir="false" afterPath="$PROJECT_DIR$/Twig/Extension/ImageExtension.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -242,7 +246,7 @@
     <property name="add_unversioned_files" value="$PROJECT_DIR$/vendor/symfony/swiftmailer-bundle/composer.json" />
     <property name="editor.config.ad.shown" value="true" />
     <property name="javascript.nodejs.core.library.configured.version" value="10.17.0" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Entity/AppUser" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Form/AbstractClass" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -256,9 +260,9 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Form/AbstractClass" />
       <recent name="$PROJECT_DIR$/Entity/AppUser" />
       <recent name="$PROJECT_DIR$/Entity/AbstractClass" />
-      <recent name="$PROJECT_DIR$/Form/AbstractClass" />
       <recent name="$PROJECT_DIR$/Service" />
       <recent name="$PROJECT_DIR$/Repository" />
     </key>
@@ -764,14 +768,7 @@
       <workItem from="1591525796666" duration="82000" />
       <workItem from="1591552321325" duration="1582000" />
       <workItem from="1591633316208" duration="1062000" />
-      <workItem from="1591871676633" duration="43362000" />
-    </task>
-    <task id="LOCAL-00592" summary="Some fixes, updates and changes.">
-      <created>1589209195974</created>
-      <option name="number" value="00592" />
-      <option name="presentableId" value="LOCAL-00592" />
-      <option name="project" value="LOCAL" />
-      <updated>1589209195974</updated>
+      <workItem from="1591871676633" duration="50351000" />
     </task>
     <task id="LOCAL-00593" summary="Some fixes, updates and changes.">
       <created>1589209393908</created>
@@ -1109,7 +1106,14 @@
       <option name="project" value="LOCAL" />
       <updated>1591991226571</updated>
     </task>
-    <option name="localTasksCounter" value="641" />
+    <task id="LOCAL-00641" summary="Some fixes, updates and changes.">
+      <created>1591993754273</created>
+      <option name="number" value="00641" />
+      <option name="presentableId" value="LOCAL-00641" />
+      <option name="project" value="LOCAL" />
+      <updated>1591993754273</updated>
+    </task>
+    <option name="localTasksCounter" value="642" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1210,11 +1214,11 @@
     <state x="251" y="0" width="624" height="735" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1591992378185" />
     <state x="353" y="0" width="478" height="735" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1588877334367" />
     <state x="2171" y="0" width="462" height="741" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1588326607025" />
-    <state x="288" y="257" width="526" height="478" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1591992868703">
+    <state x="288" y="257" width="526" height="478" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1592036548975">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="288" y="257" width="526" height="478" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.741@0.0.1366.741" timestamp="1591362376713" />
-    <state x="288" y="257" width="526" height="478" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1591992868703" />
+    <state x="288" y="257" width="526" height="478" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1592036548975" />
     <state x="405" y="257" width="526" height="478" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1588876654005" />
     <state x="466" y="300" width="426" height="134" key="#com.jetbrains.php.lang.intentions.PhpImportClassDialog#" timestamp="1591871794381">
       <screen x="0" y="0" width="1366" height="741" />
@@ -1228,12 +1232,12 @@
     <state x="499" y="381" width="402" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1591993476463" />
     <state x="701" y="381" width="509" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1588880649242" />
     <state x="2356" y="395" width="402" height="332" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1588872805427" />
-    <state x="369" y="0" width="1366" height="741" key="CommitChangelistDialog2" timestamp="1591991226245">
+    <state x="369" y="0" width="1366" height="741" key="CommitChangelistDialog2" timestamp="1591993754162">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="0" y="0" width="904" height="735" key="CommitChangelistDialog2/0.0.1366.741@0.0.1366.741" timestamp="1591634340283" />
     <state x="1920" y="0" width="1366" height="741" key="CommitChangelistDialog2/0.0.3286.741@0.0.3286.741" timestamp="1591444330199" />
-    <state x="369" y="0" width="881" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1591991226245" />
+    <state x="369" y="0" width="881" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1591993754162" />
     <state x="518" y="0" width="881" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1589307156395" />
     <state x="2289" y="0" width="881" height="741" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1588872861925" />
     <state x="99" y="100" width="1160" height="535" maximized="true" key="DiffContextDialog" timestamp="1588442572785">
@@ -1258,12 +1262,12 @@
     <state x="187" y="5" key="SettingsEditor/0.0.1366.741@0.0.1366.741" timestamp="1591521949487" />
     <state x="33" y="0" width="1280" height="730" key="SettingsEditor/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1587589952804" />
     <state x="263" y="0" width="1418" height="741" key="SettingsEditor/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1589305333032" />
-    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1591991228486">
+    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1591993755864">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1591634346102" />
     <state x="0" y="213" width="1920" height="522" key="Vcs.Push.Dialog.v2/0.0.3286.741@0.0.3286.741" timestamp="1591444332202" />
-    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1591991228486" />
+    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1591993755864" />
     <state x="555" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1589307158439" />
     <state x="2315" y="199" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1588872863506" />
     <state x="0" y="96" width="773" height="474" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1591964661376">
@@ -1280,11 +1284,12 @@
       <screen x="1920" y="0" width="1366" height="768" />
     </state>
     <state x="1920" y="0" width="1366" height="741" maximized="true" key="dock-window-1/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1588846320148" />
-    <state x="158" y="54" width="812" height="687" key="find.popup" timestamp="1590584654830">
+    <state x="158" y="54" width="812" height="687" key="find.popup" timestamp="1592037292082">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="158" y="54" width="812" height="687" key="find.popup/0.0.1366.741@0.0.1366.741" timestamp="1590584654830" />
     <state x="380" y="54" width="1954" height="687" key="find.popup/0.0.3286.741@0.0.3286.741" timestamp="1588167954850" />
+    <state x="158" y="54" width="812" height="687" key="find.popup/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1592037292082" />
     <state x="222" y="54" width="1142" height="687" key="find.popup/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1588881078593" />
     <state x="423" y="274" width="511" height="187" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1587333720901">
       <screen x="0" y="0" width="1366" height="741" />

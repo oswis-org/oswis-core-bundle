@@ -145,7 +145,7 @@ class AppUserService
         try {
             $isRandom = empty($password);
             $password ??= StringUtils::generatePassword();
-            $appUser->setPassword($this->encoder->encodePassword($appUser, $password));
+            $appUser->makePassword($this->encoder, $password);
             if ($sendConfirmation) {
                 $this->sendAppUserEmail($appUser, self::ACTIVATION, null, $isRandom ? $password : null);
             }
@@ -159,7 +159,7 @@ class AppUserService
     /**
      * @throws OswisException
      */
-    public function sendAppUserEmail(AppUser $appUser, string $type, ?AppUserToken $appUserToken = null, ?string $newPassword = null): void
+    public function sendAppUserEmail(AppUser $appUser, string $type, ?AppUserToken $appUserToken = null, ?string $newPassword = null, bool $isIS = false): void
     {
         try {
             if (self::ACTIVATION_REQUEST === $type) { // Send e-mail about activation request. Include token for activation.
@@ -175,6 +175,7 @@ class AppUserService
                 'type'         => $type,
                 'appUserToken' => $appUserToken,
                 'password'     => $newPassword,
+                'isIS'         => $isIS,
             ];
             $email = new TemplatedEmail();
             try {
@@ -196,7 +197,7 @@ class AppUserService
      * @throws OswisException
      * @throws UserNotFoundException
      */
-    private function requestActivation(?AppUser $appUser): void
+    public function requestActivation(?AppUser $appUser): void
     {
         if (null === $appUser) {
             throw new UserNotFoundException();
@@ -259,7 +260,7 @@ class AppUserService
     /**
      * @throws OswisException
      */
-    public function sendPasswordEmail(AppUser $appUser, string $type, ?AppUserToken $appUserToken = null, string $newPassword = null): void
+    public function sendPasswordEmail(AppUser $appUser, string $type, ?AppUserToken $appUserToken = null, string $newPassword = null, bool $isIS = false): void
     {
         try {
             if (self::PASSWORD_CHANGE === $type) { // Send e-mail about password change. Include password if present (it means that it's generated randomly).
@@ -276,6 +277,7 @@ class AppUserService
                 'appUser'      => $appUser,
                 'appUserToken' => $appUserToken,
                 'password'     => $newPassword,
+                'isIS'         => $isIS,
             ];
             $email = new TemplatedEmail();
             try {
@@ -353,7 +355,7 @@ class AppUserService
     {
         $random = empty($newPassword);
         $newPassword ??= StringUtils::generatePassword();
-        $appUser->setPassword($this->encoder->encodePassword($appUser, $newPassword));
+        $appUser->makePassword($this->encoder, $newPassword);
         if ($sendConfirmation) {
             $this->sendPasswordEmail($appUser, self::PASSWORD_CHANGE, null, $random ? $newPassword : null);
         }
