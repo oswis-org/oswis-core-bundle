@@ -4,7 +4,7 @@
  * @noinspection PhpUnused
  */
 
-namespace OswisOrg\OswisCoreBundle\Traits\Common;
+namespace OswisOrg\OswisCoreBundle\Traits\Project;
 
 /**
  * Trait that adds field related with some progress.

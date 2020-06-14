@@ -138,6 +138,7 @@ class AppUserService
         try {
             $isRandom = empty($appUser->getPlainPassword());
             $appUser->setPlainPassword($isRandom ? StringUtils::generatePassword() : $appUser->getPlainPassword(), $this->encoder, !$isRandom);
+            $appUser->activate();
             if ($sendConfirmation) {
                 $this->appUserMailService->sendAppUserEMail($appUser, self::ACTIVATION);
             }
@@ -216,7 +217,11 @@ class AppUserService
 
     public function getToken(string $token, int $appUserId): ?AppUserToken
     {
-        return $this->appUserTokenService->getRepository()->findByToken($token, $appUserId);
+        try {
+            return $this->appUserTokenService->getRepository()->findByToken($token, $appUserId);
+        } catch (OswisException $exception) {
+            return null;
+        }
     }
 
     /**

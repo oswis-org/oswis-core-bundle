@@ -7,7 +7,6 @@
 namespace OswisOrg\OswisCoreBundle\Entity\AppUser;
 
 use ApiPlatform\Core\Annotation\ApiResource;
-use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use OswisOrg\OswisCoreBundle\Entity\AbstractClass\AbstractAppUser;
@@ -171,13 +170,6 @@ class AppUser extends AbstractAppUser implements PdfExportableInterface
         $this->appUserType = $appUserType;
     }
 
-    /**
-     * True if user is active.
-     */
-    public function isActive(?DateTime $referenceDateTime = null): bool
-    {
-        return !$this->getActivationDateTime() ? false : $this->containsDateTimeInRange($referenceDateTime);
-    }
 
     /**
      * Can user edit this user?

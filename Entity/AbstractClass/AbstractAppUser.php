@@ -43,13 +43,13 @@ abstract class AbstractAppUser implements UserInterface, Serializable, Equatable
         if (!($user instanceof self)) {
             return false;
         }
-        if ($this->id !== $user->getId() || $this->username !== $user->getUsername()) {
+        if ($this->getId() !== $user->getId() || $this->getUsername() !== $user->getUsername()) {
             return false;
         }
-        if ($this->email !== $user->getEmail() || $this->password !== $user->getPassword()) {
+        if ($this->getEmail() !== $user->getEmail() || $this->getPassword() !== $user->getPassword()) {
             return false;
         }
-        if ($this->startDateTime !== $user->getStartDateTime() || $this->endDateTime !== $user->getEndDateTime()) {
+        if ($this->getActivated() !== $user->getActivated() || $this->getDeleted() !== $user->getDeleted()) {
             return false;
         }
 
@@ -62,6 +62,7 @@ abstract class AbstractAppUser implements UserInterface, Serializable, Equatable
      */
     public function eraseCredentials(): void
     {
+        $this->plainPassword = null;
     }
 
     public function hasRole(string $roleName): bool

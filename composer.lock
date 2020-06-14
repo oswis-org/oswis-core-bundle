@@ -2880,23 +2880,23 @@
     },
     {
       "name": "lexik/jwt-authentication-bundle",
-      "version": "v2.7.0",
+      "version": "v2.8.0",
       "source": {
         "type": "git",
         "url": "https://github.com/lexik/LexikJWTAuthenticationBundle.git",
-        "reference": "1a110dbb8649e3029140a29f02f812d168008e8e"
+        "reference": "0b136a3b8b2125a85dc0ae64527e8c86cbe574f1"
       },
       "dist": {
         "type": "zip",
-        "url": "https://api.github.com/repos/lexik/LexikJWTAuthenticationBundle/zipball/1a110dbb8649e3029140a29f02f812d168008e8e",
-        "reference": "1a110dbb8649e3029140a29f02f812d168008e8e",
+        "url": "https://api.github.com/repos/lexik/LexikJWTAuthenticationBundle/zipball/0b136a3b8b2125a85dc0ae64527e8c86cbe574f1",
+        "reference": "0b136a3b8b2125a85dc0ae64527e8c86cbe574f1",
         "shasum": ""
       },
       "require": {
         "ext-openssl": "*",
         "lcobucci/jwt": "^3.2",
         "namshi/jose": "^7.2",
-        "php": "^5.5|^7.0",
+        "php": "^5.6|^7.0",
         "symfony/framework-bundle": "^3.4|^4.0|^5.0",
         "symfony/security-bundle": "^3.4|^4.0|^5.0"
       },
@@ -2978,7 +2978,7 @@
           "type": "github"
         }
       ],
-      "time": "2020-05-28T23:36:57+00:00"
+      "time": "2020-06-14T13:20:35+00:00"
     },
     {
       "name": "liip/imagine-bundle",
@@ -10788,16 +10788,16 @@
     },
     {
       "name": "phpstan/phpstan",
-      "version": "0.12.28",
+      "version": "0.12.29",
       "source": {
         "type": "git",
         "url": "https://github.com/phpstan/phpstan.git",
-        "reference": "76c0c4ec90b1eed66fa4855b8b4b53fa9054353f"
+        "reference": "9771daaf6b95c6313b908d0bcdee0afcd51f838a"
       },
       "dist": {
         "type": "zip",
-        "url": "https://api.github.com/repos/phpstan/phpstan/zipball/76c0c4ec90b1eed66fa4855b8b4b53fa9054353f",
-        "reference": "76c0c4ec90b1eed66fa4855b8b4b53fa9054353f",
+        "url": "https://api.github.com/repos/phpstan/phpstan/zipball/9771daaf6b95c6313b908d0bcdee0afcd51f838a",
+        "reference": "9771daaf6b95c6313b908d0bcdee0afcd51f838a",
         "shasum": ""
       },
       "require": {
@@ -10840,7 +10840,7 @@
           "type": "tidelift"
         }
       ],
-      "time": "2020-06-10T06:20:14+00:00"
+      "time": "2020-06-14T14:10:59+00:00"
     },
     {
       "name": "roave/security-advisories",

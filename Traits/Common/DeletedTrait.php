@@ -43,10 +43,10 @@ trait DeletedTrait
 
     public function setDeleted(?DateTime $deleted = null): void
     {
-        if (null === $deleted || (null === $this->deleted && null !== $deleted)) {
-            $this->setEMailDeleteConfirmationDateTime(null);
+        if (null === $deleted) {
+            $this->deleted = $deleted;
         }
-        $this->deleted = $deleted;
+        $this->deleted = $deleted > $this->deleted ? $this->deleted : $deleted;
     }
 
     public function isDeleted(?DateTime $referenceDateTime = null): bool

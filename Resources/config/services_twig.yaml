@@ -1,5 +1,0 @@
-services:
-    oswis_org_oswis_core.twig.image_extension:
-        class: OswisOrg\OswisCoreBundle\Twig\Extension\ImageExtension
-        tags:
-            - { name: twig.extension }

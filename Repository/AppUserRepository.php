@@ -39,7 +39,7 @@ class AppUserRepository extends EntityRepository implements UserLoaderInterface
             throw new UserNotUniqueException();
         }
 
-        return $appUser && ($appUser instanceof AppUser) && $appUser->isActive() ? $appUser : null;
+        return $appUser && ($appUser instanceof AppUser) && $appUser->isActivated() ? $appUser : null;
     }
 
     /**
@@ -59,7 +59,7 @@ class AppUserRepository extends EntityRepository implements UserLoaderInterface
             throw new UserNotUniqueException();
         }
 
-        return ($appUser && ($appUser instanceof AppUser) && $appUser->isActive()) ? $appUser : null;
+        return ($appUser && ($appUser instanceof AppUser) && $appUser->isActivated()) ? $appUser : null;
     }
 
     public function findByEmail(string $email): Collection

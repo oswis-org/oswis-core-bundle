@@ -103,7 +103,6 @@ services:
         arguments:
             - '@doctrine.orm.entity_manager.abstract'
             - '@monolog.logger_prototype'
-            - '@oswis_org_oswis_core.app_user_service'
     OswisOrg\OswisCoreBundle\Service\AppUserTokenService:
         alias: oswis_org_oswis_core.app_user_token_service
         public: true
@@ -114,7 +113,7 @@ services:
         autowire: true
         public: true
         arguments:
-            - '@security.user_password_encoder.generic'
+            - '@security.password_encoder'
             - '@doctrine.orm.entity_manager.abstract'
             - '@monolog.logger_prototype'
             - '@mailer.mailer'
@@ -214,8 +213,6 @@ services:
     OswisOrg\OswisCoreBundle\EventSubscriber\AppUserSubscriber:
         alias: oswis_org_oswis_core.app_user_subscriber
         public: true
-
-
 
 
 

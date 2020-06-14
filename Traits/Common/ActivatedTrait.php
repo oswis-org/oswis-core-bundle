@@ -11,7 +11,7 @@ use DateTime;
 /**
  * Trait adds "active" field.
  */
-trait ActiveTrait
+trait ActivatedTrait
 {
     /**
      * Active after.
@@ -21,25 +21,25 @@ trait ActiveTrait
      * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\ExistsFilter::class)
      * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
      */
-    protected ?DateTime $active = null;
+    protected ?DateTime $activated = null;
 
-    public function isActive(?DateTime $dateTime = null): bool
+    public function isActivated(?DateTime $dateTime = null): bool
     {
-        return null !== $this->getActive() && $this->getActive() >= ($dateTime ?? new DateTime());
+        return null !== $this->getActivated() && $this->getActivated() >= ($dateTime ?? new DateTime());
     }
 
-    public function getActive(): ?DateTime
+    public function getActivated(): ?DateTime
     {
-        return $this->active;
+        return $this->activated;
     }
 
-    public function setActive(?DateTime $active): void
+    public function setActivated(?DateTime $activated): void
     {
-        $this->active = $active;
+        $this->activated = $activated;
     }
 
     public function activate(?DateTime $dateTime = null): void
     {
-        $this->setActive($this->getActive() ?? $dateTime ?? new DateTime());
+        $this->setActivated($this->getActivated() ?? $dateTime ?? new DateTime());
     }
 }
