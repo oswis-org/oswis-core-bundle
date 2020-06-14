@@ -45,7 +45,9 @@ class AppUserProvider implements UserProviderInterface
     final public function loadUserByUsername($username): ?AppUser
     {
         $userRepository = $this->em->getRepository(AppUserRepository::class);
-        assert($userRepository instanceof AppUserRepository);
+        if (!($userRepository instanceof AppUserRepository)) {
+            return null;
+        }
         $user = $userRepository->loadUserByUsername($username);
         if (!$user) {
             throw new UsernameNotFoundException(sprintf('Username "%s" does not exist.', $username));

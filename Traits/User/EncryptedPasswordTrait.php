@@ -5,11 +5,18 @@
 
 namespace OswisOrg\OswisCoreBundle\Traits\User;
 
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+
 /**
  * Trait adds encrypted password field.
  */
 trait EncryptedPasswordTrait
 {
+    /**
+     * @var string|null Temporary storage for plain text password (used in e-mails), NOT PERSISTED!
+     */
+    public ?string $plainPassword = null;
+
     /**
      * Encrypted password.
      * @Doctrine\ORM\Mapping\Column(name="password", type="string", length=255, nullable=true)
@@ -52,4 +59,19 @@ trait EncryptedPasswordTrait
     {
         $this->salt = $salt;
     }
+
+    public function getPlainPassword(): ?string
+    {
+        return $this->plainPassword;
+    }
+
+    public function setPlainPassword(?string $plainPassword, ?UserPasswordEncoderInterface $encoder = null, bool $deletePlain = true): void
+    {
+        $this->plainPassword = $deletePlain ? null : $plainPassword;
+        if (null !== $encoder) {
+            $this->encryptPassword($plainPassword, $encoder);
+        }
+    }
+
+    abstract public function encryptPassword(?string $plainPassword, UserPasswordEncoderInterface $encoder): void;
 }

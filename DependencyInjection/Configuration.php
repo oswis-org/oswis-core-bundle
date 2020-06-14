@@ -22,14 +22,15 @@ class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder('oswis_org_oswis_core', 'array');
         $rootNode = $treeBuilder->getRootNode();
-        assert($rootNode instanceof ArrayNodeDefinition);
-        $rootNode->info('Default configuration for core module of OSWIS (One Simple Web IS).');
-        $this->addGeneralConfig($rootNode);
-        $this->addEmailConfig($rootNode);
-        $this->addAdminConfig($rootNode);
-        $this->addWebConfig($rootNode);
-        $this->addAdminIPs($rootNode);
-        $this->addAngularAdmin($rootNode);
+        if ($rootNode instanceof ArrayNodeDefinition) {
+            $rootNode->info('Default configuration for core module of OSWIS (One Simple Web IS).');
+            $this->addGeneralConfig($rootNode);
+            $this->addEmailConfig($rootNode);
+            $this->addAdminConfig($rootNode);
+            $this->addWebConfig($rootNode);
+            $this->addAdminIPs($rootNode);
+            $this->addAngularAdmin($rootNode);
+        }
 
         return $treeBuilder;
     }

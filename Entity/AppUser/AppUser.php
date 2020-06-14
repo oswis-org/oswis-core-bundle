@@ -94,11 +94,6 @@ class AppUser extends AbstractAppUser implements PdfExportableInterface
     public const ENTITY_NAME = [1 => 'Uživatel', 11 => 'Uživatelé'];
 
     /**
-     * @var string|null Temporary storage for plain text password (used in e-mails), NOT PERSISTED!
-     */
-    public ?string $plainPassword = null;
-
-    /**
      * @Doctrine\ORM\Mapping\OneToMany(
      *     targetEntity="OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserFlagConnection", cascade={"all"}, mappedBy="appUser", fetch="EAGER"
      * )
@@ -237,22 +232,8 @@ class AppUser extends AbstractAppUser implements PdfExportableInterface
         }
     }
 
-    public function getPlainPassword(): ?string
-    {
-        return $this->plainPassword;
-    }
-
-    public function setPlainPassword(?string $plainPassword, ?UserPasswordEncoderInterface $encoder = null, bool $deletePlain = true): void
-    {
-        $this->plainPassword = $deletePlain ? null : $plainPassword;
-        if (null !== $encoder) {
-            $this->encryptPassword($plainPassword, $encoder);
-        }
-    }
-
     public function encryptPassword(?string $plainPassword, UserPasswordEncoderInterface $encoder): void
     {
         $this->setPassword($encoder->encodePassword($this, $plainPassword));
     }
-
 }

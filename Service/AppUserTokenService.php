@@ -9,6 +9,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserToken;
 use OswisOrg\OswisCoreBundle\Exceptions\InvalidTypeException;
+use OswisOrg\OswisCoreBundle\Exceptions\OswisException;
 use OswisOrg\OswisCoreBundle\Repository\AppUserTokenRepository;
 use Psr\Log\LoggerInterface;
 
@@ -53,10 +54,16 @@ class AppUserTokenService
         }
     }
 
+    /**
+     * @return AppUserTokenRepository
+     * @throws OswisException
+     */
     public function getRepository(): AppUserTokenRepository
     {
         $repo = $this->em->getRepository(AppUserToken::class);
-        assert($repo instanceof AppUserTokenRepository);
+        if (!($repo instanceof AppUserTokenRepository)) {
+            throw new OswisException('Nepodařilo se získat AppUserTokenRepository.');
+        }
 
         return $repo;
     }

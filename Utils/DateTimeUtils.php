@@ -119,7 +119,6 @@ class DateTimeUtils
         }
         if (in_array($range, [self::RANGE_YEAR, self::RANGE_MONTH, self::RANGE_DAY], true)) {
             $dateTime ??= new DateTime();
-            assert($dateTime instanceof DateTime);
             $month = self::getMonthByRange($dateTime, $range, $isEnd);
             $day = self::getDayByRange($dateTime, $range, $isEnd);
             $minute = $isEnd ? 59 : 0;
@@ -197,7 +196,6 @@ class DateTimeUtils
 
     public static function getEaster(DateTime $dateTime): ?string
     {
-        assert($dateTime instanceof DateTime);
         $dateTime->setTime(0, 0, 0, 0);
         $y = (int)$dateTime->format('Y');
         if ($dateTime->getTimestamp() === strtotime('+1 day', easter_date($y))) {

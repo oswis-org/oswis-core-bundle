@@ -29,7 +29,9 @@ abstract class AbstractImageAction extends AbstractFileAction
     public function __invoke(Request $request): AbstractImage
     {
         $result = parent::__invoke($request);
-        assert($result instanceof AbstractImage);
+        if (!($result instanceof AbstractImage)) {
+            throw new InvalidArgumentException('Image must be instance of AbstractImage.');
+        }
 
         return $result;
     }

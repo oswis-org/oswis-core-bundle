@@ -9,7 +9,6 @@ use DateTime;
 use InvalidArgumentException;
 use OswisOrg\OswisCoreBundle\Exceptions\NotImplementedException;
 use OswisOrg\OswisCoreBundle\Interfaces\Payment\PaymentInterface;
-use OswisOrg\OswisCoreBundle\Traits\Common\BasicMailConfirmationTrait;
 use OswisOrg\OswisCoreBundle\Traits\Common\BasicTrait;
 use OswisOrg\OswisCoreBundle\Traits\Common\DateTimeTrait;
 use OswisOrg\OswisCoreBundle\Traits\Common\ExternalIdTrait;
@@ -29,7 +28,6 @@ abstract class AbstractPayment implements PaymentInterface
     use TypeTrait;
     use NoteTrait;
     use InternalNoteTrait;
-    use BasicMailConfirmationTrait;
     use ExternalIdTrait;
     use DateTimeTrait {
         getDateTime as protected traitGetDateTime;
