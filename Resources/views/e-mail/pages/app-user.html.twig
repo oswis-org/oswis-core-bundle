@@ -1,0 +1,11 @@
+{%- set tokenUrl = appUserToken|default and appUserToken.appUser|default ? path('oswis_org_oswis_core_app_user_process_token',
+    {'token': appUserToken.token|default, 'appUserId': appUserToken.appUser.id|default}) : null -%}
+
+{%- if type == 'activation-request' or type == 'activation' -%}
+    {%- include '@OswisOrgOswisCore/e-mail/pages/app-user-activation.html.twig' -%}
+{%- elseif type == 'password-change-request' or type == 'password-change' -%}
+    {%- include '@OswisOrgOswisCore/e-mail/pages/app-user-password.html.twig' -%}
+{%- else -%}
+    {%- include '@OswisOrgOswisCore/e-mail/pages/message.html.twig' -%}
+{%- endif -%}
+

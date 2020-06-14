@@ -10227,16 +10227,16 @@
     },
     {
       "name": "vich/uploader-bundle",
-      "version": "1.13.2",
+      "version": "1.14.0",
       "source": {
         "type": "git",
         "url": "https://github.com/dustin10/VichUploaderBundle.git",
-        "reference": "f24c3a1764d30cbe6e7d4d8bbc2daca6f0c2693e"
+        "reference": "8e9b4402a959983fd7effddae1dd81d587687d96"
       },
       "dist": {
         "type": "zip",
-        "url": "https://api.github.com/repos/dustin10/VichUploaderBundle/zipball/f24c3a1764d30cbe6e7d4d8bbc2daca6f0c2693e",
-        "reference": "f24c3a1764d30cbe6e7d4d8bbc2daca6f0c2693e",
+        "url": "https://api.github.com/repos/dustin10/VichUploaderBundle/zipball/8e9b4402a959983fd7effddae1dd81d587687d96",
+        "reference": "8e9b4402a959983fd7effddae1dd81d587687d96",
         "shasum": ""
       },
       "require": {
@@ -10250,6 +10250,7 @@
         "symfony/form": "^4.4 || ^5.0",
         "symfony/http-foundation": "^4.4 || ^5.0",
         "symfony/http-kernel": "^4.4 || ^5.0",
+        "symfony/mime": "^4.4 || ^5.0",
         "symfony/property-access": "^4.4 || ^5.0",
         "symfony/string": "^5.0"
       },
@@ -10297,7 +10298,7 @@
       "type": "symfony-bundle",
       "extra": {
         "branch-alias": {
-          "dev-master": "1.14.x-dev"
+          "dev-master": "1.15.x-dev"
         }
       },
       "autoload": {
@@ -10321,7 +10322,7 @@
         "file uploads",
         "upload"
       ],
-      "time": "2020-03-11T14:30:56+00:00"
+      "time": "2020-06-12T08:48:15+00:00"
     },
     {
       "name": "webimpress/safe-writer",

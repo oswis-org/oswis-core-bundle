@@ -13,7 +13,12 @@ use OswisOrg\OswisCoreBundle\Traits\Common\NameableTrait;
 use OswisOrg\OswisCoreBundle\Traits\Common\TypeTrait;
 
 /**
- * Abstract class containing basic properties for token.
+ * Some e-mail sent to some user.
+ *
+ * Nameable is used in that way
+ *  - **name** => **subject**
+ *  - **customID** => **Message-ID**
+ *  - **internalNote** => **status messages**
  * @author Jakub Zak <mail@jakubzak.eu>
  */
 abstract class AbstractEMail
@@ -50,6 +55,11 @@ abstract class AbstractEMail
     public static function getAllowedTypesCustom(): array
     {
         return [];
+    }
+
+    public function isSent(): bool
+    {
+        return (bool)$this->getSent();
     }
 
     public function getSent(): ?DateTime

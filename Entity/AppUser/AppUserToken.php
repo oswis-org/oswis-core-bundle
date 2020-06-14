@@ -53,10 +53,10 @@ class AppUserToken extends AbstractToken
      * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserToken", fetch="EAGER")
      * @Doctrine\ORM\Mapping\JoinColumn(name="app_user_id", referencedColumnName="id")
      */
-    protected AppUser $appUser;
+    protected ?AppUser $appUser = null;
 
     public function __construct(
-        AppUser $appUser,
+        ?AppUser $appUser = null,
         ?string $eMail = null,
         ?string $type = null,
         bool $multipleUseAllowed = false,

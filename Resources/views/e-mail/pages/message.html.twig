@@ -2,7 +2,7 @@
 {% set salName = salutationName is defined and salutationName ? salutationName : '' %}
 {# {% set logo_src = logo is defined and logo ? logo : absolute_url(asset('@OswisOrgOswisCoreBundle/Resources/public/logo.png')) %} #}
 
-{% apply inky_to_html|inline_css(source('@OswisOrgOswisCore/e-mail/foundation-emails.css.twig' )) %}
+{% apply inky_to_html|inline_css(source('@OswisOrgOswisCore/e-mail/pages/foundation-emails.css.twig' )) %}
     <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
     <html xmlns="http://www.w3.org/1999/xhtml" lang='{% block html_lang %}cs-CZ{% endblock %}' dir="ltr">
     <head>
@@ -27,7 +27,7 @@
 
     {% block html_inner %}
         <style type='text/css'>
-            {% include '@OswisOrgOswisCore/e-mail/message.css.twig' %}
+            {% include '@OswisOrgOswisCore/e-mail/parts/message_footer.html.twig' %}
         </style>
         {% block additional_css %}{% endblock additional_css %}{# Additional CSS <style> tags from inherited templates. #}
 
@@ -35,7 +35,7 @@
         {% block body_outer %}
             <container class="header">
                 {% block header_outer %}
-                    {% include '@OswisOrgOswisCore/e-mail/message_header.html.twig' %}
+                    {% include '@OswisOrgOswisCore/e-mail/parts/message_footer.html.twig' %}
                 {% endblock header_outer %}
             </container>
 
@@ -57,7 +57,7 @@
                                     Nastala chyba při odesílání zprávy a její obsah nebyl načten.
                                 </p>
                                 <p style="color:red;font-weight:bold;">
-                                    Kontaktujte nás, prosím, ať můžeme nastalou situaci co nejrychleji vyřešit.
+                                    Kontaktuj{{ f ? 'te' : '' }} nás, prosím, ať můžeme nastalou situaci co nejrychleji vyřešit.
                                 </p>
                             {% endblock content_inner %}
                         </columns>
@@ -76,7 +76,7 @@
 
             <container class="footer">
                 {% block footer_outer %}
-                    {% include '@OswisOrgOswisCore/e-mail/message_footer.html.twig' %}
+                    {% include '@OswisOrgOswisCore/e-mail/parts/message_footer.html.twig' %}
                 {% endblock footer_outer %}
             </container>
         {% endblock body_outer %}

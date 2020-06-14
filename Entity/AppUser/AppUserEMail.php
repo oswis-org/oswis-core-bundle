@@ -7,11 +7,14 @@ namespace OswisOrg\OswisCoreBundle\Entity\AppUser;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use OswisOrg\OswisCoreBundle\Entity\AbstractClass\AbstractEMail;
+use OswisOrg\OswisCoreBundle\Entity\AbstractClass\AbstractToken;
 use OswisOrg\OswisCoreBundle\Entity\NonPersistent\Nameable;
 use OswisOrg\OswisCoreBundle\Exceptions\InvalidTypeException;
+use OswisOrg\OswisCoreBundle\Exceptions\OswisException;
 use OswisOrg\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
 
 /**
+ * E-mail sent to some user.
  * @Doctrine\ORM\Mapping\Entity(repositoryClass="OswisOrg\OswisCoreBundle\Repository\AppUserTokenRepository")
  * @Doctrine\ORM\Mapping\Table(name="core_app_user_token")
  * @ApiResource(
@@ -55,7 +58,13 @@ class AppUserEMail extends AbstractEMail
      * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserToken", fetch="EAGER")
      * @Doctrine\ORM\Mapping\JoinColumn(name="app_user_id", referencedColumnName="id")
      */
-    protected AppUser $appUser;
+    protected ?AppUser $appUser = null;
+
+    /**
+     * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserToken", fetch="EAGER")
+     * @Doctrine\ORM\Mapping\JoinColumn(name="app_user_token_id", referencedColumnName="id")
+     */
+    protected ?AppUserToken $appUserToken = null;
 
     /**
      * AppUserEMail constructor.
@@ -64,11 +73,17 @@ class AppUserEMail extends AbstractEMail
      * @param string|null   $eMail
      * @param string|null   $type
      *
-     * @throws InvalidTypeException
+     * @throws OswisException|InvalidTypeException
      */
-    public function __construct(AppUser $appUser, ?Nameable $nameable = null, ?string $eMail = null, ?string $type = null)
-    {
+    public function __construct(
+        ?AppUser $appUser = null,
+        ?Nameable $nameable = null,
+        ?string $eMail = null,
+        ?string $type = null,
+        AppUserToken $token = null
+    ) {
         parent::__construct($nameable, $eMail, $type);
+        $this->setAppUserToken($token);
         $this->appUser = $appUser;
     }
 
@@ -77,8 +92,39 @@ class AppUserEMail extends AbstractEMail
         return $this->getAppUser() === $appUser;
     }
 
-    public function getAppUser(): AppUser
+    public function getAppUser(): ?AppUser
     {
         return $this->appUser;
+    }
+
+    /**
+     * @param AppUser|null $appUser
+     *
+     * @throws OswisException
+     */
+    public function setAppUser(?AppUser $appUser): void
+    {
+        if (null === $appUser || null === $this->getAppUser()) {
+            $this->appUser = $appUser;
+        }
+        throw new OswisException('nelze změnit uživatele u odeslaného e-mailu');
+    }
+
+    public function getAppUserToken(): ?AbstractToken
+    {
+        return $this->appUserToken;
+    }
+
+    /**
+     * @param AppUserToken|null $appUserToken
+     *
+     * @throws OswisException
+     */
+    public function setAppUserToken(?AppUserToken $appUserToken): void
+    {
+        if (null === $appUserToken || null === $this->getAppUserToken()) {
+            $this->appUserToken = $appUserToken;
+        }
+        throw new OswisException('nelze změnit přiřazený token u odeslaného e-mailu');
     }
 }

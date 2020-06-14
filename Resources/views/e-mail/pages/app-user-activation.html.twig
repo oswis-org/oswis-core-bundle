@@ -1,9 +1,6 @@
-{% extends '@OswisOrgOswisCore/e-mail/message.html.twig' %}
-{% set tokenUrl = appUserToken|default and appUserToken.appUser|default ? path('oswis_org_oswis_core_app_user_process_token',
-    {'token': appUserToken.token|default, 'appUserId': appUserToken.appUser.id|default}) : null %}
+{% extends '@OswisOrgOswisCore/e-mail/pages/message.html.twig' %}
 
 {% block html_title %}{{ email.subject|default('Změna v uživatelském účtu') }}{% endblock %}
-{% block meta_description %}{{ block('html_title') }}{% endblock meta_description %}
 
 {% block content_inner %}
     <p>

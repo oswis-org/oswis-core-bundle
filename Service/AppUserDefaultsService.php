@@ -11,10 +11,14 @@ use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserRole;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserType;
 use OswisOrg\OswisCoreBundle\Entity\NonPersistent\Nameable;
+use OswisOrg\OswisCoreBundle\Exceptions\InvalidTypeException;
+use OswisOrg\OswisCoreBundle\Exceptions\NotImplementedException;
 use OswisOrg\OswisCoreBundle\Exceptions\OswisException;
 use OswisOrg\OswisCoreBundle\Exceptions\UserNotFoundException;
 use OswisOrg\OswisCoreBundle\Exceptions\UserNotUniqueException;
 use OswisOrg\OswisCoreBundle\Provider\OswisCoreSettingsProvider;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
+use Symfony\Component\Mime\Exception\LogicException;
 
 class AppUserDefaultsService
 {
@@ -39,10 +43,10 @@ class AppUserDefaultsService
     }
 
     /**
-     * @throws InvalidArgumentException
-     * @throws OswisException
-     * @throws UserNotFoundException
-     * @throws UserNotUniqueException
+     * @throws LogicException|InvalidArgumentException
+     * @throws OswisException|InvalidTypeException|NotImplementedException
+     * @throws UserNotFoundException|UserNotUniqueException
+     * @throws TransportExceptionInterface
      */
     public function registerRoot(): void
     {
@@ -59,6 +63,6 @@ class AppUserDefaultsService
         $fullName = $this->oswisCoreSettings->getAdmin()['name'] ?? $this->oswisCoreSettings->getEmail()['name'];
         $email = $this->oswisCoreSettings->getAdmin()['email'] ?? $this->oswisCoreSettings->getEmail()['email'];
         $adminUser = new AppUser($fullName, 'admin', $email, null, $type);
-        $this->appUserService->create($adminUser, null, false, true, false);
+        $this->appUserService->create($adminUser, false, true, false);
     }
 }

@@ -14,7 +14,6 @@ use Psr\Log\LoggerInterface;
 
 /**
  * AppUserRole service.
- * @noinspection PhpUnused
  */
 class AppUserTokenService
 {
@@ -22,13 +21,10 @@ class AppUserTokenService
 
     protected LoggerInterface $logger;
 
-    protected AppUserService $appUserService;
-
-    public function __construct(EntityManagerInterface $em, LoggerInterface $logger, AppUserService $appUserService)
+    public function __construct(EntityManagerInterface $em, LoggerInterface $logger)
     {
         $this->em = $em;
         $this->logger = $logger;
-        $this->appUserService = $appUserService;
     }
 
     /**

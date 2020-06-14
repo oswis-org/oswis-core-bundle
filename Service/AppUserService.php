@@ -8,7 +8,6 @@ namespace OswisOrg\OswisCoreBundle\Service;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Exception;
-use LogicException;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserToken;
 use OswisOrg\OswisCoreBundle\Exceptions\InvalidTypeException;
@@ -21,10 +20,8 @@ use OswisOrg\OswisCoreBundle\Provider\OswisCoreSettingsProvider;
 use OswisOrg\OswisCoreBundle\Repository\AppUserRepository;
 use OswisOrg\OswisCoreBundle\Utils\StringUtils;
 use Psr\Log\LoggerInterface;
-use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
-use Symfony\Component\Mailer\MailerInterface;
-use Symfony\Component\Mime\Address;
+use Symfony\Component\Mime\Exception\LogicException as MimeLogicException;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use function random_int;
 
@@ -43,33 +40,25 @@ class AppUserService
 
     protected UserPasswordEncoderInterface $encoder;
 
-    protected MailerInterface $mailer;
-
     protected OswisCoreSettingsProvider $oswisCoreSettings;
 
-    protected AppUserTypeService $appUserTypeService;
-
-    protected AppUserRoleService $appUserRoleService;
-
     protected AppUserTokenService $appUserTokenService;
+
+    protected AppUserMailService $appUserMailService;
 
     public function __construct(
         UserPasswordEncoderInterface $encoder,
         EntityManagerInterface $em,
         LoggerInterface $logger,
-        MailerInterface $mailer,
         OswisCoreSettingsProvider $oswisCoreSettings,
-        AppUserTypeService $appUserTypeService,
-        AppUserRoleService $appUserRoleService,
-        AppUserTokenService $appUserTokenService
+        AppUserTokenService $appUserTokenService,
+        AppUserMailService $appUserMailService
     ) {
         $this->em = $em;
         $this->encoder = $encoder;
         $this->logger = $logger;
-        $this->mailer = $mailer;
         $this->oswisCoreSettings = $oswisCoreSettings;
-        $this->appUserTypeService = $appUserTypeService;
-        $this->appUserRoleService = $appUserRoleService;
+        $this->appUserMailService = $appUserMailService;
         $this->appUserTokenService = $appUserTokenService;
     }
 
@@ -77,19 +66,16 @@ class AppUserService
      * Create and save new user of application.
      *
      * @param AppUser|null $appUser
-     * @param string|null  $password
      * @param bool|null    $activate
      * @param bool|null    $sendMail
      * @param bool|null    $skipDuplicityError
      *
      * @return AppUser
-     * @throws InvalidTypeException
-     * @throws OswisException
-     * @throws UserNotFoundException
-     * @throws UserNotUniqueException
-     * @todo Refactor: AppUser instance instead of single arguments.
+     * @throws OswisException|InvalidTypeException|NotImplementedException
+     * @throws UserNotFoundException|UserNotUniqueException
+     * @throws TransportExceptionInterface|MimeLogicException
      */
-    public function create(?AppUser $appUser = null, ?string $password = null, ?bool $activate = false, ?bool $sendMail = false, ?bool $skipDuplicityError = true): AppUser
+    public function create(?AppUser $appUser = null, ?bool $activate = false, ?bool $sendMail = false, ?bool $skipDuplicityError = true): AppUser
     {
         if (null === $appUser) {
             throw new UserNotFoundException();
@@ -112,7 +98,7 @@ class AppUserService
 
             return $appUser;
         }
-        true === $activate ? $this->activate($appUser, $password, $sendMail) : $this->requestActivation($appUser);
+        true === $activate ? $this->activate($appUser, $sendMail) : $this->requestActivation($appUser);
         $this->em->persist($appUser);
         $this->em->flush();
         $id = $appUser->getId();
@@ -140,16 +126,23 @@ class AppUserService
         return $repository;
     }
 
-    public function activate(AppUser $appUser, ?string $password, bool $sendConfirmation = true): void
+    /**
+     * @param AppUser $appUser
+     * @param bool    $sendConfirmation
+     *
+     * @throws InvalidTypeException
+     * @throws MimeLogicException|TransportExceptionInterface
+     */
+    public function activate(AppUser $appUser, bool $sendConfirmation = true): void
     {
         try {
-            $isRandom = empty($password);
-            $password ??= StringUtils::generatePassword();
-            $appUser->makePassword($this->encoder, $password);
+            $isRandom = empty($appUser->getPlainPassword());
+            $appUser->setPlainPassword($isRandom ? StringUtils::generatePassword() : $appUser->getPlainPassword(), $this->encoder, !$isRandom);
             if ($sendConfirmation) {
-                $this->sendAppUserEmail($appUser, self::ACTIVATION, null, $isRandom ? $password : null);
+                $this->appUserMailService->sendAppUserEMail($appUser, self::ACTIVATION);
             }
             $this->em->persist($appUser);
+            $this->em->flush();
             $this->logger->info('Successfully activated user ('.$appUser->getId().').');
         } catch (OswisException $exception) {
             $this->logger->error('User ('.$appUser->getId().') activation FAILED. '.$exception->getMessage());
@@ -157,83 +150,24 @@ class AppUserService
     }
 
     /**
-     * @throws OswisException
-     */
-    public function sendAppUserEmail(AppUser $appUser, string $type, ?AppUserToken $appUserToken = null, ?string $newPassword = null, bool $isIS = false): void
-    {
-        try {
-            if (self::ACTIVATION_REQUEST === $type) { // Send e-mail about activation request. Include token for activation.
-                $title = 'Aktivace uživatelského účtu';
-            } elseif (self::ACTIVATION === $type) {
-                // Send e-mail about account activation. Include password if present (it means that it's generated randomly).
-                $title = 'Účet byl aktivován';
-            } else {
-                throw new OswisException('Akce "'.$type.'" není u uživatelských účtů implementována.');
-            }
-            $data = [
-                'appUser'      => $appUser,
-                'type'         => $type,
-                'appUserToken' => $appUserToken,
-                'password'     => $newPassword,
-                'isIS'         => $isIS,
-            ];
-            $email = new TemplatedEmail();
-            try {
-                $email->to(new Address($appUser->getEmail() ?? '', $appUser->getName()));
-            } catch (LogicException $e) {
-                $email->to($appUser->getEmail() ?? '');
-            }
-            $email->subject($title)->htmlTemplate('@OswisOrgOswisCore/e-mail/app-user.html.twig')->context($data);
-            $this->mailer->send($email);
-        } catch (TransportExceptionInterface $e) {
-            throw new OswisException('Problém s odesláním zprávy o změně účtu.  '.$e->getMessage());
-        }
-    }
-
-    /**
      * @param AppUser|null $appUser
      *
-     * @throws InvalidTypeException
-     * @throws OswisException
-     * @throws UserNotFoundException
+     * @throws InvalidTypeException|MimeLogicException|TransportExceptionInterface
+     * @throws OswisException|UserNotFoundException|NotImplementedException
      */
     public function requestActivation(?AppUser $appUser): void
     {
-        if (null === $appUser) {
-            throw new UserNotFoundException();
-        }
-        $appUserToken = $this->appUserTokenService->create($appUser, AppUserToken::TYPE_ACTIVATION, false);
-        $this->sendAppUserEmail($appUser, self::ACTIVATION_REQUEST, $appUserToken);
-        $this->logger->info('Created activation request for user '.$appUser->getId().'.');
-    }
-
-    /**
-     * @param AppUser|null $appUser
-     * @param string       $type
-     * @param bool|null    $sendConfirmation
-     *
-     * @throws InvalidTypeException
-     * @throws NotImplementedException
-     * @throws OswisException
-     * @throws UserNotFoundException
-     */
-    public function appUserAction(?AppUser $appUser, string $type, ?bool $sendConfirmation = true): void
-    {
         try {
-            if (self::PASSWORD_CHANGE_REQUEST === $type) { // Create token for password reset/change and send it to user by e-mail.
-                $this->requestPasswordChange($appUser, $sendConfirmation);
-            } elseif (self::ACTIVATION_REQUEST === $type) { // Generate token for account activation and send it to user by e-mail.
-                $this->requestActivation($appUser);
-            } else { // Action type is not recognized.
-                throw new NotImplementedException($type, 'u uživatelských účtů');
+            if (null === $appUser) {
+                throw new UserNotFoundException();
             }
-            if ($appUser) {
-                $this->em->persist($appUser);
-            }
-            $this->em->flush();
-        } catch (OswisException $e) {
-            $this->logger->error('[ERROR] '.$e->getMessage());
-            throw $e;
+            $appUserToken = $this->appUserTokenService->create($appUser, AppUserToken::TYPE_ACTIVATION, false);
+            $this->appUserMailService->sendAppUserEMail($appUser, self::ACTIVATION_REQUEST, $appUserToken);
+            $this->em->persist($appUser);
+            $this->logger->info('Created and sent activation request for user '.$appUser->getId().'.');
+        } catch (OswisException|InvalidTypeException|TransportExceptionInterface|MimeLogicException $exception) {
+            $this->logger->error('User ('.$appUser->getId().') activation request FAILED. '.$exception->getMessage());
+            throw $exception;
         }
     }
 
@@ -241,55 +175,25 @@ class AppUserService
      * @param AppUser|null $appUser
      * @param bool         $sendConfirmation
      *
-     * @throws OswisException
-     * @throws UserNotFoundException
-     * @throws InvalidTypeException
+     * @throws MimeLogicException|TransportExceptionInterface
+     * @throws OswisException|UserNotFoundException|InvalidTypeException|NotImplementedException
      */
     public function requestPasswordChange(?AppUser $appUser, bool $sendConfirmation): void
     {
-        if (null === $appUser) {
-            throw new UserNotFoundException();
-        }
-        $appUserToken = $this->appUserTokenService->create($appUser, AppUserToken::TYPE_PASSWORD_RESET, false);
-        if ($sendConfirmation) {
-            $this->sendPasswordEmail($appUser, self::PASSWORD_CHANGE_REQUEST, $appUserToken);
-        }
-        $this->logger->info('Created password change request for user '.$appUser->getId().'.');
-    }
-
-    /**
-     * @throws OswisException
-     */
-    public function sendPasswordEmail(AppUser $appUser, string $type, ?AppUserToken $appUserToken = null, string $newPassword = null, bool $isIS = false): void
-    {
         try {
-            if (self::PASSWORD_CHANGE === $type) { // Send e-mail about password change. Include password if present (it means that it's generated randomly).
-                $title = 'Heslo změněno';
-                $appUserToken = null;
-            } elseif (self::PASSWORD_CHANGE_REQUEST === $type) { // Send e-mail about password reset request. Include token for change.
-                $title = 'Požadavek na změnu hesla';
-                $newPassword = null;
-            } else {
-                throw new NotImplementedException($type, 'u změny hesla');
+            if (null === $appUser) {
+                throw new UserNotFoundException();
             }
-            $data = [
-                'type'         => $type,
-                'appUser'      => $appUser,
-                'appUserToken' => $appUserToken,
-                'password'     => $newPassword,
-                'isIS'         => $isIS,
-            ];
-            $email = new TemplatedEmail();
-            try {
-                $email->to(new Address($appUser->getEmail() ?? '', $appUser->getName()));
-            } catch (LogicException $e) {
-                $email->to($appUser->getEmail() ?? '');
+            $appUserToken = $this->appUserTokenService->create($appUser, AppUserToken::TYPE_PASSWORD_RESET, false);
+            if ($sendConfirmation) {
+                $this->appUserMailService->sendAppUserEMail($appUser, self::PASSWORD_CHANGE_REQUEST, $appUserToken);
             }
-            $email->subject($title)->htmlTemplate('@OswisOrgOswisCore/e-mail/password.html.twig')->context($data);
-            $this->mailer->send($email);
-        } catch (TransportExceptionInterface $e) {
-            $this->logger->error($e->getMessage());
-            throw new OswisException('Problém s odesláním zprávy o změně hesla.  '.$e->getMessage());
+            $this->em->persist($appUser);
+            $andSent = $sendConfirmation ? ' and sent' : '';
+            $this->logger->info("Created $andSent password change request for user ".$appUser->getId().'.');
+        } catch (OswisException|InvalidTypeException|TransportExceptionInterface|MimeLogicException $exception) {
+            $this->logger->error('User ('.$appUser->getId().') password change request FAILED. '.$exception->getMessage());
+            throw $exception;
         }
     }
 
@@ -320,10 +224,12 @@ class AppUserService
      * @param int         $appUserId
      * @param string|null $newPassword
      *
-     * @throws OswisException|TokenInvalidException
+     * @throws MimeLogicException|TransportExceptionInterface
+     * @throws NotImplementedException|OswisException|InvalidTypeException|TokenInvalidException
      */
     public function processToken(string $token, int $appUserId, ?string $newPassword = null): void
     {
+        // TODO: Is it used somewhere?
         $appUserToken = $this->getToken($token, $appUserId);
         if (null === $appUserToken) {
             throw new TokenInvalidException('zadaný token neexistuje');
@@ -332,13 +238,13 @@ class AppUserService
             $type = $appUserToken->getType();
             $appUserToken->use();
             if (AppUserToken::TYPE_ACTIVATION === $type) {
-                $this->activate($appUserToken->getAppUser(), null, true);
+                $this->activate($appUserToken->getAppUser(), true);
             }
             if (AppUserToken::TYPE_PASSWORD_RESET === $type) {
                 $this->changePassword($appUserToken->getAppUser(), $newPassword, true);
             }
             throw new TokenInvalidException('neznámý typ tokenu', $token);
-        } catch (OswisException|TokenInvalidException $exception) {
+        } catch (OswisException|TokenInvalidException|InvalidTypeException|TransportExceptionInterface|MimeLogicException $exception) {
             $this->logger->error('Problem occurred when processing app user token. '.$exception->getMessage());
             throw $exception;
         }
@@ -346,19 +252,27 @@ class AppUserService
 
     /**
      * @param AppUser     $appUser
-     * @param string|null $newPassword
+     * @param string|null $password
      * @param bool        $sendConfirmation
      *
-     * @throws OswisException
+     * @throws MimeLogicException|TransportExceptionInterface
+     * @throws OswisException|InvalidTypeException|NotImplementedException
      */
-    public function changePassword(AppUser $appUser, ?string $newPassword, bool $sendConfirmation): void
+    public function changePassword(AppUser $appUser, ?string $password, bool $sendConfirmation): void
     {
-        $random = empty($newPassword);
-        $newPassword ??= StringUtils::generatePassword();
-        $appUser->makePassword($this->encoder, $newPassword);
-        if ($sendConfirmation) {
-            $this->sendPasswordEmail($appUser, self::PASSWORD_CHANGE, null, $random ? $newPassword : null);
+        try {
+            $isRandom = empty($password);
+            $password ??= StringUtils::generatePassword();
+            $appUser->setPlainPassword($password, $this->encoder, !$isRandom);
+            if ($sendConfirmation) {
+                $this->appUserMailService->sendAppUserEMail($appUser, self::PASSWORD_CHANGE);
+            }
+            $this->em->persist($appUser);
+            $this->em->flush();
+            $this->logger->info('Successfully changed password for user ('.$appUser->getId().').');
+        } catch (OswisException|InvalidTypeException|TransportExceptionInterface|MimeLogicException $exception) {
+            $this->logger->error('Password change for user ('.$appUser->getId().') FAILED. '.$exception->getMessage());
+            throw $exception;
         }
-        $this->logger->info('Password changed for user '.$appUser->getId().'.');
     }
 }

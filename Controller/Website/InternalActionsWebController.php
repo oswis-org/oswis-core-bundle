@@ -6,7 +6,9 @@
 
 namespace OswisOrg\OswisCoreBundle\Controller\Website;
 
+use Exception;
 use OswisOrg\OswisCoreBundle\Provider\OswisCoreSettingsProvider;
+use OswisOrg\OswisCoreBundle\Service\AppUserDefaultsService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Filesystem\Exception\IOException;
 use Symfony\Component\Filesystem\Filesystem;
@@ -14,14 +16,18 @@ use Symfony\Component\HttpFoundation\IpUtils;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 
 class InternalActionsWebController extends AbstractController
 {
     protected OswisCoreSettingsProvider $coreSettings;
 
-    public function __construct(OswisCoreSettingsProvider $coreSettings)
+    private AppUserDefaultsService $appUserDefaultsService;
+
+    public function __construct(OswisCoreSettingsProvider $coreSettings, AppUserDefaultsService $appUserDefaultsService)
     {
         $this->coreSettings = $coreSettings;
+        $this->appUserDefaultsService = $appUserDefaultsService;
     }
 
     /**
@@ -53,6 +59,21 @@ class InternalActionsWebController extends AbstractController
         $allowedIPs = $this->coreSettings->getAdminIPs();
         if (!IpUtils::checkIp($request->getClientIp(), $allowedIPs)) {
             throw new AccessDeniedHttpException('Nedostatečná oprávnění.');
+        }
+    }
+
+    /**
+     * @return Response
+     * @throws TransportExceptionInterface
+     */
+    public function registerRoot(): Response
+    {
+        try {
+            $this->appUserDefaultsService->registerRoot();
+
+            return new Response('Uživatel byl vytvořen, pokud ještě neexistoval.');
+        } catch (Exception $e) {
+            return new Response('Nastala chyba při vytváření výchozího uživatele.');
         }
     }
 }

@@ -10,7 +10,6 @@ use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserRole;
 use OswisOrg\OswisCoreBundle\Interfaces\AddressBook\PersonInterface;
 use OswisOrg\OswisCoreBundle\Traits\User\UserTrait;
 use Serializable;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\User\EquatableInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -87,9 +86,4 @@ abstract class AbstractAppUser implements UserInterface, Serializable, Equatable
      * @return array (Role|string)[] The user roles
      */
     abstract public function getRoles(): array;
-
-    public function makePassword(UserPasswordEncoderInterface $encoder, ?string $plainPassword): void
-    {
-        $this->setPassword($encoder->encodePassword($this, $plainPassword));
-    }
 }

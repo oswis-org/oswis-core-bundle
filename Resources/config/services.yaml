@@ -75,8 +75,8 @@ services:
             - '@security.password_encoder'
             - '@doctrine.orm.entity_manager'
             - '@monolog.logger'
-            - '@mailer.mailer'
             - '@oswis_org_oswis_core.oswis_core_settings_provider'
+            - '@oswis_org_oswis_core.app_user_token_service'
     OswisOrg\OswisCoreBundle\Service\AppUserService:
         alias: oswis_org_oswis_core.app_user_service
         public: true
@@ -106,6 +106,21 @@ services:
             - '@oswis_org_oswis_core.app_user_service'
     OswisOrg\OswisCoreBundle\Service\AppUserTokenService:
         alias: oswis_org_oswis_core.app_user_token_service
+        public: true
+
+    ### AppUser Mail Service
+    oswis_org_oswis_core.app_user_mail_service:
+        class: OswisOrg\OswisCoreBundle\Service\AppUserMailService
+        autowire: true
+        public: true
+        arguments:
+            - '@security.user_password_encoder.generic'
+            - '@doctrine.orm.entity_manager.abstract'
+            - '@monolog.logger_prototype'
+            - '@mailer.mailer'
+            - '@oswis_org_oswis_core.oswis_core_settings_provider'
+    OswisOrg\OswisCoreBundle\Service\AppUserMailService:
+        alias: oswis_org_oswis_core.app_user_mail_service
         public: true
 
     ### AppUser Role Service

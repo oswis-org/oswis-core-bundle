@@ -6,9 +6,9 @@
 
 namespace OswisOrg\OswisCoreBundle\Controller;
 
-use Exception;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserToken;
 use OswisOrg\OswisCoreBundle\Exceptions\InvalidTypeException;
+use OswisOrg\OswisCoreBundle\Exceptions\NotImplementedException;
 use OswisOrg\OswisCoreBundle\Exceptions\OswisException;
 use OswisOrg\OswisCoreBundle\Exceptions\TokenInvalidException;
 use OswisOrg\OswisCoreBundle\Exceptions\UserNotFoundException;
@@ -16,24 +16,22 @@ use OswisOrg\OswisCoreBundle\Exceptions\UserNotUniqueException;
 use OswisOrg\OswisCoreBundle\Form\AbstractClass\ActivationRequestType;
 use OswisOrg\OswisCoreBundle\Form\AbstractClass\PasswordChangeRequestType;
 use OswisOrg\OswisCoreBundle\Form\AbstractClass\PasswordChangeType;
-use OswisOrg\OswisCoreBundle\Service\AppUserDefaultsService;
 use OswisOrg\OswisCoreBundle\Service\AppUserService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Exception\LogicException;
 use Symfony\Component\Form\Exception\RuntimeException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
+use Symfony\Component\Mime\Exception\LogicException as MimeLogicException;
 
 class AppUserController extends AbstractController
 {
     private AppUserService $appUserService;
 
-    private AppUserDefaultsService $appUserDefaultsService;
-
-    public function __construct(AppUserService $appUserService, AppUserDefaultsService $appUserDefaultsService)
+    public function __construct(AppUserService $appUserService)
     {
         $this->appUserService = $appUserService;
-        $this->appUserDefaultsService = $appUserDefaultsService;
     }
 
     /**
@@ -41,7 +39,10 @@ class AppUserController extends AbstractController
      * @param int|null $appUserId
      *
      * @return Response
-     * @throws OswisException|LogicException|InvalidTypeException|UserNotFoundException|UserNotUniqueException
+     * @throws MimeLogicException|TransportExceptionInterface
+     * @throws LogicException
+     * @throws OswisException|InvalidTypeException|NotImplementedException
+     * @throws UserNotFoundException|UserNotUniqueException
      */
     public function passwordChangeRequest(Request $request, ?int $appUserId): Response
     {
@@ -81,12 +82,10 @@ class AppUserController extends AbstractController
      * @param Request $request
      *
      * @return Response
-     * @throws InvalidTypeException
-     * @throws LogicException
-     * @throws OswisException
-     * @throws RuntimeException
-     * @throws UserNotFoundException
-     * @throws UserNotUniqueException
+     * @throws RuntimeException|LogicException
+     * @throws MimeLogicException|TransportExceptionInterface
+     * @throws OswisException|NotImplementedException|InvalidTypeException
+     * @throws UserNotFoundException|UserNotUniqueException
      */
     public function activationRequest(Request $request): Response
     {
@@ -123,15 +122,14 @@ class AppUserController extends AbstractController
     }
 
     /**
+     * @param Request     $request
      * @param string|null $token
      * @param int|null    $appUserId
-     * @param Request     $request
      *
      * @return Response
-     * @throws LogicException
-     * @throws OswisException
-     * @throws RuntimeException
-     * @throws TokenInvalidException
+     * @throws LogicException|RuntimeException
+     * @throws MimeLogicException|TransportExceptionInterface
+     * @throws OswisException|InvalidTypeException|TokenInvalidException
      */
     public function processToken(Request $request, ?string $token = null, ?int $appUserId = null): Response
     {
@@ -146,9 +144,17 @@ class AppUserController extends AbstractController
         throw new TokenInvalidException('nebyla vykonána žádná akce');
     }
 
+    /**
+     * @param AppUserToken $appUserToken
+     *
+     * @return Response
+     * @throws InvalidTypeException
+     * @throws MimeLogicException
+     * @throws TransportExceptionInterface
+     */
     public function processTokenActivation(AppUserToken $appUserToken): Response
     {
-        $this->appUserService->activate($appUserToken->getAppUser(), null, true);
+        $this->appUserService->activate($appUserToken->getAppUser(), true);
 
         return $this->userActivated();
     }
@@ -169,10 +175,9 @@ class AppUserController extends AbstractController
      * @param Request      $request
      *
      * @return Response
-     * @throws OswisException
-     * @throws TokenInvalidException
-     * @throws LogicException
-     * @throws RuntimeException
+     * @throws RuntimeException|LogicException
+     * @throws MimeLogicException|TransportExceptionInterface
+     * @throws OswisException|InvalidTypeException|NotImplementedException|TokenInvalidException
      */
     public function processTokenPasswordChange(AppUserToken $appUserToken, Request $request): Response
     {
@@ -203,16 +208,5 @@ class AppUserController extends AbstractController
                 'message' => 'Heslo u uživatelského účtu bylo úspěšně změněno.',
             ]
         );
-    }
-
-    public function registerRoot(): Response
-    {
-        try {
-            $this->appUserDefaultsService->registerRoot();
-
-            return new Response('Uživatel byl vytvořen, pokud ještě neexistoval.');
-        } catch (Exception $e) {
-            return new Response('Nastala chyba při vytváření výchozího uživatele.');
-        }
     }
 }

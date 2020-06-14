@@ -18,6 +18,8 @@ use Symfony\Component\HttpFoundation\Exception\SuspiciousOperationException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\ViewEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
+use Symfony\Component\Mime\Exception\LogicException;
 
 final class AppUserSubscriber implements EventSubscriberInterface
 {
@@ -40,7 +42,8 @@ final class AppUserSubscriber implements EventSubscriberInterface
     /**
      * @param ViewEvent $event
      *
-     * @throws NotImplementedException|UserNotFoundException|InvalidTypeException|OswisException
+     * @throws OswisException|InvalidTypeException|NotImplementedException|UserNotFoundException
+     * @throws TransportExceptionInterface|LogicException
      */
     public function makeAppUser(ViewEvent $event): void
     {
@@ -56,6 +59,6 @@ final class AppUserSubscriber implements EventSubscriberInterface
         if (Request::METHOD_POST !== $method) {
             return;
         }
-        $this->appUserService->appUserAction($appUser, AppUserService::ACTIVATION_REQUEST);
+        $this->appUserService->requestActivation($appUser);
     }
 }
