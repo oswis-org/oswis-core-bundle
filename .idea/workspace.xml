@@ -24,29 +24,38 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
+    <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="Some fixes, updates and changes.">
+      <change afterPath="$PROJECT_DIR$/Entity/AppUserEMail/AppUserEMailCategory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Entity/AppUserEMail/AppUserEMailGroup.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Entity/TwigTemplate/TwigTemplate.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Interfaces/Common/DateRangeInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Interfaces/Common/PriorityInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Interfaces/EMail/EMailCategoryInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Interfaces/EMail/EMailGroupInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Interfaces/EMail/EMailTemplateInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Repository/AppUserEMailCategoryRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Repository/AppUserEMailGroupRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Repository/TwigTemplateRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Twig/Loader/DatabaseLoader.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractAppUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractAppUser.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controller/AppUserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/AppUserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DependencyInjection/OswisOrgOswisCoreExtension.php" beforeDir="false" afterPath="$PROJECT_DIR$/DependencyInjection/OswisOrgOswisCoreExtension.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractEMail.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractEMail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractEMailCategory.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractEMailCategory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractEMailGroup.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractEMailGroup.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractEMailTemplate.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Entity/AppUser/AppUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUser/AppUser.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AppUser/AppUserEMail.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUser/AppUserEMail.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Repository/AppUserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/Repository/AppUserRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AppUser/AppUserEMail.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUserEMail/AppUserEMail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EventSubscriber/AppUserSubscriber.php" beforeDir="false" afterPath="$PROJECT_DIR$/EventSubscriber/AppUserSubscriber.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Resources/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/config/services.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/config/services_services.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/config/services_subscribers.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/config/services_twig.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/config/services_utils.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/config/services_web.yaml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Resources/views/web/parts/web-banner.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/parts/web-banner.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Service/AbstractMailService.php" beforeDir="false" afterPath="$PROJECT_DIR$/Service/AbstractMailService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Service/AppUserDefaultsService.php" beforeDir="false" afterPath="$PROJECT_DIR$/Service/AppUserDefaultsService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Service/AppUserMailService.php" beforeDir="false" afterPath="$PROJECT_DIR$/Service/AppUserMailService.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Service/AppUserService.php" beforeDir="false" afterPath="$PROJECT_DIR$/Service/AppUserService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Common/ActiveTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/ActivatedTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Common/ConfirmedByManagerTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/ManagerConfirmationTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Common/ConfirmedByUserTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/UserConfirmationTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Common/DeletedTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/DeletedTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Common/InfoMailSentTrait.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Common/LockedForUserChangesTrait.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Common/PlainTextReasonTrait.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Common/ProgressTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Project/ProgressTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/User/UserTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/User/UserTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Common/DateRangeTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/DateRangeTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Common/PriorityTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/PriorityTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Common/TimestampableTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/TimestampableTrait.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -69,9 +78,9 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/date/date_c.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Resources/views/e-mail/pages/foundation-emails.css.twig" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/exif/exif.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard/standard_0.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/exif/exif.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Resources/views/e-mail/pages/foundation-emails.css.twig" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
   </component>
   <component name="JsFlowSettings">
     <service-enabled>true</service-enabled>
@@ -255,7 +264,7 @@
     <property name="add_unversioned_files" value="$PROJECT_DIR$/vendor/symfony/swiftmailer-bundle/composer.json" />
     <property name="editor.config.ad.shown" value="true" />
     <property name="javascript.nodejs.core.library.configured.version" value="10.17.0" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Service" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Repository" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -265,22 +274,22 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php.composer" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/Service" />
-      <recent name="$PROJECT_DIR$/Resources/views/e-mail" />
-      <recent name="$PROJECT_DIR$/Entity/AbstractClass" />
-      <recent name="$PROJECT_DIR$/Form/AbstractClass" />
-      <recent name="$PROJECT_DIR$/Entity/AppUser" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Entity/AppUserEMail" />
       <recent name="$PROJECT_DIR$/Traits/Project" />
       <recent name="$PROJECT_DIR$/Resources/views/e-mail/pages" />
       <recent name="$PROJECT_DIR$/Resources/views/e-mail/parts" />
       <recent name="$PROJECT_DIR$/Traits/Form" />
-      <recent name="$PROJECT_DIR$/Resources/views/export/pdf" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Repository" />
+      <recent name="$PROJECT_DIR$/Interfaces/Common" />
+      <recent name="$PROJECT_DIR$/Interfaces/EMail" />
+      <recent name="$PROJECT_DIR$/Entity/AppUserEMail" />
+      <recent name="$PROJECT_DIR$/Entity/AppUser" />
     </key>
   </component>
   <component name="RunManager">
@@ -777,14 +786,13 @@
       <workItem from="1591525796666" duration="82000" />
       <workItem from="1591552321325" duration="1582000" />
       <workItem from="1591633316208" duration="1062000" />
-      <workItem from="1591871676633" duration="78957000" />
-    </task>
-    <task id="LOCAL-00597" summary="Some fixes, updates and changes.">
-      <created>1589825505911</created>
-      <option name="number" value="00597" />
-      <option name="presentableId" value="LOCAL-00597" />
-      <option name="project" value="LOCAL" />
-      <updated>1589825505912</updated>
+      <workItem from="1591871676633" duration="79752000" />
+      <workItem from="1592152789927" duration="190000" />
+      <workItem from="1592152996633" duration="5095000" />
+      <workItem from="1592166339720" duration="19205000" />
+      <workItem from="1592229594225" duration="476000" />
+      <workItem from="1592230097549" duration="401000" />
+      <workItem from="1592231041538" duration="440000" />
     </task>
     <task id="LOCAL-00598" summary="Some fixes, updates and changes.">
       <created>1589968086152</created>
@@ -1122,7 +1130,14 @@
       <option name="project" value="LOCAL" />
       <updated>1592143014385</updated>
     </task>
-    <option name="localTasksCounter" value="646" />
+    <task id="LOCAL-00646" summary="Some fixes, updates and changes.">
+      <created>1592145131994</created>
+      <option name="number" value="00646" />
+      <option name="presentableId" value="LOCAL-00646" />
+      <option name="project" value="LOCAL" />
+      <updated>1592145131994</updated>
+    </task>
+    <option name="localTasksCounter" value="647" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1209,80 +1224,82 @@
       <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="396" y="187" width="671" height="398" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.741@0.0.1366.741" timestamp="1588084778890" />
-    <state x="546" y="158" width="458" height="556" key="#com.intellij.ide.util.MemberChooser" timestamp="1592125110295">
+    <state x="546" y="158" width="458" height="556" key="#com.intellij.ide.util.MemberChooser" timestamp="1592227665410">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="546" y="158" width="466" height="556" key="#com.intellij.ide.util.MemberChooser/0.0.1366.741@0.0.1366.741" timestamp="1591633684598" />
+    <state x="546" y="158" width="466" height="556" key="#com.intellij.ide.util.MemberChooser/0.0.1366.741@0.0.1366.741" timestamp="1592227665410" />
     <state x="546" y="158" width="458" height="556" key="#com.intellij.ide.util.MemberChooser/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1592125110295" />
     <state x="2466" y="164" width="349" height="577" key="#com.intellij.ide.util.MemberChooser/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1588590248828" />
-    <state x="353" y="0" width="946" height="735" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1592144443570">
-      <screen x="0" y="0" width="1920" height="741" />
+    <state x="251" y="0" width="946" height="735" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1592228052798">
+      <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="251" y="0" width="855" height="735" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.741@0.0.1366.741" timestamp="1591633569455" />
+    <state x="251" y="0" width="855" height="735" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.741@0.0.1366.741" timestamp="1592228052798" />
     <state x="604" y="0" width="946" height="735" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.3286.741@0.0.3286.741" timestamp="1590062941287" />
     <state x="251" y="0" width="624" height="735" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1592126046014" />
     <state x="353" y="0" width="478" height="735" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592144443570" />
     <state x="2171" y="0" width="462" height="741" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1588326607025" />
-    <state x="405" y="257" width="526" height="478" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1592144430947">
-      <screen x="0" y="0" width="1920" height="741" />
+    <state x="288" y="257" width="526" height="478" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1592230000811">
+      <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="288" y="257" width="526" height="478" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.741@0.0.1366.741" timestamp="1591362376713" />
+    <state x="288" y="257" width="526" height="478" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.741@0.0.1366.741" timestamp="1592230000811" />
     <state x="288" y="257" width="526" height="478" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1592139253178" />
     <state x="405" y="257" width="526" height="478" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592144430947" />
     <state x="466" y="300" width="426" height="140" key="#com.jetbrains.php.lang.intentions.PhpImportClassDialog#" timestamp="1592138834912">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="466" y="300" width="426" height="140" key="#com.jetbrains.php.lang.intentions.PhpImportClassDialog#/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1592138834912" />
-    <state x="701" y="381" width="402" height="332" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1592144846062">
-      <screen x="0" y="0" width="1920" height="741" />
+    <state x="499" y="381" width="402" height="332" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1592231309479">
+      <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="499" y="381" width="402" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1366.741@0.0.1366.741" timestamp="1591634012619" />
+    <state x="499" y="381" width="402" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1366.741@0.0.1366.741" timestamp="1592231309479" />
     <state x="1048" y="381" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.3286.741@0.0.3286.741" timestamp="1587921517680" />
     <state x="499" y="381" width="402" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1592140148294" />
-    <state x="701" y="381" width="509" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592144846062" />
+    <state x="701" y="381" width="509" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592145061391" />
     <state x="2356" y="395" width="402" height="332" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1588872805427" />
-    <state x="518" y="0" width="1366" height="741" key="CommitChangelistDialog2" timestamp="1592143014287">
-      <screen x="0" y="0" width="1920" height="741" />
+    <state x="0" y="0" width="1366" height="741" key="CommitChangelistDialog2" timestamp="1592231451988">
+      <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="0" y="0" width="904" height="735" key="CommitChangelistDialog2/0.0.1366.741@0.0.1366.741" timestamp="1591634340283" />
+    <state x="0" y="0" width="904" height="735" key="CommitChangelistDialog2/0.0.1366.741@0.0.1366.741" timestamp="1592231451988" />
     <state x="1920" y="0" width="1366" height="741" key="CommitChangelistDialog2/0.0.3286.741@0.0.3286.741" timestamp="1591444330199" />
     <state x="369" y="0" width="881" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1592044765234" />
-    <state x="518" y="0" width="881" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592143014287" />
+    <state x="518" y="0" width="881" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592145131804" />
     <state x="2289" y="0" width="881" height="741" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1588872861925" />
     <state x="99" y="100" width="1160" height="535" maximized="true" key="DiffContextDialog" timestamp="1588442572785">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="99" y="100" width="1168" height="541" maximized="true" key="DiffContextDialog/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1588442572785" />
-    <state x="543" y="217" width="826" height="518" key="IDE.errors.dialog" timestamp="1585583923391">
-      <screen x="0" y="0" width="1920" height="741" />
+    <state x="0" y="0" width="1295" height="706" key="IDE.errors.dialog" timestamp="1592231341462">
+      <screen x="0" y="0" width="1366" height="741" />
     </state>
+    <state x="0" y="0" width="1295" height="706" key="IDE.errors.dialog/0.0.1366.741@0.0.1366.741" timestamp="1592231341462" />
     <state x="543" y="217" width="826" height="518" key="IDE.errors.dialog/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1585583923391" />
-    <state x="589" y="199" width="733" height="536" key="NewPhpClassDialog" timestamp="1587556949841">
-      <screen x="0" y="0" width="1920" height="741" />
+    <state x="419" y="199" width="805" height="536" key="NewPhpClassDialog" timestamp="1592223849913">
+      <screen x="0" y="0" width="1366" height="741" />
     </state>
+    <state x="419" y="199" width="805" height="536" key="NewPhpClassDialog/0.0.1366.741@0.0.1366.741" timestamp="1592223849913" />
     <state x="589" y="199" width="733" height="536" key="NewPhpClassDialog/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1587556949841" />
     <state x="865" y="617" width="501" height="106" key="ProcessPopupWindow" timestamp="1591520549470">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="865" y="617" width="501" height="106" key="ProcessPopupWindow/0.0.1366.741@0.0.1366.741" timestamp="1591520549470" />
-    <state x="187" y="5" width="1280" height="730" key="SettingsEditor" timestamp="1591521949487">
+    <state x="187" y="5" width="1280" height="730" key="SettingsEditor" timestamp="1592229636197">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="187" y="5" key="SettingsEditor/0.0.1366.741@0.0.1366.741" timestamp="1591521949487" />
+    <state x="187" y="5" key="SettingsEditor/0.0.1366.741@0.0.1366.741" timestamp="1592229636197" />
     <state x="33" y="0" width="1280" height="730" key="SettingsEditor/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1587589952804" />
     <state x="263" y="0" width="1418" height="741" key="SettingsEditor/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1589305333032" />
-    <state x="555" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1592143015659">
+    <state x="555" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1592145133378">
       <screen x="0" y="0" width="1920" height="741" />
     </state>
     <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1591634346102" />
     <state x="0" y="213" width="1920" height="522" key="Vcs.Push.Dialog.v2/0.0.3286.741@0.0.3286.741" timestamp="1591444332202" />
     <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1592044766973" />
-    <state x="555" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592143015659" />
+    <state x="555" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592145133378" />
     <state x="2315" y="199" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1588872863506" />
-    <state x="0" y="96" width="757" height="462" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1592123348604">
+    <state x="99" y="96" width="1109" height="474" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1592220931612">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="99" y="96" width="1117" height="480" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1366.741@0.0.1366.741" timestamp="1591472319279" />
+    <state x="99" y="96" width="1109" height="474" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1366.741@0.0.1366.741" timestamp="1592220931612" />
     <state x="0" y="96" width="1920" height="498" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.3286.741@0.0.3286.741" timestamp="1588167724899" />
     <state x="0" y="96" width="757" height="462" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1592123348604" />
     <state x="471" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1591891058102">

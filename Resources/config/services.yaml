@@ -10,6 +10,7 @@ services:
         autoconfigure: true
         public: false
 
+
     ### Search Filter
     oswis_org_oswis_core.search_filter:
         class: OswisOrg\OswisCoreBundle\Filter\SearchFilter
@@ -225,6 +226,11 @@ services:
         public: true
         tags:
             - { name: twig.extension }
+    oswis_org_oswis_core.twig.database_loader:
+        class: OswisOrg\OswisCoreBundle\Twig\Loader\DatabaseLoader
+        public: true
+        tags:
+            - { name: twig.loader }
 
 
 
