@@ -10,7 +10,6 @@ use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use LogicException;
 use OswisOrg\OswisCoreBundle\Entity\AbstractClass\AbstractEMail;
-use OswisOrg\OswisCoreBundle\Provider\OswisCoreSettingsProvider;
 use Psr\Log\LoggerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
@@ -26,18 +25,14 @@ class AbstractMailService
 
     protected MailerInterface $mailer;
 
-    protected OswisCoreSettingsProvider $oswisCoreSettings;
-
     public function __construct(
         EntityManagerInterface $em,
         LoggerInterface $logger,
-        MailerInterface $mailer,
-        OswisCoreSettingsProvider $oswisCoreSettings
+        MailerInterface $mailer
     ) {
         $this->em = $em;
         $this->logger = $logger;
         $this->mailer = $mailer;
-        $this->oswisCoreSettings = $oswisCoreSettings;
     }
 
     /**
