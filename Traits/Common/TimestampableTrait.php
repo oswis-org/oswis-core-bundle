@@ -51,7 +51,7 @@ trait TimestampableTrait
 
     public function getCreatedAt(): ?DateTime
     {
-        return $this->createdAt;
+        return $this->createdAt ?? $this->updatedAt;
     }
 
     public function getUpdatedDaysAgo(): ?int
@@ -66,6 +66,6 @@ trait TimestampableTrait
 
     public function getUpdatedAt(): ?DateTime
     {
-        return $this->updatedAt;
+        return $this->updatedAt ?? $this->createdAt;
     }
 }

@@ -42,7 +42,7 @@ trait DateRangeTrait
      *
      * @return bool True if belongs to date range.
      */
-    public function containsDateTimeInRange(?DateTime $dateTime = null): bool
+    public function isInDateRange(?DateTime $dateTime = null): bool
     {
         return DateTimeUtils::isDateTimeInRange($this->getStartDateTime(), $this->getEndDateTime(), $dateTime);
     }

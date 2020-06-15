@@ -23,9 +23,9 @@ trait PriorityTrait
     /**
      * Get priority.
      */
-    public function getPriority(): int
+    public function getPriority(): ?int
     {
-        return $this->priority ?? 0;
+        return $this->priority;
     }
 
     /**
@@ -35,6 +35,6 @@ trait PriorityTrait
      */
     public function setPriority(?int $priority): void
     {
-        $this->priority = $priority ?? 0;
+        $this->priority = $priority;
     }
 }
