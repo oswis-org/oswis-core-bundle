@@ -114,11 +114,12 @@ services:
         autowire: true
         public: true
         arguments:
-            - '@security.password_encoder'
             - '@doctrine.orm.entity_manager.abstract'
             - '@monolog.logger_prototype'
             - '@mailer.mailer'
-            - '@oswis_org_oswis_core.oswis_core_settings_provider'
+            - ''
+            - ''
+            - '@twig'
     OswisOrg\OswisCoreBundle\Service\AppUserMailService:
         alias: oswis_org_oswis_core.app_user_mail_service
         public: true
@@ -160,7 +161,35 @@ services:
         alias: oswis_org_oswis_core.export_service
         public: true
 
+    oswis_org_oswis_core.app_user_e_mail_category_repository:
+        class: OswisOrg\OswisCoreBundle\Repository\AppUserEMailCategoryRepository
+        autowire: true
+        public: true
+        arguments:
+            - '@doctrine'
+    OswisOrg\OswisCoreBundle\Repository\AppUserEMailCategoryRepository:
+        alias: oswis_org_oswis_core.app_user_e_mail_category_repository
+        public: true
 
+    oswis_org_oswis_core.app_user_e_mail_group_repository:
+        class: OswisOrg\OswisCoreBundle\Repository\AppUserEMailGroupRepository
+        autowire: true
+        public: true
+        arguments:
+            - '@doctrine'
+    OswisOrg\OswisCoreBundle\Repository\AppUserEMailGroupRepository:
+        alias: oswis_org_oswis_core.app_user_e_mail_group_repository
+        public: true
+
+    oswis_org_oswis_core.twig_template_repository:
+        class: OswisOrg\OswisCoreBundle\Repository\TwigTemplateRepository
+        autowire: true
+        public: true
+        arguments:
+            - '@doctrine'
+    OswisOrg\OswisCoreBundle\Repository\TwigTemplateRepository:
+        alias: oswis_org_oswis_core.twig_template_repository
+        public: true
 
 
     ####
@@ -229,6 +258,8 @@ services:
     oswis_org_oswis_core.twig.database_loader:
         class: OswisOrg\OswisCoreBundle\Twig\Loader\DatabaseLoader
         public: true
+        arguments:
+            - '@oswis_org_oswis_core.twig_template_repository'
         tags:
             - { name: twig.loader }
 

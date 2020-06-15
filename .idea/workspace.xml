@@ -24,39 +24,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="Some fixes, updates and changes.">
-      <change afterPath="$PROJECT_DIR$/Entity/AppUserEMail/AppUserEMailCategory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Entity/AppUserEMail/AppUserEMailGroup.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Entity/TwigTemplate/TwigTemplate.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Interfaces/Common/DateRangeInterface.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Interfaces/Common/PriorityInterface.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Interfaces/EMail/EMailCategoryInterface.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Interfaces/EMail/EMailGroupInterface.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Interfaces/EMail/EMailTemplateInterface.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Repository/AppUserEMailCategoryRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Repository/AppUserEMailGroupRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Repository/TwigTemplateRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Twig/Loader/DatabaseLoader.php" afterDir="false" />
+    <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/AppUserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/AppUserController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DependencyInjection/OswisOrgOswisCoreExtension.php" beforeDir="false" afterPath="$PROJECT_DIR$/DependencyInjection/OswisOrgOswisCoreExtension.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractEMail.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractEMail.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractEMailCategory.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractEMailCategory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractEMailGroup.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractEMailGroup.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractEMailTemplate.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AppUser/AppUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUser/AppUser.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AppUser/AppUserEMail.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUserEMail/AppUserEMail.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventSubscriber/AppUserSubscriber.php" beforeDir="false" afterPath="$PROJECT_DIR$/EventSubscriber/AppUserSubscriber.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Resources/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/config/services.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Resources/views/web/parts/web-banner.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/parts/web-banner.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/AbstractMailService.php" beforeDir="false" afterPath="$PROJECT_DIR$/Service/AbstractMailService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/AppUserDefaultsService.php" beforeDir="false" afterPath="$PROJECT_DIR$/Service/AppUserDefaultsService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/AppUserMailService.php" beforeDir="false" afterPath="$PROJECT_DIR$/Service/AppUserMailService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/AppUserService.php" beforeDir="false" afterPath="$PROJECT_DIR$/Service/AppUserService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Common/DateRangeTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/DateRangeTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Common/PriorityTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/PriorityTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Common/TimestampableTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/TimestampableTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -792,63 +764,7 @@
       <workItem from="1592166339720" duration="19205000" />
       <workItem from="1592229594225" duration="476000" />
       <workItem from="1592230097549" duration="401000" />
-      <workItem from="1592231041538" duration="440000" />
-    </task>
-    <task id="LOCAL-00598" summary="Some fixes, updates and changes.">
-      <created>1589968086152</created>
-      <option name="number" value="00598" />
-      <option name="presentableId" value="LOCAL-00598" />
-      <option name="project" value="LOCAL" />
-      <updated>1589968086153</updated>
-    </task>
-    <task id="LOCAL-00599" summary="Some fixes, updates and changes.">
-      <created>1589973234843</created>
-      <option name="number" value="00599" />
-      <option name="presentableId" value="LOCAL-00599" />
-      <option name="project" value="LOCAL" />
-      <updated>1589973234843</updated>
-    </task>
-    <task id="LOCAL-00600" summary="Some fixes, updates and changes.">
-      <created>1590079963311</created>
-      <option name="number" value="00600" />
-      <option name="presentableId" value="LOCAL-00600" />
-      <option name="project" value="LOCAL" />
-      <updated>1590079963312</updated>
-    </task>
-    <task id="LOCAL-00601" summary="Some fixes, updates and changes.">
-      <created>1590091694290</created>
-      <option name="number" value="00601" />
-      <option name="presentableId" value="LOCAL-00601" />
-      <option name="project" value="LOCAL" />
-      <updated>1590091694290</updated>
-    </task>
-    <task id="LOCAL-00602" summary="Some fixes, updates and changes.">
-      <created>1590101119336</created>
-      <option name="number" value="00602" />
-      <option name="presentableId" value="LOCAL-00602" />
-      <option name="project" value="LOCAL" />
-      <updated>1590101119336</updated>
-    </task>
-    <task id="LOCAL-00603" summary="Some fixes, updates and changes.">
-      <created>1590140642547</created>
-      <option name="number" value="00603" />
-      <option name="presentableId" value="LOCAL-00603" />
-      <option name="project" value="LOCAL" />
-      <updated>1590140642547</updated>
-    </task>
-    <task id="LOCAL-00604" summary="Some fixes, updates and changes.">
-      <created>1590153219331</created>
-      <option name="number" value="00604" />
-      <option name="presentableId" value="LOCAL-00604" />
-      <option name="project" value="LOCAL" />
-      <updated>1590153219331</updated>
-    </task>
-    <task id="LOCAL-00605" summary="Some fixes, updates and changes.">
-      <created>1590163861492</created>
-      <option name="number" value="00605" />
-      <option name="presentableId" value="LOCAL-00605" />
-      <option name="project" value="LOCAL" />
-      <updated>1590163861492</updated>
+      <workItem from="1592231041538" duration="1096000" />
     </task>
     <task id="LOCAL-00606" summary="Some fixes, updates and changes.">
       <created>1590163901643</created>
@@ -1137,7 +1053,63 @@
       <option name="project" value="LOCAL" />
       <updated>1592145131994</updated>
     </task>
-    <option name="localTasksCounter" value="647" />
+    <task id="LOCAL-00647" summary="Some fixes, updates and changes.">
+      <created>1592231596214</created>
+      <option name="number" value="00647" />
+      <option name="presentableId" value="LOCAL-00647" />
+      <option name="project" value="LOCAL" />
+      <updated>1592231596214</updated>
+    </task>
+    <task id="LOCAL-00648" summary="Some fixes, updates and changes.">
+      <created>1592231641832</created>
+      <option name="number" value="00648" />
+      <option name="presentableId" value="LOCAL-00648" />
+      <option name="project" value="LOCAL" />
+      <updated>1592231641832</updated>
+    </task>
+    <task id="LOCAL-00649" summary="Some fixes, updates and changes.">
+      <created>1592231658576</created>
+      <option name="number" value="00649" />
+      <option name="presentableId" value="LOCAL-00649" />
+      <option name="project" value="LOCAL" />
+      <updated>1592231658577</updated>
+    </task>
+    <task id="LOCAL-00650" summary="Some fixes, updates and changes.">
+      <created>1592231688145</created>
+      <option name="number" value="00650" />
+      <option name="presentableId" value="LOCAL-00650" />
+      <option name="project" value="LOCAL" />
+      <updated>1592231688145</updated>
+    </task>
+    <task id="LOCAL-00651" summary="Some fixes, updates and changes.">
+      <created>1592231716597</created>
+      <option name="number" value="00651" />
+      <option name="presentableId" value="LOCAL-00651" />
+      <option name="project" value="LOCAL" />
+      <updated>1592231716597</updated>
+    </task>
+    <task id="LOCAL-00652" summary="Some fixes, updates and changes.">
+      <created>1592231726188</created>
+      <option name="number" value="00652" />
+      <option name="presentableId" value="LOCAL-00652" />
+      <option name="project" value="LOCAL" />
+      <updated>1592231726188</updated>
+    </task>
+    <task id="LOCAL-00653" summary="Some fixes, updates and changes.">
+      <created>1592231736714</created>
+      <option name="number" value="00653" />
+      <option name="presentableId" value="LOCAL-00653" />
+      <option name="project" value="LOCAL" />
+      <updated>1592231736714</updated>
+    </task>
+    <task id="LOCAL-00654" summary="Some fixes, updates and changes.">
+      <created>1592231746361</created>
+      <option name="number" value="00654" />
+      <option name="presentableId" value="LOCAL-00654" />
+      <option name="project" value="LOCAL" />
+      <updated>1592231746361</updated>
+    </task>
+    <option name="localTasksCounter" value="655" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1248,18 +1220,18 @@
       <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="466" y="300" width="426" height="140" key="#com.jetbrains.php.lang.intentions.PhpImportClassDialog#/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1592138834912" />
-    <state x="499" y="381" width="402" height="332" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1592231309479">
+    <state x="499" y="381" width="402" height="332" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1592231784743">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="499" y="381" width="402" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1366.741@0.0.1366.741" timestamp="1592231309479" />
+    <state x="499" y="381" width="402" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1366.741@0.0.1366.741" timestamp="1592231784743" />
     <state x="1048" y="381" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.3286.741@0.0.3286.741" timestamp="1587921517680" />
     <state x="499" y="381" width="402" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1592140148294" />
     <state x="701" y="381" width="509" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592145061391" />
     <state x="2356" y="395" width="402" height="332" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1588872805427" />
-    <state x="0" y="0" width="1366" height="741" key="CommitChangelistDialog2" timestamp="1592231451988">
+    <state x="0" y="0" width="1366" height="741" key="CommitChangelistDialog2" timestamp="1592231746235">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="0" y="0" width="904" height="735" key="CommitChangelistDialog2/0.0.1366.741@0.0.1366.741" timestamp="1592231451988" />
+    <state x="0" y="0" width="904" height="735" key="CommitChangelistDialog2/0.0.1366.741@0.0.1366.741" timestamp="1592231746235" />
     <state x="1920" y="0" width="1366" height="741" key="CommitChangelistDialog2/0.0.3286.741@0.0.3286.741" timestamp="1591444330199" />
     <state x="369" y="0" width="881" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1592044765234" />
     <state x="518" y="0" width="881" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592145131804" />
@@ -1268,10 +1240,10 @@
       <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="99" y="100" width="1168" height="541" maximized="true" key="DiffContextDialog/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1588442572785" />
-    <state x="0" y="0" width="1295" height="706" key="IDE.errors.dialog" timestamp="1592231341462">
+    <state x="0" y="0" width="1295" height="706" key="IDE.errors.dialog" timestamp="1592231807928">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="0" y="0" width="1295" height="706" key="IDE.errors.dialog/0.0.1366.741@0.0.1366.741" timestamp="1592231341462" />
+    <state x="0" y="0" width="1295" height="706" key="IDE.errors.dialog/0.0.1366.741@0.0.1366.741" timestamp="1592231807928" />
     <state x="543" y="217" width="826" height="518" key="IDE.errors.dialog/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1585583923391" />
     <state x="419" y="199" width="805" height="536" key="NewPhpClassDialog" timestamp="1592223849913">
       <screen x="0" y="0" width="1366" height="741" />
@@ -1288,10 +1260,10 @@
     <state x="187" y="5" key="SettingsEditor/0.0.1366.741@0.0.1366.741" timestamp="1592229636197" />
     <state x="33" y="0" width="1280" height="730" key="SettingsEditor/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1587589952804" />
     <state x="263" y="0" width="1418" height="741" key="SettingsEditor/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1589305333032" />
-    <state x="555" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1592145133378">
-      <screen x="0" y="0" width="1920" height="741" />
+    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1592231750158">
+      <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1591634346102" />
+    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1592231750158" />
     <state x="0" y="213" width="1920" height="522" key="Vcs.Push.Dialog.v2/0.0.3286.741@0.0.3286.741" timestamp="1591444332202" />
     <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1592044766973" />
     <state x="555" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592145133378" />
