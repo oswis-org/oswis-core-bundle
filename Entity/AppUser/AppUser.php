@@ -6,30 +6,23 @@
 
 namespace OswisOrg\OswisCoreBundle\Entity\AppUser;
 
-use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use OswisOrg\OswisCoreBundle\Entity\AbstractClass\AbstractAppUser;
 use OswisOrg\OswisCoreBundle\Entity\NonPersistent\Export\ExportListColumn;
-use OswisOrg\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
 use OswisOrg\OswisCoreBundle\Interfaces\Export\PdfExportableInterface;
 use OswisOrg\OswisCoreBundle\Traits\Export\PdfExportableTrait;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
  * User of application.
- *
  * AppUser is user of this application.
- *
  * Every **user must be activated** by activating e-mail with link that is containing special token.
- *
  * User is **active in interval** given by *startDateTime* and *endDateTime* (no need to use *deleted* property).
- *
  * @todo   Generate username from real name if username is not given.
- *
  * @Doctrine\ORM\Mapping\Entity(repositoryClass="OswisOrg\OswisCoreBundle\Repository\AppUserRepository")
  * @Doctrine\ORM\Mapping\Table(name="core_app_user")
- * @ApiResource(
+ * @ApiPlatform\Core\Annotation\ApiResource(
  *   attributes={
  *     "filters"={"search"},
  *     "access_control"="is_granted('ROLE_USER')"
@@ -67,7 +60,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
  *     }
  *   }
  * )
- * @Searchable({
+ * @OswisOrg\OswisCoreBundle\Filter\SearchAnnotation({
  *     "id",
  *     "username",
  *     "email",
