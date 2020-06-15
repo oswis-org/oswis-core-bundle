@@ -8,6 +8,7 @@ namespace OswisOrg\OswisCoreBundle\Controller;
 
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserToken;
 use OswisOrg\OswisCoreBundle\Exceptions\InvalidTypeException;
+use OswisOrg\OswisCoreBundle\Exceptions\NotFoundException;
 use OswisOrg\OswisCoreBundle\Exceptions\NotImplementedException;
 use OswisOrg\OswisCoreBundle\Exceptions\OswisException;
 use OswisOrg\OswisCoreBundle\Exceptions\TokenInvalidException;
@@ -42,7 +43,7 @@ class AppUserController extends AbstractController
      * @throws MimeLogicException|TransportExceptionInterface
      * @throws LogicException
      * @throws OswisException|InvalidTypeException|NotImplementedException
-     * @throws UserNotFoundException|UserNotUniqueException
+     * @throws UserNotFoundException|UserNotUniqueException|NotFoundException
      */
     public function passwordChangeRequest(Request $request, ?int $appUserId): Response
     {
@@ -85,7 +86,7 @@ class AppUserController extends AbstractController
      * @throws RuntimeException|LogicException
      * @throws MimeLogicException|TransportExceptionInterface
      * @throws OswisException|NotImplementedException|InvalidTypeException
-     * @throws UserNotFoundException|UserNotUniqueException
+     * @throws UserNotFoundException|UserNotUniqueException|NotFoundException
      */
     public function activationRequest(Request $request): Response
     {
@@ -129,7 +130,7 @@ class AppUserController extends AbstractController
      * @return Response
      * @throws LogicException|RuntimeException
      * @throws MimeLogicException|TransportExceptionInterface
-     * @throws OswisException|InvalidTypeException|TokenInvalidException
+     * @throws OswisException|InvalidTypeException|TokenInvalidException|NotFoundException
      */
     public function processToken(Request $request, ?string $token = null, ?int $appUserId = null): Response
     {
@@ -148,9 +149,8 @@ class AppUserController extends AbstractController
      * @param AppUserToken $appUserToken
      *
      * @return Response
-     * @throws InvalidTypeException
-     * @throws MimeLogicException
-     * @throws TransportExceptionInterface
+     * @throws InvalidTypeException|NotFoundException
+     * @throws MimeLogicException|TransportExceptionInterface
      */
     public function processTokenActivation(AppUserToken $appUserToken): Response
     {
@@ -177,7 +177,7 @@ class AppUserController extends AbstractController
      * @return Response
      * @throws RuntimeException|LogicException
      * @throws MimeLogicException|TransportExceptionInterface
-     * @throws OswisException|InvalidTypeException|NotImplementedException|TokenInvalidException
+     * @throws OswisException|InvalidTypeException|NotImplementedException|TokenInvalidException|NotFoundException
      */
     public function processTokenPasswordChange(AppUserToken $appUserToken, Request $request): Response
     {
