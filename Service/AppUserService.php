@@ -11,6 +11,7 @@ use Exception;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserToken;
 use OswisOrg\OswisCoreBundle\Exceptions\InvalidTypeException;
+use OswisOrg\OswisCoreBundle\Exceptions\NotFoundException;
 use OswisOrg\OswisCoreBundle\Exceptions\NotImplementedException;
 use OswisOrg\OswisCoreBundle\Exceptions\OswisException;
 use OswisOrg\OswisCoreBundle\Exceptions\TokenInvalidException;
@@ -72,7 +73,7 @@ class AppUserService
      *
      * @return AppUser
      * @throws OswisException|InvalidTypeException|NotImplementedException
-     * @throws UserNotFoundException|UserNotUniqueException
+     * @throws UserNotFoundException|UserNotUniqueException|NotFoundException
      * @throws TransportExceptionInterface|MimeLogicException
      */
     public function create(?AppUser $appUser = null, ?bool $activate = false, ?bool $sendMail = false, ?bool $skipDuplicityError = true): AppUser
@@ -130,7 +131,7 @@ class AppUserService
      * @param AppUser $appUser
      * @param bool    $sendConfirmation
      *
-     * @throws InvalidTypeException
+     * @throws InvalidTypeException|NotFoundException
      * @throws MimeLogicException|TransportExceptionInterface
      */
     public function activate(AppUser $appUser, bool $sendConfirmation = true): void
@@ -154,7 +155,7 @@ class AppUserService
      * @param AppUser|null $appUser
      *
      * @throws InvalidTypeException|MimeLogicException|TransportExceptionInterface
-     * @throws OswisException|UserNotFoundException|NotImplementedException
+     * @throws OswisException|UserNotFoundException|NotImplementedException|NotFoundException
      */
     public function requestActivation(?AppUser $appUser): void
     {
@@ -177,7 +178,7 @@ class AppUserService
      * @param bool         $sendConfirmation
      *
      * @throws MimeLogicException|TransportExceptionInterface
-     * @throws OswisException|UserNotFoundException|InvalidTypeException|NotImplementedException
+     * @throws OswisException|UserNotFoundException|InvalidTypeException|NotImplementedException|NotFoundException
      */
     public function requestPasswordChange(?AppUser $appUser, bool $sendConfirmation): void
     {
@@ -230,7 +231,7 @@ class AppUserService
      * @param string|null $newPassword
      *
      * @throws MimeLogicException|TransportExceptionInterface
-     * @throws NotImplementedException|OswisException|InvalidTypeException|TokenInvalidException
+     * @throws NotImplementedException|OswisException|InvalidTypeException|TokenInvalidException|NotFoundException
      */
     public function processToken(string $token, int $appUserId, ?string $newPassword = null): void
     {
@@ -261,7 +262,7 @@ class AppUserService
      * @param bool        $sendConfirmation
      *
      * @throws MimeLogicException|TransportExceptionInterface
-     * @throws OswisException|InvalidTypeException|NotImplementedException
+     * @throws OswisException|InvalidTypeException|NotImplementedException|NotFoundException
      */
     public function changePassword(AppUser $appUser, ?string $password, bool $sendConfirmation): void
     {

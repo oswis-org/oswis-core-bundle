@@ -12,6 +12,7 @@ use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserRole;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserType;
 use OswisOrg\OswisCoreBundle\Entity\NonPersistent\Nameable;
 use OswisOrg\OswisCoreBundle\Exceptions\InvalidTypeException;
+use OswisOrg\OswisCoreBundle\Exceptions\NotFoundException;
 use OswisOrg\OswisCoreBundle\Exceptions\NotImplementedException;
 use OswisOrg\OswisCoreBundle\Exceptions\OswisException;
 use OswisOrg\OswisCoreBundle\Exceptions\UserNotFoundException;
@@ -44,7 +45,7 @@ class AppUserDefaultsService
 
     /**
      * @throws LogicException|InvalidArgumentException
-     * @throws OswisException|InvalidTypeException|NotImplementedException
+     * @throws OswisException|InvalidTypeException|NotImplementedException|NotFoundException
      * @throws UserNotFoundException|UserNotUniqueException
      * @throws TransportExceptionInterface
      */

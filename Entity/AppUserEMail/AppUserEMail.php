@@ -3,11 +3,13 @@
  * @noinspection MethodShouldBeFinalInspection
  */
 
-namespace OswisOrg\OswisCoreBundle\Entity\AppUser;
+namespace OswisOrg\OswisCoreBundle\Entity\AppUserEMail;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use OswisOrg\OswisCoreBundle\Entity\AbstractClass\AbstractEMail;
 use OswisOrg\OswisCoreBundle\Entity\AbstractClass\AbstractToken;
+use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser;
+use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserToken;
 use OswisOrg\OswisCoreBundle\Entity\NonPersistent\Nameable;
 use OswisOrg\OswisCoreBundle\Exceptions\InvalidTypeException;
 use OswisOrg\OswisCoreBundle\Exceptions\OswisException;
@@ -15,33 +17,33 @@ use OswisOrg\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
 
 /**
  * E-mail sent to some user.
- * @Doctrine\ORM\Mapping\Entity(repositoryClass="OswisOrg\OswisCoreBundle\Repository\AppUserTokenRepository")
- * @Doctrine\ORM\Mapping\Table(name="core_app_user_token")
+ * @Doctrine\ORM\Mapping\Entity()
+ * @Doctrine\ORM\Mapping\Table(name="core_app_user_e_mail")
  * @ApiResource(
  *   attributes={
  *     "filters"={"search"},
  *     "access_control"="is_granted('ROLE_ADMIN')",
- *     "normalization_context"={"groups"={"app_user_roles_get"}, "enable_max_depth"=true},
- *     "denormalization_context"={"groups"={"app_user_roles_post"}, "enable_max_depth"=true}
+ *     "normalization_context"={"groups"={"app_user_e_mails_get"}, "enable_max_depth"=true},
+ *     "denormalization_context"={"groups"={"app_user_e_mails_post"}, "enable_max_depth"=true}
  *   },
  *   collectionOperations={
  *     "get"={
  *       "access_control"="is_granted('ROLE_ADMIN')",
- *       "normalization_context"={"groups"={"app_user_roles_get"}, "enable_max_depth"=true},
+ *       "normalization_context"={"groups"={"app_user_e_mails_get"}, "enable_max_depth"=true},
  *     },
  *     "post"={
  *       "access_control"="is_granted('ROLE_ADMIN')",
- *       "denormalization_context"={"groups"={"app_user_roles_post"}, "enable_max_depth"=true}
+ *       "denormalization_context"={"groups"={"app_user_e_mails_post"}, "enable_max_depth"=true}
  *     }
  *   },
  *   itemOperations={
  *     "get"={
  *       "access_control"="is_granted('ROLE_ADMIN')",
- *       "normalization_context"={"groups"={"app_user_role_get"}, "enable_max_depth"=true},
+ *       "normalization_context"={"groups"={"app_user_e_mail_get"}, "enable_max_depth"=true},
  *     },
  *     "put"={
  *       "access_control"="is_granted('ROLE_ADMIN')",
- *       "denormalization_context"={"groups"={"app_user_role_put"}, "enable_max_depth"=true}
+ *       "denormalization_context"={"groups"={"app_user_e_mail_put"}, "enable_max_depth"=true}
  *     }
  *   }
  * )

@@ -8,18 +8,23 @@ namespace OswisOrg\OswisCoreBundle\Service;
 
 use Doctrine\ORM\EntityManagerInterface;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser;
-use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserEMail;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserToken;
+use OswisOrg\OswisCoreBundle\Entity\AppUserEMail\AppUserEMail;
+use OswisOrg\OswisCoreBundle\Entity\AppUserEMail\AppUserEMailCategory;
+use OswisOrg\OswisCoreBundle\Entity\AppUserEMail\AppUserEMailGroup;
 use OswisOrg\OswisCoreBundle\Entity\NonPersistent\Nameable;
 use OswisOrg\OswisCoreBundle\Exceptions\InvalidTypeException;
+use OswisOrg\OswisCoreBundle\Exceptions\NotFoundException;
 use OswisOrg\OswisCoreBundle\Exceptions\NotImplementedException;
 use OswisOrg\OswisCoreBundle\Exceptions\OswisException;
-use OswisOrg\OswisCoreBundle\Provider\OswisCoreSettingsProvider;
+use OswisOrg\OswisCoreBundle\Interfaces\EMail\EMailCategoryInterface;
+use OswisOrg\OswisCoreBundle\Repository\AppUserEMailCategoryRepository;
+use OswisOrg\OswisCoreBundle\Repository\AppUserEMailGroupRepository;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Exception\LogicException as MimeLogicException;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Twig\Environment;
 
 class AppUserMailService extends AbstractMailService
 {
@@ -42,17 +47,24 @@ class AppUserMailService extends AbstractMailService
         self::TYPE_ACTIVATION_REQUEST      => ['title' => 'Aktivace uživatelského účtu'],
     ];
 
-    protected UserPasswordEncoderInterface $encoder;
+    protected AppUserEMailGroupRepository $groupRepository;
+
+    protected AppUserEMailCategoryRepository $categoryRepository;
+
+    protected Environment $twig;
 
     public function __construct(
-        UserPasswordEncoderInterface $encoder,
         EntityManagerInterface $em,
         LoggerInterface $logger,
         MailerInterface $mailer,
-        OswisCoreSettingsProvider $oswisCoreSettings
+        AppUserEMailGroupRepository $groupRepository,
+        AppUserEMailCategoryRepository $categoryRepository,
+        Environment $twig
     ) {
-        parent::__construct($em, $logger, $mailer, $oswisCoreSettings);
-        $this->encoder = $encoder;
+        parent::__construct($em, $logger, $mailer);
+        $this->groupRepository = $groupRepository;
+        $this->categoryRepository = $categoryRepository;
+        $this->twig = $twig;
     }
 
     /**
@@ -60,8 +72,8 @@ class AppUserMailService extends AbstractMailService
      * @param string            $type
      * @param AppUserToken|null $appUserToken
      *
-     * @throws MimeLogicException|NotImplementedException|TransportExceptionInterface
-     * @throws OswisException|InvalidTypeException
+     * @throws TransportExceptionInterface|MimeLogicException
+     * @throws OswisException|NotFoundException|InvalidTypeException|NotImplementedException
      */
     public function sendAppUserEMail(AppUser $appUser, string $type, ?AppUserToken $appUserToken = null): void
     {
@@ -69,19 +81,29 @@ class AppUserMailService extends AbstractMailService
         if (null !== $appUserToken && $appUserToken->getAppUser() !== $appUser) {
             throw new OswisException('Token není kompatibilní s uživatelem.');
         }
-        if (empty($typeSettings = self::TYPES_SETTINGS[$type] ?? null) || empty($title = ($typeSettings['title'] ?? null))) {
+        if (null === ($category = $this->getCategoryByType($type))) {
             throw new NotImplementedException($type, 'u uživatelských účtů');
         }
+        if (null === ($group = $this->getGroup($appUser, $category)) || null === ($twigTemplate = $group->getTwigTemplate())) {
+            throw new NotFoundException('Šablona e-mailu nebyla nalezena.');
+        }
+        $title = $twigTemplate->getName() ?? 'Změna u uživatelského účtu';
+        $appUserEMail = new AppUserEMail($appUser, new Nameable($title), $appUser->getEmail(), $type, $appUserToken);
         $data = [
             'appUser'      => $appUser,
+            'category'     => $category,
             'type'         => $type,
             'appUserToken' => $appUserToken,
             'isIS'         => $isIS,
         ];
-        $appUserEMail = new AppUserEMail($appUser, new Nameable($title), $appUser->getEmail(), $type, $appUserToken);
         $this->em->persist($appUserEMail);
         try {
-            $this->sendEMail($appUserEMail, '@OswisOrgOswisCore/e-mail/pages/app-user.html.twig', $data, $appUser->getName());
+            $this->sendEMail(
+                $appUserEMail,
+                $twigTemplate->getTemplateName() ?? '@OswisOrgOswisCore/e-mail/pages/app-user.html.twig',
+                $data,
+                ''.$appUser->getName()
+            );
         } catch (TransportExceptionInterface|MimeLogicException $exception) {
             $this->logger->error('App user e-mail exception: '.$exception->getMessage());
             $appUserEMail->setInternalNote($exception->getMessage());
@@ -90,4 +112,15 @@ class AppUserMailService extends AbstractMailService
         }
         $this->em->flush();
     }
+
+    public function getCategoryByType(?string $type): ?AppUserEMailCategory
+    {
+        return $this->categoryRepository->findByType($type);
+    }
+
+    public function getGroup(AppUser $appUser, EMailCategoryInterface $category): ?AppUserEMailGroup
+    {
+        return $this->groupRepository->findByUser($appUser, $category);
+    }
+
 }
