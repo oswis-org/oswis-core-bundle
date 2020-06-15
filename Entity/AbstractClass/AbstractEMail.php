@@ -13,12 +13,6 @@ use OswisOrg\OswisCoreBundle\Traits\Common\NameableTrait;
 use OswisOrg\OswisCoreBundle\Traits\Common\TypeTrait;
 
 /**
- * Some e-mail sent to some user.
- *
- * Nameable is used in that way
- *  - **name** => **subject**
- *  - **customID** => **Message-ID**
- *  - **internalNote** => **status messages**
  * @author Jakub Zak <mail@jakubzak.eu>
  */
 abstract class AbstractEMail
