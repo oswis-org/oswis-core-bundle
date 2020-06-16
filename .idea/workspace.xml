@@ -26,7 +26,7 @@
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/AbstractClass/AbstractFileAction.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/AbstractClass/AbstractFileAction.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Form/AbstractClass/AbstractFileType.php" beforeDir="false" afterPath="$PROJECT_DIR$/Form/AbstractClass/AbstractFileType.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +51,7 @@
     <setting file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard/standard_0.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/exif/exif.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/vendor/vich/uploader-bundle/src/Mapping/Annotation/UploadableField.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/vendor/vich/uploader-bundle/src/Form/Type/VichImageType.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Resources/views/e-mail/pages/foundation-emails.css.twig" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
   </component>
   <component name="JsFlowSettings">
@@ -765,14 +766,7 @@
       <workItem from="1592230097549" duration="401000" />
       <workItem from="1592231041538" duration="2050000" />
       <workItem from="1592296217096" duration="1866000" />
-      <workItem from="1592322660550" duration="2825000" />
-    </task>
-    <task id="LOCAL-00609" summary="Some fixes, updates and changes.">
-      <created>1590178083074</created>
-      <option name="number" value="00609" />
-      <option name="presentableId" value="LOCAL-00609" />
-      <option name="project" value="LOCAL" />
-      <updated>1590178083074</updated>
+      <workItem from="1592322660550" duration="3404000" />
     </task>
     <task id="LOCAL-00610" summary="Some fixes, updates and changes.">
       <created>1590178398514</created>
@@ -1110,7 +1104,14 @@
       <option name="project" value="LOCAL" />
       <updated>1592325540439</updated>
     </task>
-    <option name="localTasksCounter" value="658" />
+    <task id="LOCAL-00658" summary="Some fixes, updates and changes.">
+      <created>1592325963414</created>
+      <option name="number" value="00658" />
+      <option name="presentableId" value="LOCAL-00658" />
+      <option name="project" value="LOCAL" />
+      <updated>1592325963415</updated>
+    </task>
+    <option name="localTasksCounter" value="659" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1229,10 +1230,10 @@
     <state x="499" y="381" width="402" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1592140148294" />
     <state x="701" y="381" width="509" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592145061391" />
     <state x="2356" y="395" width="402" height="332" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1588872805427" />
-    <state x="0" y="0" width="1366" height="741" key="CommitChangelistDialog2" timestamp="1592325540345">
+    <state x="0" y="0" width="1366" height="741" key="CommitChangelistDialog2" timestamp="1592325963310">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="0" y="0" width="904" height="735" key="CommitChangelistDialog2/0.0.1366.741@0.0.1366.741" timestamp="1592325540345" />
+    <state x="0" y="0" width="904" height="735" key="CommitChangelistDialog2/0.0.1366.741@0.0.1366.741" timestamp="1592325963310" />
     <state x="1920" y="0" width="1366" height="741" key="CommitChangelistDialog2/0.0.3286.741@0.0.3286.741" timestamp="1591444330199" />
     <state x="369" y="0" width="881" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1592044765234" />
     <state x="518" y="0" width="881" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592145131804" />
@@ -1261,10 +1262,10 @@
     <state x="187" y="5" key="SettingsEditor/0.0.1366.741@0.0.1366.741" timestamp="1592229636197" />
     <state x="33" y="0" width="1280" height="730" key="SettingsEditor/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1587589952804" />
     <state x="263" y="0" width="1418" height="741" key="SettingsEditor/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1589305333032" />
-    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1592325541949">
+    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1592325964710">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1592325541949" />
+    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1592325964710" />
     <state x="0" y="213" width="1920" height="522" key="Vcs.Push.Dialog.v2/0.0.3286.741@0.0.3286.741" timestamp="1591444332202" />
     <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1592044766973" />
     <state x="555" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592145133378" />

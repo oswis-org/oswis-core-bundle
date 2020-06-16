@@ -19,7 +19,7 @@ abstract class AbstractFileType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $maxSize = FileUtils::humanReadableFileUploadMaxSize();
-        $maxSize = $maxSize ? ' (max. '.$maxSize.')' : '';
+        $maxSize = $maxSize ? " (max. $maxSize)" : '';
         $builder->add(
             'file',
             self::VICH_TYPE_CLASS,
@@ -29,7 +29,7 @@ abstract class AbstractFileType extends AbstractType
                 'download_uri'   => true,
                 'required'       => false,
                 'attr'           => [
-                    'placeholder' => 'Kliknutím vyberte soubor'.$maxSize.'...',
+                    'placeholder' => "Kliknutím vyberte soubor$maxSize...",
                 ],
             ]
         );
