@@ -6,6 +6,7 @@
 namespace OswisOrg\OswisCoreBundle\Entity\AbstractClass;
 
 use DateTime;
+use Doctrine\ORM\Mapping as ORM;
 use OswisOrg\OswisCoreBundle\Entity\NonPersistent\DateTimeRange;
 use OswisOrg\OswisCoreBundle\Entity\NonPersistent\Nameable;
 use OswisOrg\OswisCoreBundle\Entity\TwigTemplate\TwigTemplate;
@@ -31,6 +32,12 @@ abstract class AbstractEMailGroup implements EMailGroupInterface
      */
     protected ?TwigTemplate $twigTemplate = null;
 
+    /**
+     * @var bool Automatic mailing message that is sent to all recipients (restricted by restrictions).
+     * @ORM\Column(type="boolean", nullable=false)
+     */
+    protected bool $automaticMailing = false;
+
     protected ?EMailCategoryInterface $category = null;
 
     public function __construct(
@@ -38,15 +45,16 @@ abstract class AbstractEMailGroup implements EMailGroupInterface
         ?int $priority = null,
         ?DateTimeRange $range = null,
         ?EMailCategoryInterface $category = null,
-        ?TwigTemplate $twigTemplate = null
+        ?TwigTemplate $twigTemplate = null,
+        bool $automaticMailing = false
     ) {
         $this->setFieldsFromNameable($nameable);
         $this->setPriority($priority);
         $this->setDateTimeRange($range);
         $this->setCategory($category);
         $this->setTwigTemplate($twigTemplate);
+        $this->setAutomaticMailing($automaticMailing);
     }
-
 
     public function getTemplateName(): ?string
     {
@@ -98,5 +106,15 @@ abstract class AbstractEMailGroup implements EMailGroupInterface
     public function getType(): ?string
     {
         return $this->getCategory() ? $this->getCategory()->getType() : null;
+    }
+
+    public function isAutomaticMailing(): bool
+    {
+        return $this->automaticMailing;
+    }
+
+    public function setAutomaticMailing(bool $automaticMailing): void
+    {
+        $this->automaticMailing = $automaticMailing;
     }
 }
