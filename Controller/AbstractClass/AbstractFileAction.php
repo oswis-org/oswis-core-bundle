@@ -48,7 +48,7 @@ abstract class AbstractFileAction
             $em = $this->doctrine->getManager();
             $em->persist($mediaObject);
             $em->flush();
-            $mediaObject->file = null; // Prevent the serialization of the file property.
+            $mediaObject->setFile(null); // Prevent the serialization of the file property.
 
             return $mediaObject;
         }
