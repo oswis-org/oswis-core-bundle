@@ -9,6 +9,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
  * Handler for endpoint for actions with users (activation, password changes...).
+ * @todo Implement this class!!!
  */
 final class AppUserActionSubscriber implements EventSubscriberInterface
 {

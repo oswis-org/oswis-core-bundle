@@ -20,6 +20,7 @@ use OswisOrg\OswisCoreBundle\Service\AppUserService;
  *      itemOperations={},
  *      output=false
  * )
+ * @todo Implement this class!!!
  */
 final class AppUserActionRequest
 {
