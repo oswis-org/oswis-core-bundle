@@ -25,7 +25,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Entity/Payments/CashDesk.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractPayment.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Payments/Payment.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -235,7 +237,7 @@
     <property name="add_unversioned_files" value="$PROJECT_DIR$/vendor/symfony/swiftmailer-bundle/composer.json" />
     <property name="editor.config.ad.shown" value="true" />
     <property name="javascript.nodejs.core.library.configured.version" value="10.17.0" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Repository" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Entity/Payments" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -248,19 +250,19 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/Entity/AppUserEMail" />
-      <recent name="$PROJECT_DIR$/Traits/Project" />
-      <recent name="$PROJECT_DIR$/Resources/views/e-mail/pages" />
-      <recent name="$PROJECT_DIR$/Resources/views/e-mail/parts" />
-      <recent name="$PROJECT_DIR$/Traits/Form" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Entity/Payments" />
       <recent name="$PROJECT_DIR$/Repository" />
       <recent name="$PROJECT_DIR$/Interfaces/Common" />
       <recent name="$PROJECT_DIR$/Interfaces/EMail" />
       <recent name="$PROJECT_DIR$/Entity/AppUserEMail" />
-      <recent name="$PROJECT_DIR$/Entity/AppUser" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Entity/Payments" />
+      <recent name="$PROJECT_DIR$/Entity/AppUserEMail" />
+      <recent name="$PROJECT_DIR$/Traits/Project" />
+      <recent name="$PROJECT_DIR$/Resources/views/e-mail/pages" />
+      <recent name="$PROJECT_DIR$/Resources/views/e-mail/parts" />
     </key>
   </component>
   <component name="RunManager">
@@ -767,13 +769,9 @@
       <workItem from="1592296217096" duration="1866000" />
       <workItem from="1592322660550" duration="4084000" />
       <workItem from="1592382769249" duration="335000" />
-    </task>
-    <task id="LOCAL-00612" summary="Some fixes, updates and changes.">
-      <created>1590265473689</created>
-      <option name="number" value="00612" />
-      <option name="presentableId" value="LOCAL-00612" />
-      <option name="project" value="LOCAL" />
-      <updated>1590265473690</updated>
+      <workItem from="1592390096733" duration="29000" />
+      <workItem from="1592404017344" duration="450000" />
+      <workItem from="1592482918735" duration="418000" />
     </task>
     <task id="LOCAL-00613" summary="Some fixes, updates and changes.">
       <created>1590425195594</created>
@@ -1111,7 +1109,14 @@
       <option name="project" value="LOCAL" />
       <updated>1592326952062</updated>
     </task>
-    <option name="localTasksCounter" value="661" />
+    <task id="LOCAL-00661" summary="Some fixes, updates and changes.">
+      <created>1592390114357</created>
+      <option name="number" value="00661" />
+      <option name="presentableId" value="LOCAL-00661" />
+      <option name="project" value="LOCAL" />
+      <updated>1592390114357</updated>
+    </task>
+    <option name="localTasksCounter" value="662" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1230,10 +1235,10 @@
     <state x="499" y="381" width="402" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1592140148294" />
     <state x="701" y="381" width="509" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592145061391" />
     <state x="2356" y="395" width="402" height="332" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1588872805427" />
-    <state x="0" y="0" width="1366" height="741" key="CommitChangelistDialog2" timestamp="1592326951926">
+    <state x="0" y="0" width="1366" height="741" key="CommitChangelistDialog2" timestamp="1592390113714">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="0" y="0" width="904" height="735" key="CommitChangelistDialog2/0.0.1366.741@0.0.1366.741" timestamp="1592326951926" />
+    <state x="0" y="0" width="904" height="735" key="CommitChangelistDialog2/0.0.1366.741@0.0.1366.741" timestamp="1592390113714" />
     <state x="1920" y="0" width="1366" height="741" key="CommitChangelistDialog2/0.0.3286.741@0.0.3286.741" timestamp="1591444330199" />
     <state x="369" y="0" width="881" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1592044765234" />
     <state x="518" y="0" width="881" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592145131804" />
@@ -1247,10 +1252,10 @@
     </state>
     <state x="0" y="0" width="1295" height="706" key="IDE.errors.dialog/0.0.1366.741@0.0.1366.741" timestamp="1592231807928" />
     <state x="543" y="217" width="826" height="518" key="IDE.errors.dialog/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1585583923391" />
-    <state x="419" y="199" width="805" height="536" key="NewPhpClassDialog" timestamp="1592223849913">
+    <state x="419" y="199" width="805" height="536" key="NewPhpClassDialog" timestamp="1592483121571">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="419" y="199" width="805" height="536" key="NewPhpClassDialog/0.0.1366.741@0.0.1366.741" timestamp="1592223849913" />
+    <state x="419" y="199" width="805" height="536" key="NewPhpClassDialog/0.0.1366.741@0.0.1366.741" timestamp="1592483121571" />
     <state x="589" y="199" width="733" height="536" key="NewPhpClassDialog/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1587556949841" />
     <state x="865" y="617" width="501" height="106" key="ProcessPopupWindow" timestamp="1591520549470">
       <screen x="0" y="0" width="1366" height="741" />
@@ -1262,10 +1267,10 @@
     <state x="187" y="5" key="SettingsEditor/0.0.1366.741@0.0.1366.741" timestamp="1592229636197" />
     <state x="33" y="0" width="1280" height="730" key="SettingsEditor/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1587589952804" />
     <state x="263" y="0" width="1418" height="741" key="SettingsEditor/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1589305333032" />
-    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1592326953318">
+    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1592390117538">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1592326953318" />
+    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1592390117538" />
     <state x="0" y="213" width="1920" height="522" key="Vcs.Push.Dialog.v2/0.0.3286.741@0.0.3286.741" timestamp="1591444332202" />
     <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1592044766973" />
     <state x="555" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592145133378" />
