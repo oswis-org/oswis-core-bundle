@@ -22,45 +22,45 @@ trait ManagerConfirmationTrait
      * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\ExistsFilter::class)
      * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
      */
-    protected ?DateTime $managerConfirmAt = null;
+    protected ?DateTime $managerConfirmedAt = null;
 
     /**
      * Manager who confirmed.
      * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser", fetch="EAGER")
      * @Doctrine\ORM\Mapping\JoinColumn(name="app_user_id", referencedColumnName="id")
      */
-    protected ?AppUser $managerConfirmBy = null;
+    protected ?AppUser $managerConfirmedBy = null;
 
-    public function getManagerConfirmBy(): ?AppUser
+    public function getManagerConfirmedBy(): ?AppUser
     {
-        return $this->managerConfirmBy;
+        return $this->managerConfirmedBy;
     }
 
-    public function setManagerConfirmBy(?AppUser $appUser): void
+    public function setManagerConfirmedBy(?AppUser $appUser): void
     {
-        $this->managerConfirmBy = $appUser;
+        $this->managerConfirmedBy = $appUser;
     }
 
-    public function isConfirmedByManager(): bool
+    public function isManagerConfirmed(): bool
     {
-        return $this->managerConfirmAt ? true : false;
+        return $this->managerConfirmedAt ? true : false;
     }
 
-    public function getManagerConfirmAt(): ?DateTime
+    public function getManagerConfirmedAt(): ?DateTime
     {
-        return $this->managerConfirmAt;
+        return $this->managerConfirmedAt;
     }
 
-    public function setManagerConfirmAt(?DateTime $dateTime): void
+    public function setManagerConfirmedAt(?DateTime $dateTime): void
     {
-        $this->managerConfirmAt = $this->$dateTime;
+        $this->managerConfirmedAt = $this->$dateTime;
     }
 
-    public function confirmByManager(AppUser $appUser): void
+    public function setManagerConfirmed(AppUser $appUser): void
     {
-        if (!$this->managerConfirmAt) {
-            $this->setManagerConfirmAt(new DateTime());
-            $this->setManagerConfirmBy($appUser);
+        if (!$this->managerConfirmedAt) {
+            $this->setManagerConfirmedAt(new DateTime());
+            $this->setManagerConfirmedBy($appUser);
 
         }
     }

@@ -9,9 +9,6 @@ namespace OswisOrg\OswisCoreBundle\Traits\Common;
 use DateTime;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser;
 
-/**
- * Trait UserConfirmationTrait.
- */
 trait UserConfirmationTrait
 {
     /**
@@ -22,45 +19,45 @@ trait UserConfirmationTrait
      * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\ExistsFilter::class)
      * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
      */
-    protected ?DateTime $userConfirmAt = null;
+    protected ?DateTime $userConfirmedAt = null;
 
     /**
      * User who confirmed.
      * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser", fetch="EAGER")
      * @Doctrine\ORM\Mapping\JoinColumn(name="app_user_id", referencedColumnName="id")
      */
-    protected ?AppUser $userConfirmBy = null;
+    protected ?AppUser $userConfirmedBy = null;
 
-    public function getUserConfirmBy(): ?AppUser
+    public function getUserConfirmedBy(): ?AppUser
     {
-        return $this->userConfirmBy;
+        return $this->userConfirmedBy;
     }
 
-    public function setUserConfirmBy(?AppUser $appUser): void
+    public function setUserConfirmedBy(?AppUser $appUser): void
     {
-        $this->userConfirmBy = $appUser;
+        $this->userConfirmedBy = $appUser;
     }
 
-    public function isConfirmedByUser(): bool
+    public function isUserConfirmed(): bool
     {
-        return $this->userConfirmAt ? true : false;
+        return $this->userConfirmedAt ? true : false;
     }
 
-    public function getUserConfirmAt(): ?DateTime
+    public function getUserConfirmedAt(): ?DateTime
     {
-        return $this->userConfirmAt;
+        return $this->userConfirmedAt;
     }
 
-    public function setUserConfirmAt(?DateTime $dateTime): void
+    public function setUserConfirmedAt(?DateTime $dateTime): void
     {
-        $this->userConfirmAt = $this->$dateTime;
+        $this->userConfirmedAt = $this->$dateTime;
     }
 
-    public function confirmByUser(AppUser $appUser): void
+    public function setUserConfirmed(AppUser $appUser): void
     {
-        if (!$this->userConfirmAt) {
-            $this->setUserConfirmAt(new DateTime());
-            $this->setUserConfirmBy($appUser);
+        if (!$this->userConfirmedAt) {
+            $this->setUserConfirmedAt(new DateTime());
+            $this->setUserConfirmedBy($appUser);
 
         }
     }

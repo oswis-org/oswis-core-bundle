@@ -25,11 +25,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/oswis-core-bundle.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/oswis-core-bundle.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Common/ManagerConfirmationTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/ManagerConfirmationTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Common/UserConfirmationTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/UserConfirmationTrait.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -770,14 +768,8 @@
       <workItem from="1592390096733" duration="29000" />
       <workItem from="1592404017344" duration="450000" />
       <workItem from="1592482918735" duration="1871000" />
-      <workItem from="1592556588389" duration="360000" />
-    </task>
-    <task id="LOCAL-00614" summary="Some fixes, updates and changes.">
-      <created>1590529943569</created>
-      <option name="number" value="00614" />
-      <option name="presentableId" value="LOCAL-00614" />
-      <option name="project" value="LOCAL" />
-      <updated>1590529943569</updated>
+      <workItem from="1592556588389" duration="390000" />
+      <workItem from="1592652275055" duration="244000" />
     </task>
     <task id="LOCAL-00615" summary="Some fixes, updates and changes.">
       <created>1590700721702</created>
@@ -1115,7 +1107,14 @@
       <option name="project" value="LOCAL" />
       <updated>1592483490171</updated>
     </task>
-    <option name="localTasksCounter" value="663" />
+    <task id="LOCAL-00663" summary="Some fixes, updates and changes.">
+      <created>1592556968799</created>
+      <option name="number" value="00663" />
+      <option name="presentableId" value="LOCAL-00663" />
+      <option name="project" value="LOCAL" />
+      <updated>1592556968801</updated>
+    </task>
+    <option name="localTasksCounter" value="664" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1208,11 +1207,11 @@
     <state x="546" y="158" width="466" height="556" key="#com.intellij.ide.util.MemberChooser/0.0.1366.741@0.0.1366.741" timestamp="1592324014794" />
     <state x="546" y="158" width="458" height="556" key="#com.intellij.ide.util.MemberChooser/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1592125110295" />
     <state x="2466" y="164" width="349" height="577" key="#com.intellij.ide.util.MemberChooser/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1588590248828" />
-    <state x="251" y="0" width="946" height="735" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1592228052798">
-      <screen x="0" y="0" width="1366" height="741" />
+    <state x="604" y="0" width="946" height="735" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1592652460135">
+      <screen x="0" y="0" width="3286" height="741" />
     </state>
     <state x="251" y="0" width="855" height="735" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.741@0.0.1366.741" timestamp="1592228052798" />
-    <state x="604" y="0" width="946" height="735" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.3286.741@0.0.3286.741" timestamp="1590062941287" />
+    <state x="604" y="0" width="946" height="735" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.3286.741@0.0.3286.741" timestamp="1592652460135" />
     <state x="251" y="0" width="624" height="735" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1592126046014" />
     <state x="353" y="0" width="478" height="735" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592144443570" />
     <state x="2171" y="0" width="462" height="741" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1588326607025" />
@@ -1234,11 +1233,11 @@
     <state x="499" y="381" width="402" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1592140148294" />
     <state x="701" y="381" width="509" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592145061391" />
     <state x="2356" y="395" width="402" height="332" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1588872805427" />
-    <state x="0" y="0" width="1366" height="741" key="CommitChangelistDialog2" timestamp="1592483489972">
-      <screen x="0" y="0" width="1366" height="741" />
+    <state x="1920" y="0" width="1366" height="741" key="CommitChangelistDialog2" timestamp="1592556968543">
+      <screen x="0" y="0" width="3286" height="741" />
     </state>
     <state x="0" y="0" width="904" height="735" key="CommitChangelistDialog2/0.0.1366.741@0.0.1366.741" timestamp="1592483489972" />
-    <state x="1920" y="0" width="1366" height="741" key="CommitChangelistDialog2/0.0.3286.741@0.0.3286.741" timestamp="1591444330199" />
+    <state x="1920" y="0" width="1366" height="741" key="CommitChangelistDialog2/0.0.3286.741@0.0.3286.741" timestamp="1592556968543" />
     <state x="369" y="0" width="881" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1592044765234" />
     <state x="518" y="0" width="881" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592145131804" />
     <state x="2289" y="0" width="881" height="741" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1588872861925" />
@@ -1266,11 +1265,11 @@
     <state x="187" y="5" key="SettingsEditor/0.0.1366.741@0.0.1366.741" timestamp="1592229636197" />
     <state x="33" y="0" width="1280" height="730" key="SettingsEditor/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1587589952804" />
     <state x="263" y="0" width="1418" height="741" key="SettingsEditor/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1589305333032" />
-    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1592483495805">
-      <screen x="0" y="0" width="1366" height="741" />
+    <state x="0" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1592556978375">
+      <screen x="0" y="0" width="3286" height="741" />
     </state>
     <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1592483495805" />
-    <state x="0" y="213" width="1920" height="522" key="Vcs.Push.Dialog.v2/0.0.3286.741@0.0.3286.741" timestamp="1591444332202" />
+    <state x="0" y="213" width="1920" height="522" key="Vcs.Push.Dialog.v2/0.0.3286.741@0.0.3286.741" timestamp="1592556978375" />
     <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1592044766973" />
     <state x="555" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592145133378" />
     <state x="2315" y="199" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1588872863506" />
