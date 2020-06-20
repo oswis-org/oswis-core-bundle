@@ -26,8 +26,13 @@
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Common/ManagerConfirmationTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/ManagerConfirmationTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Common/UserConfirmationTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/UserConfirmationTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controller/AppUserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/AppUserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DependencyInjection/OswisOrgOswisCoreExtension.php" beforeDir="false" afterPath="$PROJECT_DIR$/DependencyInjection/OswisOrgOswisCoreExtension.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Form/AbstractClass/ActivationRequestType.php" beforeDir="false" afterPath="$PROJECT_DIR$/Form/ActivationRequestType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Form/AbstractClass/LoginType.php" beforeDir="false" afterPath="$PROJECT_DIR$/Form/LoginType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Form/AbstractClass/PasswordChangeRequestType.php" beforeDir="false" afterPath="$PROJECT_DIR$/Form/PasswordChangeRequestType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Form/AbstractClass/PasswordChangeType.php" beforeDir="false" afterPath="$PROJECT_DIR$/Form/PasswordChangeType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/views/web/parts/web-banner.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/parts/web-banner.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -246,19 +251,19 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Form" />
+      <recent name="$PROJECT_DIR$/Entity/Payments" />
+      <recent name="$PROJECT_DIR$/Entity/AppUserEMail" />
+      <recent name="$PROJECT_DIR$/Traits/Project" />
+      <recent name="$PROJECT_DIR$/Resources/views/e-mail/pages" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Entity/Payments" />
       <recent name="$PROJECT_DIR$/Repository" />
       <recent name="$PROJECT_DIR$/Interfaces/Common" />
       <recent name="$PROJECT_DIR$/Interfaces/EMail" />
       <recent name="$PROJECT_DIR$/Entity/AppUserEMail" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/Entity/Payments" />
-      <recent name="$PROJECT_DIR$/Entity/AppUserEMail" />
-      <recent name="$PROJECT_DIR$/Traits/Project" />
-      <recent name="$PROJECT_DIR$/Resources/views/e-mail/pages" />
-      <recent name="$PROJECT_DIR$/Resources/views/e-mail/parts" />
     </key>
   </component>
   <component name="RunManager">
@@ -769,14 +774,7 @@
       <workItem from="1592404017344" duration="450000" />
       <workItem from="1592482918735" duration="1871000" />
       <workItem from="1592556588389" duration="390000" />
-      <workItem from="1592652275055" duration="244000" />
-    </task>
-    <task id="LOCAL-00615" summary="Some fixes, updates and changes.">
-      <created>1590700721702</created>
-      <option name="number" value="00615" />
-      <option name="presentableId" value="LOCAL-00615" />
-      <option name="project" value="LOCAL" />
-      <updated>1590700721704</updated>
+      <workItem from="1592652275055" duration="950000" />
     </task>
     <task id="LOCAL-00616" summary="Some fixes, updates and changes.">
       <created>1590744925918</created>
@@ -1114,7 +1112,14 @@
       <option name="project" value="LOCAL" />
       <updated>1592556968801</updated>
     </task>
-    <option name="localTasksCounter" value="664" />
+    <task id="LOCAL-00664" summary="Some fixes, updates and changes.">
+      <created>1592652627488</created>
+      <option name="number" value="00664" />
+      <option name="presentableId" value="LOCAL-00664" />
+      <option name="project" value="LOCAL" />
+      <updated>1592652627488</updated>
+    </task>
+    <option name="localTasksCounter" value="665" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1225,19 +1230,19 @@
       <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="466" y="300" width="426" height="140" key="#com.jetbrains.php.lang.intentions.PhpImportClassDialog#/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1592138834912" />
-    <state x="499" y="381" width="402" height="332" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1592483418357">
-      <screen x="0" y="0" width="1366" height="741" />
+    <state x="1048" y="381" width="522" height="314" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1592652686712">
+      <screen x="0" y="0" width="3286" height="741" />
     </state>
     <state x="499" y="381" width="402" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1366.741@0.0.1366.741" timestamp="1592483418357" />
-    <state x="1048" y="381" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.3286.741@0.0.3286.741" timestamp="1587921517680" />
+    <state x="1048" y="381" width="522" height="314" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.3286.741@0.0.3286.741" timestamp="1592652686712" />
     <state x="499" y="381" width="402" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1592140148294" />
     <state x="701" y="381" width="509" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592145061391" />
     <state x="2356" y="395" width="402" height="332" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1588872805427" />
-    <state x="1920" y="0" width="1366" height="741" key="CommitChangelistDialog2" timestamp="1592556968543">
+    <state x="1920" y="0" width="1366" height="741" key="CommitChangelistDialog2" timestamp="1592652627340">
       <screen x="0" y="0" width="3286" height="741" />
     </state>
     <state x="0" y="0" width="904" height="735" key="CommitChangelistDialog2/0.0.1366.741@0.0.1366.741" timestamp="1592483489972" />
-    <state x="1920" y="0" width="1366" height="741" key="CommitChangelistDialog2/0.0.3286.741@0.0.3286.741" timestamp="1592556968543" />
+    <state x="1920" y="0" width="1366" height="741" key="CommitChangelistDialog2/0.0.3286.741@0.0.3286.741" timestamp="1592652627340" />
     <state x="369" y="0" width="881" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1592044765234" />
     <state x="518" y="0" width="881" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592145131804" />
     <state x="2289" y="0" width="881" height="741" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1588872861925" />
@@ -1265,11 +1270,11 @@
     <state x="187" y="5" key="SettingsEditor/0.0.1366.741@0.0.1366.741" timestamp="1592229636197" />
     <state x="33" y="0" width="1280" height="730" key="SettingsEditor/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1587589952804" />
     <state x="263" y="0" width="1418" height="741" key="SettingsEditor/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1589305333032" />
-    <state x="0" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1592556978375">
+    <state x="0" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1592652629233">
       <screen x="0" y="0" width="3286" height="741" />
     </state>
     <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1592483495805" />
-    <state x="0" y="213" width="1920" height="522" key="Vcs.Push.Dialog.v2/0.0.3286.741@0.0.3286.741" timestamp="1592556978375" />
+    <state x="0" y="213" width="1920" height="522" key="Vcs.Push.Dialog.v2/0.0.3286.741@0.0.3286.741" timestamp="1592652629233" />
     <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1592044766973" />
     <state x="555" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592145133378" />
     <state x="2315" y="199" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1588872863506" />

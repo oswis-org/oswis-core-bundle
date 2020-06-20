@@ -3,35 +3,24 @@
  * @noinspection MethodShouldBeFinalInspection
  */
 
-namespace OswisOrg\OswisCoreBundle\Form\AbstractClass;
+namespace OswisOrg\OswisCoreBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-abstract class LoginType extends AbstractType
+abstract class PasswordChangeType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder->add(
-            'username',
-            TextType::class,
-            [
-                'label'    => 'Uživatelské jméno',
-                'help'     => 'Zadejte uživatelské jméno nebo e-mail uvedený u uživatelského účtu.',
-                'mapped'   => false,
-                'required' => true,
-            ]
-        );
-        $builder->add(
             'password',
             PasswordType::class,
             [
-                'label'    => 'Heslo',
-                'help'     => 'Zadejte Vaše heslo. Je nutné dodržet velká a malá písmena.',
+                'label'    => 'Nové heslo',
+                'help'     => 'Pokud jej nezadáte, bude vygenerováno nové náhodné heslo.',
                 'mapped'   => false,
                 'required' => true,
             ]
@@ -39,7 +28,7 @@ abstract class LoginType extends AbstractType
         $builder->add(
             'submit',
             SubmitType::class,
-            ['label' => 'PŘIHLÁSIT SE']
+            ['label' => 'ZMĚNIT HESLO']
         );
     }
 
@@ -49,6 +38,6 @@ abstract class LoginType extends AbstractType
 
     public function getBlockPrefix(): string
     {
-        return 'core_app_user_login';
+        return 'core_app_user_password_reset';
     }
 }

@@ -3,7 +3,7 @@
  * @noinspection MethodShouldBeFinalInspection
  */
 
-namespace OswisOrg\OswisCoreBundle\Form\AbstractClass;
+namespace OswisOrg\OswisCoreBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
