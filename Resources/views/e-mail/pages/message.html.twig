@@ -1,41 +1,87 @@
-{% set f = f is defined ? f : true %}
-{% set salName = salutationName is defined and salutationName ? salutationName : '' %}
+{% set f = f is defined ? f : (contact.formal is defined ? contact.formal : true) %}
+{% set a = a is defined ? a : (contact.czechSuffixA is defined ? contact.czechSuffixA : '') %}
+{% set salName = salutationName|default %}
 {# {% set logo_src = logo is defined and logo ? logo : absolute_url(asset('@OswisOrgOswisCoreBundle/Resources/public/logo.png')) %} #}
 
 {% apply inky_to_html|inline_css(source('@OswisOrgOswisCore/e-mail/pages/foundation-emails.css.twig' )) %}
     <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+    <!--suppress HtmlUnknownAttribute -->
     <html xmlns="http://www.w3.org/1999/xhtml" lang='{% block html_lang %}cs-CZ{% endblock %}' dir="ltr">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <meta name="viewport" content="width=device-width"/>
-        <meta http-equiv='X-UA-Compatible' content='IE=edge'/>
-        <meta name='format-detection' content='telephone=yes'/>
-        <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0'/>
-        <meta name='author' content='{% block meta_author %}{{ oswis.app.author|default('Jakub Zak (https://jakubzak.cz)') }}{% endblock %}'/>
-        <meta name='copyright' content='{% block meta_copyright %}{{ oswis.app.copyright|default('Jakub Zak (https://jakubzak.cz)') }}{% endblock %}'/>
-        <meta name='generator' content='OSWIS - One Simple Web IS'/>
-        <meta name='Description' content='{% block meta_description %}Zpráva z OSWIS (One Simple Web IS){% endblock %}'/>
-        <meta name='Designer' content='Jakub Zak (https://jakubzak.cz)'/>
-        <meta name='Revisit-After' content='1 day'/>
-        <meta name='geo.position' content='{% block meta_geo %}{{ oswis.app.copyright|default('') }}{% endblock %}'/>
-        <meta name='ICBM' content='{{ block('meta_geo') }}'>
-        <meta name='DC.Language' content='{{ block('html_lang') }}'>
         <title>{% block html_title %}{{ email.subject|default('Zpráva z OSWIS (One Simple Web IS)') }}{% endblock %}</title>
-        <meta name="theme-color" content="{% block meta_theme_color %}{{ oswis.app.copyright|default('#006FAD') }}{% endblock %}">
-        <meta name="msapplication-TileColor" content="{% block meta_tile_color %}{{ block('meta_theme_color') }}{% endblock %}">
+        <meta name='DC.Language' content='{{ block('html_lang') }}'>
+        <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name='format-detection' content='telephone=yes'>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0'/>
+        <meta name='author' content='{% block meta_author %}{{ author|default(oswis.app.author|default('Jakub Zak (https://www.jakubzak.cz)')) }}{% endblock meta_author %}'>
+        <meta name='copyright'
+              content='{% block meta_copyright %}{{ copyright|default(oswis.app.copyright|default('Jakub Zak (https://www.jakubzak.cz)')) }}{% endblock meta_copyright %}'>
+        <meta name='generator' content='{% block meta_generator %}OSWIS (One Simple Web IS, https://www.owsis.org){% endblock meta_generator %}'>
+        <meta name="description" content="{% block html_description %}{{ description|default(default_description|default(oswis.web.description)) }}{% endblock html_description %}">
+        <meta name='Designer' content='{% block meta_designer %}{{ designer|default('Jakub Zak (https://jakubzak.cz)') }}{% endblock meta_designer %}'>
+        {% block meta_revisit_after_outer %}
+            <meta name='Revisit-After' content='{% block meta_revisit_after %}{{ revisit_after|default('1 day') }}{% endblock meta_revisit_after %}'>
+        {% endblock meta_revisit_after_outer %}
+        {% block html_meta_rss %}
+            <link rel="alternate" type="application/rss+xml" href="{{ path('oswis_org_oswis_rss_xml') }}" title="RSS {{ oswis.web.title }}">
+        {% endblock html_meta_rss %}
+        {% block meta_geo %}
+            <meta name='geo.position' content='{% block meta_geo_position %}{{ block('meta_geo_x') }},{{ block('meta_geo_y') }}{% endblock %}'>
+            <meta name='ICBM' content='{{ block('meta_geo_position') }}'>
+        {% endblock meta_geo %}
+        {% block meta_tags_app %}
+            <meta name="application-name" content="{% block meta_app_name %}{{ oswis.app.name|default(block('html_title')) }}{% endblock %}">
+            <meta name="apple-mobile-web-app-title" content="{% block meta_app_title_apple %}{{ block('meta_app_name') }}{% endblock %}">
+        {% endblock meta_tags_app %}
+        {% block meta_tags_color %}
+            <meta name="theme-color" content="{% block meta_theme_color %}{{ oswis.web.color|default('#3498d0') }}{% endblock %}">
+            <meta name="msapplication-TileColor" content="{% block meta_tile_color %}{{ block('meta_theme_color') }}{% endblock %}">
+        {% endblock meta_tags_color %}
+        {% block meta_tags_icons %}
+            <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/images/icons/apple-touch-icon.png') }}">
+            <link rel="icon" type="image/x-icon" href="{{ asset('assets/images/icons/favicon.ico') }}">
+            <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/images/icons/favicon-32x32.png') }}">
+            <link rel="icon" type="image/png" sizes="194x194" href="{{ asset('assets/images/icons/favicon-194x194.png') }}">
+            <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('assets/images/icons/android-chrome-192x192.png') }}">
+            <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/images/icons/favicon-16x16.png') }}">
+            <link rel="mask-icon" href="{{ asset('assets/images/icons/safari-pinned-tab.svg') }}" color="{{ block('meta_theme_color') }}">
+            <link rel="shortcut icon" href="{{ asset('assets/images/icons/favicon.ico') }}">
+            <meta name="msapplication-TileImage" content="{{ asset('assets/images/icons/mstile-144x144.png') }}">
+        {% endblock meta_tags_icons %}
+        {% block meta_og %}
+            <meta property="og:site_name" content="{{ block('meta_app_name') }}">
+            <meta property="og:title" content="{{ block('html_title') }}">
+            <meta property="og:description" content="{{ block('html_description') }}">
+            <meta property="og:locale" content="{{ block('html_lang') }}">
+            <meta property="og:type" content="{% block og_type %}{{ og_type|default('website') }}{% endblock %}">
+            {% block meta_og_image %}
+            {% endblock meta_og_image %}
+            {% block meta_og_twitter %}
+                <meta name="twitter:card" content="summary">
+                <meta name="twitter:site" content="{{ block('meta_app_name') }}">
+                <meta name="twitter:creator" content="{{ block('meta_author') }}">
+            {% endblock meta_og_twitter %}
+            {% block meta_og_geo %}
+                <meta property="og:latitude" content="{% block meta_geo_x %}{{ geo_lat|default(oswis.web.geo_x) }}{% endblock %}"/>
+                <meta property="og:longitude" content="{% block meta_geo_y %}{{ geo_lon|default(oswis.web.geo_y) }}{% endblock %}"/>
+            {% endblock meta_og_geo %}
+            {% block meta_og_additional %}{% endblock meta_og_additional %}
+        {% endblock meta_og %}
     </head>
 
     {% block html_inner %}
         <style type='text/css'>
-            {% include '@OswisOrgOswisCore/e-mail/parts/message_footer.html.twig' %}
+            {% include '@OswisOrgOswisCore/e-mail/pages/message.css.twig' %}
         </style>
-        {% block additional_css %}{% endblock additional_css %}{# Additional CSS <style> tags from inherited templates. #}
+        {% block additional_css %}{% endblock additional_css %}
 
         <body>
         {% block body_outer %}
             <container class="header">
                 {% block header_outer %}
-                    {% include '@OswisOrgOswisCore/e-mail/parts/message_footer.html.twig' %}
+                    {% include '@OswisOrgOswisCore/e-mail/parts/message_header.html.twig' %}
                 {% endblock header_outer %}
             </container>
 

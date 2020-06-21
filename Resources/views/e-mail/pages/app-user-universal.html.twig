@@ -1,0 +1,8 @@
+{% if 'activation-request' == type or 'activation' == type %}
+    {% extends '@OswisOrgOswisCore/e-mail/pages/app-user-activation.html.twig' %}
+{% elseif 'password-change-request' == type or 'password-change' == type %}
+    {% extends '@OswisOrgOswisCore/e-mail/pages/app-user-password.html.twig' %}
+{% else %}
+    {% extends '@OswisOrgOswisCore/e-mail/pages/message.html.twig' %}
+{% endif %}
+

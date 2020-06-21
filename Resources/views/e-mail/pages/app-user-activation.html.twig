@@ -1,10 +1,8 @@
-{% extends '@OswisOrgOswisCore/e-mail/pages/message.html.twig' %}
-
-{% block html_title %}{{ email.subject|default('Změna v uživatelském účtu') }}{% endblock %}
+{% extends '@OswisOrgOswisCore/e-mail/pages/app-user.html.twig' %}
 
 {% block content_inner %}
     <p>
-        {% if type == 'activation-request' %}
+        {% if 'activation-request' == type %}
             Byl vytvořen {{ f ? 'Váš' : 'Tvůj' }} nový uživatelský účet v aplikaci <b>{{ oswis.app.name }}</b>.<br>
         {% elseif type == 'activation' %}
             {{ f ? 'Váš' : 'Tvůj' }} uživatelský účet v aplikaci <b>{{ oswis.app.name }}</b> byl aktivován.<br>
@@ -13,7 +11,7 @@
         {% endif %}
     </p>
 
-    {% if type == 'activation-request' and tokenUrl %}
+    {% if 'activation-request' == type and tokenUrl %}
         Ještě je nutné provést aktivaci uživatelského účtu. Aktivaci provede{{ f ? 'te' : 'š' }} na následujícím odkazu:<br>
         <span style="border: 1px solid lightgrey; padding: .5em 1em;margin: .5em 0;">
             <a href="{{ tokenUrl }}" title="Odkaz pro aktivaci účtu" target="_blank">{{ tokenUrl }}</a>

@@ -33,7 +33,7 @@
                 <meta name='ICBM' content='{{ block('meta_geo_position') }}'>
             {% endblock meta_geo %}
             {% block meta_tags_app %}
-                <meta name="application-name" content="{% block meta_app_name %}{{ block('html_title') }}{% endblock %}">
+                <meta name="application-name" content="{% block meta_app_name %}{{ oswis.app.name|default(block('html_title')) }}{% endblock %}">
                 <meta name="apple-mobile-web-app-title" content="{% block meta_app_title_apple %}{{ block('meta_app_name') }}{% endblock %}">
             {% endblock meta_tags_app %}
             {% block meta_tags_color %}
@@ -80,7 +80,7 @@
                 <meta property="og:longitude" content="{% block meta_geo_y %}{{ geo_lon|default(oswis.web.geo_y) }}{% endblock %}"/>
             {% endblock meta_og_geo %}
             {% block meta_og_additional %}{% endblock meta_og_additional %}
-        {% endblock %}
+        {% endblock meta_og %}
         {% block meta_hinclude_config %}
             <meta name="include_mode" content="async"/>
         {% endblock meta_hinclude_config %}
