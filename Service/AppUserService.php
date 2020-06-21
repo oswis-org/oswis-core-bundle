@@ -17,7 +17,6 @@ use OswisOrg\OswisCoreBundle\Exceptions\OswisException;
 use OswisOrg\OswisCoreBundle\Exceptions\TokenInvalidException;
 use OswisOrg\OswisCoreBundle\Exceptions\UserNotFoundException;
 use OswisOrg\OswisCoreBundle\Exceptions\UserNotUniqueException;
-use OswisOrg\OswisCoreBundle\Provider\OswisCoreSettingsProvider;
 use OswisOrg\OswisCoreBundle\Repository\AppUserRepository;
 use OswisOrg\OswisCoreBundle\Utils\StringUtils;
 use Psr\Log\LoggerInterface;
@@ -39,8 +38,6 @@ class AppUserService
 
     protected UserPasswordEncoderInterface $encoder;
 
-    protected OswisCoreSettingsProvider $oswisCoreSettings;
-
     protected AppUserTokenService $appUserTokenService;
 
     protected AppUserMailService $appUserMailService;
@@ -49,14 +46,12 @@ class AppUserService
         UserPasswordEncoderInterface $encoder,
         EntityManagerInterface $em,
         LoggerInterface $logger,
-        OswisCoreSettingsProvider $oswisCoreSettings,
         AppUserTokenService $appUserTokenService,
         AppUserMailService $appUserMailService
     ) {
         $this->em = $em;
         $this->encoder = $encoder;
         $this->logger = $logger;
-        $this->oswisCoreSettings = $oswisCoreSettings;
         $this->appUserMailService = $appUserMailService;
         $this->appUserTokenService = $appUserTokenService;
     }
@@ -141,7 +136,7 @@ class AppUserService
             $appUser->setPlainPassword($isRandom ? StringUtils::generatePassword() : $appUser->getPlainPassword(), $this->encoder, !$isRandom);
             $appUser->activate();
             if ($sendConfirmation) {
-                $this->appUserMailService->sendAppUserEMail($appUser, self::ACTIVATION);
+                $this->appUserMailService->sendAppUserMail($appUser, self::ACTIVATION);
             }
             $this->em->persist($appUser);
             $this->em->flush();
@@ -167,13 +162,33 @@ class AppUserService
                 throw new UserNotFoundException();
             }
             $appUserToken = $this->appUserTokenService->create($appUser, AppUserToken::TYPE_ACTIVATION, false);
-            $this->appUserMailService->sendAppUserEMail($appUser, self::ACTIVATION_REQUEST, $appUserToken);
+            $this->appUserMailService->sendAppUserMail($appUser, self::ACTIVATION_REQUEST, $appUserToken);
             $this->em->persist($appUser);
             $this->logger->info('Created and sent activation request for user '.$appUser->getId().'.');
         } catch (OswisException|InvalidTypeException $exception) {
             $this->logger->error('User ('.$appUser->getId().') activation request FAILED. '.$exception->getMessage());
             throw $exception;
         }
+    }
+
+    public function alreadyExists(string $mail): bool
+    {
+        try {
+            return (bool)$this->findExisting($mail);
+        } catch (UserNotUniqueException $e) {
+            return true;
+        }
+    }
+
+    /**
+     * @param string $mail
+     *
+     * @return AppUser|null
+     * @throws UserNotUniqueException
+     */
+    public function findExisting(string $mail): ?AppUser
+    {
+        $this->getRepository()->findOneByUsernameOrMail($mail, false);
     }
 
     /**
@@ -194,7 +209,7 @@ class AppUserService
             }
             $appUserToken = $this->appUserTokenService->create($appUser, AppUserToken::TYPE_PASSWORD_RESET, false);
             if ($sendConfirmation) {
-                $this->appUserMailService->sendAppUserEMail($appUser, self::PASSWORD_CHANGE_REQUEST, $appUserToken);
+                $this->appUserMailService->sendAppUserMail($appUser, self::PASSWORD_CHANGE_REQUEST, $appUserToken);
             }
             $this->em->persist($appUser);
             $andSent = $sendConfirmation ? ' and sent' : '';
@@ -282,7 +297,7 @@ class AppUserService
             $password ??= StringUtils::generatePassword();
             $appUser->setPlainPassword($password, $this->encoder, !$isRandom);
             if ($sendConfirmation) {
-                $this->appUserMailService->sendAppUserEMail($appUser, self::PASSWORD_CHANGE);
+                $this->appUserMailService->sendAppUserMail($appUser, self::PASSWORD_CHANGE);
             }
             $this->em->persist($appUser);
             $this->em->flush();

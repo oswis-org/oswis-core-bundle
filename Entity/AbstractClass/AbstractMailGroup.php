@@ -81,7 +81,10 @@ abstract class AbstractMailGroup implements MailGroupInterface
         return $this->isInDateRange($dateTime ?? new DateTime());
     }
 
-    abstract public function isApplicableByRestrictions(?object $entity): bool;
+    public function isApplicableByRestrictions(?object $entity): bool
+    {
+        return true;
+    }
 
     public function isCategory(?AbstractMailCategory $category): bool
     {

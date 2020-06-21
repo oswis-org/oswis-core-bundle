@@ -6,6 +6,7 @@
 
 namespace OswisOrg\OswisCoreBundle\Repository;
 
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\EntityRepository;
@@ -27,19 +28,34 @@ class AppUserRepository extends EntityRepository implements UserLoaderInterface
      */
     public function loadUserByUsername($username): ?AppUser
     {
-        if (!$username) {
+        $appUser = $this->findOneByUsernameOrMail($username, true);
+
+        return null !== $appUser && ($appUser instanceof AppUser) && $appUser->isActive() ? $appUser : null;
+    }
+
+    /**
+     * @param string|null $username
+     * @param bool|false  $onlyActive
+     *
+     * @return AppUser|null
+     * @throws UserNotUniqueException
+     */
+    public function findOneByUsernameOrMail(?string $username, bool $onlyActive = false): ?AppUser
+    {
+        if (empty($username)) {
             return null;
         }
+        $builder = $this->createQueryBuilder('user')->where('(user.username = :username OR user.email = :username)');
+        $builder->setParameter('username', $username);
+        if (true === $onlyActive) {
+            $builder->andWhere('user.activated <= :now')->andWhere('user.deleted IS NULL OR user.deleted >= :now');
+            $builder->setParameter('now', new DateTime());
+        }
         try {
-            $builder = $this->createQueryBuilder('u') // TODO: Is in range??????!!!!!!
-                            ->where('(u.username = :username OR u.email = :email)');
-            $query = $builder->setParameter('username', $username)->setParameter('email', $username)->getQuery();
-            $appUser = $query->getOneOrNullResult(Query::HYDRATE_OBJECT);
+            return $builder->getQuery()->getOneOrNullResult(Query::HYDRATE_OBJECT);
         } catch (NonUniqueResultException $e) {
             throw new UserNotUniqueException();
         }
-
-        return $appUser && ($appUser instanceof AppUser) && $appUser->isActivated() ? $appUser : null;
     }
 
     /**

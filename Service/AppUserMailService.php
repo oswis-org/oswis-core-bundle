@@ -48,7 +48,7 @@ class AppUserMailService
      *
      * @throws OswisException|NotFoundException|NotImplementedException|InvalidTypeException
      */
-    public function sendAppUserEMail(AppUser $appUser, string $type, ?AppUserToken $appUserToken = null): void
+    public function sendAppUserMail(AppUser $appUser, string $type, ?AppUserToken $appUserToken = null): void
     {
         $isIS = false;
         if (null !== $appUserToken && $appUserToken->getAppUser() !== $appUser) {
