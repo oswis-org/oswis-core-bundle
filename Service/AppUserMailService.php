@@ -33,20 +33,6 @@ class AppUserMailService extends AbstractMailService
     public const TYPE_ACTIVATION = AppUserService::ACTIVATION;
     public const TYPE_ACTIVATION_REQUEST = AppUserService::ACTIVATION_REQUEST;
 
-    public const ALLOWED_TYPES = [
-        self::TYPE_PASSWORD_CHANGE,
-        self::TYPE_PASSWORD_CHANGE_REQUEST,
-        self::TYPE_ACTIVATION,
-        self::TYPE_ACTIVATION_REQUEST,
-    ];
-
-    public const TYPES_SETTINGS = [
-        self::TYPE_PASSWORD_CHANGE         => ['title' => 'Heslo změněno'],
-        self::TYPE_PASSWORD_CHANGE_REQUEST => ['title' => 'Požadavek na změnu hesla'],
-        self::TYPE_ACTIVATION              => ['title' => 'Účet byl aktivován'],
-        self::TYPE_ACTIVATION_REQUEST      => ['title' => 'Aktivace uživatelského účtu'],
-    ];
-
     protected AppUserEMailGroupRepository $groupRepository;
 
     protected AppUserEMailCategoryRepository $categoryRepository;
@@ -97,13 +83,9 @@ class AppUserMailService extends AbstractMailService
             'isIS'         => $isIS,
         ];
         $this->em->persist($appUserEMail);
+        $templateName = $twigTemplate->getTemplateName() ?? '@OswisOrgOswisCore/e-mail/pages/app-user-universal.html.twig';
         try {
-            $this->sendEMail(
-                $appUserEMail,
-                $twigTemplate->getTemplateName() ?? '@OswisOrgOswisCore/e-mail/pages/app-user.html.twig',
-                $data,
-                ''.$appUser->getName()
-            );
+            $this->sendEMail($appUserEMail, $templateName, $data, ''.$appUser->getName());
         } catch (TransportExceptionInterface|MimeLogicException $exception) {
             $this->logger->error('App user e-mail exception: '.$exception->getMessage());
             $appUserEMail->setInternalNote($exception->getMessage());
