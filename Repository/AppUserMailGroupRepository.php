@@ -12,7 +12,7 @@ use Exception;
 use LogicException;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser;
 use OswisOrg\OswisCoreBundle\Entity\AppUserMail\AppUserMailGroup;
-use OswisOrg\OswisCoreBundle\Interfaces\EMail\EMailCategoryInterface;
+use OswisOrg\OswisCoreBundle\Interfaces\Mail\MailCategoryInterface;
 
 class AppUserMailGroupRepository extends ServiceEntityRepository
 {
@@ -26,7 +26,7 @@ class AppUserMailGroupRepository extends ServiceEntityRepository
         parent::__construct($registry, AppUserMailGroup::class);
     }
 
-    final public function findByUser(AppUser $appUser, EMailCategoryInterface $category): ?AppUserMailGroup
+    final public function findByUser(AppUser $appUser, MailCategoryInterface $category): ?AppUserMailGroup
     {
         $queryBuilder = $this->createQueryBuilder('group');
         $queryBuilder->setParameter("category_id", $category->getId())->setParameter("now", new DateTime());

@@ -7,7 +7,7 @@ namespace OswisOrg\OswisCoreBundle\Entity\AbstractClass;
 
 use OswisOrg\OswisCoreBundle\Entity\NonPersistent\Nameable;
 use OswisOrg\OswisCoreBundle\Exceptions\InvalidTypeException;
-use OswisOrg\OswisCoreBundle\Interfaces\EMail\EMailCategoryInterface;
+use OswisOrg\OswisCoreBundle\Interfaces\Mail\MailCategoryInterface;
 use OswisOrg\OswisCoreBundle\Service\AppUserService;
 use OswisOrg\OswisCoreBundle\Traits\Common\NameableTrait;
 use OswisOrg\OswisCoreBundle\Traits\Common\PriorityTrait;
@@ -17,7 +17,7 @@ use OswisOrg\OswisCoreBundle\Traits\Common\TypeTrait;
  * E-mail category represents some type of message (activation, activation request, password change, password change request...).
  * @author Jakub Zak <mail@jakubzak.eu>
  */
-abstract class AbstractMailCategory implements EMailCategoryInterface
+abstract class AbstractMailCategory implements MailCategoryInterface
 {
     public const TYPE_ACTIVATION = AppUserService::ACTIVATION;
     public const TYPE_ACTIVATION_REQUEST = AppUserService::ACTIVATION_REQUEST;

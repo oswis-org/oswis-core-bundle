@@ -10,7 +10,6 @@ use OswisOrg\OswisCoreBundle\Entity\AbstractClass\AbstractToken;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserToken;
 use OswisOrg\OswisCoreBundle\Exceptions\InvalidTypeException;
-use OswisOrg\OswisCoreBundle\Exceptions\OswisException;
 
 /**
  * E-mail sent to some user.
@@ -79,13 +78,8 @@ class AppUserMail extends AbstractMail
      *
      * @throws InvalidTypeException
      */
-    public function __construct(
-        AppUser $appUser,
-        string $subject,
-        ?string $type = null,
-        AppUserToken $token = null,
-        ?string $messageId = null
-    ) {
+    public function __construct(AppUser $appUser, string $subject, ?string $type = null, AppUserToken $token = null, ?string $messageId = null)
+    {
         parent::__construct($subject, $this->appUser->getEmail(), $type, $this->appUser->getName(), $messageId);
         $this->appUser = $appUser;
         $this->appUserToken = $token;
@@ -110,19 +104,6 @@ class AppUserMail extends AbstractMail
     public function getAppUser(): ?AppUser
     {
         return $this->appUser;
-    }
-
-    /**
-     * @param AppUser|null $appUser
-     *
-     * @throws OswisException
-     */
-    public function setAppUser(?AppUser $appUser): void
-    {
-        if (null === $appUser || null === $this->getAppUser()) {
-            $this->appUser = $appUser;
-        }
-        throw new OswisException('nelze změnit uživatele u odeslaného e-mailu');
     }
 
     public function getAppUserToken(): ?AbstractToken

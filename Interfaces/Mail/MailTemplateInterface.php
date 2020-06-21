@@ -1,10 +1,10 @@
 <?php
 
-namespace OswisOrg\OswisCoreBundle\Interfaces\EMail;
+namespace OswisOrg\OswisCoreBundle\Interfaces\Mail;
 
 use OswisOrg\OswisCoreBundle\Interfaces\Common\NameableInterface;
 
-interface EMailTemplateInterface extends NameableInterface
+interface MailTemplateInterface extends NameableInterface
 {
     public function getTemplateString(): ?string;
 

@@ -15,7 +15,7 @@ use OswisOrg\OswisCoreBundle\Exceptions\InvalidTypeException;
 use OswisOrg\OswisCoreBundle\Exceptions\NotFoundException;
 use OswisOrg\OswisCoreBundle\Exceptions\NotImplementedException;
 use OswisOrg\OswisCoreBundle\Exceptions\OswisException;
-use OswisOrg\OswisCoreBundle\Interfaces\EMail\EMailCategoryInterface;
+use OswisOrg\OswisCoreBundle\Interfaces\Mail\MailCategoryInterface;
 use OswisOrg\OswisCoreBundle\Repository\AppUserMailCategoryRepository;
 use OswisOrg\OswisCoreBundle\Repository\AppUserMailGroupRepository;
 
@@ -80,7 +80,7 @@ class AppUserMailService
         return $this->categoryRepository->findByType($type);
     }
 
-    public function getGroup(AppUser $appUser, EMailCategoryInterface $category): ?AppUserMailGroup
+    public function getGroup(AppUser $appUser, MailCategoryInterface $category): ?AppUserMailGroup
     {
         return $this->groupRepository->findByUser($appUser, $category);
     }

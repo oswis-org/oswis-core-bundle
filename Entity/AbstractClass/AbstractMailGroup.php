@@ -10,17 +10,17 @@ use Doctrine\ORM\Mapping as ORM;
 use OswisOrg\OswisCoreBundle\Entity\NonPersistent\DateTimeRange;
 use OswisOrg\OswisCoreBundle\Entity\NonPersistent\Nameable;
 use OswisOrg\OswisCoreBundle\Entity\TwigTemplate\TwigTemplate;
-use OswisOrg\OswisCoreBundle\Interfaces\EMail\EMailCategoryInterface;
-use OswisOrg\OswisCoreBundle\Interfaces\EMail\EMailGroupInterface;
+use OswisOrg\OswisCoreBundle\Interfaces\Mail\MailCategoryInterface;
+use OswisOrg\OswisCoreBundle\Interfaces\Mail\MailGroupInterface;
 use OswisOrg\OswisCoreBundle\Traits\Common\DateRangeTrait;
 use OswisOrg\OswisCoreBundle\Traits\Common\NameableTrait;
 use OswisOrg\OswisCoreBundle\Traits\Common\PriorityTrait;
 
 /**
- * EMail group contains restrictions of recipients.
+ * Mail group contains restrictions of recipients.
  * @author Jakub Zak <mail@jakubzak.eu>
  */
-abstract class AbstractMailGroup implements EMailGroupInterface
+abstract class AbstractMailGroup implements MailGroupInterface
 {
     use NameableTrait;
     use PriorityTrait;
@@ -38,13 +38,13 @@ abstract class AbstractMailGroup implements EMailGroupInterface
      */
     protected bool $automaticMailing = false;
 
-    protected ?EMailCategoryInterface $category = null;
+    protected ?MailCategoryInterface $category = null;
 
     public function __construct(
         ?Nameable $nameable = null,
         ?int $priority = null,
         ?DateTimeRange $range = null,
-        ?EMailCategoryInterface $category = null,
+        ?MailCategoryInterface $category = null,
         ?TwigTemplate $twigTemplate = null,
         bool $automaticMailing = false
     ) {
@@ -88,12 +88,12 @@ abstract class AbstractMailGroup implements EMailGroupInterface
         return $this->getCategory() === $category;
     }
 
-    public function getCategory(): ?EMailCategoryInterface
+    public function getCategory(): ?MailCategoryInterface
     {
         return $this->category;
     }
 
-    public function setCategory(?EMailCategoryInterface $category): void
+    public function setCategory(?MailCategoryInterface $category): void
     {
         $this->category = $category;
     }

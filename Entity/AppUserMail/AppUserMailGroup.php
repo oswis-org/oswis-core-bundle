@@ -7,7 +7,7 @@ namespace OswisOrg\OswisCoreBundle\Entity\AppUserMail;
 
 use OswisOrg\OswisCoreBundle\Entity\AbstractClass\AbstractMailGroup;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser;
-use OswisOrg\OswisCoreBundle\Interfaces\EMail\EMailCategoryInterface;
+use OswisOrg\OswisCoreBundle\Interfaces\Mail\MailCategoryInterface;
 
 /**
  * @Doctrine\ORM\Mapping\Entity(repositoryClass="OswisOrg\OswisCoreBundle\Repository\AppUserMailGroupRepository")
@@ -50,7 +50,7 @@ class AppUserMailGroup extends AbstractMailGroup
      * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="AppUserMailCategory", fetch="EAGER")
      * @Doctrine\ORM\Mapping\JoinColumn(nullable=true)
      */
-    protected ?EMailCategoryInterface $category = null;
+    protected ?MailCategoryInterface $category = null;
 
     public function isApplicableByRestrictions(?object $entity): bool
     {
