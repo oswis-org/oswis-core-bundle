@@ -3,23 +3,20 @@
  * @noinspection MethodShouldBeFinalInspection
  */
 
-namespace OswisOrg\OswisCoreBundle\Entity\AppUserEMail;
+namespace OswisOrg\OswisCoreBundle\Entity\AppUserMail;
 
-use ApiPlatform\Core\Annotation\ApiResource;
-use OswisOrg\OswisCoreBundle\Entity\AbstractClass\AbstractEMail;
+use OswisOrg\OswisCoreBundle\Entity\AbstractClass\AbstractMail;
 use OswisOrg\OswisCoreBundle\Entity\AbstractClass\AbstractToken;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserToken;
-use OswisOrg\OswisCoreBundle\Entity\NonPersistent\Nameable;
 use OswisOrg\OswisCoreBundle\Exceptions\InvalidTypeException;
 use OswisOrg\OswisCoreBundle\Exceptions\OswisException;
-use OswisOrg\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
 
 /**
  * E-mail sent to some user.
  * @Doctrine\ORM\Mapping\Entity()
  * @Doctrine\ORM\Mapping\Table(name="core_app_user_e_mail")
- * @ApiResource(
+ * @ApiPlatform\Core\Annotation\ApiResource(
  *   attributes={
  *     "filters"={"search"},
  *     "access_control"="is_granted('ROLE_ADMIN')",
@@ -47,15 +44,20 @@ use OswisOrg\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
  *     }
  *   }
  * )
- * @Searchable({
+ * @OswisOrg\OswisCoreBundle\Filter\SearchAnnotation({
  *     "id",
  *     "token"
  * })
  * @author Jakub Zak <mail@jakubzak.eu>
  * @Doctrine\ORM\Mapping\Cache(usage="NONSTRICT_READ_WRITE", region="core_app_user")
  */
-class AppUserEMail extends AbstractEMail
+class AppUserMail extends AbstractMail
 {
+    public const TYPE_ACTIVATION = 'activation';
+    public const TYPE_ACTIVATION_REQUEST = 'activation-request';
+    public const TYPE_PASSWORD_RESET = 'password-reset';
+    public const TYPE_PASSWORD_RESET_REQUEST = 'password-reset-request';
+
     /**
      * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser", fetch="EAGER")
      * @Doctrine\ORM\Mapping\JoinColumn(name="app_user_id", referencedColumnName="id")
@@ -69,24 +71,35 @@ class AppUserEMail extends AbstractEMail
     protected ?AppUserToken $appUserToken = null;
 
     /**
-     * AppUserEMail constructor.
+     * @param AppUser           $appUser
+     * @param string            $subject
+     * @param string|null       $type
+     * @param AppUserToken|null $token
+     * @param string|null       $messageId
      *
-     * @param Nameable|null $nameable
-     * @param string|null   $eMail
-     * @param string|null   $type
-     *
-     * @throws OswisException|InvalidTypeException
+     * @throws InvalidTypeException
      */
     public function __construct(
-        ?AppUser $appUser = null,
-        ?Nameable $nameable = null,
-        ?string $eMail = null,
+        AppUser $appUser,
+        string $subject,
         ?string $type = null,
-        AppUserToken $token = null
+        AppUserToken $token = null,
+        ?string $messageId = null
     ) {
-        parent::__construct($nameable, $eMail, $type);
-        $this->setAppUserToken($token);
+        parent::__construct($subject, $this->appUser->getEmail(), $type, $this->appUser->getName(), $messageId);
         $this->appUser = $appUser;
+        $this->appUserToken = $token;
+    }
+
+    public static function getAllowedTypesDefault(): array
+    {
+        return [
+            ...parent::getAllowedTypesDefault(),
+            self::TYPE_ACTIVATION,
+            self::TYPE_ACTIVATION_REQUEST,
+            self::TYPE_PASSWORD_RESET,
+            self::TYPE_PASSWORD_RESET_REQUEST,
+        ];
     }
 
     public function isAppUser(?AppUser $appUser): bool
@@ -115,18 +128,5 @@ class AppUserEMail extends AbstractEMail
     public function getAppUserToken(): ?AbstractToken
     {
         return $this->appUserToken;
-    }
-
-    /**
-     * @param AppUserToken|null $appUserToken
-     *
-     * @throws OswisException
-     */
-    public function setAppUserToken(?AppUserToken $appUserToken): void
-    {
-        if (null === $appUserToken || null === $this->getAppUserToken()) {
-            $this->appUserToken = $appUserToken;
-        }
-        throw new OswisException('nelze změnit přiřazený token u odeslaného e-mailu');
     }
 }

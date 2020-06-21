@@ -16,7 +16,6 @@ use Symfony\Component\HttpFoundation\IpUtils;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
-use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 
 class InternalActionsWebController extends AbstractController
 {
@@ -64,7 +63,6 @@ class InternalActionsWebController extends AbstractController
 
     /**
      * @return Response
-     * @throws TransportExceptionInterface
      */
     public function registerRoot(): Response
     {

@@ -18,8 +18,6 @@ use OswisOrg\OswisCoreBundle\Exceptions\OswisException;
 use OswisOrg\OswisCoreBundle\Exceptions\UserNotFoundException;
 use OswisOrg\OswisCoreBundle\Exceptions\UserNotUniqueException;
 use OswisOrg\OswisCoreBundle\Provider\OswisCoreSettingsProvider;
-use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
-use Symfony\Component\Mime\Exception\LogicException;
 
 class AppUserDefaultsService
 {
@@ -44,10 +42,13 @@ class AppUserDefaultsService
     }
 
     /**
-     * @throws LogicException|InvalidArgumentException
-     * @throws OswisException|InvalidTypeException|NotImplementedException|NotFoundException
-     * @throws UserNotFoundException|UserNotUniqueException
-     * @throws TransportExceptionInterface
+     * @throws InvalidArgumentException
+     * @throws InvalidTypeException
+     * @throws NotFoundException
+     * @throws NotImplementedException
+     * @throws OswisException
+     * @throws UserNotFoundException
+     * @throws UserNotUniqueException
      */
     public function registerRoot(): void
     {

@@ -23,8 +23,6 @@ use Symfony\Component\Form\Exception\LogicException;
 use Symfony\Component\Form\Exception\RuntimeException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
-use Symfony\Component\Mime\Exception\LogicException as MimeLogicException;
 
 class AppUserController extends AbstractController
 {
@@ -40,10 +38,13 @@ class AppUserController extends AbstractController
      * @param int|null $appUserId
      *
      * @return Response
-     * @throws MimeLogicException|TransportExceptionInterface
+     * @throws InvalidTypeException
      * @throws LogicException
-     * @throws OswisException|InvalidTypeException|NotImplementedException
-     * @throws UserNotFoundException|UserNotUniqueException|NotFoundException
+     * @throws NotFoundException
+     * @throws NotImplementedException
+     * @throws OswisException
+     * @throws UserNotFoundException
+     * @throws UserNotUniqueException
      */
     public function passwordChangeRequest(Request $request, ?int $appUserId): Response
     {
@@ -83,10 +84,14 @@ class AppUserController extends AbstractController
      * @param Request $request
      *
      * @return Response
-     * @throws RuntimeException|LogicException
-     * @throws MimeLogicException|TransportExceptionInterface
-     * @throws OswisException|NotImplementedException|InvalidTypeException
-     * @throws UserNotFoundException|UserNotUniqueException|NotFoundException
+     * @throws InvalidTypeException
+     * @throws LogicException
+     * @throws NotFoundException
+     * @throws NotImplementedException
+     * @throws OswisException
+     * @throws RuntimeException
+     * @throws UserNotFoundException
+     * @throws UserNotUniqueException
      */
     public function activationRequest(Request $request): Response
     {
@@ -128,9 +133,13 @@ class AppUserController extends AbstractController
      * @param int|null    $appUserId
      *
      * @return Response
-     * @throws LogicException|RuntimeException
-     * @throws MimeLogicException|TransportExceptionInterface
-     * @throws OswisException|InvalidTypeException|TokenInvalidException|NotFoundException
+     * @throws InvalidTypeException
+     * @throws LogicException
+     * @throws NotFoundException
+     * @throws NotImplementedException
+     * @throws OswisException
+     * @throws RuntimeException
+     * @throws TokenInvalidException
      */
     public function processToken(Request $request, ?string $token = null, ?int $appUserId = null): Response
     {
@@ -149,8 +158,8 @@ class AppUserController extends AbstractController
      * @param AppUserToken $appUserToken
      *
      * @return Response
-     * @throws InvalidTypeException|NotFoundException
-     * @throws MimeLogicException|TransportExceptionInterface
+     * @throws InvalidTypeException
+     * @throws NotFoundException
      */
     public function processTokenActivation(AppUserToken $appUserToken): Response
     {
@@ -175,9 +184,13 @@ class AppUserController extends AbstractController
      * @param Request      $request
      *
      * @return Response
-     * @throws RuntimeException|LogicException
-     * @throws MimeLogicException|TransportExceptionInterface
-     * @throws OswisException|InvalidTypeException|NotImplementedException|TokenInvalidException|NotFoundException
+     * @throws InvalidTypeException
+     * @throws LogicException
+     * @throws NotFoundException
+     * @throws NotImplementedException
+     * @throws OswisException
+     * @throws RuntimeException
+     * @throws TokenInvalidException
      */
     public function processTokenPasswordChange(AppUserToken $appUserToken, Request $request): Response
     {

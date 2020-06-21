@@ -11,10 +11,10 @@ use Doctrine\Persistence\ManagerRegistry;
 use Exception;
 use LogicException;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser;
-use OswisOrg\OswisCoreBundle\Entity\AppUserEMail\AppUserEMailGroup;
+use OswisOrg\OswisCoreBundle\Entity\AppUserMail\AppUserMailGroup;
 use OswisOrg\OswisCoreBundle\Interfaces\EMail\EMailCategoryInterface;
 
-class AppUserEMailGroupRepository extends ServiceEntityRepository
+class AppUserMailGroupRepository extends ServiceEntityRepository
 {
     /**
      * @param ManagerRegistry $registry
@@ -23,10 +23,10 @@ class AppUserEMailGroupRepository extends ServiceEntityRepository
      */
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, AppUserEMailGroup::class);
+        parent::__construct($registry, AppUserMailGroup::class);
     }
 
-    final public function findByUser(AppUser $appUser, EMailCategoryInterface $category): ?AppUserEMailGroup
+    final public function findByUser(AppUser $appUser, EMailCategoryInterface $category): ?AppUserMailGroup
     {
         $queryBuilder = $this->createQueryBuilder('group');
         $queryBuilder->setParameter("category_id", $category->getId())->setParameter("now", new DateTime());
@@ -37,7 +37,7 @@ class AppUserEMailGroupRepository extends ServiceEntityRepository
         try {
             $appUserEMailGroups = $queryBuilder->getQuery()->getResult();
             foreach ($appUserEMailGroups as $appUserEMailGroup) {
-                if ($appUserEMailGroup instanceof AppUserEMailGroup && $appUserEMailGroup->isApplicable($appUser)) {
+                if ($appUserEMailGroup instanceof AppUserMailGroup && $appUserEMailGroup->isApplicable($appUser)) {
                     return $appUserEMailGroup;
                 }
             }
@@ -48,10 +48,10 @@ class AppUserEMailGroupRepository extends ServiceEntityRepository
         }
     }
 
-    final public function findOneBy(array $criteria, array $orderBy = null): ?AppUserEMailGroup
+    final public function findOneBy(array $criteria, array $orderBy = null): ?AppUserMailGroup
     {
         $result = parent::findOneBy($criteria, $orderBy);
 
-        return $result instanceof AppUserEMailGroup ? $result : null;
+        return $result instanceof AppUserMailGroup ? $result : null;
     }
 }

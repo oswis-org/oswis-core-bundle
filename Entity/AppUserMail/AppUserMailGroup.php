@@ -3,18 +3,16 @@
  * @noinspection MethodShouldBeFinalInspection
  */
 
-namespace OswisOrg\OswisCoreBundle\Entity\AppUserEMail;
+namespace OswisOrg\OswisCoreBundle\Entity\AppUserMail;
 
-use ApiPlatform\Core\Annotation\ApiResource;
-use OswisOrg\OswisCoreBundle\Entity\AbstractClass\AbstractEMailGroup;
+use OswisOrg\OswisCoreBundle\Entity\AbstractClass\AbstractMailGroup;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser;
-use OswisOrg\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
 use OswisOrg\OswisCoreBundle\Interfaces\EMail\EMailCategoryInterface;
 
 /**
- * @Doctrine\ORM\Mapping\Entity(repositoryClass="OswisOrg\OswisCoreBundle\Repository\AppUserEMailGroupRepository")
+ * @Doctrine\ORM\Mapping\Entity(repositoryClass="OswisOrg\OswisCoreBundle\Repository\AppUserMailGroupRepository")
  * @Doctrine\ORM\Mapping\Table(name="core_app_user_e_mail_group")
- * @ApiResource(
+ * @ApiPlatform\Core\Annotation\ApiResource(
  *   attributes={
  *     "filters"={"search"},
  *     "access_control"="is_granted('ROLE_ADMIN')",
@@ -42,14 +40,14 @@ use OswisOrg\OswisCoreBundle\Interfaces\EMail\EMailCategoryInterface;
  *     }
  *   }
  * )
- * @Searchable({"id"})
+ * @OswisOrg\OswisCoreBundle\Filter\SearchAnnotation({"id"})
  * @author Jakub Zak <mail@jakubzak.eu>
  * @Doctrine\ORM\Mapping\Cache(usage="NONSTRICT_READ_WRITE", region="core_app_user")
  */
-class AppUserEMailGroup extends AbstractEMailGroup
+class AppUserMailGroup extends AbstractMailGroup
 {
     /**
-     * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="OswisOrg\OswisCoreBundle\Entity\AppUserEMail\AppUserEMailCategory", fetch="EAGER")
+     * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="AppUserMailCategory", fetch="EAGER")
      * @Doctrine\ORM\Mapping\JoinColumn(nullable=true)
      */
     protected ?EMailCategoryInterface $category = null;

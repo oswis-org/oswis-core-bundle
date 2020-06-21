@@ -17,7 +17,7 @@ use OswisOrg\OswisCoreBundle\Traits\Common\TypeTrait;
  * E-mail category represents some type of message (activation, activation request, password change, password change request...).
  * @author Jakub Zak <mail@jakubzak.eu>
  */
-abstract class AbstractEMailCategory implements EMailCategoryInterface
+abstract class AbstractMailCategory implements EMailCategoryInterface
 {
     public const TYPE_ACTIVATION = AppUserService::ACTIVATION;
     public const TYPE_ACTIVATION_REQUEST = AppUserService::ACTIVATION_REQUEST;

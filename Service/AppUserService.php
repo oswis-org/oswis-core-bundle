@@ -21,8 +21,6 @@ use OswisOrg\OswisCoreBundle\Provider\OswisCoreSettingsProvider;
 use OswisOrg\OswisCoreBundle\Repository\AppUserRepository;
 use OswisOrg\OswisCoreBundle\Utils\StringUtils;
 use Psr\Log\LoggerInterface;
-use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
-use Symfony\Component\Mime\Exception\LogicException as MimeLogicException;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use function random_int;
 
@@ -72,9 +70,12 @@ class AppUserService
      * @param bool|null    $skipDuplicityError
      *
      * @return AppUser
-     * @throws OswisException|InvalidTypeException|NotImplementedException
-     * @throws UserNotFoundException|UserNotUniqueException|NotFoundException
-     * @throws TransportExceptionInterface|MimeLogicException
+     * @throws InvalidTypeException
+     * @throws NotFoundException
+     * @throws NotImplementedException
+     * @throws OswisException
+     * @throws UserNotFoundException
+     * @throws UserNotUniqueException
      */
     public function create(?AppUser $appUser = null, ?bool $activate = false, ?bool $sendMail = false, ?bool $skipDuplicityError = true): AppUser
     {
@@ -132,7 +133,6 @@ class AppUserService
      * @param bool    $sendConfirmation
      *
      * @throws InvalidTypeException|NotFoundException
-     * @throws MimeLogicException|TransportExceptionInterface
      */
     public function activate(AppUser $appUser, bool $sendConfirmation = true): void
     {
@@ -154,8 +154,11 @@ class AppUserService
     /**
      * @param AppUser|null $appUser
      *
-     * @throws InvalidTypeException|MimeLogicException|TransportExceptionInterface
-     * @throws OswisException|UserNotFoundException|NotImplementedException|NotFoundException
+     * @throws InvalidTypeException
+     * @throws NotFoundException
+     * @throws NotImplementedException
+     * @throws OswisException
+     * @throws UserNotFoundException
      */
     public function requestActivation(?AppUser $appUser): void
     {
@@ -167,7 +170,7 @@ class AppUserService
             $this->appUserMailService->sendAppUserEMail($appUser, self::ACTIVATION_REQUEST, $appUserToken);
             $this->em->persist($appUser);
             $this->logger->info('Created and sent activation request for user '.$appUser->getId().'.');
-        } catch (OswisException|InvalidTypeException|TransportExceptionInterface|MimeLogicException $exception) {
+        } catch (OswisException|InvalidTypeException $exception) {
             $this->logger->error('User ('.$appUser->getId().') activation request FAILED. '.$exception->getMessage());
             throw $exception;
         }
@@ -177,8 +180,11 @@ class AppUserService
      * @param AppUser|null $appUser
      * @param bool         $sendConfirmation
      *
-     * @throws MimeLogicException|TransportExceptionInterface
-     * @throws OswisException|UserNotFoundException|InvalidTypeException|NotImplementedException|NotFoundException
+     * @throws InvalidTypeException
+     * @throws NotFoundException
+     * @throws NotImplementedException
+     * @throws OswisException
+     * @throws UserNotFoundException
      */
     public function requestPasswordChange(?AppUser $appUser, bool $sendConfirmation): void
     {
@@ -193,7 +199,7 @@ class AppUserService
             $this->em->persist($appUser);
             $andSent = $sendConfirmation ? ' and sent' : '';
             $this->logger->info("Created $andSent password change request for user ".$appUser->getId().'.');
-        } catch (OswisException|InvalidTypeException|TransportExceptionInterface|MimeLogicException $exception) {
+        } catch (OswisException|InvalidTypeException $exception) {
             $this->logger->error('User ('.$appUser->getId().') password change request FAILED. '.$exception->getMessage());
             throw $exception;
         }
@@ -230,8 +236,11 @@ class AppUserService
      * @param int         $appUserId
      * @param string|null $newPassword
      *
-     * @throws MimeLogicException|TransportExceptionInterface
-     * @throws NotImplementedException|OswisException|InvalidTypeException|TokenInvalidException|NotFoundException
+     * @throws InvalidTypeException
+     * @throws NotFoundException
+     * @throws NotImplementedException
+     * @throws OswisException
+     * @throws TokenInvalidException
      */
     public function processToken(string $token, int $appUserId, ?string $newPassword = null): void
     {
@@ -250,7 +259,7 @@ class AppUserService
                 $this->changePassword($appUserToken->getAppUser(), $newPassword, true);
             }
             throw new TokenInvalidException('neznámý typ tokenu', $token);
-        } catch (OswisException|TokenInvalidException|InvalidTypeException|TransportExceptionInterface|MimeLogicException $exception) {
+        } catch (OswisException|TokenInvalidException|InvalidTypeException $exception) {
             $this->logger->error('Problem occurred when processing app user token. '.$exception->getMessage());
             throw $exception;
         }
@@ -261,8 +270,10 @@ class AppUserService
      * @param string|null $password
      * @param bool        $sendConfirmation
      *
-     * @throws MimeLogicException|TransportExceptionInterface
-     * @throws OswisException|InvalidTypeException|NotImplementedException|NotFoundException
+     * @throws InvalidTypeException
+     * @throws NotFoundException
+     * @throws NotImplementedException
+     * @throws OswisException
      */
     public function changePassword(AppUser $appUser, ?string $password, bool $sendConfirmation): void
     {
@@ -276,7 +287,7 @@ class AppUserService
             $this->em->persist($appUser);
             $this->em->flush();
             $this->logger->info('Successfully changed password for user ('.$appUser->getId().').');
-        } catch (OswisException|InvalidTypeException|TransportExceptionInterface|MimeLogicException $exception) {
+        } catch (OswisException|InvalidTypeException $exception) {
             $this->logger->error('Password change for user ('.$appUser->getId().') FAILED. '.$exception->getMessage());
             throw $exception;
         }

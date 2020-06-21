@@ -108,18 +108,28 @@ services:
         alias: oswis_org_oswis_core.app_user_token_service
         public: true
 
+    ### Mail Service
+    oswis_org_oswis_core.mail_service:
+        class: OswisOrg\OswisCoreBundle\Service\MailService
+        autowire: true
+        public: true
+        arguments:
+            - '@monolog.logger_prototype'
+            - '@mailer.mailer'
+    OswisOrg\OswisCoreBundle\Service\MailService:
+        alias: oswis_org_oswis_core.mail_service
+        public: true
+
     ### AppUser Mail Service
     oswis_org_oswis_core.app_user_mail_service:
         class: OswisOrg\OswisCoreBundle\Service\AppUserMailService
         autowire: true
         public: true
         arguments:
+            - '@oswis_org_oswis_core.mail_service'
             - '@doctrine.orm.entity_manager.abstract'
-            - '@monolog.logger_prototype'
-            - '@mailer.mailer'
-            - ''
-            - ''
-            - '@twig'
+            - '@oswis_org_oswis_core.app_user_mail_group_repository'
+            - '@oswis_org_oswis_core.app_user_mail_category_repository'
     OswisOrg\OswisCoreBundle\Service\AppUserMailService:
         alias: oswis_org_oswis_core.app_user_mail_service
         public: true
@@ -161,24 +171,24 @@ services:
         alias: oswis_org_oswis_core.export_service
         public: true
 
-    oswis_org_oswis_core.app_user_e_mail_category_repository:
-        class: OswisOrg\OswisCoreBundle\Repository\AppUserEMailCategoryRepository
+    oswis_org_oswis_core.app_user_mail_category_repository:
+        class: OswisOrg\OswisCoreBundle\Repository\AppUserMailCategoryRepository
         autowire: true
         public: true
         arguments:
             - '@doctrine'
-    OswisOrg\OswisCoreBundle\Repository\AppUserEMailCategoryRepository:
-        alias: oswis_org_oswis_core.app_user_e_mail_category_repository
+    OswisOrg\OswisCoreBundle\Repository\AppUserMailCategoryRepository:
+        alias: oswis_org_oswis_core.app_user_mail_category_repository
         public: true
 
-    oswis_org_oswis_core.app_user_e_mail_group_repository:
-        class: OswisOrg\OswisCoreBundle\Repository\AppUserEMailGroupRepository
+    oswis_org_oswis_core.app_user_mail_group_repository:
+        class: OswisOrg\OswisCoreBundle\Repository\AppUserMailGroupRepository
         autowire: true
         public: true
         arguments:
             - '@doctrine'
-    OswisOrg\OswisCoreBundle\Repository\AppUserEMailGroupRepository:
-        alias: oswis_org_oswis_core.app_user_e_mail_group_repository
+    OswisOrg\OswisCoreBundle\Repository\AppUserMailGroupRepository:
+        alias: oswis_org_oswis_core.app_user_mail_group_repository
         public: true
 
     oswis_org_oswis_core.twig_template_repository:

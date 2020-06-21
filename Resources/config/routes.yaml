@@ -24,7 +24,7 @@ controllers:
 ### Endpoint for token processing.
 oswis_org_oswis_core_app_user_process_token:
     controller: oswis_org_oswis_core.app_user_controller::processToken
-    path: "/uzivatel/aktivace/{token}/{appUserId}"
+    path: "/uzivatel/token/{token}/{appUserId}"
     requirements:
         appUserId: '\d+'
 

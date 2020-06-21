@@ -10,9 +10,9 @@ use Doctrine\ORM\AbstractQuery;
 use Doctrine\Persistence\ManagerRegistry;
 use Exception;
 use LogicException;
-use OswisOrg\OswisCoreBundle\Entity\AppUserEMail\AppUserEMailCategory;
+use OswisOrg\OswisCoreBundle\Entity\AppUserMail\AppUserMailCategory;
 
-class AppUserEMailCategoryRepository extends ServiceEntityRepository
+class AppUserMailCategoryRepository extends ServiceEntityRepository
 {
     /**
      * @param ManagerRegistry $registry
@@ -21,10 +21,10 @@ class AppUserEMailCategoryRepository extends ServiceEntityRepository
      */
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, AppUserEMailCategory::class);
+        parent::__construct($registry, AppUserMailCategory::class);
     }
 
-    final public function findByType(string $type): ?AppUserEMailCategory
+    final public function findByType(string $type): ?AppUserMailCategory
     {
         $queryBuilder = $this->createQueryBuilder('category');
         $queryBuilder->where("category.type = :type")->setParameter("type", $type);
@@ -37,10 +37,10 @@ class AppUserEMailCategoryRepository extends ServiceEntityRepository
         }
     }
 
-    final public function findOneBy(array $criteria, array $orderBy = null): ?AppUserEMailCategory
+    final public function findOneBy(array $criteria, array $orderBy = null): ?AppUserMailCategory
     {
         $result = parent::findOneBy($criteria, $orderBy);
 
-        return $result instanceof AppUserEMailCategory ? $result : null;
+        return $result instanceof AppUserMailCategory ? $result : null;
     }
 }

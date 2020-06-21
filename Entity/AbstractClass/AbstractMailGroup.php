@@ -20,7 +20,7 @@ use OswisOrg\OswisCoreBundle\Traits\Common\PriorityTrait;
  * EMail group contains restrictions of recipients.
  * @author Jakub Zak <mail@jakubzak.eu>
  */
-abstract class AbstractEMailGroup implements EMailGroupInterface
+abstract class AbstractMailGroup implements EMailGroupInterface
 {
     use NameableTrait;
     use PriorityTrait;
@@ -83,7 +83,7 @@ abstract class AbstractEMailGroup implements EMailGroupInterface
 
     abstract public function isApplicableByRestrictions(?object $entity): bool;
 
-    public function isCategory(?AbstractEMailCategory $category): bool
+    public function isCategory(?AbstractMailCategory $category): bool
     {
         return $this->getCategory() === $category;
     }
