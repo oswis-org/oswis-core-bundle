@@ -188,7 +188,7 @@ class AppUserService
      */
     public function findExisting(string $mail): ?AppUser
     {
-        $this->getRepository()->findOneByUsernameOrMail($mail, false);
+        return $this->getRepository()->findOneByUsernameOrMail($mail, false);
     }
 
     /**
