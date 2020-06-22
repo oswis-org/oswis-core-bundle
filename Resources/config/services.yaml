@@ -127,7 +127,7 @@ services:
         public: true
         arguments:
             - '@oswis_org_oswis_core.mail_service'
-            - '@doctrine.orm.entity_manager.abstract'
+            - '@doctrine.orm.entity_manager'
             - '@oswis_org_oswis_core.app_user_mail_group_repository'
             - '@oswis_org_oswis_core.app_user_mail_category_repository'
     OswisOrg\OswisCoreBundle\Service\AppUserMailService:
