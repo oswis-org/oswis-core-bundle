@@ -103,7 +103,7 @@ services:
         public: true
         arguments:
             - '@doctrine.orm.entity_manager'
-            - '@monolog.logger_prototype'
+            - '@monolog.logger'
     OswisOrg\OswisCoreBundle\Service\AppUserTokenService:
         alias: oswis_org_oswis_core.app_user_token_service
         public: true
@@ -114,7 +114,7 @@ services:
         autowire: true
         public: true
         arguments:
-            - '@monolog.logger_prototype'
+            - '@monolog.logger'
             - '@mailer.mailer'
     OswisOrg\OswisCoreBundle\Service\MailService:
         alias: oswis_org_oswis_core.mail_service
