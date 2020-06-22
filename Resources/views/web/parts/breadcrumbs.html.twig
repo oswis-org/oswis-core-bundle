@@ -5,7 +5,7 @@
                 {% apply spaceless %}
                     {% block breadcrumb_homapage %}
                         {% include '@OswisOrgOswisCore/web/parts/breadcrumb-item.html.twig'
-                            with {'b_url': path('oswis_org_oswis_core_homepage_action'), 'b_title': oswis.web.title} %}
+                            with {'b_url': path('oswis_org_oswis_core_homepage_action'), 'b_title': oswis.web.name} %}
                     {% endblock breadcrumb_homapage %}
                     {% block breadcrumb_loop %}
                         {% for b in breadcrumbs|default %}

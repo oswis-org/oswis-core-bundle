@@ -25,7 +25,7 @@
             <meta name='Revisit-After' content='{% block meta_revisit_after %}{{ revisit_after|default('1 day') }}{% endblock meta_revisit_after %}'>
         {% endblock meta_revisit_after_outer %}
         {% block html_meta_rss %}
-            <link rel="alternate" type="application/rss+xml" href="{{ path('oswis_org_oswis_rss_xml') }}" title="RSS {{ oswis.web.title }}">
+            <link rel="alternate" type="application/rss+xml" href="{{ path('oswis_org_oswis_rss_xml') }}" title="RSS {{ oswis.web.name }}">
         {% endblock html_meta_rss %}
         {% block meta_geo %}
             <meta name='geo.position' content='{% block meta_geo_position %}{{ block('meta_geo_x') }},{{ block('meta_geo_y') }}{% endblock %}'>
