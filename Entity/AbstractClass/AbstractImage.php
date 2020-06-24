@@ -17,45 +17,23 @@ abstract class AbstractImage extends AbstractFile
     /**
      * @Symfony\Component\Validator\Constraints\NotNull()
      * @Vich\UploaderBundle\Mapping\Annotation\UploadableField(
-     *     mapping="abstract_image", fileNameProperty="contentName", size="contentSize", mimeType="contentMimeType",
-     *     dimensions={"contentDimensionsWidth", "contentDimensionsHeight"}
+     *     mapping="abstract_image", fileNameProperty="contentName", size="contentSize", mimeType="contentMimeType", dimensions="contentDimensions"
      * )
      */
     protected ?File $file = null;
 
     /**
-     * @Doctrine\ORM\Mapping\Column(type="integer", nullable=true)
+     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
-    protected ?int $contentDimensionsWidth = null;
+    protected ?string $contentDimensions = null;
 
-    /**
-     * @Doctrine\ORM\Mapping\Column(type="integer", nullable=true)
-     */
-    protected ?int $contentDimensionsHeight = null;
-
-    public function getContentDimensionsWidth(): ?int
+    public function getContentDimensions(): ?string
     {
-        return $this->contentDimensionsWidth;
+        return $this->contentDimensions;
     }
 
-    public function setContentDimensionsWidth(?int $contentDimensionsWidth): void
+    public function setContentDimensions(?string $contentDimensions): void
     {
-        $this->contentDimensionsWidth = $contentDimensionsWidth;
-    }
-
-    public function getContentDimensionsHeight(): ?int
-    {
-        return $this->contentDimensionsHeight;
-    }
-
-    public function setContentDimensionsHeight(?int $contentDimensionsHeight): void
-    {
-        $this->contentDimensionsHeight = $contentDimensionsHeight;
-    }
-
-    public function setDimensions(?int $width, ?int $height): void
-    {
-        $this->setContentDimensionsWidth($width);
-        $this->setContentDimensionsHeight($height);
+        $this->contentDimensions = $contentDimensions;
     }
 }
