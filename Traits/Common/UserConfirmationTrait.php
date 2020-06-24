@@ -24,7 +24,7 @@ trait UserConfirmationTrait
     /**
      * User who confirmed.
      * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser", fetch="EAGER")
-     * @Doctrine\ORM\Mapping\JoinColumn(name="app_user_id", referencedColumnName="id")
+     * @Doctrine\ORM\Mapping\JoinColumn(name="user_confirmed_by_id", referencedColumnName="id")
      */
     protected ?AppUser $userConfirmedBy = null;
 
