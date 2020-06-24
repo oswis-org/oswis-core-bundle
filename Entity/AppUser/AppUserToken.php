@@ -50,7 +50,7 @@ use OswisOrg\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
 class AppUserToken extends AbstractToken
 {
     /**
-     * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserToken", fetch="EAGER")
+     * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser", fetch="EAGER")
      * @Doctrine\ORM\Mapping\JoinColumn(name="app_user_id", referencedColumnName="id")
      */
     protected ?AppUser $appUser = null;

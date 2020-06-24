@@ -95,8 +95,8 @@ class AppUserService
 
             return $appUser;
         }
-        true === $activate ? $this->activate($appUser, $sendMail) : $this->requestActivation($appUser);
         $this->em->persist($appUser);
+        true === $activate ? $this->activate($appUser, $sendMail) : $this->requestActivation($appUser);
         $this->em->flush();
         $id = $appUser->getId();
         $this->logger->info("Created user $id/$username/$email.");
@@ -207,7 +207,7 @@ class AppUserService
             if (null === $appUser) {
                 throw new UserNotFoundException();
             }
-            $appUserToken = $this->appUserTokenService->create($appUser, AppUserToken::TYPE_PASSWORD_RESET, false);
+            $appUserToken = $this->appUserTokenService->create($appUser, AppUserToken::TYPE_PASSWORD_CHANGE, false);
             if ($sendConfirmation) {
                 $this->appUserMailService->sendAppUserMail($appUser, self::PASSWORD_CHANGE_REQUEST, $appUserToken);
             }
@@ -270,7 +270,7 @@ class AppUserService
             if (AppUserToken::TYPE_ACTIVATION === $type) {
                 $this->activate($appUserToken->getAppUser(), true);
             }
-            if (AppUserToken::TYPE_PASSWORD_RESET === $type) {
+            if (AppUserToken::TYPE_PASSWORD_CHANGE === $type) {
                 $this->changePassword($appUserToken->getAppUser(), $newPassword, true);
             }
             throw new TokenInvalidException('neznámý typ tokenu', $token);

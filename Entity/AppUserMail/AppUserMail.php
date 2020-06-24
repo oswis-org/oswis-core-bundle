@@ -19,27 +19,27 @@ use OswisOrg\OswisCoreBundle\Exceptions\InvalidTypeException;
  *   attributes={
  *     "filters"={"search"},
  *     "access_control"="is_granted('ROLE_ADMIN')",
- *     "normalization_context"={"groups"={"app_user_e_mails_get"}, "enable_max_depth"=true},
- *     "denormalization_context"={"groups"={"app_user_e_mails_post"}, "enable_max_depth"=true}
+ *     "normalization_context"={"groups"={"app_user_mails_get"}, "enable_max_depth"=true},
+ *     "denormalization_context"={"groups"={"app_user_mails_post"}, "enable_max_depth"=true}
  *   },
  *   collectionOperations={
  *     "get"={
  *       "access_control"="is_granted('ROLE_ADMIN')",
- *       "normalization_context"={"groups"={"app_user_e_mails_get"}, "enable_max_depth"=true},
+ *       "normalization_context"={"groups"={"app_user_mails_get"}, "enable_max_depth"=true},
  *     },
  *     "post"={
  *       "access_control"="is_granted('ROLE_ADMIN')",
- *       "denormalization_context"={"groups"={"app_user_e_mails_post"}, "enable_max_depth"=true}
+ *       "denormalization_context"={"groups"={"app_user_mails_post"}, "enable_max_depth"=true}
  *     }
  *   },
  *   itemOperations={
  *     "get"={
  *       "access_control"="is_granted('ROLE_ADMIN')",
- *       "normalization_context"={"groups"={"app_user_e_mail_get"}, "enable_max_depth"=true},
+ *       "normalization_context"={"groups"={"app_user_mail_get"}, "enable_max_depth"=true},
  *     },
  *     "put"={
  *       "access_control"="is_granted('ROLE_ADMIN')",
- *       "denormalization_context"={"groups"={"app_user_e_mail_put"}, "enable_max_depth"=true}
+ *       "denormalization_context"={"groups"={"app_user_mail_put"}, "enable_max_depth"=true}
  *     }
  *   }
  * )
@@ -54,8 +54,8 @@ class AppUserMail extends AbstractMail
 {
     public const TYPE_ACTIVATION = 'activation';
     public const TYPE_ACTIVATION_REQUEST = 'activation-request';
-    public const TYPE_PASSWORD_RESET = 'password-reset';
-    public const TYPE_PASSWORD_RESET_REQUEST = 'password-reset-request';
+    public const TYPE_PASSWORD_CHANGE = 'password-change';
+    public const TYPE_PASSWORD_CHANGE_REQUEST = 'password-change-request';
 
     /**
      * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser", fetch="EAGER")
@@ -91,8 +91,8 @@ class AppUserMail extends AbstractMail
             ...parent::getAllowedTypesDefault(),
             self::TYPE_ACTIVATION,
             self::TYPE_ACTIVATION_REQUEST,
-            self::TYPE_PASSWORD_RESET,
-            self::TYPE_PASSWORD_RESET_REQUEST,
+            self::TYPE_PASSWORD_CHANGE,
+            self::TYPE_PASSWORD_CHANGE_REQUEST,
         ];
     }
 

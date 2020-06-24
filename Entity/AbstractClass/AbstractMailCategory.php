@@ -21,8 +21,8 @@ abstract class AbstractMailCategory implements MailCategoryInterface
 {
     public const TYPE_ACTIVATION = AppUserService::ACTIVATION;
     public const TYPE_ACTIVATION_REQUEST = AppUserService::ACTIVATION_REQUEST;
-    public const TYPE_PASSWORD_RESET = AppUserService::PASSWORD_CHANGE;
-    public const TYPE_PASSWORD_RESET_REQUEST = AppUserService::PASSWORD_CHANGE_REQUEST;
+    public const TYPE_PASSWORD_CHANGE = AppUserService::PASSWORD_CHANGE;
+    public const TYPE_PASSWORD_CHANGE_REQUEST = AppUserService::PASSWORD_CHANGE_REQUEST;
 
     use NameableTrait;
     use PriorityTrait;
@@ -40,7 +40,7 @@ abstract class AbstractMailCategory implements MailCategoryInterface
 
     public static function getAllowedTypesDefault(): array
     {
-        return ['', self::TYPE_ACTIVATION, self::TYPE_ACTIVATION_REQUEST, self::TYPE_PASSWORD_RESET, self::TYPE_PASSWORD_RESET_REQUEST];
+        return ['', self::TYPE_ACTIVATION, self::TYPE_ACTIVATION_REQUEST, self::TYPE_PASSWORD_CHANGE, self::TYPE_PASSWORD_CHANGE_REQUEST];
     }
 
     public static function getAllowedTypesCustom(): array

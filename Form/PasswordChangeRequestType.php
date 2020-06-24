@@ -41,6 +41,6 @@ abstract class PasswordChangeRequestType extends AbstractType
 
     public function getBlockPrefix(): string
     {
-        return 'core_app_user_password_reset_request';
+        return 'core_app_user_password_change_request';
     }
 }
