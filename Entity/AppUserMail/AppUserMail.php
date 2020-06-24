@@ -80,7 +80,7 @@ class AppUserMail extends AbstractMail
      */
     public function __construct(AppUser $appUser, string $subject, ?string $type = null, AppUserToken $token = null, ?string $messageId = null)
     {
-        parent::__construct($subject, $this->appUser->getEmail(), $type, $this->appUser->getName(), $messageId);
+        parent::__construct($subject, $appUser->getEmail(), $type, $appUser->getName(), $messageId);
         $this->appUser = $appUser;
         $this->appUserToken = $token;
     }
