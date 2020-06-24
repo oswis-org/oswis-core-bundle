@@ -1,7 +1,7 @@
 {% extends '@OswisOrgOswisCore/e-mail/pages/message.html.twig' %}
 
-{% set tokenUrl = appUserToken|default and appUserToken.appUser|default ? path('oswis_org_oswis_core_app_user_process_token',
-    {'token': appUserToken.token|default, 'appUserId': appUserToken.appUser.id|default}) : null %}
+{% set tokenUrl = appUserToken.appUser|default ? absolute_url(path('oswis_org_oswis_core_app_user_process_token',
+    {'token': appUserToken.token|default, 'appUserId': appUserToken.appUser.id|default})) : null %}
 
 {% block html_title %}{{ email.subject|default('Změna v uživatelském účtu') }}{% endblock %}
 
