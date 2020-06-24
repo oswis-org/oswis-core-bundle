@@ -14,7 +14,7 @@ use OswisOrg\OswisCoreBundle\Exceptions\InvalidTypeException;
 /**
  * E-mail sent to some user.
  * @Doctrine\ORM\Mapping\Entity()
- * @Doctrine\ORM\Mapping\Table(name="core_app_user_e_mail")
+ * @Doctrine\ORM\Mapping\Table(name="core_app_user_mail")
  * @ApiPlatform\Core\Annotation\ApiResource(
  *   attributes={
  *     "filters"={"search"},

@@ -11,7 +11,7 @@ use OswisOrg\OswisCoreBundle\Interfaces\Mail\MailCategoryInterface;
 
 /**
  * @Doctrine\ORM\Mapping\Entity(repositoryClass="OswisOrg\OswisCoreBundle\Repository\AppUserMailGroupRepository")
- * @Doctrine\ORM\Mapping\Table(name="core_app_user_e_mail_group")
+ * @Doctrine\ORM\Mapping\Table(name="core_app_user_mail_group")
  * @ApiPlatform\Core\Annotation\ApiResource(
  *   attributes={
  *     "filters"={"search"},

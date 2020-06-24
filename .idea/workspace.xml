@@ -26,7 +26,13 @@
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DependencyInjection/OswisOrgOswisCoreExtension.php" beforeDir="false" afterPath="$PROJECT_DIR$/DependencyInjection/OswisOrgOswisCoreExtension.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AppUserMail/AppUserMail.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUserMail/AppUserMail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AppUserMail/AppUserMailCategory.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUserMail/AppUserMailCategory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AppUserMail/AppUserMailGroup.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUserMail/AppUserMailGroup.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Resources/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/config/services.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/views/web/parts/web-banner.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/parts/web-banner.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,12 +53,12 @@
     <option name="defaultAccountId" value="9cf1c361-fb0c-4273-9734-feb3c2eb7172" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/date/date_c.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard/standard_0.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/exif/exif.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/vendor/vich/uploader-bundle/src/Mapping/Annotation/UploadableField.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/exif/exif.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/date/date_c.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/vendor/vich/uploader-bundle/src/Form/Type/VichImageType.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Resources/views/e-mail/pages/foundation-emails.css.twig" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard/standard_0.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
   </component>
   <component name="JsFlowSettings">
     <service-enabled>true</service-enabled>
@@ -233,7 +239,8 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/vendor/symfony/swiftmailer-bundle/composer.json" />
     <property name="editor.config.ad.shown" value="true" />
-    <property name="javascript.nodejs.core.library.configured.version" value="10.17.0" />
+    <property name="javascript.nodejs.core.library.configured.version" value="10.21.0" />
+    <property name="javascript.nodejs.core.library.typings.version" value="10.17.26" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/Resources/views/e-mail/pages" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -272,7 +279,7 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="1" Folder0="$PROJECT_DIR$/../../../ZAKJ/.jetbrains-dic" CustomDictionaries="1" CustomDictionary0="$PROJECT_DIR$/../../../ZAKJ/.jetbrains-dic/cs.dic" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="project-level" UseSingleDictionary="true" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="1" Folder0="$PROJECT_DIR$/../../../ZAKJ/.jetbrains-dic" CustomDictionaries="1" CustomDictionary0="$PROJECT_DIR$/../../../ZAKJ/.jetbrains-dic/cs.dic" DefaultDictionary="project-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -774,14 +781,9 @@
       <workItem from="1592742876200" duration="17628000" />
       <workItem from="1592851578772" duration="109000" />
       <workItem from="1592852516810" duration="249000" />
-      <workItem from="1592858991638" duration="681000" />
-    </task>
-    <task id="LOCAL-00629" summary="Some fixes, updates and changes.">
-      <created>1591360860374</created>
-      <option name="number" value="00629" />
-      <option name="presentableId" value="LOCAL-00629" />
-      <option name="project" value="LOCAL" />
-      <updated>1591360860374</updated>
+      <workItem from="1592858991638" duration="905000" />
+      <workItem from="1592953341845" duration="784000" />
+      <workItem from="1592988653170" duration="322000" />
     </task>
     <task id="LOCAL-00630" summary="Some fixes, updates and changes.">
       <created>1591363188515</created>
@@ -1119,11 +1121,18 @@
       <option name="project" value="LOCAL" />
       <updated>1592859555892</updated>
     </task>
-    <option name="localTasksCounter" value="678" />
+    <task id="LOCAL-00678" summary="Some fixes, updates and changes.">
+      <created>1592859729405</created>
+      <option name="number" value="00678" />
+      <option name="presentableId" value="LOCAL-00678" />
+      <option name="project" value="LOCAL" />
+      <updated>1592859729405</updated>
+    </task>
+    <option name="localTasksCounter" value="679" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -1230,30 +1239,32 @@
       <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="466" y="300" width="426" height="140" key="#com.jetbrains.php.lang.intentions.PhpImportClassDialog#/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1592138834912" />
-    <state x="499" y="381" width="522" height="314" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1592761469152">
-      <screen x="0" y="0" width="1366" height="741" />
+    <state x="1048" y="381" width="522" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1592988924957">
+      <screen x="0" y="0" width="3286" height="741" />
     </state>
     <state x="499" y="381" width="402" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1366.741@0.0.1366.741" timestamp="1592761469152" />
-    <state x="1048" y="381" width="522" height="314" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.3286.741@0.0.3286.741" timestamp="1592745634420" />
+    <state x="1048" y="381" width="522" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.3286.741@0.0.3286.741" timestamp="1592988924957" />
     <state x="499" y="381" width="402" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1592140148294" />
     <state x="701" y="381" width="509" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592145061391" />
     <state x="2356" y="395" width="402" height="332" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1588872805427" />
-    <state x="369" y="0" width="1366" height="741" key="CommitChangelistDialog2" timestamp="1592859555804">
+    <state x="369" y="0" width="1366" height="741" key="CommitChangelistDialog2" timestamp="1592859729303">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="0" y="0" width="904" height="735" key="CommitChangelistDialog2/0.0.1366.741@0.0.1366.741" timestamp="1592773918837" />
     <state x="1920" y="0" width="1366" height="741" key="CommitChangelistDialog2/0.0.3286.741@0.0.3286.741" timestamp="1592746013264" />
-    <state x="369" y="0" width="881" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1592859555804" />
+    <state x="369" y="0" width="881" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1592859729303" />
     <state x="518" y="0" width="881" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592145131804" />
     <state x="2289" y="0" width="881" height="741" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1588872861925" />
-    <state x="99" y="100" width="1160" height="535" maximized="true" key="DiffContextDialog" timestamp="1588442572785">
-      <screen x="0" y="0" width="1366" height="741" />
+    <state x="99" y="100" width="1152" height="529" maximized="true" key="DiffContextDialog" timestamp="1592988644914">
+      <screen x="0" y="0" width="3286" height="741" />
     </state>
+    <state x="99" y="100" width="1152" height="529" maximized="true" key="DiffContextDialog/0.0.3286.741@0.0.3286.741" timestamp="1592988644914" />
     <state x="99" y="100" width="1168" height="541" maximized="true" key="DiffContextDialog/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1588442572785" />
-    <state x="0" y="0" width="1295" height="706" key="IDE.errors.dialog" timestamp="1592231807928">
-      <screen x="0" y="0" width="1366" height="741" />
+    <state x="0" y="0" width="1920" height="706" key="IDE.errors.dialog" timestamp="1592988592634">
+      <screen x="0" y="0" width="3286" height="741" />
     </state>
     <state x="0" y="0" width="1295" height="706" key="IDE.errors.dialog/0.0.1366.741@0.0.1366.741" timestamp="1592231807928" />
+    <state x="0" y="0" width="1920" height="706" key="IDE.errors.dialog/0.0.3286.741@0.0.3286.741" timestamp="1592988592634" />
     <state x="543" y="217" width="826" height="518" key="IDE.errors.dialog/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1585583923391" />
     <state x="419" y="199" width="805" height="536" key="NewPhpClassDialog" timestamp="1592483121571">
       <screen x="0" y="0" width="1366" height="741" />
@@ -1270,12 +1281,12 @@
     <state x="187" y="5" key="SettingsEditor/0.0.1366.741@0.0.1366.741" timestamp="1592229636197" />
     <state x="33" y="0" width="1280" height="730" key="SettingsEditor/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1587589952804" />
     <state x="263" y="0" width="1418" height="741" key="SettingsEditor/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1589305333032" />
-    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1592859556951">
+    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1592859731982">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1592773926388" />
     <state x="0" y="213" width="1920" height="522" key="Vcs.Push.Dialog.v2/0.0.3286.741@0.0.3286.741" timestamp="1592746015081" />
-    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1592859556951" />
+    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1592859731982" />
     <state x="555" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592145133378" />
     <state x="2315" y="199" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1588872863506" />
     <state x="99" y="96" width="1101" height="468" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1592759546160">
@@ -1296,10 +1307,10 @@
       <screen x="1920" y="0" width="1366" height="768" />
     </state>
     <state x="1920" y="0" width="1366" height="741" maximized="true" key="dock-window-1/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1588846320148" />
-    <state x="158" y="54" width="812" height="687" key="find.popup" timestamp="1592852662095">
+    <state x="158" y="54" width="812" height="687" key="find.popup" timestamp="1592953377995">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="158" y="54" width="812" height="687" key="find.popup/0.0.1366.741@0.0.1366.741" timestamp="1590584654830" />
+    <state x="158" y="54" width="812" height="687" key="find.popup/0.0.1366.741@0.0.1366.741" timestamp="1592953377995" />
     <state x="380" y="54" width="1954" height="687" key="find.popup/0.0.3286.741@0.0.3286.741" timestamp="1588167954850" />
     <state x="158" y="54" width="812" height="687" key="find.popup/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1592852662095" />
     <state x="222" y="54" width="1142" height="687" key="find.popup/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1588881078593" />
