@@ -17,23 +17,8 @@ abstract class AbstractImage extends AbstractFile
     /**
      * @Symfony\Component\Validator\Constraints\NotNull()
      * @Vich\UploaderBundle\Mapping\Annotation\UploadableField(
-     *     mapping="abstract_image", fileNameProperty="contentName", size="contentSize", mimeType="contentMimeType", dimensions="contentDimensions"
+     *     mapping="abstract_image", fileNameProperty="contentName", size="contentSize", mimeType="contentMimeType"
      * )
      */
     protected ?File $file = null;
-
-    /**
-     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
-     */
-    protected ?string $contentDimensions = null;
-
-    public function getContentDimensions(): ?string
-    {
-        return $this->contentDimensions;
-    }
-
-    public function setContentDimensions(?string $contentDimensions): void
-    {
-        $this->contentDimensions = $contentDimensions;
-    }
 }
