@@ -28,12 +28,12 @@ class AppUserMailGroupRepository extends ServiceEntityRepository
 
     final public function findByUser(AppUser $appUser, MailCategoryInterface $category): ?AppUserMailGroup
     {
-        $queryBuilder = $this->createQueryBuilder('group');
+        $queryBuilder = $this->createQueryBuilder('mailGroup');
         $queryBuilder->setParameter("category_id", $category->getId())->setParameter("now", new DateTime());
-        $queryBuilder->where("group.category = :category_id");
-        $queryBuilder->andWhere("group.startDateTime IS NULL OR group.startDateTime < :now");
-        $queryBuilder->andWhere("group.endDateTime IS NULL OR group.endDateTime > :now");
-        $queryBuilder->orderBy("group.priority", "DESC");
+        $queryBuilder->where("mailGroup.category = :category_id");
+        $queryBuilder->andWhere("mailGroup.startDateTime IS NULL OR mailGroup.startDateTime < :now");
+        $queryBuilder->andWhere("mailGroup.endDateTime IS NULL OR mailGroup.endDateTime > :now");
+        $queryBuilder->orderBy("mailGroup.priority", "DESC");
         try {
             $appUserEMailGroups = $queryBuilder->getQuery()->getResult();
             foreach ($appUserEMailGroups as $appUserEMailGroup) {
