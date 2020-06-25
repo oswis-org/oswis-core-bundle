@@ -77,14 +77,12 @@ class AppUserService
         if (null === $appUser) {
             throw new UserNotFoundException();
         }
-        if (empty($appUser->getUsername())) {
-            $appUser->setUsername($this->getNewRandomUsername());
+        if (empty($username = $appUser->getUsername())) {
+            $appUser->setUsername($username = $this->getNewRandomUsername());
         }
-        $username = $appUser->getUsername();
-        if (empty($appUser->getEmail())) {
-            $appUser->setEmail("$username@oswis.org");
+        if (empty($email = $appUser->getEmail())) {
+            $appUser->setEmail($email = "$username@oswis.org");
         }
-        $email = $appUser->getEmail();
         $existingAppUser = $this->getRepository()->findOneBy(['email' => $email]) ?? $this->getRepository()->findOneBy(['username' => $username]);
         if (null !== $existingAppUser) {
             $existingId = $existingAppUser->getId();
@@ -96,6 +94,7 @@ class AppUserService
             return $appUser;
         }
         $this->em->persist($appUser);
+        $this->em->flush();
         true === $activate ? $this->activate($appUser, $sendMail) : $this->requestActivation($appUser);
         $this->em->flush();
         $id = $appUser->getId();
@@ -107,12 +106,10 @@ class AppUserService
     public function getNewRandomUsername(): string
     {
         try {
-            $number = random_int(1, 9999);
+            return 'user'.random_int(1, 9999);
         } catch (Exception $e) {
-            $number = time();
+            return 'user'.time();
         }
-
-        return "user$number";
     }
 
     public function getRepository(): AppUserRepository
@@ -164,6 +161,7 @@ class AppUserService
             $appUserToken = $this->appUserTokenService->create($appUser, AppUserToken::TYPE_ACTIVATION, false);
             $this->appUserMailService->sendAppUserMail($appUser, self::ACTIVATION_REQUEST, $appUserToken);
             $this->em->persist($appUser);
+            $this->em->flush();
             $this->logger->info('Created and sent activation request for user '.$appUser->getId().'.');
         } catch (OswisException|InvalidTypeException $exception) {
             $this->logger->error('User ('.$appUser->getId().') activation request FAILED. '.$exception->getMessage());
@@ -212,6 +210,7 @@ class AppUserService
                 $this->appUserMailService->sendAppUserMail($appUser, self::PASSWORD_CHANGE_REQUEST, $appUserToken);
             }
             $this->em->persist($appUser);
+            $this->em->flush();
             $andSent = $sendConfirmation ? ' and sent' : '';
             $this->logger->info("Created $andSent password change request for user ".$appUser->getId().'.');
         } catch (OswisException|InvalidTypeException $exception) {
@@ -228,8 +227,7 @@ class AppUserService
      */
     public function getVerifiedToken(string $token, int $appUserId): AppUserToken
     {
-        $appUserToken = $this->getToken($token, $appUserId);
-        if (null === $appUserToken) {
+        if (null === $appUserToken = $this->getToken($token, $appUserId)) {
             throw new TokenInvalidException('zadaný token neexistuje');
         }
         $appUserToken->use(true);
@@ -267,6 +265,8 @@ class AppUserService
         try {
             $type = $appUserToken->getType();
             $appUserToken->use();
+            $this->em->persist($appUserToken);
+            $this->em->flush();
             if (AppUserToken::TYPE_ACTIVATION === $type) {
                 $this->activate($appUserToken->getAppUser(), true);
             }
@@ -294,8 +294,7 @@ class AppUserService
     {
         try {
             $isRandom = empty($password);
-            $password ??= StringUtils::generatePassword();
-            $appUser->setPlainPassword($password, $this->encoder, !$isRandom);
+            $appUser->setPlainPassword($password ?? StringUtils::generatePassword(), $this->encoder, !$isRandom);
             if ($sendConfirmation) {
                 $this->appUserMailService->sendAppUserMail($appUser, self::PASSWORD_CHANGE);
             }

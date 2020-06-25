@@ -70,6 +70,7 @@ class AppUserMailService
             'isIS'         => $isIS,
         ];
         $this->em->persist($appUserEMail);
+        $this->em->flush();
         $templateName = $twigTemplate->getTemplateName() ?? '@OswisOrgOswisCore/e-mail/pages/app-user-universal.html.twig';
         $this->mailService->sendEMail($appUserEMail, $templateName, $data);
         $this->em->flush();

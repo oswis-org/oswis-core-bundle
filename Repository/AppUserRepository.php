@@ -18,8 +18,6 @@ use Symfony\Bridge\Doctrine\Security\User\UserLoaderInterface;
 
 class AppUserRepository extends EntityRepository implements UserLoaderInterface
 {
-    public const COLUMN_ACTIVATION_TOKEN = 'activationRequestToken';
-
     /**
      * @param string|null $username
      *
@@ -85,11 +83,6 @@ class AppUserRepository extends EntityRepository implements UserLoaderInterface
         return new ArrayCollection(
             $builder->getQuery()->getResult(Query::HYDRATE_OBJECT)
         );
-    }
-
-    public function findOneByToken(?string $token): ?AppUser
-    {
-        return $token ? $this->findOneBy([self::COLUMN_ACTIVATION_TOKEN => $token]) : null;
     }
 
     final public function findOneBy(array $criteria, array $orderBy = null): ?AppUser

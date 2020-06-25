@@ -35,8 +35,8 @@ class AppUserRoleService
         $existing = $this->getRepository()->findBySlug($role->getSlug());
         if (null === $existing || !($existing instanceof AppUserRole)) {
             $this->em->persist($role);
+            $this->em->flush();
         }
-        $this->em->flush();
 
         return $role;
     }

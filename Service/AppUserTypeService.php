@@ -15,9 +15,9 @@ class AppUserTypeService
 {
     protected EntityManagerInterface $em;
 
-    protected ?LoggerInterface $logger;
+    protected LoggerInterface $logger;
 
-    public function __construct(EntityManagerInterface $em, ?LoggerInterface $logger = null)
+    public function __construct(EntityManagerInterface $em, LoggerInterface $logger)
     {
         $this->em = $em;
         $this->logger = $logger;
@@ -34,8 +34,8 @@ class AppUserTypeService
         $existing = $this->getRepository()->findBySlug($type->getSlug());
         if (null === $existing || !($existing instanceof AppUserType)) {
             $this->em->persist($type);
+            $this->em->flush();
         }
-        $this->em->flush();
 
         return $type;
     }

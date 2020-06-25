@@ -101,7 +101,7 @@ class AppUser extends AbstractAppUser implements PdfExportableInterface
     protected ?Collection $appUserFlags = null;
 
     /**
-     * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserType", fetch="EAGER", fetch="EAGER")
+     * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserType", fetch="EAGER")
      * @Doctrine\ORM\Mapping\JoinColumn(name="app_user_type_id", referencedColumnName="id")
      * @ApiPlatform\Core\Annotation\ApiFilter(
      *     ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class,

@@ -62,13 +62,8 @@ class AppUserType implements NameableInterface
     use NameableTrait;
 
     /**
-     * Contained app user role.
-     *
-     * @Doctrine\ORM\Mapping\ManyToOne(
-     *     targetEntity="OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserRole",
-     *     fetch="EAGER"
-     * )
-     * @Doctrine\ORM\Mapping\JoinColumn(name="user_role_id", referencedColumnName="id")
+     * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserRole", fetch="EAGER")
+     * @Doctrine\ORM\Mapping\JoinColumn(name="app_user_role_id", referencedColumnName="id")
      * @ApiPlatform\Core\Annotation\ApiFilter(
      *     ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class,
      *     properties={"appUserRole.id": "exact", "appUserRole.name": "ipartial", "appUserRole.slug": "ipartial"}

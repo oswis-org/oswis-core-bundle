@@ -116,6 +116,7 @@ services:
         arguments:
             - '@monolog.logger'
             - '@mailer.mailer'
+            - '@doctrine.orm.entity_manager'
     OswisOrg\OswisCoreBundle\Service\MailService:
         alias: oswis_org_oswis_core.mail_service
         public: true
