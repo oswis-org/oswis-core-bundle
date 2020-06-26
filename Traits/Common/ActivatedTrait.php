@@ -25,7 +25,7 @@ trait ActivatedTrait
 
     public function isActivated(?DateTime $dateTime = null): bool
     {
-        return null !== $this->getActivated() && $this->getActivated() >= ($dateTime ?? new DateTime());
+        return null !== $this->getActivated() && $this->getActivated() <= ($dateTime ?? new DateTime());
     }
 
     public function getActivated(): ?DateTime
