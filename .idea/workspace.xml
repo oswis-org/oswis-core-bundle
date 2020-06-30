@@ -24,21 +24,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="Some fixes, updates and changes.">
-      <change beforePath="$PROJECT_DIR$/.idea/oswis-core-bundle.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/oswis-core-bundle.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+    <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DependencyInjection/OswisOrgOswisCoreExtension.php" beforeDir="false" afterPath="$PROJECT_DIR$/DependencyInjection/OswisOrgOswisCoreExtension.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Repository/AppUserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/Repository/AppUserRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Repository/AppUserRoleRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/Repository/AppUserRoleRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Repository/AppUserTokenRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/Repository/AppUserTokenRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Repository/AppUserTypeRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/Repository/AppUserTypeRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/config/services.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/web/parts/web-banner.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/parts/web-banner.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/AppUserRoleService.php" beforeDir="false" afterPath="$PROJECT_DIR$/Service/AppUserRoleService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/AppUserService.php" beforeDir="false" afterPath="$PROJECT_DIR$/Service/AppUserService.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Service/AppUserTypeService.php" beforeDir="false" afterPath="$PROJECT_DIR$/Service/AppUserTypeService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -797,14 +785,7 @@
       <workItem from="1593031715958" duration="21000" />
       <workItem from="1593080843773" duration="1510000" />
       <workItem from="1593178637849" duration="931000" />
-      <workItem from="1593509972764" duration="2066000" />
-    </task>
-    <task id="LOCAL-00642" summary="Some fixes, updates and changes.">
-      <created>1592044765337</created>
-      <option name="number" value="00642" />
-      <option name="presentableId" value="LOCAL-00642" />
-      <option name="project" value="LOCAL" />
-      <updated>1592044765337</updated>
+      <workItem from="1593509972764" duration="2190000" />
     </task>
     <task id="LOCAL-00643" summary="Some fixes, updates and changes.">
       <created>1592141446018</created>
@@ -1142,7 +1123,14 @@
       <option name="project" value="LOCAL" />
       <updated>1593178701652</updated>
     </task>
-    <option name="localTasksCounter" value="691" />
+    <task id="LOCAL-00691" summary="Some fixes, updates and changes.">
+      <created>1593512097086</created>
+      <option name="number" value="00691" />
+      <option name="presentableId" value="LOCAL-00691" />
+      <option name="project" value="LOCAL" />
+      <updated>1593512097086</updated>
+    </task>
+    <option name="localTasksCounter" value="692" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1253,18 +1241,18 @@
       <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="466" y="300" width="426" height="140" key="#com.jetbrains.php.lang.intentions.PhpImportClassDialog#/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1592138834912" />
-    <state x="499" y="381" width="522" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1593029764421">
+    <state x="499" y="381" width="522" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1593512122205">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="499" y="381" width="402" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1366.741@0.0.1366.741" timestamp="1592761469152" />
+    <state x="499" y="381" width="402" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1366.741@0.0.1366.741" timestamp="1593512122205" />
     <state x="1048" y="381" width="522" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.3286.741@0.0.3286.741" timestamp="1592988924957" />
     <state x="499" y="381" width="402" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1593029764421" />
     <state x="701" y="381" width="509" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592145061391" />
     <state x="2356" y="395" width="402" height="332" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1588872805427" />
-    <state x="0" y="0" width="1366" height="741" key="CommitChangelistDialog2" timestamp="1593511869293">
+    <state x="0" y="0" width="1366" height="741" key="CommitChangelistDialog2" timestamp="1593512096943">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="0" y="0" width="904" height="735" key="CommitChangelistDialog2/0.0.1366.741@0.0.1366.741" timestamp="1593511869293" />
+    <state x="0" y="0" width="904" height="735" key="CommitChangelistDialog2/0.0.1366.741@0.0.1366.741" timestamp="1593512096943" />
     <state x="1920" y="0" width="1366" height="741" key="CommitChangelistDialog2/0.0.3286.741@0.0.3286.741" timestamp="1593178701362" />
     <state x="369" y="0" width="881" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1593030867162" />
     <state x="518" y="0" width="881" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592145131804" />
@@ -1295,10 +1283,10 @@
     <state x="187" y="5" key="SettingsEditor/0.0.1366.741@0.0.1366.741" timestamp="1592229636197" />
     <state x="33" y="0" width="1280" height="730" key="SettingsEditor/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1587589952804" />
     <state x="263" y="0" width="1418" height="741" key="SettingsEditor/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1589305333032" />
-    <state x="0" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1593178739654">
-      <screen x="0" y="0" width="3286" height="741" />
+    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1593512098714">
+      <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1593082284437" />
+    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1593512098714" />
     <state x="0" y="213" width="1920" height="522" key="Vcs.Push.Dialog.v2/0.0.3286.741@0.0.3286.741" timestamp="1593178739654" />
     <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1593030868948" />
     <state x="555" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592145133378" />

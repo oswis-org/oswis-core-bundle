@@ -7,7 +7,6 @@ namespace OswisOrg\OswisCoreBundle\Service;
 
 use Doctrine\ORM\EntityManagerInterface;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserType;
-use OswisOrg\OswisCoreBundle\Exceptions\OswisException;
 use OswisOrg\OswisCoreBundle\Repository\AppUserTypeRepository;
 use Psr\Log\LoggerInterface;
 
@@ -26,12 +25,6 @@ class AppUserTypeService
         $this->appUserTypeRepository = $appUserTypeRepository;
     }
 
-    /**
-     * @param AppUserType $type
-     *
-     * @return AppUserType
-     * @throws OswisException
-     */
     public function create(AppUserType $type): AppUserType
     {
         $existing = $this->getRepository()->findBySlug($type->getSlug());
