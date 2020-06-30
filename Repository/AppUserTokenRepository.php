@@ -1,46 +1,63 @@
 <?php
 /**
- * @noinspection PhpUnused
+ * @noinspection MethodShouldBeFinalInspection
  */
 
-namespace OswisOrg\OswisCoreBundle\Repository;
+namespace OswisOrg\OswisCoreBundle\Service;
 
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\Query;
-use Doctrine\Persistence\ManagerRegistry;
-use Exception;
-use LogicException;
+use Doctrine\ORM\EntityManagerInterface;
+use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserToken;
+use OswisOrg\OswisCoreBundle\Exceptions\InvalidTypeException;
+use OswisOrg\OswisCoreBundle\Repository\AppUserTokenRepository;
+use Psr\Log\LoggerInterface;
 
-class AppUserTokenRepository extends ServiceEntityRepository
+/**
+ * AppUserRole service.
+ */
+class AppUserTokenService
 {
-    /**
-     * @param ManagerRegistry $registry
-     *
-     * @throws LogicException
-     */
-    public function __construct(ManagerRegistry $registry)
+    protected EntityManagerInterface $em;
+
+    protected LoggerInterface $logger;
+
+    protected AppUserTokenRepository $appUserTokenRepository;
+
+    public function __construct(EntityManagerInterface $em, LoggerInterface $logger, AppUserTokenRepository $appUserTokenRepository)
     {
-        parent::__construct($registry, AppUserToken::class);
+        $this->em = $em;
+        $this->logger = $logger;
+        $this->appUserTokenRepository = $appUserTokenRepository;
     }
 
-    final public function findByToken(string $token, int $appUserId): ?AppUserToken
+    /**
+     * @param AppUser     $appUser
+     * @param string|null $type
+     * @param bool|null   $multipleUseAllowed
+     * @param int|null    $validHours
+     *
+     * @return AppUserToken
+     * @throws InvalidTypeException
+     */
+    public function create(AppUser $appUser, ?string $type = null, ?bool $multipleUseAllowed = null, ?int $validHours = null): AppUserToken
     {
-        $queryBuilder = $this->createQueryBuilder('token');
-        $queryBuilder->where('token.token = :token')->setParameter('token', $token);
-        $queryBuilder->andWhere('token.appUser = :app_user_id')->setParameter('app_user_id', $appUserId);
-        $query = $queryBuilder->getQuery();
         try {
-            return $query->getOneOrNullResult(Query::HYDRATE_OBJECT);
-        } catch (Exception $e) {
-            return null;
+            $appUserToken = new AppUserToken($appUser, $appUser->getEmail(), $type, $multipleUseAllowed, $validHours);
+            $this->em->persist($appUserToken);
+            $this->em->flush();
+            $tokenId = $appUserToken->getId();
+            $appUserId = $appUser->getId();
+            $this->logger->info("Created new token ($tokenId) of type '$type' for user '$appUserId'.");
+
+            return $appUserToken;
+        } catch (InvalidTypeException $exception) {
+            $this->logger->error($exception->getMessage());
+            throw $exception;
         }
     }
 
-    final public function findOneBy(array $criteria, array $orderBy = null): ?AppUserToken
+    public function getRepository(): AppUserTokenRepository
     {
-        $result = parent::findOneBy($criteria, $orderBy);
-
-        return $result instanceof AppUserToken ? $result : null;
+        return $this->appUserTokenRepository;
     }
 }
