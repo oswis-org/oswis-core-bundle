@@ -53,7 +53,7 @@ trait ManagerConfirmationTrait
 
     public function setManagerConfirmedAt(?DateTime $dateTime): void
     {
-        $this->managerConfirmedAt = $this->$dateTime;
+        $this->managerConfirmedAt = $dateTime;
     }
 
     public function setManagerConfirmed(AppUser $appUser): void

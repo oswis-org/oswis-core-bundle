@@ -50,7 +50,7 @@ trait UserConfirmationTrait
 
     public function setUserConfirmedAt(?DateTime $dateTime): void
     {
-        $this->userConfirmedAt = $this->$dateTime;
+        $this->userConfirmedAt = $dateTime;
     }
 
     public function setUserConfirmed(AppUser $appUser): void
