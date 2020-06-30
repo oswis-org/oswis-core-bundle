@@ -26,8 +26,7 @@
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Common/ManagerConfirmationTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/ManagerConfirmationTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Common/UserConfirmationTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/UserConfirmationTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/views/e-mail/pages/message.css.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/e-mail/pages/message.css.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -789,14 +788,8 @@
       <workItem from="1593509972764" duration="2417000" />
       <workItem from="1593514619546" duration="87000" />
       <workItem from="1593515509835" duration="65000" />
-      <workItem from="1593521086670" duration="36000" />
-    </task>
-    <task id="LOCAL-00647" summary="Some fixes, updates and changes.">
-      <created>1592231596214</created>
-      <option name="number" value="00647" />
-      <option name="presentableId" value="LOCAL-00647" />
-      <option name="project" value="LOCAL" />
-      <updated>1592231596214</updated>
+      <workItem from="1593521086670" duration="309000" />
+      <workItem from="1593544168290" duration="30000" />
     </task>
     <task id="LOCAL-00648" summary="Some fixes, updates and changes.">
       <created>1592231641832</created>
@@ -1134,7 +1127,14 @@
       <option name="project" value="LOCAL" />
       <updated>1593515577097</updated>
     </task>
-    <option name="localTasksCounter" value="696" />
+    <task id="LOCAL-00696" summary="Some fixes, updates and changes.">
+      <created>1593521169410</created>
+      <option name="number" value="00696" />
+      <option name="presentableId" value="LOCAL-00696" />
+      <option name="project" value="LOCAL" />
+      <updated>1593521169410</updated>
+    </task>
+    <option name="localTasksCounter" value="697" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1253,10 +1253,10 @@
     <state x="499" y="381" width="402" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1593029764421" />
     <state x="701" y="381" width="509" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592145061391" />
     <state x="2356" y="395" width="402" height="332" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1588872805427" />
-    <state x="0" y="0" width="1366" height="741" key="CommitChangelistDialog2" timestamp="1593515576607">
+    <state x="0" y="0" width="1366" height="741" key="CommitChangelistDialog2" timestamp="1593521169205">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="0" y="0" width="904" height="735" key="CommitChangelistDialog2/0.0.1366.741@0.0.1366.741" timestamp="1593515576607" />
+    <state x="0" y="0" width="904" height="735" key="CommitChangelistDialog2/0.0.1366.741@0.0.1366.741" timestamp="1593521169205" />
     <state x="1920" y="0" width="1366" height="741" key="CommitChangelistDialog2/0.0.3286.741@0.0.3286.741" timestamp="1593178701362" />
     <state x="369" y="0" width="881" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1593030867162" />
     <state x="518" y="0" width="881" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592145131804" />
@@ -1266,10 +1266,10 @@
     </state>
     <state x="99" y="100" width="1152" height="529" maximized="true" key="DiffContextDialog/0.0.3286.741@0.0.3286.741" timestamp="1592988644914" />
     <state x="99" y="100" width="1168" height="541" maximized="true" key="DiffContextDialog/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1588442572785" />
-    <state x="0" y="0" width="1920" height="706" key="IDE.errors.dialog" timestamp="1592988592634">
-      <screen x="0" y="0" width="3286" height="741" />
+    <state x="0" y="0" width="1920" height="706" key="IDE.errors.dialog" timestamp="1593521177748">
+      <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="0" y="0" width="1295" height="706" key="IDE.errors.dialog/0.0.1366.741@0.0.1366.741" timestamp="1592231807928" />
+    <state x="0" y="0" width="1295" height="706" key="IDE.errors.dialog/0.0.1366.741@0.0.1366.741" timestamp="1593521177748" />
     <state x="0" y="0" width="1920" height="706" key="IDE.errors.dialog/0.0.3286.741@0.0.3286.741" timestamp="1592988592634" />
     <state x="543" y="217" width="826" height="518" key="IDE.errors.dialog/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1585583923391" />
     <state x="419" y="199" width="805" height="536" key="NewPhpClassDialog" timestamp="1592483121571">
@@ -1287,10 +1287,10 @@
     <state x="187" y="5" key="SettingsEditor/0.0.1366.741@0.0.1366.741" timestamp="1592229636197" />
     <state x="33" y="0" width="1280" height="730" key="SettingsEditor/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1587589952804" />
     <state x="263" y="0" width="1418" height="741" key="SettingsEditor/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1589305333032" />
-    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1593515580068">
+    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1593521170778">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1593515580068" />
+    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1593521170778" />
     <state x="0" y="213" width="1920" height="522" key="Vcs.Push.Dialog.v2/0.0.3286.741@0.0.3286.741" timestamp="1593178739654" />
     <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1593030868948" />
     <state x="555" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592145133378" />
