@@ -2,6 +2,7 @@
 
 namespace OswisOrg\OswisCoreBundle\Entity\TwigTemplate;
 
+use Doctrine\ORM\Mapping as ORM;
 use OswisOrg\OswisCoreBundle\Interfaces\Common\NameableInterface;
 use OswisOrg\OswisCoreBundle\Interfaces\Common\TextValueInterface;
 use OswisOrg\OswisCoreBundle\Traits\Common\NameableTrait;
@@ -50,6 +51,9 @@ class TwigTemplate implements NameableInterface, TextValueInterface
     use NameableTrait;
     use TextValueTrait;
 
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
     protected ?string $regularTemplateName = null;
 
     final public function isRegular(): bool
