@@ -109,7 +109,6 @@
       <path value="$PROJECT_DIR$/vendor/symfony/web-link" />
       <path value="$PROJECT_DIR$/vendor/symfony/service-contracts" />
       <path value="$PROJECT_DIR$/vendor/symfony/validator" />
-      <path value="$PROJECT_DIR$/vendor/symfony/translation" />
       <path value="$PROJECT_DIR$/vendor/symfony/cache" />
       <path value="$PROJECT_DIR$/vendor/symfony/options-resolver" />
       <path value="$PROJECT_DIR$/vendor/phpstan/phpstan" />
@@ -160,8 +159,6 @@
       <path value="$PROJECT_DIR$/vendor/symfony/deprecation-contracts" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php80" />
       <path value="$PROJECT_DIR$/vendor/rikudou/czqrpayment" />
-      <path value="$PROJECT_DIR$/vendor/hashids/hashids" />
-      <path value="$PROJECT_DIR$/vendor/roukmoute/hashids-bundle" />
     </include_path>
   </component>
   <component name="PhpInterpreters">

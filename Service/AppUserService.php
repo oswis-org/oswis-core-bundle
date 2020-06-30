@@ -1,6 +1,5 @@
 <?php
 /**
- * @noinspection PhpUnused
  * @noinspection MethodShouldBeFinalInspection
  */
 
@@ -10,6 +9,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Exception;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserToken;
+use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserType;
 use OswisOrg\OswisCoreBundle\Exceptions\InvalidTypeException;
 use OswisOrg\OswisCoreBundle\Exceptions\NotFoundException;
 use OswisOrg\OswisCoreBundle\Exceptions\NotImplementedException;
@@ -42,18 +42,26 @@ class AppUserService
 
     protected AppUserMailService $appUserMailService;
 
+    protected AppUserTypeService $appUserTypeService;
+
+    protected AppUserRepository $appUserRepository;
+
     public function __construct(
         UserPasswordEncoderInterface $encoder,
         EntityManagerInterface $em,
         LoggerInterface $logger,
         AppUserTokenService $appUserTokenService,
-        AppUserMailService $appUserMailService
+        AppUserMailService $appUserMailService,
+        AppUserTypeService $appUserTypeService,
+        AppUserRepository $appUserRepository
     ) {
         $this->em = $em;
         $this->encoder = $encoder;
         $this->logger = $logger;
         $this->appUserMailService = $appUserMailService;
         $this->appUserTokenService = $appUserTokenService;
+        $this->appUserTypeService = $appUserTypeService;
+        $this->appUserRepository = $appUserRepository;
     }
 
     /**
@@ -93,6 +101,9 @@ class AppUserService
 
             return $appUser;
         }
+        if (null === $appUser->getAppUserType()) {
+            $appUser->setAppUserType($this->getDefaultAppUserType());
+        }
         $this->em->persist($appUser);
         $this->em->flush();
         true === $activate ? $this->activate($appUser, $sendMail) : $this->requestActivation($appUser);
@@ -114,10 +125,12 @@ class AppUserService
 
     public function getRepository(): AppUserRepository
     {
-        $repository = $this->em->getRepository(AppUser::class);
-        assert($repository instanceof AppUserRepository);
+        return $this->appUserRepository;
+    }
 
-        return $repository;
+    public function getDefaultAppUserType(): ?AppUserType
+    {
+        return $this->appUserTypeService->getRepository()->findBy(['type' => 'attendee'], [], 1)[0] ?? null;
     }
 
     /**

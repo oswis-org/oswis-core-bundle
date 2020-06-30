@@ -67,7 +67,6 @@ services:
     #### SERVICES
     ####
 
-    ### AppUser Service
     oswis_org_oswis_core.app_user_service:
         class: OswisOrg\OswisCoreBundle\Service\AppUserService
         autowire: true
@@ -78,6 +77,8 @@ services:
             - '@monolog.logger'
             - '@oswis_org_oswis_core.app_user_token_service'
             - '@oswis_org_oswis_core.app_user_mail_service'
+            - '@oswis_org_oswis_core.app_user_type_service'
+            - '@oswis_org_oswis_core.app_user_repository'
     OswisOrg\OswisCoreBundle\Service\AppUserService:
         alias: oswis_org_oswis_core.app_user_service
         public: true
@@ -143,6 +144,7 @@ services:
         arguments:
             - '@doctrine.orm.entity_manager'
             - '@monolog.logger'
+            - '@oswis_org_oswis_core.app_user_role_repository'
     OswisOrg\OswisCoreBundle\Service\AppUserRoleService:
         alias: oswis_org_oswis_core.app_user_role_service
         public: true
@@ -155,6 +157,7 @@ services:
         arguments:
             - '@doctrine.orm.entity_manager'
             - '@monolog.logger'
+            - '@oswis_org_oswis_core.app_user_type_repository'
     OswisOrg\OswisCoreBundle\Service\AppUserTypeService:
         alias: oswis_org_oswis_core.app_user_type_service
         public: true
@@ -170,6 +173,50 @@ services:
             - '@oswis_org_oswis_core.oswis_core_settings_provider'
     OswisOrg\OswisCoreBundle\Service\ExportService:
         alias: oswis_org_oswis_core.export_service
+        public: true
+
+    ###
+    ### REPOSITORY
+    ###
+
+    oswis_org_oswis_core.app_user_repository:
+        class: OswisOrg\OswisCoreBundle\Repository\AppUserRepository
+        autowire: true
+        public: true
+        arguments:
+            - '@doctrine'
+    OswisOrg\OswisCoreBundle\Repository\AppUserRepository:
+        alias: oswis_org_oswis_core.app_user_repository
+        public: true
+
+    oswis_org_oswis_core.app_user_type_repository:
+        class: OswisOrg\OswisCoreBundle\Repository\AppUserTypeRepository
+        autowire: true
+        public: true
+        arguments:
+            - '@doctrine'
+    OswisOrg\OswisCoreBundle\Repository\AppUserTypeRepository:
+        alias: oswis_org_oswis_core.app_user_type_repository
+        public: true
+
+    oswis_org_oswis_core.app_user_role_repository:
+        class: OswisOrg\OswisCoreBundle\Repository\AppUserRoleRepository
+        autowire: true
+        public: true
+        arguments:
+            - '@doctrine'
+    OswisOrg\OswisCoreBundle\Repository\AppUserRoleRepository:
+        alias: oswis_org_oswis_core.app_user_role_repository
+        public: true
+
+    oswis_org_oswis_core.app_user_token_repository:
+        class: OswisOrg\OswisCoreBundle\Repository\AppUserTokenRepository
+        autowire: true
+        public: true
+        arguments:
+            - '@doctrine'
+    OswisOrg\OswisCoreBundle\Repository\AppUserTokenRepository:
+        alias: oswis_org_oswis_core.app_user_token_repository
         public: true
 
     oswis_org_oswis_core.app_user_mail_category_repository:

@@ -4,7 +4,6 @@ namespace OswisOrg\OswisCoreBundle\Service;
 
 use Doctrine\ORM\EntityManagerInterface;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserRole;
-use OswisOrg\OswisCoreBundle\Exceptions\OswisException;
 use OswisOrg\OswisCoreBundle\Repository\AppUserRoleRepository;
 use Psr\Log\LoggerInterface;
 
@@ -18,18 +17,15 @@ class AppUserRoleService
 
     protected LoggerInterface $logger;
 
-    public function __construct(EntityManagerInterface $em, LoggerInterface $logger)
+    protected AppUserRoleRepository $appUserRoleRepository;
+
+    public function __construct(EntityManagerInterface $em, LoggerInterface $logger, AppUserRoleRepository $appUserRoleRepository)
     {
         $this->em = $em;
         $this->logger = $logger;
+        $this->appUserRoleRepository = $appUserRoleRepository;
     }
 
-    /**
-     * @param AppUserRole $role
-     *
-     * @return AppUserRole
-     * @throws OswisException
-     */
     public function create(AppUserRole $role): AppUserRole
     {
         $existing = $this->getRepository()->findBySlug($role->getSlug());
@@ -41,17 +37,8 @@ class AppUserRoleService
         return $role;
     }
 
-    /**
-     * @return AppUserRoleRepository
-     * @throws OswisException
-     */
     public function getRepository(): AppUserRoleRepository
     {
-        $repo = $this->em->getRepository(AppUserRole::class);
-        if (!($repo instanceof AppUserRoleRepository)) {
-            throw new OswisException('Nepodařilo se získat AppUserRoleRepository.');
-        }
-
-        return $repo;
+        return $this->appUserRoleRepository;
     }
 }

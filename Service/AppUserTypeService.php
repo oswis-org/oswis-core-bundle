@@ -17,10 +17,13 @@ class AppUserTypeService
 
     protected LoggerInterface $logger;
 
-    public function __construct(EntityManagerInterface $em, LoggerInterface $logger)
+    protected AppUserTypeRepository $appUserTypeRepository;
+
+    public function __construct(EntityManagerInterface $em, LoggerInterface $logger, AppUserTypeRepository $appUserTypeRepository)
     {
         $this->em = $em;
         $this->logger = $logger;
+        $this->appUserTypeRepository = $appUserTypeRepository;
     }
 
     /**
@@ -40,17 +43,8 @@ class AppUserTypeService
         return $type;
     }
 
-    /**
-     * @return AppUserTypeRepository
-     * @throws OswisException
-     */
     public function getRepository(): AppUserTypeRepository
     {
-        $repo = $this->em->getRepository(AppUserType::class);
-        if (!($repo instanceof AppUserTypeRepository)) {
-            throw new OswisException('Nepodařilo se získat AppUserTypeRepository.');
-        }
-
-        return $repo;
+        return $this->appUserTypeRepository;
     }
 }

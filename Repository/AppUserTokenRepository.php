@@ -5,13 +5,25 @@
 
 namespace OswisOrg\OswisCoreBundle\Repository;
 
-use Doctrine\ORM\EntityRepository;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Query;
+use Doctrine\Persistence\ManagerRegistry;
 use Exception;
+use LogicException;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserToken;
 
-class AppUserTokenRepository extends EntityRepository
+class AppUserTokenRepository extends ServiceEntityRepository
 {
+    /**
+     * @param ManagerRegistry $registry
+     *
+     * @throws LogicException
+     */
+    public function __construct(ManagerRegistry $registry)
+    {
+        parent::__construct($registry, AppUserToken::class);
+    }
+
     final public function findByToken(string $token, int $appUserId): ?AppUserToken
     {
         $queryBuilder = $this->createQueryBuilder('token');
