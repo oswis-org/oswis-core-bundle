@@ -130,7 +130,7 @@ class AppUserService
 
     public function getDefaultAppUserType(): ?AppUserType
     {
-        return $this->appUserTypeService->getRepository()->findBy(['type' => 'attendee'], [], 1)[0] ?? null;
+        return $this->appUserTypeService->getRepository()->findBy(['slug' => 'attendee'], [], 1)[0] ?? null;
     }
 
     /**
