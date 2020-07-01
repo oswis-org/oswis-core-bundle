@@ -13,9 +13,7 @@
 
     {% if 'activation-request' == type and tokenUrl %}
         Ještě je nutné provést aktivaci uživatelského účtu. Aktivaci provede{{ f ? 'te' : 'š' }} na následujícím odkazu:<br>
-        <span style="border: 1px solid lightgrey; padding: .5em 1em;margin: .5em 0;">
-            <a href="{{ tokenUrl }}" title="Odkaz pro aktivaci účtu" target="_blank">{{ tokenUrl }}</a>
-        </span>
+        <a href="{{ tokenUrl }}" class="token-box" title="Odkaz pro aktivaci účtu" target="_blank">{{ tokenUrl }}</a>
         {% if appUserToken.validHours|default %}
             <br><small>Odkaz je platný {{ appUserToken.validHours }} hodin od vygenerování.</small>
         {% endif %}
@@ -25,11 +23,13 @@
         Uživatelské jméno u uživatelského účtu je
         <strong>{{ appUser.username|default ? appUser.username|default : appUser.email|default }}</strong>
         a&nbsp;hlavní e-mail je nastaven na <strong>{{ appUser.email|default }}</strong>.
-        {% if password|default %}
+        {% if appUser.plainPassword|default %}
             Bylo nastaveno nové, náhodně vygenerované, heslo:
-            <span style="border: 1px solid lightgrey; padding: .5em 1em;margin: .5em 0;">{{ password }}</span>
+            <span style="display: block; width: 100%; border: 1px solid lightgrey; padding: .5em 1em;margin: .5em 0;">
+                {{ appUser.plainPassword }}
+            </span>
         {% elseif appUser.password %}
-            Heslo bylo nastaveno při registraci.
+            Heslo bylo nastaveno uživatelem při registraci.
         {% else %}
             Heslo si nastaví{{ f ? 'te' : 'š' }} při aktivaci účtu.
             Pokud heslo zapomene{{ f ? 'te' : 'š' }}, může{{ f ? 'te' : 'š' }} jej obnovit pomocí tlačítka na přihlašovací stránce aplikace.

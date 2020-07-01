@@ -99,12 +99,11 @@
                     <row>
                         <columns small="12" large="12">
                             {% block content_inner %}
-                                <p style="color:red;font-weight:bold;">
-                                    Nastala chyba při odesílání zprávy a její obsah nebyl načten.
-                                </p>
-                                <p style="color:red;font-weight:bold;">
-                                    Kontaktuj{{ f ? 'te' : '' }} nás, prosím, ať můžeme nastalou situaci co nejrychleji vyřešit.
-                                </p>
+                                <div class="error-box">
+                                    <p>Nastala chyba při odesílání zprávy a její obsah nebyl načten.</p>
+                                    <p>Kontaktuj{{ f ? 'te' : '' }} nás, prosím, ať můžeme nastalou situaci co nejrychleji vyřešit.</p>
+                                    <p style="color:grey;font-weight:normal;">Požadovaná šablona: {{ type|default('neznámá') }}</p>
+                                </div>
                             {% endblock content_inner %}
                         </columns>
                     </row>
