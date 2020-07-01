@@ -12,11 +12,13 @@
     </p>
 
     {% if 'activation-request' == type and tokenUrl %}
-        Ještě je nutné provést aktivaci uživatelského účtu. Aktivaci provede{{ f ? 'te' : 'š' }} na následujícím odkazu:<br>
-        <a href="{{ tokenUrl }}" class="token-box" title="Odkaz pro aktivaci účtu" target="_blank">{{ tokenUrl }}</a>
-        {% if appUserToken.validHours|default %}
-            <br><small>Odkaz je platný {{ appUserToken.validHours }} hodin od vygenerování.</small>
-        {% endif %}
+        <p>
+            Ještě je nutné provést aktivaci uživatelského účtu. Aktivaci provede{{ f ? 'te' : 'š' }} na následujícím odkazu:<br>
+            <a href="{{ tokenUrl }}" class="token-box" title="Odkaz pro aktivaci účtu" target="_blank">{{ tokenUrl }}</a>
+            {% if appUserToken.validHours|default %}
+                <br><small>Odkaz je platný {{ appUserToken.validHours }} hodin od vygenerování.</small>
+            {% endif %}
+        </p>
     {% endif %}
 
     <p>
