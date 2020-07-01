@@ -86,5 +86,9 @@ class MailerSubscriber implements EventSubscriberInterface
                 $email->addTo($singleTo->getAddress());
             }
         }
+        try {
+            $email->addBcc($this->coreSettings->getArchiveMailerAddress());
+        } catch (RfcComplianceException|LogicException $e) {
+        }
     }
 }

@@ -99,8 +99,12 @@ class OswisCoreSettingsProvider
      * @throws LogicException
      * @throws RfcComplianceException
      */
-    public function getArchiveMailerAddress(): Address
+    public function getArchiveMailerAddress(): ?Address
     {
-        return new Address($this->getEmail()['archive_address'] ?? '', $this->getEmail()['archive_name'] ?? '');
+        if ($this->getEmail() && $this->getEmail()['archive_address'] && $this->getEmail()['archive_name']) {
+            return new Address($this->getEmail()['archive_address'] ?? '', $this->getEmail()['archive_name'] ?? '');
+        }
+
+        return null;
     }
 }

@@ -58,7 +58,7 @@ abstract class AbstractToken implements TokenInterface
     protected int $validHours = self::DEFAULT_VALID_HOURS;
 
     /**
-     * @Doctrine\ORM\Mapping\Column(type="string", nullable=false, unique=true)
+     * @Doctrine\ORM\Mapping\Column(type="string", length=170, nullable=false, unique=true)
      */
     protected string $token = '';
 

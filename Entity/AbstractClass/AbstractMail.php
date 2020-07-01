@@ -116,12 +116,10 @@ abstract class AbstractMail implements BasicInterface
         if (($previousMail = $sortedPastMails->first() ?: null) && $previousMail instanceof AppUserMail && !empty($previousMail->getMessageID())) {
             $headers->addIdHeader('In-Reply-To', $previousMail->getMessageID());
         }
-        $ids = $sortedPastMails->filter(
-            fn(AbstractMail $mail) => !empty($mail->getMessageID())
-        )->map(
-            fn(AbstractMail $mail) => $mail->getMessageID()
-        );
-        $headers->addIdHeader('References', $ids->toArray());
+        $ids = $sortedPastMails->filter(fn(AbstractMail $mail) => !empty($mail->getMessageID()))->map(fn(AbstractMail $mail) => $mail->getMessageID());
+        if ($ids->count() > 0) {
+            $headers->addIdHeader('References', $ids->toArray());
+        }
     }
 
     /**
@@ -158,13 +156,13 @@ abstract class AbstractMail implements BasicInterface
         if (!empty($this->getMessageID())) {
             return;
         }
-        if (empty($messageID) && null !== $this->templatedEmail) {
-            try {
+        try {
+            if (empty($messageID) && null !== $this->getTemplatedEmail()) {
                 $this->messageID = $this->templatedEmail->generateMessageId();
 
                 return;
-            } catch (\Symfony\Component\Mime\Exception\LogicException $e) {
             }
+        } catch (OswisException|\Symfony\Component\Mime\Exception\LogicException $e) {
         }
         $this->messageID = $messageID;
     }
