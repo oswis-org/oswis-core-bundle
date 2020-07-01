@@ -113,10 +113,15 @@ abstract class AbstractMail implements BasicInterface
             return;
         }
         $headers = $templatedMail->getHeaders();
-        if (($previousMail = $sortedPastMails->first() ?: null) && $previousMail instanceof AppUserMail) {
+        if (($previousMail = $sortedPastMails->first() ?: null) && $previousMail instanceof AppUserMail && !empty($previousMail->getMessageID())) {
             $headers->addIdHeader('In-Reply-To', $previousMail->getMessageID());
         }
-        $headers->addIdHeader('References', $sortedPastMails->map(fn(AbstractMail $mail) => $mail->getMessageID())->toArray());
+        $ids = $sortedPastMails->filter(
+            fn(AbstractMail $mail) => !empty($mail->getMessageID())
+        )->map(
+            fn(AbstractMail $mail) => $mail->getMessageID()
+        );
+        $headers->addIdHeader('References', $ids->toArray());
     }
 
     /**
