@@ -106,7 +106,12 @@ class AppUserService
         }
         $this->em->persist($appUser);
         $this->em->flush();
-        true === $activate ? $this->activate($appUser, $sendMail) : $this->requestActivation($appUser);
+        if (true === $activate) {
+            $this->activate($appUser, $sendMail);
+        }
+        if (true !== $activate && $sendMail) {
+            $this->requestActivation($appUser);
+        }
         $this->em->flush();
         $id = $appUser->getId();
         $this->logger->info("Created user $id/$username/$email.");
