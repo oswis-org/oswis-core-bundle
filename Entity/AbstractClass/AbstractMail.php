@@ -6,7 +6,9 @@
 namespace OswisOrg\OswisCoreBundle\Entity\AbstractClass;
 
 use DateTime;
+use Doctrine\Common\Collections\Collection;
 use LogicException;
+use OswisOrg\OswisCoreBundle\Entity\AppUserMail\AppUserMail;
 use OswisOrg\OswisCoreBundle\Exceptions\InvalidTypeException;
 use OswisOrg\OswisCoreBundle\Exceptions\OswisException;
 use OswisOrg\OswisCoreBundle\Interfaces\Common\BasicInterface;
@@ -77,55 +79,14 @@ abstract class AbstractMail implements BasicInterface
         return [];
     }
 
-    /**
-     * @return string|null
-     */
     public function getSubject(): ?string
     {
         return $this->subject;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getMessageID(): ?string
-    {
-        return $this->messageID;
-    }
-
-    /**
-     * @return string|null
-     */
     public function getAddress(): ?string
     {
         return $this->address;
-    }
-
-    /**
-     * @return TemplatedEmail
-     * @throws OswisException
-     */
-    public function getTemplatedEmail(): TemplatedEmail
-    {
-        if (null !== $this->templatedEmail) {
-            return $this->templatedEmail;
-        }
-        if (!empty($this->messageID)) {
-            throw new OswisException('Nelze znovu odeslat stejný e-mail.');
-        }
-        $this->templatedEmail = new TemplatedEmail();
-        $this->templatedEmail->subject($this->subject);
-        try {
-            $this->templatedEmail->to(new Address($this->address ?? '', $this->recipientName ?? ''));
-        } catch (LogicException $e) {
-            $this->templatedEmail->to($this->address ?? '');
-        }
-        try {
-            $this->messageID = $this->templatedEmail->generateMessageId();
-        } catch (LogicException $e) {
-        }
-
-        return $this->templatedEmail;
     }
 
     public function isSent(): bool
@@ -141,6 +102,66 @@ abstract class AbstractMail implements BasicInterface
     public function setSent(?DateTime $sent): void
     {
         $this->sent = $sent;
+        $this->setMessageID();
+    }
+
+    public function setPastMails(Collection $sortedPastMails): void
+    {
+        try {
+            $templatedMail = $this->getTemplatedEmail();
+        } catch (OswisException $e) {
+            return;
+        }
+        $headers = $templatedMail->getHeaders();
+        if (($previousMail = $sortedPastMails->first() ?: null) && $previousMail instanceof AppUserMail) {
+            $headers->addIdHeader('In-Reply-To', $previousMail->getMessageID());
+        }
+        $headers->addIdHeader('References', $sortedPastMails->map(fn(AbstractMail $mail) => $mail->getMessageID())->toArray());
+    }
+
+    /**
+     * @return TemplatedEmail
+     * @throws OswisException
+     */
+    public function getTemplatedEmail(): TemplatedEmail
+    {
+        if (null !== $this->templatedEmail) {
+            return $this->templatedEmail;
+        }
+        if (!empty($this->sent)) {
+            throw new OswisException('Nelze znovu odeslat stejný e-mail.');
+        }
+        $this->templatedEmail = new TemplatedEmail();
+        $this->templatedEmail->subject($this->subject);
+        try {
+            $this->templatedEmail->to(new Address($this->address ?? '', $this->recipientName ?? ''));
+        } catch (LogicException $e) {
+            $this->templatedEmail->to($this->address ?? '');
+        }
+        $this->setMessageID();
+
+        return $this->templatedEmail;
+    }
+
+    public function getMessageID(): ?string
+    {
+        return $this->messageID;
+    }
+
+    public function setMessageID(?string $messageID = null): void
+    {
+        if (!empty($this->getMessageID())) {
+            return;
+        }
+        if (empty($messageID) && null !== $this->templatedEmail) {
+            try {
+                $this->messageID = $this->templatedEmail->generateMessageId();
+
+                return;
+            } catch (\Symfony\Component\Mime\Exception\LogicException $e) {
+            }
+        }
+        $this->messageID = $messageID;
     }
 
     public function getRecipientName(): ?string

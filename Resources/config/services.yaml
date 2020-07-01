@@ -132,6 +132,7 @@ services:
             - '@doctrine.orm.entity_manager'
             - '@oswis_org_oswis_core.app_user_mail_group_repository'
             - '@oswis_org_oswis_core.app_user_mail_category_repository'
+            - ''
     OswisOrg\OswisCoreBundle\Service\AppUserMailService:
         alias: oswis_org_oswis_core.app_user_mail_service
         public: true
@@ -227,6 +228,16 @@ services:
             - '@doctrine'
     OswisOrg\OswisCoreBundle\Repository\AppUserMailCategoryRepository:
         alias: oswis_org_oswis_core.app_user_mail_category_repository
+        public: true
+
+    oswis_org_oswis_core.app_user_mail_repository:
+        class: OswisOrg\OswisCoreBundle\Repository\AppUserMailRepository
+        autowire: true
+        public: true
+        arguments:
+            - '@doctrine'
+    OswisOrg\OswisCoreBundle\Repository\AppUserMailRepository:
+        alias: oswis_org_oswis_core.app_user_mail_repository
         public: true
 
     oswis_org_oswis_core.app_user_mail_group_repository:

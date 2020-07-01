@@ -18,12 +18,15 @@ use OswisOrg\OswisCoreBundle\Exceptions\OswisException;
 use OswisOrg\OswisCoreBundle\Interfaces\Mail\MailCategoryInterface;
 use OswisOrg\OswisCoreBundle\Repository\AppUserMailCategoryRepository;
 use OswisOrg\OswisCoreBundle\Repository\AppUserMailGroupRepository;
+use OswisOrg\OswisCoreBundle\Repository\AppUserMailRepository;
 
 class AppUserMailService
 {
     protected MailService $mailService;
 
     protected EntityManagerInterface $em;
+
+    protected AppUserMailRepository $appUserMailRepository;
 
     protected AppUserMailGroupRepository $groupRepository;
 
@@ -33,12 +36,14 @@ class AppUserMailService
         MailService $mailService,
         EntityManagerInterface $em,
         AppUserMailGroupRepository $groupRepository,
-        AppUserMailCategoryRepository $categoryRepository
+        AppUserMailCategoryRepository $categoryRepository,
+        AppUserMailRepository $appUserMailRepository
     ) {
         $this->mailService = $mailService;
         $this->em = $em;
         $this->groupRepository = $groupRepository;
         $this->categoryRepository = $categoryRepository;
+        $this->appUserMailRepository = $appUserMailRepository;
     }
 
     /**
@@ -69,6 +74,7 @@ class AppUserMailService
             'appUserToken' => $appUserToken,
             'isIS'         => $isIS,
         ];
+        $appUserEMail->setPastMails($this->appUserMailRepository->findByAppUser($appUser));
         $this->em->persist($appUserEMail);
         $this->em->flush();
         $templateName = $twigTemplate->getTemplateName() ?? '@OswisOrgOswisCore/e-mail/pages/app-user-universal.html.twig';

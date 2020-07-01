@@ -25,13 +25,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Repository/AppUserMailRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Repository/AppUserTokenRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/Repository/AppUserTokenRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/e-mail/pages/app-user-activation.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/e-mail/pages/app-user-activation.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/e-mail/pages/app-user-password.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/e-mail/pages/app-user-password.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/e-mail/pages/foundation-emails.css.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/e-mail/styles/foundation-emails.css.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/e-mail/pages/message.css.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/e-mail/styles/message.css.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/e-mail/pages/message.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/e-mail/pages/message.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractMail.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractMail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/config/services.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Service/AppUserMailService.php" beforeDir="false" afterPath="$PROJECT_DIR$/Service/AppUserMailService.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -237,7 +235,7 @@
     <property name="editor.config.ad.shown" value="true" />
     <property name="javascript.nodejs.core.library.configured.version" value="10.21.0" />
     <property name="javascript.nodejs.core.library.typings.version" value="10.17.26" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Resources/views/e-mail/pages" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Repository" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -258,9 +256,9 @@
       <recent name="$PROJECT_DIR$/Traits/Project" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Repository" />
       <recent name="$PROJECT_DIR$/Resources/views/e-mail/pages" />
       <recent name="$PROJECT_DIR$/Entity/Payments" />
-      <recent name="$PROJECT_DIR$/Repository" />
       <recent name="$PROJECT_DIR$/Interfaces/Common" />
       <recent name="$PROJECT_DIR$/Interfaces/EMail" />
     </key>
@@ -797,14 +795,7 @@
       <workItem from="1593544168290" duration="45000" />
       <workItem from="1593559787679" duration="11000" />
       <workItem from="1593599039759" duration="143000" />
-      <workItem from="1593599203405" duration="3421000" />
-    </task>
-    <task id="LOCAL-00649" summary="Some fixes, updates and changes.">
-      <created>1592231658576</created>
-      <option name="number" value="00649" />
-      <option name="presentableId" value="LOCAL-00649" />
-      <option name="project" value="LOCAL" />
-      <updated>1592231658577</updated>
+      <workItem from="1593599203405" duration="6899000" />
     </task>
     <task id="LOCAL-00650" summary="Some fixes, updates and changes.">
       <created>1592231688145</created>
@@ -1142,7 +1133,14 @@
       <option name="project" value="LOCAL" />
       <updated>1593544208072</updated>
     </task>
-    <option name="localTasksCounter" value="698" />
+    <task id="LOCAL-00698" summary="Some fixes, updates and changes.">
+      <created>1593605835137</created>
+      <option name="number" value="00698" />
+      <option name="presentableId" value="LOCAL-00698" />
+      <option name="project" value="LOCAL" />
+      <updated>1593605835138</updated>
+    </task>
+    <option name="localTasksCounter" value="699" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1225,6 +1223,10 @@
       <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="312" y="52" width="734" height="631" key="#Inspections/0.0.1366.741@0.0.1366.741" timestamp="1591553168523" />
+    <state x="400" y="198" width="557" height="339" key="#Notifications" timestamp="1593605848623">
+      <screen x="0" y="0" width="1366" height="741" />
+    </state>
+    <state x="400" y="198" width="557" height="339" key="#Notifications/0.0.1366.741@0.0.1366.741" timestamp="1593605848623" />
     <state x="396" y="187" width="671" height="398" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1588084778890">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
@@ -1243,10 +1245,10 @@
     <state x="251" y="0" width="624" height="735" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1592126046014" />
     <state x="353" y="0" width="478" height="735" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592144443570" />
     <state x="2171" y="0" width="462" height="741" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1588326607025" />
-    <state x="288" y="257" width="526" height="478" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1593510656115">
+    <state x="288" y="257" width="526" height="478" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1593608922507">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="288" y="257" width="526" height="478" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.741@0.0.1366.741" timestamp="1593510656115" />
+    <state x="288" y="257" width="526" height="478" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.741@0.0.1366.741" timestamp="1593608922507" />
     <state x="288" y="257" width="526" height="478" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1592139253178" />
     <state x="405" y="257" width="526" height="478" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592144430947" />
     <state x="466" y="300" width="426" height="140" key="#com.jetbrains.php.lang.intentions.PhpImportClassDialog#" timestamp="1592138834912">
@@ -1261,10 +1263,10 @@
     <state x="499" y="381" width="402" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1593029764421" />
     <state x="701" y="381" width="509" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592145061391" />
     <state x="2356" y="395" width="402" height="332" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1588872805427" />
-    <state x="0" y="0" width="1366" height="741" key="CommitChangelistDialog2" timestamp="1593544207946">
+    <state x="0" y="0" width="1366" height="741" key="CommitChangelistDialog2" timestamp="1593605834937">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="0" y="0" width="904" height="735" key="CommitChangelistDialog2/0.0.1366.741@0.0.1366.741" timestamp="1593544207946" />
+    <state x="0" y="0" width="904" height="735" key="CommitChangelistDialog2/0.0.1366.741@0.0.1366.741" timestamp="1593605834937" />
     <state x="1920" y="0" width="1366" height="741" key="CommitChangelistDialog2/0.0.3286.741@0.0.3286.741" timestamp="1593178701362" />
     <state x="369" y="0" width="881" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1593030867162" />
     <state x="518" y="0" width="881" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592145131804" />
@@ -1295,10 +1297,10 @@
     <state x="187" y="5" key="SettingsEditor/0.0.1366.741@0.0.1366.741" timestamp="1592229636197" />
     <state x="33" y="0" width="1280" height="730" key="SettingsEditor/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1587589952804" />
     <state x="263" y="0" width="1418" height="741" key="SettingsEditor/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1589305333032" />
-    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1593544209749">
+    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1593605837681">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1593544209749" />
+    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1593605837681" />
     <state x="0" y="213" width="1920" height="522" key="Vcs.Push.Dialog.v2/0.0.3286.741@0.0.3286.741" timestamp="1593178739654" />
     <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1593030868948" />
     <state x="555" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592145133378" />
