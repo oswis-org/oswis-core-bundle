@@ -1,4 +1,7 @@
 {% extends '@OswisOrgOswisCore/e-mail/pages/message.html.twig' %}
+{% set f = f is defined ? f : (contact.formal is defined ? contact.formal : true) %}
+{% set a = a is defined ? a : (contact.czechSuffixA is defined ? contact.czechSuffixA : '') %}
+{% set salName = salutationName|default %}
 
 {% set tokenUrl = appUserToken.appUser|default ? absolute_url(path('oswis_org_oswis_core_app_user_process_token',
     {'token': appUserToken.token|default, 'appUserId': appUserToken.appUser.id|default})) : null %}
