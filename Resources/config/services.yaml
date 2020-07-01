@@ -132,7 +132,7 @@ services:
             - '@doctrine.orm.entity_manager'
             - '@oswis_org_oswis_core.app_user_mail_group_repository'
             - '@oswis_org_oswis_core.app_user_mail_category_repository'
-            - ''
+            - '@oswis_org_oswis_core.app_user_mail_repository'
     OswisOrg\OswisCoreBundle\Service\AppUserMailService:
         alias: oswis_org_oswis_core.app_user_mail_service
         public: true
