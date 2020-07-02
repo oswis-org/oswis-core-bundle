@@ -147,8 +147,10 @@ class AppUserService
     public function activate(AppUser $appUser, bool $sendConfirmation = true): void
     {
         try {
-            $isRandom = empty($appUser->getPlainPassword());
-            $appUser->setPlainPassword($isRandom ? StringUtils::generatePassword() : $appUser->getPlainPassword(), $this->encoder, !$isRandom);
+            if (empty($appUser->getPassword())) {
+                $isRandom = empty($appUser->getPlainPassword());
+                $appUser->setPlainPassword($isRandom ? StringUtils::generatePassword() : $appUser->getPlainPassword(), $this->encoder, !$isRandom);
+            }
             $appUser->activate();
             if ($sendConfirmation) {
                 $this->appUserMailService->sendAppUserMail($appUser, self::ACTIVATION);
