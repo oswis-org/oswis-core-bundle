@@ -2,7 +2,6 @@
 
 namespace OswisOrg\OswisCoreBundle\Security;
 
-use Doctrine\ORM\EntityManagerInterface;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser;
 use OswisOrg\OswisCoreBundle\Exceptions\UserNotUniqueException;
 use OswisOrg\OswisCoreBundle\Repository\AppUserRepository;
@@ -14,11 +13,11 @@ use function get_class;
 
 class AppUserProvider implements UserProviderInterface
 {
-    private EntityManagerInterface $em;
+    private AppUserRepository $appUserRepository;
 
-    public function __construct(EntityManagerInterface $entityManager)
+    public function __construct(AppUserRepository $appUserRepository)
     {
-        $this->em = $entityManager;
+        $this->appUserRepository = $appUserRepository;
     }
 
     /**
@@ -44,12 +43,7 @@ class AppUserProvider implements UserProviderInterface
      */
     final public function loadUserByUsername($username): ?AppUser
     {
-        $userRepository = $this->em->getRepository(AppUserRepository::class);
-        if (!($userRepository instanceof AppUserRepository)) {
-            return null;
-        }
-        $user = $userRepository->loadUserByUsername($username);
-        if (!$user) {
+        if (null === ($user = $this->appUserRepository->loadUserByUsername($username))) {
             throw new UsernameNotFoundException(sprintf('Username "%s" does not exist.', $username));
         }
 
