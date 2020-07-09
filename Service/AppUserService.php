@@ -257,11 +257,7 @@ class AppUserService
 
     public function getToken(string $token, int $appUserId): ?AppUserToken
     {
-        try {
-            return $this->appUserTokenService->getRepository()->findByToken($token, $appUserId);
-        } catch (OswisException $exception) {
-            return null;
-        }
+        return $this->appUserTokenService->getRepository()->findByToken($token, $appUserId);
     }
 
     /**

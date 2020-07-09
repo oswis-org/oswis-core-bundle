@@ -1,6 +1,5 @@
 <?php
 /**
- * @noinspection PhpUnused
  * @noinspection MethodShouldBeFinalInspection
  */
 
@@ -24,7 +23,7 @@ abstract class AbstractAppUser implements UserInterface, Serializable, Equatable
     // TODO: Refactor: Wrap slug as username.
     public function serialize(): string
     {
-        return serialize([$this->id, $this->username, $this->email, $this->password]);
+        return serialize([$this->id, $this->username, $this->email, $this->password, $this->salt]);
     }
 
     /**
@@ -35,24 +34,23 @@ abstract class AbstractAppUser implements UserInterface, Serializable, Equatable
      */
     public function unserialize($serialized): void
     {
-        [$this->id, $this->username, $this->email, $this->password] = unserialize($serialized, ['allowed_classes' => ['AppUser']]);
+        [$this->id, $this->username, $this->email, $this->password, $this->salt] = unserialize($serialized, true);
     }
 
     public function isEqualTo(UserInterface $user): bool
     {
-        if (!($user instanceof self)) {
+        if (!($user instanceof UserInterface)) {
             return false;
         }
-        if ($this->getId() !== $user->getId() || $this->getUsername() !== $user->getUsername()) {
+        if ($this->id !== $user->getId() || $this->username !== $user->getUsername()) {
             return false;
         }
-        if ($this->getEmail() !== $user->getEmail() || $this->getPassword() !== $user->getPassword()) {
+        if ($this->email !== $user->getEmail() || $this->password !== $user->getPassword()) {
             return false;
         }
-        if ($this->getActivated() !== $user->getActivated() || $this->getDeleted() !== $user->getDeleted()) {
-            return false;
-        }
-
+//        if ($this->isActivated() !== $user->isActivated() || $this->isDeleted() !== $user->isDeleted()) {
+//            return false;
+//        }
         return true;
     }
 

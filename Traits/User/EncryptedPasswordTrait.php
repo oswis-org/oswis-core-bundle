@@ -28,7 +28,7 @@ trait EncryptedPasswordTrait
      * Salt that was originally used to encode the password.
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
-    protected ?string $salt;
+    protected ?string $salt = null;
 
     /**
      * Get encrypted password.

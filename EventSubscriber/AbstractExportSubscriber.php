@@ -2,7 +2,6 @@
 /**
  * @noinspection UnusedConstructorDependenciesInspection
  * @noinspection MethodShouldBeFinalInspection
- * @noinspection PhpUnused
  */
 
 namespace OswisOrg\OswisCoreBundle\EventSubscriber;
