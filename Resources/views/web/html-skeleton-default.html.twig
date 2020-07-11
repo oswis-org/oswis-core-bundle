@@ -86,11 +86,13 @@
         {% endblock meta_hinclude_config %}
     {% endblock meta_tags_outer %}
     {% block stylesheets %}
-        {{ encore_entry_link_tags('app') }}
-        {% if css is defined and css %}
+        {% for cssFile in encore_entry_css_files('app') %}
+            <style src="{{ preload(asset(cssFile), {as: 'style'}) }}" rel="preload" as="style" type="text/css"></style>
+        {% endfor %}
+        {# {{ encore_entry_link_tags('app') }} #}
+        {% if css|default %}
             {% autoescape false %}
-                <style type="text/css">{{ css|default }}</style>
-            {% endautoescape %}
+                <style type="text/css">{{ css|default }}</style>{% endautoescape %}
         {% endif %}
     {% endblock stylesheets %}
 </head>
@@ -112,20 +114,19 @@
     {% block body_scroll_to_top %}
         <div id=scroll-top-button class="d-print-none"><i class="far fa-arrow-alt-circle-up"></i></div>
     {% endblock body_scroll_to_top %}
-
         {% block body_end %}{% endblock body_end %}
-
     {% block javascripts %}
-        {{ encore_entry_script_tags('app') }}
-        {% if js is defined and js %}
+        {% for jsFile in encore_entry_js_files('app') %}
+        <script src="{{ preload(asset(jsFile), {as: 'script'}) }}" rel="preload" as="script" type="text/javascript"></script>
+        {% endfor %}
+        {# {{ encore_entry_script_tags('app') }} #}
+        {% if js|default %}
         {% autoescape false %}
-        <script>{{ js|default }}</script>
-        {% endautoescape %}
+        <script>{{ js|default }}</script>{% endautoescape %}
         {% endif %}
     {% endblock javascripts %}
-
     {% block javascript_hinclude %}
-        <script src="{{ preload('https://cdn.jsdelivr.net/npm/Hinclude@1.2.0/hinclude.js', {as: 'script'}) }}" rel="prefetch"></script>
+        <script src="{{ preload('https://cdn.jsdelivr.net/npm/Hinclude@1.2.0/hinclude.js', {as: 'script'}) }}" rel="preload" as="script" type="text/javascript"></script>
     {% endblock javascript_hinclude %}
     {% block javascript_service_worker %}
         <script>
