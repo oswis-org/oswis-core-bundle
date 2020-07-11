@@ -87,7 +87,7 @@
     {% endblock meta_tags_outer %}
     {% block stylesheets %}
         {% for cssFile in encore_entry_css_files('app') %}
-            <link href="{{ preload(asset(cssFile), {as: 'style'}) }}" rel="stylesheet" as="style" type="text/css"></link>
+            <link href="{{ preload(asset(cssFile), {as: 'style'}) }}" rel="stylesheet" type="text/css"></link>
         {% endfor %}
         {# {{ encore_entry_link_tags('app') }} #}
         {% if css|default %}
