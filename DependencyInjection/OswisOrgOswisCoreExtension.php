@@ -3,6 +3,7 @@
 namespace OswisOrg\OswisCoreBundle\DependencyInjection;
 
 use Exception;
+use OswisOrg\OswisCoreBundle\Interfaces\Common\SiteMapExtenderInterface;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Exception\BadMethodCallException;
@@ -34,6 +35,7 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
             $config = $this->processConfiguration($configuration, $configs ?? []);
             $this->oswisCoreSettingsProvider($container, $config);
         }
+        $container->registerForAutoconfiguration(SiteMapExtenderInterface::class)->addTag('oswis.site_map_extender');
     }
 
     /**

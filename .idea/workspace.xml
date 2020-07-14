@@ -25,8 +25,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/DependencyInjection/CompilerPass/SiteMapExtenderPass.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Entity/NonPersistent/SiteMapItem.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Extender/OswisCoreSitemapExtender.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Interfaces/Common/SiteMapExtenderInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Service/SiteMapService.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Utils/ColorUtils.php" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/ColorUtils.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controller/Website/SiteMapWebController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/Website/SiteMapWebController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DependencyInjection/OswisOrgOswisCoreExtension.php" beforeDir="false" afterPath="$PROJECT_DIR$/DependencyInjection/OswisOrgOswisCoreExtension.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/config/services.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -232,7 +239,7 @@
     <property name="editor.config.ad.shown" value="true" />
     <property name="javascript.nodejs.core.library.configured.version" value="10.21.0" />
     <property name="javascript.nodejs.core.library.typings.version" value="10.17.26" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Service" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -245,19 +252,19 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Service" />
+      <recent name="$PROJECT_DIR$/Entity/NonPersistent" />
+      <recent name="$PROJECT_DIR$/Interfaces/Common" />
+      <recent name="$PROJECT_DIR$/Repository" />
+      <recent name="$PROJECT_DIR$/Resources/views/e-mail/pages" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Resources/views/e-mail/styles" />
       <recent name="$PROJECT_DIR$/Form" />
       <recent name="$PROJECT_DIR$/Entity/Payments" />
       <recent name="$PROJECT_DIR$/Entity/AppUserEMail" />
       <recent name="$PROJECT_DIR$/Traits/Project" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/Repository" />
-      <recent name="$PROJECT_DIR$/Resources/views/e-mail/pages" />
-      <recent name="$PROJECT_DIR$/Entity/Payments" />
-      <recent name="$PROJECT_DIR$/Interfaces/Common" />
-      <recent name="$PROJECT_DIR$/Interfaces/EMail" />
     </key>
   </component>
   <component name="RunManager">
@@ -815,14 +822,8 @@
       <workItem from="1594500880100" duration="54000" />
       <workItem from="1594547494318" duration="17000" />
       <workItem from="1594667818852" duration="625000" />
-      <workItem from="1594671071483" duration="18000" />
-    </task>
-    <task id="LOCAL-00672" summary="Some fixes, updates and changes.">
-      <created>1592773881293</created>
-      <option name="number" value="00672" />
-      <option name="presentableId" value="LOCAL-00672" />
-      <option name="project" value="LOCAL" />
-      <updated>1592773881293</updated>
+      <workItem from="1594671071483" duration="82000" />
+      <workItem from="1594734123824" duration="7894000" />
     </task>
     <task id="LOCAL-00673" summary="Some fixes, updates and changes.">
       <created>1592773919603</created>
@@ -1160,7 +1161,14 @@
       <option name="project" value="LOCAL" />
       <updated>1594500898750</updated>
     </task>
-    <option name="localTasksCounter" value="721" />
+    <task id="LOCAL-00721" summary="Some fixes, updates and changes.">
+      <created>1594671139029</created>
+      <option name="number" value="00721" />
+      <option name="presentableId" value="LOCAL-00721" />
+      <option name="project" value="LOCAL" />
+      <updated>1594671139030</updated>
+    </task>
+    <option name="localTasksCounter" value="722" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1251,10 +1259,10 @@
       <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="396" y="187" width="671" height="398" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.741@0.0.1366.741" timestamp="1588084778890" />
-    <state x="546" y="158" width="458" height="556" key="#com.intellij.ide.util.MemberChooser" timestamp="1592760302803">
+    <state x="546" y="158" width="458" height="556" key="#com.intellij.ide.util.MemberChooser" timestamp="1594758873224">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="546" y="158" width="466" height="556" key="#com.intellij.ide.util.MemberChooser/0.0.1366.741@0.0.1366.741" timestamp="1592760302803" />
+    <state x="546" y="158" width="466" height="556" key="#com.intellij.ide.util.MemberChooser/0.0.1366.741@0.0.1366.741" timestamp="1594758873224" />
     <state x="546" y="158" width="458" height="556" key="#com.intellij.ide.util.MemberChooser/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1592125110295" />
     <state x="2466" y="164" width="349" height="577" key="#com.intellij.ide.util.MemberChooser/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1588590248828" />
     <state x="251" y="0" width="946" height="735" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1592763387279">
@@ -1283,10 +1291,10 @@
     <state x="499" y="381" width="402" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1593029764421" />
     <state x="701" y="381" width="509" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592145061391" />
     <state x="2356" y="395" width="402" height="332" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1588872805427" />
-    <state x="369" y="0" width="1366" height="741" key="CommitChangelistDialog2" timestamp="1594500898400">
+    <state x="0" y="0" width="1366" height="741" key="CommitChangelistDialog2" timestamp="1594671138891">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="0" y="0" width="904" height="735" key="CommitChangelistDialog2/0.0.1366.741@0.0.1366.741" timestamp="1594461104376" />
+    <state x="0" y="0" width="904" height="735" key="CommitChangelistDialog2/0.0.1366.741@0.0.1366.741" timestamp="1594671138891" />
     <state x="1920" y="0" width="1366" height="741" key="CommitChangelistDialog2/0.0.3286.741@0.0.3286.741" timestamp="1593178701362" />
     <state x="369" y="0" width="881" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1594500898400" />
     <state x="518" y="0" width="881" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592145131804" />
@@ -1300,15 +1308,15 @@
       <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="466" y="128" width="426" height="478" key="FileChooserDialogImpl/0.0.1366.741@0.0.1366.741" timestamp="1594671065933" />
-    <state x="0" y="0" width="1920" height="706" key="IDE.errors.dialog" timestamp="1593612154411">
+    <state x="0" y="0" width="1920" height="706" key="IDE.errors.dialog" timestamp="1594734176720">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="0" y="0" width="1295" height="706" key="IDE.errors.dialog/0.0.1366.741@0.0.1366.741" timestamp="1593612154411" />
+    <state x="0" y="0" width="1295" height="706" key="IDE.errors.dialog/0.0.1366.741@0.0.1366.741" timestamp="1594734176720" />
     <state x="0" y="0" width="1920" height="706" key="IDE.errors.dialog/0.0.3286.741@0.0.3286.741" timestamp="1592988592634" />
-    <state x="419" y="199" width="805" height="536" key="NewPhpClassDialog" timestamp="1592483121571">
+    <state x="419" y="199" width="909" height="536" key="NewPhpClassDialog" timestamp="1594758782294">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="419" y="199" width="805" height="536" key="NewPhpClassDialog/0.0.1366.741@0.0.1366.741" timestamp="1592483121571" />
+    <state x="419" y="199" width="909" height="536" key="NewPhpClassDialog/0.0.1366.741@0.0.1366.741" timestamp="1594758782294" />
     <state x="589" y="199" width="733" height="536" key="NewPhpClassDialog/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1587556949841" />
     <state x="865" y="617" width="501" height="106" key="ProcessPopupWindow" timestamp="1592761482691">
       <screen x="0" y="0" width="1366" height="741" />
@@ -1320,10 +1328,10 @@
     <state x="187" y="5" key="SettingsEditor/0.0.1366.741@0.0.1366.741" timestamp="1592229636197" />
     <state x="33" y="0" width="1280" height="730" key="SettingsEditor/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1587589952804" />
     <state x="263" y="0" width="1418" height="741" key="SettingsEditor/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1589305333032" />
-    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1594500907067">
+    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1594671140318">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1594461106958" />
+    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1594671140318" />
     <state x="0" y="213" width="1920" height="522" key="Vcs.Push.Dialog.v2/0.0.3286.741@0.0.3286.741" timestamp="1593178739654" />
     <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1594500907067" />
     <state x="555" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592145133378" />

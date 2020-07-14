@@ -163,7 +163,6 @@ services:
         alias: oswis_org_oswis_core.app_user_type_service
         public: true
 
-    ### PDF Generator
     oswis_org_oswis_core.export_service:
         class: OswisOrg\OswisCoreBundle\Service\ExportService
         autowire: true
@@ -174,6 +173,14 @@ services:
             - '@oswis_org_oswis_core.oswis_core_settings_provider'
     OswisOrg\OswisCoreBundle\Service\ExportService:
         alias: oswis_org_oswis_core.export_service
+        public: true
+
+    oswis_org_oswis_core.site_map_service:
+        class: OswisOrg\OswisCoreBundle\Service\SiteMapService
+        autowire: true
+        public: true
+    OswisOrg\OswisCoreBundle\Service\SiteMapService:
+        alias: oswis_org_oswis_core.site_map_service
         public: true
 
     ###
@@ -510,7 +517,6 @@ services:
     OswisOrg\OswisCoreBundle\Controller\Website\GdprWebController:
         alias: oswis_org_oswis_core.gdpr_web_controller
         public: true
-
 
 
 
