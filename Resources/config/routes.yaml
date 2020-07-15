@@ -44,18 +44,17 @@ oswis_org_oswis_core_app_user_register_root:
     controller: oswis_org_oswis_core.app_user_controller::registerRoot
     path: "/internal/register-root"
 
-oswis_org_oswis_core_web_portal:
+oswis_org_oswis_core_portal:
     controller: oswis_org_oswis_core.portal_web_controller::portal
     path: "/portal/{foo?}"
     requirements:
         foo: .+
 
-oswis_org_oswis_core_web_admin:
+oswis_org_oswis_core_admin:
     controller: oswis_org_oswis_core.admin_web_controller::admin
     path: "/admin/{foo?}"
     requirements:
         foo: .+
-
 
 ### Homepage page.
 oswis_org_oswis_core_homepage_action:
@@ -91,35 +90,27 @@ oswis_org_oswis_core_robots_txt:
     controller: oswis_org_oswis_core.site_web_manifest_controller::showRobotsTxt
     path: "/robots.txt"
 
-oswis_org_oswis_rss_xml:
+oswis_org_oswis_core_rss_xml:
     controller: oswis_org_oswis_core.rss_feed_controller::showRssXml
     path: "/rss.xml"
 
-oswis_org_oswis_rss_redirect:
+oswis_org_oswis_core_rss_redirect:
     controller: oswis_org_oswis_core.rss_feed_controller::rssRedirect
     path: "/rss"
 
-oswis_org_oswis_rss_css:
+oswis_org_oswis_core_rss_css:
     controller: oswis_org_oswis_core.rss_feed_controller::showRssCss
     path: "/rss.css"
 
-oswis_org_oswis_sitemap_core_xml:
+oswis_org_oswis_core_sitemap_xml:
     controller: oswis_org_oswis_core.site_map_web_controller::showSitemapXml
-    path: "/sitemap_core.xml"
+    path: "/sitemap.xml"
 
-oswis_org_oswis_sitemap_index_xml:
-    controller: oswis_org_oswis_core.site_map_web_controller::showSitemapIndexXml
-    path: "/sitemap_index.xml"
-
-oswis_org_oswis_sitemap_xsl:
+oswis_org_oswis_core_sitemap_xsl:
     controller: oswis_org_oswis_core.site_map_web_controller::showSitemapXsl
     path: "/sitemap.xsl"
 
-oswis_org_oswis_sitemap_xml_redirect:
-    controller: oswis_org_oswis_core.site_map_web_controller::sitemapRedirect
-    path: "/sitemap.xml"
-
-oswis_org_oswis_sitemap_redirect:
+oswis_org_oswis_core_sitemap_redirect:
     controller: oswis_org_oswis_core.site_map_web_controller::sitemapRedirect
     path: "/sitemap"
 

@@ -10,7 +10,6 @@ services:
         autoconfigure: true
         public: false
 
-
     ### Search Filter
     oswis_org_oswis_core.search_filter:
         class: OswisOrg\OswisCoreBundle\Filter\SearchFilter
@@ -181,6 +180,18 @@ services:
         public: true
     OswisOrg\OswisCoreBundle\Service\SiteMapService:
         alias: oswis_org_oswis_core.site_map_service
+        public: true
+
+    oswis_org_oswis_core.core_site_map_extender:
+        class: OswisOrg\OswisCoreBundle\Extender\CoreSitemapExtender
+        autowire: true
+        public: true
+        arguments:
+            - '@router.default'
+        tags:
+            - 'oswis.site_map_extender'
+    OswisOrg\OswisCoreBundle\Extender\CoreSitemapExtender:
+        alias: oswis_org_oswis_core.core_site_map_extender
         public: true
 
     ###

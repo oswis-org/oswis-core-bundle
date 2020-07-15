@@ -7,6 +7,7 @@ namespace OswisOrg\OswisCoreBundle\Service;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use OswisOrg\OswisCoreBundle\Entity\NonPersistent\SiteMapItem;
 use OswisOrg\OswisCoreBundle\Interfaces\Common\SiteMapExtenderInterface;
 
 class SiteMapService
@@ -23,6 +24,9 @@ class SiteMapService
         $this->extenders->add($extender);
     }
 
+    /**
+     * @return Collection<SiteMapItem>
+     */
     public function getItems(): Collection
     {
         $items = new ArrayCollection();

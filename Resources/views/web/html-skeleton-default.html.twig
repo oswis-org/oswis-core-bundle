@@ -12,7 +12,7 @@
         {% block html_meta_base %}{% endblock html_meta_base %}
         {% block html_meta_robots %}{% endblock html_meta_robots %}
         {% block html_meta_rss %}
-            <link rel="alternate" type="application/rss+xml" href="{{ path('oswis_org_oswis_rss_xml') }}" title="RSS {{ oswis.web.name }}">
+            <link rel="alternate" type="application/rss+xml" href="{{ path('oswis_org_oswis_core_rss_xml') }}" title="RSS {{ oswis.web.name }}">
         {% endblock html_meta_rss %}
         <meta name="description" content="{% block html_description %}{{ description|default(default_description|default(oswis.web.description)) }}{% endblock html_description %}">
         <meta name='author' content='{% block meta_author %}{{ author|default('Jakub Zak (https://jakubzak.cz)') }}{% endblock meta_author %}'>
@@ -87,7 +87,7 @@
     {% endblock meta_tags_outer %}
     {% block stylesheets %}
         {% for cssFile in encore_entry_css_files('app') %}
-            <link href="{{ preload(asset(cssFile), {as: 'style'}) }}" rel="stylesheet" type="text/css"></link>
+            <link href="{{ preload(asset(cssFile), {as: 'style'}) }}" rel="stylesheet" type="text/css">
         {% endfor %}
         {# {{ encore_entry_link_tags('app') }} #}
         {% if css|default %}
@@ -117,7 +117,7 @@
         {% block body_end %}{% endblock body_end %}
     {% block javascripts %}
         {% for jsFile in encore_entry_js_files('app') %}
-        <script src="{{ preload(asset(jsFile), {as: 'script'}) }}" rel="preload" as="script" type="text/javascript"></script>
+        <script src="{{ preload(asset(jsFile), {as: 'script'}) }}" rel="preload" type="text/javascript"></script>
         {% endfor %}
         {# {{ encore_entry_script_tags('app') }} #}
         {% if js|default %}
@@ -126,7 +126,7 @@
         {% endif %}
     {% endblock javascripts %}
     {% block javascript_hinclude %}
-        <script src="{{ preload('https://cdn.jsdelivr.net/npm/Hinclude@1.2.0/hinclude.js', {as: 'script'}) }}" rel="preload" as="script" type="text/javascript"></script>
+        <script src="{{ preload('https://cdn.jsdelivr.net/npm/Hinclude@1.2.0/hinclude.js', {as: 'script'}) }}" rel="preload" type="text/javascript"></script>
     {% endblock javascript_hinclude %}
     {% block javascript_service_worker %}
         <script>

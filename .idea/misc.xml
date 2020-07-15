@@ -20,6 +20,7 @@
     </entry>
   </component>
   <component name="ProjectResources">
+    <resource url="http://www.google.com/schemas/sitemap-news/0.9" location="$PROJECT_DIR$" />
     <xml-schema-version>XMLSchema_1_1</xml-schema-version>
   </component>
 </project>

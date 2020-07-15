@@ -3,22 +3,29 @@
 namespace OswisOrg\OswisCoreBundle\Entity\NonPersistent;
 
 use DateTime;
+use OswisOrg\OswisCoreBundle\Interfaces\Common\NameableInterface;
 
 class SiteMapItem
 {
-    public ?string $url = null;
+    public const CHANGE_FREQUENCY_DAILY = 'daily';
+    public const CHANGE_FREQUENCY_WEEKLY = 'weekly';
 
-    public ?int $priority = null;
+    public ?string $path = null;
+
+    public ?float $priority = null;
 
     public ?string $changeFrequency = null;
 
     public ?DateTime $lastChangeAt = null;
 
-    public function __construct(?string $url, ?DateTime $lastChangeAt, ?int $priority, ?string $changeFrequency)
+    public ?NameableInterface $entity = null;
+
+    public function __construct(?string $path, ?string $changeFrequency = null, ?DateTime $lastChangeAt = null, ?float $priority = null, ?NameableInterface $entity = null)
     {
-        $this->url = $url ?? null;
+        $this->path = $path ?? null;
         $this->lastChangeAt = $lastChangeAt ?? new DateTime();
-        $this->priority = $priority ?? 70;
-        $this->changeFrequency = $changeFrequency ?? null;
+        $this->priority = $priority ?? 0.900;
+        $this->changeFrequency = $changeFrequency ?? 'weekly';
+        $this->entity = $entity;
     }
 }

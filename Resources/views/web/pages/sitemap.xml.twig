@@ -1,11 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="{{ absolute_url(path('oswis_org_oswis_sitemap_xsl')) }}" ?>
+<?xml-stylesheet type="text/xsl" href="{{ absolute_url(path('oswis_org_oswis_core_sitemap_xsl')) }}" ?>
 <urlset xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
-        {{- ' xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" ' -}}
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    {%- block items_core -%}
-        {%- include '@OswisOrgOswisCore/web/pages/sitemap-items.xml.twig' -%}
-    {%- endblock items_core -%}
-    {%- block items_additional -%}
-    {%- endblock items_additional -%}
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    {% for item in items %}
+        <url>
+            <loc>{{ absolute_url(item.path) }}</loc>
+            <changefreq>{{ item.changeFrequency|default('daily') }}</changefreq>
+            <priority>{{ item.priority|default('0.5000') }}</priority>
+            {% if item.lastChangedAt|default or item.entity.updatedAt|default %}
+                <lastmod>{{ item.lastChangedAt|default(item.entity.updatedAt)|date('c')) }}</lastmod>
+            {% endif %}
+            {% if item.entity.isActuality|default %}
+                <news:news>
+                    <news:publication>
+                        <news:name>Novinky{{ oswis.app.name ? ' :: '~oswis.app.name : '' }}</news:name>
+                        <news:language>{{ lang|default('cs') }}</news:language>
+                    </news:publication>
+                    <news:publication_date>{{ item.entity.createdAt|date('c') }}</news:publication_date>
+                    <news:title>{{ item.entity.title|default }}</news:title>
+                </news:news>
+            {% endif %}
+        </url>
+    {% endfor %}
 </urlset>
