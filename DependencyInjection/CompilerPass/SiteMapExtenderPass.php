@@ -26,7 +26,7 @@ class SiteMapExtenderPass implements CompilerPassInterface
             return;
         }
         $definition = $container->findDefinition(SiteMapService::class);
-        $taggedServices = $container->findTaggedServiceIds(''); // find all service IDs with the app.mail_transport tag
+        $taggedServices = $container->findTaggedServiceIds('oswis.site_map_extender'); // find all service IDs with the app.mail_transport tag
         foreach ($taggedServices as $id => $tags) { // add the transport service to the TransportChain service
             $definition->addMethodCall('addExtender', [new Reference($id)]);
         }
