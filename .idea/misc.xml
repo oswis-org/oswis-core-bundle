@@ -20,7 +20,9 @@
     </entry>
   </component>
   <component name="ProjectResources">
+    <resource url="http://purl.org/rss/1.0/modules/syndication/" location="$PROJECT_DIR$" />
     <resource url="http://www.google.com/schemas/sitemap-news/0.9" location="$PROJECT_DIR$" />
+    <resource url="http://www.w3.org/2005/Atom" location="$PROJECT_DIR$" />
     <xml-schema-version>XMLSchema_1_1</xml-schema-version>
   </component>
 </project>

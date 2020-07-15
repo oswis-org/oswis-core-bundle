@@ -2,7 +2,7 @@
 <?xml-stylesheet type="text/css" href="{{ absolute_url(path('oswis_org_oswis_core_rss_css')) }}" ?>
 <rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" version="2.0">
     <channel>
-        <title>{% block title %}{{ title|default('RSS kanál aktualit') }}{% endblock title %}</title>
+        <title>{% block title %}{{ title|default('RSS kanál aktualit :: ' ~ oswis.web.name|default('OSWIS')) }}{% endblock title %}</title>
         <link>{% block url %}{{ url|default(absolute_url(path('oswis_org_oswis_core_homepage_action'))) }}{% endblock url %}</link>
         <description>{{ description|default('Přehled nejnovějších aktualit ve formě RSS kanálu.') }}</description>
         <webMaster>
@@ -30,11 +30,15 @@
             <title>{{ block('title') }}</title>
             <link>{{ block('url') }}</link>
         </image>
-        {% block items_core %}
-            {% include '@OswisOrgOswisCore/web/pages/rss-items.xml.twig' %}
-        {% endblock items_core %}
-        {% block items_additional %}
-        {% endblock items_additional %}
+        {% for item in items|default %}
+            <item>
+                <title>{{- item.title -}}</title>
+                <link>{% block item_path %}{{- item.path -}}{% endblock item_path %}</link>
+                <guid>{{- block('item_path') -}}</guid>
+                <description>{{- item.textValue|markdown_to_html|striptags|u.truncate(220,'…') -}}</description>
+                <pubDate>{{- item.dateTime|date("D, d M Y H:i:s O") -}}</pubDate>
+            </item>
+        {% endfor %}
     </channel>
 </rss>
 <!-- OSWIS, https://oswis.org, Jakub ZAK, https://jakubzak.cz -->
