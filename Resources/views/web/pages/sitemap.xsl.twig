@@ -7,8 +7,8 @@
         <head>
             <title>{{ title|default('Mapa webu') }} :: {{ oswis.web.name }}</title>
             <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-            <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-            <script type="text/javascript" src="http://tablesorter.com/jquery.tablesorter.min.js"></script>
+            <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.1/js/jquery.tablesorter.min.js"></script>
             <script type="text/javascript"><![CDATA[
                 $(document).ready(function () {
                     $('#sitemap').tablesorter({widgets: ['zebra']});
@@ -89,7 +89,7 @@
                     max-height: 150px;
                     padding: 0;
                     margin: 0 auto;
-                    background-image: url("{{ asset('@oswis/logo.png') }}");
+                    background-image: url("{{ asset('assets/images/logo.png') }}");
                     background-size: contain;
                     background-position: center center;
                     background-repeat: no-repeat;

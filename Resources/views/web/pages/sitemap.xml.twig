@@ -9,7 +9,7 @@
             <changefreq>{{ item.changeFrequency|default('daily') }}</changefreq>
             <priority>{{ item.priority|default('0.5000')|number_format(2, '.', '') }}</priority>
             {% if item.lastChangeAt|default or item.entity.updatedAt|default %}
-                <lastmod>{{ item.lastChangeAt|default(item.entity.updatedAt)|date('c') }}</lastmod>
+                <lastmod>{{ item.lastChangeAt|default(item.entity.updatedAt|default)|date('c') }}</lastmod>
             {% endif %}
             {% if item.entity.isActuality|default %}
                 <news:news>
