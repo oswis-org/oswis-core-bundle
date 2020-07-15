@@ -7,7 +7,7 @@
         <url>
             <loc>{{ absolute_url(item.path) }}</loc>
             <changefreq>{{ item.changeFrequency|default('daily') }}</changefreq>
-            <priority>{{ item.priority ? item.priority * 100 : |default('0.5000') }}</priority>
+            <priority>{{ item.priority|default('0.5000')|number_format(2, '.', '') }}</priority>
             {% if item.lastChangeAt|default or item.entity.updatedAt|default %}
                 <lastmod>{{ item.lastChangeAt|default(item.entity.updatedAt)|date('c') }}</lastmod>
             {% endif %}
