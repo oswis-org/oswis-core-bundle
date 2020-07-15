@@ -3,7 +3,6 @@
 namespace OswisOrg\OswisCoreBundle\DependencyInjection;
 
 use Exception;
-use OswisOrg\OswisCoreBundle\DependencyInjection\CompilerPass\SiteMapExtenderPass;
 use OswisOrg\OswisCoreBundle\Interfaces\Common\SiteMapExtenderInterface;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -37,7 +36,6 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
             $this->oswisCoreSettingsProvider($container, $config);
         }
         $container->registerForAutoconfiguration(SiteMapExtenderInterface::class)->addTag('oswis.site_map_extender');
-        $container->addCompilerPass(new SiteMapExtenderPass());
     }
 
     /**

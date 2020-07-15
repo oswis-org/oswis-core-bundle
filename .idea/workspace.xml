@@ -28,27 +28,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/Website/SiteMapWebController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/Website/SiteMapWebController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DependencyInjection/CompilerPass/SiteMapExtenderPass.php" beforeDir="false" afterPath="$PROJECT_DIR$/DependencyInjection/CompilerPass/SiteMapExtenderPass.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DependencyInjection/OswisOrgOswisCoreExtension.php" beforeDir="false" afterPath="$PROJECT_DIR$/DependencyInjection/OswisOrgOswisCoreExtension.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/NonPersistent/SiteMapItem.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/NonPersistent/SiteMapItem.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Extender/OswisCoreSitemapExtender.php" beforeDir="false" afterPath="$PROJECT_DIR$/Extender/CoreSitemapExtender.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/config/routes.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/config/services.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/e-mail/pages/message.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/e-mail/pages/message.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/web/html-skeleton-default.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/html-skeleton-default.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/web/pages/admin.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/pages/admin.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/web/pages/robots.txt.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/pages/robots.txt.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/web/pages/rss.xml.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/pages/rss.xml.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/web/pages/sitemap-index.xml.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/web/pages/sitemap-items.xml.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/web/pages/sitemap.xml.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/pages/sitemap.xml.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/web/parts/sitemap-index-item.xml.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/web/parts/sitemap-item.xml.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/web/parts/web-banner.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/parts/web-banner.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/SiteMapService.php" beforeDir="false" afterPath="$PROJECT_DIR$/Service/SiteMapService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OswisOrgOswisCoreBundle.php" beforeDir="false" afterPath="$PROJECT_DIR$/OswisOrgOswisCoreBundle.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -839,14 +821,8 @@
       <workItem from="1594667818852" duration="625000" />
       <workItem from="1594671071483" duration="82000" />
       <workItem from="1594734123824" duration="7918000" />
-      <workItem from="1594809941794" duration="4927000" />
-    </task>
-    <task id="LOCAL-00674" summary="Some fixes, updates and changes.">
-      <created>1592851702514</created>
-      <option name="number" value="00674" />
-      <option name="presentableId" value="LOCAL-00674" />
-      <option name="project" value="LOCAL" />
-      <updated>1592851702514</updated>
+      <workItem from="1594809941794" duration="5675000" />
+      <workItem from="1594816687962" duration="64000" />
     </task>
     <task id="LOCAL-00675" summary="Some fixes, updates and changes.">
       <created>1592852761227</created>
@@ -1184,7 +1160,14 @@
       <option name="project" value="LOCAL" />
       <updated>1594764391381</updated>
     </task>
-    <option name="localTasksCounter" value="723" />
+    <task id="LOCAL-00723" summary="Some fixes, updates and changes.">
+      <created>1594816041190</created>
+      <option name="number" value="00723" />
+      <option name="presentableId" value="LOCAL-00723" />
+      <option name="project" value="LOCAL" />
+      <updated>1594816041190</updated>
+    </task>
+    <option name="localTasksCounter" value="724" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1289,10 +1272,10 @@
     <state x="251" y="0" width="624" height="735" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1592126046014" />
     <state x="353" y="0" width="478" height="735" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592144443570" />
     <state x="2171" y="0" width="462" height="741" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1588326607025" />
-    <state x="288" y="257" width="526" height="478" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1593608922507">
+    <state x="288" y="257" width="526" height="478" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1594816728885">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="288" y="257" width="526" height="478" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.741@0.0.1366.741" timestamp="1593608922507" />
+    <state x="288" y="257" width="526" height="478" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.741@0.0.1366.741" timestamp="1594816728885" />
     <state x="288" y="257" width="526" height="478" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1592139253178" />
     <state x="405" y="257" width="526" height="478" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592144430947" />
     <state x="466" y="300" width="426" height="140" key="#com.jetbrains.php.lang.intentions.PhpImportClassDialog#" timestamp="1592138834912">
@@ -1307,10 +1290,10 @@
     <state x="499" y="381" width="402" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1593029764421" />
     <state x="701" y="381" width="509" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592145061391" />
     <state x="2356" y="395" width="402" height="332" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1588872805427" />
-    <state x="0" y="0" width="1366" height="741" key="CommitChangelistDialog2" timestamp="1594764390974">
+    <state x="0" y="0" width="1366" height="741" key="CommitChangelistDialog2" timestamp="1594816041037">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="0" y="0" width="904" height="735" key="CommitChangelistDialog2/0.0.1366.741@0.0.1366.741" timestamp="1594764390974" />
+    <state x="0" y="0" width="904" height="735" key="CommitChangelistDialog2/0.0.1366.741@0.0.1366.741" timestamp="1594816041037" />
     <state x="1920" y="0" width="1366" height="741" key="CommitChangelistDialog2/0.0.3286.741@0.0.3286.741" timestamp="1593178701362" />
     <state x="369" y="0" width="881" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1594500898400" />
     <state x="518" y="0" width="881" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592145131804" />
@@ -1344,10 +1327,10 @@
     <state x="187" y="5" key="SettingsEditor/0.0.1366.741@0.0.1366.741" timestamp="1594814136435" />
     <state x="33" y="0" width="1280" height="730" key="SettingsEditor/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1587589952804" />
     <state x="263" y="0" width="1418" height="741" key="SettingsEditor/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1589305333032" />
-    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1594764394789">
+    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1594816042456">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1594764394789" />
+    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1594816042456" />
     <state x="0" y="213" width="1920" height="522" key="Vcs.Push.Dialog.v2/0.0.3286.741@0.0.3286.741" timestamp="1593178739654" />
     <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1594500907067" />
     <state x="555" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592145133378" />
