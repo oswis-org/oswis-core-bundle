@@ -165,7 +165,7 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
                     'guard'     => [
                         'authenticators' => [WebUserAuthenticator::class],
                     ],
-                    'logout'    => ['path' => 'web_logout'],
+                    'logout'    => ['path' => 'oswis_org_oswis_core_web_admin_logout'],
                 ],
             ],
             'access_control'               => [

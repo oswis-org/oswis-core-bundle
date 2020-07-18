@@ -27,7 +27,7 @@ class WebUserAuthenticator extends AbstractFormLoginAuthenticator
 {
     use TargetPathTrait;
 
-    public const LOGIN_ROUTE = 'web_login';
+    public const LOGIN_ROUTE = 'oswis_org_oswis_core_web_admin_login';
 
     private UrlGeneratorInterface $urlGenerator;
 

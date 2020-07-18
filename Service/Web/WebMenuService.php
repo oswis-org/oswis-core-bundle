@@ -34,11 +34,9 @@ class WebMenuService
         foreach ($this->extenders as $extender) {
             if ($extender instanceof WebAdminMenuExtenderInterface) {
                 foreach ($extender->getItems() as $item) {
-                    if ($item instanceof WebMenuItem) {
-                        /** @noinspection IsEmptyFunctionUsageInspection */
-                        if (empty($item) || $item->hasMenu($menu)) {
-                            $items->add($item);
-                        }
+                    /** @noinspection IsEmptyFunctionUsageInspection */
+                    if ($item instanceof WebMenuItem && (empty($item) || $item->hasMenu($menu))) {
+                        $items->add($item);
                     }
                 }
             }
