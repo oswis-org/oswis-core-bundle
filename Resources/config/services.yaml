@@ -453,6 +453,16 @@ services:
         alias: oswis_org_oswis_core.homepage_web_controller
         public: true
 
+    oswis_org_oswis_core.web_menu_controller:
+        class: OswisOrg\OswisCoreBundle\Controller\Web\WebMenuController
+        autowire: true
+        public: true
+        arguments:
+            - '@oswis_org_oswis_core.web_menu_service'
+    OswisOrg\OswisCoreBundle\Controller\Web\WebMenuController:
+        alias: oswis_org_oswis_core.web_menu_controller
+        public: true
+
     oswis_org_oswis_core.site_map_web_controller:
         class: OswisOrg\OswisCoreBundle\Controller\Web\SiteMapWebController
         autowire: true
