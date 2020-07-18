@@ -29,7 +29,14 @@
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DependencyInjection/OswisOrgOswisCoreExtension.php" beforeDir="false" afterPath="$PROJECT_DIR$/DependencyInjection/OswisOrgOswisCoreExtension.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controller/WebAdmin/WebSecurityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/WebAdmin/WebSecurityController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/views/web/parts/header.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/parts/header.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/views/web/parts/web-banner.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/parts/web-banner.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/views/web_admin/header.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web_admin/header.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/views/web_admin/html-skeleton-web-admin.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web_admin/html-skeleton-web-admin.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/views/web_admin/main-menu.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/views/web_admin/page-skeleton-web-admin.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web_admin/page-skeleton-web-admin.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/views/web_admin/web-admin-homepage.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web_admin/web-admin-homepage.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -827,14 +834,8 @@
       <workItem from="1594927341840" duration="12600000" />
       <workItem from="1594995853631" duration="3931000" />
       <workItem from="1595007265365" duration="4399000" />
-      <workItem from="1595073210779" duration="7865000" />
-    </task>
-    <task id="LOCAL-00683" summary="Some fixes, updates and changes.">
-      <created>1593023123215</created>
-      <option name="number" value="00683" />
-      <option name="presentableId" value="LOCAL-00683" />
-      <option name="project" value="LOCAL" />
-      <updated>1593023123215</updated>
+      <workItem from="1595073210779" duration="8826000" />
+      <workItem from="1595096459762" duration="1759000" />
     </task>
     <task id="LOCAL-00684" summary="Some fixes, updates and changes.">
       <created>1593024535350</created>
@@ -1172,7 +1173,14 @@
       <option name="project" value="LOCAL" />
       <updated>1595090900596</updated>
     </task>
-    <option name="localTasksCounter" value="732" />
+    <task id="LOCAL-00732" summary="Some fixes, updates and changes.">
+      <created>1595091656949</created>
+      <option name="number" value="00732" />
+      <option name="presentableId" value="LOCAL-00732" />
+      <option name="project" value="LOCAL" />
+      <updated>1595091656949</updated>
+    </task>
+    <option name="localTasksCounter" value="733" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1294,19 +1302,19 @@
     <state x="499" y="381" width="402" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1595090084364" />
     <state x="701" y="381" width="509" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592145061391" />
     <state x="2356" y="395" width="402" height="332" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1588872805427" />
-    <state x="369" y="0" width="1366" height="741" key="CommitChangelistDialog2" timestamp="1595090900323">
+    <state x="369" y="0" width="1366" height="741" key="CommitChangelistDialog2" timestamp="1595091656868">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="0" y="0" width="904" height="735" key="CommitChangelistDialog2/0.0.1366.741@0.0.1366.741" timestamp="1594851185067" />
     <state x="1920" y="0" width="1366" height="741" key="CommitChangelistDialog2/0.0.3286.741@0.0.3286.741" timestamp="1593178701362" />
-    <state x="369" y="0" width="881" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1595090900323" />
+    <state x="369" y="0" width="881" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1595091656868" />
     <state x="518" y="0" width="881" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592145131804" />
     <state x="2289" y="0" width="881" height="741" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1588872861925" />
-    <state x="99" y="100" width="1152" height="529" maximized="true" key="DiffContextDialog" timestamp="1595007768495">
+    <state x="99" y="100" width="1160" height="535" maximized="true" key="DiffContextDialog" timestamp="1595098501185">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="99" y="100" width="1152" height="529" maximized="true" key="DiffContextDialog/0.0.3286.741@0.0.3286.741" timestamp="1592988644914" />
-    <state x="99" y="100" width="1168" height="541" maximized="true" key="DiffContextDialog/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1588442572785" />
+    <state x="99" y="100" width="1160" height="535" maximized="true" key="DiffContextDialog/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1595098501185" />
     <state x="466" y="128" width="426" height="478" key="FileChooserDialogImpl" timestamp="1594671065933">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
@@ -1332,12 +1340,12 @@
     <state x="187" y="5" key="SettingsEditor/0.0.1366.741@0.0.1366.741" timestamp="1594849819760" />
     <state x="33" y="0" width="1280" height="730" key="SettingsEditor/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1595090603435" />
     <state x="263" y="0" width="1418" height="741" key="SettingsEditor/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1589305333032" />
-    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1595090902062">
+    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1595091658082">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1594851186876" />
     <state x="0" y="213" width="1920" height="522" key="Vcs.Push.Dialog.v2/0.0.3286.741@0.0.3286.741" timestamp="1593178739654" />
-    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1595090902062" />
+    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1595091658082" />
     <state x="555" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592145133378" />
     <state x="2315" y="199" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1588872863506" />
     <state x="99" y="96" width="1085" height="456" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1594814880144">
@@ -1363,12 +1371,12 @@
       <screen x="1920" y="0" width="1366" height="768" />
     </state>
     <state x="1920" y="0" width="1366" height="741" maximized="true" key="dock-window-1/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1588846320148" />
-    <state x="158" y="54" width="812" height="687" key="find.popup" timestamp="1595091609168">
+    <state x="158" y="54" width="812" height="687" key="find.popup" timestamp="1595092290283">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="158" y="54" width="812" height="687" key="find.popup/0.0.1366.741@0.0.1366.741" timestamp="1594141789530" />
     <state x="380" y="54" width="1954" height="687" key="find.popup/0.0.3286.741@0.0.3286.741" timestamp="1588167954850" />
-    <state x="158" y="54" width="812" height="687" key="find.popup/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1595091609168" />
+    <state x="158" y="54" width="812" height="687" key="find.popup/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1595092290283" />
     <state x="222" y="54" width="1142" height="687" key="find.popup/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1588881078593" />
     <state x="423" y="274" width="511" height="187" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1587333720901">
       <screen x="0" y="0" width="1366" height="741" />
@@ -1380,11 +1388,11 @@
     <state x="346" y="164" key="run.anything.popup/0.0.1366.741@0.0.1366.741" timestamp="1589742535972" />
     <state x="832" y="164" key="run.anything.popup/0.0.3286.741@0.0.3286.741" timestamp="1592745198888" />
     <state x="346" y="164" key="run.anything.popup/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1595006494648" />
-    <state x="346" y="61" width="674" height="678" key="search.everywhere.popup" timestamp="1592080626619">
+    <state x="346" y="61" width="674" height="678" key="search.everywhere.popup" timestamp="1595098293559">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="346" y="61" width="673" height="678" key="search.everywhere.popup/0.0.1366.741@0.0.1366.741" timestamp="1588154789797" />
-    <state x="346" y="61" width="674" height="678" key="search.everywhere.popup/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1592080626619" />
+    <state x="346" y="61" width="674" height="678" key="search.everywhere.popup/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1595098293559" />
     <state x="486" y="61" width="946" height="678" key="search.everywhere.popup/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1588877453861" />
   </component>
 </project>

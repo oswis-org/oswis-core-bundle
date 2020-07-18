@@ -3,18 +3,11 @@
 {% block header_container %}
     <div class="container" id="main-header-container">
         <div class="row no-gutter header-row" id="main-header-row">
-            <header class="col-lg-4">
-                <div class="d-lg-none fake"></div>
-                <a href="{{ path('oswis_org_oswis_core_homepage_action') }}">
-                    <h1 id="website-logo" class="website-logo admin" title="Seznamovák Univerzity Palackého"
-                        style="background-image: {{ preload(asset('assets/images/logo.png'), {as: 'image'}) }}!important;">
-                        <span class="d-none">{{ title|default(oswis.web.name) }}</span>
-                    </h1>
-                </a>
-            </header>
-            <div id="main-header-main-menu" class="col-lg-8 d-print-none">
-                {% include '@OswisOrgOswisCore/web_admin/main-menu.html.twig' %}
+            <div id="main-header-main-menu" class="col-12 d-print-none">
+                {% block main_menu %}
+                    {{ render_esi(controller('OswisOrg\\OswisCoreBundle\\Controller\\Web\\WebMenuController::showMenu', {'menu': 'web-admin-menu'})) }}
+                {% endblock main_menu %}
             </div>
         </div>
     </div>
-{% endblock %}
+{% endblock header_container %}

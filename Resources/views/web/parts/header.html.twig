@@ -1,3 +1,11 @@
 {% block header_container %}
-    {% include '@OswisOrgOswisCore/web/parts/main-menu.html.twig' %}
-{% endblock %}
+    <div class="container" id="main-header-container">
+        <div class="row no-gutter header-row" id="main-header-row">
+            <div id="main-header-main-menu" class="col-12 d-print-none">
+                {% block main_menu %}
+                    {{ render_esi(controller('OswisOrg\\OswisCoreBundle\\Controller\\Web\\WebMenuController::showMenu', {'menu': 'main-menu'})) }}
+                {% endblock main_menu %}
+            </div>
+        </div>
+    </div>
+{% endblock header_container %}
