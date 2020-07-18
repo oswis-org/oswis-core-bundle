@@ -8,8 +8,7 @@ namespace OswisOrg\OswisCoreBundle\Service\Web;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use OswisOrg\OswisCoreBundle\Entity\NonPersistent\WebMenuItem;
-use OswisOrg\OswisCoreBundle\Interfaces\Web\SiteMapExtenderInterface;
-use OswisOrg\OswisCoreBundle\Interfaces\WebAdmin\WebAdminMenuExtenderInterface;
+use OswisOrg\OswisCoreBundle\Interfaces\Web\WebMenuExtenderInterface;
 
 class WebMenuService
 {
@@ -20,7 +19,7 @@ class WebMenuService
         $this->extenders = new ArrayCollection();
     }
 
-    public function addExtender(SiteMapExtenderInterface $extender): void
+    public function addExtender(WebMenuExtenderInterface $extender): void
     {
         $this->extenders->add($extender);
     }
@@ -32,7 +31,7 @@ class WebMenuService
     {
         $items = new ArrayCollection();
         foreach ($this->extenders as $extender) {
-            if ($extender instanceof WebAdminMenuExtenderInterface) {
+            if ($extender instanceof WebMenuExtenderInterface) {
                 foreach ($extender->getItems() as $item) {
                     /** @noinspection IsEmptyFunctionUsageInspection */
                     if ($item instanceof WebMenuItem && (empty($item) || $item->hasMenu($menu))) {

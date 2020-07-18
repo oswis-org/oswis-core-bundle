@@ -2,7 +2,6 @@
 /**
  * @noinspection PhpUnusedPrivateMethodInspection
  * @noinspection MethodShouldBeFinalInspection
- * @noinspection PhpUnused
  */
 
 namespace OswisOrg\OswisCoreBundle\DependencyInjection;
