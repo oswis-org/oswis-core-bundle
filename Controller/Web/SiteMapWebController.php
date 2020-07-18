@@ -3,9 +3,9 @@
  * @noinspection MethodShouldBeFinalInspection
  */
 
-namespace OswisOrg\OswisCoreBundle\Controller\Website;
+namespace OswisOrg\OswisCoreBundle\Controller\Web;
 
-use OswisOrg\OswisCoreBundle\Service\SiteMapService;
+use OswisOrg\OswisCoreBundle\Service\Web\SiteMapService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -20,7 +20,7 @@ class SiteMapWebController extends AbstractController
 
     public function showSitemapXml(): Response
     {
-        return $this->renderXml($this->render('@OswisOrgOswisCore/web/pages/sitemap.xml.twig', ['items' => $this->siteMapService->getItems()]));
+        return $this->renderXml($this->render('@OswisOrgOswisCore/web/sitemap.xml.twig', ['items' => $this->siteMapService->getItems()]));
     }
 
     public function renderXml(Response $response): Response
@@ -32,7 +32,7 @@ class SiteMapWebController extends AbstractController
 
     public function showSitemapXsl(): Response
     {
-        return $this->renderXml($this->render('@OswisOrgOswisCore/web/pages/sitemap.xsl.twig'));
+        return $this->renderXml($this->render('@OswisOrgOswisCore/web/sitemap.xsl.twig'));
     }
 
     public function sitemapRedirect(): Response

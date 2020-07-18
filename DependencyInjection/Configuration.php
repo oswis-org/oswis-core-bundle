@@ -75,7 +75,7 @@ class Configuration implements ConfigurationInterface
     {
         $rootNode->children()->arrayNode('admin')->info('Info about main administrator.')->addDefaultsIfNotSet()->children()->scalarNode('name')->info('Name of main admin.')
                  ->defaultValue(null)->example('John Doe')->end()->scalarNode('email')->info('E-mail address of administrator.')->defaultValue(null)->example('admin@oswis.org')
-                 ->end()->scalarNode('web')->info('Website of administrator.')->defaultValue(null)->example('https://oswis.org')->end()->scalarNode('phone')->info(
+                 ->end()->scalarNode('web')->info('Web of administrator.')->defaultValue(null)->example('https://oswis.org')->end()->scalarNode('phone')->info(
                 'Phone of administrator.'
             )->defaultValue(null)->example('+000 000 000 000')->end()->end()->end();
     }
@@ -83,7 +83,7 @@ class Configuration implements ConfigurationInterface
     private function addWebConfig(NodeDefinition $rootNode): void
     {
         $rootNode->children() /// Web settings.
-                 ->arrayNode('web')->info('Website settings.')->addDefaultsIfNotSet()->children()->scalarNode('name')->info('Title of website.')->defaultValue('One Simple Web IS')
+                 ->arrayNode('web')->info('Web settings.')->addDefaultsIfNotSet()->children()->scalarNode('name')->info('Title of website.')->defaultValue('One Simple Web IS')
                  ->example('John\'s personal website')->end()->scalarNode('url')->info('Base URL of website.')->defaultValue('https://oswis.org')->example('https://oswis.org')
                  ->end()->scalarNode('name_short')->info('Shortened title of website.')->defaultValue('OSWIS')->example('John\'s web')->end()->scalarNode('name_long')->info(
                 'Long (full) title of application.'

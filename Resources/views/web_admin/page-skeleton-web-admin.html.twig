@@ -1,0 +1,24 @@
+{% extends '@OswisOrgOswisCore/web_admin/html-skeleton-web-admin.html.twig' %}
+
+{% block body_inner %}
+    {% block body_header %}
+        {% include '@OswisOrgOswisCore/web_admin/header.html.twig' %}
+    {% endblock body_header %}
+    {% block body_content %}
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <p>Na této stránce zatím nic není.</p>
+                </div>
+            </div>
+        </div>
+    {% endblock body_content %}
+    {% set breadcrumb_index = 1 %}
+    {% block body_breadcrumbs %}
+        {% include '@OswisOrgOswisCore/web/parts/breadcrumbs.html.twig' %}
+    {% endblock body_breadcrumbs %}
+    {% block body_footer %}
+        {% include '@OswisOrgOswisCore/web/parts/footer.html.twig' %}
+    {% endblock body_footer %}
+{% endblock body_inner %}
+

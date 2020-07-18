@@ -1,10 +1,6 @@
 <?php
-/**
- * @noinspection MethodShouldBeFinalInspection
- * @noinspection PhpUnused
- */
 
-namespace OswisOrg\OswisCoreBundle\Controller\Website;
+namespace OswisOrg\OswisCoreBundle\Controller\Web;
 
 use OswisOrg\OswisCoreBundle\Provider\OswisCoreSettingsProvider;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -12,7 +8,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class SiteWebManifestController extends AbstractController
+class AdminWebController extends AbstractController
 {
     public OswisCoreSettingsProvider $coreSettings;
 
@@ -21,34 +17,29 @@ class SiteWebManifestController extends AbstractController
         $this->coreSettings = $coreSettings;
     }
 
-    public function showBrowserConfigXml(): Response
+    /**
+     * Angular front-end administration.
+     *
+     * @return Response
+     */
+    final public function admin(): Response
     {
-        $response = $this->render('@OswisOrgOswisCore/web/pages/browserconfig.xml.twig');
-        $response->headers->set('Content-Type', 'application/xml; charset=utf-8');
-
-        return $response;
+        return $this->render('@OswisOrgOswisCore/web/pages/admin.html.twig');
     }
 
-    public function showRobotsTxt(): Response
-    {
-        $response = $this->render('@OswisOrgOswisCore/web/pages/robots.txt.twig');
-        $response->headers->set('Content-Type', 'text/plain');
 
-        return $response;
-    }
-
-    public function showSiteWebManifest(Request $request): Response
+    final public function adminSiteWebManifest(Request $request): Response
     {
         $response = new JsonResponse(
             [
                 'lang'             => 'cs',
                 'dir'              => 'ltr',
-                'name'             => $this->coreSettings->getWeb()['name'],
-                'short_name'       => $this->coreSettings->getWeb()['name_short'],
+                'name'             => $this->coreSettings->getApp()['name'],
+                'short_name'       => $this->coreSettings->getApp()['name_short'],
                 'start_url'        => '.',
                 'display'          => 'fullscreen',
                 'description'      => $this->coreSettings->getWeb()['description'],
-                'background_color' => '#FFFFFF',
+                'background_color' => '#FAFAFA',
                 'theme_color'      => $this->coreSettings->getWeb()['color'],
                 'icons'            => [
                     [
@@ -93,4 +84,5 @@ class SiteWebManifestController extends AbstractController
 
         return $response;
     }
+
 }

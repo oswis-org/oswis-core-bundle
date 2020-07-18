@@ -1,0 +1,48 @@
+{% extends '@OswisOrgOswisCore/web/page-skeleton-default.html.twig' %}
+
+{% block html_title %}Přihlášení{% endblock %}
+
+{% block body_content %}
+    <main class="container" id="main-content-container">
+        <div class="row">
+            <form method="post">
+                {% if error %}
+                    <div class="col-12">
+                        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                    </div>
+                {% endif %}
+                {% if app.user %}
+                    <div class="col-12">
+                        <div class="mb-3">
+                            Přihlášen(a) jako {{ app.user.username }}, <a href="{{ path('oswis_org_oswis_core_web_admin_logout') }}">Odhlásit se</a>
+                        </div>
+                    </div>
+                {% endif %}
+                <div class="col-12">
+                    <h1 class="h3 mb-3 font-weight-normal">Přihlášení</h1>
+                    <label for="inputUsername">
+                        <span>Uživatelské jméno nebo e-mail:<br></span>
+                        <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" required autofocus>
+                    </label>
+                </div>
+                <div class="col-12">
+                    <label for="inputPassword">
+                        <span>Password:<br></span>
+                        <input type="password" name="password" id="inputPassword" class="form-control" required>
+                    </label>
+                </div>
+                {# <div class="col-12">
+                    <div class="checkbox mb-3">
+                            <label><input type="checkbox" name="_remember_me"> Remember me</label>
+                        </div>
+                </div> #}
+                <div class="col-12">
+                    <button class="btn btn-lg btn-primary m-3" type="submit">
+                        Sign in
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+{% endblock %}
+

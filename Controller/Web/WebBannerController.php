@@ -4,7 +4,7 @@
  * @noinspection PhpUnused
  */
 
-namespace OswisOrg\OswisCoreBundle\Controller\Website;
+namespace OswisOrg\OswisCoreBundle\Controller\Web;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;

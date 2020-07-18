@@ -5,7 +5,7 @@
 
 namespace OswisOrg\OswisCoreBundle\DependencyInjection\CompilerPass;
 
-use OswisOrg\OswisCoreBundle\Service\RssService;
+use OswisOrg\OswisCoreBundle\Service\Web\RssService;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;

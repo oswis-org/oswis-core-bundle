@@ -3,24 +3,24 @@
  * @noinspection MethodShouldBeFinalInspection
  */
 
-namespace OswisOrg\OswisCoreBundle\Form;
+namespace OswisOrg\OswisCoreBundle\Form\PasswordChange;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-abstract class PasswordChangeRequestType extends AbstractType
+abstract class PasswordChangeType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder->add(
-            'username',
-            TextType::class,
+            'password',
+            PasswordType::class,
             [
-                'label'    => 'Uživatelské jméno nebo e-mail',
-                'help'     => 'Zadejte uživatelské jméno nebo e-mail uvedený u uživatelského účtu.',
+                'label'    => 'Nové heslo',
+                'help'     => 'Pokud jej nezadáte, bude vygenerováno nové náhodné heslo.',
                 'mapped'   => false,
                 'required' => true,
             ]
@@ -28,10 +28,7 @@ abstract class PasswordChangeRequestType extends AbstractType
         $builder->add(
             'submit',
             SubmitType::class,
-            [
-                'label' => 'POŽÁDAT O ZMĚNU HESLA',
-                'help'  => 'Na Váš e-mail bude odeslán odkaz, pomocí kterého uskutečníte změnu hesla.',
-            ]
+            ['label' => 'ZMĚNIT HESLO']
         );
     }
 
@@ -41,6 +38,6 @@ abstract class PasswordChangeRequestType extends AbstractType
 
     public function getBlockPrefix(): string
     {
-        return 'core_app_user_password_change_request';
+        return 'core_app_user_password_change';
     }
 }

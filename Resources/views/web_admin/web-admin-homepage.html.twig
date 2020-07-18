@@ -1,0 +1,19 @@
+{% extends '@OswisOrgOswisCore/web_admin/page-skeleton-web-admin.html.twig' %}
+
+{% block html_title %}Přihlášení{% endblock %}
+
+{% block body_content %}
+    <main class="container" id="main-content-container">
+        <div class="row">
+            <div class="col">
+                <table>
+                    <tr>
+                        <td>Uživatelské jméno:</td>
+                        <td>{{ app.user.username }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </main>
+{% endblock %}
+

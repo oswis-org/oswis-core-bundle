@@ -12,7 +12,7 @@ use Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
 use Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
 use Symfony\Component\DependencyInjection\Reference;
 
-class SiteMapExtenderPass implements CompilerPassInterface
+class WebAdminMenuExtenderPass implements CompilerPassInterface
 {
     /**
      * @param ContainerBuilder $container

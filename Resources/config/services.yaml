@@ -29,7 +29,6 @@ services:
         alias: oswis_org_oswis_core.oswis_core_settings_provider
         public: true
 
-    ### AppUser Action Request
     oswis_org_oswis_core.app_user_action_request:
         class: OswisOrg\OswisCoreBundle\Api\Dto\AppUserActionRequest
         autowire: true
@@ -38,13 +37,23 @@ services:
         alias: oswis_org_oswis_core.app_user_action_request
         public: true
 
-    ### AppUser Provider
     OswisOrg\OswisCoreBundle\Security\AppUserProvider:
         class: OswisOrg\OswisCoreBundle\Security\AppUserProvider
         autowire: true
         public: true
         arguments:
             - '@oswis_org_oswis_core.app_user_repository'
+
+    oswis_org_oswis_core.web_user_authenticator:
+        class: OswisOrg\OswisCoreBundle\Security\WebUserAuthenticator
+        autowire: true
+        public: true
+        arguments:
+            - '@router.default'
+            - '@security.user_password_encoder.generic'
+    OswisOrg\OswisCoreBundle\Security\WebUserAuthenticator:
+        alias: oswis_org_oswis_core.web_user_authenticator
+        public: true
 
     gedmo.listener.timestampable:
         class: Gedmo\Timestampable\TimestampableListener
@@ -82,7 +91,6 @@ services:
         alias: oswis_org_oswis_core.app_user_service
         public: true
 
-    ### AppUser Defaults Service
     oswis_org_oswis_core.app_user_defaults_service:
         class: OswisOrg\OswisCoreBundle\Service\AppUserDefaultsService
         autowire: true
@@ -96,7 +104,6 @@ services:
         alias: oswis_org_oswis_core.app_user_defaults_service
         public: true
 
-    ### AppUser Token Service
     oswis_org_oswis_core.app_user_token_service:
         class: OswisOrg\OswisCoreBundle\Service\AppUserTokenService
         autowire: true
@@ -108,7 +115,6 @@ services:
         alias: oswis_org_oswis_core.app_user_token_service
         public: true
 
-    ### Mail Service
     oswis_org_oswis_core.mail_service:
         class: OswisOrg\OswisCoreBundle\Service\MailService
         autowire: true
@@ -121,7 +127,6 @@ services:
         alias: oswis_org_oswis_core.mail_service
         public: true
 
-    ### AppUser Mail Service
     oswis_org_oswis_core.app_user_mail_service:
         class: OswisOrg\OswisCoreBundle\Service\AppUserMailService
         autowire: true
@@ -136,7 +141,6 @@ services:
         alias: oswis_org_oswis_core.app_user_mail_service
         public: true
 
-    ### AppUser Role Service
     oswis_org_oswis_core.app_user_role_service:
         class: OswisOrg\OswisCoreBundle\Service\AppUserRoleService
         autowire: true
@@ -149,7 +153,6 @@ services:
         alias: oswis_org_oswis_core.app_user_role_service
         public: true
 
-    ### AppUser Form Service
     oswis_org_oswis_core.app_user_type_service:
         class: OswisOrg\OswisCoreBundle\Service\AppUserTypeService
         autowire: true
@@ -175,10 +178,10 @@ services:
         public: true
 
     oswis_org_oswis_core.site_map_service:
-        class: OswisOrg\OswisCoreBundle\Service\SiteMapService
+        class: OswisOrg\OswisCoreBundle\Service\Web\SiteMapService
         autowire: true
         public: true
-    OswisOrg\OswisCoreBundle\Service\SiteMapService:
+    OswisOrg\OswisCoreBundle\Service\Web\SiteMapService:
         alias: oswis_org_oswis_core.site_map_service
         public: true
 
@@ -195,17 +198,24 @@ services:
         public: true
 
     oswis_org_oswis_core.rss_service:
-        class: OswisOrg\OswisCoreBundle\Service\RssService
+        class: OswisOrg\OswisCoreBundle\Service\Web\RssService
         autowire: true
         public: true
-    OswisOrg\OswisCoreBundle\Service\RssService:
+    OswisOrg\OswisCoreBundle\Service\Web\RssService:
         alias: oswis_org_oswis_core.rss_service
+        public: true
+
+    oswis_org_oswis_core.web_menu_service:
+        class: OswisOrg\OswisCoreBundle\Service\Web\WebMenuService
+        autowire: true
+        public: true
+    OswisOrg\OswisCoreBundle\Service\Web\WebMenuService:
+        alias: oswis_org_oswis_core.web_menu_service
         public: true
 
     ###
     ### REPOSITORY
     ###
-
     oswis_org_oswis_core.app_user_repository:
         class: OswisOrg\OswisCoreBundle\Repository\AppUserRepository
         autowire: true
@@ -307,7 +317,6 @@ services:
     #### SUBSCRIBERS
     ####
 
-    ### AppUser Action Subscriber
     oswis_org_oswis_core.app_user_action_subscriber:
         class: OswisOrg\OswisCoreBundle\Api\EventSubscriber\AppUserActionSubscriber
         autowire: true
@@ -319,7 +328,6 @@ services:
         alias: oswis_org_oswis_core.app_user_action_subscriber
         public: true
 
-    ### Export Subscriber
     oswis_org_oswis_core.export_subscriber:
         class: OswisOrg\OswisCoreBundle\EventSubscriber\ExportSubscriber
         autowire: true
@@ -331,7 +339,6 @@ services:
         alias: oswis_org_oswis_core.app_user_action_subscriber
         public: true
 
-    ### Mailer Subscriber
     oswis_org_oswis_core.mailer_subscriber:
         class: OswisOrg\OswisCoreBundle\EventSubscriber\MailerSubscriber
         autowire: true
@@ -343,7 +350,6 @@ services:
         alias: oswis_org_oswis_core.mailer_subscriber
         public: true
 
-    ### AppUser Subscriber
     oswis_org_oswis_core.app_user_subscriber:
         class: OswisOrg\OswisCoreBundle\EventSubscriber\AppUserSubscriber
         autowire: true
@@ -354,9 +360,6 @@ services:
     OswisOrg\OswisCoreBundle\EventSubscriber\AppUserSubscriber:
         alias: oswis_org_oswis_core.app_user_subscriber
         public: true
-
-
-
 
     ####
     #### TWIG
@@ -381,7 +384,6 @@ services:
     ####
     #### UTILS
     ####
-    ### COLOR UTILS
     oswis_org_oswis_core.oswis_core_color_utils:
         class: OswisOrg\OswisCoreBundle\Utils\ColorUtils
         autowire: true
@@ -390,7 +392,6 @@ services:
         alias: oswis_org_oswis_core.oswis_core_color_utils
         public: true
 
-    ### DateTime UTILS
     oswis_org_oswis_core.oswis_core_date_time_utils:
         class: OswisOrg\OswisCoreBundle\Utils\DateTimeUtils
         autowire: true
@@ -399,7 +400,6 @@ services:
         alias: oswis_org_oswis_core.oswis_core_date_time_utils
         public: true
 
-    ### Email UTILS
     oswis_org_oswis_core.oswis_core_email_utils:
         class: OswisOrg\OswisCoreBundle\Utils\EmailUtils
         autowire: true
@@ -408,7 +408,6 @@ services:
         alias: oswis_org_oswis_core.oswis_core_email_utils
         public: true
 
-    ### File UTILS
     oswis_org_oswis_core.oswis_core_file_utils:
         class: OswisOrg\OswisCoreBundle\Utils\FileUtils
         autowire: true
@@ -417,7 +416,6 @@ services:
         alias: oswis_org_oswis_core.oswis_core_file_utils
         public: true
 
-    ### SourceCode UTILS
     oswis_org_oswis_core.oswis_core_source_code_utils:
         class: OswisOrg\OswisCoreBundle\Utils\SourceCodeUtils
         autowire: true
@@ -426,8 +424,6 @@ services:
         alias: oswis_org_oswis_core.oswis_core_source_code_utils
         public: true
 
-
-    ### String UTILS
     oswis_org_oswis_core.oswis_core_source_string_utils:
         class: OswisOrg\OswisCoreBundle\Utils\StringUtils
         autowire: true
@@ -436,12 +432,9 @@ services:
         alias: oswis_org_oswis_core.oswis_core_source_string_utils
         public: true
 
-
-
     ####
     #### WEB
     ####
-    ### AppUser Controller
     oswis_org_oswis_core.app_user_controller:
         class: OswisOrg\OswisCoreBundle\Controller\AppUserController
         autowire: true
@@ -452,86 +445,103 @@ services:
         alias: oswis_org_oswis_core.app_user_controller
         public: true
 
-    ### Homepage Web Controller
     oswis_org_oswis_core.homepage_web_controller:
-        class: OswisOrg\OswisCoreBundle\Controller\Website\HomepageWebController
+        class: OswisOrg\OswisCoreBundle\Controller\Web\HomepageWebController
         autowire: true
         public: true
-    OswisOrg\OswisCoreBundle\Controller\Website\HomepageWebController:
+    OswisOrg\OswisCoreBundle\Controller\Web\HomepageWebController:
         alias: oswis_org_oswis_core.homepage_web_controller
         public: true
 
     oswis_org_oswis_core.site_map_web_controller:
-        class: OswisOrg\OswisCoreBundle\Controller\Website\SiteMapWebController
+        class: OswisOrg\OswisCoreBundle\Controller\Web\SiteMapWebController
         autowire: true
         public: true
-    OswisOrg\OswisCoreBundle\Controller\Website\SiteMapWebController:
+    OswisOrg\OswisCoreBundle\Controller\Web\SiteMapWebController:
         alias: oswis_org_oswis_core.site_map_web_controller
         public: true
 
     oswis_org_oswis_core.rss_feed_controller:
-        class: OswisOrg\OswisCoreBundle\Controller\Website\RssFeedController
+        class: OswisOrg\OswisCoreBundle\Controller\Web\RssFeedController
         autowire: true
         public: true
         arguments:
             - '@oswis_org_oswis_core.rss_service'
-    OswisOrg\OswisCoreBundle\Controller\Website\RssFeedController:
+    OswisOrg\OswisCoreBundle\Controller\Web\RssFeedController:
         alias: oswis_org_oswis_core.rss_feed_controller
         public: true
 
     oswis_org_oswis_core.site_web_manifest_controller:
-        class: OswisOrg\OswisCoreBundle\Controller\Website\SiteWebManifestController
+        class: OswisOrg\OswisCoreBundle\Controller\Web\SiteWebManifestController
         autowire: true
         public: true
-    OswisOrg\OswisCoreBundle\Controller\Website\SiteWebManifestController:
+    OswisOrg\OswisCoreBundle\Controller\Web\SiteWebManifestController:
         alias: oswis_org_oswis_core.site_web_manifest_controller
         public: true
 
-    ### Web Banner Controller
     oswis_org_oswis_core.web_banner_controller:
-        class: OswisOrg\OswisCoreBundle\Controller\Website\WebBannerController
+        class: OswisOrg\OswisCoreBundle\Controller\Web\WebBannerController
         autowire: true
         public: true
-    OswisOrg\OswisCoreBundle\Controller\Website\WebBannerController:
+    OswisOrg\OswisCoreBundle\Controller\Web\WebBannerController:
         alias: oswis_org_oswis_core.web_banner_controller
         public: true
 
-    ### Internal Actions Web Controller
     oswis_org_oswis_core.internal_actions_web_controller:
-        class: OswisOrg\OswisCoreBundle\Controller\Website\InternalActionsWebController
+        class: OswisOrg\OswisCoreBundle\Controller\Web\InternalActionsWebController
         autowire: true
         public: true
-    OswisOrg\OswisCoreBundle\Controller\Website\InternalActionsWebController:
+    OswisOrg\OswisCoreBundle\Controller\Web\InternalActionsWebController:
         alias: oswis_org_oswis_core.internal_actions_web_controller
         public: true
 
-    ### Portal Web Controller
     oswis_org_oswis_core.portal_web_controller:
-        class: OswisOrg\OswisCoreBundle\Controller\Website\PortalWebController
+        class: OswisOrg\OswisCoreBundle\Controller\Web\PortalWebController
         autowire: true
         public: true
-    OswisOrg\OswisCoreBundle\Controller\Website\PortalWebController:
+    OswisOrg\OswisCoreBundle\Controller\Web\PortalWebController:
         alias: oswis_org_oswis_core.portal_web_controller
         public: true
 
-    ### Admin Web Controller
     oswis_org_oswis_core.admin_web_controller:
-        class: OswisOrg\OswisCoreBundle\Controller\Website\AdminWebController
+        class: OswisOrg\OswisCoreBundle\Controller\Web\AdminWebController
         autowire: true
         public: true
         arguments:
             - '@oswis_org_oswis_core.oswis_core_settings_provider'
-    OswisOrg\OswisCoreBundle\Controller\Website\AdminWebController:
+    OswisOrg\OswisCoreBundle\Controller\Web\AdminWebController:
         alias: oswis_org_oswis_core.admin_web_controller
         public: true
 
-    ### GDPR Web Controller
     oswis_org_oswis_core.gdpr_web_controller:
-        class: OswisOrg\OswisCoreBundle\Controller\Website\GdprWebController
+        class: OswisOrg\OswisCoreBundle\Controller\Web\GdprWebController
         autowire: true
         public: true
-    OswisOrg\OswisCoreBundle\Controller\Website\GdprWebController:
+    OswisOrg\OswisCoreBundle\Controller\Web\GdprWebController:
         alias: oswis_org_oswis_core.gdpr_web_controller
+        public: true
+
+
+    ###
+    ### WEB ADMIN
+    ###
+
+    oswis_org_oswis_core.web_admin_controller:
+        class: OswisOrg\OswisCoreBundle\Controller\WebAdmin\WebAdminController
+        autowire: true
+        public: true
+        arguments:
+            - '@oswis_org_oswis_core.oswis_core_settings_provider'
+    OswisOrg\OswisCoreBundle\Controller\WebAdmin\WebAdminController:
+        alias: oswis_org_oswis_core.web_admin_controller
+        public: true
+
+    oswis_org_oswis_core.web_security_controller:
+        class: OswisOrg\OswisCoreBundle\Controller\WebAdmin\WebSecurityController
+        autowire: true
+        public: true
+    OswisOrg\OswisCoreBundle\Controller\WebAdmin\WebSecurityController:
+        alias: oswis_org_oswis_core.web_security_controller
         public: true
 
 

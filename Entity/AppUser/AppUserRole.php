@@ -64,6 +64,23 @@ class AppUserRole implements NameableInterface
 {
     use NameableTrait;
 
+    public const ROLE_EVERYBODY = 'ROLE_EVERYBODY';
+    public const ROLE_CUSTOMER = 'ROLE_CUSTOMER';
+    public const ROLE_USER = 'ROLE_USER';
+    public const ROLE_MEMBER = 'ROLE_MEMBER';
+    public const ROLE_MANAGER = 'ROLE_MANAGER';
+    public const ROLE_ADMIN = 'ROLE_ADMIN';
+    public const ROLE_ROOT = 'ROLE_ROOT';
+
+    public const ROLES_PARENT = [
+        self::ROLE_CUSTOMER => self::ROLE_EVERYBODY,
+        self::ROLE_USER     => self::ROLE_CUSTOMER,
+        self::ROLE_MEMBER   => self::ROLE_USER,
+        self::ROLE_MANAGER  => self::ROLE_MEMBER,
+        self::ROLE_ADMIN    => self::ROLE_MANAGER,
+        self::ROLE_ROOT     => self::ROLE_ADMIN,
+    ];
+
     /**
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class, strategy="ipartial")

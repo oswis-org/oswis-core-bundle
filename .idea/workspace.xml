@@ -27,22 +27,66 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/DependencyInjection/CompilerPass/RssExtenderPass.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Entity/NonPersistent/RssItem.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Interfaces/Common/RssExtenderInterface.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Service/RssService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="Some fixes, updates and changes.">
+      <change afterPath="$PROJECT_DIR$/Controller/Web/WebMenuController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Controller/WebAdmin/WebAdminController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Controller/WebAdmin/WebSecurityController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DependencyInjection/CompilerPass/WebAdminMenuExtenderPass.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Entity/NonPersistent/WebMenuItem.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Interfaces/Web/RssExtenderInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Interfaces/Web/WebMenuExtenderInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Interfaces/WebAdmin/WebAdminMenuExtenderInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/views/web_admin/header.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/views/web_admin/html-skeleton-web-admin.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/views/web_admin/login.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/views/web_admin/main-menu.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/views/web_admin/page-skeleton-web-admin.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/views/web_admin/sessions.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/views/web_admin/web-admin-homepage.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Security/WebUserAuthenticator.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Service/Web/WebMenuService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/oswis-core-bundle.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/oswis-core-bundle.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/Website/RssFeedController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/Website/RssFeedController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controller/AppUserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/AppUserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controller/Website/AdminWebController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/Web/AdminWebController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controller/Website/GdprWebController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/Web/GdprWebController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controller/Website/HomepageWebController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/Web/HomepageWebController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controller/Website/InternalActionsWebController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/Web/InternalActionsWebController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controller/Website/PortalWebController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/Web/PortalWebController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controller/Website/RssFeedController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/Web/RssFeedController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controller/Website/SiteMapWebController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/Web/SiteMapWebController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controller/Website/SiteWebManifestController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/Web/SiteWebManifestController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controller/Website/WebBannerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/Web/WebBannerController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DependencyInjection/CompilerPass/RssExtenderPass.php" beforeDir="false" afterPath="$PROJECT_DIR$/DependencyInjection/CompilerPass/RssExtenderPass.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DependencyInjection/CompilerPass/SiteMapExtenderPass.php" beforeDir="false" afterPath="$PROJECT_DIR$/DependencyInjection/CompilerPass/SiteMapExtenderPass.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DependencyInjection/Configuration.php" beforeDir="false" afterPath="$PROJECT_DIR$/DependencyInjection/Configuration.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DependencyInjection/OswisOrgOswisCoreExtension.php" beforeDir="false" afterPath="$PROJECT_DIR$/DependencyInjection/OswisOrgOswisCoreExtension.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OswisOrgOswisCoreBundle.php" beforeDir="false" afterPath="$PROJECT_DIR$/OswisOrgOswisCoreBundle.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractAppUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractAppUser.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AppUser/AppUserRole.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUser/AppUserRole.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Extender/CoreSitemapExtender.php" beforeDir="false" afterPath="$PROJECT_DIR$/Extender/CoreSitemapExtender.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Form/ActivationRequestType.php" beforeDir="false" afterPath="$PROJECT_DIR$/Form/Activation/ActivationRequestType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Form/LoginType.php" beforeDir="false" afterPath="$PROJECT_DIR$/Form/Login/LoginType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Form/PasswordChangeRequestType.php" beforeDir="false" afterPath="$PROJECT_DIR$/Form/PasswordChange/PasswordChangeRequestType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Form/PasswordChangeType.php" beforeDir="false" afterPath="$PROJECT_DIR$/Form/PasswordChange/PasswordChangeType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interfaces/Common/RssExtenderInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/Interfaces/Common/AbstractExtenderInterface.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interfaces/Common/SiteMapExtenderInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/Interfaces/Web/SiteMapExtenderInterface.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/config/routes.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Resources/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/config/services.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/web/pages/rss-items.xml.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/web/pages/rss.xml.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/pages/rss.xml.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/web/pages/sitemap.xsl.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/pages/sitemap.xsl.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/web/parts/rss-item.xml.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/views/web/pages/browserconfig.xml.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/browserconfig.xml.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/views/web/pages/robots.txt.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/robots.txt.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/views/web/pages/rss.xml.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/rss.xml.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/views/web/pages/sitemap.xml.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/sitemap.xml.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/views/web/pages/sitemap.xsl.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/sitemap.xsl.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/views/web/parts/form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/parts/form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/views/web/parts/gdpr.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/parts/gdpr.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/views/web/parts/main-menu.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/parts/main-menu.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/views/web/parts/message.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/parts/message.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/views/web/parts/portal.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/parts/portal.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Resources/views/web/parts/web-banner.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/parts/web-banner.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Service/RssService.php" beforeDir="false" afterPath="$PROJECT_DIR$/Service/Web/RssService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Service/SiteMapService.php" beforeDir="false" afterPath="$PROJECT_DIR$/Service/Web/SiteMapService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,12 +107,12 @@
     <option name="defaultAccountId" value="9cf1c361-fb0c-4273-9734-feb3c2eb7172" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/vendor/vich/uploader-bundle/src/Mapping/Annotation/UploadableField.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/vendor/vich/uploader-bundle/src/Form/Type/VichImageType.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Resources/views/e-mail/styles/foundation-emails.css.twig" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/exif/exif.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard/standard_0.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/date/date_c.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/vendor/vich/uploader-bundle/src/Mapping/Annotation/UploadableField.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/exif/exif.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/vendor/vich/uploader-bundle/src/Form/Type/VichImageType.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Resources/views/e-mail/styles/foundation-emails.css.twig" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
   </component>
   <component name="JsFlowSettings">
     <service-enabled>true</service-enabled>
@@ -94,7 +138,6 @@
       <path value="$PROJECT_DIR$/vendor/paragonie/random_compat" />
       <path value="$PROJECT_DIR$/vendor/symplify/package-builder" />
       <path value="$PROJECT_DIR$/vendor/setasign/fpdi" />
-      <path value="$PROJECT_DIR$/vendor/ocramius/package-versions" />
       <path value="$PROJECT_DIR$/vendor/ocramius/proxy-manager" />
       <path value="$PROJECT_DIR$/vendor/lcobucci/jwt" />
       <path value="$PROJECT_DIR$/vendor/gesdinet/jwt-refresh-token-bundle" />
@@ -248,7 +291,7 @@
     <property name="editor.config.ad.shown" value="true" />
     <property name="javascript.nodejs.core.library.configured.version" value="10.21.0" />
     <property name="javascript.nodejs.core.library.typings.version" value="10.17.26" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Entity/NonPersistent" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Controller/Web" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -258,22 +301,22 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.externalResources" />
+    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/Resources/views/e-mail/styles" />
-      <recent name="$PROJECT_DIR$/Form" />
-      <recent name="$PROJECT_DIR$/Entity/Payments" />
-      <recent name="$PROJECT_DIR$/Entity/AppUserEMail" />
-      <recent name="$PROJECT_DIR$/Traits/Project" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Controller/Web" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/Resources/views/web_admin" />
       <recent name="$PROJECT_DIR$/Entity/NonPersistent" />
-      <recent name="$PROJECT_DIR$/Interfaces/Common" />
-      <recent name="$PROJECT_DIR$/Service" />
-      <recent name="$PROJECT_DIR$/DependencyInjection/CompilerPass" />
-      <recent name="$PROJECT_DIR$/Extender" />
+      <recent name="$PROJECT_DIR$/Interfaces/WebAdmin" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Resources/views/web" />
+      <recent name="$PROJECT_DIR$/Service/Web" />
+      <recent name="$PROJECT_DIR$/Service/WebAdmin" />
+      <recent name="$PROJECT_DIR$/Interfaces/Web" />
+      <recent name="$PROJECT_DIR$/Form/Login" />
     </key>
   </component>
   <component name="RunManager">
@@ -837,14 +880,11 @@
       <workItem from="1594816687962" duration="112000" />
       <workItem from="1594823230688" duration="52000" />
       <workItem from="1594838382278" duration="120000" />
-      <workItem from="1594839609504" duration="6338000" />
-    </task>
-    <task id="LOCAL-00681" summary="Some fixes, updates and changes.">
-      <created>1593013541678</created>
-      <option name="number" value="00681" />
-      <option name="presentableId" value="LOCAL-00681" />
-      <option name="project" value="LOCAL" />
-      <updated>1593013541680</updated>
+      <workItem from="1594839609504" duration="6504000" />
+      <workItem from="1594927341840" duration="12600000" />
+      <workItem from="1594995853631" duration="3931000" />
+      <workItem from="1595007265365" duration="4399000" />
+      <workItem from="1595073210779" duration="6838000" />
     </task>
     <task id="LOCAL-00682" summary="Some fixes, updates and changes.">
       <created>1593022958633</created>
@@ -1182,7 +1222,14 @@
       <option name="project" value="LOCAL" />
       <updated>1594847744617</updated>
     </task>
-    <option name="localTasksCounter" value="730" />
+    <task id="LOCAL-00730" summary="Some fixes, updates and changes.">
+      <created>1594851185253</created>
+      <option name="number" value="00730" />
+      <option name="presentableId" value="LOCAL-00730" />
+      <option name="project" value="LOCAL" />
+      <updated>1594851185253</updated>
+    </task>
+    <option name="localTasksCounter" value="731" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1273,18 +1320,18 @@
       <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="396" y="187" width="671" height="398" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.741@0.0.1366.741" timestamp="1588084778890" />
-    <state x="546" y="158" width="458" height="556" key="#com.intellij.ide.util.MemberChooser" timestamp="1594758873224">
+    <state x="546" y="158" width="466" height="556" key="#com.intellij.ide.util.MemberChooser" timestamp="1594974597108">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="546" y="158" width="466" height="556" key="#com.intellij.ide.util.MemberChooser/0.0.1366.741@0.0.1366.741" timestamp="1594758873224" />
-    <state x="546" y="158" width="458" height="556" key="#com.intellij.ide.util.MemberChooser/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1592125110295" />
+    <state x="546" y="158" width="466" height="556" key="#com.intellij.ide.util.MemberChooser/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1594974597108" />
     <state x="2466" y="164" width="349" height="577" key="#com.intellij.ide.util.MemberChooser/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1588590248828" />
-    <state x="251" y="0" width="946" height="735" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1594812831484">
+    <state x="251" y="0" width="946" height="735" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1594975256507">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="251" y="0" width="855" height="735" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.741@0.0.1366.741" timestamp="1594812831484" />
     <state x="604" y="0" width="946" height="735" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.3286.741@0.0.3286.741" timestamp="1592652460135" />
-    <state x="251" y="0" width="624" height="735" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1592126046014" />
+    <state x="251" y="0" width="624" height="735" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1594975256507" />
     <state x="353" y="0" width="478" height="735" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592144443570" />
     <state x="2171" y="0" width="462" height="741" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1588326607025" />
     <state x="288" y="257" width="526" height="478" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1594848514767">
@@ -1297,24 +1344,24 @@
       <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="466" y="300" width="426" height="140" key="#com.jetbrains.php.lang.intentions.PhpImportClassDialog#/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1592138834912" />
-    <state x="499" y="381" width="522" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1594851031481">
+    <state x="499" y="381" width="522" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1595090084364">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="499" y="381" width="402" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1366.741@0.0.1366.741" timestamp="1594851031481" />
     <state x="1048" y="381" width="522" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.3286.741@0.0.3286.741" timestamp="1592988924957" />
-    <state x="499" y="381" width="402" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1593029764421" />
+    <state x="499" y="381" width="402" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1595090084364" />
     <state x="701" y="381" width="509" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592145061391" />
     <state x="2356" y="395" width="402" height="332" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1588872805427" />
-    <state x="0" y="0" width="1366" height="741" key="CommitChangelistDialog2" timestamp="1594847744508">
+    <state x="369" y="0" width="1366" height="741" key="CommitChangelistDialog2" timestamp="1595090575759">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="0" y="0" width="904" height="735" key="CommitChangelistDialog2/0.0.1366.741@0.0.1366.741" timestamp="1594847744508" />
+    <state x="0" y="0" width="904" height="735" key="CommitChangelistDialog2/0.0.1366.741@0.0.1366.741" timestamp="1594851185067" />
     <state x="1920" y="0" width="1366" height="741" key="CommitChangelistDialog2/0.0.3286.741@0.0.3286.741" timestamp="1593178701362" />
-    <state x="369" y="0" width="881" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1594500898400" />
+    <state x="369" y="0" width="881" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1595090575759" />
     <state x="518" y="0" width="881" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592145131804" />
     <state x="2289" y="0" width="881" height="741" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1588872861925" />
-    <state x="99" y="100" width="1152" height="529" maximized="true" key="DiffContextDialog" timestamp="1592988644914">
-      <screen x="0" y="0" width="3286" height="741" />
+    <state x="99" y="100" width="1152" height="529" maximized="true" key="DiffContextDialog" timestamp="1595007768495">
+      <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="99" y="100" width="1152" height="529" maximized="true" key="DiffContextDialog/0.0.3286.741@0.0.3286.741" timestamp="1592988644914" />
     <state x="99" y="100" width="1168" height="541" maximized="true" key="DiffContextDialog/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1588442572785" />
@@ -1322,11 +1369,12 @@
       <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="466" y="128" width="426" height="478" key="FileChooserDialogImpl/0.0.1366.741@0.0.1366.741" timestamp="1594671065933" />
-    <state x="0" y="0" width="1920" height="706" key="IDE.errors.dialog" timestamp="1594734176720">
+    <state x="0" y="0" width="1366" height="706" key="IDE.errors.dialog" timestamp="1595090421269">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="0" y="0" width="1295" height="706" key="IDE.errors.dialog/0.0.1366.741@0.0.1366.741" timestamp="1594734176720" />
     <state x="0" y="0" width="1920" height="706" key="IDE.errors.dialog/0.0.3286.741@0.0.3286.741" timestamp="1592988592634" />
+    <state x="0" y="0" width="1366" height="706" key="IDE.errors.dialog/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1595090421269" />
     <state x="419" y="199" width="909" height="536" key="NewPhpClassDialog" timestamp="1594848493480">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
@@ -1336,16 +1384,16 @@
       <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="865" y="617" width="501" height="106" key="ProcessPopupWindow/0.0.1366.741@0.0.1366.741" timestamp="1592761482691" />
-    <state x="187" y="5" width="1280" height="730" key="SettingsEditor" timestamp="1594849819760">
+    <state x="33" y="0" width="1280" height="730" key="SettingsEditor" timestamp="1595090603435">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="187" y="5" key="SettingsEditor/0.0.1366.741@0.0.1366.741" timestamp="1594849819760" />
-    <state x="33" y="0" width="1280" height="730" key="SettingsEditor/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1587589952804" />
+    <state x="33" y="0" width="1280" height="730" key="SettingsEditor/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1595090603435" />
     <state x="263" y="0" width="1418" height="741" key="SettingsEditor/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1589305333032" />
-    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1594847746211">
+    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1594851186876">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1594847746211" />
+    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1594851186876" />
     <state x="0" y="213" width="1920" height="522" key="Vcs.Push.Dialog.v2/0.0.3286.741@0.0.3286.741" timestamp="1593178739654" />
     <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1594500907067" />
     <state x="555" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592145133378" />
@@ -1360,10 +1408,11 @@
       <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="91" y="0" width="1207" height="735" key="com.intellij.javaee.MapExternalResourceDialog/0.0.1366.741@0.0.1366.741" timestamp="1594849818392" />
-    <state x="333" y="0" width="692" height="735" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1592758592733">
+    <state x="333" y="0" width="692" height="735" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1595084647084">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="333" y="0" width="692" height="735" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1366.741@0.0.1366.741" timestamp="1592758592733" />
+    <state x="333" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1595084647084" />
     <state x="471" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1591891058102">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
@@ -1383,12 +1432,12 @@
       <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="423" y="274" width="511" height="187" key="git4idea.remote.GitConfigureRemotesDialog/0.0.1366.741@0.0.1366.741" timestamp="1587333720901" />
-    <state x="832" y="164" key="run.anything.popup" timestamp="1592745198888">
-      <screen x="0" y="0" width="3286" height="741" />
+    <state x="346" y="164" key="run.anything.popup" timestamp="1595006494648">
+      <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="346" y="164" key="run.anything.popup/0.0.1366.741@0.0.1366.741" timestamp="1589742535972" />
     <state x="832" y="164" key="run.anything.popup/0.0.3286.741@0.0.3286.741" timestamp="1592745198888" />
-    <state x="346" y="164" key="run.anything.popup/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1592138971113" />
+    <state x="346" y="164" key="run.anything.popup/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1595006494648" />
     <state x="346" y="61" width="674" height="678" key="search.everywhere.popup" timestamp="1592080626619">
       <screen x="0" y="0" width="1366" height="741" />
     </state>

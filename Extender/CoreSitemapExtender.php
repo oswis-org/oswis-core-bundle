@@ -8,7 +8,7 @@ namespace OswisOrg\OswisCoreBundle\Extender;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use OswisOrg\OswisCoreBundle\Entity\NonPersistent\SiteMapItem;
-use OswisOrg\OswisCoreBundle\Interfaces\Common\SiteMapExtenderInterface;
+use OswisOrg\OswisCoreBundle\Interfaces\Web\SiteMapExtenderInterface;
 use Symfony\Component\Routing\Exception\InvalidParameterException;
 use Symfony\Component\Routing\Exception\MissingMandatoryParametersException;
 use Symfony\Component\Routing\Exception\RouteNotFoundException;

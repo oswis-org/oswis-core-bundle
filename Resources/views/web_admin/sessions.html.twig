@@ -1,0 +1,24 @@
+<html lang="en">
+<head>
+    <title>Session test</title>
+    <style>
+        table td {
+            border: 1px solid grey;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <h1>SESSIONS</h1>
+    <table style="min-width: 500px; margin: auto;">
+        {% for key, session in app.session.all %}
+            <tr>
+                <td>{{ key }}</td>
+                <td>{{ session }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+</body>
+</html>

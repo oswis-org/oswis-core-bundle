@@ -114,3 +114,25 @@ oswis_org_oswis_core_sitemap_redirect:
     controller: oswis_org_oswis_core.site_map_web_controller::sitemapRedirect
     path: "/sitemap"
 
+##
+## WEB ADMIN
+##
+
+oswis_org_oswis_core_web_admin_homepage:
+    controller: oswis_org_oswis_core.web_admin_controller::showAdminHomepage
+    path: "/web_admin"
+
+oswis_org_oswis_core_web_admin_test_session:
+    controller: oswis_org_oswis_core.web_admin_controller::testSession
+    path: "/test_session"
+
+oswis_org_oswis_core_web_admin_login:
+    controller: oswis_org_oswis_core.web_security_controller::login
+    path: "/web_admin/login"
+
+oswis_org_oswis_core_web_admin_logout:
+    controller: oswis_org_oswis_core.web_security_controller::logout
+    path: "/web_admin/logout"
+
+
+

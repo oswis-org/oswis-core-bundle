@@ -3,16 +3,15 @@
  * @noinspection MethodShouldBeFinalInspection
  */
 
-namespace OswisOrg\OswisCoreBundle\Form;
+namespace OswisOrg\OswisCoreBundle\Form\Activation;
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-abstract class LoginType extends AbstractType
+abstract class ActivationRequestType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -20,18 +19,8 @@ abstract class LoginType extends AbstractType
             'username',
             TextType::class,
             [
-                'label'    => 'Uživatelské jméno',
+                'label'    => 'Uživatelské jméno nebo e-mail',
                 'help'     => 'Zadejte uživatelské jméno nebo e-mail uvedený u uživatelského účtu.',
-                'mapped'   => false,
-                'required' => true,
-            ]
-        );
-        $builder->add(
-            'password',
-            PasswordType::class,
-            [
-                'label'    => 'Heslo',
-                'help'     => 'Zadejte Vaše heslo. Je nutné dodržet velká a malá písmena.',
                 'mapped'   => false,
                 'required' => true,
             ]
@@ -39,7 +28,10 @@ abstract class LoginType extends AbstractType
         $builder->add(
             'submit',
             SubmitType::class,
-            ['label' => 'PŘIHLÁSIT SE']
+            [
+                'label' => 'POŽÁDAT O AKTIVACI',
+                'help'  => 'Na Váš e-mail bude odeslán odkaz, pomocí kterého uskutečníte aktivaci účtu.',
+            ]
         );
     }
 
@@ -49,6 +41,6 @@ abstract class LoginType extends AbstractType
 
     public function getBlockPrefix(): string
     {
-        return 'core_app_user_login';
+        return 'core_app_user_activation_request';
     }
 }

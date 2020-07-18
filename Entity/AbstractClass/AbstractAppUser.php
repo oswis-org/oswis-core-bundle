@@ -71,6 +71,9 @@ abstract class AbstractAppUser implements UserInterface, Serializable, Equatable
 
     public function containsRole(string $roleName): bool
     {
+        if (empty($roleName)) {
+            return true;
+        }
         foreach ($this->getRoles() as $role) {
             if ((is_string($role) && $role === $roleName) || ($role instanceof AppUserRole && $role->getRoleString() === $roleName)) {
                 return true;

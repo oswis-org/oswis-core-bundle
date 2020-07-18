@@ -3,14 +3,14 @@
  * @noinspection MethodShouldBeFinalInspection
  */
 
-namespace OswisOrg\OswisCoreBundle\Service;
+namespace OswisOrg\OswisCoreBundle\Service\Web;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use OswisOrg\OswisCoreBundle\Entity\NonPersistent\SiteMapItem;
-use OswisOrg\OswisCoreBundle\Interfaces\Common\SiteMapExtenderInterface;
+use OswisOrg\OswisCoreBundle\Entity\NonPersistent\RssItem;
+use OswisOrg\OswisCoreBundle\Interfaces\Web\RssExtenderInterface;
 
-class SiteMapService
+class RssService
 {
     protected ?Collection $extenders;
 
@@ -19,19 +19,19 @@ class SiteMapService
         $this->extenders = new ArrayCollection();
     }
 
-    public function addExtender(SiteMapExtenderInterface $extender): void
+    public function addExtender(RssExtenderInterface $extender): void
     {
         $this->extenders->add($extender);
     }
 
     /**
-     * @return Collection<SiteMapItem>
+     * @return Collection<RssItem>
      */
     public function getItems(): Collection
     {
         $items = new ArrayCollection();
         foreach ($this->extenders as $extender) {
-            if ($extender instanceof SiteMapExtenderInterface) {
+            if ($extender instanceof RssExtenderInterface) {
                 foreach ($extender->getItems() as $item) {
                     $items->add($item);
                 }

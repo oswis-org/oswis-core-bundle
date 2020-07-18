@@ -1,0 +1,7 @@
+<nav id="website-main-menu" class="website-main-menu" itemscope itemtype="http://schema.org/SiteNavigationElement">
+    {% for menuItem in menuItems|filter(item => app.user.role(item))|sort((a, b) => a.priority <==> b.priority) %}
+        <a href="{{ menuItem.path }}" itemprop="url" {{ menuItem.newPage|default ? "target='_blank'" : '' }}>
+            <span itemprop="name">{{ menuItem.title }}</span>
+        </a>
+    {% endfor %}
+</nav>
