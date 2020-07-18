@@ -7,6 +7,7 @@ use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserRole;
 use OswisOrg\OswisCoreBundle\Interfaces\Web\RssExtenderInterface;
 use OswisOrg\OswisCoreBundle\Interfaces\Web\SiteMapExtenderInterface;
+use OswisOrg\OswisCoreBundle\Interfaces\Web\WebMenuExtenderInterface;
 use OswisOrg\OswisCoreBundle\Security\AppUserProvider;
 use OswisOrg\OswisCoreBundle\Security\WebUserAuthenticator;
 use Symfony\Component\Config\FileLocator;
@@ -42,6 +43,7 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
         }
         $container->registerForAutoconfiguration(SiteMapExtenderInterface::class)->addTag('oswis.site_map_extender');
         $container->registerForAutoconfiguration(RssExtenderInterface::class)->addTag('oswis.rss_extender');
+        $container->registerForAutoconfiguration(WebMenuExtenderInterface::class)->addTag('oswis.web_menu_extender');
     }
 
     /**
