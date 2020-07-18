@@ -8,6 +8,7 @@ use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserRole;
 use OswisOrg\OswisCoreBundle\Interfaces\Web\RssExtenderInterface;
 use OswisOrg\OswisCoreBundle\Interfaces\Web\SiteMapExtenderInterface;
 use OswisOrg\OswisCoreBundle\Security\AppUserProvider;
+use OswisOrg\OswisCoreBundle\Security\WebUserAuthenticator;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Exception\BadMethodCallException;
@@ -160,7 +161,7 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
                     'stateless' => false,
                     'lazy'      => true,
                     'guard'     => [
-                        'authenticators' => ['App\Security\WebUserAuthenticator'],
+                        'authenticators' => [WebUserAuthenticator::class],
                     ],
                     'logout'    => ['path' => 'web_logout'],
                 ],

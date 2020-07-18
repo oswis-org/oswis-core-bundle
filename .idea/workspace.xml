@@ -27,66 +27,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="Some fixes, updates and changes.">
-      <change afterPath="$PROJECT_DIR$/Controller/Web/WebMenuController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Controller/WebAdmin/WebAdminController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Controller/WebAdmin/WebSecurityController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DependencyInjection/CompilerPass/WebAdminMenuExtenderPass.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Entity/NonPersistent/WebMenuItem.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Interfaces/Web/RssExtenderInterface.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Interfaces/Web/WebMenuExtenderInterface.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Interfaces/WebAdmin/WebAdminMenuExtenderInterface.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/views/web_admin/header.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/views/web_admin/html-skeleton-web-admin.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/views/web_admin/login.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/views/web_admin/main-menu.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/views/web_admin/page-skeleton-web-admin.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/views/web_admin/sessions.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/views/web_admin/web-admin-homepage.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Security/WebUserAuthenticator.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Service/Web/WebMenuService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/oswis-core-bundle.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/oswis-core-bundle.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+    <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/AppUserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/AppUserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/Website/AdminWebController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/Web/AdminWebController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/Website/GdprWebController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/Web/GdprWebController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/Website/HomepageWebController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/Web/HomepageWebController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/Website/InternalActionsWebController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/Web/InternalActionsWebController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/Website/PortalWebController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/Web/PortalWebController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/Website/RssFeedController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/Web/RssFeedController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/Website/SiteMapWebController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/Web/SiteMapWebController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/Website/SiteWebManifestController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/Web/SiteWebManifestController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/Website/WebBannerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/Web/WebBannerController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DependencyInjection/CompilerPass/RssExtenderPass.php" beforeDir="false" afterPath="$PROJECT_DIR$/DependencyInjection/CompilerPass/RssExtenderPass.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DependencyInjection/CompilerPass/SiteMapExtenderPass.php" beforeDir="false" afterPath="$PROJECT_DIR$/DependencyInjection/CompilerPass/SiteMapExtenderPass.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DependencyInjection/Configuration.php" beforeDir="false" afterPath="$PROJECT_DIR$/DependencyInjection/Configuration.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DependencyInjection/OswisOrgOswisCoreExtension.php" beforeDir="false" afterPath="$PROJECT_DIR$/DependencyInjection/OswisOrgOswisCoreExtension.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractAppUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractAppUser.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AppUser/AppUserRole.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUser/AppUserRole.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Extender/CoreSitemapExtender.php" beforeDir="false" afterPath="$PROJECT_DIR$/Extender/CoreSitemapExtender.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Form/ActivationRequestType.php" beforeDir="false" afterPath="$PROJECT_DIR$/Form/Activation/ActivationRequestType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Form/LoginType.php" beforeDir="false" afterPath="$PROJECT_DIR$/Form/Login/LoginType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Form/PasswordChangeRequestType.php" beforeDir="false" afterPath="$PROJECT_DIR$/Form/PasswordChange/PasswordChangeRequestType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Form/PasswordChangeType.php" beforeDir="false" afterPath="$PROJECT_DIR$/Form/PasswordChange/PasswordChangeType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Interfaces/Common/RssExtenderInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/Interfaces/Common/AbstractExtenderInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Interfaces/Common/SiteMapExtenderInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/Interfaces/Web/SiteMapExtenderInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/config/routes.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/config/services.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/web/pages/browserconfig.xml.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/browserconfig.xml.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/web/pages/robots.txt.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/robots.txt.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/web/pages/rss.xml.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/rss.xml.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/web/pages/sitemap.xml.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/sitemap.xml.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/web/pages/sitemap.xsl.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/sitemap.xsl.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/web/parts/form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/parts/form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/web/parts/gdpr.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/parts/gdpr.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/web/parts/main-menu.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/parts/main-menu.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/web/parts/message.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/parts/message.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/web/parts/portal.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/parts/portal.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/web/parts/web-banner.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/parts/web-banner.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/RssService.php" beforeDir="false" afterPath="$PROJECT_DIR$/Service/Web/RssService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/SiteMapService.php" beforeDir="false" afterPath="$PROJECT_DIR$/Service/Web/SiteMapService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -884,14 +827,7 @@
       <workItem from="1594927341840" duration="12600000" />
       <workItem from="1594995853631" duration="3931000" />
       <workItem from="1595007265365" duration="4399000" />
-      <workItem from="1595073210779" duration="6838000" />
-    </task>
-    <task id="LOCAL-00682" summary="Some fixes, updates and changes.">
-      <created>1593022958633</created>
-      <option name="number" value="00682" />
-      <option name="presentableId" value="LOCAL-00682" />
-      <option name="project" value="LOCAL" />
-      <updated>1593022958633</updated>
+      <workItem from="1595073210779" duration="7865000" />
     </task>
     <task id="LOCAL-00683" summary="Some fixes, updates and changes.">
       <created>1593023123215</created>
@@ -1229,7 +1165,14 @@
       <option name="project" value="LOCAL" />
       <updated>1594851185253</updated>
     </task>
-    <option name="localTasksCounter" value="731" />
+    <task id="LOCAL-00731" summary="Some fixes, updates and changes.">
+      <created>1595090900594</created>
+      <option name="number" value="00731" />
+      <option name="presentableId" value="LOCAL-00731" />
+      <option name="project" value="LOCAL" />
+      <updated>1595090900596</updated>
+    </task>
+    <option name="localTasksCounter" value="732" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1273,6 +1216,8 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
@@ -1303,9 +1248,6 @@
     <MESSAGE value="Changes." />
     <MESSAGE value="Some fixes, updates and changes." />
     <option name="LAST_COMMIT_MESSAGE" value="Some fixes, updates and changes." />
-    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
-    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
-    <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="312" y="52" width="734" height="631" key="#Inspections" timestamp="1591553168523">
@@ -1352,12 +1294,12 @@
     <state x="499" y="381" width="402" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1595090084364" />
     <state x="701" y="381" width="509" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592145061391" />
     <state x="2356" y="395" width="402" height="332" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1588872805427" />
-    <state x="369" y="0" width="1366" height="741" key="CommitChangelistDialog2" timestamp="1595090575759">
+    <state x="369" y="0" width="1366" height="741" key="CommitChangelistDialog2" timestamp="1595090900323">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="0" y="0" width="904" height="735" key="CommitChangelistDialog2/0.0.1366.741@0.0.1366.741" timestamp="1594851185067" />
     <state x="1920" y="0" width="1366" height="741" key="CommitChangelistDialog2/0.0.3286.741@0.0.3286.741" timestamp="1593178701362" />
-    <state x="369" y="0" width="881" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1595090575759" />
+    <state x="369" y="0" width="881" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1595090900323" />
     <state x="518" y="0" width="881" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592145131804" />
     <state x="2289" y="0" width="881" height="741" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1588872861925" />
     <state x="99" y="100" width="1152" height="529" maximized="true" key="DiffContextDialog" timestamp="1595007768495">
@@ -1369,12 +1311,12 @@
       <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="466" y="128" width="426" height="478" key="FileChooserDialogImpl/0.0.1366.741@0.0.1366.741" timestamp="1594671065933" />
-    <state x="0" y="0" width="1366" height="706" key="IDE.errors.dialog" timestamp="1595090421269">
+    <state x="0" y="0" width="1366" height="706" key="IDE.errors.dialog" timestamp="1595090869019">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="0" y="0" width="1295" height="706" key="IDE.errors.dialog/0.0.1366.741@0.0.1366.741" timestamp="1594734176720" />
     <state x="0" y="0" width="1920" height="706" key="IDE.errors.dialog/0.0.3286.741@0.0.3286.741" timestamp="1592988592634" />
-    <state x="0" y="0" width="1366" height="706" key="IDE.errors.dialog/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1595090421269" />
+    <state x="0" y="0" width="1366" height="706" key="IDE.errors.dialog/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1595090869019" />
     <state x="419" y="199" width="909" height="536" key="NewPhpClassDialog" timestamp="1594848493480">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
@@ -1390,12 +1332,12 @@
     <state x="187" y="5" key="SettingsEditor/0.0.1366.741@0.0.1366.741" timestamp="1594849819760" />
     <state x="33" y="0" width="1280" height="730" key="SettingsEditor/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1595090603435" />
     <state x="263" y="0" width="1418" height="741" key="SettingsEditor/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1589305333032" />
-    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1594851186876">
+    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1595090902062">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1594851186876" />
     <state x="0" y="213" width="1920" height="522" key="Vcs.Push.Dialog.v2/0.0.3286.741@0.0.3286.741" timestamp="1593178739654" />
-    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1594500907067" />
+    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1595090902062" />
     <state x="555" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592145133378" />
     <state x="2315" y="199" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1588872863506" />
     <state x="99" y="96" width="1085" height="456" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1594814880144">
@@ -1421,12 +1363,12 @@
       <screen x="1920" y="0" width="1366" height="768" />
     </state>
     <state x="1920" y="0" width="1366" height="741" maximized="true" key="dock-window-1/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1588846320148" />
-    <state x="158" y="54" width="812" height="687" key="find.popup" timestamp="1594141789530">
+    <state x="158" y="54" width="812" height="687" key="find.popup" timestamp="1595091609168">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="158" y="54" width="812" height="687" key="find.popup/0.0.1366.741@0.0.1366.741" timestamp="1594141789530" />
     <state x="380" y="54" width="1954" height="687" key="find.popup/0.0.3286.741@0.0.3286.741" timestamp="1588167954850" />
-    <state x="158" y="54" width="812" height="687" key="find.popup/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1593023950717" />
+    <state x="158" y="54" width="812" height="687" key="find.popup/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1595091609168" />
     <state x="222" y="54" width="1142" height="687" key="find.popup/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1588881078593" />
     <state x="423" y="274" width="511" height="187" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1587333720901">
       <screen x="0" y="0" width="1366" height="741" />
