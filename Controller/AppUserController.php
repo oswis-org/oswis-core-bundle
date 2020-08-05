@@ -140,6 +140,7 @@ class AppUserController extends AbstractController
      * @throws NotFoundException
      * @throws NotImplementedException
      * @throws OswisException
+     * @throws OutOfBoundsException
      * @throws RuntimeException
      * @throws TokenInvalidException
      */
