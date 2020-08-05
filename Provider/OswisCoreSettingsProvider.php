@@ -6,6 +6,8 @@
 
 namespace OswisOrg\OswisCoreBundle\Provider;
 
+use Symfony\Component\HttpFoundation\IpUtils;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\Mime\Address;
 use Symfony\Component\Mime\Exception\LogicException;
 use Symfony\Component\Mime\Exception\RfcComplianceException;
@@ -106,5 +108,20 @@ class OswisCoreSettingsProvider
         }
 
         return null;
+    }
+
+    /**
+     * @throws AccessDeniedHttpException
+     */
+    public function checkAdminIP(?string $ip): void
+    {
+        if (!$this->isAdminIP($ip)) {
+            throw new AccessDeniedHttpException("Nedostatečná oprávnění.");
+        }
+    }
+
+    public function isAdminIP(?string $ip): bool
+    {
+        return IpUtils::checkIp($ip, $this->getAdminIPs());
     }
 }

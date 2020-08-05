@@ -28,17 +28,15 @@ oswis_org_oswis_core_app_user_process_token:
     requirements:
         appUserId: '\d+'
 
-### Endpoint for user activation request.
+### Endpoint for user activation request (form).
 oswis_org_oswis_core_app_user_activation_request:
     controller: oswis_org_oswis_core.app_user_controller::activationRequest
     path: "/uzivatel/aktivace"
 
-### Endpoint for password change request.
+### Endpoint for password change request (form).
 oswis_org_oswis_core_app_user_password_change_request:
     controller: oswis_org_oswis_core.app_user_controller::passwordChangeRequest
-    path: "/uzivatel/zmena-hesla/{token}/{appUserId}"
-    requirements:
-        appUserId: '\d+'
+    path: "/uzivatel/zmena-hesla"
 
 oswis_org_oswis_core_app_user_register_root:
     controller: oswis_org_oswis_core.app_user_controller::registerRoot

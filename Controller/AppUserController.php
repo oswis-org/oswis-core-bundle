@@ -33,8 +33,7 @@ class AppUserController extends AbstractController
     }
 
     /**
-     * @param Request  $request
-     * @param int|null $appUserId
+     * @param Request $request
      *
      * @return Response
      * @throws InvalidTypeException
@@ -44,16 +43,17 @@ class AppUserController extends AbstractController
      * @throws OswisException
      * @throws UserNotFoundException
      * @throws UserNotUniqueException
+     * @throws RuntimeException
      */
-    public function passwordChangeRequest(Request $request, ?int $appUserId): Response
+    public function passwordChangeRequest(Request $request): Response
     {
-        $appUser = $this->appUserService->getRepository()->loadUserById($appUserId);
-        if (null === $appUser) {
-            throw new UserNotFoundException();
-        }
         $form = $this->createForm(PasswordChangeRequestType::class, []);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            $appUser = $this->appUserService->getRepository()->loadUserByUsername($form->getData()['username']);
+            if (null !== $appUser) {
+                throw new UserNotFoundException();
+            }
             $this->appUserService->requestPasswordChange($appUser, true);
 
             return $this->passwordChangeRequested();
