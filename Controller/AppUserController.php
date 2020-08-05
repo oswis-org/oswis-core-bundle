@@ -19,6 +19,7 @@ use OswisOrg\OswisCoreBundle\Form\PasswordChange\PasswordChangeType;
 use OswisOrg\OswisCoreBundle\Service\AppUserService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Exception\LogicException;
+use Symfony\Component\Form\Exception\OutOfBoundsException;
 use Symfony\Component\Form\Exception\RuntimeException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -41,17 +42,18 @@ class AppUserController extends AbstractController
      * @throws NotFoundException
      * @throws NotImplementedException
      * @throws OswisException
+     * @throws OutOfBoundsException
+     * @throws RuntimeException
      * @throws UserNotFoundException
      * @throws UserNotUniqueException
-     * @throws RuntimeException
      */
     public function passwordChangeRequest(Request $request): Response
     {
         $form = $this->createForm(PasswordChangeRequestType::class, []);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $appUser = $this->appUserService->getRepository()->loadUserByUsername($form->getData()['username']);
-            if (null !== $appUser) {
+            $appUser = $this->appUserService->getRepository()->loadUserByUsername($form->get('username')->getData());
+            if (null === $appUser) {
                 throw new UserNotFoundException();
             }
             $this->appUserService->requestPasswordChange($appUser, true);
@@ -88,6 +90,7 @@ class AppUserController extends AbstractController
      * @throws NotFoundException
      * @throws NotImplementedException
      * @throws OswisException
+     * @throws OutOfBoundsException
      * @throws RuntimeException
      * @throws UserNotFoundException
      * @throws UserNotUniqueException
@@ -97,7 +100,7 @@ class AppUserController extends AbstractController
         $form = $this->createForm(ActivationRequestType::class, []);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $appUser = $this->appUserService->getRepository()->loadUserByUsername($form->getData()['username'] ?? null);
+            $appUser = $this->appUserService->getRepository()->loadUserByUsername($form->get('username')->getData());
             if (null === $appUser) {
                 throw new UserNotFoundException();
             }
@@ -188,6 +191,7 @@ class AppUserController extends AbstractController
      * @throws NotFoundException
      * @throws NotImplementedException
      * @throws OswisException
+     * @throws OutOfBoundsException
      * @throws RuntimeException
      * @throws TokenInvalidException
      */
@@ -197,7 +201,7 @@ class AppUserController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $appUserToken->use();
-            $this->appUserService->changePassword($appUserToken->getAppUser(), $form->getData()['password'], true);
+            $this->appUserService->changePassword($appUserToken->getAppUser(), $form->get('password')->getData(), true);
 
             return $this->passwordChanged();
         }

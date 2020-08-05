@@ -30,7 +30,6 @@ class PasswordChangeRequestType extends AbstractType
             SubmitType::class,
             [
                 'label' => 'POŽÁDAT O ZMĚNU HESLA',
-                'help'  => 'Na Váš e-mail bude odeslán odkaz, pomocí kterého uskutečníte změnu hesla.',
             ]
         );
     }

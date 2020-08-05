@@ -30,7 +30,6 @@ class ActivationRequestType extends AbstractType
             SubmitType::class,
             [
                 'label' => 'POŽÁDAT O AKTIVACI',
-                'help'  => 'Na Váš e-mail bude odeslán odkaz, pomocí kterého uskutečníte aktivaci účtu.',
             ]
         );
     }
