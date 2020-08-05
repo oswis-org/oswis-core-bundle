@@ -1,12 +1,10 @@
 <?php
 /**
+ * @noinspection PhpFullyQualifiedNameUsageInspection
  * @noinspection MethodShouldBeFinalInspection
- * @noinspection PhpUnused
  */
 
 namespace OswisOrg\OswisCoreBundle\Traits\Common;
-
-use OswisOrg\OswisCoreBundle\Entity\NonPersistent\Publicity;
 
 /**
  * Trait adds fields that describing visibility of entity.
@@ -25,9 +23,9 @@ trait EntityPublicTrait
     /**
      * Fill columns related to publicity from Publicity object.
      *
-     * @param Publicity|null $publicity
+     * @param \OswisOrg\OswisCoreBundle\Entity\NonPersistent\Publicity|null $publicity
      */
-    public function setFieldsFromPublicity(?Publicity $publicity = null): void
+    public function setFieldsFromPublicity(?\OswisOrg\OswisCoreBundle\Entity\NonPersistent\Publicity $publicity = null): void
     {
         if (null !== $publicity) {
             $this->setPublicOnWeb($publicity->publicOnWeb);
@@ -46,11 +44,11 @@ trait EntityPublicTrait
 
     /**
      * Indicates whether the item is publicly available on the web.
-     * @return Publicity
+     * @return \OswisOrg\OswisCoreBundle\Entity\NonPersistent\Publicity
      */
-    public function getPublicity(): Publicity
+    public function getPublicity(): \OswisOrg\OswisCoreBundle\Entity\NonPersistent\Publicity
     {
-        return new Publicity($this->isPublicOnWeb());
+        return new \OswisOrg\OswisCoreBundle\Entity\NonPersistent\Publicity($this->isPublicOnWeb());
     }
 
     /**

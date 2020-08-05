@@ -60,7 +60,7 @@ abstract class AbstractMail implements BasicInterface
     /**
      * @throws InvalidTypeException
      */
-    public function __construct(string $subject, string $address, ?string $type = null, ?string $recipientName = null, ?string $messageID = null)
+    public function __construct(string $subject = null, string $address = null, ?string $type = null, ?string $recipientName = null, ?string $messageID = null)
     {
         $this->subject = $subject;
         $this->address = $address;
