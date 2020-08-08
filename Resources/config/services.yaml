@@ -42,7 +42,7 @@ services:
         autowire: true
         public: true
         arguments:
-            - '@oswis_org_oswis_core.app_user_repository'
+            - '@OswisOrg\OswisCoreBundle\Repository\AppUserRepository'
 
     oswis_org_oswis_core.web_user_authenticator:
         class: OswisOrg\OswisCoreBundle\Security\WebUserAuthenticator
@@ -86,7 +86,7 @@ services:
             - '@oswis_org_oswis_core.app_user_token_service'
             - '@oswis_org_oswis_core.app_user_mail_service'
             - '@oswis_org_oswis_core.app_user_type_service'
-            - '@oswis_org_oswis_core.app_user_repository'
+            - '@OswisOrg\OswisCoreBundle\Repository\AppUserRepository'
     OswisOrg\OswisCoreBundle\Service\AppUserService:
         alias: oswis_org_oswis_core.app_user_service
         public: true
@@ -134,9 +134,9 @@ services:
         arguments:
             - '@oswis_org_oswis_core.mail_service'
             - '@doctrine.orm.entity_manager'
-            - '@oswis_org_oswis_core.app_user_mail_group_repository'
-            - '@oswis_org_oswis_core.app_user_mail_category_repository'
-            - '@oswis_org_oswis_core.app_user_mail_repository'
+            - '@OswisOrg\OswisCoreBundle\Repository\AppUserMailGroupRepository'
+            - '@OswisOrg\OswisCoreBundle\Repository\AppUserMailCategoryRepository'
+            - '@OswisOrg\OswisCoreBundle\Repository\AppUserMailRepository'
     OswisOrg\OswisCoreBundle\Service\AppUserMailService:
         alias: oswis_org_oswis_core.app_user_mail_service
         public: true
@@ -148,7 +148,7 @@ services:
         arguments:
             - '@doctrine.orm.entity_manager'
             - '@monolog.logger'
-            - '@oswis_org_oswis_core.app_user_role_repository'
+            - '@OswisOrg\OswisCoreBundle\Repository\AppUserRoleRepository'
     OswisOrg\OswisCoreBundle\Service\AppUserRoleService:
         alias: oswis_org_oswis_core.app_user_role_service
         public: true
@@ -160,7 +160,7 @@ services:
         arguments:
             - '@doctrine.orm.entity_manager'
             - '@monolog.logger'
-            - '@oswis_org_oswis_core.app_user_type_repository'
+            - '@OswisOrg\OswisCoreBundle\Repository\AppUserTypeRepository'
     OswisOrg\OswisCoreBundle\Service\AppUserTypeService:
         alias: oswis_org_oswis_core.app_user_type_service
         public: true
@@ -216,7 +216,8 @@ services:
     ###
     ### REPOSITORY
     ###
-    oswis_org_oswis_core.app_user_repository:
+
+    OswisOrg\OswisCoreBundle\Repository\AppUserRepository:
         class: OswisOrg\OswisCoreBundle\Repository\AppUserRepository
         autowire: true
         public: true
@@ -224,11 +225,8 @@ services:
             - '@doctrine'
         tags:
             - 'doctrine.repository_service'
-    OswisOrg\OswisCoreBundle\Repository\AppUserRepository:
-        alias: oswis_org_oswis_core.app_user_repository
-        public: true
 
-    oswis_org_oswis_core.app_user_type_repository:
+    OswisOrg\OswisCoreBundle\Repository\AppUserTypeRepository:
         class: OswisOrg\OswisCoreBundle\Repository\AppUserTypeRepository
         autowire: true
         public: true
@@ -236,11 +234,8 @@ services:
             - '@doctrine'
         tags:
             - 'doctrine.repository_service'
-    OswisOrg\OswisCoreBundle\Repository\AppUserTypeRepository:
-        alias: oswis_org_oswis_core.app_user_type_repository
-        public: true
 
-    oswis_org_oswis_core.app_user_role_repository:
+    OswisOrg\OswisCoreBundle\Repository\AppUserRoleRepository:
         class: OswisOrg\OswisCoreBundle\Repository\AppUserRoleRepository
         autowire: true
         public: true
@@ -248,11 +243,8 @@ services:
             - '@doctrine'
         tags:
             - 'doctrine.repository_service'
-    OswisOrg\OswisCoreBundle\Repository\AppUserRoleRepository:
-        alias: oswis_org_oswis_core.app_user_role_repository
-        public: true
 
-    oswis_org_oswis_core.app_user_token_repository:
+    OswisOrg\OswisCoreBundle\Repository\AppUserTokenRepository:
         class: OswisOrg\OswisCoreBundle\Repository\AppUserTokenRepository
         autowire: true
         public: true
@@ -260,11 +252,8 @@ services:
             - '@doctrine'
         tags:
             - 'doctrine.repository_service'
-    OswisOrg\OswisCoreBundle\Repository\AppUserTokenRepository:
-        alias: oswis_org_oswis_core.app_user_token_repository
-        public: true
 
-    oswis_org_oswis_core.app_user_mail_category_repository:
+    OswisOrg\OswisCoreBundle\Repository\AppUserMailCategoryRepository:
         class: OswisOrg\OswisCoreBundle\Repository\AppUserMailCategoryRepository
         autowire: true
         public: true
@@ -272,11 +261,8 @@ services:
             - '@doctrine'
         tags:
             - 'doctrine.repository_service'
-    OswisOrg\OswisCoreBundle\Repository\AppUserMailCategoryRepository:
-        alias: oswis_org_oswis_core.app_user_mail_category_repository
-        public: true
 
-    oswis_org_oswis_core.app_user_mail_repository:
+    OswisOrg\OswisCoreBundle\Repository\AppUserMailRepository:
         class: OswisOrg\OswisCoreBundle\Repository\AppUserMailRepository
         autowire: true
         public: true
@@ -284,11 +270,8 @@ services:
             - '@doctrine'
         tags:
             - 'doctrine.repository_service'
-    OswisOrg\OswisCoreBundle\Repository\AppUserMailRepository:
-        alias: oswis_org_oswis_core.app_user_mail_repository
-        public: true
 
-    oswis_org_oswis_core.app_user_mail_group_repository:
+    OswisOrg\OswisCoreBundle\Repository\AppUserMailGroupRepository:
         class: OswisOrg\OswisCoreBundle\Repository\AppUserMailGroupRepository
         autowire: true
         public: true
@@ -296,11 +279,8 @@ services:
             - '@doctrine'
         tags:
             - 'doctrine.repository_service'
-    OswisOrg\OswisCoreBundle\Repository\AppUserMailGroupRepository:
-        alias: oswis_org_oswis_core.app_user_mail_group_repository
-        public: true
 
-    oswis_org_oswis_core.twig_template_repository:
+    OswisOrg\OswisCoreBundle\Repository\TwigTemplateRepository:
         class: OswisOrg\OswisCoreBundle\Repository\TwigTemplateRepository
         autowire: true
         public: true
@@ -308,10 +288,6 @@ services:
             - '@doctrine'
         tags:
             - 'doctrine.repository_service'
-    OswisOrg\OswisCoreBundle\Repository\TwigTemplateRepository:
-        alias: oswis_org_oswis_core.twig_template_repository
-        public: true
-
 
     ####
     #### SUBSCRIBERS
@@ -373,7 +349,7 @@ services:
         class: OswisOrg\OswisCoreBundle\Twig\Loader\DatabaseLoader
         public: true
         arguments:
-            - '@oswis_org_oswis_core.twig_template_repository'
+            - '@OswisOrg\OswisCoreBundle\Repository\TwigTemplateRepository'
         tags:
             - { name: twig.loader }
 
