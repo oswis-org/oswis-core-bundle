@@ -78,9 +78,9 @@ class AppUserMail extends AbstractMail
      *
      * @throws InvalidTypeException
      */
-    public function __construct(AppUser $appUser, string $subject, ?string $type = null, AppUserToken $token = null, ?string $messageId = null)
+    public function __construct(AppUser $appUser = null, string $subject = null, ?string $type = null, AppUserToken $token = null, ?string $messageId = null)
     {
-        parent::__construct($subject, $appUser->getEmail(), $type, $appUser->getName(), $messageId);
+        parent::__construct($subject, $appUser ? $appUser->getEmail() : null, $type, $appUser ? $appUser->getName() : null, $messageId);
         $this->appUser = $appUser;
         $this->appUserToken = $token;
     }
