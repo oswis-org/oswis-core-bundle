@@ -21,36 +21,36 @@ trait DeletedTrait
      * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\ExistsFilter::class)
      * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
      */
-    protected ?DateTime $deleted = null;
+    protected ?DateTime $deletedAt = null;
 
     public function getDeletedDaysAgo(): ?int
     {
-        return $this->deleted ? $this->deleted->diff(new DateTime())->d : null;
+        return $this->deletedAt ? $this->deletedAt->diff(new DateTime())->d : null;
     }
 
     public function delete(?DateTime $dateTime = null): void
     {
-        $this->setDeleted($this->getDeleted() ?? $dateTime ?? new DateTime());
+        $this->setDeletedAt($this->getDeletedAt() ?? $dateTime ?? new DateTime());
     }
 
     /**
      * Get date and time when entity was deleted.
      */
-    public function getDeleted(): ?DateTime
+    public function getDeletedAt(): ?DateTime
     {
-        return $this->deleted;
+        return $this->deletedAt;
     }
 
-    public function setDeleted(?DateTime $deleted = null): void
+    public function setDeletedAt(?DateTime $deletedAt = null): void
     {
-        if (null === $deleted) {
-            $this->deleted = $deleted;
+        if (null === $deletedAt) {
+            $this->deletedAt = $deletedAt;
         }
-        $this->deleted = $deleted > $this->deleted ? $this->deleted : $deleted;
+        $this->deletedAt = $deletedAt > $this->deletedAt ? $this->deletedAt : $deletedAt;
     }
 
     public function isDeleted(?DateTime $referenceDateTime = null): bool
     {
-        return $this->deleted && ($referenceDateTime ?? new DateTime()) > $this->deleted;
+        return $this->deletedAt && ($referenceDateTime ?? new DateTime()) > $this->deletedAt;
     }
 }
