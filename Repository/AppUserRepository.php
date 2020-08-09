@@ -58,7 +58,7 @@ class AppUserRepository extends ServiceEntityRepository implements UserLoaderInt
         $builder = $this->createQueryBuilder('user')->where('(user.username = :username OR user.email = :username)');
         $builder->setParameter('username', $username);
         if (true === $onlyActive) {
-            $builder->andWhere('user.activated <= :now')->andWhere('user.deleted IS NULL OR user.deleted >= :now');
+            $builder->andWhere('user.activated <= :now')->andWhere('user.deletedAt IS NULL OR user.deletedAt >= :now');
             $builder->setParameter('now', new DateTime());
         }
         try {
