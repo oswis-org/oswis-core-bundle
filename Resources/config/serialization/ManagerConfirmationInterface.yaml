@@ -1,0 +1,10 @@
+OswisOrg\OswisCoreBundle\Interfaces\Common\ManagerConfirmationInterface:
+    attributes:
+        managerConfirmedAt:
+            groups:
+                - 'entities_get'
+                - 'entity_get'
+        managerConfirmedBy:
+            groups:
+                - 'entities_get'
+                - 'entity_get'

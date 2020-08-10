@@ -1,0 +1,10 @@
+OswisOrg\OswisCoreBundle\Interfaces\Common\UserConfirmationInterface:
+    attributes:
+        userConfirmedAt:
+            groups:
+                - 'entities_get'
+                - 'entity_get'
+        userConfirmedBy:
+            groups:
+                - 'entities_get'
+                - 'entity_get'

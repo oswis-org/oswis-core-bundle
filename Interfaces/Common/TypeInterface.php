@@ -4,7 +4,6 @@ namespace OswisOrg\OswisCoreBundle\Interfaces\Common;
 
 interface TypeInterface
 {
-
     public static function checkType(?string $typeName): bool;
 
     public static function getAllowedTypes(): array;

@@ -9,7 +9,6 @@ use Psr\Log\LoggerInterface;
 
 /**
  * AppUserRole service.
- * @noinspection PhpUnused
  */
 class AppUserRoleService
 {

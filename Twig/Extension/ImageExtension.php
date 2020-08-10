@@ -1,8 +1,8 @@
-<?php /** @noinspection RealpathInStreamContextInspection */
-/** @noinspection NestedTernaryOperatorInspection */
-/** @noinspection MissingParameterTypeDeclarationInspection */
+<?php
 /**
- * @noinspection PhpUnused
+ * @noinspection RealpathInStreamContextInspection
+ * @noinspection NestedTernaryOperatorInspection
+ * @noinspection MissingParameterTypeDeclarationInspection
  */
 
 namespace OswisOrg\OswisCoreBundle\Twig\Extension;

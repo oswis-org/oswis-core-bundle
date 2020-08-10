@@ -4,4 +4,3 @@ OswisOrg\OswisCoreBundle\Entity\Logger\ClientLogRecord:
             groups: ['client_log_records_post']
         message:
             groups: ['client_log_records_post']
-

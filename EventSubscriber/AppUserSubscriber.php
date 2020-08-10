@@ -1,7 +1,7 @@
-<?php /** @noinspection MissingParameterTypeDeclarationInspection */
+<?php
 
 /**
- * @noinspection PhpUnused
+ * @noinspection MissingParameterTypeDeclarationInspection
  */
 
 namespace OswisOrg\OswisCoreBundle\EventSubscriber;

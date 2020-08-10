@@ -1,0 +1,8 @@
+OswisOrg\OswisCoreBundle\Interfaces\Common\TextValueInterface:
+    attributes:
+        textValue:
+            groups:
+                - 'entities_get'
+                - 'entities_post'
+                - 'entity_get'
+                - 'entity_put'

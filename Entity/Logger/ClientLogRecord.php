@@ -14,20 +14,18 @@ use OswisOrg\OswisCoreBundle\Traits\Common\BasicTrait;
  * @ApiResource(
  *   attributes={
  *     "filters"={"search"},
- *     "access_control"="is_granted('IS_AUTHENTICATED_ANONYMOUSLY')",
- *     "normalization_context"={"groups"={"client_log_records_get"}},
- *     "denormalization_context"={"groups"={"client_log_records_post"}}
+ *     "normalization_context"={"groups"={"entities_get", "client_log_records_get"}},
+ *     "denormalization_context"={"groups"={"entities_post", "client_log_records_post"}}
  *   },
  *   collectionOperations={
  *     "post"={
- *       "access_control"="is_granted('IS_AUTHENTICATED_ANONYMOUSLY')",
- *       "denormalization_context"={"groups"={"client_log_records_post"}}
+ *       "denormalization_context"={"groups"={"entities_post", "client_log_records_post"}}
  *     }
  *   },
  *   itemOperations={
  *     "get"={
  *       "access_control"="is_granted('ROLE_MANAGER')",
- *       "denormalization_context"={"groups"={"client_log_record_get"}}
+ *       "denormalization_context"={"groups"={"entities_post", "client_log_record_get"}}
  *     }
  *   }
  * )

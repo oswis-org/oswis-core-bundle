@@ -1,0 +1,12 @@
+OswisOrg\OswisCoreBundle\Interfaces\Common\DeletedInterface:
+    attributes:
+        deletedAt:
+            groups:
+                - 'entities_get'
+                - 'entities_post'
+                - 'entity_get'
+                - 'entity_put'
+        deletedDaysAgo:
+            groups:
+                - 'entities_get'
+                - 'entity_get'

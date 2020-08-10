@@ -1,0 +1,11 @@
+OswisOrg\OswisCoreBundle\Interfaces\Common\TypeInterface:
+    attributes:
+        type:
+            groups:
+                - 'entities_get'
+                - 'entities_post'
+                - 'entity_get'
+                - 'entity_put'
+        allowedTypes:
+            groups:
+                - 'entity_get'

@@ -2,42 +2,42 @@ OswisOrg\OswisCoreBundle\Interfaces\Common\NameableInterface:
     attributes:
         slug:
             groups:
-                - 'nameables_get'
-                - 'nameable_get'
+                - 'entities_get'
+                - 'entity_get'
         forcedSlug:
             groups:
-                - 'nameables_get'
-                - 'nameables_post'
-                - 'nameable_get'
-                - 'nameable_put'
+                - 'entities_get'
+                - 'entities_post'
+                - 'entity_get'
+                - 'entity_put'
         name:
             groups:
-                - 'nameables_get'
-                - 'nameables_post'
-                - 'nameable_get'
-                - 'nameable_put'
+                - 'entities_get'
+                - 'entities_post'
+                - 'entity_get'
+                - 'entity_put'
         shortName:
             groups:
-                - 'nameables_get'
-                - 'nameables_post'
-                - 'nameable_get'
-                - 'nameable_put'
+                - 'entities_get'
+                - 'entities_post'
+                - 'entity_get'
+                - 'entity_put'
         description:
             groups:
-                - 'nameables_get'
-                - 'nameables_post'
-                - 'nameable_get'
-                - 'nameable_put'
+                - 'entities_get'
+                - 'entities_post'
+                - 'entity_get'
+                - 'entity_put'
         note:
             groups:
-                - 'nameables_get'
-                - 'nameables_post'
-                - 'nameable_get'
-                - 'nameable_put'
+                - 'entities_get'
+                - 'entities_post'
+                - 'entity_get'
+                - 'entity_put'
         internalNote:
             groups:
-                - 'nameables_get'
-                - 'nameables_post'
-                - 'nameable_get'
-                - 'nameable_put'
+                - 'entities_get'
+                - 'entities_post'
+                - 'entity_get'
+                - 'entity_put'
 
