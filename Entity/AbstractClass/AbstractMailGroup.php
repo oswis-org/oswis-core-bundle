@@ -84,6 +84,7 @@ abstract class AbstractMailGroup implements MailGroupInterface
     public function isApplicableByRestrictions(?object $entity): bool
     {
         assert($entity);
+
         return true;
     }
 
