@@ -5,20 +5,17 @@
 
 namespace OswisOrg\OswisCoreBundle\Entity\AppUser;
 
-use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use OswisOrg\OswisCoreBundle\Entity\NonPersistent\Nameable;
-use OswisOrg\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
 use OswisOrg\OswisCoreBundle\Interfaces\Common\NameableInterface;
 use OswisOrg\OswisCoreBundle\Traits\Common\NameableTrait;
 
 /**
  * Form of user (customer, manager, admin etc.).
- *
  * @Doctrine\ORM\Mapping\Entity(repositoryClass="OswisOrg\OswisCoreBundle\Repository\AppUserTypeRepository")
  * @Doctrine\ORM\Mapping\Table(name="core_app_user_type")
- * @ApiResource(
+ * @ApiPlatform\Core\Annotation\ApiResource(
  *   attributes={
  *     "filters"={"search"},
  *     "access_control"="is_granted('ROLE_MANAGER')"
@@ -26,25 +23,25 @@ use OswisOrg\OswisCoreBundle\Traits\Common\NameableTrait;
  *   collectionOperations={
  *     "get"={
  *       "access_control"="is_granted('ROLE_MANAGER')",
- *       "normalization_context"={"groups"={"nameables_get", "app_user_types_get"}, "enable_max_depth"=true},
+ *       "normalization_context"={"groups"={"entities_get", "app_user_types_get"}, "enable_max_depth"=true},
  *     },
  *     "post"={
  *       "access_control"="is_granted('ROLE_ROOT')",
- *       "denormalization_context"={"groups"={"nameables_post", "app_user_types_post"}, "enable_max_depth"=true}
+ *       "denormalization_context"={"groups"={"entities_post", "app_user_types_post"}, "enable_max_depth"=true}
  *     }
  *   },
  *   itemOperations={
  *     "get"={
  *       "access_control"="is_granted('ROLE_MANAGER')",
- *       "normalization_context"={"groups"={"nameable_get", "app_user_type_get"}, "enable_max_depth"=true},
+ *       "normalization_context"={"groups"={"entity_get", "app_user_type_get"}, "enable_max_depth"=true},
  *     },
  *     "put"={
  *       "access_control"="is_granted('ROLE_ROOT')",
- *       "denormalization_context"={"groups"={"nameable_put", "app_user_type_put"}, "enable_max_depth"=true}
+ *       "denormalization_context"={"groups"={"entity_put", "app_user_type_put"}, "enable_max_depth"=true}
  *     }
  *   }
  * )
- * @Searchable({
+ * @OswisOrg\OswisCoreBundle\Filter\SearchAnnotation({
  *     "id",
  *     "slug",
  *     "name",
@@ -81,11 +78,11 @@ class AppUserType implements NameableInterface
      */
     protected ?bool $adminUser = null;
 
-    public function __construct(?Nameable $nameable = null, ?AppUserRole $appUserRole = null, ?bool $adminUser = false)
+    public function __construct(?Nameable $entity = null, ?AppUserRole $appUserRole = null, ?bool $adminUser = false)
     {
         $this->setAppUserRole($appUserRole);
         $this->setAdminUser($adminUser);
-        $this->setFieldsFromNameable($nameable);
+        $this->setFieldsFromNameable($entity);
     }
 
     /**

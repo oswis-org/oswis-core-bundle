@@ -27,112 +27,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Interfaces/Common/ActivatedInterface.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Interfaces/Common/DeletedInterface.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Interfaces/Common/ManagerConfirmationInterface.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Interfaces/Common/UserConfirmationInterface.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/config/serialization/ActivatedInterface.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/config/serialization/DeletedInterface.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/config/serialization/ManagerConfirmationInterface.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/config/serialization/PriorityInterface.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/config/serialization/TextValueInterface.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/config/serialization/TypeInterface.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/config/serialization/UserConfirmationInterface.yaml" afterDir="false" />
+    <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="Some fixes, updates and changes.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api/Dto/AppUserActionRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/Api/Dto/AppUserActionRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/AbstractClass/AbstractImageAction.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/AbstractClass/AbstractImageAction.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/Web/GdprWebController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/Web/GdprWebController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/Web/HomepageWebController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/Web/HomepageWebController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/Web/InternalActionsWebController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/Web/InternalActionsWebController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/Web/PortalWebController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/Web/PortalWebController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/Web/SiteWebManifestController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/Web/SiteWebManifestController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/Web/WebBannerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/Web/WebBannerController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractFile.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractFile.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractImage.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractImage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractMailGroup.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractMailGroup.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractWebContent.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractWebContent.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Entity/AppUser/AppUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUser/AppUser.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AppUser/AppUserFlag.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUser/AppUserFlag.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AppUser/AppUserRole.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUser/AppUserRole.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Entity/AppUser/AppUserType.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUser/AppUserType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/Logger/ClientLogRecord.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Logger/ClientLogRecord.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/NonPersistent/BankAccount.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/NonPersistent/BankAccount.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/NonPersistent/DateTimeRange.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/NonPersistent/DateTimeRange.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/NonPersistent/Export/CsvExportList.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/NonPersistent/Export/CsvExportList.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/NonPersistent/Export/ExportListColumn.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/NonPersistent/Export/ExportListColumn.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/NonPersistent/Export/ExportSettings.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/NonPersistent/Export/ExportSettings.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/NonPersistent/Export/PdfExportList.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/NonPersistent/Export/PdfExportList.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/NonPersistent/FormValue.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/NonPersistent/FormValue.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/NonPersistent/PostalAddress.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/NonPersistent/PostalAddress.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/Revisions/AbstractRevision.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Revisions/AbstractRevision.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/Revisions/AbstractRevisionContainer.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Revisions/AbstractRevisionContainer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventSubscriber/AppUserSubscriber.php" beforeDir="false" afterPath="$PROJECT_DIR$/EventSubscriber/AppUserSubscriber.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventSubscriber/ExportSubscriber.php" beforeDir="false" afterPath="$PROJECT_DIR$/EventSubscriber/ExportSubscriber.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventSubscriber/MailerSubscriber.php" beforeDir="false" afterPath="$PROJECT_DIR$/EventSubscriber/MailerSubscriber.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Interfaces/AddressBook/AgeRangeInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/Interfaces/AddressBook/AgeRangeInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Interfaces/AddressBook/BirthDateInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/Interfaces/AddressBook/BirthDateInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Interfaces/AddressBook/PersonInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/Interfaces/AddressBook/PersonInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Interfaces/Common/BasicMailConfirmationInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/Interfaces/Common/BasicMailConfirmationInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Interfaces/Common/DateRangeInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/Interfaces/Common/DateRangeInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Interfaces/Common/MyDateTimeInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/Interfaces/Common/MyDateTimeInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Interfaces/Common/NameableInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/Interfaces/Common/NameableInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Interfaces/Common/TimestampableInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/Interfaces/Common/TimestampableInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Interfaces/Common/TypeInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/Interfaces/Common/TypeInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Interfaces/Export/PdfExportableInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/Interfaces/Export/PdfExportableInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Interfaces/Payment/PaymentInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/Interfaces/Payment/PaymentInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Interfaces/Revisions/RevisionContainerInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/Interfaces/Revisions/RevisionContainerInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Interfaces/Revisions/RevisionInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/Interfaces/Revisions/RevisionInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Provider/OswisCoreSettingsProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/Provider/OswisCoreSettingsProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Repository/AppUserMailCategoryRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/Repository/AppUserMailCategoryRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Repository/AppUserMailGroupRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/Repository/AppUserMailGroupRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Repository/AppUserMailRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/Repository/AppUserMailRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Repository/AppUserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/Repository/AppUserRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Repository/AppUserRoleRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/Repository/AppUserRoleRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Repository/AppUserTypeRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/Repository/AppUserTypeRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Repository/TwigTemplateRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/Repository/TwigTemplateRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/config/serialization/BasicInterface.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/config/serialization/BasicInterface.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/config/serialization/ClientLogRecord.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/config/serialization/ClientLogRecord.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/config/serialization/NameableInterface.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/config/serialization/NameableInterface.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/AppUserDefaultsService.php" beforeDir="false" afterPath="$PROJECT_DIR$/Service/AppUserDefaultsService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/AppUserRoleService.php" beforeDir="false" afterPath="$PROJECT_DIR$/Service/AppUserRoleService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/ExportService.php" beforeDir="false" afterPath="$PROJECT_DIR$/Service/ExportService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/MailService.php" beforeDir="false" afterPath="$PROJECT_DIR$/Service/MailService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/AddressBook/NameablePersonTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/AddressBook/NameablePersonTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/AddressBook/PhoneTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/AddressBook/PhoneTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/AddressBook/PostalAddressTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/AddressBook/PostalAddressTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/AddressBook/UrlTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/AddressBook/UrlTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Common/ActivatedTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/ActivatedTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Common/BlameableTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/BlameableTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Common/ColorTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/ColorTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Common/DateRangeTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/DateRangeTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Common/DateTimeTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/DateTimeTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Common/DeletedTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/DeletedTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Common/ExternalIdTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/ExternalIdTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Common/IdTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/IdTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Common/InternalNoteTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/InternalNoteTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Common/ManagerConfirmationTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/ManagerConfirmationTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Common/NameableTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/NameableTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Common/NumericRangeTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/NumericRangeTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Common/NumericValueTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/NumericValueTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Common/PriorityTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/PriorityTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Common/SlugTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/SlugTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Common/TextValueTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/TextValueTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Common/UserConfirmationTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/UserConfirmationTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Export/PdfExportableTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Export/PdfExportableTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Form/FormValueTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Form/FormValueTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Payment/BankAccountTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Payment/BankAccountTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Payment/DepositValueTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Payment/DepositValueTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Payment/TaxRateTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Payment/TaxRateTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Project/ProgressTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Project/ProgressTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/User/AppUserTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/User/AppUserTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/User/UserTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/User/UserTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Twig/Extension/ImageExtension.php" beforeDir="false" afterPath="$PROJECT_DIR$/Twig/Extension/ImageExtension.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Utils/ColorUtils.php" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/ColorUtils.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Utils/DateTimeUtils.php" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/DateTimeUtils.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Utils/EmailUtils.php" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/EmailUtils.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Utils/StringUtils.php" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/StringUtils.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/TwigTemplate/TwigTemplate.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/TwigTemplate/TwigTemplate.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -944,14 +843,8 @@
       <workItem from="1596898960837" duration="1277000" />
       <workItem from="1596996700595" duration="732000" />
       <workItem from="1597005991601" duration="158000" />
-      <workItem from="1597048099571" duration="3554000" />
-    </task>
-    <task id="LOCAL-00703" summary="Some fixes, updates and changes.">
-      <created>1593620613371</created>
-      <option name="number" value="00703" />
-      <option name="presentableId" value="LOCAL-00703" />
-      <option name="project" value="LOCAL" />
-      <updated>1593620613371</updated>
+      <workItem from="1597048099571" duration="5156000" />
+      <workItem from="1597057948766" duration="224000" />
     </task>
     <task id="LOCAL-00704" summary="Some fixes, updates and changes.">
       <created>1593621119267</created>
@@ -1289,7 +1182,14 @@
       <option name="project" value="LOCAL" />
       <updated>1597006133830</updated>
     </task>
-    <option name="localTasksCounter" value="752" />
+    <task id="LOCAL-00752" summary="Some fixes, updates and changes.">
+      <created>1597052007833</created>
+      <option name="number" value="00752" />
+      <option name="presentableId" value="LOCAL-00752" />
+      <option name="project" value="LOCAL" />
+      <updated>1597052007833</updated>
+    </task>
+    <option name="localTasksCounter" value="753" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1406,10 +1306,10 @@
     <state x="499" y="381" width="402" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1595104122364" />
     <state x="701" y="381" width="509" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592145061391" />
     <state x="2356" y="395" width="402" height="332" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1920.741@1920.0.1366.768" timestamp="1588872805427" />
-    <state x="0" y="0" width="1366" height="741" key="CommitChangelistDialog2" timestamp="1597006133135">
+    <state x="0" y="0" width="1366" height="741" key="CommitChangelistDialog2" timestamp="1597052379823">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="0" y="0" width="904" height="735" key="CommitChangelistDialog2/0.0.1366.741@0.0.1366.741" timestamp="1597006133135" />
+    <state x="0" y="0" width="904" height="735" key="CommitChangelistDialog2/0.0.1366.741@0.0.1366.741" timestamp="1597052379823" />
     <state x="1920" y="0" width="1366" height="741" key="CommitChangelistDialog2/0.0.3286.741@0.0.3286.741" timestamp="1593178701362" />
     <state x="369" y="0" width="881" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1595105808715" />
     <state x="518" y="0" width="881" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592145131804" />
@@ -1447,10 +1347,10 @@
     <state x="187" y="5" key="SettingsEditor/0.0.1366.741@0.0.1366.741" timestamp="1594849819760" />
     <state x="33" y="0" width="1280" height="730" key="SettingsEditor/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1595090603435" />
     <state x="263" y="0" width="1418" height="741" key="SettingsEditor/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1589305333032" />
-    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1597006139660">
+    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1597052011258">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
-    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1597006139660" />
+    <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1597052011258" />
     <state x="0" y="213" width="1920" height="522" key="Vcs.Push.Dialog.v2/0.0.3286.741@0.0.3286.741" timestamp="1593178739654" />
     <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1595105814163" />
     <state x="555" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592145133378" />

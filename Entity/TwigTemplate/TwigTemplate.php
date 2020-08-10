@@ -2,7 +2,6 @@
 
 namespace OswisOrg\OswisCoreBundle\Entity\TwigTemplate;
 
-use Doctrine\ORM\Mapping as ORM;
 use OswisOrg\OswisCoreBundle\Interfaces\Common\NameableInterface;
 use OswisOrg\OswisCoreBundle\Interfaces\Common\TextValueInterface;
 use OswisOrg\OswisCoreBundle\Traits\Common\NameableTrait;
@@ -19,21 +18,21 @@ use OswisOrg\OswisCoreBundle\Traits\Common\TextValueTrait;
  *   collectionOperations={
  *     "get"={
  *       "access_control"="is_granted('ROLE_ADMIN')",
- *       "normalization_context"={"groups"={"nameables_get", "twig_templates_get"}, "enable_max_depth"=true},
+ *       "normalization_context"={"groups"={"entities_get", "twig_templates_get"}, "enable_max_depth"=true},
  *     },
  *     "post"={
  *       "access_control"="is_granted('ROLE_ADMIN')",
- *       "denormalization_context"={"groups"={"nameables_post", "twig_templates_post"}, "enable_max_depth"=true}
+ *       "denormalization_context"={"groups"={"entities_post", "twig_templates_post"}, "enable_max_depth"=true}
  *     }
  *   },
  *   itemOperations={
  *     "get"={
  *       "access_control"="is_granted('ROLE_ADMIN')",
- *       "normalization_context"={"groups"={"nameable_get", "twig_template_get"}, "enable_max_depth"=true},
+ *       "normalization_context"={"groups"={"entity_get", "twig_template_get"}, "enable_max_depth"=true},
  *     },
  *     "put"={
  *       "access_control"="is_granted('ROLE_ADMIN')",
- *       "denormalization_context"={"groups"={"nameable_put", "twig_template_put"}, "enable_max_depth"=true}
+ *       "denormalization_context"={"groups"={"entity_put", "twig_template_put"}, "enable_max_depth"=true}
  *     }
  *   }
  * )
@@ -52,7 +51,7 @@ class TwigTemplate implements NameableInterface, TextValueInterface
     use TextValueTrait;
 
     /**
-     * @ORM\Column(type="string", nullable=true)
+     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
      */
     protected ?string $regularTemplateName = null;
 
