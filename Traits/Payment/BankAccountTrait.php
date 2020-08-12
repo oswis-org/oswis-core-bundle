@@ -33,7 +33,7 @@ trait BankAccountTrait
 
     public function getBankAccountNumber(): ?string
     {
-        return $this->getBankAccount()->getAccountNumber();
+        return $this->getBankAccount() ? $this->getBankAccount()->getAccountNumber() : null;
     }
 
     public function setBankAccountNumber(?string $bankAccountNumber): void
@@ -48,7 +48,7 @@ trait BankAccountTrait
 
     public function getBankAccountBank(): ?string
     {
-        return $this->getBankAccount()->getBankCode();
+        return $this->getBankAccount() ? $this->getBankAccount()->getBankCode() : null;
     }
 
     public function setBankAccountBank(?string $bankAccountBank): void
@@ -58,7 +58,7 @@ trait BankAccountTrait
 
     public function getBankAccountPrefix(): ?string
     {
-        return $this->getBankAccount()->getPrefix();
+        return $this->getBankAccount() ? $this->getBankAccount()->getPrefix() : null;
     }
 
     public function setBankAccountPrefix(?string $bankAccountPrefix): void
@@ -68,6 +68,6 @@ trait BankAccountTrait
 
     public function getBankAccountFull(): ?string
     {
-        return $this->getBankAccount()->getFull();
+        return $this->getBankAccount() ? $this->getBankAccount()->getFull() : null;
     }
 }

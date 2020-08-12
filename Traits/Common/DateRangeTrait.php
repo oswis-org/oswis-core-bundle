@@ -110,7 +110,7 @@ trait DateRangeTrait
         return $this->getStartByFormat($withoutYear ? 'j. n.' : 'j. n. Y').$this->getEndByFormat($withoutYear ? ' \až j. n.' : ' \až j. n. Y');
     }
 
-    public function isInOnePeriod(string $period): ?bool
+    public function isInOnePeriod(?string $period = null): ?bool
     {
         return DateTimeUtils::isInOnePeriod($period, $this->getStartDate(), $this->getEndDate());
     }
@@ -125,7 +125,7 @@ trait DateRangeTrait
         return $this->getStartByFormat($withoutYear ? 'j. n.' : 'j. n. Y');
     }
 
-    public function getStartByFormat(string $format): ?string
+    public function getStartByFormat(string $format = DateTime::ISO8601): ?string
     {
         return $this->getStartDate() ? $this->getStartDate()->format($format) : null;
     }
@@ -135,7 +135,7 @@ trait DateRangeTrait
         return $this->getStartByFormat('j. ').$this->getEndByFormat($withoutYear ? '\až j. n.' : '\až j. n. Y');
     }
 
-    public function getEndByFormat(string $format): ?string
+    public function getEndByFormat(string $format = DateTime::ISO8601): ?string
     {
         return $this->getEndDate() ? $this->getEndDate()->format($format) : null;
     }
