@@ -29,7 +29,9 @@ trait DeletedTrait
 
     public function delete(?DateTime $dateTime = null): void
     {
-        $this->setDeletedAt($this->getDeletedAt() ?? $dateTime ?? new DateTime());
+        $dateTime = $this->getDeletedAt() ?? $dateTime ?? new DateTime();
+        $this->setDeletedAt($dateTime);
+        error_log("Deleted ".$this->getId()." at ".$dateTime->format("Y-m-d H:i:s").", ".$this->getDeletedAt()->format("Y-m-d H:i:s")." (".get_class($this).")");
     }
 
     /**
@@ -42,8 +44,10 @@ trait DeletedTrait
 
     public function setDeletedAt(?DateTime $deletedAt = null): void
     {
-        if (null === $deletedAt) {
+        if (null === $deletedAt || null === $this->deletedAt) {
             $this->deletedAt = $deletedAt;
+
+            return;
         }
         $this->deletedAt = $deletedAt > $this->deletedAt ? $this->deletedAt : $deletedAt;
     }
