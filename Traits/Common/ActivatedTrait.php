@@ -25,22 +25,24 @@ trait ActivatedTrait
     public function isActivated(?DateTime $dateTime = null): bool
     {
         error_log("isActivated() in ".$this->id." ".get_class($this));
+
         return null !== $this->activated && $this->activated <= ($dateTime ?? new DateTime());
+    }
+
+    public function activate(?DateTime $dateTime = null): void
+    {
+        $this->setActivated($this->getActivated() ?? $dateTime ?? new DateTime());
     }
 
     public function getActivated(): ?DateTime
     {
         error_log("getActivated() in ".$this->id." ".get_class($this));
+
         return $this->activated;
     }
 
     public function setActivated(?DateTime $activated): void
     {
         $this->activated = $activated;
-    }
-
-    public function activate(?DateTime $dateTime = null): void
-    {
-        $this->setActivated($this->getActivated() ?? $dateTime ?? new DateTime());
     }
 }
