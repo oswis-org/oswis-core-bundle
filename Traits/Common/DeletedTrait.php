@@ -31,7 +31,6 @@ trait DeletedTrait
     {
         $dateTime = $this->getDeletedAt() ?? $dateTime ?? new DateTime();
         $this->setDeletedAt($dateTime);
-        error_log("Deleted ".$this->getId()." at ".$dateTime->format("Y-m-d H:i:s").", ".$this->getDeletedAt()->format("Y-m-d H:i:s")." (".get_class($this).")");
     }
 
     /**

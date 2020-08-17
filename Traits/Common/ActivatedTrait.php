@@ -24,8 +24,6 @@ trait ActivatedTrait
 
     public function isActivated(?DateTime $dateTime = null): bool
     {
-        error_log("isActivated() in ".$this->id." ".get_class($this));
-
         return null !== $this->activated && $this->activated <= ($dateTime ?? new DateTime());
     }
 
@@ -36,8 +34,6 @@ trait ActivatedTrait
 
     public function getActivated(): ?DateTime
     {
-        error_log("getActivated() in ".$this->id." ".get_class($this));
-
         return $this->activated;
     }
 
