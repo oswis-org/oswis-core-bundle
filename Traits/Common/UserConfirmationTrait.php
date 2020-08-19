@@ -37,11 +37,6 @@ trait UserConfirmationTrait
         $this->userConfirmedBy = $appUser;
     }
 
-    public function isUserConfirmed(): bool
-    {
-        return $this->userConfirmedAt ? true : false;
-    }
-
     public function getUserConfirmedAt(): ?DateTime
     {
         return $this->userConfirmedAt;

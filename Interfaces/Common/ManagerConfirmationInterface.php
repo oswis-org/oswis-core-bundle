@@ -11,8 +11,6 @@ interface ManagerConfirmationInterface
 
     public function setManagerConfirmedBy(?AppUser $appUser): void;
 
-    public function isManagerConfirmed(): bool;
-
     public function getManagerConfirmedAt(): ?DateTime;
 
     public function setManagerConfirmedAt(?DateTime $dateTime): void;

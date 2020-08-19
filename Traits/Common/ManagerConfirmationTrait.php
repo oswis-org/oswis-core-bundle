@@ -40,11 +40,6 @@ trait ManagerConfirmationTrait
         $this->managerConfirmedBy = $appUser;
     }
 
-    public function isManagerConfirmed(): bool
-    {
-        return $this->managerConfirmedAt ? true : false;
-    }
-
     public function getManagerConfirmedAt(): ?DateTime
     {
         return $this->managerConfirmedAt;

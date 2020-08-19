@@ -11,8 +11,6 @@ interface UserConfirmationInterface
 
     public function setUserConfirmedBy(?AppUser $appUser): void;
 
-    public function isUserConfirmed(): bool;
-
     public function getUserConfirmedAt(): ?DateTime;
 
     public function setUserConfirmedAt(?DateTime $dateTime): void;
