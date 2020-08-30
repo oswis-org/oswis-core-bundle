@@ -38,6 +38,11 @@ abstract class AbstractMailCategory implements MailCategoryInterface
         $this->setPriority($priority);
     }
 
+    public static function checkType(?string $typeName): bool
+    {
+        return true;
+    }
+
     public static function getAllowedTypesDefault(): array
     {
         return ['', self::TYPE_ACTIVATION, self::TYPE_ACTIVATION_REQUEST, self::TYPE_PASSWORD_CHANGE, self::TYPE_PASSWORD_CHANGE_REQUEST];
