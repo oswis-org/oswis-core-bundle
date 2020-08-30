@@ -79,6 +79,11 @@ abstract class AbstractMail implements BasicInterface
         return [];
     }
 
+    public static function checkType(?string $typeName): bool
+    {
+        return true;
+    }
+
     public function getSubject(): ?string
     {
         return $this->subject;
