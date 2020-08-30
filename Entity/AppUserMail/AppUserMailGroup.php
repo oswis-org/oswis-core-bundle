@@ -7,7 +7,9 @@ namespace OswisOrg\OswisCoreBundle\Entity\AppUserMail;
 
 use OswisOrg\OswisCoreBundle\Entity\AbstractClass\AbstractMailGroup;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser;
-use OswisOrg\OswisCoreBundle\Interfaces\Mail\MailCategoryInterface;
+use OswisOrg\OswisCoreBundle\Entity\NonPersistent\DateTimeRange;
+use OswisOrg\OswisCoreBundle\Entity\NonPersistent\Nameable;
+use OswisOrg\OswisCoreBundle\Entity\TwigTemplate\TwigTemplate;
 
 /**
  * @Doctrine\ORM\Mapping\Entity(repositoryClass="OswisOrg\OswisCoreBundle\Repository\AppUserMailGroupRepository")
@@ -50,10 +52,47 @@ class AppUserMailGroup extends AbstractMailGroup
      * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="OswisOrg\OswisCoreBundle\Entity\AppUserMail\AppUserMailCategory", fetch="EAGER")
      * @Doctrine\ORM\Mapping\JoinColumn(nullable=true)
      */
-    protected ?MailCategoryInterface $category = null;
+    protected ?AppUserMailCategory $category = null;
+
+    public function __construct(
+        ?Nameable $nameable = null,
+        ?int $priority = null,
+        ?DateTimeRange $range = null,
+        ?TwigTemplate $twigTemplate = null,
+        bool $automaticMailing = false,
+        AppUserMailCategory $appUserMailCategory = null
+    ) {
+        parent::__construct($nameable, $priority, $range, $twigTemplate, $automaticMailing);
+        $this->setCategory($appUserMailCategory);
+    }
 
     public function isApplicableByRestrictions(?object $entity): bool
     {
         return $entity instanceof AppUser;
+    }
+
+    public function isCategory(?AppUserMailCategory $category): bool
+    {
+        return $this->getCategory() === $category;
+    }
+
+    public function getCategory(): ?AppUserMailCategory
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?AppUserMailCategory $category): void
+    {
+        $this->category = $category;
+    }
+
+    public function isType(?string $type): bool
+    {
+        return $this->getType() === $type;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->getCategory() ? $this->getCategory()->getType() : null;
     }
 }

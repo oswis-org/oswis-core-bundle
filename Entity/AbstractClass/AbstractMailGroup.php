@@ -10,7 +10,6 @@ use Doctrine\ORM\Mapping as ORM;
 use OswisOrg\OswisCoreBundle\Entity\NonPersistent\DateTimeRange;
 use OswisOrg\OswisCoreBundle\Entity\NonPersistent\Nameable;
 use OswisOrg\OswisCoreBundle\Entity\TwigTemplate\TwigTemplate;
-use OswisOrg\OswisCoreBundle\Interfaces\Mail\MailCategoryInterface;
 use OswisOrg\OswisCoreBundle\Interfaces\Mail\MailGroupInterface;
 use OswisOrg\OswisCoreBundle\Traits\Common\DateRangeTrait;
 use OswisOrg\OswisCoreBundle\Traits\Common\NameableTrait;
@@ -38,20 +37,16 @@ abstract class AbstractMailGroup implements MailGroupInterface
      */
     protected bool $automaticMailing = false;
 
-    protected ?MailCategoryInterface $category = null;
-
     public function __construct(
         ?Nameable $nameable = null,
         ?int $priority = null,
         ?DateTimeRange $range = null,
-        ?MailCategoryInterface $category = null,
         ?TwigTemplate $twigTemplate = null,
         bool $automaticMailing = false
     ) {
         $this->setFieldsFromNameable($nameable);
         $this->setPriority($priority);
         $this->setDateTimeRange($range);
-        $this->setCategory($category);
         $this->setTwigTemplate($twigTemplate);
         $this->setAutomaticMailing($automaticMailing);
     }
@@ -76,40 +71,15 @@ abstract class AbstractMailGroup implements MailGroupInterface
         return $this->isApplicableByDate() && $this->isApplicableByRestrictions($entity);
     }
 
+    /** @noinspection PhpUnusedParameterInspection */
     public function isApplicableByDate(?DateTime $dateTime = null): bool
     {
         return $this->isInDateRange($dateTime ?? new DateTime());
     }
 
-    /** @noinspection PhpUnusedParameterInspection */
     public function isApplicableByRestrictions(?object $entity): bool
     {
-        return true;
-    }
-
-    public function isCategory(?AbstractMailCategory $category): bool
-    {
-        return $this->getCategory() === $category;
-    }
-
-    public function getCategory(): ?MailCategoryInterface
-    {
-        return $this->category;
-    }
-
-    public function setCategory(?MailCategoryInterface $category): void
-    {
-        $this->category = $category;
-    }
-
-    public function isType(?string $type): bool
-    {
-        return $this->getType() === $type;
-    }
-
-    public function getType(): ?string
-    {
-        return $this->getCategory() ? $this->getCategory()->getType() : null;
+        return (bool)$entity;
     }
 
     public function isAutomaticMailing(): bool
