@@ -1,30 +1,30 @@
 OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserType:
     attributes:
         id:
-            groups: ['app_user_types_get', 'app_user_type_get']
+            groups: [ 'app_user_types_get', 'app_user_type_get' ]
         adminUser:
-            groups: ['app_user_types_get', 'app_user_types_post', 'app_user_type_get', 'app_user_type_put']
+            groups: [ 'app_user_types_get', 'app_user_types_post', 'app_user_type_get', 'app_user_type_put' ]
         createdDateTime:
-            groups: ['app_user_type_get']
+            groups: [ 'app_user_type_get' ]
         updatedDateTime:
-            groups: ['app_user_type_get']
+            groups: [ 'app_user_type_get' ]
         appUserRole:
-            groups: ['app_user_types_post', 'app_user_type_get', 'app_user_type_put']
+            groups: [ 'app_user_types_post', 'app_user_type_get', 'app_user_type_put' ]
         roleName:
-            groups: ['app_user_types_get', 'app_user_type_get']
+            groups: [ 'app_user_types_get', 'app_user_type_get' ]
 
 OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserRole:
     attributes:
         id:
-            groups: ['app_user_types_post', 'app_user_type_get', 'app_user_type_put']
+            groups: [ 'app_user_types_post', 'app_user_type_get', 'app_user_type_put' ]
         name:
-            groups: ['app_user_type_get']
+            groups: [ 'app_user_type_get' ]
         roleName:
-            groups: ['app_user_type_get']
+            groups: [ 'app_user_type_get' ]
         roleString:
-            groups: ['app_user_type_get']
+            groups: [ 'app_user_type_get' ]
         parent:
-            groups: ['app_user_type_get']
+            groups: [ 'app_user_type_get' ]
 
 
 

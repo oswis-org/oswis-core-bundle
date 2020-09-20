@@ -1,10 +1,10 @@
 OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserRole:
     attributes:
         id:
-            groups: ['app_user_roles_get', 'app_user_role_get']
+            groups: [ 'app_user_roles_get', 'app_user_role_get' ]
         name:
-            groups: ['app_user_roles_get', 'app_user_role_get']
+            groups: [ 'app_user_roles_get', 'app_user_role_get' ]
         roleName:
-            groups: ['app_user_role_get']
+            groups: [ 'app_user_role_get' ]
 
 

@@ -297,7 +297,7 @@ services:
         class: OswisOrg\OswisCoreBundle\Api\EventSubscriber\AppUserActionSubscriber
         autowire: true
         public: true
-        tags: [ { name: 'kernel.view'} ]
+        tags: [ { name: 'kernel.view' } ]
         arguments:
             - '@oswis_org_oswis_core.app_user_service'
     OswisOrg\OswisCoreBundle\Api\EventSubscriber\AppUserActionSubscriber:
@@ -307,7 +307,7 @@ services:
     oswis_org_oswis_core.export_subscriber:
         class: OswisOrg\OswisCoreBundle\EventSubscriber\ExportSubscriber
         autowire: true
-        tags: [ { name: 'kernel.view'} ]
+        tags: [ { name: 'kernel.view' } ]
         public: true
         arguments:
             - '@oswis_org_oswis_core.export_service'
@@ -319,7 +319,7 @@ services:
         class: OswisOrg\OswisCoreBundle\EventSubscriber\MailerSubscriber
         autowire: true
         public: true
-        tags: ['kernel.event_subscriber']
+        tags: [ 'kernel.event_subscriber' ]
         arguments:
             - '@oswis_org_oswis_core.oswis_core_settings_provider'
     OswisOrg\OswisCoreBundle\EventSubscriber\MailerSubscriber:
@@ -329,7 +329,7 @@ services:
     oswis_org_oswis_core.app_user_subscriber:
         class: OswisOrg\OswisCoreBundle\EventSubscriber\AppUserSubscriber
         autowire: true
-        tags: [ { name: 'kernel.view'} ]
+        tags: [ { name: 'kernel.view' } ]
         public: true
         arguments:
             - '@oswis_org_oswis_core.app_user_service'
@@ -541,5 +541,5 @@ services:
     ### EventSubscriber folder
     OswisOrg\OswisCoreBundle\EventSubscriber\:
         resource: '../../EventSubscriber/*'
-        tags: [ { name: 'kernel.view'} ]
+        tags: [ { name: 'kernel.view' } ]
         public: true

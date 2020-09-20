@@ -2,28 +2,28 @@
 OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser:
     attributes:
         username:
-            groups: ['app_users_get', 'app_users_post', 'app_user_get', 'app_user_put']
+            groups: [ 'app_users_get', 'app_users_post', 'app_user_get', 'app_user_put' ]
         email:
-            groups: ['app_users_get', 'app_users_post', 'app_user_get', 'app_user_put']
+            groups: [ 'app_users_get', 'app_users_post', 'app_user_get', 'app_user_put' ]
         active:
-            groups: ['app_users_get', 'app_user_get']
+            groups: [ 'app_users_get', 'app_user_get' ]
         adminUser:
-            groups: ['app_users_get', 'app_users_post', 'app_user_get', 'app_user_put']
+            groups: [ 'app_users_get', 'app_users_post', 'app_user_get', 'app_user_put' ]
         fullName:
-            groups: ['app_users_get', 'app_users_post', 'app_user_get', 'app_user_put']
+            groups: [ 'app_users_get', 'app_users_post', 'app_user_get', 'app_user_put' ]
         appUserType:
-            groups: ['app_users_get', 'app_users_post', 'app_user_get', 'app_user_put']
+            groups: [ 'app_users_get', 'app_users_post', 'app_user_get', 'app_user_put' ]
         startDateTime:
-            groups: ['app_users_get', 'app_users_post', 'app_user_get', 'app_user_put']
+            groups: [ 'app_users_get', 'app_users_post', 'app_user_get', 'app_user_put' ]
         endDateTime:
-            groups: ['app_users_get', 'app_users_post', 'app_user_get', 'app_user_put']
+            groups: [ 'app_users_get', 'app_users_post', 'app_user_get', 'app_user_put' ]
         roles:
-            groups: ['app_user_get']
+            groups: [ 'app_user_get' ]
 
 OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserType:
     attributes:
         id:
-            groups: ['app_users_post', 'app_user_put']
+            groups: [ 'app_users_post', 'app_user_put' ]
         roleName:
-            groups: ['app_user_get']
+            groups: [ 'app_user_get' ]
 

@@ -1,6 +1,6 @@
 OswisOrg\OswisCoreBundle\Entity\Logger\ClientLogRecord:
     attributes:
         level:
-            groups: ['client_log_records_post']
+            groups: [ 'client_log_records_post' ]
         message:
-            groups: ['client_log_records_post']
+            groups: [ 'client_log_records_post' ]
