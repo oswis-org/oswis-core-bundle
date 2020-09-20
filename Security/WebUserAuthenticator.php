@@ -88,7 +88,7 @@ class WebUserAuthenticator extends AbstractFormLoginAuthenticator
      * @throws BadMethodCallException
      * @throws InvalidArgumentException
      */
-    public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey): ?Response
+    public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $providerKey): ?Response
     {
         if ($targetPath = $this->getTargetPath($request->getSession(), $providerKey)) {
             return new RedirectResponse($targetPath);

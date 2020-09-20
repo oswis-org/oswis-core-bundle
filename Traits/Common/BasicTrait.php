@@ -39,7 +39,7 @@ trait BasicTrait
 
     public static function sortArray(array &$items): void
     {
-        usort($items, fn(BasicInterface $item1, BasicInterface $item2) => self::compare($item1, $item2));
+        usort($items, static fn(BasicInterface $item1, BasicInterface $item2) => self::compare($item1, $item2));
     }
 
     public static function compare(BasicInterface $item1, BasicInterface $item2): int

@@ -37,11 +37,12 @@ class AppUserProvider implements UserProviderInterface
     /**
      * @param string $username
      *
-     * @noinspection MissingParameterTypeDeclarationInspection
+     * @return AppUser|null
      * @throws UserNotUniqueException
      * @throws UsernameNotFoundException
+     * @noinspection MissingParameterTypeDeclarationInspection
      */
-    final public function loadUserByUsername($username): ?AppUser
+    final public function loadUserByUsername(string $username): ?AppUser
     {
         if (null === ($user = $this->appUserRepository->loadUserByUsername($username))) {
             throw new UsernameNotFoundException(sprintf('Username "%s" does not exist.', $username));
@@ -53,9 +54,10 @@ class AppUserProvider implements UserProviderInterface
     /**
      * @param string $class
      *
+     * @return bool
      * @noinspection MissingParameterTypeDeclarationInspection
      */
-    final public function supportsClass($class): bool
+    final public function supportsClass(string $class): bool
     {
         return AppUser::class === $class;
     }

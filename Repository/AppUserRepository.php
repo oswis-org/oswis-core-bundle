@@ -32,10 +32,11 @@ class AppUserRepository extends ServiceEntityRepository implements UserLoaderInt
     /**
      * @param string|null $username
      *
+     * @return AppUser|null
      * @throws UserNotUniqueException
      * @noinspection MissingParameterTypeDeclarationInspection
      */
-    public function loadUserByUsername($username): ?AppUser
+    public function loadUserByUsername(?string $username): ?AppUser
     {
         $appUser = $this->findOneByUsernameOrMail($username, true);
 
