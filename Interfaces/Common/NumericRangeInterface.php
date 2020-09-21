@@ -11,7 +11,7 @@ interface NumericRangeInterface
 
     public function setMin(?int $min): void;
 
-    public function getMaxAge(): int;
+    public function getMax(): int;
 
-    public function setMaxAge(?int $maxAge): void;
+    public function setMax(?int $max): void;
 }
