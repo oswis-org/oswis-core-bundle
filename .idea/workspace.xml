@@ -28,11 +28,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Interfaces/Common/FloatRangeInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Interfaces/Common/NumericRangeInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Traits/Common/FloatRangeTrait.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Repository/AppUserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/Repository/AppUserRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Security/AppUserProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/Security/AppUserProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Security/WebUserAuthenticator.php" beforeDir="false" afterPath="$PROJECT_DIR$/Security/WebUserAuthenticator.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Common/BasicTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/BasicTrait.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -236,7 +235,7 @@
     <property name="editor.config.ad.shown" value="true" />
     <property name="javascript.nodejs.core.library.configured.version" value="10.21.0" />
     <property name="javascript.nodejs.core.library.typings.version" value="10.17.26" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Resources/config/serialization" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Traits/Common" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -250,19 +249,19 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Traits/Common" />
+      <recent name="$PROJECT_DIR$/Interfaces/Common" />
+      <recent name="$PROJECT_DIR$/Resources/config/serialization" />
+      <recent name="$PROJECT_DIR$/Controller/Web" />
+      <recent name="$PROJECT_DIR$" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Resources/views/web" />
       <recent name="$PROJECT_DIR$/Service/Web" />
       <recent name="$PROJECT_DIR$/Service/WebAdmin" />
       <recent name="$PROJECT_DIR$/Interfaces/Web" />
       <recent name="$PROJECT_DIR$/Form/Login" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/Resources/config/serialization" />
-      <recent name="$PROJECT_DIR$/Interfaces/Common" />
-      <recent name="$PROJECT_DIR$/Controller/Web" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/Resources/views/web_admin" />
     </key>
   </component>
   <component name="RunManager">
@@ -866,14 +865,8 @@
       <workItem from="1598798362539" duration="917000" />
       <workItem from="1598801429423" duration="48000" />
       <workItem from="1598802707467" duration="156000" />
-      <workItem from="1600591867295" duration="3045000" />
-    </task>
-    <task id="LOCAL-00717" summary="Some fixes, updates and changes.">
-      <created>1594375070609</created>
-      <option name="number" value="00717" />
-      <option name="presentableId" value="LOCAL-00717" />
-      <option name="project" value="LOCAL" />
-      <updated>1594375070610</updated>
+      <workItem from="1600591867295" duration="4948000" />
+      <workItem from="1600690966686" duration="634000" />
     </task>
     <task id="LOCAL-00718" summary="Some fixes, updates and changes.">
       <created>1594459567602</created>
@@ -1211,7 +1204,14 @@
       <option name="project" value="LOCAL" />
       <updated>1600595272765</updated>
     </task>
-    <option name="localTasksCounter" value="766" />
+    <task id="LOCAL-00766" summary="Some fixes, updates and changes.">
+      <created>1600601280097</created>
+      <option name="number" value="00766" />
+      <option name="presentableId" value="LOCAL-00766" />
+      <option name="project" value="LOCAL" />
+      <updated>1600601280098</updated>
+    </task>
+    <option name="localTasksCounter" value="767" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1324,12 +1324,12 @@
     <state x="1123" y="449" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.3520.873@0.0.3520.873" timestamp="1600598403799" />
     <state x="499" y="381" width="402" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1595104122364" />
     <state x="701" y="381" width="509" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592145061391" />
-    <state x="1920" y="0" width="1600" height="873" key="CommitChangelistDialog2" timestamp="1600595272513">
+    <state x="1920" y="0" width="1600" height="873" key="CommitChangelistDialog2" timestamp="1600601279974">
       <screen x="0" y="0" width="3520" height="873" />
     </state>
     <state x="0" y="0" width="904" height="735" key="CommitChangelistDialog2/0.0.1366.741@0.0.1366.741" timestamp="1597678345542" />
     <state x="1920" y="0" width="1366" height="741" key="CommitChangelistDialog2/0.0.3286.741@0.0.3286.741" timestamp="1597828440193" />
-    <state x="1920" y="0" width="1600" height="873" key="CommitChangelistDialog2/0.0.3520.873@0.0.3520.873" timestamp="1600595272513" />
+    <state x="1920" y="0" width="1600" height="873" key="CommitChangelistDialog2/0.0.3520.873@0.0.3520.873" timestamp="1600601279974" />
     <state x="369" y="0" width="881" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1595105808715" />
     <state x="518" y="0" width="881" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592145131804" />
     <state x="1039" y="0" width="881" height="873" key="CommitChangelistDialog2/1920.0.1600.900/0.0.1920.873@0.0.1920.873" timestamp="1598802829216" />
@@ -1365,12 +1365,12 @@
     </state>
     <state x="187" y="5" key="SettingsEditor/0.0.1366.741@0.0.1366.741" timestamp="1594849819760" />
     <state x="33" y="0" width="1280" height="730" key="SettingsEditor/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1595090603435" />
-    <state x="0" y="251" width="539" height="615" key="Vcs.Push.Dialog.v2" timestamp="1600595274279">
+    <state x="0" y="251" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1600601281597">
       <screen x="0" y="0" width="3520" height="873" />
     </state>
     <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1597678348044" />
     <state x="0" y="213" width="1920" height="522" key="Vcs.Push.Dialog.v2/0.0.3286.741@0.0.3286.741" timestamp="1597828441689" />
-    <state x="0" y="251" key="Vcs.Push.Dialog.v2/0.0.3520.873@0.0.3520.873" timestamp="1600595274279" />
+    <state x="0" y="251" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.3520.873@0.0.3520.873" timestamp="1600601281597" />
     <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1595105814163" />
     <state x="555" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592145133378" />
     <state x="0" y="251" width="539" height="615" key="Vcs.Push.Dialog.v2/1920.0.1600.900/0.0.1920.873@0.0.1920.873" timestamp="1598802830880" />
