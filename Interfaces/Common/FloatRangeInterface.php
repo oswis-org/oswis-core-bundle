@@ -11,7 +11,7 @@ interface FloatRangeInterface
 
     public function setMin(?float $min): void;
 
-    public function getMaxAge(): float;
+    public function getMax(): float;
 
-    public function setMaxAge(?float $maxAge): void;
+    public function setMax(?float $max): void;
 }
