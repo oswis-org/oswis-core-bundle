@@ -8,7 +8,7 @@ namespace OswisOrg\OswisCoreBundle\Traits\Common;
 trait FloatRangeTrait
 {
     /**
-     * Numeric minimum.
+     * Minimal value.
      * @Doctrine\ORM\Mapping\Column(type="float", nullable=true)
      * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class, strategy="exact")
      * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\RangeFilter::class)
@@ -17,7 +17,7 @@ trait FloatRangeTrait
     protected ?float $min = null;
 
     /**
-     * Numeric maximum.
+     * Maximal value.
      * @Doctrine\ORM\Mapping\Column(type="float", nullable=true)
      * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class, strategy="exact")
      * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\RangeFilter::class)

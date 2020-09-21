@@ -28,10 +28,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Interfaces/Common/FloatRangeInterface.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Interfaces/Common/NumericRangeInterface.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Traits/Common/FloatRangeTrait.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interfaces/Common/FloatRangeInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/Interfaces/Common/FloatRangeInterface.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Common/FloatRangeTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/FloatRangeTrait.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -866,35 +865,7 @@
       <workItem from="1598801429423" duration="48000" />
       <workItem from="1598802707467" duration="156000" />
       <workItem from="1600591867295" duration="4948000" />
-      <workItem from="1600690966686" duration="634000" />
-    </task>
-    <task id="LOCAL-00718" summary="Some fixes, updates and changes.">
-      <created>1594459567602</created>
-      <option name="number" value="00718" />
-      <option name="presentableId" value="LOCAL-00718" />
-      <option name="project" value="LOCAL" />
-      <updated>1594459567602</updated>
-    </task>
-    <task id="LOCAL-00719" summary="Some fixes, updates and changes.">
-      <created>1594461104643</created>
-      <option name="number" value="00719" />
-      <option name="presentableId" value="LOCAL-00719" />
-      <option name="project" value="LOCAL" />
-      <updated>1594461104643</updated>
-    </task>
-    <task id="LOCAL-00720" summary="Some fixes, updates and changes.">
-      <created>1594500898749</created>
-      <option name="number" value="00720" />
-      <option name="presentableId" value="LOCAL-00720" />
-      <option name="project" value="LOCAL" />
-      <updated>1594500898750</updated>
-    </task>
-    <task id="LOCAL-00721" summary="Some fixes, updates and changes.">
-      <created>1594671139029</created>
-      <option name="number" value="00721" />
-      <option name="presentableId" value="LOCAL-00721" />
-      <option name="project" value="LOCAL" />
-      <updated>1594671139030</updated>
+      <workItem from="1600690966686" duration="832000" />
     </task>
     <task id="LOCAL-00722" summary="Some fixes, updates and changes.">
       <created>1594764391380</created>
@@ -1211,7 +1182,35 @@
       <option name="project" value="LOCAL" />
       <updated>1600601280098</updated>
     </task>
-    <option name="localTasksCounter" value="767" />
+    <task id="LOCAL-00767" summary="Added NumericRangeInterface.">
+      <created>1600691649624</created>
+      <option name="number" value="00767" />
+      <option name="presentableId" value="LOCAL-00767" />
+      <option name="project" value="LOCAL" />
+      <updated>1600691649624</updated>
+    </task>
+    <task id="LOCAL-00768" summary="Added FloatRangeInterface and FloatRangeTrait.">
+      <created>1600691670733</created>
+      <option name="number" value="00768" />
+      <option name="presentableId" value="LOCAL-00768" />
+      <option name="project" value="LOCAL" />
+      <updated>1600691670733</updated>
+    </task>
+    <task id="LOCAL-00769" summary="Fixed property names.">
+      <created>1600691699506</created>
+      <option name="number" value="00769" />
+      <option name="presentableId" value="LOCAL-00769" />
+      <option name="project" value="LOCAL" />
+      <updated>1600691699506</updated>
+    </task>
+    <task id="LOCAL-00770" summary="Fixed property names.">
+      <created>1600691719539</created>
+      <option name="number" value="00770" />
+      <option name="presentableId" value="LOCAL-00770" />
+      <option name="project" value="LOCAL" />
+      <updated>1600691719539</updated>
+    </task>
+    <option name="localTasksCounter" value="771" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1261,9 +1260,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Fixed nullable at customId column." />
-    <MESSAGE value="Fixed AppUserRole repository." />
-    <MESSAGE value="Fixed AppUserRole and AppUserType repository." />
     <MESSAGE value="Fixed bugs." />
     <MESSAGE value="Many changes, fixes and updates." />
     <MESSAGE value="Fixed MailerSubscriber." />
@@ -1286,7 +1282,10 @@
     <MESSAGE value="Use Gedmo again. KnpLabs/DoctrineBehaviors is very unstable and unusable." />
     <MESSAGE value="Changes." />
     <MESSAGE value="Some fixes, updates and changes." />
-    <option name="LAST_COMMIT_MESSAGE" value="Some fixes, updates and changes." />
+    <MESSAGE value="Added NumericRangeInterface." />
+    <MESSAGE value="Added FloatRangeInterface and FloatRangeTrait." />
+    <MESSAGE value="Fixed property names." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed property names." />
   </component>
   <component name="WindowStateProjectService">
     <state x="400" y="198" width="557" height="339" key="#Notifications" timestamp="1593605848623">
@@ -1324,14 +1323,15 @@
     <state x="1123" y="449" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.3520.873@0.0.3520.873" timestamp="1600598403799" />
     <state x="499" y="381" width="402" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1595104122364" />
     <state x="701" y="381" width="509" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592145061391" />
-    <state x="1920" y="0" width="1600" height="873" key="CommitChangelistDialog2" timestamp="1600601279974">
-      <screen x="0" y="0" width="3520" height="873" />
+    <state x="719" y="0" width="881" height="873" key="CommitChangelistDialog2" timestamp="1600691719437">
+      <screen x="0" y="0" width="1600" height="873" />
     </state>
     <state x="0" y="0" width="904" height="735" key="CommitChangelistDialog2/0.0.1366.741@0.0.1366.741" timestamp="1597678345542" />
     <state x="1920" y="0" width="1366" height="741" key="CommitChangelistDialog2/0.0.3286.741@0.0.3286.741" timestamp="1597828440193" />
     <state x="1920" y="0" width="1600" height="873" key="CommitChangelistDialog2/0.0.3520.873@0.0.3520.873" timestamp="1600601279974" />
     <state x="369" y="0" width="881" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1595105808715" />
     <state x="518" y="0" width="881" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592145131804" />
+    <state x="719" y="0" width="881" height="873" key="CommitChangelistDialog2/1920.0.1600.900/0.0.1600.873@0.0.1600.873" timestamp="1600691719437" />
     <state x="1039" y="0" width="881" height="873" key="CommitChangelistDialog2/1920.0.1600.900/0.0.1920.873@0.0.1920.873" timestamp="1598802829216" />
     <state x="99" y="100" width="1160" height="535" maximized="true" key="DiffContextDialog" timestamp="1595098501185">
       <screen x="0" y="0" width="1366" height="741" />
@@ -1365,14 +1365,15 @@
     </state>
     <state x="187" y="5" key="SettingsEditor/0.0.1366.741@0.0.1366.741" timestamp="1594849819760" />
     <state x="33" y="0" width="1280" height="730" key="SettingsEditor/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1595090603435" />
-    <state x="0" y="251" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1600601281597">
-      <screen x="0" y="0" width="3520" height="873" />
+    <state x="0" y="251" width="531" height="522" key="Vcs.Push.Dialog.v2" timestamp="1600691727125">
+      <screen x="0" y="0" width="1600" height="873" />
     </state>
     <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1597678348044" />
     <state x="0" y="213" width="1920" height="522" key="Vcs.Push.Dialog.v2/0.0.3286.741@0.0.3286.741" timestamp="1597828441689" />
     <state x="0" y="251" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.3520.873@0.0.3520.873" timestamp="1600601281597" />
     <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1595105814163" />
     <state x="555" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592145133378" />
+    <state x="0" y="251" width="531" height="522" key="Vcs.Push.Dialog.v2/1920.0.1600.900/0.0.1600.873@0.0.1600.873" timestamp="1600691727125" />
     <state x="0" y="251" width="539" height="615" key="Vcs.Push.Dialog.v2/1920.0.1600.900/0.0.1920.873@0.0.1920.873" timestamp="1598802830880" />
     <state x="99" y="96" width="1085" height="456" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1594814880144">
       <screen x="0" y="0" width="1366" height="741" />

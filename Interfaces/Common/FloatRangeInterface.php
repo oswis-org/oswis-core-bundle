@@ -2,9 +2,6 @@
 
 namespace OswisOrg\OswisCoreBundle\Interfaces\Common;
 
-use DateTime;
-use Exception;
-
 interface FloatRangeInterface
 {
     public function getMin(): float;
