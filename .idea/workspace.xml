@@ -14,8 +14,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Interfaces/Common/FloatValueInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Traits/Common/FloatValueTrait.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Interfaces/Common/FloatRangeInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/Interfaces/Common/FloatRangeInterface.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -219,7 +220,7 @@
     <property name="editor.config.ad.shown" value="true" />
     <property name="javascript.nodejs.core.library.configured.version" value="10.21.0" />
     <property name="javascript.nodejs.core.library.typings.version" value="10.17.26" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Traits/Common" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Interfaces/Common" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -234,8 +235,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/Traits/Common" />
       <recent name="$PROJECT_DIR$/Interfaces/Common" />
+      <recent name="$PROJECT_DIR$/Traits/Common" />
       <recent name="$PROJECT_DIR$/Resources/config/serialization" />
       <recent name="$PROJECT_DIR$/Controller/Web" />
       <recent name="$PROJECT_DIR$" />
@@ -850,14 +851,7 @@
       <workItem from="1598801429423" duration="48000" />
       <workItem from="1598802707467" duration="156000" />
       <workItem from="1600591867295" duration="4948000" />
-      <workItem from="1600690966686" duration="1856000" />
-    </task>
-    <task id="LOCAL-00723" summary="Some fixes, updates and changes.">
-      <created>1594816041190</created>
-      <option name="number" value="00723" />
-      <option name="presentableId" value="LOCAL-00723" />
-      <option name="project" value="LOCAL" />
-      <updated>1594816041190</updated>
+      <workItem from="1600690966686" duration="2086000" />
     </task>
     <task id="LOCAL-00724" summary="Some fixes, updates and changes.">
       <created>1594816777055</created>
@@ -1195,7 +1189,14 @@
       <option name="project" value="LOCAL" />
       <updated>1600691943937</updated>
     </task>
-    <option name="localTasksCounter" value="772" />
+    <task id="LOCAL-00772" summary="Added nullable option to getters and setters.">
+      <created>1600693146449</created>
+      <option name="number" value="00772" />
+      <option name="presentableId" value="LOCAL-00772" />
+      <option name="project" value="LOCAL" />
+      <updated>1600693146450</updated>
+    </task>
+    <option name="localTasksCounter" value="773" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1245,7 +1246,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Many changes, fixes and updates." />
     <MESSAGE value="Fixed MailerSubscriber." />
     <MESSAGE value="Removed encryption of e-mail headers (Symfony Mailer encrypts it in default)." />
     <MESSAGE value="Changes in e-mails." />
@@ -1270,7 +1270,8 @@
     <MESSAGE value="Added FloatRangeInterface and FloatRangeTrait." />
     <MESSAGE value="Fixed property names." />
     <MESSAGE value="Some small fixes and reformat of code." />
-    <option name="LAST_COMMIT_MESSAGE" value="Some small fixes and reformat of code." />
+    <MESSAGE value="Added nullable option to getters and setters." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added nullable option to getters and setters." />
   </component>
   <component name="WindowStateProjectService">
     <state x="400" y="198" width="557" height="339" key="#Notifications" timestamp="1593605848623">
@@ -1282,13 +1283,14 @@
     </state>
     <state x="546" y="158" width="466" height="556" key="#com.intellij.ide.util.MemberChooser/0.0.1366.741@0.0.1366.741" timestamp="1595945071930" />
     <state x="546" y="158" width="466" height="556" key="#com.intellij.ide.util.MemberChooser/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1594974597108" />
-    <state x="251" y="0" width="946" height="735" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1596996721251">
-      <screen x="0" y="0" width="1366" height="741" />
+    <state x="294" y="0" width="946" height="735" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1600693263678">
+      <screen x="0" y="0" width="1600" height="873" />
     </state>
     <state x="251" y="0" width="855" height="735" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.741@0.0.1366.741" timestamp="1596996721251" />
     <state x="604" y="0" width="946" height="735" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.3286.741@0.0.3286.741" timestamp="1592652460135" />
     <state x="251" y="0" width="624" height="735" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1595103188582" />
     <state x="353" y="0" width="478" height="735" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592144443570" />
+    <state x="294" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/1920.0.1600.900/0.0.1600.873@0.0.1600.873" timestamp="1600693263678" />
     <state x="405" y="303" width="526" height="478" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1598799039318">
       <screen x="0" y="0" width="1920" height="873" />
     </state>
@@ -1309,7 +1311,7 @@
     <state x="499" y="381" width="402" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1595104122364" />
     <state x="701" y="381" width="509" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592145061391" />
     <state x="510" y="449" width="365" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1600.900/0.0.1600.873@0.0.1600.873" timestamp="1600692054500" />
-    <state x="719" y="0" width="881" height="873" key="CommitChangelistDialog2" timestamp="1600691943800">
+    <state x="719" y="0" width="881" height="873" key="CommitChangelistDialog2" timestamp="1600693146350">
       <screen x="0" y="0" width="1600" height="873" />
     </state>
     <state x="0" y="0" width="904" height="735" key="CommitChangelistDialog2/0.0.1366.741@0.0.1366.741" timestamp="1597678345542" />
@@ -1317,7 +1319,7 @@
     <state x="1920" y="0" width="1600" height="873" key="CommitChangelistDialog2/0.0.3520.873@0.0.3520.873" timestamp="1600601279974" />
     <state x="369" y="0" width="881" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1595105808715" />
     <state x="518" y="0" width="881" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592145131804" />
-    <state x="719" y="0" width="881" height="873" key="CommitChangelistDialog2/1920.0.1600.900/0.0.1600.873@0.0.1600.873" timestamp="1600691943800" />
+    <state x="719" y="0" width="881" height="873" key="CommitChangelistDialog2/1920.0.1600.900/0.0.1600.873@0.0.1600.873" timestamp="1600693146350" />
     <state x="1039" y="0" width="881" height="873" key="CommitChangelistDialog2/1920.0.1600.900/0.0.1920.873@0.0.1920.873" timestamp="1598802829216" />
     <state x="99" y="100" width="1152" height="529" maximized="true" key="DiffContextDialog" timestamp="1600692142073">
       <screen x="0" y="0" width="1600" height="873" />
@@ -1352,7 +1354,7 @@
     </state>
     <state x="187" y="5" key="SettingsEditor/0.0.1366.741@0.0.1366.741" timestamp="1594849819760" />
     <state x="33" y="0" width="1280" height="730" key="SettingsEditor/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1595090603435" />
-    <state x="0" y="251" width="531" height="522" key="Vcs.Push.Dialog.v2" timestamp="1600691981949">
+    <state x="0" y="251" width="531" height="522" key="Vcs.Push.Dialog.v2" timestamp="1600693147834">
       <screen x="0" y="0" width="1600" height="873" />
     </state>
     <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1597678348044" />
@@ -1360,7 +1362,7 @@
     <state x="0" y="251" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.3520.873@0.0.3520.873" timestamp="1600601281597" />
     <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1595105814163" />
     <state x="555" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1920.741@0.0.1920.741" timestamp="1592145133378" />
-    <state x="0" y="251" width="531" height="522" key="Vcs.Push.Dialog.v2/1920.0.1600.900/0.0.1600.873@0.0.1600.873" timestamp="1600691981949" />
+    <state x="0" y="251" width="531" height="522" key="Vcs.Push.Dialog.v2/1920.0.1600.900/0.0.1600.873@0.0.1600.873" timestamp="1600693147834" />
     <state x="0" y="251" width="539" height="615" key="Vcs.Push.Dialog.v2/1920.0.1600.900/0.0.1920.873@0.0.1920.873" timestamp="1598802830880" />
     <state x="99" y="96" width="1085" height="456" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1594814880144">
       <screen x="0" y="0" width="1366" height="741" />
