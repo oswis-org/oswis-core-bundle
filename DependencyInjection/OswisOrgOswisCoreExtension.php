@@ -5,6 +5,7 @@ namespace OswisOrg\OswisCoreBundle\DependencyInjection;
 use Exception;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserRole;
+use OswisOrg\OswisCoreBundle\Interfaces\Extender\UpdateExtenderInterface;
 use OswisOrg\OswisCoreBundle\Interfaces\Web\RssExtenderInterface;
 use OswisOrg\OswisCoreBundle\Interfaces\Web\SiteMapExtenderInterface;
 use OswisOrg\OswisCoreBundle\Interfaces\Web\WebMenuExtenderInterface;
@@ -44,6 +45,7 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
         $container->registerForAutoconfiguration(SiteMapExtenderInterface::class)->addTag('oswis.site_map_extender');
         $container->registerForAutoconfiguration(RssExtenderInterface::class)->addTag('oswis.rss_extender');
         $container->registerForAutoconfiguration(WebMenuExtenderInterface::class)->addTag('oswis.web_menu_extender');
+        $container->registerForAutoconfiguration(UpdateExtenderInterface::class)->addTag('oswis.update_extender');
     }
 
     /**
