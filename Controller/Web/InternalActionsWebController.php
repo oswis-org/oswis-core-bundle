@@ -20,12 +20,9 @@ class InternalActionsWebController extends AbstractController
 {
     protected OswisCoreSettingsProvider $coreSettings;
 
-    private AppUserDefaultsService $appUserDefaultsService;
-
-    public function __construct(OswisCoreSettingsProvider $coreSettings, AppUserDefaultsService $appUserDefaultsService)
+    public function __construct(OswisCoreSettingsProvider $coreSettings)
     {
         $this->coreSettings = $coreSettings;
-        $this->appUserDefaultsService = $appUserDefaultsService;
     }
 
     /**
@@ -57,20 +54,6 @@ class InternalActionsWebController extends AbstractController
         $allowedIPs = $this->coreSettings->getAdminIPs();
         if (!IpUtils::checkIp($request->getClientIp(), $allowedIPs)) {
             throw new AccessDeniedHttpException('Nedostatečná oprávnění.');
-        }
-    }
-
-    /**
-     * @return Response
-     */
-    public function registerRoot(): Response
-    {
-        try {
-            $this->appUserDefaultsService->registerRoot();
-
-            return new Response('Uživatel byl vytvořen, pokud ještě neexistoval.');
-        } catch (Exception $e) {
-            return new Response('Nastala chyba při vytváření výchozího uživatele.');
         }
     }
 }

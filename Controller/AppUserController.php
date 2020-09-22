@@ -5,6 +5,7 @@
 
 namespace OswisOrg\OswisCoreBundle\Controller;
 
+use InvalidArgumentException;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserToken;
 use OswisOrg\OswisCoreBundle\Exceptions\InvalidTypeException;
 use OswisOrg\OswisCoreBundle\Exceptions\NotFoundException;
@@ -16,6 +17,7 @@ use OswisOrg\OswisCoreBundle\Exceptions\UserNotUniqueException;
 use OswisOrg\OswisCoreBundle\Form\Activation\ActivationRequestType;
 use OswisOrg\OswisCoreBundle\Form\PasswordChange\PasswordChangeRequestType;
 use OswisOrg\OswisCoreBundle\Form\PasswordChange\PasswordChangeType;
+use OswisOrg\OswisCoreBundle\Service\AppUserDefaultsService;
 use OswisOrg\OswisCoreBundle\Service\AppUserService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Exception\LogicException;
@@ -28,9 +30,12 @@ class AppUserController extends AbstractController
 {
     private AppUserService $appUserService;
 
-    public function __construct(AppUserService $appUserService)
+    private AppUserDefaultsService $appUserDefaultsService;
+
+    public function __construct(AppUserService $appUserService, AppUserDefaultsService $appUserDefaultsService)
     {
         $this->appUserService = $appUserService;
+        $this->appUserDefaultsService = $appUserDefaultsService;
     }
 
     /**
@@ -225,5 +230,16 @@ class AppUserController extends AbstractController
                 'message' => 'Heslo u uživatelského účtu bylo úspěšně změněno.',
             ]
         );
+    }
+
+    public function registerRoot(): Response
+    {
+        try {
+            $this->appUserDefaultsService->registerRoot();
+
+            return new Response('Uživatel byl vytvořen, pokud ještě neexistoval.');
+        } catch (InvalidTypeException|InvalidArgumentException|UserNotFoundException|NotFoundException|NotImplementedException|UserNotUniqueException|OswisException $e) {
+            return new Response('Nastala chyba při vytváření výchozího uživatele.');
+        }
     }
 }
