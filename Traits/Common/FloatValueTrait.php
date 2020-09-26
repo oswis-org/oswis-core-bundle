@@ -17,7 +17,7 @@ trait FloatValueTrait
      * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\RangeFilter::class)
      * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
      */
-    protected ?int $floatValue = null;
+    protected ?float $floatValue = null;
 
     public function getFloatValue(): ?float
     {
