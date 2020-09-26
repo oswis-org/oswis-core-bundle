@@ -31,11 +31,11 @@ use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 class AppUserController extends AbstractController
 {
+    protected OswisCoreSettingsProvider $coreSettings;
+
     private AppUserService $appUserService;
 
     private AppUserDefaultsService $appUserDefaultsService;
-
-    protected OswisCoreSettingsProvider $coreSettings;
 
     public function __construct(AppUserService $appUserService, AppUserDefaultsService $appUserDefaultsService, OswisCoreSettingsProvider $coreSettings)
     {

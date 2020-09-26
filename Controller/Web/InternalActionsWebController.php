@@ -5,9 +5,7 @@
 
 namespace OswisOrg\OswisCoreBundle\Controller\Web;
 
-use Exception;
 use OswisOrg\OswisCoreBundle\Provider\OswisCoreSettingsProvider;
-use OswisOrg\OswisCoreBundle\Service\AppUserDefaultsService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Filesystem\Exception\IOException;
 use Symfony\Component\Filesystem\Filesystem;
