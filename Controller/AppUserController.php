@@ -17,14 +17,17 @@ use OswisOrg\OswisCoreBundle\Exceptions\UserNotUniqueException;
 use OswisOrg\OswisCoreBundle\Form\Activation\ActivationRequestType;
 use OswisOrg\OswisCoreBundle\Form\PasswordChange\PasswordChangeRequestType;
 use OswisOrg\OswisCoreBundle\Form\PasswordChange\PasswordChangeType;
+use OswisOrg\OswisCoreBundle\Provider\OswisCoreSettingsProvider;
 use OswisOrg\OswisCoreBundle\Service\AppUserDefaultsService;
 use OswisOrg\OswisCoreBundle\Service\AppUserService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Exception\LogicException;
 use Symfony\Component\Form\Exception\OutOfBoundsException;
 use Symfony\Component\Form\Exception\RuntimeException;
+use Symfony\Component\HttpFoundation\IpUtils;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 class AppUserController extends AbstractController
 {
@@ -32,10 +35,13 @@ class AppUserController extends AbstractController
 
     private AppUserDefaultsService $appUserDefaultsService;
 
-    public function __construct(AppUserService $appUserService, AppUserDefaultsService $appUserDefaultsService)
+    protected OswisCoreSettingsProvider $coreSettings;
+
+    public function __construct(AppUserService $appUserService, AppUserDefaultsService $appUserDefaultsService, OswisCoreSettingsProvider $coreSettings)
     {
         $this->appUserService = $appUserService;
         $this->appUserDefaultsService = $appUserDefaultsService;
+        $this->coreSettings = $coreSettings;
     }
 
     /**
@@ -232,8 +238,18 @@ class AppUserController extends AbstractController
         );
     }
 
-    public function registerRoot(): Response
+    /**
+     * @param Request $request
+     *
+     * @return Response
+     * @throws AccessDeniedHttpException
+     */
+    public function registerRoot(Request $request): Response
     {
+        $allowedIPs = $this->coreSettings->getAdminIPs();
+        if (!IpUtils::checkIp($request->getClientIp(), $allowedIPs)) {
+            throw new AccessDeniedHttpException('Nedostatečná oprávnění.');
+        }
         try {
             $this->appUserDefaultsService->registerRoot();
 
