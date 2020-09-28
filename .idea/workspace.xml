@@ -14,9 +14,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/AppUserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/AppUserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Common/FloatValueTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/FloatValueTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AppUser/AppUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUser/AppUser.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AppUser/AppUserRole.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUser/AppUserRole.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AppUser/AppUserToken.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUser/AppUserToken.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AppUser/AppUserType.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUser/AppUserType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AppUserMail/AppUserMail.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUserMail/AppUserMail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AppUserMail/AppUserMailCategory.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUserMail/AppUserMailCategory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AppUserMail/AppUserMailGroup.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUserMail/AppUserMailGroup.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/Logger/ClientLogRecord.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Logger/ClientLogRecord.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/TwigTemplate/TwigTemplate.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/TwigTemplate/TwigTemplate.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,8 +47,8 @@
     <option name="defaultAccountId" value="9cf1c361-fb0c-4273-9734-feb3c2eb7172" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/exif/exif.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/vendor/vich/uploader-bundle/src/Form/Type/VichImageType.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/exif/exif.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard/standard_0.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/date/date_c.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/vendor/vich/uploader-bundle/src/Mapping/Annotation/UploadableField.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
@@ -200,6 +210,8 @@
       <path value="$PROJECT_DIR$/vendor/symfony/deprecation-contracts" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php80" />
       <path value="$PROJECT_DIR$/vendor/rikudou/czqrpayment" />
+      <path value="$PROJECT_DIR$/vendor/symfony/http-client-contracts" />
+      <path value="$PROJECT_DIR$/vendor/nelmio/cors-bundle" />
     </include_path>
   </component>
   <component name="ProjectId" id="1OdNRiB7J91AH4isXqLMtDEiNnC" />
@@ -855,35 +867,8 @@
       <workItem from="1600718565567" duration="292000" />
       <workItem from="1600780647257" duration="3853000" />
       <workItem from="1600806567014" duration="1506000" />
-      <workItem from="1601151939516" duration="43000" />
-    </task>
-    <task id="LOCAL-00727" summary="Some fixes, updates and changes.">
-      <created>1594839836890</created>
-      <option name="number" value="00727" />
-      <option name="presentableId" value="LOCAL-00727" />
-      <option name="project" value="LOCAL" />
-      <updated>1594839836890</updated>
-    </task>
-    <task id="LOCAL-00728" summary="Some fixes, updates and changes.">
-      <created>1594840325501</created>
-      <option name="number" value="00728" />
-      <option name="presentableId" value="LOCAL-00728" />
-      <option name="project" value="LOCAL" />
-      <updated>1594840325501</updated>
-    </task>
-    <task id="LOCAL-00729" summary="Some fixes, updates and changes.">
-      <created>1594847744617</created>
-      <option name="number" value="00729" />
-      <option name="presentableId" value="LOCAL-00729" />
-      <option name="project" value="LOCAL" />
-      <updated>1594847744617</updated>
-    </task>
-    <task id="LOCAL-00730" summary="Some fixes, updates and changes.">
-      <created>1594851185253</created>
-      <option name="number" value="00730" />
-      <option name="presentableId" value="LOCAL-00730" />
-      <option name="project" value="LOCAL" />
-      <updated>1594851185253</updated>
+      <workItem from="1601151939516" duration="342000" />
+      <workItem from="1601327143084" duration="1333000" />
     </task>
     <task id="LOCAL-00731" summary="Some fixes, updates and changes.">
       <created>1595090900594</created>
@@ -1200,7 +1185,35 @@
       <option name="project" value="LOCAL" />
       <updated>1600807970181</updated>
     </task>
-    <option name="localTasksCounter" value="776" />
+    <task id="LOCAL-00776" summary="Added check of user's IP.">
+      <created>1601152036873</created>
+      <option name="number" value="00776" />
+      <option name="presentableId" value="LOCAL-00776" />
+      <option name="project" value="LOCAL" />
+      <updated>1601152036873</updated>
+    </task>
+    <task id="LOCAL-00777" summary="Fixed type of property (int to float).">
+      <created>1601152066597</created>
+      <option name="number" value="00777" />
+      <option name="presentableId" value="LOCAL-00777" />
+      <option name="project" value="LOCAL" />
+      <updated>1601152066598</updated>
+    </task>
+    <task id="LOCAL-00778" summary="Reformat...">
+      <created>1601152134455</created>
+      <option name="number" value="00778" />
+      <option name="presentableId" value="LOCAL-00778" />
+      <option name="project" value="LOCAL" />
+      <updated>1601152134455</updated>
+    </task>
+    <task id="LOCAL-00779" summary="Update...">
+      <created>1601152250062</created>
+      <option name="number" value="00779" />
+      <option name="presentableId" value="LOCAL-00779" />
+      <option name="project" value="LOCAL" />
+      <updated>1601152250062</updated>
+    </task>
+    <option name="localTasksCounter" value="780" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1250,10 +1263,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Some changes, updates and fixes." />
-    <MESSAGE value="Use knplabs/doctrine-behaviors instead of Gedmo." />
-    <MESSAGE value="Use DateTimeInterface instead of DateTime." />
-    <MESSAGE value="Use $builder instead of short $qb." />
     <MESSAGE value="Some changes." />
     <MESSAGE value="AbstractImageType extends AbstractFileType." />
     <MESSAGE value="AbstractImageAction extends AbstractFileAction." />
@@ -1275,7 +1284,11 @@
     <MESSAGE value="Added FloatValueInterface and FloatValueTrait." />
     <MESSAGE value="Added classes for UpdateExtender." />
     <MESSAGE value="Fixed functions for &quot;register-root&quot; route." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed functions for &quot;register-root&quot; route." />
+    <MESSAGE value="Added check of user's IP." />
+    <MESSAGE value="Fixed type of property (int to float)." />
+    <MESSAGE value="Reformat..." />
+    <MESSAGE value="Update..." />
+    <option name="LAST_COMMIT_MESSAGE" value="Update..." />
   </component>
   <component name="WindowStateProjectService">
     <state x="400" y="198" width="557" height="339" key="#Notifications" timestamp="1593605848623">
@@ -1292,7 +1305,6 @@
     </state>
     <state x="251" y="0" width="855" height="735" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.741@0.0.1366.741" timestamp="1596996721251" />
     <state x="294" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1600.873@0.0.1600.873" timestamp="1600781478241" />
-    <state x="604" y="0" width="946" height="735" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.3286.741@0.0.3286.741" timestamp="1592652460135" />
     <state x="251" y="0" width="624" height="735" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1595103188582" />
     <state x="294" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/1920.0.1600.900/0.0.1600.873@0.0.1600.873" timestamp="1600693263678" />
     <state x="338" y="303" width="526" height="478" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1600808088727">
@@ -1301,16 +1313,17 @@
     <state x="288" y="257" width="526" height="478" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.741@0.0.1366.741" timestamp="1597048597124" />
     <state x="338" y="303" width="526" height="478" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1600.873@0.0.1600.873" timestamp="1600808088727" />
     <state x="405" y="303" width="526" height="478" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/1920.0.1600.900/0.0.1920.873@0.0.1920.873" timestamp="1598799039318" />
-    <state x="510" y="449" width="365" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1600692054500">
+    <state x="510" y="449" width="394" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1601328255432">
       <screen x="0" y="0" width="1600" height="873" />
     </state>
     <state x="499" y="381" width="402" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1366.741@0.0.1366.741" timestamp="1597678178984" />
+    <state x="510" y="449" width="394" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1600.873@0.0.1600.873" timestamp="1601328255432" />
     <state x="1048" y="381" width="522" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.3286.741@0.0.3286.741" timestamp="1597828257612" />
     <state x="1123" y="449" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.3520.873@0.0.3520.873" timestamp="1600598403799" />
     <state x="499" y="381" width="402" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1595104122364" />
     <state x="510" y="449" width="365" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1600.900/0.0.1600.873@0.0.1600.873" timestamp="1600692054500" />
-    <state x="630" y="0" width="962" height="867" key="CommitChangelistDialog2" timestamp="1600807970085">
-      <screen x="0" y="0" width="1600" height="873" />
+    <state x="1039" y="0" width="962" height="867" key="CommitChangelistDialog2" timestamp="1601152249824">
+      <screen x="0" y="0" width="1920" height="873" />
     </state>
     <state x="0" y="0" width="904" height="735" key="CommitChangelistDialog2/0.0.1366.741@0.0.1366.741" timestamp="1597678345542" />
     <state x="630" y="0" width="962" height="867" key="CommitChangelistDialog2/0.0.1600.873@0.0.1600.873" timestamp="1600807970085" />
@@ -1318,13 +1331,14 @@
     <state x="1920" y="0" width="1600" height="873" key="CommitChangelistDialog2/0.0.3520.873@0.0.3520.873" timestamp="1600601279974" />
     <state x="369" y="0" width="881" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1595105808715" />
     <state x="719" y="0" width="881" height="873" key="CommitChangelistDialog2/1920.0.1600.900/0.0.1600.873@0.0.1600.873" timestamp="1600693365603" />
-    <state x="1039" y="0" width="881" height="873" key="CommitChangelistDialog2/1920.0.1600.900/0.0.1920.873@0.0.1920.873" timestamp="1598802829216" />
-    <state x="99" y="100" width="1152" height="529" maximized="true" key="DiffContextDialog" timestamp="1600692142073">
-      <screen x="0" y="0" width="1600" height="873" />
+    <state x="1039" y="0" width="881" height="873" key="CommitChangelistDialog2/1920.0.1600.900/0.0.1920.873@0.0.1920.873" timestamp="1601152249824" />
+    <state x="99" y="100" width="1144" height="523" maximized="true" key="DiffContextDialog" timestamp="1601152292976">
+      <screen x="0" y="0" width="1920" height="873" />
     </state>
     <state x="99" y="100" width="1152" height="529" maximized="true" key="DiffContextDialog/0.0.3286.741@0.0.3286.741" timestamp="1592988644914" />
     <state x="99" y="100" width="1160" height="535" maximized="true" key="DiffContextDialog/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1595098501185" />
     <state x="99" y="100" width="1152" height="529" maximized="true" key="DiffContextDialog/1920.0.1600.900/0.0.1600.873@0.0.1600.873" timestamp="1600692142073" />
+    <state x="99" y="100" width="1144" height="523" maximized="true" key="DiffContextDialog/1920.0.1600.900/0.0.1920.873@0.0.1920.873" timestamp="1601152292976" />
     <state x="466" y="128" width="426" height="478" key="FileChooserDialogImpl" timestamp="1594671065933">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
@@ -1353,8 +1367,8 @@
     </state>
     <state x="187" y="5" key="SettingsEditor/0.0.1366.741@0.0.1366.741" timestamp="1594849819760" />
     <state x="33" y="0" width="1280" height="730" key="SettingsEditor/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1595090603435" />
-    <state x="0" y="251" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1600807974804">
-      <screen x="0" y="0" width="1600" height="873" />
+    <state x="0" y="251" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1601152251323">
+      <screen x="0" y="0" width="1920" height="873" />
     </state>
     <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1597678348044" />
     <state x="0" y="251" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1600.873@0.0.1600.873" timestamp="1600807974804" />
@@ -1362,7 +1376,7 @@
     <state x="0" y="251" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.3520.873@0.0.3520.873" timestamp="1600601281597" />
     <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1595105814163" />
     <state x="0" y="251" width="531" height="522" key="Vcs.Push.Dialog.v2/1920.0.1600.900/0.0.1600.873@0.0.1600.873" timestamp="1600693366985" />
-    <state x="0" y="251" width="539" height="615" key="Vcs.Push.Dialog.v2/1920.0.1600.900/0.0.1920.873@0.0.1920.873" timestamp="1598802830880" />
+    <state x="0" y="251" width="539" height="615" key="Vcs.Push.Dialog.v2/1920.0.1600.900/0.0.1920.873@0.0.1920.873" timestamp="1601152251323" />
     <state x="99" y="96" width="1085" height="456" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1594814880144">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
@@ -1376,10 +1390,11 @@
     </state>
     <state x="333" y="0" width="692" height="735" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1366.741@0.0.1366.741" timestamp="1592758592733" />
     <state x="333" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1595084647084" />
-    <state x="158" y="54" width="812" height="687" key="find.popup" timestamp="1596658317419">
-      <screen x="0" y="0" width="1366" height="741" />
+    <state x="185" y="63" width="952" height="810" key="find.popup" timestamp="1601327702113">
+      <screen x="0" y="0" width="1600" height="873" />
     </state>
     <state x="158" y="54" width="812" height="687" key="find.popup/0.0.1366.741@0.0.1366.741" timestamp="1596658317419" />
+    <state x="185" y="63" width="952" height="810" key="find.popup/0.0.1600.873@0.0.1600.873" timestamp="1601327702113" />
     <state x="158" y="54" width="812" height="687" key="find.popup/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1595092290283" />
     <state x="346" y="164" key="run.anything.popup" timestamp="1596899287018">
       <screen x="0" y="0" width="1366" height="741" />

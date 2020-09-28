@@ -24,37 +24,37 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
  * @ApiPlatform\Core\Annotation\ApiResource(
  *   attributes={
  *     "filters"={"search"},
- *     "access_control"="is_granted('ROLE_USER')"
+ *     "security"="is_granted('ROLE_USER')"
  *   },
  *   collectionOperations={
  *     "get"={
- *       "access_control"="is_granted('ROLE_MANAGER')",
+ *       "security"="is_granted('ROLE_MANAGER')",
  *       "normalization_context"={"groups"={"entities_get", "app_users_get"}, "enable_max_depth"=true},
  *     },
  *     "pdf"={
  *       "method"="GET",
  *       "path"="/app_users/export/pdf",
- *       "access_control"="is_granted('ROLE_MANAGER')",
+ *       "security"="is_granted('ROLE_MANAGER')",
  *       "normalization_context"={"groups"={"entities_get", "app_users_get"}, "enable_max_depth"=true},
  *     },
  *     "csv"={
  *       "method"="GET",
  *       "path"="/app_users/export/csv",
- *       "access_control"="is_granted('ROLE_MANAGER')",
+ *       "security"="is_granted('ROLE_MANAGER')",
  *       "normalization_context"={"groups"={"entities_get", "app_users_get"}, "enable_max_depth"=true},
  *     },
  *     "post"={
- *       "access_control"="is_granted('ROLE_ADMIN')",
+ *       "security"="is_granted('ROLE_ADMIN')",
  *       "denormalization_context"={"groups"={"entities_post", "app_users_post"}, "enable_max_depth"=true}
  *     }
  *   },
  *   itemOperations={
  *     "get"={
- *       "access_control"="is_granted('ROLE_MANAGER') or object.canRead(user)",
+ *       "security"="is_granted('ROLE_MANAGER') or object.canRead(user)",
  *       "normalization_context"={"groups"={"entity_get", "app_user_get"}, "enable_max_depth"=true},
  *     },
  *     "put"={
- *       "access_control"="is_granted('ROLE_ADMIN') or object.canEdit(user)",
+ *       "security"="is_granted('ROLE_ADMIN') or object.canEdit(user)",
  *       "denormalization_context"={"groups"={"entity_put", "app_user_put"}, "enable_max_depth"=true}
  *     }
  *   }

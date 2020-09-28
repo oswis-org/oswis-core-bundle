@@ -24,7 +24,7 @@ use OswisOrg\OswisCoreBundle\Traits\Common\BasicTrait;
  *   },
  *   itemOperations={
  *     "get"={
- *       "access_control"="is_granted('ROLE_MANAGER')",
+ *       "security"="is_granted('ROLE_MANAGER')",
  *       "denormalization_context"={"groups"={"entities_post", "client_log_record_get"}}
  *     }
  *   }
