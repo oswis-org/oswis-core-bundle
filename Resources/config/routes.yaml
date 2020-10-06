@@ -48,6 +48,10 @@ oswis_org_oswis_core_portal:
     requirements:
         foo: .+
 
+oswis_org_oswis_core_admin_site_web_manifest:
+    controller: oswis_org_oswis_core.admin_web_controller::adminSiteWebManifest
+    path: "/admin/site.webmanifest"
+
 oswis_org_oswis_core_admin:
     controller: oswis_org_oswis_core.admin_web_controller::admin
     path: "/admin/{foo?}"
@@ -62,10 +66,6 @@ oswis_org_oswis_core_homepage_action:
         page: 0
     requirements:
         page: '\d+'
-
-oswis_org_oswis_core_admin_site_web_manifest:
-    controller: oswis_org_oswis_core.admin_web_controller::adminSiteWebManifest
-    path: "/admin/site.webmanifest"
 
 ### GDPR page (for forms etc.).
 oswis_org_oswis_core_gdpr_action:
