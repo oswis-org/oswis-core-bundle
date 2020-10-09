@@ -159,6 +159,9 @@
       <path value="$PROJECT_DIR$/vendor/rikudou/czqrpayment" />
       <path value="$PROJECT_DIR$/vendor/symfony/http-client-contracts" />
       <path value="$PROJECT_DIR$/vendor/nelmio/cors-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symplify/symplify-kernel" />
+      <path value="$PROJECT_DIR$/vendor/symplify/smart-file-system" />
+      <path value="$PROJECT_DIR$/vendor/symplify/autowire-array-parameter" />
     </include_path>
   </component>
   <component name="PhpInterpreters">
