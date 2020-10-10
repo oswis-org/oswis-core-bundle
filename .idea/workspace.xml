@@ -13,11 +13,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-    </list>
+    <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -864,13 +860,7 @@
       <workItem from="1601327143084" duration="1427000" />
       <workItem from="1601984243229" duration="57000" />
       <workItem from="1602065269850" duration="1473000" />
-    </task>
-    <task id="LOCAL-00733" summary="Some fixes, updates and changes.">
-      <created>1595098860569</created>
-      <option name="number" value="00733" />
-      <option name="presentableId" value="LOCAL-00733" />
-      <option name="project" value="LOCAL" />
-      <updated>1595098860569</updated>
+      <workItem from="1602228324613" duration="743000" />
     </task>
     <task id="LOCAL-00734" summary="Some fixes, updates and changes.">
       <created>1595099831894</created>
@@ -1208,7 +1198,14 @@
       <option name="project" value="LOCAL" />
       <updated>1601984297406</updated>
     </task>
-    <option name="localTasksCounter" value="782" />
+    <task id="LOCAL-00782" summary="Updated composer packages.">
+      <created>1602228423079</created>
+      <option name="number" value="00782" />
+      <option name="presentableId" value="LOCAL-00782" />
+      <option name="project" value="LOCAL" />
+      <updated>1602228423079</updated>
+    </task>
+    <option name="localTasksCounter" value="783" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1258,7 +1255,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="AbstractImageAction extends AbstractFileAction." />
     <MESSAGE value="Introduced Publicity settings entity." />
     <MESSAGE value="Change DateTimeInterface back to DateTime." />
     <MESSAGE value="Back to Gedmo from Knp for Timestampable." />
@@ -1283,7 +1279,8 @@
     <MESSAGE value="Update..." />
     <MESSAGE value="Changed ApiPlatform's &quot;access_control&quot; attribute to &quot;security&quot;." />
     <MESSAGE value="Fixed routes definitions order for admin app." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed routes definitions order for admin app." />
+    <MESSAGE value="Updated composer packages." />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated composer packages." />
   </component>
   <component name="WindowStateProjectService">
     <state x="400" y="198" width="557" height="339" key="#Notifications" timestamp="1593605848623">
@@ -1317,11 +1314,11 @@
     <state x="1123" y="449" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.3520.873@0.0.3520.873" timestamp="1600598403799" />
     <state x="499" y="381" width="402" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1595104122364" />
     <state x="510" y="449" width="365" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1600.900/0.0.1600.873@0.0.1600.873" timestamp="1600692054500" />
-    <state x="630" y="0" width="962" height="867" key="CommitChangelistDialog2" timestamp="1601984296944">
+    <state x="630" y="0" width="962" height="867" key="CommitChangelistDialog2" timestamp="1602228422753">
       <screen x="0" y="0" width="1600" height="873" />
     </state>
     <state x="0" y="0" width="904" height="735" key="CommitChangelistDialog2/0.0.1366.741@0.0.1366.741" timestamp="1597678345542" />
-    <state x="630" y="0" width="962" height="867" key="CommitChangelistDialog2/0.0.1600.873@0.0.1600.873" timestamp="1601984296944" />
+    <state x="630" y="0" width="962" height="867" key="CommitChangelistDialog2/0.0.1600.873@0.0.1600.873" timestamp="1602228422753" />
     <state x="1920" y="0" width="1366" height="741" key="CommitChangelistDialog2/0.0.3286.741@0.0.3286.741" timestamp="1597828440193" />
     <state x="1920" y="0" width="1600" height="873" key="CommitChangelistDialog2/0.0.3520.873@0.0.3520.873" timestamp="1600601279974" />
     <state x="369" y="0" width="881" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1595105808715" />
@@ -1356,11 +1353,11 @@
     </state>
     <state x="187" y="5" key="SettingsEditor/0.0.1366.741@0.0.1366.741" timestamp="1594849819760" />
     <state x="33" y="0" width="1280" height="730" key="SettingsEditor/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1595090603435" />
-    <state x="0" y="251" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1601984304194">
+    <state x="0" y="251" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1602228424689">
       <screen x="0" y="0" width="1600" height="873" />
     </state>
     <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1597678348044" />
-    <state x="0" y="251" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1600.873@0.0.1600.873" timestamp="1601984304194" />
+    <state x="0" y="251" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1600.873@0.0.1600.873" timestamp="1602228424689" />
     <state x="0" y="213" width="1920" height="522" key="Vcs.Push.Dialog.v2/0.0.3286.741@0.0.3286.741" timestamp="1597828441689" />
     <state x="0" y="251" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.3520.873@0.0.3520.873" timestamp="1600601281597" />
     <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1595105814163" />
