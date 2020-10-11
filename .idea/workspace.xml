@@ -13,7 +13,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="" />
+    <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/symfony2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/symfony2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AppUser/AppUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUser/AppUser.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/views/export/pdf/list-thead.pdf.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/export/pdf/list-thead.pdf.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/views/web/rss.xml.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/rss.xml.twig" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -231,7 +237,7 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
+    <property name="settings.editor.selected.configurable" value="Symfony2.SettingsForm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -861,13 +867,9 @@
       <workItem from="1601984243229" duration="57000" />
       <workItem from="1602065269850" duration="1473000" />
       <workItem from="1602228324613" duration="743000" />
-    </task>
-    <task id="LOCAL-00734" summary="Some fixes, updates and changes.">
-      <created>1595099831894</created>
-      <option name="number" value="00734" />
-      <option name="presentableId" value="LOCAL-00734" />
-      <option name="project" value="LOCAL" />
-      <updated>1595099831894</updated>
+      <workItem from="1602361448098" duration="351000" />
+      <workItem from="1602421649534" duration="400000" />
+      <workItem from="1602424431384" duration="3663000" />
     </task>
     <task id="LOCAL-00735" summary="Some fixes, updates and changes.">
       <created>1595100387424</created>
@@ -1205,7 +1207,14 @@
       <option name="project" value="LOCAL" />
       <updated>1602228423079</updated>
     </task>
-    <option name="localTasksCounter" value="783" />
+    <task id="LOCAL-00783" summary="Updated composer packages.">
+      <created>1602361598112</created>
+      <option name="number" value="00783" />
+      <option name="presentableId" value="LOCAL-00783" />
+      <option name="project" value="LOCAL" />
+      <updated>1602361598113</updated>
+    </task>
+    <option name="localTasksCounter" value="784" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1283,10 +1292,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="Updated composer packages." />
   </component>
   <component name="WindowStateProjectService">
-    <state x="400" y="198" width="557" height="339" key="#Notifications" timestamp="1593605848623">
-      <screen x="0" y="0" width="1366" height="741" />
-    </state>
-    <state x="400" y="198" width="557" height="339" key="#Notifications/0.0.1366.741@0.0.1366.741" timestamp="1593605848623" />
     <state x="546" y="158" width="466" height="556" key="#com.intellij.ide.util.MemberChooser" timestamp="1595945071930">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
@@ -1305,8 +1310,8 @@
     <state x="288" y="257" width="526" height="478" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.741@0.0.1366.741" timestamp="1597048597124" />
     <state x="338" y="303" width="526" height="478" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1600.873@0.0.1600.873" timestamp="1600808088727" />
     <state x="405" y="303" width="526" height="478" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/1920.0.1600.900/0.0.1920.873@0.0.1920.873" timestamp="1598799039318" />
-    <state x="510" y="449" width="394" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1601328255432">
-      <screen x="0" y="0" width="1600" height="873" />
+    <state x="2430" y="463" width="394" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1602421661235">
+      <screen x="1920" y="0" width="1600" height="900" />
     </state>
     <state x="499" y="381" width="402" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1366.741@0.0.1366.741" timestamp="1597678178984" />
     <state x="510" y="449" width="394" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1600.873@0.0.1600.873" timestamp="1601328255432" />
@@ -1314,8 +1319,9 @@
     <state x="1123" y="449" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.3520.873@0.0.3520.873" timestamp="1600598403799" />
     <state x="499" y="381" width="402" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1595104122364" />
     <state x="510" y="449" width="365" height="320" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1600.900/0.0.1600.873@0.0.1600.873" timestamp="1600692054500" />
-    <state x="630" y="0" width="962" height="867" key="CommitChangelistDialog2" timestamp="1602228422753">
-      <screen x="0" y="0" width="1600" height="873" />
+    <state x="2430" y="463" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1600.900/0.0.1920.873@1920.0.1600.900" timestamp="1602421661235" />
+    <state x="1039" y="0" width="962" height="867" key="CommitChangelistDialog2" timestamp="1602361597736">
+      <screen x="0" y="0" width="1920" height="873" />
     </state>
     <state x="0" y="0" width="904" height="735" key="CommitChangelistDialog2/0.0.1366.741@0.0.1366.741" timestamp="1597678345542" />
     <state x="630" y="0" width="962" height="867" key="CommitChangelistDialog2/0.0.1600.873@0.0.1600.873" timestamp="1602228422753" />
@@ -1323,7 +1329,7 @@
     <state x="1920" y="0" width="1600" height="873" key="CommitChangelistDialog2/0.0.3520.873@0.0.3520.873" timestamp="1600601279974" />
     <state x="369" y="0" width="881" height="735" key="CommitChangelistDialog2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1595105808715" />
     <state x="719" y="0" width="881" height="873" key="CommitChangelistDialog2/1920.0.1600.900/0.0.1600.873@0.0.1600.873" timestamp="1600693365603" />
-    <state x="1039" y="0" width="881" height="873" key="CommitChangelistDialog2/1920.0.1600.900/0.0.1920.873@0.0.1920.873" timestamp="1601152249824" />
+    <state x="1039" y="0" width="881" height="873" key="CommitChangelistDialog2/1920.0.1600.900/0.0.1920.873@0.0.1920.873" timestamp="1602361597736" />
     <state x="99" y="100" width="1144" height="523" maximized="true" key="DiffContextDialog" timestamp="1601152292976">
       <screen x="0" y="0" width="1920" height="873" />
     </state>
@@ -1348,13 +1354,14 @@
       <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="366" y="10" width="626" height="714" key="RollbackChangesDialog/0.0.1366.741@0.0.1366.741" timestamp="1597051433190" />
-    <state x="33" y="0" width="1280" height="730" key="SettingsEditor" timestamp="1595090603435">
-      <screen x="0" y="0" width="1366" height="741" />
+    <state x="1959" y="0" width="1500" height="873" key="SettingsEditor" timestamp="1602422039454">
+      <screen x="1920" y="0" width="1600" height="900" />
     </state>
     <state x="187" y="5" key="SettingsEditor/0.0.1366.741@0.0.1366.741" timestamp="1594849819760" />
     <state x="33" y="0" width="1280" height="730" key="SettingsEditor/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1595090603435" />
-    <state x="0" y="251" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1602228424689">
-      <screen x="0" y="0" width="1600" height="873" />
+    <state x="1959" y="0" width="1500" height="873" key="SettingsEditor/1920.0.1600.900/0.0.1920.873@1920.0.1600.900" timestamp="1602422039454" />
+    <state x="0" y="251" width="802" height="522" key="Vcs.Push.Dialog.v2" timestamp="1602361599915">
+      <screen x="0" y="0" width="1920" height="873" />
     </state>
     <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1597678348044" />
     <state x="0" y="251" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.1600.873@0.0.1600.873" timestamp="1602228424689" />
@@ -1362,7 +1369,7 @@
     <state x="0" y="251" width="802" height="522" key="Vcs.Push.Dialog.v2/0.0.3520.873@0.0.3520.873" timestamp="1600601281597" />
     <state x="395" y="213" width="802" height="522" key="Vcs.Push.Dialog.v2/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1595105814163" />
     <state x="0" y="251" width="531" height="522" key="Vcs.Push.Dialog.v2/1920.0.1600.900/0.0.1600.873@0.0.1600.873" timestamp="1600693366985" />
-    <state x="0" y="251" width="539" height="615" key="Vcs.Push.Dialog.v2/1920.0.1600.900/0.0.1920.873@0.0.1920.873" timestamp="1601152251323" />
+    <state x="0" y="251" width="539" height="615" key="Vcs.Push.Dialog.v2/1920.0.1600.900/0.0.1920.873@0.0.1920.873" timestamp="1602361599915" />
     <state x="99" y="96" width="1085" height="456" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1594814880144">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
@@ -1375,12 +1382,13 @@
       <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="333" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1595084647084" />
-    <state x="185" y="63" width="952" height="810" key="find.popup" timestamp="1601327702113">
-      <screen x="0" y="0" width="1600" height="873" />
+    <state x="2105" y="37" width="952" height="836" key="find.popup" timestamp="1602424544547">
+      <screen x="1920" y="0" width="1600" height="900" />
     </state>
     <state x="158" y="54" width="812" height="687" key="find.popup/0.0.1366.741@0.0.1366.741" timestamp="1596658317419" />
     <state x="185" y="63" width="952" height="810" key="find.popup/0.0.1600.873@0.0.1600.873" timestamp="1601327702113" />
     <state x="158" y="54" width="812" height="687" key="find.popup/1920.0.1366.768/0.0.1366.741@0.0.1366.741" timestamp="1595092290283" />
+    <state x="2105" y="37" width="952" height="836" key="find.popup/1920.0.1600.900/0.0.1920.873@1920.0.1600.900" timestamp="1602424544547" />
     <state x="346" y="164" key="run.anything.popup" timestamp="1596899287018">
       <screen x="0" y="0" width="1366" height="741" />
     </state>

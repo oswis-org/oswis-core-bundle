@@ -162,7 +162,6 @@ class AppUser extends AbstractAppUser implements PdfExportableInterface
         $this->appUserType = $appUserType;
     }
 
-
     /**
      * Can user edit this user?
      */

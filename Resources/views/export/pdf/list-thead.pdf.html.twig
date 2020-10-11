@@ -3,9 +3,7 @@
     {% block list_thead_inner %}
         {% for column in data.columns %}
             <th>
-                {% apply markdown_to_html %}
-                    {{ column.title }}
-                {% endapply %}
+                {{ column.title|striptags|markdown_to_html }}
             </th>
         {% endfor %}
     {% endblock list_thead_inner %}
