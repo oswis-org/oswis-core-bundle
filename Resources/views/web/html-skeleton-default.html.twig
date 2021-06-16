@@ -92,7 +92,7 @@
         {# {{ encore_entry_link_tags('app') }} #}
         {% if css|default %}
             {% autoescape false %}
-                <style type="text/css">{{ css|default }}</style>{% endautoescape %}
+                <style>{{ css|default }}</style>{% endautoescape %}
         {% endif %}
     {% endblock stylesheets %}
 </head>
@@ -131,12 +131,8 @@
     {% block javascript_service_worker %}
         <script>
           if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/sw.js', {scope: '/'}).then(function (registration) {
-              // console.log('Service Worker Registered');
-            });
-            navigator.serviceWorker.ready.then(function (registration) {
-              // console.log('Service Worker Ready');
-            });
+            navigator.serviceWorker.register('/sw.js', {scope: '/'}).then();
+            navigator.serviceWorker.ready.then();
           }
         </script>
     {% endblock javascript_service_worker %}

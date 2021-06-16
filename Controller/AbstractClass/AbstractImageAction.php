@@ -17,7 +17,7 @@ abstract class AbstractImageAction extends AbstractFileAction
     abstract public static function getFileNewInstance(): AbstractImage;
 
     /**
-     * @param Request $request
+     * @param  Request  $request
      *
      * @return AbstractImage
      * @throws InvalidOptionsException

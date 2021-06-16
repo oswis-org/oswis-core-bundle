@@ -24,19 +24,20 @@ class ExportListColumn
     public const TYPE_ID_USERNAME = 'id+username';
     public const TYPE_NAME_EMAIL = 'name+email';
 
-    public const TYPES = [
-        self::TYPE_BASIC,
-        self::TYPE_BOOLEAN,
-        self::TYPE_DATE,
-        self::TYPE_DATETIME,
-        self::TYPE_URL,
-        self::TYPE_EMAIL,
-        self::TYPE_ID,
-        self::TYPE_ID_DATE,
-        self::TYPE_ID_DATETIME,
-        self::TYPE_ID_USERNAME,
-        self::TYPE_NAME_EMAIL,
-    ];
+    public const TYPES
+        = [
+            self::TYPE_BASIC,
+            self::TYPE_BOOLEAN,
+            self::TYPE_DATE,
+            self::TYPE_DATETIME,
+            self::TYPE_URL,
+            self::TYPE_EMAIL,
+            self::TYPE_ID,
+            self::TYPE_ID_DATE,
+            self::TYPE_ID_DATETIME,
+            self::TYPE_ID_USERNAME,
+            self::TYPE_NAME_EMAIL,
+        ];
 
     /**
      * @example dateTime

@@ -47,9 +47,9 @@ class AppUserMailService
     }
 
     /**
-     * @param AppUser           $appUser
-     * @param string            $type
-     * @param AppUserToken|null $appUserToken
+     * @param  AppUser  $appUser
+     * @param  string  $type
+     * @param  AppUserToken|null  $appUserToken
      *
      * @throws OswisException|NotFoundException|NotImplementedException|InvalidTypeException
      */

@@ -6,6 +6,7 @@
 namespace OswisOrg\OswisCoreBundle\Traits\Common;
 
 use DateTime;
+
 use function floor;
 
 /**

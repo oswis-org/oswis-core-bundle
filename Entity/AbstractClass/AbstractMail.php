@@ -167,7 +167,7 @@ abstract class AbstractMail implements BasicInterface
 
                 return;
             }
-        } catch (OswisException|\Symfony\Component\Mime\Exception\LogicException $e) {
+        } catch (OswisException | \Symfony\Component\Mime\Exception\LogicException $e) {
         }
         $this->messageID = $messageID;
     }

@@ -90,7 +90,7 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
     /**
      * Set revision/version which is actual/active now.
      *
-     * @param AbstractRevision $activeRevision
+     * @param  AbstractRevision  $activeRevision
      */
     final public function setActiveRevision(?AbstractRevision $activeRevision): void
     {
@@ -139,8 +139,7 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
     {
         try {
             $dateTime ??= new DateTime() ?? null;
-        } catch (Exception $e) {
-            $dateTime ??= null;
+        } catch (Exception) {
         }
         $revisions = $this->getRevisions()->filter(fn(AbstractRevision $revision) => $dateTime >= $revision->getCreatedDateTime())->toArray();
         AbstractRevision::sortByCreatedDateTime($revisions);

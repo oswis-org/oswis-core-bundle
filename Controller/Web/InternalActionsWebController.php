@@ -24,7 +24,7 @@ class InternalActionsWebController extends AbstractController
     }
 
     /**
-     * @param Request $request
+     * @param  Request  $request
      *
      * @return Response
      * @throws AccessDeniedHttpException
@@ -43,7 +43,7 @@ class InternalActionsWebController extends AbstractController
     }
 
     /**
-     * @param Request $request
+     * @param  Request  $request
      *
      * @throws AccessDeniedHttpException
      */

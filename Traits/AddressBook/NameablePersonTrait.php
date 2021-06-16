@@ -13,6 +13,7 @@ use InvalidArgumentException;
 use OswisOrg\OswisCoreBundle\Interfaces\AddressBook\PersonInterface;
 use OswisOrg\OswisCoreBundle\Traits\Common\NameableTrait;
 use Vokativ\Name as VokativName;
+
 use function trim;
 
 /**

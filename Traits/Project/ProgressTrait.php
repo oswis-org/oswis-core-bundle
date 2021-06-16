@@ -22,7 +22,7 @@ trait ProgressTrait
     /**
      * Get progress as float number between 0.0 and 1.0.
      *
-     * @param bool $recursive Sum from children if progress not set.
+     * @param  bool  $recursive  Sum from children if progress not set.
      *
      * @return float|null
      */

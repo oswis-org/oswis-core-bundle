@@ -12,7 +12,7 @@ use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserRole;
 class AppUserRoleRepository extends ServiceEntityRepository
 {
     /**
-     * @param ManagerRegistry $registry
+     * @param  ManagerRegistry  $registry
      *
      * @throws LogicException
      */

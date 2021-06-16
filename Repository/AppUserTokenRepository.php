@@ -12,7 +12,7 @@ use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserToken;
 class AppUserTokenRepository extends ServiceEntityRepository
 {
     /**
-     * @param ManagerRegistry $registry
+     * @param  ManagerRegistry  $registry
      *
      * @throws LogicException
      */

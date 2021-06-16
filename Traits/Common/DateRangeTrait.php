@@ -37,7 +37,7 @@ trait DateRangeTrait
     /**
      * True if datetime belongs to this datetime range.
      *
-     * @param DateTime $dateTime Checked date and time ('now' if not set).
+     * @param  DateTime  $dateTime  Checked date and time ('now' if not set).
      *
      * @return bool True if belongs to date range.
      */
@@ -65,7 +65,7 @@ trait DateRangeTrait
     }
 
     /**
-     * @param DateTime $endDateTime
+     * @param  DateTime  $endDateTime
      */
     public function setEndDateTime(?DateTime $endDateTime): void
     {
@@ -125,7 +125,7 @@ trait DateRangeTrait
         return $this->getStartByFormat($withoutYear ? 'j. n.' : 'j. n. Y');
     }
 
-    public function getStartByFormat(string $format = DateTime::ATOM): ?string
+    public function getStartByFormat(string $format = 'Y-m-d\TH:i:sP'): ?string
     {
         return $this->getStartDate() ? $this->getStartDate()->format($format) : null;
     }
@@ -135,7 +135,7 @@ trait DateRangeTrait
         return $this->getStartByFormat('j. ').$this->getEndByFormat($withoutYear ? '\až j. n.' : '\až j. n. Y');
     }
 
-    public function getEndByFormat(string $format = DateTime::ATOM): ?string
+    public function getEndByFormat(string $format = 'Y-m-d\TH:i:sP'): ?string
     {
         return $this->getEndDate() ? $this->getEndDate()->format($format) : null;
     }

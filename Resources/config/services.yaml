@@ -50,7 +50,7 @@ services:
         public: true
         arguments:
             - '@router.default'
-            - '@security.user_password_encoder.generic'
+            - '@security.user_password_hasher'
     OswisOrg\OswisCoreBundle\Security\WebUserAuthenticator:
         alias: oswis_org_oswis_core.web_user_authenticator
         public: true
@@ -80,7 +80,7 @@ services:
         autowire: true
         public: true
         arguments:
-            - '@security.password_encoder'
+            - '@security.user_password_hasher'
             - '@doctrine.orm.entity_manager'
             - '@monolog.logger'
             - '@oswis_org_oswis_core.app_user_token_service'

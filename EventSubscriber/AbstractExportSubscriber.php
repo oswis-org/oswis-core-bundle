@@ -55,7 +55,7 @@ abstract class AbstractExportSubscriber implements EventSubscriberInterface
     }
 
     /**
-     * @param ViewEvent $viewEvent
+     * @param  ViewEvent  $viewEvent
      *
      * @throws LoaderError
      * @throws MpdfException
@@ -65,12 +65,12 @@ abstract class AbstractExportSubscriber implements EventSubscriberInterface
     abstract public function export(ViewEvent $viewEvent): void;
 
     /**
-     * @param mixed $result
+     * @param  mixed  $result
      *
      * @return Collection
      * @noinspection MissingParameterTypeDeclarationInspection
      */
-    public function getCollectionFromResult($result): Collection
+    public function getCollectionFromResult(mixed $result): Collection
     {
         if (is_array($result)) {
             return new ArrayCollection($result);

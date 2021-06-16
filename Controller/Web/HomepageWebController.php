@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 class HomepageWebController extends AbstractController
 {
     /**
-     * @param int $page
+     * @param  int  $page
      *
      * @return Response
      * @todo Refactor!!!!!

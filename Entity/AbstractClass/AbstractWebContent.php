@@ -23,8 +23,8 @@ abstract class AbstractWebContent implements BasicInterface
     use TextValueTrait;
 
     /**
-     * @param string|null $textValue
-     * @param string|null $type
+     * @param  string|null  $textValue
+     * @param  string|null  $type
      *
      * @throws InvalidArgumentException
      */

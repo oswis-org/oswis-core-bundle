@@ -52,7 +52,6 @@ trait UserConfirmationTrait
         if (!$this->userConfirmedAt) {
             $this->setUserConfirmedAt(new DateTime());
             $this->setUserConfirmedBy($appUser);
-
         }
     }
 }

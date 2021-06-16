@@ -18,6 +18,7 @@ use Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
+
 use function dirname;
 
 class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionInterface
@@ -264,8 +265,8 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
     /**
      * This work-around allows overriding of other bundles templates by OswisCore.
      *
-     * @param ContainerBuilder $container
-     * @param array            $bundleNames
+     * @param  ContainerBuilder  $container
+     * @param  array  $bundleNames
      */
     final public static function prependForBundleTemplatesOverride(ContainerBuilder $container, array $bundleNames): void
     {

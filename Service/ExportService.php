@@ -45,7 +45,7 @@ class ExportService
     }
 
     /**
-     * @param PdfExportList $pdfList
+     * @param  PdfExportList  $pdfList
      *
      * @return Mpdf
      * @throws LoaderError

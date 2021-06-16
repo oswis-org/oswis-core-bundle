@@ -25,22 +25,24 @@ interface ContactInterface extends NameableInterface
 
     public const COMPANY_TYPES = [self::TYPE_COMPANY];
     public const STUDENT_ORGANIZATION_TYPES = [self::TYPE_STUDENT_ORGANIZATION];
-    public const SCHOOL_TYPES = [
-        self::TYPE_UNIVERSITY,
-        self::TYPE_FACULTY,
-        self::TYPE_FACULTY_DEPARTMENT,
-        self::TYPE_HIGH_SCHOOL,
-        self::TYPE_PRIMARY_SCHOOL,
-        self::TYPE_KINDERGARTEN,
-    ];
+    public const SCHOOL_TYPES
+        = [
+            self::TYPE_UNIVERSITY,
+            self::TYPE_FACULTY,
+            self::TYPE_FACULTY_DEPARTMENT,
+            self::TYPE_HIGH_SCHOOL,
+            self::TYPE_PRIMARY_SCHOOL,
+            self::TYPE_KINDERGARTEN,
+        ];
 
-    public const ORGANIZATION_TYPES = [
-        self::TYPE_ORGANIZATION,
-        self::TYPE_DEPARTMENT,
-        ...self::COMPANY_TYPES,
-        ...self::SCHOOL_TYPES,
-        ...self::STUDENT_ORGANIZATION_TYPES,
-    ];
+    public const ORGANIZATION_TYPES
+        = [
+            self::TYPE_ORGANIZATION,
+            self::TYPE_DEPARTMENT,
+            ...self::COMPANY_TYPES,
+            ...self::SCHOOL_TYPES,
+            ...self::STUDENT_ORGANIZATION_TYPES,
+        ];
 
     public const PERSON_TYPES = [self::TYPE_PERSON];
 }

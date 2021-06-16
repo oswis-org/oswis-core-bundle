@@ -6,17 +6,15 @@
 
 namespace OswisOrg\OswisCoreBundle\Security;
 
-use BadMethodCallException;
-use InvalidArgumentException;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PasswordHasher\PasswordHasherInterface;
 use Symfony\Component\Routing\Exception\InvalidParameterException;
 use Symfony\Component\Routing\Exception\MissingMandatoryParametersException;
 use Symfony\Component\Routing\Exception\RouteNotFoundException;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\Exception\CustomUserMessageAuthenticationException;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
@@ -29,14 +27,8 @@ class WebUserAuthenticator extends AbstractFormLoginAuthenticator
 
     public const LOGIN_ROUTE = 'oswis_org_oswis_core_web_admin_login';
 
-    private UrlGeneratorInterface $urlGenerator;
-
-    private UserPasswordEncoderInterface $passwordEncoder;
-
-    public function __construct(UrlGeneratorInterface $urlGenerator, UserPasswordEncoderInterface $passwordEncoder)
+    public function __construct(private UrlGeneratorInterface $urlGenerator, private PasswordHasherInterface $passwordEncoder)
     {
-        $this->urlGenerator = $urlGenerator;
-        $this->passwordEncoder = $passwordEncoder;
     }
 
     public function supports(Request $request): bool
@@ -54,7 +46,7 @@ class WebUserAuthenticator extends AbstractFormLoginAuthenticator
 
     public function getUser($credentials, UserProviderInterface $userProvider): ?object
     {
-        $user = $userProvider->loadUserByUsername($credentials['username']);
+        $user = $userProvider->loadUserByIdentifier($credentials['username']);
         if (!($user instanceof UserInterface)) {
             throw new CustomUserMessageAuthenticationException('Username could not be found.');
         }
@@ -64,13 +56,13 @@ class WebUserAuthenticator extends AbstractFormLoginAuthenticator
 
     public function checkCredentials($credentials, UserInterface $user): bool
     {
-        return $this->passwordEncoder->isPasswordValid($user, $credentials['password']);
+        return $this->passwordEncoder->verify($user->getPassword(), $credentials['password']);
     }
 
     /**
      * Used to upgrade (rehash) the user's password automatically over time.
      *
-     * @param array $credentials
+     * @param  array  $credentials
      *
      * @return string|null
      */
@@ -80,13 +72,13 @@ class WebUserAuthenticator extends AbstractFormLoginAuthenticator
     }
 
     /**
-     * @param Request        $request
-     * @param TokenInterface $token
-     * @param string         $providerKey
+     * @param  Request  $request
+     * @param  TokenInterface  $token
+     * @param  string  $providerKey
      *
-     * @return Response
-     * @throws BadMethodCallException
-     * @throws InvalidArgumentException
+     * @return \Symfony\Component\HttpFoundation\Response|null
+     * @throws \InvalidArgumentException
+     * @throws \Symfony\Component\HttpFoundation\Exception\SessionNotFoundException
      */
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $providerKey): ?Response
     {

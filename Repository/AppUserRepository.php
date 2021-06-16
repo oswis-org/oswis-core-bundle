@@ -16,11 +16,12 @@ use LogicException;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser;
 use OswisOrg\OswisCoreBundle\Exceptions\UserNotUniqueException;
 use Symfony\Bridge\Doctrine\Security\User\UserLoaderInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 class AppUserRepository extends ServiceEntityRepository implements UserLoaderInterface
 {
     /**
-     * @param ManagerRegistry $registry
+     * @param  ManagerRegistry  $registry
      *
      * @throws LogicException
      */
@@ -30,46 +31,7 @@ class AppUserRepository extends ServiceEntityRepository implements UserLoaderInt
     }
 
     /**
-     * @param string|null $username
-     *
-     * @return AppUser|null
-     * @throws UserNotUniqueException
-     * @noinspection MissingParameterTypeDeclarationInspection
-     */
-    public function loadUserByUsername(?string $username): ?AppUser
-    {
-        $appUser = $this->findOneByUsernameOrMail($username, true);
-
-        return null !== $appUser && ($appUser instanceof AppUser) && $appUser->isActive() ? $appUser : null;
-    }
-
-    /**
-     * @param string|null $username
-     * @param bool|false  $onlyActive
-     *
-     * @return AppUser|null
-     * @throws UserNotUniqueException
-     */
-    public function findOneByUsernameOrMail(?string $username, bool $onlyActive = false): ?AppUser
-    {
-        if (empty($username)) {
-            return null;
-        }
-        $builder = $this->createQueryBuilder('user')->where('(user.username = :username OR user.email = :username)');
-        $builder->setParameter('username', $username);
-        if (true === $onlyActive) {
-            $builder->andWhere('user.activated <= :now')->andWhere('user.deletedAt IS NULL OR user.deletedAt >= :now');
-            $builder->setParameter('now', new DateTime());
-        }
-        try {
-            return $builder->getQuery()->getOneOrNullResult(Query::HYDRATE_OBJECT);
-        } catch (NonUniqueResultException $e) {
-            throw new UserNotUniqueException();
-        }
-    }
-
-    /**
-     * @param int $id
+     * @param  int  $id
      *
      * @throws UserNotUniqueException
      */
@@ -102,5 +64,52 @@ class AppUserRepository extends ServiceEntityRepository implements UserLoaderInt
         $result = parent::findOneBy($criteria, $orderBy);
 
         return $result instanceof AppUser ? $result : null;
+    }
+
+    /**
+     * @throws \OswisOrg\OswisCoreBundle\Exceptions\UserNotUniqueException
+     */
+    public function loadUserByIdentifier(string $identifier): null|UserInterface
+    {
+        return $this->loadUserByUsername($identifier);
+    }
+
+    /**
+     * @param  string|null  $username
+     *
+     * @return AppUser|null
+     * @throws UserNotUniqueException
+     * @noinspection MissingParameterTypeDeclarationInspection
+     */
+    public function loadUserByUsername(?string $username): ?AppUser
+    {
+        $appUser = $this->findOneByUsernameOrMail($username, true);
+
+        return null !== $appUser && ($appUser instanceof AppUser) && $appUser->isActive() ? $appUser : null;
+    }
+
+    /**
+     * @param  string|null  $username
+     * @param  bool|false  $onlyActive
+     *
+     * @return AppUser|null
+     * @throws UserNotUniqueException
+     */
+    public function findOneByUsernameOrMail(?string $username, bool $onlyActive = false): ?AppUser
+    {
+        if (empty($username)) {
+            return null;
+        }
+        $builder = $this->createQueryBuilder('user')->where('(user.username = :username OR user.email = :username)');
+        $builder->setParameter('username', $username);
+        if (true === $onlyActive) {
+            $builder->andWhere('user.activated <= :now')->andWhere('user.deletedAt IS NULL OR user.deletedAt >= :now');
+            $builder->setParameter('now', new DateTime());
+        }
+        try {
+            return $builder->getQuery()->getOneOrNullResult(Query::HYDRATE_OBJECT);
+        } catch (NonUniqueResultException $e) {
+            throw new UserNotUniqueException();
+        }
     }
 }

@@ -105,7 +105,7 @@ class WebMenuItem
     }
 
     /**
-     * @param Collection<string> $menus
+     * @param  Collection<string>  $menus
      */
     public function setMenus(Collection $menus): void
     {

@@ -11,7 +11,7 @@ use OswisOrg\OswisCoreBundle\Entity\AbstractClass\AbstractAppUser;
 use OswisOrg\OswisCoreBundle\Entity\NonPersistent\Export\ExportListColumn;
 use OswisOrg\OswisCoreBundle\Interfaces\Export\PdfExportableInterface;
 use OswisOrg\OswisCoreBundle\Traits\Export\PdfExportableTrait;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\PasswordHasher\PasswordHasherInterface;
 
 /**
  * User of application.
@@ -149,7 +149,7 @@ class AppUser extends AbstractAppUser implements PdfExportableInterface
      */
     public function isAdminUser(): bool
     {
-        return null === $this->getAppUserType() ? false : ($this->getAppUserType()->getAdminUser() ?? false);
+        return !(null === $this->getAppUserType()) && (($this->getAppUserType()->getAdminUser() ?? false));
     }
 
     public function getAppUserType(): ?AppUserType
@@ -167,7 +167,7 @@ class AppUser extends AbstractAppUser implements PdfExportableInterface
      */
     public function canEdit(self $user): bool
     {
-        return (!($user instanceof self) || !$this->canRead($user)) ? false : $user === $this;
+        return !(!($user instanceof self) || !$this->canRead($user)) && $user === $this;
     }
 
     /**
@@ -175,7 +175,7 @@ class AppUser extends AbstractAppUser implements PdfExportableInterface
      */
     public function canRead(self $user): bool
     {
-        return !($user instanceof self) ? false : $user === $this;
+        return $user instanceof self && $user === $this;
     }
 
     /**
@@ -215,8 +215,16 @@ class AppUser extends AbstractAppUser implements PdfExportableInterface
         }
     }
 
-    public function encryptPassword(?string $plainPassword, UserPasswordEncoderInterface $encoder): void
+    /**
+     * @throws \Symfony\Component\PasswordHasher\Exception\InvalidPasswordException
+     */
+    public function encryptPassword(?string $plainPassword, PasswordHasherInterface $encoder): void
     {
-        $this->setPassword($encoder->encodePassword($this, $plainPassword));
+        $this->setPassword($encoder->hash($plainPassword));
+    }
+
+    public function getUserIdentifier(): string
+    {
+        return ''.$this->getUsername();
     }
 }

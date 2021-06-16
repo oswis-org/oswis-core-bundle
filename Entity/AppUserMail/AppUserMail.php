@@ -70,11 +70,11 @@ class AppUserMail extends AbstractMail
     protected ?AppUserToken $appUserToken = null;
 
     /**
-     * @param AppUser           $appUser
-     * @param string            $subject
-     * @param string|null       $type
-     * @param AppUserToken|null $token
-     * @param string|null       $messageId
+     * @param  AppUser  $appUser
+     * @param  string  $subject
+     * @param  string|null  $type
+     * @param  AppUserToken|null  $token
+     * @param  string|null  $messageId
      *
      * @throws InvalidTypeException
      */

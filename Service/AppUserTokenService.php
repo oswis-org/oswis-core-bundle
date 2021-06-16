@@ -31,10 +31,10 @@ class AppUserTokenService
     }
 
     /**
-     * @param AppUser     $appUser
-     * @param string|null $type
-     * @param bool|null   $multipleUseAllowed
-     * @param int|null    $validHours
+     * @param  AppUser  $appUser
+     * @param  string|null  $type
+     * @param  bool|null  $multipleUseAllowed
+     * @param  int|null  $validHours
      *
      * @return AppUserToken
      * @throws InvalidTypeException

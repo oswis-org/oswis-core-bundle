@@ -6,6 +6,7 @@ use DateInterval;
 use DateTime;
 use Exception;
 use InvalidArgumentException;
+
 use function array_key_exists;
 
 /**
@@ -32,22 +33,24 @@ class DateTimeUtils
     public const DATE_TIME_MONTHS = 'm';
     public const DATE_TIME_YEARS = 'Y';
 
-    public const PERIOD_TYPES_ALLOWED = [
-        self::DATE_TIME_HOURS,
-        self::DATE_TIME_DAYS,
-        self::DATE_TIME_MONTHS,
-        self::DATE_TIME_YEARS,
-    ];
+    public const PERIOD_TYPES_ALLOWED
+        = [
+            self::DATE_TIME_HOURS,
+            self::DATE_TIME_DAYS,
+            self::DATE_TIME_MONTHS,
+            self::DATE_TIME_YEARS,
+        ];
 
-    public const LENGTH_TYPES_ALLOWED = [
-        ...self::PERIOD_TYPES_ALLOWED,
-        self::DATE_TIME_SECONDS,
-        self::DATE_TIME_MINUTES,
-        self::DATE_TIME_DAYS_ALL,
-    ];
+    public const LENGTH_TYPES_ALLOWED
+        = [
+            ...self::PERIOD_TYPES_ALLOWED,
+            self::DATE_TIME_SECONDS,
+            self::DATE_TIME_MINUTES,
+            self::DATE_TIME_DAYS_ALL,
+        ];
 
     /**
-     * @param DateInterval $dateInterval
+     * @param  DateInterval  $dateInterval
      */
     public static function formatIntervalToReadable(?DateInterval $dateInterval): string
     {
@@ -80,9 +83,9 @@ class DateTimeUtils
     /**
      * True if datetime belongs to this datetime range.
      *
-     * @param DateTime      $start    Start of range.
-     * @param DateTime      $end      End of range.
-     * @param DateTime|null $dateTime Checked date and time ('now' if it's not set).
+     * @param  DateTime  $start  Start of range.
+     * @param  DateTime  $end  End of range.
+     * @param  DateTime|null  $dateTime  Checked date and time ('now' if it's not set).
      *
      * @return bool True if belongs to date range.
      */
@@ -102,9 +105,9 @@ class DateTimeUtils
     /**
      * Converts DateTime to start (or end) of some range (year, month, day).
      *
-     * @param DateTime|null $dateTime
-     * @param string|null   $range
-     * @param bool|null     $isEnd
+     * @param  DateTime|null  $dateTime
+     * @param  string|null  $range
+     * @param  bool|null  $isEnd
      *
      * @return DateTime
      * @throws Exception
@@ -127,8 +130,8 @@ class DateTimeUtils
     }
 
     /**
-     * @param DateTime|null $dateTime
-     * @param bool|null     $isEnd
+     * @param  DateTime|null  $dateTime
+     * @param  bool|null  $isEnd
      *
      * @return DateTime
      * @throws Exception
@@ -193,7 +196,7 @@ class DateTimeUtils
 
     public static function getEaster(DateTime $dateTime): ?string
     {
-        $dateTime->setTime(0, 0, 0, 0);
+        $dateTime->setTime(0, 0);
         $y = (int)$dateTime->format('Y');
         if ($dateTime->getTimestamp() === strtotime('+1 day', easter_date($y))) {
             return 'Velikonoční pondělí';
@@ -207,7 +210,7 @@ class DateTimeUtils
 
     public static function isEaster(DateTime $dateTime): bool
     {
-        return self::getEaster($dateTime) ? true : false;
+        return (bool)self::getEaster($dateTime);
     }
 
     public static function cmpDate(?DateTime $a, ?DateTime $b): int

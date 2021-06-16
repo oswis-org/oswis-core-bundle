@@ -14,6 +14,7 @@ use Doctrine\ORM\QueryBuilder;
 use HttpInvalidParamException;
 use ReflectionClass;
 use ReflectionException;
+
 use function count;
 use function in_array;
 
@@ -41,7 +42,7 @@ final class SearchFilter extends AbstractContextAwareFilter
     }
 
     /**
-     * @param mixed $value
+     * @param  mixed  $value
      *
      * @throws ReflectionException
      * @throws HttpInvalidParamException
@@ -74,10 +75,10 @@ final class SearchFilter extends AbstractContextAwareFilter
                 $currentAliasRenamed = $joins[$i].'_'.$i;
                 // $currentAlias = $joins[$i];
                 if ($i === $num - 1) {
-                    $search[] = "LOWER({$lastAlias}.{$currentAlias}) LIKE LOWER(:{$parameterName})";
+                    $search[] = "LOWER($lastAlias.$currentAlias) LIKE LOWER(:$parameterName)";
                 }
                 if ($i !== $num - 1) {
-                    $join = "{$lastAlias}.{$currentAlias}";
+                    $join = "$lastAlias.$currentAlias";
                     if (!in_array($join, $mappedJoins, true)) {
                         $queryBuilder->leftJoin($join, $currentAliasRenamed);
                         $mappedJoins[] = $join;

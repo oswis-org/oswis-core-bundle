@@ -45,7 +45,7 @@ class AppUserController extends AbstractController
     }
 
     /**
-     * @param Request $request
+     * @param  Request  $request
      *
      * @return Response
      * @throws InvalidTypeException
@@ -93,7 +93,7 @@ class AppUserController extends AbstractController
     }
 
     /**
-     * @param Request $request
+     * @param  Request  $request
      *
      * @return Response
      * @throws InvalidTypeException
@@ -141,9 +141,9 @@ class AppUserController extends AbstractController
     }
 
     /**
-     * @param Request     $request
-     * @param string|null $token
-     * @param int|null    $appUserId
+     * @param  Request  $request
+     * @param  string|null  $token
+     * @param  int|null  $appUserId
      *
      * @return Response
      * @throws InvalidTypeException
@@ -169,7 +169,7 @@ class AppUserController extends AbstractController
     }
 
     /**
-     * @param AppUserToken $appUserToken
+     * @param  AppUserToken  $appUserToken
      *
      * @return Response
      * @throws InvalidTypeException
@@ -194,8 +194,8 @@ class AppUserController extends AbstractController
     }
 
     /**
-     * @param AppUserToken $appUserToken
-     * @param Request      $request
+     * @param  AppUserToken  $appUserToken
+     * @param  Request  $request
      *
      * @return Response
      * @throws InvalidTypeException
@@ -239,7 +239,7 @@ class AppUserController extends AbstractController
     }
 
     /**
-     * @param Request $request
+     * @param  Request  $request
      *
      * @return Response
      * @throws AccessDeniedHttpException
@@ -254,7 +254,7 @@ class AppUserController extends AbstractController
             $this->appUserDefaultsService->registerRoot();
 
             return new Response('Uživatel byl vytvořen, pokud ještě neexistoval.');
-        } catch (InvalidTypeException|InvalidArgumentException|UserNotFoundException|NotFoundException|NotImplementedException|UserNotUniqueException|OswisException $e) {
+        } catch (InvalidTypeException | InvalidArgumentException | UserNotFoundException | NotFoundException | NotImplementedException | UserNotUniqueException | OswisException $e) {
             return new Response('Nastala chyba při vytváření výchozího uživatele.');
         }
     }

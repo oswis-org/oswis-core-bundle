@@ -55,7 +55,6 @@ trait ManagerConfirmationTrait
         if (!$this->managerConfirmedAt) {
             $this->setManagerConfirmedAt(new DateTime());
             $this->setManagerConfirmedBy($appUser);
-
         }
     }
 }

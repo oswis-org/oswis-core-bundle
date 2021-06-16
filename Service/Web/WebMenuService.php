@@ -25,6 +25,8 @@ class WebMenuService
     }
 
     /**
+     * @param  string|null  $menu
+     *
      * @return Collection<WebMenuItem>
      */
     public function getItems(?string $menu = null): Collection

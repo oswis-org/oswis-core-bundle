@@ -12,7 +12,7 @@ use OswisOrg\OswisCoreBundle\Entity\TwigTemplate\TwigTemplate;
 class TwigTemplateRepository extends ServiceEntityRepository
 {
     /**
-     * @param ManagerRegistry $registry
+     * @param  ManagerRegistry  $registry
      *
      * @throws LogicException
      */

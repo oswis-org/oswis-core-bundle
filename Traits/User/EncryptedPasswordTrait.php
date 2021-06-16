@@ -5,7 +5,7 @@
 
 namespace OswisOrg\OswisCoreBundle\Traits\User;
 
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\PasswordHasher\PasswordHasherInterface;
 
 /**
  * Trait adds encrypted password field.
@@ -65,7 +65,7 @@ trait EncryptedPasswordTrait
         return $this->plainPassword;
     }
 
-    public function setPlainPassword(?string $plainPassword, ?UserPasswordEncoderInterface $encoder = null, bool $deletePlain = true): void
+    public function setPlainPassword(?string $plainPassword, ?PasswordHasherInterface $encoder = null, bool $deletePlain = true): void
     {
         $this->plainPassword = $deletePlain ? null : $plainPassword;
         if (null !== $encoder) {
@@ -73,5 +73,5 @@ trait EncryptedPasswordTrait
         }
     }
 
-    abstract public function encryptPassword(?string $plainPassword, UserPasswordEncoderInterface $encoder): void;
+    abstract public function encryptPassword(?string $plainPassword, PasswordHasherInterface $encoder): void;
 }

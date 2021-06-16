@@ -6,38 +6,25 @@
 namespace OswisOrg\OswisCoreBundle\Controller\AbstractClass;
 
 use ApiPlatform\Core\Bridge\Symfony\Validator\Exception\ValidationException;
-use Doctrine\Common\Persistence\ManagerRegistry;
-use InvalidArgumentException;
+use Doctrine\Persistence\ManagerRegistry;
 use OswisOrg\OswisCoreBundle\Entity\AbstractClass\AbstractFile;
-use Symfony\Component\Form\Exception\LogicException;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\OptionsResolver\Exception\InvalidOptionsException;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 abstract class AbstractFileAction
 {
-    protected ValidatorInterface $validator;
-
-    protected ManagerRegistry $doctrine;
-
-    protected FormFactoryInterface $factory;
-
-    public function __construct(ManagerRegistry $doctrine, FormFactoryInterface $factory, ValidatorInterface $validator)
+    public function __construct(protected ManagerRegistry $doctrine, protected FormFactoryInterface $factory, protected ValidatorInterface $validator)
     {
-        $this->validator = $validator;
-        $this->doctrine = $doctrine;
-        $this->factory = $factory;
     }
 
     /**
-     * @param Request $request
+     * @param  Request  $request
      *
      * @return AbstractFile
-     * @throws InvalidOptionsException
-     * @throws LogicException
-     * @throws ValidationException
-     * @throws InvalidArgumentException
+     * @throws \ApiPlatform\Core\Bridge\Symfony\Validator\Exception\ValidationException
+     * @throws \Symfony\Component\Form\Exception\LogicException
+     * @throws \Symfony\Component\OptionsResolver\Exception\InvalidOptionsException
      */
     public function __invoke(Request $request): AbstractFile
     {

@@ -19,7 +19,7 @@ class DatabaseLoader implements LoaderInterface
 
     final public function getSourceContext(string $name): Source
     {
-        if (null === $template = $this->getTemplate($name)) {
+        if (null === ($template = $this->getTemplate($name))) {
             throw new LoaderError(sprintf('Template "%s" does not exist in TwigTemplateRepository.', $name));
         }
         if ($template->isRegular()) {

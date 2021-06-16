@@ -1,4 +1,5 @@
-<?php /** @noinspection MethodShouldBeFinalInspection */
+<?php
+/** @noinspection MethodShouldBeFinalInspection */
 
 namespace OswisOrg\OswisCoreBundle\Service;
 

@@ -71,14 +71,15 @@ class AppUserRole implements NameableInterface
     public const ROLE_ADMIN = 'ROLE_ADMIN';
     public const ROLE_ROOT = 'ROLE_ROOT';
 
-    public const ROLES_PARENT = [
-        self::ROLE_CUSTOMER => self::ROLE_EVERYBODY,
-        self::ROLE_USER     => self::ROLE_CUSTOMER,
-        self::ROLE_MEMBER   => self::ROLE_USER,
-        self::ROLE_MANAGER  => self::ROLE_MEMBER,
-        self::ROLE_ADMIN    => self::ROLE_MANAGER,
-        self::ROLE_ROOT     => self::ROLE_ADMIN,
-    ];
+    public const ROLES_PARENT
+        = [
+            self::ROLE_CUSTOMER => self::ROLE_EVERYBODY,
+            self::ROLE_USER     => self::ROLE_CUSTOMER,
+            self::ROLE_MEMBER   => self::ROLE_USER,
+            self::ROLE_MANAGER  => self::ROLE_MEMBER,
+            self::ROLE_ADMIN    => self::ROLE_MANAGER,
+            self::ROLE_ROOT     => self::ROLE_ADMIN,
+        ];
 
     /**
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
@@ -101,9 +102,9 @@ class AppUserRole implements NameableInterface
     /**
      * AppUserRole constructor.
      *
-     * @param Nameable|null    $nameable
-     * @param string|null      $roleString
-     * @param AppUserRole|null $parent
+     * @param  Nameable|null  $nameable
+     * @param  string|null  $roleString
+     * @param  AppUserRole|null  $parent
      *
      * @throws InvalidArgumentException
      */
@@ -150,7 +151,7 @@ class AppUserRole implements NameableInterface
     }
 
     /**
-     * @param AppUserRole|null $appUserRole
+     * @param  AppUserRole|null  $appUserRole
      *
      * @throws InvalidArgumentException
      */

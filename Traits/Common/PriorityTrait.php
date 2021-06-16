@@ -30,7 +30,7 @@ trait PriorityTrait
     /**
      * Set priority.
      *
-     * @param int $priority
+     * @param  int  $priority
      */
     public function setPriority(?int $priority): void
     {

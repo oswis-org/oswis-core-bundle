@@ -12,7 +12,7 @@ use OswisOrg\OswisCoreBundle\Entity\AppUserMail\AppUserMailCategory;
 class AppUserMailCategoryRepository extends ServiceEntityRepository
 {
     /**
-     * @param ManagerRegistry $registry
+     * @param  ManagerRegistry  $registry
      *
      * @throws LogicException
      */

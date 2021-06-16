@@ -5,6 +5,7 @@ namespace OswisOrg\OswisCoreBundle\Filter;
 use Doctrine\Common\Annotations\Annotation;
 use Doctrine\Common\Annotations\Annotation\Target;
 use Doctrine\Common\Annotations\AnnotationException;
+
 use function is_array;
 use function is_string;
 
@@ -17,7 +18,7 @@ final class SearchAnnotation
     public array $fields = [];
 
     /**
-     * @param array $data key-value for properties to be defined in this class
+     * @param  array  $data  key-value for properties to be defined in this class
      *
      * @throws AnnotationException
      */

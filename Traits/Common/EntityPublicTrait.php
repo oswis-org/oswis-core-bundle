@@ -23,7 +23,7 @@ trait EntityPublicTrait
     /**
      * Fill columns related to publicity from Publicity object.
      *
-     * @param \OswisOrg\OswisCoreBundle\Entity\NonPersistent\Publicity|null $publicity
+     * @param  \OswisOrg\OswisCoreBundle\Entity\NonPersistent\Publicity|null  $publicity
      */
     public function setFieldsFromPublicity(?\OswisOrg\OswisCoreBundle\Entity\NonPersistent\Publicity $publicity = null): void
     {
@@ -35,7 +35,7 @@ trait EntityPublicTrait
     /**
      * Sets whether the item is publicly available on the web.
      *
-     * @param bool|null $publicOnWeb
+     * @param  bool|null  $publicOnWeb
      */
     public function setPublicOnWeb(?bool $publicOnWeb): void
     {

@@ -38,7 +38,7 @@ final class AppUserSubscriber implements EventSubscriberInterface
     }
 
     /**
-     * @param ViewEvent $event
+     * @param  ViewEvent  $event
      *
      * @throws InvalidTypeException
      * @throws NotFoundException

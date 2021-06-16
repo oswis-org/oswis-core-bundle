@@ -1,13 +1,16 @@
 <?php
 /**
+ * @noinspection PropertyCanBePrivateInspection
  * @noinspection MethodShouldBeFinalInspection
  */
 
 namespace OswisOrg\OswisCoreBundle\Entity\NonPersistent;
 
+use InvalidArgumentException;
+use Rikudou\CzQrPayment\Exception\QrPaymentException;
+use Rikudou\CzQrPayment\Options\QrPaymentOptions;
 use rikudou\CzQrPayment\QrPayment;
-use rikudou\CzQrPayment\QrPaymentException;
-use rikudou\CzQrPayment\QrPaymentOptions;
+use Rikudou\Iban\Iban\CzechIbanAdapter;
 
 class BankAccount
 {
@@ -71,8 +74,8 @@ class BankAccount
             $qrPayment = $this->getQrPayment($value, $variableSymbol, $comment);
 
             /** @noinspection PhpUndefinedMethodInspection */
-            return $qrPayment ? $qrPayment->getQrImage(true)->writeString() : null;
-        } catch (QrPaymentException $e) {
+            return $qrPayment ? $qrPayment->getQrImage()->writeString() : null;
+        } catch (QrPaymentException) {
             return null;
         }
     }
@@ -81,13 +84,13 @@ class BankAccount
     {
         try {
             return new QrPayment(
-                $this->getAccountWithoutBankCode(), $this->getBankCode(), [
-                    QrPaymentOptions::VARIABLE_SYMBOL => $variableSymbol,
-                    QrPaymentOptions::AMOUNT          => $value,
-                    QrPaymentOptions::COMMENT         => $comment,
-                ]
+                new CzechIbanAdapter($this->getAccountWithoutBankCode(), $this->getBankCode()), [
+                QrPaymentOptions::VARIABLE_SYMBOL => $variableSymbol,
+                QrPaymentOptions::AMOUNT          => $value,
+                QrPaymentOptions::COMMENT         => $comment,
+            ],
             );
-        } catch (QrPaymentException $e) {
+        } catch (InvalidArgumentException | QrPaymentException) {
             return null;
         }
     }

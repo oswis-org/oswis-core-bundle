@@ -15,7 +15,7 @@ use Symfony\Component\DependencyInjection\Reference;
 class SiteMapExtenderPass implements CompilerPassInterface
 {
     /**
-     * @param ContainerBuilder $container
+     * @param  ContainerBuilder  $container
      *
      * @throws InvalidArgumentException
      * @throws ServiceNotFoundException

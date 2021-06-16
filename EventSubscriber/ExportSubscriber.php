@@ -16,7 +16,7 @@ use Twig\Error\SyntaxError;
 class ExportSubscriber extends AbstractExportSubscriber
 {
     /**
-     * @param ViewEvent $viewEvent
+     * @param  ViewEvent  $viewEvent
      *
      * @throws LoaderError
      * @throws MpdfException
@@ -36,12 +36,13 @@ class ExportSubscriber extends AbstractExportSubscriber
     }
 
     /**
-     * @param ViewEvent $event
+     * @param  ViewEvent  $event
+     * @param  \Doctrine\Common\Collections\Collection  $items
      *
-     * @throws LoaderError
-     * @throws MpdfException
-     * @throws RuntimeError
-     * @throws SyntaxError
+     * @throws \Mpdf\MpdfException
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
      */
     public function exportPdfList(ViewEvent $event, Collection $items): void
     {

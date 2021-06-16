@@ -44,7 +44,7 @@ class FileUtils
     final public static function parseSize(string $size): int
     {
         $unit = preg_replace('/[^bkmgtpezy]/i', '', $size); // Remove the non-unit characters from the size.
-        $size = preg_replace('/[^0-9.]/', '', $size); // Remove the non-numeric characters from the size.
+        $size = preg_replace('/[^0-9.]/', '', $size);       // Remove the non-numeric characters from the size.
         if ($unit) {
             // Find the position of the unit in the ordered string which is the power of magnitude to multiply a kilobyte by.
             /** @noinspection SpellCheckingInspection */

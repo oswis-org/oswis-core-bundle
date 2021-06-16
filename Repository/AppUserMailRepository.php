@@ -14,7 +14,7 @@ use OswisOrg\OswisCoreBundle\Entity\AppUserMail\AppUserMail;
 class AppUserMailRepository extends ServiceEntityRepository
 {
     /**
-     * @param ManagerRegistry $registry
+     * @param  ManagerRegistry  $registry
      *
      * @throws LogicException
      */

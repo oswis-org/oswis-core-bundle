@@ -6,6 +6,7 @@ use DateTime;
 use OswisOrg\OswisCoreBundle\Exceptions\RevisionMissingException;
 use OswisOrg\OswisCoreBundle\Interfaces\Revisions\RevisionInterface;
 use OswisOrg\OswisCoreBundle\Utils\DateTimeUtils;
+
 use function array_reverse;
 use function usort;
 

@@ -6,6 +6,6 @@ class NotImplementedException extends OswisException
 {
     public function __construct(?string $type = null, ?string $inContext = null)
     {
-        parent::__construct("Akce {$type} není {$inContext} implementována.");
+        parent::__construct("Akce $type není $inContext implementována.");
     }
 }
