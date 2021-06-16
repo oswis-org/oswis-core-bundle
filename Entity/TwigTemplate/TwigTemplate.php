@@ -72,7 +72,7 @@ class TwigTemplate implements NameableInterface, TextValueInterface
 
     final public function isFresh(?int $timestamp = null): bool
     {
-        return $this->getUpdatedAt() && $this->getUpdatedAt()->getTimestamp() <= ($timestamp ?? time());
+        return $this->getUpdatedAt() && $this->getUpdatedAt()?->getTimestamp() <= ($timestamp ?? time());
     }
 
     final public function getTemplateName(): ?string

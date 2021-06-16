@@ -1,5 +1,7 @@
 <?php
-/** @noinspection MethodShouldBeFinalInspection */
+/**
+ * @noinspection MethodShouldBeFinalInspection
+ */
 
 namespace OswisOrg\OswisCoreBundle\Service;
 
@@ -13,17 +15,11 @@ use Psr\Log\LoggerInterface;
  */
 class AppUserRoleService
 {
-    protected EntityManagerInterface $em;
-
-    protected LoggerInterface $logger;
-
-    protected AppUserRoleRepository $appUserRoleRepository;
-
-    public function __construct(EntityManagerInterface $em, LoggerInterface $logger, AppUserRoleRepository $appUserRoleRepository)
-    {
-        $this->em = $em;
-        $this->logger = $logger;
-        $this->appUserRoleRepository = $appUserRoleRepository;
+    public function __construct(
+        protected EntityManagerInterface $em,
+        protected LoggerInterface $logger,
+        protected AppUserRoleRepository $appUserRoleRepository
+    ) {
     }
 
     public function create(AppUserRole $role): AppUserRole

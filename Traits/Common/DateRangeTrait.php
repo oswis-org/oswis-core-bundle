@@ -84,7 +84,7 @@ trait DateRangeTrait
 
     public function getLength(?string $type = DateTimeUtils::DATE_TIME_HOURS): ?int
     {
-        return DateTimeUtils::getLength($this->getStartDate(), $this->getEndDateTime(), $type);
+        return DateTimeUtils::getLength($this->getStartDate(), $this->getEndDateTime(), $type ?? DateTimeUtils::DATE_TIME_HOURS);
     }
 
     public function getStartDate(): ?DateTime
@@ -127,7 +127,7 @@ trait DateRangeTrait
 
     public function getStartByFormat(string $format = 'Y-m-d\TH:i:sP'): ?string
     {
-        return $this->getStartDate() ? $this->getStartDate()->format($format) : null;
+        return $this->getStartDate()?->format($format);
     }
 
     public function getRangeAsTextMonths(?bool $withoutYear = false): ?string
@@ -137,7 +137,7 @@ trait DateRangeTrait
 
     public function getEndByFormat(string $format = 'Y-m-d\TH:i:sP'): ?string
     {
-        return $this->getEndDate() ? $this->getEndDate()->format($format) : null;
+        return $this->getEndDate()?->format($format);
     }
 
     public function getRangeAsTextYears(?bool $withoutYear = false): ?string

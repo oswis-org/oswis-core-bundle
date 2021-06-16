@@ -134,11 +134,9 @@ class AppUserRole implements NameableInterface
     public function getRoles(): Collection
     {
         $roles = new ArrayCollection([$this]);
-        if ($this->getParent()) {
-            foreach ($this->getParent()->getRoles() as $role) {
-                if (!$roles->contains($role)) {
-                    $roles->add($role);
-                }
+        foreach ($this->getParent()?->getRoles() ?? new ArrayCollection() as $role) {
+            if (!$roles->contains($role)) {
+                $roles->add($role);
             }
         }
 

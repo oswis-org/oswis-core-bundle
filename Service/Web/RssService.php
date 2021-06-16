@@ -1,5 +1,6 @@
 <?php
 /**
+ * @noinspection PropertyCanBePrivateInspection
  * @noinspection MethodShouldBeFinalInspection
  */
 
@@ -12,7 +13,7 @@ use OswisOrg\OswisCoreBundle\Interfaces\Web\RssExtenderInterface;
 
 class RssService
 {
-    protected ?Collection $extenders;
+    protected Collection $extenders;
 
     public function __construct()
     {

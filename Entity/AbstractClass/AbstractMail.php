@@ -140,7 +140,7 @@ abstract class AbstractMail implements BasicInterface
             throw new OswisException('Nelze znovu odeslat stejný e-mail.');
         }
         $this->templatedEmail = new TemplatedEmail();
-        $this->templatedEmail->subject($this->subject);
+        $this->templatedEmail->subject(''.$this->subject);
         try {
             $this->templatedEmail->to(new Address($this->address ?? '', $this->recipientName ?? ''));
         } catch (LogicException $e) {
@@ -148,7 +148,7 @@ abstract class AbstractMail implements BasicInterface
         }
         $this->setMessageID();
 
-        return $this->templatedEmail;
+        return $this->templatedEmail ?? throw new OswisException();
     }
 
     public function getMessageID(): ?string
@@ -163,7 +163,7 @@ abstract class AbstractMail implements BasicInterface
         }
         try {
             if (empty($messageID) && null !== $this->getTemplatedEmail()) {
-                $this->messageID = $this->templatedEmail->generateMessageId();
+                $this->messageID = $this->templatedEmail?->generateMessageId();
 
                 return;
             }

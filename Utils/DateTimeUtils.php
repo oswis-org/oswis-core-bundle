@@ -31,7 +31,7 @@ class DateTimeUtils
     public const DATE_TIME_DAYS = 'd';
     public const DATE_TIME_DAYS_ALL = 'days';
     public const DATE_TIME_MONTHS = 'm';
-    public const DATE_TIME_YEARS = 'Y';
+    public const DATE_TIME_YEARS = 'y';
 
     public const PERIOD_TYPES_ALLOWED
         = [

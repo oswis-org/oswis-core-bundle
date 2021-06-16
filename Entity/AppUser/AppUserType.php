@@ -110,7 +110,7 @@ class AppUserType implements NameableInterface
      */
     public function getRoleName(): string
     {
-        return $this->getAppUserRole() ? $this->getAppUserRole()->getRoleName() : '';
+        return $this->getAppUserRole()?->getRoleName() ?? '';
     }
 
     /**
@@ -136,6 +136,6 @@ class AppUserType implements NameableInterface
      */
     public function getAllRoleNames(): Collection
     {
-        return $this->getAppUserRole() ? $this->getAppUserRole()->getAllRoleNames() : new ArrayCollection();
+        return $this->getAppUserRole()?->getAllRoleNames() ?? new ArrayCollection();
     }
 }

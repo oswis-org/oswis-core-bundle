@@ -36,7 +36,7 @@ final class ImageExtension extends AbstractExtension
         foreach ($this->getFunctionsArray() as $key => $fn) {
             try {
                 $functions[] = new TwigFunction($key, Callback::check($fn['fn']), $fn['opts'] ?? []);
-            } catch (InvalidArgumentException $e) {
+            } catch (InvalidArgumentException) {
             }
         }
 
@@ -61,7 +61,7 @@ final class ImageExtension extends AbstractExtension
         foreach ($this->getFunctionsArray() as $key => $fn) {
             try {
                 $functions[] = new TwigFilter($key, Callback::check($fn['fn']), $fn['opts'] ?? []);
-            } catch (InvalidArgumentException $e) {
+            } catch (InvalidArgumentException) {
             }
         }
 
@@ -86,8 +86,8 @@ final class ImageExtension extends AbstractExtension
         try {
             $path = realpath('../public'.$imagePath) ?: null;
 
-            return $this->fileSystem->exists($path) ? $path : null;
-        } catch (IOException $e) {
+            return $this->fileSystem->exists(''.$path) ? $path : null;
+        } catch (IOException) {
             return null;
         }
     }
@@ -148,6 +148,6 @@ final class ImageExtension extends AbstractExtension
 
     public function getImageMimeType(?string $imagePath = null): ?string
     {
-        return @image_type_to_mime_type($this->getImageTypeConstant($imagePath)) ?: null;
+        return @image_type_to_mime_type((int)$this->getImageTypeConstant($imagePath)) ?: null;
     }
 }

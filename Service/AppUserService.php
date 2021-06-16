@@ -108,7 +108,7 @@ class AppUserService
         $this->em->persist($appUser);
         $this->em->flush();
         if (true === $activate) {
-            $this->activate($appUser, $sendMail);
+            $this->activate($appUser, $sendMail ?? false);
         }
         if (true !== $activate && $sendMail) {
             $this->requestActivation($appUser);
@@ -247,7 +247,7 @@ class AppUserService
      * @return \OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserToken
      * @throws \OswisOrg\OswisCoreBundle\Exceptions\TokenInvalidException
      */
-    public function getVerifiedToken(string $token, int $appUserId): AppUserToken
+    public function getVerifiedToken(?string $token, ?int $appUserId): AppUserToken
     {
         if (null === ($appUserToken = $this->getToken($token, $appUserId))) {
             throw new TokenInvalidException('zadaný token neexistuje');
@@ -257,9 +257,9 @@ class AppUserService
         return $appUserToken;
     }
 
-    public function getToken(string $token, int $appUserId): ?AppUserToken
+    public function getToken(?string $token, ?int $appUserId): ?AppUserToken
     {
-        return $this->appUserTokenService->getRepository()->findByToken($token, $appUserId);
+        return $token && $appUserId ? $this->appUserTokenService->getRepository()->findByToken($token, $appUserId) : null;
     }
 
     /**

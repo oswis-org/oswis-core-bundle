@@ -1,5 +1,6 @@
 <?php
 /**
+ * @noinspection PropertyCanBePrivateInspection
  * @noinspection MethodShouldBeFinalInspection
  */
 
@@ -13,7 +14,7 @@ use OswisOrg\OswisCoreBundle\Interfaces\Web\WebMenuExtenderInterface;
 
 class UpdateService
 {
-    protected ?Collection $extenders;
+    protected Collection $extenders;
 
     public function __construct()
     {

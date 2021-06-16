@@ -166,7 +166,9 @@ class StringUtils
 
     private static function convertFromCamel(string $text, string $separator): string
     {
-        return ltrim(mb_strtolower(preg_replace('/[A-Z]/', $separator.'$0', $text)), $separator);
+        $text = preg_replace('/[A-Z]/', $separator.'$0', $text);
+
+        return ltrim(mb_strtolower(''.$text), $separator);
     }
 
     public static function camelToSnake(string $text): string

@@ -77,13 +77,14 @@
     "php-console/php-console": "^3.1",
     "rikudou/czqrpayment": "^5.0",
     "nelmio/cors-bundle": "^2.1",
-    "symfony/form": "^5.3"
+    "symfony/form": "^5.3",
+    "endroid/qr-code": "^4.1"
   },
   "require-dev": {
+    "phpstan/phpstan": "^0.12.49",
     "roave/security-advisories": "dev-latest",
     "symfony/debug": "^4.4",
-    "friendsofphp/php-cs-fixer": "^2.19",
-    "phpstan/extension-installer": "^1.1"
+    "friendsofphp/php-cs-fixer": "^2.19"
   },
   "autoload": {
     "psr-4": {
@@ -94,7 +95,19 @@
     ]
   },
   "config": {
-    "optimize-autoloader": true
+    "optimize-autoloader": true,
+    "classmap-authoritative": true,
+    "apcu-autoloader": true,
+    "preferred-install": {
+      "*": "dist"
+    },
+    "sort-packages": true
+  },
+  "scripts": {
+    "phpstan": "vendor/bin/phpstan analyse",
+    "post-update-cmd": [
+      "@phpstan"
+    ]
   },
   "extra": {
     "symfony": {

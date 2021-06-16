@@ -101,8 +101,8 @@ abstract class AbstractRevision implements RevisionInterface
     final public function isActive(?DateTime $dateTime = null): bool
     {
         try {
-            return $this === $this->container->getRevision($dateTime);
-        } catch (RevisionMissingException $e) {
+            return $this === $this->container?->getRevision($dateTime);
+        } catch (RevisionMissingException) {
             return false;
         }
     }

@@ -32,7 +32,7 @@ class AppUserProvider implements UserProviderInterface
             throw new UnsupportedUserException(sprintf('Instances of "%s" are not supported.', get_class($user)));
         }
 
-        return $this->loadUserByUsername($user->getUsername());
+        return $this->loadUserByUsername(''.$user->getUsername());
     }
 
     /**
@@ -69,6 +69,6 @@ class AppUserProvider implements UserProviderInterface
      */
     final public function loadUserByIdentifier(string $identifier): UserInterface
     {
-        return $this->loadUserByUsername($identifier);
+        return $this->loadUserByUsername($identifier) ?? throw new UserNotFoundException();
     }
 }

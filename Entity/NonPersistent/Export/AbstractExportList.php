@@ -35,7 +35,7 @@ abstract class AbstractExportList
 
     public function __construct(string $title = null, ?Collection $columns = null, array $data = null)
     {
-        $this->setTitle($title);
+        $this->setTitle(''.$title);
         $this->setColumns($columns);
         $this->setData($data);
     }

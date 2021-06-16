@@ -17,17 +17,11 @@ use Psr\Log\LoggerInterface;
  */
 class AppUserTokenService
 {
-    protected EntityManagerInterface $em;
-
-    protected LoggerInterface $logger;
-
-    protected AppUserTokenRepository $appUserTokenRepository;
-
-    public function __construct(EntityManagerInterface $em, LoggerInterface $logger, AppUserTokenRepository $appUserTokenRepository)
-    {
-        $this->em = $em;
-        $this->logger = $logger;
-        $this->appUserTokenRepository = $appUserTokenRepository;
+    public function __construct(
+        protected EntityManagerInterface $em,
+        protected LoggerInterface $logger,
+        protected AppUserTokenRepository $appUserTokenRepository,
+    ) {
     }
 
     /**
@@ -42,7 +36,9 @@ class AppUserTokenService
     public function create(AppUser $appUser, ?string $type = null, ?bool $multipleUseAllowed = null, ?int $validHours = null): AppUserToken
     {
         try {
-            $appUserToken = new AppUserToken($appUser, $appUser->getEmail(), $type, $multipleUseAllowed, $validHours);
+            $appUserToken = new AppUserToken(
+                $appUser, $appUser->getEmail(), $type, $multipleUseAllowed ?? false, $validHours,
+            );
             $this->em->persist($appUserToken);
             $this->em->flush();
             $tokenId = $appUserToken->getId();

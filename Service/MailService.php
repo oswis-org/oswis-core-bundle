@@ -15,17 +15,11 @@ use Symfony\Component\Mailer\MailerInterface;
 
 class MailService
 {
-    protected LoggerInterface $logger;
-
-    protected MailerInterface $mailer;
-
-    protected EntityManagerInterface $em;
-
-    public function __construct(LoggerInterface $logger, MailerInterface $mailer, EntityManagerInterface $em)
-    {
-        $this->logger = $logger;
-        $this->mailer = $mailer;
-        $this->em = $em;
+    public function __construct(
+        protected LoggerInterface $logger,
+        protected MailerInterface $mailer,
+        protected EntityManagerInterface $em,
+    ) {
     }
 
     public function sendEMail(AbstractMail $eMail, string $template, array $data = []): void

@@ -20,17 +20,11 @@ use Twig\Error\SyntaxError;
  */
 class ExportService
 {
-    protected LoggerInterface $logger;
-
-    protected Environment $templating;
-
-    protected OswisCoreSettingsProvider $oswisCoreSettings;
-
-    public function __construct(LoggerInterface $logger, Environment $templating, OswisCoreSettingsProvider $oswisCoreSettings)
-    {
-        $this->logger = $logger;
-        $this->templating = $templating;
-        $this->oswisCoreSettings = $oswisCoreSettings;
+    public function __construct(
+        protected LoggerInterface $logger,
+        protected Environment $templating,
+        protected OswisCoreSettingsProvider $oswisCoreSettings
+    ) {
     }
 
     /**
@@ -60,12 +54,12 @@ class ExportService
         $mPdf->SetAuthor($this->oswisCoreSettings->getApp()['name']);
         $mPdf->SetCreator($this->oswisCoreSettings->getCoreAppName());
         if ($pdfList->getHeaderTemplate()) {
-            $mPdf->SetHTMLHeader($this->templating->render($pdfList->getHeaderTemplate(), $pdfList->getContext()));
+            $mPdf->SetHTMLHeader($this->templating->render(''.$pdfList->getHeaderTemplate(), $pdfList->getContext()));
         }
         if ($pdfList->getFooterTemplate()) {
-            $mPdf->SetHTMLFooter($this->templating->render($pdfList->getFooterTemplate(), $pdfList->getContext()));
+            $mPdf->SetHTMLFooter($this->templating->render(''.$pdfList->getFooterTemplate(), $pdfList->getContext()));
         }
-        $mPdf->WriteHTML($this->templating->render($pdfList->getTemplate(), $pdfList->getContext()));
+        $mPdf->WriteHTML($this->templating->render(''.$pdfList->getTemplate(), $pdfList->getContext()));
 
         return $mPdf;
     }

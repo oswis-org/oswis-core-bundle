@@ -53,7 +53,7 @@ abstract class AbstractMailGroup implements MailGroupInterface
 
     public function getTemplateName(): ?string
     {
-        return $this->getTwigTemplate() ? $this->getTwigTemplate()->getTemplateName() : null;
+        return $this->getTwigTemplate() ? $this->getTwigTemplate()?->getTemplateName() : null;
     }
 
     public function getTwigTemplate(): ?TwigTemplate

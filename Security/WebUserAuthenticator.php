@@ -56,7 +56,7 @@ class WebUserAuthenticator extends AbstractFormLoginAuthenticator
 
     public function checkCredentials($credentials, UserInterface $user): bool
     {
-        return $this->passwordEncoder->verify($user->getPassword(), $credentials['password']);
+        return $this->passwordEncoder->verify(''.$user->getPassword(), $credentials['password']);
     }
 
     /**

@@ -4,7 +4,7 @@
     "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
     "This file is @generated automatically"
   ],
-  "content-hash": "99947fbcf1a356b6b5a05493ca4f1d46",
+  "content-hash": "d7b0bdb99f599c137bf8afa971b79110",
   "packages": [
     {
       "name": "adci/full-name-parser",
@@ -215,6 +215,59 @@
         }
       ],
       "time": "2021-06-15T16:53:33+00:00"
+    },
+    {
+      "name": "bacon/bacon-qr-code",
+      "version": "2.0.3",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/Bacon/BaconQrCode.git",
+        "reference": "3e9d791b67d0a2912922b7b7c7312f4b37af41e4"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/Bacon/BaconQrCode/zipball/3e9d791b67d0a2912922b7b7c7312f4b37af41e4",
+        "reference": "3e9d791b67d0a2912922b7b7c7312f4b37af41e4",
+        "shasum": ""
+      },
+      "require": {
+        "dasprid/enum": "^1.0.3",
+        "ext-iconv": "*",
+        "php": "^7.1 || ^8.0"
+      },
+      "require-dev": {
+        "phly/keep-a-changelog": "^1.4",
+        "phpunit/phpunit": "^7 | ^8 | ^9",
+        "squizlabs/php_codesniffer": "^3.4"
+      },
+      "suggest": {
+        "ext-imagick": "to generate QR code images"
+      },
+      "type": "library",
+      "autoload": {
+        "psr-4": {
+          "BaconQrCode\\": "src/"
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "BSD-2-Clause"
+      ],
+      "authors": [
+        {
+          "name": "Ben Scholzen 'DASPRiD'",
+          "email": "mail@dasprids.de",
+          "homepage": "https://dasprids.de/",
+          "role": "Developer"
+        }
+      ],
+      "description": "BaconQrCode is a QR code generator for PHP.",
+      "homepage": "https://github.com/Bacon/BaconQrCode",
+      "support": {
+        "issues": "https://github.com/Bacon/BaconQrCode/issues",
+        "source": "https://github.com/Bacon/BaconQrCode/tree/2.0.3"
+      },
+      "time": "2020-10-30T02:02:47+00:00"
     },
     {
       "name": "behat/transliterator",
@@ -442,6 +495,53 @@
         }
       ],
       "time": "2021-05-24T07:46:03+00:00"
+    },
+    {
+      "name": "dasprid/enum",
+      "version": "1.0.3",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/DASPRiD/Enum.git",
+        "reference": "5abf82f213618696dda8e3bf6f64dd042d8542b2"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/DASPRiD/Enum/zipball/5abf82f213618696dda8e3bf6f64dd042d8542b2",
+        "reference": "5abf82f213618696dda8e3bf6f64dd042d8542b2",
+        "shasum": ""
+      },
+      "require-dev": {
+        "phpunit/phpunit": "^7 | ^8 | ^9",
+        "squizlabs/php_codesniffer": "^3.4"
+      },
+      "type": "library",
+      "autoload": {
+        "psr-4": {
+          "DASPRiD\\Enum\\": "src/"
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "BSD-2-Clause"
+      ],
+      "authors": [
+        {
+          "name": "Ben Scholzen 'DASPRiD'",
+          "email": "mail@dasprids.de",
+          "homepage": "https://dasprids.de/",
+          "role": "Developer"
+        }
+      ],
+      "description": "PHP 7.1 enum implementation",
+      "keywords": [
+        "enum",
+        "map"
+      ],
+      "support": {
+        "issues": "https://github.com/DASPRiD/Enum/issues",
+        "source": "https://github.com/DASPRiD/Enum/tree/1.0.3"
+      },
+      "time": "2020-10-02T16:03:48+00:00"
     },
     {
       "name": "doctrine/annotations",
@@ -1864,6 +1964,78 @@
         }
       ],
       "time": "2021-04-01T18:37:14+00:00"
+    },
+    {
+      "name": "endroid/qr-code",
+      "version": "4.1.4",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/endroid/qr-code.git",
+        "reference": "f38ff0d968788aef0ddefb957062024b4ea521e1"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/endroid/qr-code/zipball/f38ff0d968788aef0ddefb957062024b4ea521e1",
+        "reference": "f38ff0d968788aef0ddefb957062024b4ea521e1",
+        "shasum": ""
+      },
+      "require": {
+        "bacon/bacon-qr-code": "^2.0",
+        "php": "^7.3||^8.0"
+      },
+      "require-dev": {
+        "endroid/quality": "dev-master",
+        "ext-gd": "*",
+        "khanamiryan/qrcode-detector-decoder": "^1.0.4",
+        "setasign/fpdf": "^1.8.2"
+      },
+      "suggest": {
+        "ext-gd": "Enables you to write PNG images",
+        "khanamiryan/qrcode-detector-decoder": "Enables you to use the image validator",
+        "roave/security-advisories": "Makes sure package versions with known security issues are not installed",
+        "setasign/fpdf": "Enables you to use the PDF writer"
+      },
+      "type": "library",
+      "extra": {
+        "branch-alias": {
+          "dev-master": "4.x-dev"
+        }
+      },
+      "autoload": {
+        "psr-4": {
+          "Endroid\\QrCode\\": "src/"
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
+      "authors": [
+        {
+          "name": "Jeroen van den Enden",
+          "email": "info@endroid.nl"
+        }
+      ],
+      "description": "Endroid QR Code",
+      "homepage": "https://github.com/endroid/qr-code",
+      "keywords": [
+        "code",
+        "endroid",
+        "php",
+        "qr",
+        "qrcode"
+      ],
+      "support": {
+        "issues": "https://github.com/endroid/qr-code/issues",
+        "source": "https://github.com/endroid/qr-code/tree/4.1.4"
+      },
+      "funding": [
+        {
+          "url": "https://github.com/endroid",
+          "type": "github"
+        }
+      ],
+      "time": "2021-05-08T14:30:54+00:00"
     },
     {
       "name": "fig/link-util",
@@ -11012,51 +11184,6 @@
       "time": "2020-10-14T08:39:05+00:00"
     },
     {
-      "name": "phpstan/extension-installer",
-      "version": "1.1.0",
-      "source": {
-        "type": "git",
-        "url": "https://github.com/phpstan/extension-installer.git",
-        "reference": "66c7adc9dfa38b6b5838a9fb728b68a7d8348051"
-      },
-      "dist": {
-        "type": "zip",
-        "url": "https://api.github.com/repos/phpstan/extension-installer/zipball/66c7adc9dfa38b6b5838a9fb728b68a7d8348051",
-        "reference": "66c7adc9dfa38b6b5838a9fb728b68a7d8348051",
-        "shasum": ""
-      },
-      "require": {
-        "composer-plugin-api": "^1.1 || ^2.0",
-        "php": "^7.1 || ^8.0",
-        "phpstan/phpstan": ">=0.11.6"
-      },
-      "require-dev": {
-        "composer/composer": "^1.8",
-        "phing/phing": "^2.16.3",
-        "php-parallel-lint/php-parallel-lint": "^1.2.0",
-        "phpstan/phpstan-strict-rules": "^0.11 || ^0.12"
-      },
-      "type": "composer-plugin",
-      "extra": {
-        "class": "PHPStan\\ExtensionInstaller\\Plugin"
-      },
-      "autoload": {
-        "psr-4": {
-          "PHPStan\\ExtensionInstaller\\": "src/"
-        }
-      },
-      "notification-url": "https://packagist.org/downloads/",
-      "license": [
-        "MIT"
-      ],
-      "description": "Composer plugin for automatic installation of PHPStan extensions",
-      "support": {
-        "issues": "https://github.com/phpstan/extension-installer/issues",
-        "source": "https://github.com/phpstan/extension-installer/tree/1.1.0"
-      },
-      "time": "2020-12-13T13:06:13+00:00"
-    },
-    {
       "name": "phpstan/phpstan",
       "version": "0.12.89",
       "source": {
@@ -11126,12 +11253,12 @@
       "source": {
         "type": "git",
         "url": "https://github.com/Roave/SecurityAdvisories.git",
-        "reference": "dec8e13f092ec91fbfa1a5873d2d4a2935a5f74e"
+        "reference": "5a0c8d612ebdfe223addfdd2046f80838b59cf95"
       },
       "dist": {
         "type": "zip",
-        "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/dec8e13f092ec91fbfa1a5873d2d4a2935a5f74e",
-        "reference": "dec8e13f092ec91fbfa1a5873d2d4a2935a5f74e",
+        "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/5a0c8d612ebdfe223addfdd2046f80838b59cf95",
+        "reference": "5a0c8d612ebdfe223addfdd2046f80838b59cf95",
         "shasum": ""
       },
       "conflict": {
@@ -11287,7 +11414,7 @@
         "personnummer/personnummer": "<3.0.2",
         "phanan/koel": "<5.1.4",
         "phpfastcache/phpfastcache": ">=5,<5.0.13",
-        "phpmailer/phpmailer": "<6.1.6|>=6.1.8,<6.4.1",
+        "phpmailer/phpmailer": "<6.5",
         "phpmussel/phpmussel": ">=1,<1.6",
         "phpmyadmin/phpmyadmin": "<4.9.6|>=5,<5.0.3",
         "phpoffice/phpexcel": "<1.8.2",
@@ -11348,7 +11475,7 @@
         "squizlabs/php_codesniffer": ">=1,<2.8.1|>=3,<3.0.1",
         "ssddanbrown/bookstack": "<0.29.2",
         "stormpath/sdk": ">=0,<9.9.99",
-        "studio-42/elfinder": "<2.1.58",
+        "studio-42/elfinder": "<2.1.59",
         "sulu/sulu": "<1.6.34|>=2,<2.0.10|>=2.1,<2.1.1",
         "swiftmailer/swiftmailer": ">=4,<5.4.5",
         "sylius/admin-bundle": ">=1,<1.0.17|>=1.1,<1.1.9|>=1.2,<1.2.2",
@@ -11486,7 +11613,7 @@
           "type": "tidelift"
         }
       ],
-      "time": "2021-06-15T16:08:57+00:00"
+      "time": "2021-06-16T18:06:48+00:00"
     },
     {
       "name": "symfony/debug",

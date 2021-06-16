@@ -7,6 +7,7 @@ namespace OswisOrg\OswisCoreBundle\Entity\AppUser;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use OswisOrg\OswisCoreBundle\Entity\AbstractClass\AbstractToken;
+use OswisOrg\OswisCoreBundle\Exceptions\TokenInvalidException;
 use OswisOrg\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
 
 /**
@@ -69,11 +70,18 @@ class AppUserToken extends AbstractToken
 
     public function isAppUser(AppUser $appUser): bool
     {
-        return $this->getAppUser() === $appUser;
+        try {
+            return $this->getAppUser() === $appUser;
+        } catch (TokenInvalidException) {
+            return false;
+        }
     }
 
+    /**
+     * @throws \OswisOrg\OswisCoreBundle\Exceptions\TokenInvalidException
+     */
     public function getAppUser(): AppUser
     {
-        return $this->appUser;
+        return $this->appUser ?? throw new TokenInvalidException('Token není přiřazen žádnému uživateli.');
     }
 }

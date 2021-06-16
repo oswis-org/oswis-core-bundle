@@ -116,13 +116,14 @@ abstract class AbstractToken implements TokenInterface
         return $this->getValidUntil() > ($dateTime ?? new DateTime());
     }
 
-    public function getValidUntil(): DateTime
+    public function getValidUntil(): ?DateTime
     {
-        $dateTime = clone $this->getCreatedAt();
+        $originalDateTime = $this->getCreatedAt();
+        $dateTime = $originalDateTime ? clone $originalDateTime : null;
         $validHours = $this->getValidHours();
         try {
-            $dateTime->add(new DateInterval('PT'.$validHours.'H'));
-        } catch (Exception $e) {
+            $dateTime?->add(new DateInterval('PT'.$validHours.'H'));
+        } catch (Exception) {
         }
 
         return $dateTime;

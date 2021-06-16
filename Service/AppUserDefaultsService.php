@@ -20,24 +20,12 @@ use OswisOrg\OswisCoreBundle\Provider\OswisCoreSettingsProvider;
 
 class AppUserDefaultsService
 {
-    protected OswisCoreSettingsProvider $oswisCoreSettings;
-
-    protected AppUserTypeService $appUserTypeService;
-
-    protected AppUserRoleService $appUserRoleService;
-
-    protected AppUserService $appUserService;
-
     public function __construct(
-        OswisCoreSettingsProvider $oswisCoreSettings,
-        AppUserTypeService $appUserTypeService,
-        AppUserRoleService $appUserRoleService,
-        AppUserService $appUserService
+        protected OswisCoreSettingsProvider $oswisCoreSettings,
+        protected AppUserTypeService $appUserTypeService,
+        protected AppUserRoleService $appUserRoleService,
+        protected AppUserService $appUserService
     ) {
-        $this->oswisCoreSettings = $oswisCoreSettings;
-        $this->appUserTypeService = $appUserTypeService;
-        $this->appUserRoleService = $appUserRoleService;
-        $this->appUserService = $appUserService;
     }
 
     /**

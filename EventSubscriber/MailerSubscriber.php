@@ -15,11 +15,8 @@ use Symfony\Component\Mime\Exception\RfcComplianceException;
 
 class MailerSubscriber implements EventSubscriberInterface
 {
-    protected OswisCoreSettingsProvider $coreSettings;
-
-    public function __construct(OswisCoreSettingsProvider $oswisCoreSettings)
+    public function __construct(protected OswisCoreSettingsProvider $coreSettings)
     {
-        $this->coreSettings = $oswisCoreSettings;
     }
 
     public static function getSubscribedEvents(): array
@@ -81,13 +78,16 @@ class MailerSubscriber implements EventSubscriberInterface
         foreach ($originalRecipients as $singleTo) {
             try {
                 $email->addTo(new Address($singleTo->getAddress(), $singleTo->getName()));
-            } catch (LogicException | RfcComplianceException $e) {
+            } catch (LogicException | RfcComplianceException) {
                 $email->addTo($singleTo->getAddress());
             }
         }
         try {
-            $email->addBcc($this->coreSettings->getArchiveMailerAddress());
-        } catch (RfcComplianceException | LogicException $e) {
+            $archiveAddress = $this->coreSettings->getArchiveMailerAddress();
+            if ($archiveAddress) {
+                $email->addBcc($archiveAddress);
+            }
+        } catch (RfcComplianceException | LogicException) {
         }
     }
 }

@@ -95,7 +95,8 @@ trait NameablePersonTrait
     {
         $parser = new FullNameParser();
         try {
-            $nameObject = $parser->parse(trim(preg_replace('!\s+!', ' ', $name)));
+            $name = preg_replace('!\s+!', ' ', ''.$name);
+            $nameObject = $parser->parse(trim(''.$name));
             if ($nameObject instanceof Name) {
                 $this->setHonorificPrefix($nameObject->getAcademicTitle() ?? '');
                 $this->setGivenName($nameObject->getFirstName() ?? '');
@@ -125,7 +126,7 @@ trait NameablePersonTrait
 
     public function getFamilyName(): ?string
     {
-        return ucfirst($this->familyName);
+        return $this->familyName ? ucfirst($this->familyName) : null;
     }
 
     public function setFamilyName(?string $familyName): void
@@ -145,7 +146,7 @@ trait NameablePersonTrait
 
     public function getGivenName(): ?string
     {
-        return ucfirst($this->givenName);
+        return $this->givenName ? ucfirst($this->givenName) : null;
     }
 
     public function setGivenName(?string $givenName): void
@@ -175,9 +176,12 @@ trait NameablePersonTrait
 
     public function getFullName(): string
     {
-        $fullName = $this->getHonorificPrefix().' '.$this->getGivenName().' '.$this->getAdditionalName().' '.$this->getFamilyName().' '.$this->getHonorificSuffix();
+        $fullName = $this->getHonorificPrefix().' ';
+        $fullName .= $this->getGivenName().' '.$this->getAdditionalName().' '.$this->getFamilyName();
+        $fullName .= ' '.$this->getHonorificSuffix();
+        $fullName = preg_replace('!\s+!', ' ', $fullName);
 
-        return trim(preg_replace('!\s+!', ' ', $fullName)) ?? '';
+        return trim(''.$fullName) ?? '';
     }
 
     public function getNickname(): ?string
@@ -208,7 +212,7 @@ trait NameablePersonTrait
     public function getCzechSuffixA(): string
     {
         try {
-            return (new VokativName())->isMale($this->getGivenName()) ? '' : 'a';
+            return (new VokativName())->isMale(''.$this->getGivenName()) ? '' : 'a';
         } catch (Exception $e) {
             return '';
         }

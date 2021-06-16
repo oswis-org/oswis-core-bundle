@@ -184,7 +184,7 @@ class AppUser extends AbstractAppUser implements PdfExportableInterface
      */
     public function getRoles(): array
     {
-        return $this->getAppUserType() ? $this->getAppUserType()->getAllRoleNames()->toArray() : [];
+        return $this->getAppUserType()?->getAllRoleNames()->toArray() ?? [];
     }
 
     public function getName(): string
@@ -220,7 +220,7 @@ class AppUser extends AbstractAppUser implements PdfExportableInterface
      */
     public function encryptPassword(?string $plainPassword, PasswordHasherInterface $encoder): void
     {
-        $this->setPassword($encoder->hash($plainPassword));
+        $this->setPassword($encoder->hash(''.$plainPassword));
     }
 
     public function getUserIdentifier(): string

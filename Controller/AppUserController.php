@@ -31,17 +31,11 @@ use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 class AppUserController extends AbstractController
 {
-    protected OswisCoreSettingsProvider $coreSettings;
-
-    private AppUserService $appUserService;
-
-    private AppUserDefaultsService $appUserDefaultsService;
-
-    public function __construct(AppUserService $appUserService, AppUserDefaultsService $appUserDefaultsService, OswisCoreSettingsProvider $coreSettings)
-    {
-        $this->appUserService = $appUserService;
-        $this->appUserDefaultsService = $appUserDefaultsService;
-        $this->coreSettings = $coreSettings;
+    public function __construct(
+        private AppUserService $appUserService,
+        protected AppUserDefaultsService $appUserDefaultsService,
+        protected OswisCoreSettingsProvider $coreSettings
+    ) {
     }
 
     /**
@@ -172,8 +166,9 @@ class AppUserController extends AbstractController
      * @param  AppUserToken  $appUserToken
      *
      * @return Response
-     * @throws InvalidTypeException
-     * @throws NotFoundException
+     * @throws \OswisOrg\OswisCoreBundle\Exceptions\InvalidTypeException
+     * @throws \OswisOrg\OswisCoreBundle\Exceptions\NotFoundException
+     * @throws \OswisOrg\OswisCoreBundle\Exceptions\TokenInvalidException
      */
     public function processTokenActivation(AppUserToken $appUserToken): Response
     {
@@ -254,7 +249,7 @@ class AppUserController extends AbstractController
             $this->appUserDefaultsService->registerRoot();
 
             return new Response('Uživatel byl vytvořen, pokud ještě neexistoval.');
-        } catch (InvalidTypeException | InvalidArgumentException | UserNotFoundException | NotFoundException | NotImplementedException | UserNotUniqueException | OswisException $e) {
+        } catch (InvalidTypeException | InvalidArgumentException | UserNotFoundException | NotFoundException | NotImplementedException | UserNotUniqueException | OswisException) {
             return new Response('Nastala chyba při vytváření výchozího uživatele.');
         }
     }

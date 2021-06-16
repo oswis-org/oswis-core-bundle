@@ -12,17 +12,11 @@ use Psr\Log\LoggerInterface;
 
 class AppUserTypeService
 {
-    protected EntityManagerInterface $em;
-
-    protected LoggerInterface $logger;
-
-    protected AppUserTypeRepository $appUserTypeRepository;
-
-    public function __construct(EntityManagerInterface $em, LoggerInterface $logger, AppUserTypeRepository $appUserTypeRepository)
-    {
-        $this->em = $em;
-        $this->logger = $logger;
-        $this->appUserTypeRepository = $appUserTypeRepository;
+    public function __construct(
+        protected EntityManagerInterface $em,
+        protected LoggerInterface $logger,
+        protected AppUserTypeRepository $appUserTypeRepository,
+    ) {
     }
 
     public function create(AppUserType $type): AppUserType

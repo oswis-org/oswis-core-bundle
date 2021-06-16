@@ -34,5 +34,5 @@ interface TokenInterface extends BasicInterface, TypeInterface
 
     public function isUsed(): bool;
 
-    public function getValidUntil(): DateTime;
+    public function getValidUntil(): ?DateTime;
 }

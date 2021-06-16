@@ -22,28 +22,13 @@ use OswisOrg\OswisCoreBundle\Repository\AppUserMailRepository;
 
 class AppUserMailService
 {
-    protected MailService $mailService;
-
-    protected EntityManagerInterface $em;
-
-    protected AppUserMailRepository $appUserMailRepository;
-
-    protected AppUserMailGroupRepository $groupRepository;
-
-    protected AppUserMailCategoryRepository $categoryRepository;
-
     public function __construct(
-        MailService $mailService,
-        EntityManagerInterface $em,
-        AppUserMailGroupRepository $groupRepository,
-        AppUserMailCategoryRepository $categoryRepository,
-        AppUserMailRepository $appUserMailRepository
+        protected MailService $mailService,
+        protected EntityManagerInterface $em,
+        protected AppUserMailGroupRepository $groupRepository,
+        protected AppUserMailCategoryRepository $categoryRepository,
+        protected AppUserMailRepository $appUserMailRepository
     ) {
-        $this->mailService = $mailService;
-        $this->em = $em;
-        $this->groupRepository = $groupRepository;
-        $this->categoryRepository = $categoryRepository;
-        $this->appUserMailRepository = $appUserMailRepository;
     }
 
     /**
@@ -84,7 +69,7 @@ class AppUserMailService
 
     public function getCategoryByType(?string $type): ?AppUserMailCategory
     {
-        return $this->categoryRepository->findByType($type);
+        return $type ? $this->categoryRepository->findByType($type) : null;
     }
 
     public function getGroup(AppUser $appUser, MailCategoryInterface $category): ?AppUserMailGroup
