@@ -13,13 +13,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/translations/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+    <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="Upgraded Bootstrap">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DependencyInjection/OswisOrgOswisCoreExtension.php" beforeDir="false" afterPath="$PROJECT_DIR$/DependencyInjection/OswisOrgOswisCoreExtension.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/views/web/pages/form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/pages/form.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -895,14 +893,7 @@
       <workItem from="1617554397167" duration="1665000" />
       <workItem from="1623682982629" duration="353000" />
       <workItem from="1623855097716" duration="13771000" />
-      <workItem from="1623881786840" duration="1704000" />
-    </task>
-    <task id="LOCAL-00737" summary="Some fixes, updates and changes.">
-      <created>1595102139400</created>
-      <option name="number" value="00737" />
-      <option name="presentableId" value="LOCAL-00737" />
-      <option name="project" value="LOCAL" />
-      <updated>1595102139400</updated>
+      <workItem from="1623881786840" duration="6567000" />
     </task>
     <task id="LOCAL-00738" summary="Some fixes, updates and changes.">
       <created>1595103670614</created>
@@ -1240,7 +1231,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623868766009</updated>
     </task>
-    <option name="localTasksCounter" value="786" />
+    <task id="LOCAL-00786" summary="Added some dependencies (moved from top level project).">
+      <created>1623925811626</created>
+      <option name="number" value="00786" />
+      <option name="presentableId" value="LOCAL-00786" />
+      <option name="project" value="LOCAL" />
+      <updated>1623925811627</updated>
+    </task>
+    <option name="localTasksCounter" value="787" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1290,7 +1288,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Back to Gedmo from Knp for Timestampable." />
     <MESSAGE value="Changes in annotations." />
     <MESSAGE value="Fixed slugs in Nameable, fixed some services." />
     <MESSAGE value="Added assets." />
@@ -1315,6 +1312,7 @@
     <MESSAGE value="Updated composer packages." />
     <MESSAGE value="Updated to PHP 8.0 and Symfony 5.3." />
     <MESSAGE value="Fixed some errors." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed some errors." />
+    <MESSAGE value="Added some dependencies (moved from top level project)." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added some dependencies (moved from top level project)." />
   </component>
 </project>

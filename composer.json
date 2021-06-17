@@ -68,7 +68,7 @@
     "twig/inky-extra": "^3.3",
     "psr/event-dispatcher": "^1.0",
     "symfony/browser-kit": "^5.3",
-    "twbs/bootstrap": "^4.6",
+    "twbs/bootstrap": "^5.0.0",
     "symfony/apache-pack": "^1.0",
     "symfony/cache": "^5.3",
     "symfony/debug-bundle": "^5.3",

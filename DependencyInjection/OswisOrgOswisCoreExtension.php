@@ -91,7 +91,7 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
                 'public/bundles/oswisorgoswiscore' => 'oswis',
             ],
             'globals'              => ['oswis' => '@oswis_org_oswis_core.oswis_core_settings_provider'],
-            'form_themes'          => ['bootstrap_4_layout.html.twig'],
+            'form_themes'          => ['bootstrap_5_layout.html.twig'],
             'date'                 => ['format' => 'j. n. Y H:i'],
         ];
         $container->prependExtensionConfig('twig', $twigConfig);

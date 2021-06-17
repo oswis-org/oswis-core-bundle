@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e0b669754afb7e828600626d28b8b4dd",
+    "content-hash": "984399fc74b227d97b290eca34731ffb",
     "packages": [
         {
             "name": "adci/full-name-parser",
@@ -10631,27 +10631,22 @@
         },
         {
             "name": "twbs/bootstrap",
-            "version": "v4.6.0",
+            "version": "v5.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twbs/bootstrap.git",
-                "reference": "6ffb0b48e455430f8a5359ed689ad64c1143fac2"
+                "reference": "58b1be927f43c779377e478df2d119f2ddf956ca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/6ffb0b48e455430f8a5359ed689ad64c1143fac2",
-                "reference": "6ffb0b48e455430f8a5359ed689ad64c1143fac2",
+                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/58b1be927f43c779377e478df2d119f2ddf956ca",
+                "reference": "58b1be927f43c779377e478df2d119f2ddf956ca",
                 "shasum": ""
             },
             "replace": {
                 "twitter/bootstrap": "self.version"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.3.x-dev"
-                }
-            },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
@@ -10680,7 +10675,7 @@
             ],
             "support": {
                 "issues": "https://github.com/twbs/bootstrap/issues",
-                "source": "https://github.com/twbs/bootstrap/tree/v4.6.0"
+                "source": "https://github.com/twbs/bootstrap/tree/v5.0.1"
             },
             "funding": [
                 {
@@ -10688,7 +10683,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2021-01-19T16:16:38+00:00"
+            "time": "2021-05-13T16:22:20+00:00"
         },
         {
             "name": "twig/cssinliner-extra",
