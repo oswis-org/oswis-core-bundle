@@ -14,49 +14,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/phpstan.neon.dist" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/oswis-core-bundle.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/oswis-core-bundle.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/translations/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/AppUserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/AppUserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractMail.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractMail.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractMailGroup.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractMailGroup.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractToken.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractToken.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AppUser/AppUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUser/AppUser.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AppUser/AppUserRole.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUser/AppUserRole.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AppUser/AppUserToken.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUser/AppUserToken.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AppUser/AppUserType.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUser/AppUserType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AppUserMail/AppUserMailGroup.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUserMail/AppUserMailGroup.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/NonPersistent/BankAccount.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/NonPersistent/BankAccount.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/NonPersistent/Export/AbstractExportList.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/NonPersistent/Export/AbstractExportList.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/Revisions/AbstractRevision.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Revisions/AbstractRevision.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/TwigTemplate/TwigTemplate.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/TwigTemplate/TwigTemplate.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventSubscriber/MailerSubscriber.php" beforeDir="false" afterPath="$PROJECT_DIR$/EventSubscriber/MailerSubscriber.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Interfaces/Common/TokenInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/Interfaces/Common/TokenInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Security/AppUserProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/Security/AppUserProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Security/WebUserAuthenticator.php" beforeDir="false" afterPath="$PROJECT_DIR$/Security/WebUserAuthenticator.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/AppUserDefaultsService.php" beforeDir="false" afterPath="$PROJECT_DIR$/Service/AppUserDefaultsService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/AppUserMailService.php" beforeDir="false" afterPath="$PROJECT_DIR$/Service/AppUserMailService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/AppUserRoleService.php" beforeDir="false" afterPath="$PROJECT_DIR$/Service/AppUserRoleService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/AppUserService.php" beforeDir="false" afterPath="$PROJECT_DIR$/Service/AppUserService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/AppUserTokenService.php" beforeDir="false" afterPath="$PROJECT_DIR$/Service/AppUserTokenService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/AppUserTypeService.php" beforeDir="false" afterPath="$PROJECT_DIR$/Service/AppUserTypeService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/ExportService.php" beforeDir="false" afterPath="$PROJECT_DIR$/Service/ExportService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/Internal/UpdateService.php" beforeDir="false" afterPath="$PROJECT_DIR$/Service/Internal/UpdateService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/MailService.php" beforeDir="false" afterPath="$PROJECT_DIR$/Service/MailService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/Web/RssService.php" beforeDir="false" afterPath="$PROJECT_DIR$/Service/Web/RssService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/Web/SiteMapService.php" beforeDir="false" afterPath="$PROJECT_DIR$/Service/Web/SiteMapService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/Web/WebMenuService.php" beforeDir="false" afterPath="$PROJECT_DIR$/Service/Web/WebMenuService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/AddressBook/NameablePersonTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/AddressBook/NameablePersonTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Common/DateRangeTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/DateRangeTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Common/TimestampableTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/TimestampableTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Twig/Extension/ImageExtension.php" beforeDir="false" afterPath="$PROJECT_DIR$/Twig/Extension/ImageExtension.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Utils/DateTimeUtils.php" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/DateTimeUtils.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Utils/StringUtils.php" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/StringUtils.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/phpstan.neon" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +57,9 @@
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/adci/full-name-parser" />
+      <path value="$PROJECT_DIR$/vendor/afarkas/html5shiv" />
       <path value="$PROJECT_DIR$/vendor/antishov/doctrine-extensions-bundle" />
+      <path value="$PROJECT_DIR$/vendor/api-platform/api-pack" />
       <path value="$PROJECT_DIR$/vendor/api-platform/core" />
       <path value="$PROJECT_DIR$/vendor/bacon/bacon-qr-code" />
       <path value="$PROJECT_DIR$/vendor/behat/transliterator" />
@@ -169,6 +134,7 @@
       <path value="$PROJECT_DIR$/vendor/sensio/framework-extra-bundle" />
       <path value="$PROJECT_DIR$/vendor/setasign/fpdi" />
       <path value="$PROJECT_DIR$/vendor/stof/doctrine-extensions-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/apache-pack" />
       <path value="$PROJECT_DIR$/vendor/symfony/asset" />
       <path value="$PROJECT_DIR$/vendor/symfony/browser-kit" />
       <path value="$PROJECT_DIR$/vendor/symfony/cache" />
@@ -177,6 +143,7 @@
       <path value="$PROJECT_DIR$/vendor/symfony/console" />
       <path value="$PROJECT_DIR$/vendor/symfony/css-selector" />
       <path value="$PROJECT_DIR$/vendor/symfony/debug" />
+      <path value="$PROJECT_DIR$/vendor/symfony/debug-bundle" />
       <path value="$PROJECT_DIR$/vendor/symfony/dependency-injection" />
       <path value="$PROJECT_DIR$/vendor/symfony/deprecation-contracts" />
       <path value="$PROJECT_DIR$/vendor/symfony/doctrine-bridge" />
@@ -210,6 +177,7 @@
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php70" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php72" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php73" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php74" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php80" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php81" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-util" />
@@ -217,6 +185,7 @@
       <path value="$PROJECT_DIR$/vendor/symfony/property-access" />
       <path value="$PROJECT_DIR$/vendor/symfony/property-info" />
       <path value="$PROJECT_DIR$/vendor/symfony/proxy-manager-bridge" />
+      <path value="$PROJECT_DIR$/vendor/symfony/requirements-checker" />
       <path value="$PROJECT_DIR$/vendor/symfony/routing" />
       <path value="$PROJECT_DIR$/vendor/symfony/security-bundle" />
       <path value="$PROJECT_DIR$/vendor/symfony/security-core" />
@@ -229,6 +198,7 @@
       <path value="$PROJECT_DIR$/vendor/symfony/stopwatch" />
       <path value="$PROJECT_DIR$/vendor/symfony/string" />
       <path value="$PROJECT_DIR$/vendor/symfony/templating" />
+      <path value="$PROJECT_DIR$/vendor/symfony/translation" />
       <path value="$PROJECT_DIR$/vendor/symfony/translation-contracts" />
       <path value="$PROJECT_DIR$/vendor/symfony/twig-bridge" />
       <path value="$PROJECT_DIR$/vendor/symfony/twig-bundle" />
@@ -243,6 +213,7 @@
       <path value="$PROJECT_DIR$/vendor/symplify/smart-file-system" />
       <path value="$PROJECT_DIR$/vendor/symplify/symplify-kernel" />
       <path value="$PROJECT_DIR$/vendor/tijsverkoyen/css-to-inline-styles" />
+      <path value="$PROJECT_DIR$/vendor/twbs/bootstrap" />
       <path value="$PROJECT_DIR$/vendor/twig/cssinliner-extra" />
       <path value="$PROJECT_DIR$/vendor/twig/extra-bundle" />
       <path value="$PROJECT_DIR$/vendor/twig/inky-extra" />
@@ -256,7 +227,7 @@
     </include_path>
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedIndex" value="2" />
+    <option name="selectedIndex" value="1" />
   </component>
   <component name="ProjectId" id="1OdNRiB7J91AH4isXqLMtDEiNnC" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -923,14 +894,8 @@
       <workItem from="1614261928575" duration="1751000" />
       <workItem from="1617554397167" duration="1665000" />
       <workItem from="1623682982629" duration="353000" />
-      <workItem from="1623855097716" duration="12647000" />
-    </task>
-    <task id="LOCAL-00736" summary="Some fixes, updates and changes.">
-      <created>1595100549916</created>
-      <option name="number" value="00736" />
-      <option name="presentableId" value="LOCAL-00736" />
-      <option name="project" value="LOCAL" />
-      <updated>1595100549916</updated>
+      <workItem from="1623855097716" duration="13771000" />
+      <workItem from="1623881786840" duration="1704000" />
     </task>
     <task id="LOCAL-00737" summary="Some fixes, updates and changes.">
       <created>1595102139400</created>
@@ -1268,7 +1233,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623861620304</updated>
     </task>
-    <option name="localTasksCounter" value="785" />
+    <task id="LOCAL-00785" summary="Fixed some errors.">
+      <created>1623868766009</created>
+      <option name="number" value="00785" />
+      <option name="presentableId" value="LOCAL-00785" />
+      <option name="project" value="LOCAL" />
+      <updated>1623868766009</updated>
+    </task>
+    <option name="localTasksCounter" value="786" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1318,7 +1290,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Change DateTimeInterface back to DateTime." />
     <MESSAGE value="Back to Gedmo from Knp for Timestampable." />
     <MESSAGE value="Changes in annotations." />
     <MESSAGE value="Fixed slugs in Nameable, fixed some services." />
@@ -1343,6 +1314,7 @@
     <MESSAGE value="Fixed routes definitions order for admin app." />
     <MESSAGE value="Updated composer packages." />
     <MESSAGE value="Updated to PHP 8.0 and Symfony 5.3." />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated to PHP 8.0 and Symfony 5.3." />
+    <MESSAGE value="Fixed some errors." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed some errors." />
   </component>
 </project>

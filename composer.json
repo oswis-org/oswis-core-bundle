@@ -47,6 +47,7 @@
     "symfony/proxy-manager-bridge": "^5.3",
     "symfony/security-bundle": "^5.3",
     "symfony/web-profiler-bundle": "^5.3",
+    "symfony/yaml": "^5.0",
     "liip/imagine-bundle": "^2.6",
     "egulias/email-validator": "^3.1",
     "symfony/asset": "^5.3",
@@ -67,13 +68,24 @@
     "twig/inky-extra": "^3.3",
     "psr/event-dispatcher": "^1.0",
     "symfony/browser-kit": "^5.3",
-    "symfony/yaml": "^5.3",
+    "twbs/bootstrap": "^4.6",
+    "symfony/apache-pack": "^1.0",
+    "symfony/cache": "^5.3",
+    "symfony/debug-bundle": "^5.3",
+    "symfony/polyfill-php74": "^1.23",
+    "symfony/requirements-checker": "^2.0",
+    "symfony/translation": "^5.3",
+    "doctrine/doctrine-bundle": "^2.4",
+    "doctrine/orm": "^2.9",
+    "doctrine/persistence": "^2.2",
+    "knplabs/doctrine-behaviors": "^2.2",
+    "afarkas/html5shiv": "^3.7",
+    "api-platform/api-pack": "^v1.3",
     "symfony/expression-language": "^5.3",
     "twig/extra-bundle": "^3.3",
     "symfony/string": "^5.3",
     "twig/string-extra": "^3.3",
     "stof/doctrine-extensions-bundle": "^1.6",
-    "knplabs/doctrine-behaviors": "^2.2",
     "php-console/php-console": "^3.1",
     "rikudou/czqrpayment": "^5.0",
     "nelmio/cors-bundle": "^2.1",
@@ -107,7 +119,10 @@
     "phpstan": "vendor/bin/phpstan analyse",
     "post-update-cmd": [
       "@phpstan"
-    ]
+    ],
+    "auto-scripts": {
+      "requirements-checker": "script"
+    }
   },
   "extra": {
     "symfony": {
