@@ -50,7 +50,7 @@ services:
         public: true
         arguments:
             - '@router.default'
-            - '@security.user_password_hasher'
+            - '@security.password_hasher'
     OswisOrg\OswisCoreBundle\Security\WebUserAuthenticator:
         alias: oswis_org_oswis_core.web_user_authenticator
         public: true

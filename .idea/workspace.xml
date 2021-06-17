@@ -13,11 +13,16 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="Upgraded Bootstrap">
+    <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/oswis-core-bundle.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/oswis-core-bundle.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DependencyInjection/OswisOrgOswisCoreExtension.php" beforeDir="false" afterPath="$PROJECT_DIR$/DependencyInjection/OswisOrgOswisCoreExtension.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/web/pages/form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/pages/form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AppUser/AppUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUser/AppUser.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/config/services.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Security/WebUserAuthenticator.php" beforeDir="false" afterPath="$PROJECT_DIR$/Security/WebUserAuthenticator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Service/AppUserService.php" beforeDir="false" afterPath="$PROJECT_DIR$/Service/AppUserService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/User/EncryptedPasswordTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/User/EncryptedPasswordTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,8 +99,6 @@
       <path value="$PROJECT_DIR$/vendor/jms/metadata" />
       <path value="$PROJECT_DIR$/vendor/knplabs/doctrine-behaviors" />
       <path value="$PROJECT_DIR$/vendor/laminas/laminas-code" />
-      <path value="$PROJECT_DIR$/vendor/laminas/laminas-eventmanager" />
-      <path value="$PROJECT_DIR$/vendor/laminas/laminas-zendframework-bridge" />
       <path value="$PROJECT_DIR$/vendor/lcobucci/clock" />
       <path value="$PROJECT_DIR$/vendor/lcobucci/jwt" />
       <path value="$PROJECT_DIR$/vendor/league/commonmark" />
@@ -893,14 +896,7 @@
       <workItem from="1617554397167" duration="1665000" />
       <workItem from="1623682982629" duration="353000" />
       <workItem from="1623855097716" duration="13771000" />
-      <workItem from="1623881786840" duration="6567000" />
-    </task>
-    <task id="LOCAL-00738" summary="Some fixes, updates and changes.">
-      <created>1595103670614</created>
-      <option name="number" value="00738" />
-      <option name="presentableId" value="LOCAL-00738" />
-      <option name="project" value="LOCAL" />
-      <updated>1595103670615</updated>
+      <workItem from="1623881786840" duration="7290000" />
     </task>
     <task id="LOCAL-00739" summary="Some fixes, updates and changes.">
       <created>1595104255590</created>
@@ -1238,7 +1234,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623925811627</updated>
     </task>
-    <option name="localTasksCounter" value="787" />
+    <task id="LOCAL-00787" summary="Upgraded Bootstrap to 5.">
+      <created>1623937029133</created>
+      <option name="number" value="00787" />
+      <option name="presentableId" value="LOCAL-00787" />
+      <option name="project" value="LOCAL" />
+      <updated>1623937029133</updated>
+    </task>
+    <option name="localTasksCounter" value="788" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1288,7 +1291,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Changes in annotations." />
     <MESSAGE value="Fixed slugs in Nameable, fixed some services." />
     <MESSAGE value="Added assets." />
     <MESSAGE value="Fixed some bugs." />
@@ -1313,6 +1315,7 @@
     <MESSAGE value="Updated to PHP 8.0 and Symfony 5.3." />
     <MESSAGE value="Fixed some errors." />
     <MESSAGE value="Added some dependencies (moved from top level project)." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added some dependencies (moved from top level project)." />
+    <MESSAGE value="Upgraded Bootstrap to 5." />
+    <option name="LAST_COMMIT_MESSAGE" value="Upgraded Bootstrap to 5." />
   </component>
 </project>

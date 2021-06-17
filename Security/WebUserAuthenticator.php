@@ -9,13 +9,14 @@ namespace OswisOrg\OswisCoreBundle\Security;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\PasswordHasher\PasswordHasherInterface;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Exception\InvalidParameterException;
 use Symfony\Component\Routing\Exception\MissingMandatoryParametersException;
 use Symfony\Component\Routing\Exception\RouteNotFoundException;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Exception\CustomUserMessageAuthenticationException;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Guard\Authenticator\AbstractFormLoginAuthenticator;
@@ -27,7 +28,7 @@ class WebUserAuthenticator extends AbstractFormLoginAuthenticator
 
     public const LOGIN_ROUTE = 'oswis_org_oswis_core_web_admin_login';
 
-    public function __construct(private UrlGeneratorInterface $urlGenerator, private PasswordHasherInterface $passwordEncoder)
+    public function __construct(private UrlGeneratorInterface $urlGenerator, private UserPasswordHasherInterface $passwordEncoder)
     {
     }
 
@@ -56,7 +57,9 @@ class WebUserAuthenticator extends AbstractFormLoginAuthenticator
 
     public function checkCredentials($credentials, UserInterface $user): bool
     {
-        return $this->passwordEncoder->verify(''.$user->getPassword(), $credentials['password']);
+        assert($user instanceof PasswordAuthenticatedUserInterface);
+
+        return $this->passwordEncoder->isPasswordValid($user, $credentials['password']);
     }
 
     /**

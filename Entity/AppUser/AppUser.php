@@ -11,7 +11,8 @@ use OswisOrg\OswisCoreBundle\Entity\AbstractClass\AbstractAppUser;
 use OswisOrg\OswisCoreBundle\Entity\NonPersistent\Export\ExportListColumn;
 use OswisOrg\OswisCoreBundle\Interfaces\Export\PdfExportableInterface;
 use OswisOrg\OswisCoreBundle\Traits\Export\PdfExportableTrait;
-use Symfony\Component\PasswordHasher\PasswordHasherInterface;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
 /**
  * User of application.
@@ -78,7 +79,7 @@ use Symfony\Component\PasswordHasher\PasswordHasherInterface;
  * @author Jakub Zak <mail@jakubzak.eu>
  * @Doctrine\ORM\Mapping\Cache(usage="NONSTRICT_READ_WRITE", region="core_app_user")
  */
-class AppUser extends AbstractAppUser implements PdfExportableInterface
+class AppUser extends AbstractAppUser implements PdfExportableInterface, PasswordAuthenticatedUserInterface
 {
     use PdfExportableTrait;
 
@@ -216,11 +217,12 @@ class AppUser extends AbstractAppUser implements PdfExportableInterface
     }
 
     /**
-     * @throws \Symfony\Component\PasswordHasher\Exception\InvalidPasswordException
+     * @param  string|null  $plainPassword
+     * @param  \Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface  $encoder
      */
-    public function encryptPassword(?string $plainPassword, PasswordHasherInterface $encoder): void
+    public function encryptPassword(?string $plainPassword, UserPasswordHasherInterface $encoder): void
     {
-        $this->setPassword($encoder->hash(''.$plainPassword));
+        $this->setPassword($encoder->hashPassword($this, ''.$plainPassword));
     }
 
     public function getUserIdentifier(): string

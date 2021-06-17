@@ -20,7 +20,7 @@ use OswisOrg\OswisCoreBundle\Exceptions\UserNotUniqueException;
 use OswisOrg\OswisCoreBundle\Repository\AppUserRepository;
 use OswisOrg\OswisCoreBundle\Utils\StringUtils;
 use Psr\Log\LoggerInterface;
-use Symfony\Component\PasswordHasher\PasswordHasherInterface;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 use function random_int;
 
@@ -33,36 +33,15 @@ class AppUserService
 
     public const ALLOWED_TYPES = [self::PASSWORD_CHANGE, self::PASSWORD_CHANGE_REQUEST, self::ACTIVATION, self::ACTIVATION_REQUEST];
 
-    private EntityManagerInterface $em;
-
-    private LoggerInterface $logger;
-
-    private PasswordHasherInterface $encoder;
-
-    private AppUserTokenService $appUserTokenService;
-
-    private AppUserMailService $appUserMailService;
-
-    private AppUserTypeService $appUserTypeService;
-
-    private AppUserRepository $appUserRepository;
-
     public function __construct(
-        PasswordHasherInterface $encoder,
-        EntityManagerInterface $em,
-        LoggerInterface $logger,
-        AppUserTokenService $appUserTokenService,
-        AppUserMailService $appUserMailService,
-        AppUserTypeService $appUserTypeService,
-        AppUserRepository $appUserRepository
+        private UserPasswordHasherInterface $encoder,
+        private EntityManagerInterface $em,
+        private LoggerInterface $logger,
+        private AppUserTokenService $appUserTokenService,
+        private AppUserMailService $appUserMailService,
+        private AppUserTypeService $appUserTypeService,
+        private AppUserRepository $appUserRepository,
     ) {
-        $this->em = $em;
-        $this->encoder = $encoder;
-        $this->logger = $logger;
-        $this->appUserMailService = $appUserMailService;
-        $this->appUserTokenService = $appUserTokenService;
-        $this->appUserTypeService = $appUserTypeService;
-        $this->appUserRepository = $appUserRepository;
     }
 
     /**

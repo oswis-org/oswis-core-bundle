@@ -40,8 +40,6 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/jms/metadata" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/knplabs/doctrine-behaviors" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/laminas/laminas-code" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/laminas/laminas-eventmanager" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/laminas/laminas-zendframework-bridge" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/lcobucci/jwt" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/league/commonmark" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/league/csv" />
