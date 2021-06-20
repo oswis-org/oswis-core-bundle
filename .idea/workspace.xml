@@ -14,9 +14,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Resources/views/web/parts/loading-screen.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/bundles/OswisOrgOswisCoreBundle/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/bundles/OswisOrgOswisCoreBundle/.gitkeep" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Resources/views/web/parts/breadcrumbs.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/parts/breadcrumbs.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/views/web/parts/hinclude.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/parts/hinclude.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +39,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/exif/exif.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Resources/views/web/parts/breadcrumbs.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard/standard_0.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/date/date_c.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Resources/views/e-mail/styles/foundation-emails.css.twig" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
@@ -252,7 +254,7 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.spelling" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -890,14 +892,9 @@
       <workItem from="1617554397167" duration="1665000" />
       <workItem from="1623682982629" duration="353000" />
       <workItem from="1623855097716" duration="13771000" />
-      <workItem from="1623881786840" duration="11418000" />
-    </task>
-    <task id="LOCAL-00740" summary="Some fixes, updates and changes.">
-      <created>1595105808798</created>
-      <option name="number" value="00740" />
-      <option name="presentableId" value="LOCAL-00740" />
-      <option name="project" value="LOCAL" />
-      <updated>1595105808798</updated>
+      <workItem from="1623881786840" duration="12100000" />
+      <workItem from="1624021680714" duration="614000" />
+      <workItem from="1624028431706" duration="2526000" />
     </task>
     <task id="LOCAL-00741" summary="Some fixes, updates and changes.">
       <created>1596638394642</created>
@@ -1235,7 +1232,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623937829255</updated>
     </task>
-    <option name="localTasksCounter" value="789" />
+    <task id="LOCAL-00789" summary="Fixed some deprecations.">
+      <created>1623971776449</created>
+      <option name="number" value="00789" />
+      <option name="presentableId" value="LOCAL-00789" />
+      <option name="project" value="LOCAL" />
+      <updated>1623971776449</updated>
+    </task>
+    <option name="localTasksCounter" value="790" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
