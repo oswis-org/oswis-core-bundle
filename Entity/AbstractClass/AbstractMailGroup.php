@@ -16,7 +16,7 @@ use OswisOrg\OswisCoreBundle\Traits\Common\NameableTrait;
 use OswisOrg\OswisCoreBundle\Traits\Common\PriorityTrait;
 
 /**
- * Mail group contains restrictions of recipients.
+ * Mail group contains restrictions of recipients for some messages.
  * @author Jakub Zak <mail@jakubzak.eu>
  */
 abstract class AbstractMailGroup implements MailGroupInterface

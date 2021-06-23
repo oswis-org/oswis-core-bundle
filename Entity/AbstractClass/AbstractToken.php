@@ -185,7 +185,7 @@ abstract class AbstractToken implements TokenInterface
         $now = new DateTime();
         $this->timesUsed++;
         $this->firstUsedAt ??= $now;
-        $this->lastUsedAt ??= $now;
+        $this->lastUsedAt = $now;
     }
 
     public function getEmail(): ?string

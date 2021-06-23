@@ -14,8 +14,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractMailGroup.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractMailGroup.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractToken.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractToken.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Common/DateRangeTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/DateRangeTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,11 +40,11 @@
     <option name="defaultAccountId" value="740df062-479c-4e59-900e-bfa747b75d03" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/exif/exif.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Resources/views/web/parts/breadcrumbs.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Resources/views/e-mail/styles/foundation-emails.css.twig" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard/standard_0.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/date/date_c.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Resources/views/e-mail/styles/foundation-emails.css.twig" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/exif/exif.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
   </component>
   <component name="JsFlowSettings">
     <service-enabled>true</service-enabled>
@@ -62,6 +66,9 @@
       <path value="$PROJECT_DIR$/vendor/behat/transliterator" />
       <path value="$PROJECT_DIR$/vendor/bigit/vokativ" />
       <path value="$PROJECT_DIR$/vendor/brick/math" />
+      <path value="$PROJECT_DIR$/vendor/cache/adapter-common" />
+      <path value="$PROJECT_DIR$/vendor/cache/doctrine-adapter" />
+      <path value="$PROJECT_DIR$/vendor/cache/tag-interop" />
       <path value="$PROJECT_DIR$/vendor/composer" />
       <path value="$PROJECT_DIR$/vendor/dasprid/enum" />
       <path value="$PROJECT_DIR$/vendor/doctrine/annotations" />
@@ -121,6 +128,7 @@
       <path value="$PROJECT_DIR$/vendor/psr/event-dispatcher" />
       <path value="$PROJECT_DIR$/vendor/psr/link" />
       <path value="$PROJECT_DIR$/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/vendor/psr/simple-cache" />
       <path value="$PROJECT_DIR$/vendor/ramsey/collection" />
       <path value="$PROJECT_DIR$/vendor/ramsey/uuid" />
       <path value="$PROJECT_DIR$/vendor/rikudou/czqrpayment" />
@@ -893,14 +901,8 @@
       <workItem from="1623881786840" duration="12100000" />
       <workItem from="1624021680714" duration="614000" />
       <workItem from="1624028431706" duration="3153000" />
-      <workItem from="1624282015993" duration="2013000" />
-    </task>
-    <task id="LOCAL-00742" summary="Some fixes, updates and changes.">
-      <created>1596645496421</created>
-      <option name="number" value="00742" />
-      <option name="presentableId" value="LOCAL-00742" />
-      <option name="project" value="LOCAL" />
-      <updated>1596645496421</updated>
+      <workItem from="1624282015993" duration="3256000" />
+      <workItem from="1624469555618" duration="4394000" />
     </task>
     <task id="LOCAL-00743" summary="Some fixes, updates and changes.">
       <created>1596648146333</created>
@@ -1238,7 +1240,14 @@
       <option name="project" value="LOCAL" />
       <updated>1624190110502</updated>
     </task>
-    <option name="localTasksCounter" value="791" />
+    <task id="LOCAL-00791" summary="Updated dependencies.">
+      <created>1624288181097</created>
+      <option name="number" value="00791" />
+      <option name="presentableId" value="LOCAL-00791" />
+      <option name="project" value="LOCAL" />
+      <updated>1624288181098</updated>
+    </task>
+    <option name="localTasksCounter" value="792" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1288,7 +1297,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Fixed some bugs." />
     <MESSAGE value="Use Gedmo again. KnpLabs/DoctrineBehaviors is very unstable and unusable." />
     <MESSAGE value="Changes." />
     <MESSAGE value="Some fixes, updates and changes." />
@@ -1313,6 +1321,7 @@
     <MESSAGE value="Upgraded Bootstrap to 5." />
     <MESSAGE value="Fixed some deprecations." />
     <MESSAGE value="Fixed some layout bugs." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed some layout bugs." />
+    <MESSAGE value="Updated dependencies." />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated dependencies." />
   </component>
 </project>

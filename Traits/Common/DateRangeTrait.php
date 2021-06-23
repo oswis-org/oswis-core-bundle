@@ -106,8 +106,10 @@ trait DateRangeTrait
         if ($this->isInOnePeriod(DateTimeUtils::DATE_TIME_YEARS)) {
             return $this->getRangeAsTextYears($withoutYear);
         }
+        $from = $this->getStartByFormat('\o\d j. n.'.($withoutYear ? '' : ' Y'));
+        $to = $this->getEndByFormat(' \d\o  j. n.'.($withoutYear ? '' : ' Y'));
 
-        return $this->getStartByFormat($withoutYear ? 'j. n.' : 'j. n. Y').$this->getEndByFormat($withoutYear ? ' \až j. n.' : ' \až j. n. Y');
+        return trim($from.$to);
     }
 
     public function isInOnePeriod(?string $period = null): ?bool
