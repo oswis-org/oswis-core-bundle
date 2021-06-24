@@ -14,11 +14,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractMailGroup.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractMailGroup.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractToken.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractToken.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Common/DateRangeTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/DateRangeTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/NonPersistent/BankAccount.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/NonPersistent/BankAccount.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -902,14 +899,7 @@
       <workItem from="1624021680714" duration="614000" />
       <workItem from="1624028431706" duration="3153000" />
       <workItem from="1624282015993" duration="3256000" />
-      <workItem from="1624469555618" duration="4394000" />
-    </task>
-    <task id="LOCAL-00743" summary="Some fixes, updates and changes.">
-      <created>1596648146333</created>
-      <option name="number" value="00743" />
-      <option name="presentableId" value="LOCAL-00743" />
-      <option name="project" value="LOCAL" />
-      <updated>1596648146334</updated>
+      <workItem from="1624469555618" duration="6524000" />
     </task>
     <task id="LOCAL-00744" summary="Some fixes, updates and changes.">
       <created>1596657157492</created>
@@ -1247,7 +1237,14 @@
       <option name="project" value="LOCAL" />
       <updated>1624288181098</updated>
     </task>
-    <option name="localTasksCounter" value="792" />
+    <task id="LOCAL-00792" summary="Some smaller changes.">
+      <created>1624480889597</created>
+      <option name="number" value="00792" />
+      <option name="presentableId" value="LOCAL-00792" />
+      <option name="project" value="LOCAL" />
+      <updated>1624480889598</updated>
+    </task>
+    <option name="localTasksCounter" value="793" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1297,7 +1294,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Use Gedmo again. KnpLabs/DoctrineBehaviors is very unstable and unusable." />
     <MESSAGE value="Changes." />
     <MESSAGE value="Some fixes, updates and changes." />
     <MESSAGE value="Added NumericRangeInterface." />
@@ -1322,6 +1318,7 @@
     <MESSAGE value="Fixed some deprecations." />
     <MESSAGE value="Fixed some layout bugs." />
     <MESSAGE value="Updated dependencies." />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated dependencies." />
+    <MESSAGE value="Some smaller changes." />
+    <option name="LAST_COMMIT_MESSAGE" value="Some smaller changes." />
   </component>
 </project>

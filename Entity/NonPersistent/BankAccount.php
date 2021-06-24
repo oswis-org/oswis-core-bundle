@@ -6,6 +6,8 @@
 
 namespace OswisOrg\OswisCoreBundle\Entity\NonPersistent;
 
+use Endroid\QrCode\Writer\PngWriter;
+use Exception;
 use InvalidArgumentException;
 use Rikudou\CzQrPayment\Exception\QrPaymentException;
 use Rikudou\CzQrPayment\Options\QrPaymentOptions;
@@ -68,18 +70,19 @@ class BankAccount
         $this->bankCode = $bankCode;
     }
 
-    /** @noinspection PhpUndefinedMethodInspection */
     public function getQrImage(?int $value = 0, ?string $variableSymbol = '', ?string $comment = ''): ?string
     {
+        $writer = new PngWriter();
         try {
-            /**
-             * @noinspection PhpUndefinedMethodInspection
-             * @phpstan-ignore-next-line
-             */
-            return $this->getQrPayment($value, $variableSymbol, $comment)?->getQrImage()->writeString();
-        } catch (QrPaymentException) {
+            $qrCode = $this->getQrPayment($value, $variableSymbol, $comment);
+            if ($qrCode) {
+                return $writer->write($qrCode->getQrImage())->getString();
+            }
+        } catch (Exception | QrPaymentException) {
             return null;
         }
+
+        return null;
     }
 
     private function getQrPayment(?int $value = 0, ?string $variableSymbol = '', ?string $comment = ''): ?QrPayment
