@@ -94,16 +94,16 @@ trait DateRangeTrait
 
     public function getRangeAsText(bool $withoutYear = false): ?string
     {
-        if (null === $this->getStartDate()) {
+        if (null === $this->getStartDate() && null === $this->getEndDate()) {
             return null;
         }
-        if ($this->isInOnePeriod(DateTimeUtils::DATE_TIME_DAYS)) {
+        if ($this->getStartDate() && $this->isInOnePeriod(DateTimeUtils::DATE_TIME_DAYS)) {
             return $this->getRangeAsTextDays($withoutYear);
         }
-        if ($this->isInOnePeriod(DateTimeUtils::DATE_TIME_MONTHS)) {
+        if ($this->getStartDate() && $this->isInOnePeriod(DateTimeUtils::DATE_TIME_MONTHS)) {
             return $this->getRangeAsTextMonths($withoutYear);
         }
-        if ($this->isInOnePeriod(DateTimeUtils::DATE_TIME_YEARS)) {
+        if ($this->getStartDate() && $this->isInOnePeriod(DateTimeUtils::DATE_TIME_YEARS)) {
             return $this->getRangeAsTextYears($withoutYear);
         }
         $from = $this->getStartByFormat('\o\d j. n.'.($withoutYear ? '' : ' Y'));
