@@ -2,7 +2,7 @@
 
 ### Endpoint for API log in by front-end app.
 login_check:
-    path: /api/login_check
+    path: /api/login
     methods: [ POST ]
 
 ### Endpoint for refresh of JWT token.

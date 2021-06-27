@@ -14,8 +14,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OpenApi/OpenApiFactory.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controller/Web/SiteWebManifestController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/Web/SiteWebManifestController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DependencyInjection/OswisOrgOswisCoreExtension.php" beforeDir="false" afterPath="$PROJECT_DIR$/DependencyInjection/OswisOrgOswisCoreExtension.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractAppUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractAppUser.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AppUser/AppUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUser/AppUser.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AppUser/AppUserType.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUser/AppUserType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/config/routes.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/config/services.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Traits/Common/DateRangeTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/DateRangeTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -898,14 +908,9 @@
       <workItem from="1624021680714" duration="614000" />
       <workItem from="1624028431706" duration="3153000" />
       <workItem from="1624282015993" duration="3256000" />
-      <workItem from="1624469555618" duration="7816000" />
-    </task>
-    <task id="LOCAL-00745" summary="Some fixes, updates and changes.">
-      <created>1596657894291</created>
-      <option name="number" value="00745" />
-      <option name="presentableId" value="LOCAL-00745" />
-      <option name="project" value="LOCAL" />
-      <updated>1596657894291</updated>
+      <workItem from="1624469555618" duration="8425000" />
+      <workItem from="1624610939873" duration="2584000" />
+      <workItem from="1624809206324" duration="3069000" />
     </task>
     <task id="LOCAL-00746" summary="Some fixes, updates and changes.">
       <created>1596658399898</created>
@@ -1243,7 +1248,14 @@
       <option name="project" value="LOCAL" />
       <updated>1624523046502</updated>
     </task>
-    <option name="localTasksCounter" value="794" />
+    <task id="LOCAL-00794" summary="Fixed DateRangeTrait.">
+      <created>1624533050062</created>
+      <option name="number" value="00794" />
+      <option name="presentableId" value="LOCAL-00794" />
+      <option name="project" value="LOCAL" />
+      <updated>1624533050062</updated>
+    </task>
+    <option name="localTasksCounter" value="795" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1293,7 +1305,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Some fixes, updates and changes." />
     <MESSAGE value="Added NumericRangeInterface." />
     <MESSAGE value="Added FloatRangeInterface and FloatRangeTrait." />
     <MESSAGE value="Fixed property names." />
@@ -1318,6 +1329,7 @@
     <MESSAGE value="Updated dependencies." />
     <MESSAGE value="Some smaller changes." />
     <MESSAGE value="Fixed usage of Endroid\QrCode." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed usage of Endroid\QrCode." />
+    <MESSAGE value="Fixed DateRangeTrait." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed DateRangeTrait." />
   </component>
 </project>

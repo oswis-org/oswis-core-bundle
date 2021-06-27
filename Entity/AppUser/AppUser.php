@@ -87,7 +87,10 @@ class AppUser extends AbstractAppUser implements PdfExportableInterface, Passwor
 
     /**
      * @Doctrine\ORM\Mapping\OneToMany(
-     *     targetEntity="OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserFlagConnection", cascade={"all"}, mappedBy="appUser", fetch="EAGER"
+     *     targetEntity="OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserFlagConnection",
+     *     cascade={"all"},
+     *     mappedBy="appUser",
+     *     fetch="EAGER",
      * )
      * @ApiPlatform\Core\Annotation\ApiFilter(
      *     ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class,

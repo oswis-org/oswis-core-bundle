@@ -148,7 +148,7 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
                     'stateless'  => true,
                     'provider'   => 'app_user_provider',
                     'json_login' => [
-                        'check_path'      => '/api/login_check',
+                        'check_path'      => '/api/login',
                         'success_handler' => 'lexik_jwt_authentication.handler.authentication_success',
                         'failure_handler' => 'lexik_jwt_authentication.handler.authentication_failure',
                     ],

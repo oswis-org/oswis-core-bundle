@@ -2240,16 +2240,16 @@
     },
     {
       "name": "endroid/qr-code",
-      "version": "4.1.4",
+      "version": "4.2.0",
       "source": {
         "type": "git",
         "url": "https://github.com/endroid/qr-code.git",
-        "reference": "f38ff0d968788aef0ddefb957062024b4ea521e1"
+        "reference": "d6d964bda88ea9e40032018208b073845cbd3c2e"
       },
       "dist": {
         "type": "zip",
-        "url": "https://api.github.com/repos/endroid/qr-code/zipball/f38ff0d968788aef0ddefb957062024b4ea521e1",
-        "reference": "f38ff0d968788aef0ddefb957062024b4ea521e1",
+        "url": "https://api.github.com/repos/endroid/qr-code/zipball/d6d964bda88ea9e40032018208b073845cbd3c2e",
+        "reference": "d6d964bda88ea9e40032018208b073845cbd3c2e",
         "shasum": ""
       },
       "require": {
@@ -2300,7 +2300,7 @@
       ],
       "support": {
         "issues": "https://github.com/endroid/qr-code/issues",
-        "source": "https://github.com/endroid/qr-code/tree/4.1.4"
+        "source": "https://github.com/endroid/qr-code/tree/4.2.0"
       },
       "funding": [
         {
@@ -2308,7 +2308,7 @@
           "type": "github"
         }
       ],
-      "time": "2021-05-08T14:30:54+00:00"
+      "time": "2021-06-27T06:44:36+00:00"
     },
     {
       "name": "fig/link-util",
@@ -3024,16 +3024,16 @@
     },
     {
       "name": "league/commonmark",
-      "version": "1.6.4",
+      "version": "1.6.5",
       "source": {
         "type": "git",
         "url": "https://github.com/thephpleague/commonmark.git",
-        "reference": "c3c8b7217c52572fb42aaf84211abccf75a151b2"
+        "reference": "44ffd8d3c4a9133e4bd0548622b09c55af39db5f"
       },
       "dist": {
         "type": "zip",
-        "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/c3c8b7217c52572fb42aaf84211abccf75a151b2",
-        "reference": "c3c8b7217c52572fb42aaf84211abccf75a151b2",
+        "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/44ffd8d3c4a9133e4bd0548622b09c55af39db5f",
+        "reference": "44ffd8d3c4a9133e4bd0548622b09c55af39db5f",
         "shasum": ""
       },
       "require": {
@@ -3121,7 +3121,7 @@
           "type": "tidelift"
         }
       ],
-      "time": "2021-06-19T20:08:14+00:00"
+      "time": "2021-06-26T11:57:13+00:00"
     },
     {
       "name": "league/csv",
@@ -11843,12 +11843,12 @@
       "source": {
         "type": "git",
         "url": "https://github.com/Roave/SecurityAdvisories.git",
-        "reference": "ce3f11627a44eb3a911ba2644637749cf5b72724"
+        "reference": "ac0d045cdd1a9f1c87a0225a1dcda2bfb71be924"
       },
       "dist": {
         "type": "zip",
-        "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/ce3f11627a44eb3a911ba2644637749cf5b72724",
-        "reference": "ce3f11627a44eb3a911ba2644637749cf5b72724",
+        "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/ac0d045cdd1a9f1c87a0225a1dcda2bfb71be924",
+        "reference": "ac0d045cdd1a9f1c87a0225a1dcda2bfb71be924",
         "shasum": ""
       },
       "conflict": {
@@ -11964,6 +11964,7 @@
         "laravel/framework": "<6.20.26|>=7,<8.40",
         "laravel/socialite": ">=1,<1.0.99|>=2,<2.0.10",
         "league/commonmark": "<0.18.3",
+        "league/flysystem": "<1.1.4|>=2,<2.1.1",
         "lexik/jwt-authentication-bundle": "<2.10.7|>=2.11,<2.11.3",
         "librenms/librenms": "<21.1",
         "livewire/livewire": ">2.2.4,<2.2.6",
@@ -12209,7 +12210,7 @@
           "type": "tidelift"
         }
       ],
-      "time": "2021-06-23T15:02:39+00:00"
+      "time": "2021-06-24T09:02:34+00:00"
     },
     {
       "name": "symfony/debug",

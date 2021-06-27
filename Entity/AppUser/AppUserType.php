@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PropertyCanBePrivateInspection */
+
 /**
  * @noinspection MethodShouldBeFinalInspection
  */
@@ -70,13 +72,13 @@ class AppUserType implements NameableInterface
     protected ?AppUserRole $appUserRole = null;
 
     /**
-     * User has access to administration/IS.
-     * @Doctrine\ORM\Mapping\Column(type="boolean", nullable=true)
+     * Indicates that user has access to administration/IS.
+     * @Doctrine\ORM\Mapping\Column(type="boolean", nullable=false, options={default:"false"})
      * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter::class)
      * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
      * @todo Make property used (probably has not effect now).
      */
-    protected ?bool $adminUser = null;
+    protected bool $adminUser = false;
 
     public function __construct(?Nameable $entity = null, ?AppUserRole $appUserRole = null, ?bool $adminUser = false)
     {
@@ -102,7 +104,7 @@ class AppUserType implements NameableInterface
      */
     public function setAdminUser(?bool $adminUser): void
     {
-        $this->adminUser = $adminUser ?? null;
+        $this->adminUser = $adminUser ?? false;
     }
 
     /**

@@ -112,14 +112,14 @@ trait DateRangeTrait
         return trim($from.$to);
     }
 
-    public function isInOnePeriod(?string $period = null): ?bool
-    {
-        return DateTimeUtils::isInOnePeriod($period, $this->getStartDate(), $this->getEndDate());
-    }
-
     public function getEndDate(): ?DateTime
     {
         return $this->getEndDateTime();
+    }
+
+    public function isInOnePeriod(?string $period = null): ?bool
+    {
+        return DateTimeUtils::isInOnePeriod($period, $this->getStartDate(), $this->getEndDate());
     }
 
     public function getRangeAsTextDays(?bool $withoutYear = false): ?string

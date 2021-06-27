@@ -543,3 +543,10 @@ services:
         resource: '../../EventSubscriber/*'
         tags: [ { name: 'kernel.view' } ]
         public: true
+
+
+    OswisOrg\OswisCoreBundle\OpenApi\OpenApiFactory:
+        decorates: 'api_platform.openapi.factory'
+        arguments: [ '@OswisOrg\OswisCoreBundle\OpenApi\OpenApiFactory.inner' ]
+        autoconfigure: false
+        decoration_priority: 1000

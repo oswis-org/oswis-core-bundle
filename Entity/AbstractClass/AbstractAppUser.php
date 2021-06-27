@@ -15,12 +15,12 @@ use Symfony\Component\Security\Core\User\UserInterface;
 /**
  * Abstract class containing basic properties for user of application.
  * @author Jakub Zak <mail@jakubzak.eu>
+ * @todo TODO: Refactor: Wrap slug as username.
  */
 abstract class AbstractAppUser implements UserInterface, Serializable, EquatableInterface, PersonInterface
 {
     use UserTrait;
 
-    // TODO: Refactor: Wrap slug as username.
     public function serialize(): string
     {
         return serialize([$this->id, $this->username, $this->email, $this->password]);
@@ -48,9 +48,7 @@ abstract class AbstractAppUser implements UserInterface, Serializable, Equatable
         if ($this->getEmail() !== $user->getEmail() || $this->getPassword() !== $user->getPassword()) {
             return false;
         }
-        // if ($this->isActivated() !== $user->isActivated() || $this->isDeleted() !== $user->isDeleted()) {
-        //     return false;
-        // }
+
         return true;
     }
 
