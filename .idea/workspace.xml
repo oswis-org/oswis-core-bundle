@@ -14,8 +14,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/EventSubscriber/LexikJwt/JwtPayloadAttachSubscriber.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AppUser/AppUserType.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUser/AppUserType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/config/services.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,8 +38,8 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Resources/views/web/parts/breadcrumbs.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Resources/views/e-mail/styles/foundation-emails.css.twig" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard/standard_0.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Resources/views/e-mail/styles/foundation-emails.css.twig" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/date/date_c.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/exif/exif.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
   </component>
@@ -246,7 +247,7 @@
     <property name="editor.config.ad.shown" value="true" />
     <property name="javascript.nodejs.core.library.configured.version" value="14.17.0" />
     <property name="javascript.nodejs.core.library.typings.version" value="14.17.0" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/EventSubscriber/LexikJwt" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -261,11 +262,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/EventSubscriber/LexikJwt" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/Service/Internal" />
       <recent name="$PROJECT_DIR$/Interfaces/Extender" />
       <recent name="$PROJECT_DIR$/DependencyInjection/CompilerPass" />
-      <recent name="$PROJECT_DIR$/Interfaces/Common" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Resources/views/web" />
@@ -900,14 +901,8 @@
       <workItem from="1624282015993" duration="3256000" />
       <workItem from="1624469555618" duration="8425000" />
       <workItem from="1624610939873" duration="2584000" />
-      <workItem from="1624809206324" duration="3520000" />
-    </task>
-    <task id="LOCAL-00747" summary="Some fixes, updates and changes.">
-      <created>1596894509078</created>
-      <option name="number" value="00747" />
-      <option name="presentableId" value="LOCAL-00747" />
-      <option name="project" value="LOCAL" />
-      <updated>1596894509078</updated>
+      <workItem from="1624809206324" duration="4129000" />
+      <workItem from="1625239332605" duration="1610000" />
     </task>
     <task id="LOCAL-00748" summary="Some fixes, updates and changes.">
       <created>1596894802658</created>
@@ -1245,7 +1240,14 @@
       <option name="project" value="LOCAL" />
       <updated>1624832046691</updated>
     </task>
-    <option name="localTasksCounter" value="796" />
+    <task id="LOCAL-00796" summary="Some changes, updates and refactoring.">
+      <created>1624832384863</created>
+      <option name="number" value="00796" />
+      <option name="presentableId" value="LOCAL-00796" />
+      <option name="project" value="LOCAL" />
+      <updated>1624832384863</updated>
+    </task>
+    <option name="localTasksCounter" value="797" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

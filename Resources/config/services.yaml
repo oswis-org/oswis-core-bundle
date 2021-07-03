@@ -337,6 +337,15 @@ services:
         alias: oswis_org_oswis_core.app_user_subscriber
         public: true
 
+    oswis_org_oswis_core.lexik_jwt_payload_attach_subscriber:
+        class: OswisOrg\OswisCoreBundle\EventSubscriber\LexikJwt\JwtPayloadAttachSubscriber
+        tags: [ { name: 'lexik_jwt_authentication.on_jwt_created' } ]
+        autowire: true
+        public: true
+    OswisOrg\OswisCoreBundle\EventSubscriber\LexikJwt\JwtPayloadAttachSubscriber:
+        alias: oswis_org_oswis_core.lexik_jwt_payload_attach_subscriber
+        public: true
+
     ####
     #### TWIG
     ####
