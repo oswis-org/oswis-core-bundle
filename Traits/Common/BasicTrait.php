@@ -11,11 +11,11 @@ use Doctrine\Common\Collections\Collection;
 use OswisOrg\OswisCoreBundle\Interfaces\Common\BasicInterface;
 
 /**
- * Trait adds **common basic fields** for entities (id, created/updatedDateTime...).
+ * Trait adds **common basic fields** for entities (id, created/updatedAt...).
  *
  * Trait adds **common basic fields**:
  * * id
- * * createdDateTime, updatedDateTime
+ * * createdAt, updatedAt
  * * createdAuthor, updatedAuthor
  *
  * @author Jakub Zak <mail@jakubzak.eu>

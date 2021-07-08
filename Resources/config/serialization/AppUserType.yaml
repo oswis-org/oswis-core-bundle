@@ -4,9 +4,9 @@ OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserType:
             groups: [ 'app_user_types_get', 'app_user_type_get' ]
         adminUser:
             groups: [ 'app_user_types_get', 'app_user_types_post', 'app_user_type_get', 'app_user_type_put' ]
-        createdDateTime:
+        createdAt:
             groups: [ 'app_user_type_get' ]
-        updatedDateTime:
+        updatedAt:
             groups: [ 'app_user_type_get' ]
         appUserRole:
             groups: [ 'app_user_types_post', 'app_user_type_get', 'app_user_type_put' ]

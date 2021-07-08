@@ -28,20 +28,25 @@ abstract class AbstractRevision implements RevisionInterface
     abstract public static function getRevisionContainerClassName(): string;
 
     /**
-     * Function for (in-place) sorting of array of revisions by createdDateTime and id.
+     * Function for (in-place) sorting of array of revisions by createdAt and id.
      */
-    public static function sortByCreatedDateTime(array &$revisions): void
+    public static function sortBycreatedAt(array &$revisions): void
     {
         $revisions = array_reverse($revisions);
         usort(
             $revisions,
             static function (self $arg1, self $arg2) {
-                $cmpResult = DateTimeUtils::cmpDate($arg2->getCreatedDateTime(), $arg1->getCreatedDateTime());
+                $cmpResult = DateTimeUtils::cmpDate($arg2->getcreatedAt(), $arg1->getcreatedAt());
 
                 return 0 === $cmpResult ? self::cmpId($arg2->getId(), $arg1->getId()) : $cmpResult;
             }
         );
     }
+
+    /**
+     * Date and time of revision creation.
+     */
+    abstract public function getcreatedAt(): ?DateTime;
 
     /**
      * Helper function for sorting by id of revisions.
@@ -54,16 +59,6 @@ abstract class AbstractRevision implements RevisionInterface
 
         return $a < $b ? -1 : 1;
     }
-
-    /**
-     * Check validity of container (ie. for check before setting container).
-     */
-    abstract public static function checkRevisionContainer(?AbstractRevisionContainer $revision): void;
-
-    /**
-     * Date and time of revision creation.
-     */
-    abstract public function getCreatedDateTime(): ?DateTime;
 
     /**
      * ID of this revision (version).
@@ -94,6 +89,11 @@ abstract class AbstractRevision implements RevisionInterface
             $container->addRevision($this);
         }
     }
+
+    /**
+     * Check validity of container (ie. for check before setting container).
+     */
+    abstract public static function checkRevisionContainer(?AbstractRevisionContainer $revision): void;
 
     /**
      * Check if this revision is actual/active in specified datetime (or now if datetime is not specified).

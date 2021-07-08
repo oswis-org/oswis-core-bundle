@@ -32,16 +32,6 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
     protected ?AbstractRevision $activeRevision = null;
 
     /**
-     * Check validity of some revision/version (ie. for use before adding revision).
-     */
-    abstract public static function checkRevision(?AbstractRevision $revision): void;
-
-    /**
-     * Class name of revisions/versions stored in this container.
-     */
-    abstract public static function getRevisionClassName(): string;
-
-    /**
      * Add some revision/version to this container.
      */
     final public function addRevision(?AbstractRevision $revision): void
@@ -59,6 +49,11 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
         }
         $this->setActiveRevision($revision);
     }
+
+    /**
+     * Check validity of some revision/version (ie. for use before adding revision).
+     */
+    abstract public static function checkRevision(?AbstractRevision $revision): void;
 
     /**
      * Remove some revision/version from this container.
@@ -146,8 +141,8 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
             $dateTime ??= new DateTime() ?? null;
         } catch (Exception) {
         }
-        $revisions = $this->getRevisions()->filter(fn(AbstractRevision $revision) => $dateTime >= $revision->getCreatedDateTime())->toArray();
-        AbstractRevision::sortByCreatedDateTime($revisions);
+        $revisions = $this->getRevisions()->filter(fn(AbstractRevision $revision) => $dateTime >= $revision->getcreatedAt())->toArray();
+        AbstractRevision::sortBycreatedAt($revisions);
 
         return $revisions;
     }
@@ -162,11 +157,16 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
     }
 
     /**
+     * Class name of revisions/versions stored in this container.
+     */
+    abstract public static function getRevisionClassName(): string;
+
+    /**
      * Get date and time of active/actual revision/version in some date and time (or now if referenceDateTime is not specified).
      * @throws RevisionMissingException
      */
     final public function getLastRevisionDateTime(?DateTime $referenceDateTime = null): ?DateTime
     {
-        return $this->getRevision($referenceDateTime)->getCreatedDateTime();
+        return $this->getRevision($referenceDateTime)->getcreatedAt();
     }
 }
