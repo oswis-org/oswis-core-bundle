@@ -85,6 +85,11 @@ class BankAccount
         return null;
     }
 
+    public function getAccountWithoutBankCode(): ?string
+    {
+        return (empty($this->getPrefix()) ? null : $this->getPrefix()).$this->getAccountNumber();
+    }
+
     private function getQrPayment(?int $value = 0, ?string $variableSymbol = '', ?string $comment = ''): ?QrPayment
     {
         try {
@@ -98,11 +103,6 @@ class BankAccount
         } catch (InvalidArgumentException | QrPaymentException) {
             return null;
         }
-    }
-
-    public function getAccountWithoutBankCode(): ?string
-    {
-        return (empty($this->getPrefix()) ? null : $this->getPrefix()).$this->getAccountNumber();
     }
 
 }

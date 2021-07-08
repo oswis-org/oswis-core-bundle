@@ -16,6 +16,8 @@ abstract class AbstractFileType extends AbstractType
 {
     public const VICH_TYPE_CLASS = VichFileType::class;
 
+    abstract public static function getFileClassName(): string;
+
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $maxSize = FileUtils::humanReadableFileUploadMaxSize();
@@ -47,8 +49,6 @@ abstract class AbstractFileType extends AbstractType
             ]
         );
     }
-
-    abstract public static function getFileClassName(): string;
 
     public function getBlockPrefix(): string
     {
