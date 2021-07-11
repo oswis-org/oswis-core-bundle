@@ -73,7 +73,7 @@ class AppUserType implements NameableInterface
 
     /**
      * Indicates that user has access to administration/IS.
-     * @Doctrine\ORM\Mapping\Column(type="boolean", nullable=false, options={"default":"false"})
+     * @Doctrine\ORM\Mapping\Column(type="boolean", nullable=false, options={"default": false})
      * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter::class)
      * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
      * @todo Make property used (probably has not effect now).

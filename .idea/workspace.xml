@@ -13,7 +13,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="" />
+    <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AppUser/AppUserType.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUser/AppUserType.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,10 +37,10 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Resources/views/web/parts/breadcrumbs.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard/standard_0.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Resources/views/e-mail/styles/foundation-emails.css.twig" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/date/date_c.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/exif/exif.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard/standard_0.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
   </component>
   <component name="JsFlowSettings">
     <service-enabled>true</service-enabled>
@@ -901,13 +904,11 @@
       <workItem from="1625239332605" duration="2853000" />
       <workItem from="1625764003977" duration="161000" />
       <workItem from="1625764186003" duration="162000" />
-    </task>
-    <task id="LOCAL-00750" summary="Some fixes, updates and changes.">
-      <created>1596998878993</created>
-      <option name="number" value="00750" />
-      <option name="presentableId" value="LOCAL-00750" />
-      <option name="project" value="LOCAL" />
-      <updated>1596998878993</updated>
+      <workItem from="1625771838531" duration="880000" />
+      <workItem from="1625827758276" duration="8000" />
+      <workItem from="1625827806898" duration="36000" />
+      <workItem from="1625832295745" duration="598000" />
+      <workItem from="1626047486465" duration="40000" />
     </task>
     <task id="LOCAL-00751" summary="Some fixes, updates and changes.">
       <created>1597006133830</created>
@@ -1245,7 +1246,14 @@
       <option name="project" value="LOCAL" />
       <updated>1625764337477</updated>
     </task>
-    <option name="localTasksCounter" value="799" />
+    <task id="LOCAL-00799" summary="Replaced createdDateTime by createdAt and updatedDateTime by updatedAt.">
+      <created>1625772117285</created>
+      <option name="number" value="00799" />
+      <option name="presentableId" value="LOCAL-00799" />
+      <option name="project" value="LOCAL" />
+      <updated>1625772117285</updated>
+    </task>
+    <option name="localTasksCounter" value="800" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1295,7 +1303,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Some small fixes and reformat of code." />
     <MESSAGE value="Added nullable option to getters and setters." />
     <MESSAGE value="Added FloatValueInterface and FloatValueTrait." />
     <MESSAGE value="Added classes for UpdateExtender." />
@@ -1320,6 +1327,7 @@
     <MESSAGE value="Some changes, updates and refactoring." />
     <MESSAGE value="Added some fields about AppUser to JsonWebToken." />
     <MESSAGE value="Updated dependencies and reformatted." />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated dependencies and reformatted." />
+    <MESSAGE value="Replaced createdDateTime by createdAt and updatedDateTime by updatedAt." />
+    <option name="LAST_COMMIT_MESSAGE" value="Replaced createdDateTime by createdAt and updatedDateTime by updatedAt." />
   </component>
 </project>
