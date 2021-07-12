@@ -144,7 +144,7 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
                     'security' => false,
                 ],
                 'api_token_refresh' => [
-                    'patten' => '^/api/token/refresh',
+                    'pattern' => '^/api/token/refresh',
                     'stateless' => true,
                     'refresh_jwt' => '~',
                 ],
