@@ -53,7 +53,7 @@
     "symfony/asset": "^5.3",
     "adci/full-name-parser": "^0.2",
     "gedmo/doctrine-extensions": "^3.0",
-    "gesdinet/jwt-refresh-token-bundle": "^0.12",
+    "gesdinet/jwt-refresh-token-bundle": "^v1.0.0-beta",
     "lexik/jwt-authentication-bundle": "^2.11",
     "vich/uploader-bundle": "^1.18",
     "mpdf/mpdf": "^8.0",
