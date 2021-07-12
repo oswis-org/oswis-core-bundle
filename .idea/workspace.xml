@@ -15,7 +15,8 @@
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AppUser/AppUserType.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUser/AppUserType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DependencyInjection/OswisOrgOswisCoreExtension.php" beforeDir="false" afterPath="$PROJECT_DIR$/DependencyInjection/OswisOrgOswisCoreExtension.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/config/routes.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -908,14 +909,8 @@
       <workItem from="1625827758276" duration="8000" />
       <workItem from="1625827806898" duration="36000" />
       <workItem from="1625832295745" duration="598000" />
-      <workItem from="1626047486465" duration="40000" />
-    </task>
-    <task id="LOCAL-00751" summary="Some fixes, updates and changes.">
-      <created>1597006133830</created>
-      <option name="number" value="00751" />
-      <option name="presentableId" value="LOCAL-00751" />
-      <option name="project" value="LOCAL" />
-      <updated>1597006133830</updated>
+      <workItem from="1626047486465" duration="659000" />
+      <workItem from="1626101681249" duration="444000" />
     </task>
     <task id="LOCAL-00752" summary="Some fixes, updates and changes.">
       <created>1597052007833</created>
@@ -1253,7 +1248,14 @@
       <option name="project" value="LOCAL" />
       <updated>1625772117285</updated>
     </task>
-    <option name="localTasksCounter" value="800" />
+    <task id="LOCAL-00800" summary="Did some changes.">
+      <created>1626047544696</created>
+      <option name="number" value="00800" />
+      <option name="presentableId" value="LOCAL-00800" />
+      <option name="project" value="LOCAL" />
+      <updated>1626047544697</updated>
+    </task>
+    <option name="localTasksCounter" value="801" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1303,7 +1305,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Added nullable option to getters and setters." />
     <MESSAGE value="Added FloatValueInterface and FloatValueTrait." />
     <MESSAGE value="Added classes for UpdateExtender." />
     <MESSAGE value="Fixed functions for &quot;register-root&quot; route." />
@@ -1328,6 +1329,7 @@
     <MESSAGE value="Added some fields about AppUser to JsonWebToken." />
     <MESSAGE value="Updated dependencies and reformatted." />
     <MESSAGE value="Replaced createdDateTime by createdAt and updatedDateTime by updatedAt." />
-    <option name="LAST_COMMIT_MESSAGE" value="Replaced createdDateTime by createdAt and updatedDateTime by updatedAt." />
+    <MESSAGE value="Did some changes." />
+    <option name="LAST_COMMIT_MESSAGE" value="Did some changes." />
   </component>
 </project>
