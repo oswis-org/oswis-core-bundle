@@ -67,7 +67,7 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
     {
         try {
             $configs = $container->getExtensionConfig($this->getAlias());
-        } catch (BadMethodCallException $e) {
+        } catch (BadMethodCallException) {
             $configs = [];
         }
         $config = $this->processConfiguration(new Configuration(), $configs);
@@ -139,16 +139,16 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
                 ],
             ],
             'firewalls'                    => [
-                'dev'       => [
+                'dev'               => [
                     'pattern'  => '^/(_(profiler|wdt)|css|images|js)/',
                     'security' => false,
                 ],
                 'api_token_refresh' => [
-                    'pattern' => '^/api/token/refresh',
-                    'stateless' => true,
+                    'pattern'     => '^/api/token/refresh',
+                    'stateless'   => true,
                     'refresh_jwt' => '~',
                 ],
-                'api_login' => [
+                'api_login'         => [
                     'pattern'    => '^/api/login',
                     'stateless'  => true,
                     'provider'   => 'app_user_provider',
@@ -158,7 +158,7 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
                         'failure_handler' => 'lexik_jwt_authentication.handler.authentication_failure',
                     ],
                 ],
-                'api'       => [
+                'api'               => [
                     'pattern'   => '^/api',
                     'stateless' => true,
                     'provider'  => 'app_user_provider',
@@ -166,7 +166,7 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
                         'authenticators' => ['lexik_jwt_authentication.jwt_token_authenticator'],
                     ],
                 ],
-                'main'      => [
+                'main'              => [
                     'provider'  => 'app_user_provider',
                     'stateless' => false,
                     'lazy'      => true,

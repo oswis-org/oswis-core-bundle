@@ -32,7 +32,7 @@ trait TypeTrait
      */
     public static function checkType(?string $typeName): bool
     {
-        if (!$typeName || '' === $typeName || in_array($typeName, self::getAllowedTypes(), true)) {
+        if (empty($typeName) || in_array($typeName, self::getAllowedTypes(), true)) {
             return true;
         }
         throw new InvalidTypeException($typeName);
@@ -62,7 +62,7 @@ trait TypeTrait
     {
         try {
             self::checkType($this->type);
-        } catch (Exception $e) {
+        } catch (Exception) {
             return null;
         }
 

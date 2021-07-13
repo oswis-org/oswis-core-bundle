@@ -114,7 +114,7 @@ class DateTimeUtils
      */
     public static function getDateTimeByRange(?DateTime $dateTime, ?string $range, ?bool $isEnd = false): DateTime
     {
-        if (empty($range) || self::RANGE_ALL === $range) {
+        if (empty($range)) {
             return self::getByRangeAll($dateTime, $isEnd);
         }
         if (in_array($range, [self::RANGE_YEAR, self::RANGE_MONTH, self::RANGE_DAY], true)) {
@@ -166,7 +166,7 @@ class DateTimeUtils
         return !empty(self::getPublicHolidays($dateTime));
     }
 
-        public static function getPublicHolidays(DateTime $dateTime): ?string
+    public static function getPublicHolidays(DateTime $dateTime): ?string
     {
         $publicHolidays = [];
         $publicHolidays[1][1] = 'Den obnovy samostatného českého státu';
@@ -194,7 +194,7 @@ class DateTimeUtils
         return null;
     } // Counts all included days.
 
-public static function getEaster(DateTime $dateTime): ?string
+    public static function getEaster(DateTime $dateTime): ?string
     {
         $dateTime->setTime(0, 0);
         $y = (int)$dateTime->format('Y');
