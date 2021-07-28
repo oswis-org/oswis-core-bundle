@@ -39,8 +39,8 @@
     <setting file="file://$PROJECT_DIR$/Resources/views/web/parts/breadcrumbs.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Resources/views/e-mail/styles/foundation-emails.css.twig" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/date/date_c.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/exif/exif.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard/standard_0.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/exif/exif.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
   </component>
   <component name="JsFlowSettings">
     <service-enabled>true</service-enabled>
@@ -910,14 +910,9 @@
       <workItem from="1625832295745" duration="598000" />
       <workItem from="1626047486465" duration="659000" />
       <workItem from="1626101681249" duration="3690000" />
-      <workItem from="1626194008400" duration="25000" />
-    </task>
-    <task id="LOCAL-00756" summary="Some fixes, updates and changes.">
-      <created>1597230129279</created>
-      <option name="number" value="00756" />
-      <option name="presentableId" value="LOCAL-00756" />
-      <option name="project" value="LOCAL" />
-      <updated>1597230129279</updated>
+      <workItem from="1626194008400" duration="4239000" />
+      <workItem from="1626424831424" duration="2075000" />
+      <workItem from="1627507444560" duration="45000" />
     </task>
     <task id="LOCAL-00757" summary="Some fixes, updates and changes.">
       <created>1597342978862</created>
@@ -1255,7 +1250,14 @@
       <option name="project" value="LOCAL" />
       <updated>1626185378503</updated>
     </task>
-    <option name="localTasksCounter" value="805" />
+    <task id="LOCAL-00805" summary="Did some changes.">
+      <created>1626194045492</created>
+      <option name="number" value="00805" />
+      <option name="presentableId" value="LOCAL-00805" />
+      <option name="project" value="LOCAL" />
+      <updated>1626194045492</updated>
+    </task>
+    <option name="localTasksCounter" value="806" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

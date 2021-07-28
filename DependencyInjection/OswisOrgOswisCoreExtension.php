@@ -163,7 +163,7 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
                     'stateless' => true,
                     'provider'  => 'app_user_provider',
                     'guard'     => [
-                        'authenticators' => ['lexik_jwt_authentication.jwt_token_authenticator'],
+                        'authenticators' => ['lexik_jwt_authentication.jwt_manager'],
                     ],
                 ],
                 'main'              => [
