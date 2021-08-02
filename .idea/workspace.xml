@@ -15,7 +15,6 @@
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DependencyInjection/OswisOrgOswisCoreExtension.php" beforeDir="false" afterPath="$PROJECT_DIR$/DependencyInjection/OswisOrgOswisCoreExtension.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -912,14 +911,7 @@
       <workItem from="1626101681249" duration="3690000" />
       <workItem from="1626194008400" duration="4239000" />
       <workItem from="1626424831424" duration="2075000" />
-      <workItem from="1627507444560" duration="45000" />
-    </task>
-    <task id="LOCAL-00757" summary="Some fixes, updates and changes.">
-      <created>1597342978862</created>
-      <option name="number" value="00757" />
-      <option name="presentableId" value="LOCAL-00757" />
-      <option name="project" value="LOCAL" />
-      <updated>1597342978862</updated>
+      <workItem from="1627507444560" duration="904000" />
     </task>
     <task id="LOCAL-00758" summary="Some fixes, updates and changes.">
       <created>1597427129757</created>
@@ -1257,7 +1249,14 @@
       <option name="project" value="LOCAL" />
       <updated>1626194045492</updated>
     </task>
-    <option name="localTasksCounter" value="806" />
+    <task id="LOCAL-00806" summary="Did some changes.">
+      <created>1627507747360</created>
+      <option name="number" value="00806" />
+      <option name="presentableId" value="LOCAL-00806" />
+      <option name="project" value="LOCAL" />
+      <updated>1627507747360</updated>
+    </task>
+    <option name="localTasksCounter" value="807" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
