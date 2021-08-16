@@ -1,7 +1,9 @@
 <?php
+
 /**
  * @noinspection MethodShouldBeFinalInspection
  */
+declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Traits\AddressBook;
 
@@ -10,7 +12,7 @@ use ADCI\FullNameParser\Name;
 use ADCI\FullNameParser\Parser as FullNameParser;
 use Exception;
 use InvalidArgumentException;
-use OswisOrg\OswisCoreBundle\Interfaces\AddressBook\PersonInterface;
+use OswisOrg\OswisCoreBundle\Interfaces\AddressBook\ContactInterface;
 use OswisOrg\OswisCoreBundle\Traits\Common\NameableTrait;
 use Vokativ\Name as VokativName;
 
@@ -221,12 +223,12 @@ trait NameablePersonTrait
     public function getGender(): string
     {
         if (empty($this->getGivenName())) {
-            return PersonInterface::GENDER_UNISEX;
+            return ContactInterface::GENDER_UNISEX;
         }
         try {
-            return (new VokativName())->isMale($this->getGivenName()) ? PersonInterface::GENDER_MALE : PersonInterface::GENDER_FEMALE;
+            return (new VokativName())->isMale($this->getGivenName()) ? ContactInterface::GENDER_MALE : ContactInterface::GENDER_FEMALE;
         } catch (InvalidArgumentException $e) {
-            return PersonInterface::GENDER_UNISEX;
+            return ContactInterface::GENDER_UNISEX;
         }
     }
 }

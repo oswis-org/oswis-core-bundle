@@ -1,9 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace OswisOrg\OswisCoreBundle\Entity\Revisions;
 
 use DateTime;
-use OswisOrg\OswisCoreBundle\Exceptions\RevisionMissingException;
 use OswisOrg\OswisCoreBundle\Interfaces\Revisions\RevisionInterface;
 use OswisOrg\OswisCoreBundle\Utils\DateTimeUtils;
 
@@ -18,35 +19,22 @@ use function usort;
 abstract class AbstractRevision implements RevisionInterface
 {
     /**
-     * Container of revisions.
-     */
-    protected ?AbstractRevisionContainer $container = null;
-
-    /**
-     * Class name of revisions container.
-     */
-    abstract public static function getRevisionContainerClassName(): string;
-
-    /**
      * Function for (in-place) sorting of array of revisions by createdAt and id.
      */
-    public static function sortBycreatedAt(array &$revisions): void
+    public static function sortByCreatedAt(array &$revisions): void
     {
         $revisions = array_reverse($revisions);
-        usort(
-            $revisions,
-            static function (self $arg1, self $arg2) {
-                $cmpResult = DateTimeUtils::cmpDate($arg2->getcreatedAt(), $arg1->getcreatedAt());
+        usort($revisions, static function (self $arg1, self $arg2) {
+            $cmpResult = DateTimeUtils::cmpDate($arg2->getCreatedAt(), $arg1->getCreatedAt());
 
-                return 0 === $cmpResult ? self::cmpId($arg2->getId(), $arg1->getId()) : $cmpResult;
-            }
-        );
+            return 0 === $cmpResult ? self::cmpId($arg2->getId(), $arg1->getId()) : $cmpResult;
+        });
     }
 
     /**
      * Date and time of revision creation.
      */
-    abstract public function getcreatedAt(): ?DateTime;
+    abstract public function getCreatedAt(): ?DateTime;
 
     /**
      * Helper function for sorting by id of revisions.
@@ -64,46 +52,4 @@ abstract class AbstractRevision implements RevisionInterface
      * ID of this revision (version).
      */
     abstract public function getId(): ?int;
-
-    /**
-     * Container of this revision.
-     */
-    final public function getContainer(): ?AbstractRevisionContainer
-    {
-        static::checkRevisionContainer($this->container);
-
-        return $this->container;
-    }
-
-    /**
-     * Set container of this revision.
-     */
-    final public function setContainer(?AbstractRevisionContainer $container): void
-    {
-        static::checkRevisionContainer($container);
-        if ($this->container && $this->container !== $container) {
-            $this->container->removeRevision($this);
-        }
-        $this->container = $container;
-        if ($container && $container !== $this->container) {
-            $container->addRevision($this);
-        }
-    }
-
-    /**
-     * Check validity of container (ie. for check before setting container).
-     */
-    abstract public static function checkRevisionContainer(?AbstractRevisionContainer $revision): void;
-
-    /**
-     * Check if this revision is actual/active in specified datetime (or now if datetime is not specified).
-     */
-    final public function isActive(?DateTime $dateTime = null): bool
-    {
-        try {
-            return $this === $this->container?->getRevision($dateTime);
-        } catch (RevisionMissingException) {
-            return false;
-        }
-    }
 }

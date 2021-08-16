@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * @noinspection MethodShouldBeFinalInspection
  */
@@ -42,12 +44,11 @@ trait TimestampableTrait
 
     public function getCreatedDaysAgo(): ?int
     {
-        if (!$this->getCreatedAt()) {
+        if ($this->getCreatedAt() === null) {
             return null;
         }
-        $ago = $this->getCreatedAt()?->diff(new DateTime())->days;
 
-        return $ago ? (int)floor($ago) : null;
+        return ($ago = $this->getCreatedAt()->diff(new DateTime())->days) ? (int)floor($ago) : null;
     }
 
     public function getCreatedAt(): ?DateTime
@@ -57,12 +58,11 @@ trait TimestampableTrait
 
     public function getUpdatedDaysAgo(): ?int
     {
-        if (!$this->getUpdatedAt()) {
+        if (($updatedAt = $this->getUpdatedAt()) === null) {
             return null;
         }
-        $ago = $this->getUpdatedAt()?->diff(new DateTime())->days;
 
-        return $ago ? (int)floor($ago) : null;
+        return ($ago = $updatedAt->diff(new DateTime())->days) ? (int)floor($ago) : null;
     }
 
     public function getUpdatedAt(): ?DateTime

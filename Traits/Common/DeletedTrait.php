@@ -1,7 +1,9 @@
 <?php
+
 /**
  * @noinspection MethodShouldBeFinalInspection
  */
+declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Traits\Common;
 
@@ -24,7 +26,7 @@ trait DeletedTrait
 
     public function getDeletedDaysAgo(): ?int
     {
-        return $this->deletedAt ? $this->deletedAt->diff(new DateTime())->d : null;
+        return $this->deletedAt?->diff(new DateTime())->d;
     }
 
     public function delete(?DateTime $dateTime = null): void

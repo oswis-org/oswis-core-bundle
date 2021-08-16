@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace OswisOrg\OswisCoreBundle\Interfaces\AddressBook;
 
 use OswisOrg\OswisCoreBundle\Interfaces\Common\NameableInterface;

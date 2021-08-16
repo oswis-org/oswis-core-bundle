@@ -1,9 +1,11 @@
 <?php
+
 /**
  * @noinspection PhpComposerExtensionStubsInspection
  * @noinspection MissingParameterTypeDeclarationInspection
  * @noinspection ForeachInvariantsInspection
  */
+declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Filter;
 

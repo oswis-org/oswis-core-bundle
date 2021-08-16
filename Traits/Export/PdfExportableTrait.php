@@ -1,8 +1,10 @@
 <?php
+
 /**
  * @noinspection PhpUnusedParameterInspection
  * @noinspection MethodShouldBeFinalInspection
  */
+declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Traits\Export;
 

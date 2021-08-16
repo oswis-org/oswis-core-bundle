@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace OswisOrg\OswisCoreBundle\Filter;
 
 use Doctrine\Common\Annotations\Annotation;

@@ -1,9 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace OswisOrg\OswisCoreBundle\Repository;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\Query;
+use Doctrine\ORM\AbstractQuery;
 use Doctrine\Persistence\ManagerRegistry;
 use Exception;
 use LogicException;
@@ -25,7 +27,7 @@ class AppUserTypeRepository extends ServiceEntityRepository
     {
         $query = $this->createQueryBuilder('t')->where('t.slug = :slug')->setParameter('slug', $slug)->getQuery();
         try {
-            return $query->getOneOrNullResult(Query::HYDRATE_OBJECT);
+            return $query->getOneOrNullResult(AbstractQuery::HYDRATE_OBJECT);
         } catch (Exception $e) {
             return null;
         }

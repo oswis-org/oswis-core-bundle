@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace OswisOrg\OswisCoreBundle\Entity\Logger;
 
 use ApiPlatform\Core\Annotation\ApiResource;

@@ -1,7 +1,9 @@
 <?php
+
 /**
  * @noinspection MethodShouldBeFinalInspection
  */
+declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Entity\AppUser;
 
@@ -171,7 +173,7 @@ class AppUser extends AbstractAppUser implements PdfExportableInterface, Passwor
      */
     public function canEdit(self $user): bool
     {
-        return !(!($user instanceof self) || !$this->canRead($user)) && $user === $this;
+        return $this->canRead($user) && $user === $this;
     }
 
     /**
@@ -179,7 +181,7 @@ class AppUser extends AbstractAppUser implements PdfExportableInterface, Passwor
      */
     public function canRead(self $user): bool
     {
-        return $user instanceof self && $user === $this;
+        return $user === $this;
     }
 
     /**

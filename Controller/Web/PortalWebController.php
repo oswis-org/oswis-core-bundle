@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace OswisOrg\OswisCoreBundle\Controller\Web;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

@@ -1,12 +1,15 @@
 <?php
+
 /**
  * @noinspection MethodShouldBeFinalInspection
  */
+declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Service;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Exception;
+use OswisOrg\OswisCoreBundle\Entity\AbstractClass\AbstractToken;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserToken;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserType;
@@ -158,7 +161,7 @@ class AppUserService
             if (null === $appUser) {
                 throw new UserNotFoundException();
             }
-            $appUserToken = $this->appUserTokenService->create($appUser, AppUserToken::TYPE_ACTIVATION, false);
+            $appUserToken = $this->appUserTokenService->create($appUser, AbstractToken::TYPE_ACTIVATION, false);
             $this->appUserMailService->sendAppUserMail($appUser, self::ACTIVATION_REQUEST, $appUserToken);
             $this->em->persist($appUser);
             $this->em->flush();
@@ -205,7 +208,7 @@ class AppUserService
             if (null === $appUser) {
                 throw new UserNotFoundException();
             }
-            $appUserToken = $this->appUserTokenService->create($appUser, AppUserToken::TYPE_PASSWORD_CHANGE, false);
+            $appUserToken = $this->appUserTokenService->create($appUser, AbstractToken::TYPE_PASSWORD_CHANGE, false);
             if ($sendConfirmation) {
                 $this->appUserMailService->sendAppUserMail($appUser, self::PASSWORD_CHANGE_REQUEST, $appUserToken);
             }
@@ -264,10 +267,10 @@ class AppUserService
             $appUserToken->use();
             $this->em->persist($appUserToken);
             $this->em->flush();
-            if (AppUserToken::TYPE_ACTIVATION === $type) {
+            if (AbstractToken::TYPE_ACTIVATION === $type) {
                 $this->activate($appUserToken->getAppUser());
             }
-            if (AppUserToken::TYPE_PASSWORD_CHANGE === $type) {
+            if (AbstractToken::TYPE_PASSWORD_CHANGE === $type) {
                 $this->changePassword($appUserToken->getAppUser(), $newPassword, true);
             }
             throw new TokenInvalidException('neznámý typ tokenu', $token);

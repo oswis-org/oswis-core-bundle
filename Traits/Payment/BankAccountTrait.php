@@ -1,7 +1,9 @@
 <?php
+
 /**
  * @noinspection MethodShouldBeFinalInspection
  */
+declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Traits\Payment;
 
@@ -26,9 +28,9 @@ trait BankAccountTrait
 
     public function setBankAccount(?BankAccount $bankAccount): void
     {
-        $this->bankAccountPrefix = $bankAccount ? $bankAccount->getPrefix() : null;
-        $this->bankAccountNumber = $bankAccount ? $bankAccount->getAccountNumber() : null;
-        $this->bankAccountBank = $bankAccount ? $bankAccount->getBankCode() : null;
+        $this->bankAccountPrefix = $bankAccount?->getPrefix();
+        $this->bankAccountNumber = $bankAccount?->getAccountNumber();
+        $this->bankAccountBank = $bankAccount?->getBankCode();
     }
 
     public function getBankAccountNumber(): ?string

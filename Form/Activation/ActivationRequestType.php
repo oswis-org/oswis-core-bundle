@@ -1,7 +1,9 @@
 <?php
+
 /**
  * @noinspection MethodShouldBeFinalInspection
  */
+declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Form\Activation;
 
@@ -15,23 +17,15 @@ class ActivationRequestType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $builder->add(
-            'username',
-            TextType::class,
-            [
-                'label'    => 'Uživatelské jméno nebo e-mail',
-                'help'     => 'Zadejte uživatelské jméno nebo e-mail uvedený u uživatelského účtu.',
-                'mapped'   => false,
-                'required' => true,
-            ]
-        );
-        $builder->add(
-            'submit',
-            SubmitType::class,
-            [
-                'label' => 'POŽÁDAT O AKTIVACI',
-            ]
-        );
+        $builder->add('username', TextType::class, [
+            'label'    => 'Uživatelské jméno nebo e-mail',
+            'help'     => 'Zadejte uživatelské jméno nebo e-mail uvedený u uživatelského účtu.',
+            'mapped'   => false,
+            'required' => true,
+        ]);
+        $builder->add('submit', SubmitType::class, [
+            'label' => 'POŽÁDAT O AKTIVACI',
+        ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace OswisOrg\OswisCoreBundle\Interfaces\Export;
 
 use Doctrine\Common\Collections\Collection;

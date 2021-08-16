@@ -1,7 +1,9 @@
 <?php
+
 /**
  * @noinspection MethodShouldBeFinalInspection
  */
+declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Form\AbstractClass;
 
@@ -20,19 +22,15 @@ abstract class AbstractFileType extends AbstractType
     {
         $maxSize = FileUtils::humanReadableFileUploadMaxSize();
         $maxSize = $maxSize ? " (max. $maxSize)" : '';
-        $builder->add(
-            'file',
-            self::VICH_TYPE_CLASS,
-            [
-                'label'          => false,
-                'download_label' => true,
-                'download_uri'   => true,
-                'required'       => false,
-                'attr'           => [
-                    'placeholder' => "Kliknutím vyberte soubor$maxSize...",
-                ],
-            ]
-        );
+        $builder->add('file', self::VICH_TYPE_CLASS, [
+            'label'          => false,
+            'download_label' => true,
+            'download_uri'   => true,
+            'required'       => false,
+            'attr'           => [
+                'placeholder' => "Kliknutím vyberte soubor$maxSize...",
+            ],
+        ]);
     }
 
     /**
@@ -40,12 +38,10 @@ abstract class AbstractFileType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setDefaults(
-            [
-                'data_class'      => $this::getFileClassName(),
-                'csrf_protection' => false,
-            ]
-        );
+        $resolver->setDefaults([
+            'data_class'      => $this::getFileClassName(),
+            'csrf_protection' => false,
+        ]);
     }
 
     abstract public static function getFileClassName(): string;

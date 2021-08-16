@@ -1,7 +1,9 @@
 <?php
+
 /**
  * @noinspection MethodShouldBeFinalInspection
  */
+declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Entity\AbstractClass;
 
@@ -29,7 +31,7 @@ abstract class AbstractFile implements BasicInterface
 
     /**
      * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
-     * @ApiProperty(iri="http://schema.org/contentUrl")
+     * @ApiProperty(iri="https://schema.org/contentUrl")
      */
     protected ?string $contentName = null;
 

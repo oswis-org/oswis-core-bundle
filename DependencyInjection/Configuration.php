@@ -1,8 +1,10 @@
 <?php
+
 /**
  * @noinspection PhpUnusedPrivateMethodInspection
  * @noinspection MethodShouldBeFinalInspection
  */
+declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\DependencyInjection;
 
@@ -203,9 +205,7 @@ class Configuration implements ConfigurationInterface
                  ->scalarNode('logo')
                  ->defaultValue('@images/logo.png')
                  ->info('Path to app logo.')
-                 ->example(
-                     ['@images/logo.png', '../assets/assets/images/logo.png']
-                 )
+                 ->example(['@images/logo.png', '../assets/assets/images/logo.png'])
                  ->end()
                  ->scalarNode('social_image')
                  ->defaultValue('@images/logo.png')

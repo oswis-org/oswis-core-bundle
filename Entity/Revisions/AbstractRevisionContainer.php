@@ -1,12 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace OswisOrg\OswisCoreBundle\Entity\Revisions;
 
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Exception;
-use OswisOrg\OswisCoreBundle\Exceptions\RevisionMissingException;
 use OswisOrg\OswisCoreBundle\Interfaces\Revisions\RevisionContainerInterface;
 use OswisOrg\OswisCoreBundle\Interfaces\Revisions\RevisionInterface;
 
@@ -32,60 +33,9 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
     protected ?AbstractRevision $activeRevision = null;
 
     /**
-     * Add some revision/version to this container.
+     * Class name of revisions/versions stored in this container.
      */
-    final public function addRevision(?AbstractRevision $revision): void
-    {
-        if (!$revision) {
-            return;
-        }
-        if (!$this->revisions) {
-            $this->revisions = new ArrayCollection();
-        }
-        static::checkRevision($revision);
-        if (!$this->revisions->contains($revision)) {
-            $this->revisions->add($revision);
-            $revision->setContainer($this);
-        }
-        $this->setActiveRevision($revision);
-    }
-
-    /**
-     * Check validity of some revision/version (ie. for use before adding revision).
-     */
-    abstract public static function checkRevision(?AbstractRevision $revision): void;
-
-    /**
-     * Remove some revision/version from this container.
-     */
-    final public function removeRevision(?AbstractRevision $revision): void
-    {
-        if (!$revision) {
-            return;
-        }
-        if (!$this->revisions) {
-            $this->revisions = new ArrayCollection();
-        }
-        static::checkRevision($revision);
-        if ($this->revisions->removeElement($revision)) {
-            $revision->setContainer(null);
-        }
-        if ($revision === $this->getActiveRevision()) {
-            $this->updateActiveRevision();
-        }
-    }
-
-    /**
-     * Revision/version which is actual/active now.
-     */
-    final public function getActiveRevision(): ?AbstractRevision
-    {
-        if (!$this->activeRevision) {
-            $this->updateActiveRevision();
-        }
-
-        return $this->activeRevision;
-    }
+    abstract public static function getRevisionClassName(): string;
 
     /**
      * Set revision/version which is actual/active now.
@@ -97,52 +47,14 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
         $this->activeRevision = $activeRevision;
     }
 
-    /**
-     * Automatically set revision/version which is actual/active now.
-     * @noinspection MethodShouldBeFinalInspection
-     */
-    public function updateActiveRevision(): void
-    {
-        try {
-            $lastRevision = $this->getRevision(null, true);
-            if ($lastRevision !== $this->activeRevision) {
-                $this->activeRevision = $lastRevision;
-            }
-        } catch (RevisionMissingException $e) {
-            return;
-        }
-    }
-
-    /**
-     * Get revision/version which is (was) active in specified date and time (or now if dateTime is not specified).
-     *
-     * @throws RevisionMissingException
-     */
-    final public function getRevision(DateTime $dateTime = null, ?bool $force = false): AbstractRevision
-    {
-        if (!$force && !$dateTime && $this->activeRevision) {
-            return $this->activeRevision;
-        }
-        $revisions = $this->getRevisionsOlderThanDateTime($dateTime);
-        if (empty($revisions) || empty($revisions[0])) {
-            throw new RevisionMissingException((static::getRevisionClassName() ?? 'Revision class').' not found.');
-        }
-        static::checkRevision($revisions[0]);
-        if (!$dateTime && (!$this->activeRevision || $this->activeRevision !== $revisions[0])) {
-            $this->activeRevision = $revisions[0];
-        }
-
-        return $revisions[0];
-    }
-
     final public function getRevisionsOlderThanDateTime(DateTime $dateTime = null): array
     {
         try {
             $dateTime ??= new DateTime() ?? null;
         } catch (Exception) {
         }
-        $revisions = $this->getRevisions()->filter(fn(AbstractRevision $revision) => $dateTime >= $revision->getcreatedAt())->toArray();
-        AbstractRevision::sortBycreatedAt($revisions);
+        $revisions = $this->getRevisions()->filter(fn(AbstractRevision $revision) => $dateTime >= $revision->getCreatedAt())->toArray();
+        AbstractRevision::sortByCreatedAt($revisions);
 
         return $revisions;
     }
@@ -157,16 +69,10 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
     }
 
     /**
-     * Class name of revisions/versions stored in this container.
-     */
-    abstract public static function getRevisionClassName(): string;
-
-    /**
      * Get date and time of active/actual revision/version in some date and time (or now if referenceDateTime is not specified).
-     * @throws RevisionMissingException
      */
     final public function getLastRevisionDateTime(?DateTime $referenceDateTime = null): ?DateTime
     {
-        return $this->getRevision($referenceDateTime)->getcreatedAt();
+        return $this->getRevision($referenceDateTime)->getCreatedAt();
     }
 }

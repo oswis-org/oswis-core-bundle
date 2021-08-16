@@ -1,7 +1,9 @@
 <?php
+
 /**
  * @noinspection MethodShouldBeFinalInspection
  */
+declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Entity\AppUser;
 
@@ -44,9 +46,7 @@ class AppUserFlagConnection implements BasicInterface
             $this->appUser->removeAppUserFlag($this);
         }
         $this->appUser = $appUser;
-        if (null !== $this->appUser) {
-            $this->appUser->addAppUserFlag($this);
-        }
+        $this->appUser?->addAppUserFlag($this);
     }
 
 

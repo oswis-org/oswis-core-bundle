@@ -14,7 +14,8 @@
                 {% if app.user %}
                     <div class="col-12">
                         <div class="mb-3">
-                            Přihlášen(a) jako {{ app.user.username }}, <a href="{{ path('oswis_org_oswis_core_web_admin_logout') }}">Odhlásit se</a>
+                            Přihlášen(a) jako {{ app.user.userIdentifier }},
+                            <a href="{{ path('oswis_org_oswis_core_web_admin_logout') }}">Odhlásit se</a>
                         </div>
                     </div>
                 {% endif %}

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @noinspection PhpUnused
  * @noinspection UnknownInspectionInspection
@@ -6,6 +7,7 @@
  * @noinspection HtmlRequiredAltAttribute
  * @noinspection HtmlUnknownTag
  */
+declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Utils;
 

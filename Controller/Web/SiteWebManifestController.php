@@ -1,7 +1,9 @@
 <?php
+
 /**
  * @noinspection MethodShouldBeFinalInspection
  */
+declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Controller\Web;
 
@@ -38,63 +40,61 @@ class SiteWebManifestController extends AbstractController
 
     public function showSiteWebManifest(Request $request): Response
     {
-        $response = new JsonResponse(
-            [
-                'lang'             => 'cs',
-                'dir'              => 'ltr',
-                'name'             => $this->coreSettings->getWeb()['name'],
-                'short_name'       => $this->coreSettings->getWeb()['name_short'],
-                'start_url'        => '.',
-                'display'          => 'standalone',
-                'description'      => $this->coreSettings->getWeb()['description'],
-                'background_color' => '#FAFAFA',
-                'theme_color'      => $this->coreSettings->getWeb()['color'],
-                'icons'            => [
-                    [
-                        'src'     => $request->getUriForPath('/bundles/oswisorgoswiscore/favicons/apple-touch-icon.png'),
-                        'sizes'   => '180x180',
-                        'type'    => 'image/png',
-                        "purpose" => "maskable any",
-                    ],
-                    [
-                        'src'     => $request->getUriForPath('/bundles/oswisorgoswiscore/favicons/favicon-32x32.png'),
-                        'sizes'   => '32x32',
-                        'type'    => 'image/png',
-                        "purpose" => "maskable any",
-                    ],
-                    [
-                        'src'     => $request->getUriForPath('/bundles/oswisorgoswiscore/favicons/favicon-194x194.png'),
-                        'sizes'   => '194x194',
-                        'type'    => 'image/png',
-                        "purpose" => "maskable any",
-                    ],
-                    [
-                        'src'     => $request->getUriForPath('/bundles/oswisorgoswiscore/favicons/android-chrome-192x192.png'),
-                        'sizes'   => '192x192',
-                        'type'    => 'image/png',
-                        "purpose" => "maskable any",
-                    ],
-                    [
-                        'src'     => $request->getUriForPath('/bundles/oswisorgoswiscore/favicons/favicon-16x16.png'),
-                        'sizes'   => '16x16',
-                        'type'    => 'image/png',
-                        "purpose" => "maskable any",
-                    ],
-                    [
-                        'src'     => $request->getUriForPath('/bundles/oswisorgoswiscore/favicons/android-chrome-192x192.png'),
-                        'sizes'   => '192x192',
-                        'type'    => 'image/png',
-                        "purpose" => "maskable any",
-                    ],
-                    [
-                        'src'     => $request->getUriForPath('/bundles/oswisorgoswiscore/favicons/android-chrome-512x512.png'),
-                        'sizes'   => '512x512',
-                        'type'    => 'image/png',
-                        "purpose" => "maskable any",
-                    ],
+        $response = new JsonResponse([
+            'lang'             => 'cs',
+            'dir'              => 'ltr',
+            'name'             => $this->coreSettings->getWeb()['name'],
+            'short_name'       => $this->coreSettings->getWeb()['name_short'],
+            'start_url'        => '.',
+            'display'          => 'standalone',
+            'description'      => $this->coreSettings->getWeb()['description'],
+            'background_color' => '#FAFAFA',
+            'theme_color'      => $this->coreSettings->getWeb()['color'],
+            'icons'            => [
+                [
+                    'src'     => $request->getUriForPath('/bundles/oswisorgoswiscore/favicons/apple-touch-icon.png'),
+                    'sizes'   => '180x180',
+                    'type'    => 'image/png',
+                    "purpose" => "maskable any",
                 ],
-            ]
-        );
+                [
+                    'src'     => $request->getUriForPath('/bundles/oswisorgoswiscore/favicons/favicon-32x32.png'),
+                    'sizes'   => '32x32',
+                    'type'    => 'image/png',
+                    "purpose" => "maskable any",
+                ],
+                [
+                    'src'     => $request->getUriForPath('/bundles/oswisorgoswiscore/favicons/favicon-194x194.png'),
+                    'sizes'   => '194x194',
+                    'type'    => 'image/png',
+                    "purpose" => "maskable any",
+                ],
+                [
+                    'src'     => $request->getUriForPath('/bundles/oswisorgoswiscore/favicons/android-chrome-192x192.png'),
+                    'sizes'   => '192x192',
+                    'type'    => 'image/png',
+                    "purpose" => "maskable any",
+                ],
+                [
+                    'src'     => $request->getUriForPath('/bundles/oswisorgoswiscore/favicons/favicon-16x16.png'),
+                    'sizes'   => '16x16',
+                    'type'    => 'image/png',
+                    "purpose" => "maskable any",
+                ],
+                [
+                    'src'     => $request->getUriForPath('/bundles/oswisorgoswiscore/favicons/android-chrome-192x192.png'),
+                    'sizes'   => '192x192',
+                    'type'    => 'image/png',
+                    "purpose" => "maskable any",
+                ],
+                [
+                    'src'     => $request->getUriForPath('/bundles/oswisorgoswiscore/favicons/android-chrome-512x512.png'),
+                    'sizes'   => '512x512',
+                    'type'    => 'image/png',
+                    "purpose" => "maskable any",
+                ],
+            ],
+        ]);
         $response->headers->set('Content-Type', 'application/manifest+json');
 
         return $response;

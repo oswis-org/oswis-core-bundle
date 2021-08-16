@@ -1,4 +1,4 @@
-<nav id="website-main-menu" class="website-main-menu" itemscope itemtype="http://schema.org/SiteNavigationElement">
+<nav id="website-main-menu" class="website-main-menu" itemscope itemtype="https://schema.org/SiteNavigationElement">
     {% for menuItem in items|filter(item => 0 == item.requiredRole|default|length or (app.user|default and app.user.role(item.requiredRole)))|sort((a, b) => b.priority <=> a.priority) %}
         <a href="{{ menuItem.path }}" itemprop="url" {{ menuItem.newPage|default ? "target='_blank'" : '' }}>
             <span itemprop="name">{{ menuItem.title }}</span>

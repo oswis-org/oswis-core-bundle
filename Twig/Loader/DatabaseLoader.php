@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace OswisOrg\OswisCoreBundle\Twig\Loader;
 
 use OswisOrg\OswisCoreBundle\Entity\TwigTemplate\TwigTemplate;

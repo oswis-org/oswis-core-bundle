@@ -1,7 +1,9 @@
 <?php
+
 /**
  * @noinspection MethodShouldBeFinalInspection
  */
+declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Repository;
 
@@ -9,8 +11,8 @@ use DateTime;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\AbstractQuery;
 use Doctrine\ORM\NonUniqueResultException;
-use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
 use LogicException;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser;
@@ -42,12 +44,12 @@ class AppUserRepository extends ServiceEntityRepository implements UserLoaderInt
         }
         try {
             $builder = $this->createQueryBuilder('u')->where('(u.id = :id) AND'); // TODO: Is in range??????!!!!!!
-            $appUser = $builder->setParameter('id', $id)->getQuery()->getOneOrNullResult(Query::HYDRATE_OBJECT);
-        } catch (NonUniqueResultException $e) {
+            $appUser = $builder->setParameter('id', $id)->getQuery()->getOneOrNullResult(AbstractQuery::HYDRATE_OBJECT);
+        } catch (NonUniqueResultException) {
             throw new UserNotUniqueException();
         }
 
-        return ($appUser && ($appUser instanceof AppUser) && $appUser->isActivated()) ? $appUser : null;
+        return (($appUser instanceof AppUser) && $appUser->isActivated()) ? $appUser : null;
     }
 
     public function findByEmail(string $email): Collection
@@ -55,7 +57,7 @@ class AppUserRepository extends ServiceEntityRepository implements UserLoaderInt
         $builder = $this->createQueryBuilder('app_user')->where('app_user.email = :email')->setParameter('email', $email);
 
         return new ArrayCollection(
-            $builder->getQuery()->getResult(Query::HYDRATE_OBJECT)
+            $builder->getQuery()->getResult(AbstractQuery::HYDRATE_OBJECT)
         );
     }
 
@@ -85,7 +87,7 @@ class AppUserRepository extends ServiceEntityRepository implements UserLoaderInt
     {
         $appUser = $this->findOneByUsernameOrMail($username, true);
 
-        return null !== $appUser && ($appUser instanceof AppUser) && $appUser->isActive() ? $appUser : null;
+        return ($appUser instanceof AppUser) && $appUser->isActive() ? $appUser : null;
     }
 
     /**
@@ -107,8 +109,8 @@ class AppUserRepository extends ServiceEntityRepository implements UserLoaderInt
             $builder->setParameter('now', new DateTime());
         }
         try {
-            return $builder->getQuery()->getOneOrNullResult(Query::HYDRATE_OBJECT);
-        } catch (NonUniqueResultException $e) {
+            return $builder->getQuery()->getOneOrNullResult(AbstractQuery::HYDRATE_OBJECT);
+        } catch (NonUniqueResultException) {
             throw new UserNotUniqueException();
         }
     }

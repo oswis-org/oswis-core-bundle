@@ -1,7 +1,9 @@
 <?php
+
 /**
  * @noinspection MethodShouldBeFinalInspection
  */
+declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Form\Login;
 
@@ -16,31 +18,19 @@ class LoginType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $builder->add(
-            'username',
-            TextType::class,
-            [
-                'label'    => 'Uživatelské jméno',
-                'help'     => 'Zadejte uživatelské jméno nebo e-mail uvedený u uživatelského účtu.',
-                'mapped'   => false,
-                'required' => true,
-            ]
-        );
-        $builder->add(
-            'password',
-            PasswordType::class,
-            [
-                'label'    => 'Heslo',
-                'help'     => 'Zadejte Vaše heslo. Je nutné dodržet velká a malá písmena.',
-                'mapped'   => false,
-                'required' => true,
-            ]
-        );
-        $builder->add(
-            'submit',
-            SubmitType::class,
-            ['label' => 'PŘIHLÁSIT SE']
-        );
+        $builder->add('username', TextType::class, [
+            'label'    => 'Uživatelské jméno',
+            'help'     => 'Zadejte uživatelské jméno nebo e-mail uvedený u uživatelského účtu.',
+            'mapped'   => false,
+            'required' => true,
+        ]);
+        $builder->add('password', PasswordType::class, [
+            'label'    => 'Heslo',
+            'help'     => 'Zadejte Vaše heslo. Je nutné dodržet velká a malá písmena.',
+            'mapped'   => false,
+            'required' => true,
+        ]);
+        $builder->add('submit', SubmitType::class, ['label' => 'PŘIHLÁSIT SE']);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

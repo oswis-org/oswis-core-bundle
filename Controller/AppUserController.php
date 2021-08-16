@@ -1,7 +1,9 @@
 <?php
+
 /**
  * @noinspection MethodShouldBeFinalInspection
  */
+declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Controller;
 
@@ -66,24 +68,18 @@ class AppUserController extends AbstractController
             return $this->passwordChangeRequested();
         }
 
-        return $this->render(
-            '@OswisOrgOswisCore/web/pages/form.html.twig',
-            [
-                'form'  => $form->createView(),
-                'title' => 'Změna hesla',
-            ]
-        );
+        return $this->render('@OswisOrgOswisCore/web/pages/form.html.twig', [
+            'form'  => $form->createView(),
+            'title' => 'Změna hesla',
+        ]);
     }
 
     public function passwordChangeRequested(): Response
     {
-        return $this->render(
-            '@OswisOrgOswisCore/web/pages/message.html.twig',
-            [
-                'title'   => 'Žádost o změnu hesla odeslána!',
-                'message' => 'Žádost o změnu hesla u uživatelského účtu byla úspěšně zpracována a na e-mail byl odeslán odkaz pro jeho změnu.',
-            ]
-        );
+        return $this->render('@OswisOrgOswisCore/web/pages/message.html.twig', [
+            'title'   => 'Žádost o změnu hesla odeslána!',
+            'message' => 'Žádost o změnu hesla u uživatelského účtu byla úspěšně zpracována a na e-mail byl odeslán odkaz pro jeho změnu.',
+        ]);
     }
 
     /**
@@ -114,24 +110,18 @@ class AppUserController extends AbstractController
             return $this->userActivationRequested();
         }
 
-        return $this->render(
-            '@OswisOrgOswisCore/web/pages/form.html.twig',
-            [
-                'form'  => $form->createView(),
-                'title' => 'Aktivace účtu',
-            ]
-        );
+        return $this->render('@OswisOrgOswisCore/web/pages/form.html.twig', [
+            'form'  => $form->createView(),
+            'title' => 'Aktivace účtu',
+        ]);
     }
 
     public function userActivationRequested(): Response
     {
-        return $this->render(
-            '@OswisOrgOswisCore/web/pages/message.html.twig',
-            [
-                'title'   => 'Žádost o aktivaci účtu odeslána!',
-                'message' => 'Žádost o aktivaci uživatelského účtu byla úspěšně zpracována a na e-mail byl odeslán odkaz pro její provedení.',
-            ]
-        );
+        return $this->render('@OswisOrgOswisCore/web/pages/message.html.twig', [
+            'title'   => 'Žádost o aktivaci účtu odeslána!',
+            'message' => 'Žádost o aktivaci uživatelského účtu byla úspěšně zpracována a na e-mail byl odeslán odkaz pro její provedení.',
+        ]);
     }
 
     /**
@@ -179,13 +169,10 @@ class AppUserController extends AbstractController
 
     public function userActivated(): Response
     {
-        return $this->render(
-            '@OswisOrgOswisCore/web/pages/message.html.twig',
-            [
-                'title'   => 'Účet aktivován!',
-                'message' => 'Uživatelský účet byl úspěšně aktivován.',
-            ]
-        );
+        return $this->render('@OswisOrgOswisCore/web/pages/message.html.twig', [
+            'title'   => 'Účet aktivován!',
+            'message' => 'Uživatelský účet byl úspěšně aktivován.',
+        ]);
     }
 
     /**
@@ -213,24 +200,18 @@ class AppUserController extends AbstractController
             return $this->passwordChanged();
         }
 
-        return $this->render(
-            '@OswisOrgOswisCore/web/pages/form.html.twig',
-            [
-                'form'  => $form->createView(),
-                'title' => 'Změna hesla',
-            ]
-        );
+        return $this->render('@OswisOrgOswisCore/web/pages/form.html.twig', [
+            'form'  => $form->createView(),
+            'title' => 'Změna hesla',
+        ]);
     }
 
     public function passwordChanged(): Response
     {
-        return $this->render(
-            '@OswisOrgOswisCore/web/pages/message.html.twig',
-            [
-                'title'   => 'Heslo změněno!',
-                'message' => 'Heslo u uživatelského účtu bylo úspěšně změněno.',
-            ]
-        );
+        return $this->render('@OswisOrgOswisCore/web/pages/message.html.twig', [
+            'title'   => 'Heslo změněno!',
+            'message' => 'Heslo u uživatelského účtu bylo úspěšně změněno.',
+        ]);
     }
 
     /**

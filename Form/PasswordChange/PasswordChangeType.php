@@ -1,7 +1,9 @@
 <?php
+
 /**
  * @noinspection MethodShouldBeFinalInspection
  */
+declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Form\PasswordChange;
 
@@ -15,21 +17,13 @@ class PasswordChangeType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $builder->add(
-            'password',
-            PasswordType::class,
-            [
-                'label'    => 'Nové heslo',
-                'help'     => 'Pokud jej nezadáte, bude vygenerováno nové náhodné heslo.',
-                'mapped'   => false,
-                'required' => true,
-            ]
-        );
-        $builder->add(
-            'submit',
-            SubmitType::class,
-            ['label' => 'ZMĚNIT HESLO']
-        );
+        $builder->add('password', PasswordType::class, [
+            'label'    => 'Nové heslo',
+            'help'     => 'Pokud jej nezadáte, bude vygenerováno nové náhodné heslo.',
+            'mapped'   => false,
+            'required' => true,
+        ]);
+        $builder->add('submit', SubmitType::class, ['label' => 'ZMĚNIT HESLO']);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace OswisOrg\OswisCoreBundle\Entity\AppUser;
 
 use ApiPlatform\Core\Annotation\ApiResource;

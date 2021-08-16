@@ -1,7 +1,9 @@
 <?php
+
 /**
  * @noinspection MethodShouldBeFinalInspection
  */
+declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Controller\Web;
 
@@ -36,10 +38,7 @@ class InternalActionsWebController extends AbstractController
         $filesystem = new Filesystem();
         $filesystem->remove('../var/cache');
 
-        return $this->render(
-            '@OswisOrgOswisCore/web/pages/message.html.twig',
-            ['title' => 'OK', 'message' => 'Akce úspěšně provedena.']
-        );
+        return $this->render('@OswisOrgOswisCore/web/pages/message.html.twig', ['title' => 'OK', 'message' => 'Akce úspěšně provedena.']);
     }
 
     /**

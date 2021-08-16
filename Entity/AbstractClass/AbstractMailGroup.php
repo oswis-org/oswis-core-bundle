@@ -1,7 +1,9 @@
 <?php
+
 /**
  * @noinspection MethodShouldBeFinalInspection
  */
+declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Entity\AbstractClass;
 
@@ -53,7 +55,7 @@ abstract class AbstractMailGroup implements MailGroupInterface
 
     public function getTemplateName(): ?string
     {
-        return $this->getTwigTemplate() ? $this->getTwigTemplate()?->getTemplateName() : null;
+        return $this->getTwigTemplate()?->getTemplateName();
     }
 
     public function getTwigTemplate(): ?TwigTemplate

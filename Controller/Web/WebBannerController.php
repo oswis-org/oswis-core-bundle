@@ -1,7 +1,9 @@
 <?php
+
 /**
  * @noinspection MethodShouldBeFinalInspection
  */
+declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Controller\Web;
 
@@ -19,17 +21,14 @@ class WebBannerController extends AbstractController
         ?string $link = null,
         ?string $image = null
     ): Response {
-        return $this->render(
-            '@OswisOrgOswisCore/web/parts/web-banner.html.twig',
-            [
-                'type'       => $type,
-                'subType'    => $subType,
-                'identifier' => $identifier,
-                'title'      => $title,
-                'subTitle'   => $subTitle,
-                'link'       => $link,
-                'image'      => $image,
-            ]
-        );
+        return $this->render('@OswisOrgOswisCore/web/parts/web-banner.html.twig', [
+            'type'       => $type,
+            'subType'    => $subType,
+            'identifier' => $identifier,
+            'title'      => $title,
+            'subTitle'   => $subTitle,
+            'link'       => $link,
+            'image'      => $image,
+        ]);
     }
 }
