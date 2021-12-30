@@ -1,14 +1,13 @@
 <?php
-
 /**
  * @noinspection PropertyCanBePrivateInspection
  * @noinspection MethodShouldBeFinalInspection
  */
+
 declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Entity\NonPersistent;
 
-use Endroid\QrCode\Writer\PngWriter;
 use Exception;
 use InvalidArgumentException;
 use Rikudou\CzQrPayment\Exception\QrPaymentException;
@@ -74,13 +73,12 @@ class BankAccount
 
     public function getQrImage(?int $value = 0, ?string $variableSymbol = '', ?string $comment = ''): ?string
     {
-        $writer = new PngWriter();
         try {
             $qrCode = $this->getQrPayment($value, $variableSymbol, $comment);
             if ($qrCode) {
-                return $writer->write($qrCode->getQrImage())->getString();
+                return $qrCode->getQrCode()->getRawString();
             }
-        } catch (Exception | QrPaymentException) {
+        } catch (Exception) {
             return null;
         }
 
@@ -97,7 +95,7 @@ class BankAccount
                 QrPaymentOptions::COMMENT         => $comment,
             ],
             );
-        } catch (InvalidArgumentException | QrPaymentException) {
+        } catch (InvalidArgumentException|QrPaymentException) {
             return null;
         }
     }

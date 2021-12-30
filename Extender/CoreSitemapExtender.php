@@ -37,7 +37,7 @@ class CoreSitemapExtender implements SiteMapExtenderInterface
                 new SiteMapItem($this->urlGenerator->generate('oswis_org_oswis_core_portal')),
                 new SiteMapItem($this->urlGenerator->generate('oswis_org_oswis_core_admin')),
             ]);
-        } catch (MissingMandatoryParametersException | InvalidParameterException | RouteNotFoundException $e) {
+        } catch (MissingMandatoryParametersException|InvalidParameterException|RouteNotFoundException $e) {
             return new ArrayCollection();
         }
     }

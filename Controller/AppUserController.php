@@ -230,7 +230,7 @@ class AppUserController extends AbstractController
             $this->appUserDefaultsService->registerRoot();
 
             return new Response('Uživatel byl vytvořen, pokud ještě neexistoval.');
-        } catch (InvalidTypeException | InvalidArgumentException | UserNotFoundException | NotFoundException | NotImplementedException | UserNotUniqueException | OswisException) {
+        } catch (InvalidTypeException|InvalidArgumentException|UserNotFoundException|NotFoundException|NotImplementedException|UserNotUniqueException|OswisException) {
             return new Response('Nastala chyba při vytváření výchozího uživatele.');
         }
     }

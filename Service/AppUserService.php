@@ -166,7 +166,7 @@ class AppUserService
             $this->em->persist($appUser);
             $this->em->flush();
             $this->logger->info('Created and sent activation request for user '.$appUser->getId().'.');
-        } catch (OswisException | InvalidTypeException $exception) {
+        } catch (OswisException|InvalidTypeException $exception) {
             $this->logger->error('User ('.$appUser->getId().') activation request FAILED. '.$exception->getMessage());
             throw $exception;
         }
@@ -216,7 +216,7 @@ class AppUserService
             $this->em->flush();
             $andSent = $sendConfirmation ? ' and sent' : '';
             $this->logger->info("Created $andSent password change request for user ".$appUser->getId().'.');
-        } catch (OswisException | InvalidTypeException $exception) {
+        } catch (OswisException|InvalidTypeException $exception) {
             $this->logger->error('User ('.$appUser->getId().') password change request FAILED. '.$exception->getMessage());
             throw $exception;
         }
@@ -274,7 +274,7 @@ class AppUserService
                 $this->changePassword($appUserToken->getAppUser(), $newPassword, true);
             }
             throw new TokenInvalidException('neznámý typ tokenu', $token);
-        } catch (OswisException | TokenInvalidException | InvalidTypeException $exception) {
+        } catch (OswisException|TokenInvalidException|InvalidTypeException $exception) {
             $this->logger->error('Problem occurred when processing app user token. '.$exception->getMessage());
             throw $exception;
         }
@@ -301,7 +301,7 @@ class AppUserService
             $this->em->persist($appUser);
             $this->em->flush();
             $this->logger->info('Successfully changed password for user ('.$appUser->getId().').');
-        } catch (OswisException | InvalidTypeException $exception) {
+        } catch (OswisException|InvalidTypeException $exception) {
             $this->logger->error('Password change for user ('.$appUser->getId().') FAILED. '.$exception->getMessage());
             throw $exception;
         }

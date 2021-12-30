@@ -36,7 +36,7 @@ class MailService
             $id = $eMail->getId();
             $messageID = $eMail->getMessageID();
             $this->logger->info("E-mail ($class) sent with ID '$id' and Message-ID '$messageID'.");
-        } catch (Exception | TransportExceptionInterface $exception) {
+        } catch (Exception|TransportExceptionInterface $exception) {
             $this->em->flush();
             $eMail->setStatusMessage($exception->getMessage());
             $this->logger->error("E-mail ($class) NOT sent: ".$exception->getMessage());

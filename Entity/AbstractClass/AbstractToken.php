@@ -98,7 +98,7 @@ abstract class AbstractToken implements TokenInterface
 
     public function getToken(): string
     {
-        return ''.$this->token;
+        return $this->token;
     }
 
     public function canBeUsed(): bool

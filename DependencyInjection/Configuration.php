@@ -49,7 +49,8 @@ class Configuration implements ConfigurationInterface
         )->example('Personal information system used by John Doe for information management.')->end()->scalarNode('version')->info(
             'Version of application (semantic versioning, major.minor.patch).'
         )->defaultValue('v0.0.1')->example('v1.2.3')->end()->scalarNode('logo')->defaultValue('@images/logo.png')->info('Path to app logo.')->example(
-            ['@images/logo.png', '../assets/assets/images/logo.png'])->end()->scalarNode('portalName')->info('Name of portal application.')->defaultValue(
+            ['@images/logo.png', '../assets/assets/images/logo.png']
+        )->end()->scalarNode('portalName')->info('Name of portal application.')->defaultValue(
             'OSWIS Portal'
         )->example('John\'s Portal')->end()->end()->end()->end();
     }

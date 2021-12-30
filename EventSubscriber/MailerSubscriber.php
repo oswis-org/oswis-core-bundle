@@ -57,7 +57,7 @@ class MailerSubscriber implements EventSubscriberInterface
             foreach ($originalSenders as $singleFrom) {
                 try {
                     $email->addFrom(new Address($singleFrom->getAddress(), $singleFrom->getName()));
-                } catch (LogicException | RfcComplianceException $e) {
+                } catch (LogicException|RfcComplianceException $e) {
                     $email->addFrom($singleFrom);
                 }
             }
@@ -67,7 +67,7 @@ class MailerSubscriber implements EventSubscriberInterface
             $fromName = $this->coreSettings->getEmail()['name'] ?? null;
             try {
                 $email->from(new Address($fromAddress, $fromName));
-            } catch (LogicException | RfcComplianceException $e) {
+            } catch (LogicException|RfcComplianceException $e) {
                 $email->from($fromAddress);
             }
         }
@@ -80,7 +80,7 @@ class MailerSubscriber implements EventSubscriberInterface
         foreach ($originalRecipients as $singleTo) {
             try {
                 $email->addTo(new Address($singleTo->getAddress(), $singleTo->getName()));
-            } catch (LogicException | RfcComplianceException) {
+            } catch (LogicException|RfcComplianceException) {
                 $email->addTo($singleTo->getAddress());
             }
         }
@@ -89,7 +89,7 @@ class MailerSubscriber implements EventSubscriberInterface
             if ($archiveAddress) {
                 $email->addBcc($archiveAddress);
             }
-        } catch (RfcComplianceException | LogicException) {
+        } catch (RfcComplianceException|LogicException) {
         }
     }
 }

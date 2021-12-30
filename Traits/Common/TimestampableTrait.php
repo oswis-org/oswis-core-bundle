@@ -3,6 +3,7 @@
 declare(strict_types=1);
 /**
  * @noinspection MethodShouldBeFinalInspection
+ * @noinspection PhpUnused
  */
 
 namespace OswisOrg\OswisCoreBundle\Traits\Common;

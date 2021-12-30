@@ -231,7 +231,7 @@ class DateTimeUtils
         }
         $interval = $end->diff($start);
 
-        return empty($interval) || empty($interval->invert) ? null : (int)$interval->$type;
+        return empty($interval->invert) ? null : (int)$interval->$type;
     }
 
     public static function isInOnePeriod(?string $period, ?DateTime $start, ?DateTime $end): ?bool

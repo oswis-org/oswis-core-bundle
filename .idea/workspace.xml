@@ -15,8 +15,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controller/AppUserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/AppUserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controller/Web/HomepageWebController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/Web/HomepageWebController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DependencyInjection/Configuration.php" beforeDir="false" afterPath="$PROJECT_DIR$/DependencyInjection/Configuration.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractMail.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractMail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractToken.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractToken.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/NonPersistent/BankAccount.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/NonPersistent/BankAccount.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EventSubscriber/MailerSubscriber.php" beforeDir="false" afterPath="$PROJECT_DIR$/EventSubscriber/MailerSubscriber.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Exceptions/InvalidTypeException.php" beforeDir="false" afterPath="$PROJECT_DIR$/Exceptions/InvalidTypeException.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Exceptions/OswisException.php" beforeDir="false" afterPath="$PROJECT_DIR$/Exceptions/OswisException.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Exceptions/TokenInvalidException.php" beforeDir="false" afterPath="$PROJECT_DIR$/Exceptions/TokenInvalidException.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Extender/CoreSitemapExtender.php" beforeDir="false" afterPath="$PROJECT_DIR$/Extender/CoreSitemapExtender.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Service/AppUserService.php" beforeDir="false" afterPath="$PROJECT_DIR$/Service/AppUserService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Service/MailService.php" beforeDir="false" afterPath="$PROJECT_DIR$/Service/MailService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Common/DateTimeTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/DateTimeTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Common/TimestampableTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/TimestampableTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Utils/DateTimeUtils.php" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/DateTimeUtils.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -39,16 +56,19 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Resources/views/web/parts/breadcrumbs.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard/standard_0.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/date/date_c.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Resources/views/e-mail/styles/foundation-emails.css.twig" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/exif/exif.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/date/date_c.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard/standard_0.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
   </component>
   <component name="JsFlowSettings">
     <service-enabled>true</service-enabled>
     <exe-path />
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="PHPCSFixerProjectConfiguration">
     <option name="selectedConfigurationId" value="DEFAULT_INTERPRETER" />
@@ -157,7 +177,6 @@
       <path value="$PROJECT_DIR$/vendor/symfony/finder" />
       <path value="$PROJECT_DIR$/vendor/symfony/form" />
       <path value="$PROJECT_DIR$/vendor/symfony/framework-bundle" />
-      <path value="$PROJECT_DIR$/vendor/symfony/http-client-contracts" />
       <path value="$PROJECT_DIR$/vendor/symfony/http-foundation" />
       <path value="$PROJECT_DIR$/vendor/symfony/http-kernel" />
       <path value="$PROJECT_DIR$/vendor/symfony/intl" />
@@ -226,6 +245,7 @@
       <path value="$PROJECT_DIR$/vendor/webmozart/assert" />
       <path value="$PROJECT_DIR$/vendor/willdurand/negotiation" />
       <path value="$PROJECT_DIR$/vendor/rikudou/qr-payment-qr-code-provider" />
+      <path value="$PROJECT_DIR$/vendor/phpstan/phpdoc-parser" />
     </include_path>
   </component>
   <component name="ProblemsViewState">
@@ -912,21 +932,13 @@
       <workItem from="1629405630693" duration="1527000" />
       <workItem from="1629534932511" duration="613000" />
       <workItem from="1633430390166" duration="1844000" />
-      <workItem from="1637766663578" duration="1122000" />
-    </task>
-    <task id="LOCAL-00760" summary="Some fixes, updates and changes.">
-      <created>1597678345662</created>
-      <option name="number" value="00760" />
-      <option name="presentableId" value="LOCAL-00760" />
-      <option name="project" value="LOCAL" />
-      <updated>1597678345663</updated>
-    </task>
-    <task id="LOCAL-00761" summary="Some fixes, updates and changes.">
-      <created>1597828440427</created>
-      <option name="number" value="00761" />
-      <option name="presentableId" value="LOCAL-00761" />
-      <option name="project" value="LOCAL" />
-      <updated>1597828440430</updated>
+      <workItem from="1637766663578" duration="1808000" />
+      <workItem from="1637939040845" duration="4224000" />
+      <workItem from="1638215504397" duration="695000" />
+      <workItem from="1638354380605" duration="48000" />
+      <workItem from="1640895833124" duration="1928000" />
+      <workItem from="1640901955815" duration="904000" />
+      <workItem from="1640904561112" duration="3557000" />
     </task>
     <task id="LOCAL-00762" summary="Some fixes, updates and changes.">
       <created>1598799280926</created>
@@ -1257,7 +1269,21 @@
       <option name="project" value="LOCAL" />
       <updated>1629148751331</updated>
     </task>
-    <option name="localTasksCounter" value="809" />
+    <task id="LOCAL-00809" summary="Did some refactoring and updated dependencies.">
+      <created>1637768030156</created>
+      <option name="number" value="00809" />
+      <option name="presentableId" value="LOCAL-00809" />
+      <option name="project" value="LOCAL" />
+      <updated>1637768030156</updated>
+    </task>
+    <task id="LOCAL-00810" summary="Did some refactoring and updated dependencies.">
+      <created>1637768079045</created>
+      <option name="number" value="00810" />
+      <option name="presentableId" value="LOCAL-00810" />
+      <option name="project" value="LOCAL" />
+      <updated>1637768079045</updated>
+    </task>
+    <option name="localTasksCounter" value="811" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1298,7 +1324,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
