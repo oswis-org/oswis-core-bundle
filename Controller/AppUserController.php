@@ -58,8 +58,8 @@ class AppUserController extends AbstractController
     {
         $form = $this->createForm(PasswordChangeRequestType::class, []);
         $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $appUser = $this->appUserService->getRepository()->loadUserByUsername($form->get('username')->getData());
+        if ($form->isSubmitted() && $form->isValid() && is_string($username = $form->get('username')->getData())) {
+            $appUser = $this->appUserService->getRepository()->loadUserByUsername($username);
             if (null === $appUser) {
                 throw new UserNotFoundException();
             }
@@ -100,8 +100,8 @@ class AppUserController extends AbstractController
     {
         $form = $this->createForm(ActivationRequestType::class, []);
         $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $appUser = $this->appUserService->getRepository()->loadUserByUsername($form->get('username')->getData());
+        if ($form->isSubmitted() && $form->isValid() && is_string($username = $form->get('username')->getData())) {
+            $appUser = $this->appUserService->getRepository()->loadUserByUsername($username);
             if (null === $appUser) {
                 throw new UserNotFoundException();
             }
@@ -195,7 +195,11 @@ class AppUserController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $appUserToken->use();
-            $this->appUserService->changePassword($appUserToken->getAppUser(), $form->get('password')->getData(), true);
+            $password = $form->get('password')->getData();
+            if (empty($password) || !is_string($password)) {
+                $password = null;
+            }
+            $this->appUserService->changePassword($appUserToken->getAppUser(), $password, true);
 
             return $this->passwordChanged();
         }

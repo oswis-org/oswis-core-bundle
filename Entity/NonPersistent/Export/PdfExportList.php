@@ -57,7 +57,7 @@ class PdfExportList extends AbstractExportList
 
     public function setFormat(string $format): void
     {
-        $this->format = $format ?? self::DEFAULT_PAPER_FORMAT;
+        $this->format = $format;
     }
 
     public function isLandscape(): bool
@@ -67,7 +67,7 @@ class PdfExportList extends AbstractExportList
 
     public function setLandscape(bool $landscape): void
     {
-        $this->landscape = $landscape ?? self::DEFAULT_PAPER_LANDSCAPE;
+        $this->landscape = $landscape;
     }
 
 }

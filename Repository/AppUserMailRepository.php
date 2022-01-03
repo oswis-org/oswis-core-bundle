@@ -30,8 +30,9 @@ class AppUserMailRepository extends ServiceEntityRepository
         $queryBuilder = $this->createQueryBuilder('mail');
         $queryBuilder->where("mail.appUser = :app_user_id")->setParameter('app_user_id', $appUser->getId());
         $queryBuilder->addOrderBy('mail.id', 'DESC');
+        $result = $queryBuilder->getQuery()->getResult(AbstractQuery::HYDRATE_OBJECT);
 
-        return new ArrayCollection($queryBuilder->getQuery()->getResult(AbstractQuery::HYDRATE_OBJECT));
+        return new ArrayCollection(is_array($result) ? $result : []);
     }
 
     final public function findOneBy(array $criteria, array $orderBy = null): ?AppUserMail

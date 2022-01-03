@@ -93,15 +93,11 @@ class DateTimeUtils
      */
     public static function isDateTimeInRange(?DateTime $start, ?DateTime $end, ?DateTime $dateTime = null): bool
     {
-        try {
-            $dateTime ??= new DateTime();
-            $start ??= new DateTime(self::MIN_DATE_TIME_STRING);
-            $end ??= new DateTime(self::MAX_DATE_TIME_STRING);
+        $dateTime ??= new DateTime();
+        $start ??= new DateTime(self::MIN_DATE_TIME_STRING);
+        $end ??= new DateTime(self::MAX_DATE_TIME_STRING);
 
-            return $dateTime >= $start && $dateTime <= $end;
-        } catch (Exception $e) {
-            return false;
-        }
+        return $dateTime >= $start && $dateTime <= $end;
     }
 
     /**

@@ -30,8 +30,8 @@ class AppUserTokenRepository extends ServiceEntityRepository
         $queryBuilder->andWhere('token.appUser = :app_user_id')->setParameter('app_user_id', $appUserId);
         $query = $queryBuilder->getQuery();
         try {
-            return $query->getOneOrNullResult(AbstractQuery::HYDRATE_OBJECT);
-        } catch (Exception $e) {
+            return ($result = $query->getOneOrNullResult(AbstractQuery::HYDRATE_OBJECT)) instanceof AppUserToken ? $result : null;
+        } catch (Exception) {
             return null;
         }
     }

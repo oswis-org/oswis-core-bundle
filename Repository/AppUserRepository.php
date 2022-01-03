@@ -57,7 +57,7 @@ class AppUserRepository extends ServiceEntityRepository implements UserLoaderInt
         $builder = $this->createQueryBuilder('app_user')->where('app_user.email = :email')->setParameter('email', $email);
 
         return new ArrayCollection(
-            $builder->getQuery()->getResult(AbstractQuery::HYDRATE_OBJECT)
+            is_array($result = $builder->getQuery()->getResult(AbstractQuery::HYDRATE_OBJECT)) ? $result : [],
         );
     }
 
@@ -109,7 +109,7 @@ class AppUserRepository extends ServiceEntityRepository implements UserLoaderInt
             $builder->setParameter('now', new DateTime());
         }
         try {
-            return $builder->getQuery()->getOneOrNullResult(AbstractQuery::HYDRATE_OBJECT);
+            return ($result = $builder->getQuery()->getOneOrNullResult(AbstractQuery::HYDRATE_OBJECT)) instanceof AppUser ? $result : null;
         } catch (NonUniqueResultException) {
             throw new UserNotUniqueException();
         }

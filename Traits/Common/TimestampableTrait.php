@@ -1,10 +1,10 @@
 <?php
-
-declare(strict_types=1);
 /**
  * @noinspection MethodShouldBeFinalInspection
  * @noinspection PhpUnused
  */
+
+declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Traits\Common;
 

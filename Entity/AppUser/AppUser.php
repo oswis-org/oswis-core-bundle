@@ -155,7 +155,7 @@ class AppUser extends AbstractAppUser implements PdfExportableInterface, Passwor
      */
     public function isAdminUser(): bool
     {
-        return !(null === $this->getAppUserType()) && (($this->getAppUserType()->getAdminUser() ?? false));
+        return (null !== $this->getAppUserType()) && ($this->getAppUserType()->getAdminUser());
     }
 
     public function getAppUserType(): ?AppUserType
@@ -195,7 +195,7 @@ class AppUser extends AbstractAppUser implements PdfExportableInterface, Passwor
 
     public function getName(): string
     {
-        return $this->getFullName() ?? $this->getUsername();
+        return !empty($fullName = $this->getFullName()) ? $fullName : $this->getUsername();
     }
 
     public function addAppUserFlag(?AppUserFlagConnection $flagInJobFairUser): void

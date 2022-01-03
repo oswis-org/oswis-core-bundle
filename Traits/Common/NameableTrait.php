@@ -45,7 +45,7 @@ trait NameableTrait
 
     public function setSlug(?string $slug): string
     {
-        return $this->slug = $this->getForcedSlug() ?? (!empty($slug) ? $slug : ($this->getAutoSlug() ?? ''.$this->getId()));
+        return $this->slug = $this->getForcedSlug() ?? (!empty($slug) ? $slug : $this->getAutoSlug());
     }
 
     public function getAutoSlug(): string

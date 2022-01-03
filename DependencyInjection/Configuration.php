@@ -40,19 +40,19 @@ class Configuration implements ConfigurationInterface
     {
         $rootNode->children()->arrayNode('app')->info('General settings.')->addDefaultsIfNotSet()->children()->scalarNode('name')->info('Name of application.')->defaultValue(
             'OSWIS'
-        )->example('John\'s IS')->end()->scalarNode('url')->info('Base URL of app.')->defaultValue('https://oswis.org')->example('https://oswis.org')->end()->scalarNode(
+        )->example('John\'s IS')->end()?->scalarNode('url')->info('Base URL of app.')->defaultValue('https://oswis.org')->example('https://oswis.org')->end()?->scalarNode(
             'name_short'
-        )->info('Shortened name of application.')->defaultValue('OSWIS')->example('JIS')->end()->scalarNode('name_long')->info('Long (full) name of application.')->defaultValue(
+        )->info('Shortened name of application.')->defaultValue('OSWIS')->example('JIS')?->end()?->scalarNode('name_long')->info('Long (full) name of application.')->defaultValue(
             'One Simple Web IS'
-        )->example('John\'s personal information system')->end()->scalarNode('description')->info('Description of application.')->defaultValue(
+        )->example('John\'s personal information system')->end()?->scalarNode('description')->info('Description of application.')->defaultValue(
             'Simple modular information system based on ApiPlatform.'
-        )->example('Personal information system used by John Doe for information management.')->end()->scalarNode('version')->info(
+        )->example('Personal information system used by John Doe for information management.')->end()?->scalarNode('version')->info(
             'Version of application (semantic versioning, major.minor.patch).'
-        )->defaultValue('v0.0.1')->example('v1.2.3')->end()->scalarNode('logo')->defaultValue('@images/logo.png')->info('Path to app logo.')->example(
+        )->defaultValue('v0.0.1')->example('v1.2.3')->end()?->scalarNode('logo')->defaultValue('@images/logo.png')->info('Path to app logo.')->example(
             ['@images/logo.png', '../assets/assets/images/logo.png']
-        )->end()->scalarNode('portalName')->info('Name of portal application.')->defaultValue(
+        )->end()?->scalarNode('portalName')->info('Name of portal application.')->defaultValue(
             'OSWIS Portal'
-        )->example('John\'s Portal')->end()->end()->end()->end();
+        )->example('John\'s Portal')->end()?->end()->end()->end();
     }
 
     private function addEmailConfig(NodeDefinition $rootNode): void

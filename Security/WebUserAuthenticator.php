@@ -17,7 +17,6 @@ use Symfony\Component\Routing\Exception\MissingMandatoryParametersException;
 use Symfony\Component\Routing\Exception\RouteNotFoundException;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
-use Symfony\Component\Security\Core\Exception\CustomUserMessageAuthenticationException;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
@@ -49,17 +48,13 @@ class WebUserAuthenticator extends AbstractFormLoginAuthenticator
 
     public function getUser($credentials, UserProviderInterface $userProvider): ?object
     {
-        $user = $userProvider->loadUserByIdentifier($credentials['username']);
-        if (!($user instanceof UserInterface)) {
-            throw new CustomUserMessageAuthenticationException('Username could not be found.');
-        }
-
-        return $user;
+        return $userProvider->loadUserByIdentifier(is_array($credentials) ? $credentials['username'] : null);
     }
 
     public function checkCredentials($credentials, UserInterface $user): bool
     {
         assert($user instanceof PasswordAuthenticatedUserInterface);
+        assert(is_array($credentials));
 
         return $this->passwordEncoder->isPasswordValid($user, $credentials['password']);
     }

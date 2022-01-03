@@ -100,12 +100,12 @@ trait NameablePersonTrait
             $name = preg_replace('!\s+!', ' ', ''.$name);
             $nameObject = $parser->parse(trim(''.$name));
             if ($nameObject instanceof Name) {
-                $this->setHonorificPrefix($nameObject->getAcademicTitle() ?? '');
-                $this->setGivenName($nameObject->getFirstName() ?? '');
-                $this->setAdditionalName($nameObject->getMiddleName() ?? '');
-                $this->setFamilyName($nameObject->getLastName() ?? '');
-                $this->setHonorificSuffix($nameObject->getSuffix() ?? '');
-                $this->setNickname($nameObject->getNicknames() ?? '');
+                $this->setHonorificPrefix($nameObject->getAcademicTitle());
+                $this->setGivenName($nameObject->getFirstName());
+                $this->setAdditionalName($nameObject->getMiddleName());
+                $this->setFamilyName($nameObject->getLastName());
+                $this->setHonorificSuffix($nameObject->getSuffix());
+                $this->setNickname($nameObject->getNicknames());
             }
         } catch (NameParsingException $e) {
             // Name not recognized. TODO: Do some magic. Or maybe throw some exception.
@@ -183,7 +183,7 @@ trait NameablePersonTrait
         $fullName .= ' '.$this->getHonorificSuffix();
         $fullName = preg_replace('!\s+!', ' ', $fullName);
 
-        return trim(''.$fullName) ?? '';
+        return trim(''.$fullName);
     }
 
     public function getNickname(): ?string

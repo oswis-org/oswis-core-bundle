@@ -179,6 +179,6 @@ class AppUserRole implements NameableInterface
 
     public function setRoleString(string $roleString): void
     {
-        $this->roleString = $roleString ?? '';
+        $this->roleString = $roleString;
     }
 }

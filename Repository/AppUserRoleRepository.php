@@ -27,8 +27,8 @@ class AppUserRoleRepository extends ServiceEntityRepository
     {
         $query = $this->createQueryBuilder('r')->where('r.slug = :slug')->setParameter('slug', $slug)->getQuery();
         try {
-            return $query->getOneOrNullResult(AbstractQuery::HYDRATE_OBJECT);
-        } catch (Exception $e) {
+            return ($result = $query->getOneOrNullResult(AbstractQuery::HYDRATE_OBJECT)) instanceof AppUserRole ? $result : null;
+        } catch (Exception) {
             return null;
         }
     }

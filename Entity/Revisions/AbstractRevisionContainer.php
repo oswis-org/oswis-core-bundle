@@ -7,7 +7,6 @@ namespace OswisOrg\OswisCoreBundle\Entity\Revisions;
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Exception;
 use OswisOrg\OswisCoreBundle\Interfaces\Revisions\RevisionContainerInterface;
 use OswisOrg\OswisCoreBundle\Interfaces\Revisions\RevisionInterface;
 
@@ -49,10 +48,7 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
 
     final public function getRevisionsOlderThanDateTime(DateTime $dateTime = null): array
     {
-        try {
-            $dateTime ??= new DateTime() ?? null;
-        } catch (Exception) {
-        }
+        $dateTime ??= new DateTime();
         $revisions = $this->getRevisions()->filter(fn(AbstractRevision $revision) => $dateTime >= $revision->getCreatedAt())->toArray();
         AbstractRevision::sortByCreatedAt($revisions);
 

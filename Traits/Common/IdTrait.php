@@ -41,9 +41,9 @@ trait IdTrait
         $this->customId = $auto ? $this->getAutoCustomId() : $customId;
     }
 
-    public function getAutoCustomId(): ?string
+    public function getAutoCustomId(): string
     {
-        return ''.$this->getId() ?? '';
+        return ''.$this->getId();
     }
 
     public function getId(): ?int

@@ -35,16 +35,18 @@ class AppUserMailGroupRepository extends ServiceEntityRepository
         $queryBuilder->orderBy("mailGroup.priority", "DESC");
         try {
             $appUserEMailGroups = $queryBuilder->getQuery()->getResult();
-            foreach ($appUserEMailGroups as $appUserEMailGroup) {
-                if ($appUserEMailGroup instanceof AppUserMailGroup && $appUserEMailGroup->isApplicable($appUser)) {
-                    return $appUserEMailGroup;
+            if (is_iterable($appUserEMailGroups)) {
+                /** @noinspection PhpWrongForeachArgumentTypeInspection */
+                foreach ($appUserEMailGroups as $appUserEMailGroup) {
+                    if ($appUserEMailGroup instanceof AppUserMailGroup && $appUserEMailGroup->isApplicable($appUser)) {
+                        return $appUserEMailGroup;
+                    }
                 }
             }
-
-            return null;
-        } catch (Exception $e) {
-            return null;
+        } catch (Exception) {
         }
+
+        return null;
     }
 
     final public function findOneBy(array $criteria, array $orderBy = null): ?AppUserMailGroup

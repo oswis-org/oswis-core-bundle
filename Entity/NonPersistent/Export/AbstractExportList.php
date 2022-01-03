@@ -88,7 +88,7 @@ abstract class AbstractExportList
 
     public function setTitle(string $title): void
     {
-        $this->title = $title ?? self::DEFAULT_TITLE;
+        $this->title = $title;
     }
 
     public function getColumns(): Collection

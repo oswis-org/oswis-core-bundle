@@ -30,8 +30,10 @@ class AppUserMailCategoryRepository extends ServiceEntityRepository
         $queryBuilder->orderBy("category.priority", "DESC");
         $queryBuilder->setMaxResults(1);
         try {
-            return $queryBuilder->getQuery()->getOneOrNullResult(AbstractQuery::HYDRATE_OBJECT);
-        } catch (Exception $e) {
+            $result = $queryBuilder->getQuery()->getOneOrNullResult(AbstractQuery::HYDRATE_OBJECT);
+
+            return $result instanceof AppUserMailCategory ? $result : null;
+        } catch (Exception) {
             return null;
         }
     }
