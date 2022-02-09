@@ -18,7 +18,7 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class CoreSitemapExtender implements SiteMapExtenderInterface
 {
-    protected UrlGeneratorInterface $urlGenerator;
+    private UrlGeneratorInterface $urlGenerator;
 
     public function __construct(UrlGeneratorInterface $urlGenerator)
     {

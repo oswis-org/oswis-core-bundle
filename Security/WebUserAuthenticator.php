@@ -38,6 +38,10 @@ class WebUserAuthenticator extends AbstractFormLoginAuthenticator
         return self::LOGIN_ROUTE === $request->attributes->get('_route') && $request->isMethod('POST');
     }
 
+    /**
+     * @throws \InvalidArgumentException
+     * @throws \Symfony\Component\HttpFoundation\Exception\BadRequestException
+     */
     public function getCredentials(Request $request): array
     {
         return [

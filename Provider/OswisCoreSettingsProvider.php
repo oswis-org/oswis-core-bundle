@@ -123,6 +123,6 @@ class OswisCoreSettingsProvider
 
     public function isAdminIP(?string $ip): bool
     {
-        return IpUtils::checkIp($ip, $this->getAdminIPs());
+        return IpUtils::checkIp(''.$ip, $this->getAdminIPs());
     }
 }

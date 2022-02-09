@@ -49,7 +49,7 @@ class InternalActionsWebController extends AbstractController
     public function checkIP(Request $request): void
     {
         $allowedIPs = $this->coreSettings->getAdminIPs();
-        if (!IpUtils::checkIp($request->getClientIp(), $allowedIPs)) {
+        if (!IpUtils::checkIp(''.$request->getClientIp(), $allowedIPs)) {
             throw new AccessDeniedHttpException('Nedostatečná oprávnění.');
         }
     }
