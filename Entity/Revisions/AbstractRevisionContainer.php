@@ -1,4 +1,5 @@
 <?php
+/** @noinspection PhpUnused */
 
 declare(strict_types=1);
 
@@ -49,7 +50,9 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
     final public function getRevisionsOlderThanDateTime(DateTime $dateTime = null): array
     {
         $dateTime ??= new DateTime();
-        $revisions = $this->getRevisions()->filter(fn(AbstractRevision $revision) => $dateTime >= $revision->getCreatedAt())->toArray();
+        $revisions = $this->getRevisions()->filter(function (mixed $revision) use ($dateTime) {
+            return $revision instanceof AbstractRevision && $dateTime >= $revision->getCreatedAt();
+        })->toArray();
         AbstractRevision::sortByCreatedAt($revisions);
 
         return $revisions;

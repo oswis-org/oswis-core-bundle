@@ -15,15 +15,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="Did some refactoring and updated dependencies.">
+      <change afterPath="$PROJECT_DIR$/.idea/GitLink.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/redis-manager-config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/git_toolbox_prj.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/git_toolbox_prj.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/oswis-core-bundle.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/oswis-core-bundle.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/symfony2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/symfony2.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controller/AppUserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/AppUserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/Web/InternalActionsWebController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/Web/InternalActionsWebController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Extender/CoreSitemapExtender.php" beforeDir="false" afterPath="$PROJECT_DIR$/Extender/CoreSitemapExtender.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Provider/OswisCoreSettingsProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/Provider/OswisCoreSettingsProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controller/WebAdmin/WebSecurityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/WebAdmin/WebSecurityController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DependencyInjection/Configuration.php" beforeDir="false" afterPath="$PROJECT_DIR$/DependencyInjection/Configuration.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractAppUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractAppUser.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractMail.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractMail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AppUser/AppUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUser/AppUser.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AppUser/AppUserRole.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUser/AppUserRole.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/NonPersistent/SiteMapItem.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/NonPersistent/SiteMapItem.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/Revisions/AbstractRevisionContainer.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Revisions/AbstractRevisionContainer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpenApi/OpenApiFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/OpenApi/OpenApiFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/config/services.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/views/e-mail/pages/message.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/e-mail/pages/message.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/views/export/csv/list-column.csv.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/export/csv/list-column.csv.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/views/web/html-skeleton-default.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/html-skeleton-default.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Security/WebUserAuthenticator.php" beforeDir="false" afterPath="$PROJECT_DIR$/Security/WebUserAuthenticator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Service/AppUserService.php" beforeDir="false" afterPath="$PROJECT_DIR$/Service/AppUserService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Common/DateTimeTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/DateTimeTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Common/NameableTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/NameableTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Utils/FileUtils.php" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/FileUtils.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
     </list>
@@ -43,17 +61,17 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitToolBoxStore">
-    <option name="projectConfigVersion" value="4" />
+    <option name="projectConfigVersion" value="5" />
   </component>
   <component name="GithubDefaultAccount">
     <option name="defaultAccountId" value="740df062-479c-4e59-900e-bfa747b75d03" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard/standard_0.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Resources/views/e-mail/styles/foundation-emails.css.twig" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Resources/views/web/parts/breadcrumbs.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/date/date_c.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/exif/exif.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Resources/views/e-mail/styles/foundation-emails.css.twig" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard/standard_0.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
   </component>
   <component name="JsFlowSettings">
     <service-enabled>true</service-enabled>
@@ -246,10 +264,13 @@
       <path value="$PROJECT_DIR$/vendor/webimpress/safe-writer" />
       <path value="$PROJECT_DIR$/vendor/webmozart/assert" />
       <path value="$PROJECT_DIR$/vendor/willdurand/negotiation" />
+      <path value="$PROJECT_DIR$/vendor/stella-maris/clock" />
+      <path value="$PROJECT_DIR$/vendor/php-http/message-factory" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-message" />
     </include_path>
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectId" id="1OdNRiB7J91AH4isXqLMtDEiNnC" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -259,30 +280,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="add_unversioned_files" value="$PROJECT_DIR$/vendor/symfony/swiftmailer-bundle/composer.json" />
-    <property name="editor.config.ad.shown" value="true" />
-    <property name="javascript.nodejs.core.library.configured.version" value="14.17.0" />
-    <property name="javascript.nodejs.core.library.typings.version" value="14.17.0" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/translations" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.detected.package.tslint" value="true" />
-    <property name="node.js.path.for.package.eslint" value="project" />
-    <property name="node.js.path.for.package.tslint" value="project" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
-    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="Symfony2.RoutingSettingsForm" />
-    <property name="vue.rearranger.settings.migration" value="true" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "php.override.implement.member.chooser.php.doc": "NONE",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "reference.webide.settings.project.settings.php",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/EventSubscriber/LexikJwt" />
@@ -950,6 +962,29 @@
       <workItem from="1644235610546" duration="296000" />
       <workItem from="1644274052112" duration="3722000" />
       <workItem from="1644435672358" duration="6192000" />
+      <workItem from="1644570108560" duration="599000" />
+      <workItem from="1644678181692" duration="28000" />
+      <workItem from="1644944892638" duration="2400000" />
+      <workItem from="1649248933675" duration="6269000" />
+      <workItem from="1649500997975" duration="5303000" />
+      <workItem from="1649525419521" duration="10419000" />
+      <workItem from="1649705272714" duration="560000" />
+      <workItem from="1649705860208" duration="694000" />
+      <workItem from="1649707224001" duration="230000" />
+      <workItem from="1649707475751" duration="612000" />
+      <workItem from="1649708115496" duration="100000" />
+      <workItem from="1649708243166" duration="410000" />
+      <workItem from="1649709046936" duration="456000" />
+      <workItem from="1649709523537" duration="360000" />
+      <workItem from="1649711469795" duration="155000" />
+      <workItem from="1649712235714" duration="1485000" />
+      <workItem from="1649713727385" duration="316000" />
+      <workItem from="1649714056659" duration="650000" />
+      <workItem from="1650711972260" duration="2210000" />
+      <workItem from="1651596788613" duration="638000" />
+      <workItem from="1651777659723" duration="69000" />
+      <workItem from="1651785610885" duration="7906000" />
+      <workItem from="1651911326688" duration="3649000" />
     </task>
     <task id="LOCAL-00765" summary="Some fixes, updates and changes.">
       <created>1600595272765</created>
@@ -1376,5 +1411,8 @@
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
     <select />
+  </component>
+  <component name="YamllintSettings">
+    <option name="binPath" value="yamllint" />
   </component>
 </project>

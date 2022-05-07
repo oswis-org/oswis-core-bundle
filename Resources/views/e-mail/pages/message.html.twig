@@ -14,11 +14,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name='format-detection' content='telephone=yes'>
         <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0'/>
-        <meta name='author' content='{% block meta_author %}{{ author|default(oswis.app.author|default('Jakub Zak (https://www.jakubzak.cz)')) }}{% endblock meta_author %}'>
+        <meta name='author'
+              content='{% block meta_author %}{{ author|default(oswis.app.author|default('Jakub Zak (https://www.jakubzak.cz)')) }}{% endblock meta_author %}'>
         <meta name='copyright'
               content='{% block meta_copyright %}{{ copyright|default(oswis.app.copyright|default('Jakub Zak (https://www.jakubzak.cz)')) }}{% endblock meta_copyright %}'>
         <meta name='generator' content='{% block meta_generator %}OSWIS (One Simple Web IS, https://www.owsis.org){% endblock meta_generator %}'>
-        <meta name="description" content="{% block html_description %}{{ description|default(default_description|default(oswis.web.description)) }}{% endblock html_description %}">
+        <meta name="description"
+              content="{% block html_description %}{{ description|default(default_description|default(oswis.web.description)) }}{% endblock html_description %}">
         <meta name='Designer' content='{% block meta_designer %}{{ designer|default('Jakub Zak (https://jakubzak.cz)') }}{% endblock meta_designer %}'>
         {% block meta_revisit_after_outer %}
             <meta name='Revisit-After' content='{% block meta_revisit_after %}{{ revisit_after|default('1 day') }}{% endblock meta_revisit_after %}'>

@@ -1,6 +1,7 @@
 <?php
 
 /**
+ * @noinspection PhpUnused
  * @noinspection MethodShouldBeFinalInspection
  */
 declare(strict_types=1);
@@ -10,33 +11,33 @@ namespace OswisOrg\OswisCoreBundle\Entity\AbstractClass;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserRole;
 use OswisOrg\OswisCoreBundle\Interfaces\AddressBook\PersonInterface;
 use OswisOrg\OswisCoreBundle\Traits\User\UserTrait;
-use Serializable;
 use Symfony\Component\Security\Core\User\EquatableInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Abstract class containing basic properties for user of application.
  * @author Jakub Zak <mail@jakubzak.eu>
- * @todo TODO: Refactor: Wrap slug as username.
  */
-abstract class AbstractAppUser implements UserInterface, Serializable, EquatableInterface, PersonInterface
+abstract class AbstractAppUser implements UserInterface, EquatableInterface, PersonInterface
 {
     use UserTrait;
 
-    public function serialize(): string
+    public function __serialize(): array
     {
-        return serialize([$this->id, $this->username, $this->email, $this->password]);
+        return [
+            'id'       => $this->id,
+            'username' => $this->username,
+            'email'    => $this->email,
+            'password' => $this->password,
+        ];
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @noinspection MissingParameterTypeDeclarationInspection
-     */
-    public function unserialize(string $data): void
+    public function __unserialize(array $data): void
     {
-        $result = unserialize($data, ['allowed_classes' => ['AppUser']]);
-        [$this->id, $this->username, $this->email, $this->password] = is_array($result) ? $result : [];
+        $this->id = $data['id'];
+        $this->username = $data['username'];
+        $this->email = $data['email'];
+        $this->password = $data['password'];
     }
 
     public function isEqualTo(UserInterface $user): bool
@@ -44,10 +45,10 @@ abstract class AbstractAppUser implements UserInterface, Serializable, Equatable
         if (!($user instanceof self)) {
             return false;
         }
-        if ($this->getId() !== $user->getId() || $this->getUsername() !== $user->getUsername()) {
-            return false;
-        }
-        if ($this->getEmail() !== $user->getEmail() || $this->getPassword() !== $user->getPassword()) {
+        if ($this->getId() !== $user->getId()
+            || $this->getUsername() !== $user->getUsername()
+            || $this->getEmail() !== $user->getEmail()
+            || $this->getPassword() !== $user->getPassword()) {
             return false;
         }
 

@@ -1,6 +1,7 @@
 <?php
 
 /**
+ * @noinspection PhpUnused
  * @noinspection MethodShouldBeFinalInspection
  */
 declare(strict_types=1);
@@ -21,7 +22,6 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
  * AppUser is user of this application.
  * Every **user must be activated** by activating e-mail with link that is containing special token.
  * User is **active in interval** given by *startDateTime* and *endDateTime* (no need to use *deleted* property).
- * @todo   Generate username from real name if username is not given.
  * @Doctrine\ORM\Mapping\Entity(repositoryClass="OswisOrg\OswisCoreBundle\Repository\AppUserRepository")
  * @Doctrine\ORM\Mapping\Table(name="core_app_user")
  * @ApiPlatform\Core\Annotation\ApiResource(
@@ -151,7 +151,7 @@ class AppUser extends AbstractAppUser implements PdfExportableInterface, Passwor
     }
 
     /**
-     * Can user visit administration? TODO: Is used somewhere now?
+     * Can user visit administration?
      */
     public function isAdminUser(): bool
     {
@@ -186,7 +186,7 @@ class AppUser extends AbstractAppUser implements PdfExportableInterface, Passwor
 
     /**
      * Returns the roles granted to the user.
-     * @return array<string> The user roles.
+     * @return array<string>|array The user roles.
      */
     public function getRoles(): array
     {

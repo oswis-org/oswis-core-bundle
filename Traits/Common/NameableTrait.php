@@ -35,7 +35,9 @@ trait NameableTrait
 
     public function getNameable(): Nameable
     {
-        return new Nameable($this->getName(), $this->getShortName(), $this->getDescription(), $this->getNote(), $this->getForcedSlug(), $this->getInternalNote());
+        return new Nameable(
+            $this->getName(), $this->getShortName(), $this->getDescription(), $this->getNote(), $this->getForcedSlug(), $this->getInternalNote()
+        );
     }
 
     public function updateSlug(): string

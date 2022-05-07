@@ -1,6 +1,7 @@
 <?php
 
 /**
+ * @noinspection PhpUnused
  * @noinspection MethodShouldBeFinalInspection
  */
 declare(strict_types=1);
@@ -37,14 +38,69 @@ class AppUserService
     public const ALLOWED_TYPES = [self::PASSWORD_CHANGE, self::PASSWORD_CHANGE_REQUEST, self::ACTIVATION, self::ACTIVATION_REQUEST];
 
     public function __construct(
-        private UserPasswordHasherInterface $encoder,
-        private EntityManagerInterface $em,
-        private LoggerInterface $logger,
-        private AppUserTokenService $appUserTokenService,
-        private AppUserMailService $appUserMailService,
-        private AppUserTypeService $appUserTypeService,
-        private AppUserRepository $appUserRepository,
+        private readonly UserPasswordHasherInterface $encoder,
+        private readonly EntityManagerInterface $em,
+        private readonly LoggerInterface $logger,
+        private readonly AppUserTokenService $appUserTokenService,
+        private readonly AppUserMailService $appUserMailService,
+        private readonly AppUserTypeService $appUserTypeService,
+        private readonly AppUserRepository $appUserRepository,
     ) {
+    }
+
+    public function alreadyExists(string $mail): bool
+    {
+        try {
+            return (bool)$this->findExisting($mail);
+        } catch (UserNotUniqueException) {
+            return true;
+        }
+    }
+
+    /**
+     * @param  string  $mail
+     *
+     * @return AppUser|null
+     * @throws UserNotUniqueException
+     */
+    public function findExisting(string $mail): ?AppUser
+    {
+        return $this->getRepository()->findOneByUsernameOrMail($mail);
+    }
+
+    public function getRepository(): AppUserRepository
+    {
+        return $this->appUserRepository;
+    }
+
+    /**
+     * @param  AppUser|null  $appUser
+     * @param  bool  $sendConfirmation
+     *
+     * @throws InvalidTypeException
+     * @throws NotFoundException
+     * @throws NotImplementedException
+     * @throws OswisException
+     * @throws UserNotFoundException
+     */
+    public function requestPasswordChange(?AppUser $appUser, bool $sendConfirmation): void
+    {
+        try {
+            if (null === $appUser) {
+                throw new UserNotFoundException();
+            }
+            $appUserToken = $this->appUserTokenService->create($appUser, AbstractToken::TYPE_PASSWORD_CHANGE, false);
+            if ($sendConfirmation) {
+                $this->appUserMailService->sendAppUserMail($appUser, self::PASSWORD_CHANGE_REQUEST, $appUserToken);
+            }
+            $this->em->persist($appUser);
+            $this->em->flush();
+            $andSent = $sendConfirmation ? ' and sent' : '';
+            $this->logger->info("Created $andSent password change request for user ".$appUser->getId().'.');
+        } catch (OswisException|InvalidTypeException $exception) {
+            $this->logger->error('User ('.$appUser->getId().') password change request FAILED. '.$exception->getMessage());
+            throw $exception;
+        }
     }
 
     /**
@@ -111,14 +167,11 @@ class AppUserService
         }
     }
 
-    public function getRepository(): AppUserRepository
-    {
-        return $this->appUserRepository;
-    }
-
     public function getDefaultAppUserType(): ?AppUserType
     {
-        return $this->appUserTypeService->getRepository()->findBy(['slug' => 'attendee'], [], 1)[0] ?? null;
+        $defaultAppUserType = $this->appUserTypeService->getRepository()->findBy(['slug' => 'attendee'], [], 1)[0];
+
+        return $defaultAppUserType instanceof AppUserType ? $defaultAppUserType : null;
     }
 
     /**
@@ -132,7 +185,11 @@ class AppUserService
         try {
             if (empty($appUser->getPassword())) {
                 $isRandom = empty($appUser->getPlainPassword());
-                $appUser->setPlainPassword($isRandom ? StringUtils::generatePassword() : $appUser->getPlainPassword(), $this->encoder, !$isRandom);
+                $appUser->setPlainPassword(
+                    $isRandom ? StringUtils::generatePassword() : $appUser->getPlainPassword(),
+                    $this->encoder,
+                    !$isRandom,
+                );
             }
             $appUser->activate();
             if ($sendConfirmation) {
@@ -142,7 +199,9 @@ class AppUserService
             $this->em->flush();
             $this->logger->info('Successfully activated user ('.$appUser->getId().').');
         } catch (OswisException $exception) {
-            $this->logger->error('User ('.$appUser->getId().') activation FAILED. '.$exception->getMessage());
+            $id = $appUser->getId();
+            $message = $exception->getMessage();
+            $this->logger->error("User ($id) activation FAILED. $message");
         }
     }
 
@@ -168,56 +227,6 @@ class AppUserService
             $this->logger->info('Created and sent activation request for user '.$appUser->getId().'.');
         } catch (OswisException|InvalidTypeException $exception) {
             $this->logger->error('User ('.$appUser->getId().') activation request FAILED. '.$exception->getMessage());
-            throw $exception;
-        }
-    }
-
-    public function alreadyExists(string $mail): bool
-    {
-        try {
-            return (bool)$this->findExisting($mail);
-        } catch (UserNotUniqueException) {
-            return true;
-        }
-    }
-
-    /**
-     * @param  string  $mail
-     *
-     * @return AppUser|null
-     * @throws UserNotUniqueException
-     */
-    public function findExisting(string $mail): ?AppUser
-    {
-        return $this->getRepository()->findOneByUsernameOrMail($mail, false);
-    }
-
-    /**
-     * @param  AppUser|null  $appUser
-     * @param  bool  $sendConfirmation
-     *
-     * @throws InvalidTypeException
-     * @throws NotFoundException
-     * @throws NotImplementedException
-     * @throws OswisException
-     * @throws UserNotFoundException
-     */
-    public function requestPasswordChange(?AppUser $appUser, bool $sendConfirmation): void
-    {
-        try {
-            if (null === $appUser) {
-                throw new UserNotFoundException();
-            }
-            $appUserToken = $this->appUserTokenService->create($appUser, AbstractToken::TYPE_PASSWORD_CHANGE, false);
-            if ($sendConfirmation) {
-                $this->appUserMailService->sendAppUserMail($appUser, self::PASSWORD_CHANGE_REQUEST, $appUserToken);
-            }
-            $this->em->persist($appUser);
-            $this->em->flush();
-            $andSent = $sendConfirmation ? ' and sent' : '';
-            $this->logger->info("Created $andSent password change request for user ".$appUser->getId().'.');
-        } catch (OswisException|InvalidTypeException $exception) {
-            $this->logger->error('User ('.$appUser->getId().') password change request FAILED. '.$exception->getMessage());
             throw $exception;
         }
     }
@@ -257,7 +266,7 @@ class AppUserService
      */
     public function processToken(string $token, int $appUserId, ?string $newPassword = null): void
     {
-        // TODO: Is it used somewhere?
+        // Is it used somewhere?
         $appUserToken = $this->getToken($token, $appUserId);
         if (null === $appUserToken) {
             throw new TokenInvalidException('zadaný token neexistuje');

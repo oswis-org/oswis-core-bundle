@@ -49,8 +49,8 @@ services:
         autowire: true
         public: true
         arguments:
-            - '@router.default'
-            - '@security.password_hasher'
+            - '@security.user_password_hasher'
+            - '@api_platform.router'
     OswisOrg\OswisCoreBundle\Security\WebUserAuthenticator:
         alias: oswis_org_oswis_core.web_user_authenticator
         public: true

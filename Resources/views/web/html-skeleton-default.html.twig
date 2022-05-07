@@ -14,7 +14,8 @@
         {% block html_meta_rss %}
             <link rel="alternate" type="application/rss+xml" href="{{ path('oswis_org_oswis_core_rss_xml') }}" title="RSS {{ oswis.web.name }}">
         {% endblock html_meta_rss %}
-        <meta name="description" content="{% block html_description %}{{ description|default(default_description|default(oswis.web.description)) }}{% endblock html_description %}">
+        <meta name="description"
+              content="{% block html_description %}{{ description|default(default_description|default(oswis.web.description)) }}{% endblock html_description %}">
         <meta name='author' content='{% block meta_author %}{{ author|default('Jakub Zak (https://jakubzak.cz)') }}{% endblock meta_author %}'>
         <meta name='copyright' content='{% block meta_copyright %}{{ copyright|default('Jakub Zak (https://jakubzak.cz)') }}{% endblock meta_copyright %}'>
         <meta name='generator' content='{% block meta_generator %}OSWIS (One Simple Web IS, https://owsis.org){% endblock meta_generator %}'>

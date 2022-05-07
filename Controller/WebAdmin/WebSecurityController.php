@@ -23,5 +23,6 @@ class WebSecurityController extends AbstractController
 
     public function logout(): void
     {
+        // Dummy method for logout action.
     }
 }

@@ -38,32 +38,74 @@ class Configuration implements ConfigurationInterface
 
     private function addGeneralConfig(ArrayNodeDefinition $rootNode): void
     {
-        $rootNode->children()->arrayNode('app')->info('General settings.')->addDefaultsIfNotSet()->children()->scalarNode('name')->info('Name of application.')->defaultValue(
-            'OSWIS'
-        )->example('John\'s IS')->end()?->scalarNode('url')->info('Base URL of app.')->defaultValue('https://oswis.org')->example('https://oswis.org')->end()?->scalarNode(
-            'name_short'
-        )->info('Shortened name of application.')->defaultValue('OSWIS')->example('JIS')?->end()?->scalarNode('name_long')->info('Long (full) name of application.')->defaultValue(
-            'One Simple Web IS'
-        )->example('John\'s personal information system')->end()?->scalarNode('description')->info('Description of application.')->defaultValue(
-            'Simple modular information system based on ApiPlatform.'
-        )->example('Personal information system used by John Doe for information management.')->end()?->scalarNode('version')->info(
-            'Version of application (semantic versioning, major.minor.patch).'
-        )->defaultValue('v0.0.1')->example('v1.2.3')->end()?->scalarNode('logo')->defaultValue('@images/logo.png')->info('Path to app logo.')->example(
-            ['@images/logo.png', '../assets/assets/images/logo.png']
-        )->end()?->scalarNode('portalName')->info('Name of portal application.')->defaultValue(
-            'OSWIS Portal'
-        )->example('John\'s Portal')->end()?->end()->end()->end();
+        $rootNode->children()
+                 ->arrayNode('app')
+                 ->info('General settings.')
+                 ->addDefaultsIfNotSet()
+                 ->children()
+                 ->scalarNode('name')
+                 ->info('Name of application.')
+                 ->defaultValue(
+                     'OSWIS'
+                 )
+                 ->example('John\'s IS')
+                 ->end()
+                 ?->scalarNode('url')
+                 ->info('Base URL of app.')
+                 ->defaultValue('https://oswis.org')
+                 ->example('https://oswis.org')
+                 ->end()
+                 ?->scalarNode(
+                     'name_short'
+                 )
+                 ->info('Shortened name of application.')
+                 ->defaultValue('OSWIS')
+                 ->example('JIS')
+                 ?->end()
+                 ?->scalarNode('name_long')
+                 ->info('Long (full) name of application.')
+                 ->defaultValue(
+                     'One Simple Web IS'
+                 )
+                 ->example('John\'s personal information system')
+                 ->end()
+                 ?->scalarNode('description')
+                 ->info('Description of application.')
+                 ->defaultValue(
+                     'Simple modular information system based on ApiPlatform.'
+                 )
+                 ->example('Personal information system used by John Doe for information management.')
+                 ->end()
+                 ?->scalarNode('version')
+                 ->info(
+                     'Version of application (semantic versioning, major.minor.patch).'
+                 )
+                 ->defaultValue('v0.0.1')
+                 ->example('v1.2.3')
+                 ->end()
+                 ?->scalarNode('logo')
+                 ->defaultValue('@images/logo.png')
+                 ->info('Path to app logo.')
+                 ->example(['@images/logo.png', '../assets/assets/images/logo.png'])
+                 ->end()
+                 ?->scalarNode('portalName')
+                 ->info('Name of portal application.')
+                 ->defaultValue(
+                     'OSWIS Portal'
+                 )
+                 ->example('John\'s Portal')
+                 ->end()
+                 ?->end()
+                 ->end()
+                 ->end();
     }
 
     private function addEmailConfig(NodeDefinition $rootNode): void
     {
         $rootNode->children() /// System e-mails settings.
-                 ->arrayNode('email')
-                 ->info('Sender of system e-mails.')
-                 ->addDefaultsIfNotSet()
-                 ->children()
-                 ->scalarNode('address')
-                 ->info('E-mail address of sender.')
+                 ->arrayNode('email')->info('Sender of system e-mails.')->addDefaultsIfNotSet()->children()->scalarNode('address')->info(
+                'E-mail address of sender.'
+            )
                  ->defaultValue(
                      'oswis@oswis.org'
                  )
@@ -118,60 +160,25 @@ class Configuration implements ConfigurationInterface
 
     private function addAdminConfig(NodeDefinition $rootNode): void
     {
-        $rootNode->children()
-                 ->arrayNode('admin')
-                 ->info('Info about main administrator.')
-                 ->addDefaultsIfNotSet()
-                 ->children()
-                 ->scalarNode('name')
-                 ->info('Name of main admin.')
-                 ->defaultValue(null)
-                 ->example('John Doe')
-                 ->end()
-                 ->scalarNode('email')
-                 ->info('E-mail address of administrator.')
-                 ->defaultValue(null)
-                 ->example('admin@oswis.org')
-                 ->end()
-                 ->scalarNode('web')
-                 ->info('Web of administrator.')
-                 ->defaultValue(null)
-                 ->example('https://oswis.org')
-                 ->end()
-                 ->scalarNode('phone')
-                 ->info(
-                     'Phone of administrator.'
-                 )
-                 ->defaultValue(null)
-                 ->example('+000 000 000 000')
-                 ->end()
-                 ->end()
-                 ->end();
+        $rootNode->children()->arrayNode('admin')->info('Info about main administrator.')->addDefaultsIfNotSet()->children()->scalarNode('name')->info(
+            'Name of main admin.'
+        )->defaultValue(null)->example('John Doe')->end()->scalarNode('email')->info('E-mail address of administrator.')->defaultValue(null)->example(
+            'admin@oswis.org'
+        )->end()->scalarNode('web')->info('Web of administrator.')->defaultValue(null)->example('https://oswis.org')->end()->scalarNode('phone')->info(
+            'Phone of administrator.'
+        )->defaultValue(null)->example('+000 000 000 000')->end()->end()->end();
     }
 
     private function addWebConfig(NodeDefinition $rootNode): void
     {
         $rootNode->children() /// Web settings.
-                 ->arrayNode('web')
-                 ->info('Web settings.')
-                 ->addDefaultsIfNotSet()
-                 ->children()
-                 ->scalarNode('name')
-                 ->info('Title of website.')
-                 ->defaultValue('One Simple Web IS')
-                 ->example('John\'s personal website')
-                 ->end()
-                 ->scalarNode('url')
-                 ->info('Base URL of website.')
-                 ->defaultValue('https://oswis.org')
-                 ->example('https://oswis.org')
-                 ->end()
-                 ->scalarNode('name_short')
-                 ->info('Shortened title of website.')
-                 ->defaultValue('OSWIS')
-                 ->example('John\'s web')
-                 ->end()
-                 ->scalarNode('name_long')
+                 ->arrayNode('web')->info('Web settings.')->addDefaultsIfNotSet()->children()->scalarNode('name')->info('Title of website.')->defaultValue(
+                'One Simple Web IS'
+            )->example('John\'s personal website')->end()->scalarNode('url')->info('Base URL of website.')->defaultValue('https://oswis.org')->example(
+                'https://oswis.org'
+            )->end()->scalarNode('name_short')->info('Shortened title of website.')->defaultValue('OSWIS')->example('John\'s web')->end()->scalarNode(
+                'name_long'
+            )
                  ->info(
                      'Long (full) title of application.'
                  )
@@ -234,12 +241,9 @@ class Configuration implements ConfigurationInterface
 
     private function addAngularAdmin(ArrayNodeDefinition $rootNode): void
     {
-        $rootNode->children()
-                 ->arrayNode('angular_admin')
-                 ->info('Settings for angular admin front-end.')
-                 ->addDefaultsIfNotSet()
-                 ->children()
-                 ->arrayNode('scripts')
+        $rootNode->children()->arrayNode('angular_admin')->info('Settings for angular admin front-end.')->addDefaultsIfNotSet()->children()->arrayNode(
+                'scripts'
+            )
                  ->arrayPrototype()
                  ->children()
                  ->scalarNode('name')

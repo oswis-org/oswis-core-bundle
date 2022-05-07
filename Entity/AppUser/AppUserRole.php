@@ -1,6 +1,8 @@
 <?php
 
 /**
+ * @noinspection PhpUnused
+ * @noinspection PropertyCanBePrivateInspection
  * @noinspection MethodShouldBeFinalInspection
  */
 declare(strict_types=1);
@@ -118,23 +120,21 @@ class AppUserRole implements NameableInterface
         $this->setParent($parent);
     }
 
-//    public function getChildren(): Collection
-//    {
-//        return $this->children ?? new ArrayCollection();
-//    }
     /**
      * Get names of all contained roles.
      */
     public function getAllRoleNames(): Collection
     {
-        return $this->getRoles()->map(fn(self $role) => $role->getRoleName());
+        return $this->getRoles()->map(fn(mixed $role) => $role instanceof AppUserRole ? $role->getRoleName() : null);
     }
 
     /**
      * Get all contained roles.
+     * @return Collection<\OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserRole>
      */
     public function getRoles(): Collection
     {
+        /** @var Collection<\OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserRole> $roles */
         $roles = new ArrayCollection([$this]);
         foreach ($this->getParent()?->getRoles() ?? new ArrayCollection() as $role) {
             if (!$roles->contains($role)) {

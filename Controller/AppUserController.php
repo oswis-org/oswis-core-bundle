@@ -1,6 +1,7 @@
 <?php
 
 /**
+ * @noinspection PhpUnused
  * @noinspection MethodShouldBeFinalInspection
  */
 declare(strict_types=1);
@@ -33,8 +34,11 @@ use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 class AppUserController extends AbstractController
 {
+    public const TEMPLATE_FORM = '@OswisOrgOswisCore/web/pages/form.html.twig';
+    public const TEMPLATE_MESSAGE = '@OswisOrgOswisCore/web/pages/message.html.twig';
+
     public function __construct(
-        private AppUserService $appUserService,
+        private readonly AppUserService $appUserService,
         protected AppUserDefaultsService $appUserDefaultsService,
         protected OswisCoreSettingsProvider $coreSettings
     ) {
@@ -68,7 +72,7 @@ class AppUserController extends AbstractController
             return $this->passwordChangeRequested();
         }
 
-        return $this->render('@OswisOrgOswisCore/web/pages/form.html.twig', [
+        return $this->render(self::TEMPLATE_FORM, [
             'form'  => $form->createView(),
             'title' => 'Změna hesla',
         ]);
@@ -76,7 +80,7 @@ class AppUserController extends AbstractController
 
     public function passwordChangeRequested(): Response
     {
-        return $this->render('@OswisOrgOswisCore/web/pages/message.html.twig', [
+        return $this->render(self::TEMPLATE_MESSAGE, [
             'title'   => 'Žádost o změnu hesla odeslána!',
             'message' => 'Žádost o změnu hesla u uživatelského účtu byla úspěšně zpracována a na e-mail byl odeslán odkaz pro jeho změnu.',
         ]);
@@ -110,7 +114,7 @@ class AppUserController extends AbstractController
             return $this->userActivationRequested();
         }
 
-        return $this->render('@OswisOrgOswisCore/web/pages/form.html.twig', [
+        return $this->render(self::TEMPLATE_FORM, [
             'form'  => $form->createView(),
             'title' => 'Aktivace účtu',
         ]);
@@ -118,7 +122,7 @@ class AppUserController extends AbstractController
 
     public function userActivationRequested(): Response
     {
-        return $this->render('@OswisOrgOswisCore/web/pages/message.html.twig', [
+        return $this->render(self::TEMPLATE_MESSAGE, [
             'title'   => 'Žádost o aktivaci účtu odeslána!',
             'message' => 'Žádost o aktivaci uživatelského účtu byla úspěšně zpracována a na e-mail byl odeslán odkaz pro její provedení.',
         ]);
@@ -162,14 +166,14 @@ class AppUserController extends AbstractController
      */
     public function processTokenActivation(AppUserToken $appUserToken): Response
     {
-        $this->appUserService->activate($appUserToken->getAppUser(), true);
+        $this->appUserService->activate($appUserToken->getAppUser());
 
         return $this->userActivated();
     }
 
     public function userActivated(): Response
     {
-        return $this->render('@OswisOrgOswisCore/web/pages/message.html.twig', [
+        return $this->render(self::TEMPLATE_MESSAGE, [
             'title'   => 'Účet aktivován!',
             'message' => 'Uživatelský účet byl úspěšně aktivován.',
         ]);
@@ -204,7 +208,7 @@ class AppUserController extends AbstractController
             return $this->passwordChanged();
         }
 
-        return $this->render('@OswisOrgOswisCore/web/pages/form.html.twig', [
+        return $this->render(self::TEMPLATE_FORM, [
             'form'  => $form->createView(),
             'title' => 'Změna hesla',
         ]);
@@ -212,7 +216,7 @@ class AppUserController extends AbstractController
 
     public function passwordChanged(): Response
     {
-        return $this->render('@OswisOrgOswisCore/web/pages/message.html.twig', [
+        return $this->render(self::TEMPLATE_MESSAGE, [
             'title'   => 'Heslo změněno!',
             'message' => 'Heslo u uživatelského účtu bylo úspěšně změněno.',
         ]);

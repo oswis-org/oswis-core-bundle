@@ -27,7 +27,7 @@
     }
   ],
   "require": {
-    "php": ">=8.0",
+    "php": ">=8.1",
     "ext-calendar": "*",
     "ext-ctype": "*",
     "ext-exif": "*",
@@ -114,7 +114,10 @@
     "preferred-install": {
       "*": "dist"
     },
-    "sort-packages": true
+    "sort-packages": true,
+    "platform": {
+      "php": "8.1"
+    }
   },
   "scripts": {
     "phpstan": "vendor/bin/phpstan analyse",

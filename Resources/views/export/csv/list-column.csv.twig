@@ -1,6 +1,6 @@
 {%- if row[column.name]|default -%}
     {%- if column.type == 'x' or column.type == 'X' -%}
-        X
+X
     {%- elseif column.type == 'bool' or column.type == 'boolean' -%}
         {{- row[column.name] ? 1 : 0 -}}
     {%- elseif column.type == 'date' -%}

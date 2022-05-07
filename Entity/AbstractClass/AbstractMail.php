@@ -112,18 +112,27 @@ abstract class AbstractMail implements BasicInterface
         $this->setMessageID();
     }
 
+    /**
+     * @param  \Doctrine\Common\Collections\Collection<\OswisOrg\OswisCoreBundle\Entity\AbstractClass\AbstractMail>  $sortedPastMails
+     *
+     * @return void
+     */
     public function setPastMails(Collection $sortedPastMails): void
     {
         try {
             $templatedMail = $this->getTemplatedEmail();
-        } catch (OswisException $e) {
+        } catch (OswisException) {
             return;
         }
         $headers = $templatedMail->getHeaders();
         if (($previousMail = $sortedPastMails->first() ?: null) && $previousMail instanceof AppUserMail && !empty($previousMail->getMessageID())) {
             $headers->addIdHeader('In-Reply-To', $previousMail->getMessageID());
         }
-        $ids = $sortedPastMails->filter(fn(AbstractMail $mail) => !empty($mail->getMessageID()))->map(fn(AbstractMail $mail) => $mail->getMessageID());
+        $ids = $sortedPastMails->filter(
+            fn(mixed $mail) => $mail instanceof AbstractMail && !empty($mail->getMessageID()),
+        )->map(
+            fn(mixed $mail) => $mail instanceof AbstractMail ? $mail->getMessageID() : null,
+        );
         if ($ids->count() > 0) {
             $headers->addIdHeader('References', $ids->toArray());
         }
@@ -169,7 +178,7 @@ abstract class AbstractMail implements BasicInterface
 
                 return;
             }
-        } catch (OswisException|\Symfony\Component\Mime\Exception\LogicException $e) {
+        } catch (OswisException|\Symfony\Component\Mime\Exception\LogicException) {
         }
         $this->messageID = $messageID;
     }

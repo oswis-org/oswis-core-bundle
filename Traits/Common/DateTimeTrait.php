@@ -30,7 +30,7 @@ trait DateTimeTrait
             if (null !== $this->getDateTime()) {
                 $ago = $this->getDateTime()->diff(new DateTime());
 
-                return $ago !== null ? (float)($decimal ? $ago->days : $ago->d) : null;
+                return (float)($decimal ? $ago->days : $ago->d);
             }
 
             return null;

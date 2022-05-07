@@ -70,7 +70,8 @@ final class OpenApiFactory implements OpenApiFactoryInterface
                 ],
             ])
         );
-        $operation = new Operation('postCredentialsItem',
+        $operation = new Operation(
+            'postCredentialsItem',
             ['AppUser API Login'],
             $responses,
             'Get JWT token for API authentication.',
