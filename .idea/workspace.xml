@@ -14,36 +14,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="Did some refactoring and updated dependencies.">
-      <change afterPath="$PROJECT_DIR$/.idea/GitLink.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/redis-manager-config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/git_toolbox_prj.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/git_toolbox_prj.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/oswis-core-bundle.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/oswis-core-bundle.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+    <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/AppUserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/AppUserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/WebAdmin/WebSecurityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/WebAdmin/WebSecurityController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DependencyInjection/Configuration.php" beforeDir="false" afterPath="$PROJECT_DIR$/DependencyInjection/Configuration.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractAppUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractAppUser.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractMail.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractMail.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AppUser/AppUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUser/AppUser.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AppUser/AppUserRole.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUser/AppUserRole.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/NonPersistent/SiteMapItem.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/NonPersistent/SiteMapItem.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/Revisions/AbstractRevisionContainer.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Revisions/AbstractRevisionContainer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OpenApi/OpenApiFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/OpenApi/OpenApiFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/config/services.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/e-mail/pages/message.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/e-mail/pages/message.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/export/csv/list-column.csv.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/export/csv/list-column.csv.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/web/html-skeleton-default.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/html-skeleton-default.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Security/WebUserAuthenticator.php" beforeDir="false" afterPath="$PROJECT_DIR$/Security/WebUserAuthenticator.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/AppUserService.php" beforeDir="false" afterPath="$PROJECT_DIR$/Service/AppUserService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Common/DateTimeTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/DateTimeTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Common/NameableTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/NameableTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Utils/FileUtils.php" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/FileUtils.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -280,21 +253,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "php.override.implement.member.chooser.php.doc": "NONE",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "reference.webide.settings.project.settings.php",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;php.override.implement.member.chooser.php.doc&quot;: &quot;NONE&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.webide.settings.project.settings.php&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/EventSubscriber/LexikJwt" />
@@ -984,14 +957,8 @@
       <workItem from="1651596788613" duration="638000" />
       <workItem from="1651777659723" duration="69000" />
       <workItem from="1651785610885" duration="7906000" />
-      <workItem from="1651911326688" duration="3649000" />
-    </task>
-    <task id="LOCAL-00765" summary="Some fixes, updates and changes.">
-      <created>1600595272765</created>
-      <option name="number" value="00765" />
-      <option name="presentableId" value="LOCAL-00765" />
-      <option name="project" value="LOCAL" />
-      <updated>1600595272765</updated>
+      <workItem from="1651911326688" duration="5614000" />
+      <workItem from="1652019374706" duration="822000" />
     </task>
     <task id="LOCAL-00766" summary="Some fixes, updates and changes.">
       <created>1600601280097</created>
@@ -1329,7 +1296,14 @@
       <option name="project" value="LOCAL" />
       <updated>1641243311718</updated>
     </task>
-    <option name="localTasksCounter" value="814" />
+    <task id="LOCAL-00814" summary="Did some refactoring and updated dependencies.">
+      <created>1651915225400</created>
+      <option name="number" value="00814" />
+      <option name="presentableId" value="LOCAL-00814" />
+      <option name="project" value="LOCAL" />
+      <updated>1651915225401</updated>
+    </task>
+    <option name="localTasksCounter" value="815" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
