@@ -122,7 +122,7 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
     {
         $config = [
             'enable_authenticator_manager' => true,
-            'encoders'                     => [
+            'password_hashers' => [
                 AppUser::class => [
                     'algorithm' => 'auto',
                 ],
@@ -132,7 +132,7 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
                     'id' => AppUserProvider::class,
                 ],
             ],
-            'firewalls'                    => [
+            'firewalls'        => [
                 'dev'               => [
                     'pattern'  => '^/(_(profiler|wdt)|css|images|js)/',
                     'security' => false,
@@ -159,13 +159,11 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
                     'jwt'       => [],
                 ],
                 'main'              => [
-                    'provider'  => 'app_user_provider',
-                    'stateless' => false,
-                    'lazy'      => true,
-                    'guard'     => [
-                        'authenticators' => [WebUserAuthenticator::class],
-                    ],
-                    'logout'    => ['path' => 'oswis_org_oswis_core_web_admin_logout'],
+                    'provider'              => 'app_user_provider',
+                    'stateless'             => false,
+                    'lazy'                  => true,
+                    'custom_authenticators' => [WebUserAuthenticator::class],
+                    'logout'                => ['path' => 'oswis_org_oswis_core_web_admin_logout'],
                 ],
             ],
             'access_control'               => [
