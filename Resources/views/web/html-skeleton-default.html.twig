@@ -96,6 +96,16 @@
                 <style>{{ css|default }}</style>{% endautoescape %}
         {% endif %}
     {% endblock stylesheets %}
+    {% block javascripts %}
+        {% for jsFile in encore_entry_js_files('app') %}
+        <script src="{{ preload(asset(jsFile), {as: 'script'}) }}" rel="preload" type="text/javascript"></script>
+        {% endfor %}
+        {# {{ encore_entry_script_tags('app') }} #}
+        {% if js|default %}
+        {% autoescape false %}
+        <script>{{ js|default }}</script>{% endautoescape %}
+        {% endif %}
+    {% endblock javascripts %}
 </head>
 {% block html_inner %}
     <body>
@@ -116,16 +126,6 @@
         <div id=scroll-top-button class="d-print-none"><i class="far fa-arrow-alt-circle-up"></i></div>
     {% endblock body_scroll_to_top %}
         {% block body_end %}{% endblock body_end %}
-    {% block javascripts %}
-        {% for jsFile in encore_entry_js_files('app') %}
-        <script src="{{ preload(asset(jsFile), {as: 'script'}) }}" rel="preload" type="text/javascript"></script>
-        {% endfor %}
-        {# {{ encore_entry_script_tags('app') }} #}
-        {% if js|default %}
-        {% autoescape false %}
-        <script>{{ js|default }}</script>{% endautoescape %}
-        {% endif %}
-    {% endblock javascripts %}
     {% block javascript_hinclude %}
         <script src="{{ preload('https://cdn.jsdelivr.net/npm/Hinclude@1.2.0/hinclude.js', {as: 'script'}) }}" rel="preload" type="text/javascript"></script>
     {% endblock javascript_hinclude %}
