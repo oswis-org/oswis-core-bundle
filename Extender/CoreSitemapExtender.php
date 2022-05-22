@@ -29,9 +29,7 @@ class CoreSitemapExtender implements SiteMapExtenderInterface
     {
         try {
             return new ArrayCollection([
-                new SiteMapItem(
-                    $this->urlGenerator->generate('oswis_org_oswis_core_homepage_action'), SiteMapItem::CHANGE_FREQUENCY_DAILY, null, 1.000
-                ),
+                new SiteMapItem($this->urlGenerator->generate('oswis_org_oswis_core_homepage_action'), SiteMapItem::CHANGE_FREQUENCY_DAILY, null, 1.000),
                 new SiteMapItem($this->urlGenerator->generate('oswis_org_oswis_core_gdpr_action')),
                 new SiteMapItem($this->urlGenerator->generate('oswis_org_oswis_core_robots_txt')),
                 new SiteMapItem($this->urlGenerator->generate('oswis_org_oswis_core_portal')),

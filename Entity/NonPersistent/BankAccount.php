@@ -88,13 +88,11 @@ class BankAccount
     private function getQrPayment(?int $value = 0, ?string $variableSymbol = '', ?string $comment = ''): ?QrPayment
     {
         try {
-            return new QrPayment(
-                new CzechIbanAdapter(''.$this->getAccountWithoutBankCode(), ''.$this->getBankCode()), [
+            return new QrPayment(new CzechIbanAdapter(''.$this->getAccountWithoutBankCode(), ''.$this->getBankCode()), [
                 QrPaymentOptions::VARIABLE_SYMBOL => $variableSymbol,
                 QrPaymentOptions::AMOUNT          => $value,
                 QrPaymentOptions::COMMENT         => $comment,
-            ],
-            );
+            ],);
         } catch (InvalidArgumentException|QrPaymentException) {
             return null;
         }

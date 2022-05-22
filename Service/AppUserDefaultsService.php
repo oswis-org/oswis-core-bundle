@@ -41,16 +41,8 @@ class AppUserDefaultsService
      */
     public function registerRoot(): void
     {
-        $role = $this->appUserRoleService->create(
-            new AppUserRole(
-                new Nameable('Superuživatel', 'Root', null, null, 'root'), 'ROOT'
-            )
-        );
-        $type = $this->appUserTypeService->create(
-            new AppUserType(
-                new Nameable('Root', null, null, null, 'root'), $role, true
-            )
-        );
+        $role = $this->appUserRoleService->create(new AppUserRole(new Nameable('Superuživatel', 'Root', null, null, 'root'), 'ROOT'));
+        $type = $this->appUserTypeService->create(new AppUserType(new Nameable('Root', null, null, null, 'root'), $role, true));
         $fullName = $this->oswisCoreSettings->getAdmin()['name'] ?? $this->oswisCoreSettings->getEmail()['name'];
         $email = $this->oswisCoreSettings->getAdmin()['email'] ?? $this->oswisCoreSettings->getEmail()['email'];
         $adminUser = new AppUser($fullName, 'admin', $email, null, $type);

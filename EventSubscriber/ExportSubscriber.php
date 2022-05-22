@@ -51,13 +51,8 @@ class ExportSubscriber extends AbstractExportSubscriber
         $data = [
             'items' => $items,
         ];
-        $event->setResponse(
-            $this->getExportResponse(
-                'oswis-pdf-export.pdf',
-                'application/pdf',
-                $this->encodeData($this->pdfGenerator->getPdfAsString(AppUser::getPdfListConfig(false, $data)))
-            )
-        );
+        $event->setResponse($this->getExportResponse('oswis-pdf-export.pdf', 'application/pdf',
+            $this->encodeData($this->pdfGenerator->getPdfAsString(AppUser::getPdfListConfig(false, $data)))));
     }
 
     public function exportCsv(ViewEvent $event, Collection $items): void

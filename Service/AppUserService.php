@@ -185,11 +185,7 @@ class AppUserService
         try {
             if (empty($appUser->getPassword())) {
                 $isRandom = empty($appUser->getPlainPassword());
-                $appUser->setPlainPassword(
-                    $isRandom ? StringUtils::generatePassword() : $appUser->getPlainPassword(),
-                    $this->encoder,
-                    !$isRandom,
-                );
+                $appUser->setPlainPassword($isRandom ? StringUtils::generatePassword() : $appUser->getPlainPassword(), $this->encoder, !$isRandom,);
             }
             $appUser->activate();
             if ($sendConfirmation) {

@@ -26,7 +26,6 @@
         {% block meta_tags_inner %}
             {% block meta_dns_prefetch %}
                 <link rel="dns-prefetch" href="{{ preconnect(dns_prefetch('https://www.googletagmanager.com')) }}">
-                <link rel="dns-prefetch" href="{{ preconnect(dns_prefetch('https://cdnjs.cloudflare.com')) }}">
                 <link rel="dns-prefetch" href="{{ preconnect(dns_prefetch('https://www.google-analytics.com')) }}">
             {% endblock meta_dns_prefetch %}
             {% block meta_geo %}
@@ -44,13 +43,11 @@
             {% block meta_tags_icons %}
                 <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/images/icons/apple-touch-icon.png') }}">
                 <link rel="icon" type="image/x-icon" href="{{ asset('assets/images/icons/favicon.ico') }}">
-                <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/images/icons/favicon-32x32.png') }}">
-                <link rel="icon" type="image/png" sizes="194x194" href="{{ asset('assets/images/icons/favicon-194x194.png') }}">
                 <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('assets/images/icons/android-chrome-192x192.png') }}">
+                <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/images/icons/favicon-32x32.png') }}">
                 <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/images/icons/favicon-16x16.png') }}">
                 <link rel="mask-icon" href="{{ asset('assets/images/icons/safari-pinned-tab.svg') }}" color="{{ block('meta_theme_color') }}">
-                <link rel="shortcut icon" href="{{ asset('assets/images/icons/favicon.ico') }}">
-                <meta name="msapplication-TileImage" content="{{ asset('assets/images/icons/mstile-144x144.png') }}">
+                <meta name="msapplication-TileImage" content="{{ asset('assets/images/icons/mstile-150x150.png') }}">
             {% endblock meta_tags_icons %}
             {% block meta_tags_web_manifest %}
                 <link rel="manifest" href="{{ path('oswis_org_oswis_core_site_web_manifest') }}">
@@ -98,7 +95,7 @@
     {% endblock stylesheets %}
     {% block javascripts %}
         {% for jsFile in encore_entry_js_files('app') %}
-        <script src="{{ preload(asset(jsFile), {as: 'script'}) }}" rel="preload" type="text/javascript"></script>
+        <script src="{{ preload(asset(jsFile), {as: 'script'}) }}" rel="preload" type="text/javascript" defer></script>
         {% endfor %}
         {# {{ encore_entry_script_tags('app') }} #}
         {% if js|default %}

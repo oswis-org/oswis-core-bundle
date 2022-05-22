@@ -56,9 +56,7 @@ class AppUserRepository extends ServiceEntityRepository implements UserLoaderInt
     {
         $builder = $this->createQueryBuilder('app_user')->where('app_user.email = :email')->setParameter('email', $email);
 
-        return new ArrayCollection(
-            is_array($result = $builder->getQuery()->getResult(AbstractQuery::HYDRATE_OBJECT)) ? $result : [],
-        );
+        return new ArrayCollection(is_array($result = $builder->getQuery()->getResult(AbstractQuery::HYDRATE_OBJECT)) ? $result : [],);
     }
 
     final public function findOneBy(array $criteria, array $orderBy = null): ?AppUser

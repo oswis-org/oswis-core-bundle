@@ -61,29 +61,16 @@ final class OpenApiFactory implements OpenApiFactoryInterface
                 ],
             ],
         ];
-        $requestBody = new RequestBody(
-            'Create new JWT Token', new ArrayObject([
-                'application/json' => [
-                    'schema' => [
-                        '$ref' => '#/components/schemas/Credentials',
-                    ],
+        $requestBody = new RequestBody('Create new JWT Token', new ArrayObject([
+            'application/json' => [
+                'schema' => [
+                    '$ref' => '#/components/schemas/Credentials',
                 ],
-            ])
-        );
-        $operation = new Operation(
-            'postCredentialsItem',
-            ['AppUser API Login'],
-            $responses,
-            'Get JWT token for API authentication.',
-            'Get JWT token for API authentication.',
-            null,
-            [],
-            $requestBody,
-        );
-        $openApi->getPaths()->addPath(
-            '/api/login',
-            new PathItem(null, null, null, null, null, $operation)
-        );
+            ],
+        ]));
+        $operation = new Operation('postCredentialsItem', ['AppUser API Login'], $responses, 'Get JWT token for API authentication.',
+            'Get JWT token for API authentication.', null, [], $requestBody,);
+        $openApi->getPaths()->addPath('/api/login', new PathItem(null, null, null, null, null, $operation));
 
         return $openApi;
     }
