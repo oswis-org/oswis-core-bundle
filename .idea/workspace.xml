@@ -16,7 +16,8 @@
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/Security/RefreshToken.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Security/RefreshToken.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DependencyInjection/Configuration.php" beforeDir="false" afterPath="$PROJECT_DIR$/DependencyInjection/Configuration.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Provider/OswisCoreSettingsProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/Provider/OswisCoreSettingsProvider.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -965,14 +966,7 @@
       <workItem from="1652436124439" duration="1247000" />
       <workItem from="1652614598907" duration="1928000" />
       <workItem from="1652777241794" duration="1467000" />
-      <workItem from="1653213053261" duration="10654000" />
-    </task>
-    <task id="LOCAL-00771" summary="Some small fixes and reformat of code.">
-      <created>1600691943937</created>
-      <option name="number" value="00771" />
-      <option name="presentableId" value="LOCAL-00771" />
-      <option name="project" value="LOCAL" />
-      <updated>1600691943937</updated>
+      <workItem from="1653213053261" duration="11000000" />
     </task>
     <task id="LOCAL-00772" summary="Added nullable option to getters and setters.">
       <created>1600693146449</created>
@@ -1310,7 +1304,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653297828148</updated>
     </task>
-    <option name="localTasksCounter" value="820" />
+    <task id="LOCAL-00820" summary="Updated dependencies and configuration.">
+      <created>1653299110213</created>
+      <option name="number" value="00820" />
+      <option name="presentableId" value="LOCAL-00820" />
+      <option name="project" value="LOCAL" />
+      <updated>1653299110213</updated>
+    </task>
+    <option name="localTasksCounter" value="821" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -89,7 +89,7 @@ class OswisCoreSettingsProvider
 
     final public function getCoreAppNameShort(): string
     {
-        return 'OSWIS';
+        return $this->getCoreAppName();
     }
 
     final public function getCoreAppNameLong(): string
