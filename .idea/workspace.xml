@@ -14,17 +14,24 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Api/Dto/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Api/EventSubscriber/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="Updated dependencies and configuration.">
+      <change afterPath="$PROJECT_DIR$/Entity/Security/RefreshToken.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/oswis-core-bundle.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/oswis-core-bundle.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api/Dto/AppUserActionRequest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api/EventSubscriber/AppUserActionSubscriber.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/Web/SiteWebManifestController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/Web/SiteWebManifestController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventSubscriber/AppUserSubscriber.php" beforeDir="false" afterPath="$PROJECT_DIR$/EventSubscriber/AppUserSubscriber.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/web/browserconfig.xml.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/browserconfig.xml.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/web/html-skeleton-default.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/html-skeleton-default.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controller/AbstractClass/AbstractFileAction.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/AbstractClass/AbstractFileAction.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DependencyInjection/OswisOrgOswisCoreExtension.php" beforeDir="false" afterPath="$PROJECT_DIR$/DependencyInjection/OswisOrgOswisCoreExtension.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/NonPersistent/BankAccount.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/NonPersistent/BankAccount.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/Revisions/AbstractRevision.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Revisions/AbstractRevision.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Form/AbstractClass/AbstractFileType.php" beforeDir="false" afterPath="$PROJECT_DIR$/Form/AbstractClass/AbstractFileType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/config/routes.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Common/DateRangeTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/DateRangeTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Common/TypeTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/TypeTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Twig/Extension/ImageExtension.php" beforeDir="false" afterPath="$PROJECT_DIR$/Twig/Extension/ImageExtension.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Utils/DateTimeUtils.php" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/DateTimeUtils.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Utils/StringUtils.php" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/StringUtils.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,7 +143,6 @@
       <path value="$PROJECT_DIR$/vendor/paragonie/random_compat" />
       <path value="$PROJECT_DIR$/vendor/php-console/php-console" />
       <path value="$PROJECT_DIR$/vendor/php-cs-fixer/diff" />
-      <path value="$PROJECT_DIR$/vendor/php-http/message-factory" />
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-common" />
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-docblock" />
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/type-resolver" />
@@ -145,7 +151,6 @@
       <path value="$PROJECT_DIR$/vendor/psr/cache" />
       <path value="$PROJECT_DIR$/vendor/psr/container" />
       <path value="$PROJECT_DIR$/vendor/psr/event-dispatcher" />
-      <path value="$PROJECT_DIR$/vendor/psr/http-message" />
       <path value="$PROJECT_DIR$/vendor/psr/link" />
       <path value="$PROJECT_DIR$/vendor/psr/log" />
       <path value="$PROJECT_DIR$/vendor/psr/simple-cache" />
@@ -200,7 +205,6 @@
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php56" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php70" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php72" />
-      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php73" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php74" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php80" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php81" />
@@ -247,6 +251,8 @@
       <path value="$PROJECT_DIR$/vendor/webimpress/safe-writer" />
       <path value="$PROJECT_DIR$/vendor/webmozart/assert" />
       <path value="$PROJECT_DIR$/vendor/willdurand/negotiation" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/vendor/php-http/message-factory" />
     </include_path>
   </component>
   <component name="ProblemsViewState">
@@ -974,14 +980,7 @@
       <workItem from="1652436124439" duration="1247000" />
       <workItem from="1652614598907" duration="1928000" />
       <workItem from="1652777241794" duration="1467000" />
-      <workItem from="1653213053261" duration="686000" />
-    </task>
-    <task id="LOCAL-00769" summary="Fixed property names.">
-      <created>1600691699506</created>
-      <option name="number" value="00769" />
-      <option name="presentableId" value="LOCAL-00769" />
-      <option name="project" value="LOCAL" />
-      <updated>1600691699506</updated>
+      <workItem from="1653213053261" duration="9537000" />
     </task>
     <task id="LOCAL-00770" summary="Fixed property names.">
       <created>1600691719539</created>
@@ -1319,7 +1318,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652096520501</updated>
     </task>
-    <option name="localTasksCounter" value="818" />
+    <task id="LOCAL-00818" summary="Moved javascripts to head (https://symfony.com/blog/moving-script-inside-head-and-the-defer-attribute).">
+      <created>1653213810067</created>
+      <option name="number" value="00818" />
+      <option name="presentableId" value="LOCAL-00818" />
+      <option name="project" value="LOCAL" />
+      <updated>1653213810067</updated>
+    </task>
+    <option name="localTasksCounter" value="819" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1368,7 +1374,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Fixed type of property (int to float)." />
     <MESSAGE value="Reformat..." />
     <MESSAGE value="Update..." />
     <MESSAGE value="Changed ApiPlatform's &quot;access_control&quot; attribute to &quot;security&quot;." />
@@ -1393,7 +1398,8 @@
     <MESSAGE value="Did some refactoring and updated dependencies." />
     <MESSAGE value="Updated to Symfony 6." />
     <MESSAGE value="Moved javascripts to head (https://symfony.com/blog/moving-script-inside-head-and-the-defer-attribute)." />
-    <option name="LAST_COMMIT_MESSAGE" value="Moved javascripts to head (https://symfony.com/blog/moving-script-inside-head-and-the-defer-attribute)." />
+    <MESSAGE value="Updated dependencies and configuration." />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated dependencies and configuration." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

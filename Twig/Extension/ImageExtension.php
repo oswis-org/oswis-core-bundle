@@ -75,14 +75,6 @@ final class ImageExtension extends AbstractExtension
         return $this->getImageSize($imagePath)[0];
     }
 
-    private function getImageSize(?string $path = null): array
-    {
-        $path = $this->getPath($path);
-        $imageSize = !empty($path) ? getimagesize($path) : null;
-
-        return is_array($imageSize) ? $imageSize : [null, null, null, null];
-    }
-
     public function getPath(?string $imagePath = null): ?string
     {
         try {
@@ -151,5 +143,13 @@ final class ImageExtension extends AbstractExtension
     public function getImageMimeType(?string $imagePath = null): ?string
     {
         return @image_type_to_mime_type((int)$this->getImageTypeConstant($imagePath)) ?: null;
+    }
+
+    private function getImageSize(?string $path = null): array
+    {
+        $path = $this->getPath($path);
+        $imageSize = !empty($path) ? getimagesize($path) : null;
+
+        return is_array($imageSize) ? $imageSize : [null, null, null, null];
     }
 }

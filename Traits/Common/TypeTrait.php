@@ -26,34 +26,6 @@ trait TypeTrait
      */
     protected ?string $type = null;
 
-    public function isType(?string $type): bool
-    {
-        return $this->getType() === $type;
-    }
-
-    public function getType(): ?string
-    {
-        try {
-            self::checkType($this->type);
-        } catch (Exception) {
-            return null;
-        }
-
-        return $this->type;
-    }
-
-    /**
-     * @param  string|null  $type
-     *
-     * @throws InvalidTypeException
-     */
-    public function setType(?string $type): void
-    {
-        $type = empty($type) ? null : $type;
-        self::checkType($type);
-        $this->type = $type;
-    }
-
     /**
      * @param  string|null  $typeName
      *
@@ -81,5 +53,33 @@ trait TypeTrait
     public static function getAllowedTypesCustom(): array
     {
         return [];
+    }
+
+    public function isType(?string $type): bool
+    {
+        return $this->getType() === $type;
+    }
+
+    public function getType(): ?string
+    {
+        try {
+            self::checkType($this->type);
+        } catch (Exception) {
+            return null;
+        }
+
+        return $this->type;
+    }
+
+    /**
+     * @param  string|null  $type
+     *
+     * @throws InvalidTypeException
+     */
+    public function setType(?string $type): void
+    {
+        $type = empty($type) ? null : $type;
+        self::checkType($type);
+        $this->type = $type;
     }
 }

@@ -7,6 +7,7 @@ namespace OswisOrg\OswisCoreBundle\DependencyInjection;
 use Exception;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserRole;
+use OswisOrg\OswisCoreBundle\Entity\Security\RefreshToken;
 use OswisOrg\OswisCoreBundle\Interfaces\Extender\UpdateExtenderInterface;
 use OswisOrg\OswisCoreBundle\Interfaces\Web\RssExtenderInterface;
 use OswisOrg\OswisCoreBundle\Interfaces\Web\SiteMapExtenderInterface;
@@ -25,6 +26,31 @@ use function dirname;
 
 class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionInterface
 {
+    /**
+     * This work-around allows overriding of other bundles templates by OswisCore.
+     *
+     * @param  ContainerBuilder  $container
+     * @param  array  $bundleNames
+     */
+    final public static function prependForBundleTemplatesOverride(ContainerBuilder $container, array $bundleNames): void
+    {
+        $twigConfigs = $container->getExtensionConfig('twig');
+        $paths = [];
+        foreach ($twigConfigs as $twigConfig) {
+            if (isset($twigConfig['paths'])) {
+                $paths += $twigConfig['paths'];
+            }
+        }
+        foreach ($bundleNames as $bundleName) {
+            $paths['templates/bundles/'.$bundleName.'Bundle/'] = $bundleName;
+            $paths[dirname(__DIR__).'/Resources/views/bundles/'.$bundleName.'Bundle/'] = $bundleName;
+        }
+        $container->prependExtensionConfig('twig', [
+            'paths'        => $paths,
+            'default_path' => '%kernel.project_dir%/templates',
+        ]);
+    }
+
     /**
      * Loads a specific configuration.
      *
@@ -46,6 +72,23 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
         $container->registerForAutoconfiguration(UpdateExtenderInterface::class)->addTag('oswis.update_extender');
     }
 
+    final public function prepend(ContainerBuilder $container): void
+    {
+        try {
+            $configs = $container->getExtensionConfig($this->getAlias());
+        } catch (BadMethodCallException) {
+            $configs = [];
+        }
+        $config = $this->processConfiguration(new Configuration(), $configs);
+        $this->prependTwig($container);
+        $this->prependFramework($container);
+        $this->prependSecurity($container);
+        $this->prependJwtRefresh($container);
+        $this->prependNelmioCors($container);
+        $this->prependApiPlatform($container, $config);
+        self::prependForBundleTemplatesOverride($container, ['Twig']);
+    }
+
     /**
      * @throws ServiceNotFoundException
      */
@@ -58,22 +101,6 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
         $definition->setArgument(3, $config['web']);
         $definition->setArgument(4, $config['admin_ips']);
         $definition->setArgument(5, $config['angular_admin']);
-    }
-
-    final public function prepend(ContainerBuilder $container): void
-    {
-        try {
-            $configs = $container->getExtensionConfig($this->getAlias());
-        } catch (BadMethodCallException) {
-            $configs = [];
-        }
-        $config = $this->processConfiguration(new Configuration(), $configs);
-        $this->prependTwig($container);
-        $this->prependFramework($container);
-        $this->prependSecurity($container);
-        $this->prependNelmioCors($container);
-        $this->prependApiPlatform($container, $config);
-        self::prependForBundleTemplatesOverride($container, ['Twig']);
     }
 
     private function prependTwig(ContainerBuilder $container): void
@@ -157,6 +184,9 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
                     'stateless' => true,
                     'provider'  => 'app_user_provider',
                     'jwt'       => [],
+                    'logout'    => [
+                        'path' => 'api_token_invalidate',
+                    ],
                 ],
                 'main'              => [
                     'provider'              => 'app_user_provider',
@@ -194,6 +224,13 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
             'paths'    => [
                 '^/' => null,
             ],
+        ]);
+    }
+
+    private function prependJwtRefresh(ContainerBuilder $container): void
+    {
+        $container->prependExtensionConfig('gesdinet_jwt_refresh_token', [
+            'refresh_token_class' => RefreshToken::class,
         ]);
     }
 
@@ -248,31 +285,6 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
                     '%kernel.project_dir%/vendor/oswis-org/oswis-core-bundle/Api/Dto',
                 ],
             ],
-        ]);
-    }
-
-    /**
-     * This work-around allows overriding of other bundles templates by OswisCore.
-     *
-     * @param  ContainerBuilder  $container
-     * @param  array  $bundleNames
-     */
-    final public static function prependForBundleTemplatesOverride(ContainerBuilder $container, array $bundleNames): void
-    {
-        $twigConfigs = $container->getExtensionConfig('twig');
-        $paths = [];
-        foreach ($twigConfigs as $twigConfig) {
-            if (isset($twigConfig['paths'])) {
-                $paths += $twigConfig['paths'];
-            }
-        }
-        foreach ($bundleNames as $bundleName) {
-            $paths['templates/bundles/'.$bundleName.'Bundle/'] = $bundleName;
-            $paths[dirname(__DIR__).'/Resources/views/bundles/'.$bundleName.'Bundle/'] = $bundleName;
-        }
-        $container->prependExtensionConfig('twig', [
-            'paths'        => $paths,
-            'default_path' => '%kernel.project_dir%/templates',
         ]);
     }
 }

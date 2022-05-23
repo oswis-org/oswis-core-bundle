@@ -100,7 +100,7 @@ trait DateRangeTrait
             return null;
         }
         if ($this->getStartDate() && $this->isInOnePeriod(DateTimeUtils::DATE_TIME_DAYS)) {
-            return $this->getRangeAsTextDays($withoutYear);
+            return $this->getRangeAsTextDays($withoutYear, true);
         }
         if ($this->getStartDate() && $this->isInOnePeriod(DateTimeUtils::DATE_TIME_MONTHS)) {
             return $this->getRangeAsTextMonths($withoutYear);
@@ -124,9 +124,14 @@ trait DateRangeTrait
         return DateTimeUtils::isInOnePeriod($period, $this->getStartDate(), $this->getEndDate());
     }
 
-    public function getRangeAsTextDays(?bool $withoutYear = false): ?string
+    public function getRangeAsTextDays(?bool $withoutYear = false, ?bool $includeTime = false): ?string
     {
-        return $this->getStartByFormat($withoutYear ? 'j. n.' : 'j. n. Y');
+        $result = $this->getStartByFormat($withoutYear ? 'j. n.' : 'j. n. Y');
+        if ($includeTime) {
+            $result .= ' '.$this->getRangeAsTextHours();
+        }
+
+        return $result;
     }
 
     public function getStartByFormat(string $format = 'Y-m-d\TH:i:sP'): ?string
@@ -134,14 +139,21 @@ trait DateRangeTrait
         return $this->getStartDate()?->format($format);
     }
 
-    public function getRangeAsTextMonths(?bool $withoutYear = false): ?string
+    public function getRangeAsTextHours(?bool $includeSecons = false): ?string
     {
-        return $this->getStartByFormat('j. ').$this->getEndByFormat($withoutYear ? '\až j. n.' : '\až j. n. Y');
+        $format = 'H:i'.($includeSecons ? ':s' : '');
+
+        return $this->getStartByFormat($format).'–'.$this->getEndByFormat($format);
     }
 
     public function getEndByFormat(string $format = 'Y-m-d\TH:i:sP'): ?string
     {
         return $this->getEndDate()?->format($format);
+    }
+
+    public function getRangeAsTextMonths(?bool $withoutYear = false): ?string
+    {
+        return $this->getStartByFormat('j. ').$this->getEndByFormat($withoutYear ? '\až j. n.' : '\až j. n. Y');
     }
 
     public function getRangeAsTextYears(?bool $withoutYear = false): ?string

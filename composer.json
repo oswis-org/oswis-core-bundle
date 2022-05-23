@@ -54,7 +54,7 @@
     "league/html-to-markdown": "^5.0",
     "lexik/jwt-authentication-bundle": "^2.14",
     "liip/imagine-bundle": "^2.7",
-    "mpdf/mpdf": "^8.0",
+    "mpdf/mpdf": "^8.1.1",
     "nelmio/cors-bundle": "^2.2",
     "php-console/php-console": "^3.1",
     "psr/event-dispatcher": "^1.0",
