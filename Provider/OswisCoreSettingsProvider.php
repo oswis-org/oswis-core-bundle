@@ -82,14 +82,14 @@ class OswisCoreSettingsProvider
         return $this->angularAdmin;
     }
 
-    final public function getCoreAppName(): string
-    {
-        return 'OSWIS';
-    }
-
     final public function getCoreAppNameShort(): string
     {
         return $this->getCoreAppName();
+    }
+
+    final public function getCoreAppName(): string
+    {
+        return 'OSWIS';
     }
 
     final public function getCoreAppNameLong(): string

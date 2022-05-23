@@ -32,6 +32,11 @@ abstract class AbstractRevision implements RevisionInterface
     }
 
     /**
+     * Date and time of revision creation.
+     */
+    abstract public function getCreatedAt(): ?DateTime;
+
+    /**
      * Helper function for sorting by id of revisions.
      */
     public static function cmpId(?int $a, ?int $b): int
@@ -42,11 +47,6 @@ abstract class AbstractRevision implements RevisionInterface
 
         return $a < $b ? -1 : 1;
     }
-
-    /**
-     * Date and time of revision creation.
-     */
-    abstract public function getCreatedAt(): ?DateTime;
 
     /**
      * ID of this revision (version).

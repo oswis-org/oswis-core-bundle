@@ -52,14 +52,16 @@ class SiteWebManifestController extends AbstractController
             'theme_color'      => $this->coreSettings->getWeb()['color'],
             'icons'            => [
                 [
-                    'src'   => $request->getUriForPath('/bundles/oswisorgoswiscore/favicons/android-chrome-192x192.png'),
-                    'sizes' => '192x192',
-                    'type'  => 'image/png',
+                    'src'     => $request->getUriForPath('/bundles/oswisorgoswiscore/favicons/android-chrome-192x192.png'),
+                    'sizes'   => '192x192',
+                    'type'    => 'image/png',
+                    'purpose' => 'any maskable',
                 ],
                 [
-                    'src'   => $request->getUriForPath('/bundles/oswisorgoswiscore/favicons/android-chrome-512x512.png'),
-                    'sizes' => '512x512',
-                    'type'  => 'image/png',
+                    'src'     => $request->getUriForPath('/bundles/oswisorgoswiscore/favicons/android-chrome-512x512.png'),
+                    'sizes'   => '512x512',
+                    'type'    => 'image/png',
+                    'purpose' => 'any maskable',
                 ],
             ],
         ]);
