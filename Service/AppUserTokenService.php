@@ -14,9 +14,6 @@ use OswisOrg\OswisCoreBundle\Exceptions\InvalidTypeException;
 use OswisOrg\OswisCoreBundle\Repository\AppUserTokenRepository;
 use Psr\Log\LoggerInterface;
 
-/**
- * AppUserRole service.
- */
 class AppUserTokenService
 {
     public function __construct(

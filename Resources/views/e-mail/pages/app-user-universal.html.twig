@@ -2,6 +2,8 @@
     {% set parentTemplate = '@OswisOrgOswisCore/e-mail/pages/app-user-activation.html.twig' %}
 {% elseif 'password-change-request' == type or 'password-change' == type %}
     {% set parentTemplate = '@OswisOrgOswisCore/e-mail/pages/app-user-password.html.twig' %}
+{% elseif 'user-edit-request' == type or 'user-edit' == type %}
+    {% set parentTemplate = '@OswisOrgOswisCore/e-mail/pages/app-user-edit.html.twig' %}
 {% else %}
     {% set parentTemplate = '@OswisOrgOswisCore/e-mail/pages/message.html.twig' %}
 {% endif %}

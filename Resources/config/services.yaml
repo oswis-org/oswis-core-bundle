@@ -29,14 +29,6 @@ services:
         alias: oswis_org_oswis_core.oswis_core_settings_provider
         public: true
 
-    oswis_org_oswis_core.app_user_action_request:
-        class: OswisOrg\OswisCoreBundle\Api\Dto\AppUserActionRequest
-        autowire: true
-        public: true
-    OswisOrg\OswisCoreBundle\Api\Dto\AppUserActionRequest:
-        alias: oswis_org_oswis_core.app_user_action_request
-        public: true
-
     OswisOrg\OswisCoreBundle\Security\AppUserProvider:
         class: OswisOrg\OswisCoreBundle\Security\AppUserProvider
         autowire: true
@@ -89,6 +81,35 @@ services:
             - '@OswisOrg\OswisCoreBundle\Repository\AppUserRepository'
     OswisOrg\OswisCoreBundle\Service\AppUserService:
         alias: oswis_org_oswis_core.app_user_service
+        public: true
+
+    oswis_org_oswis_core.app_user_edit_service:
+        class: OswisOrg\OswisCoreBundle\Service\AppUserEditService
+        autowire: true
+        public: true
+        arguments:
+            - '@security.user_password_hasher'
+            - '@doctrine.orm.entity_manager'
+            - '@monolog.logger'
+            - '@mailer.mailer'
+            - '@oswis_org_oswis_core.app_user_service'
+            - '@oswis_org_oswis_core.app_user_mail_service'
+    OswisOrg\OswisCoreBundle\Service\AppUserEditService:
+        alias: oswis_org_oswis_core.app_user_edit_service
+        public: true
+
+    oswis_org_oswis_core.app_user_edit_request_service:
+        class: OswisOrg\OswisCoreBundle\Service\AppUserEditRequestService
+        autowire: true
+        public: true
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@monolog.logger'
+            - '@mailer.mailer'
+            - '@oswis_org_oswis_core.app_user_service'
+            - '@oswis_org_oswis_core.app_user_mail_service'
+    OswisOrg\OswisCoreBundle\Service\AppUserEditRequestService:
+        alias: oswis_org_oswis_core.app_user_edit_request_service
         public: true
 
     oswis_org_oswis_core.app_user_defaults_service:
@@ -293,17 +314,6 @@ services:
     #### SUBSCRIBERS
     ####
 
-    oswis_org_oswis_core.app_user_action_subscriber:
-        class: OswisOrg\OswisCoreBundle\Api\EventSubscriber\AppUserActionSubscriber
-        autowire: true
-        public: true
-        tags: [ { name: 'kernel.view' } ]
-        arguments:
-            - '@oswis_org_oswis_core.app_user_service'
-    OswisOrg\OswisCoreBundle\Api\EventSubscriber\AppUserActionSubscriber:
-        alias: oswis_org_oswis_core.app_user_action_subscriber
-        public: true
-
     oswis_org_oswis_core.export_subscriber:
         class: OswisOrg\OswisCoreBundle\EventSubscriber\ExportSubscriber
         autowire: true
@@ -335,6 +345,28 @@ services:
             - '@oswis_org_oswis_core.app_user_service'
     OswisOrg\OswisCoreBundle\EventSubscriber\AppUserSubscriber:
         alias: oswis_org_oswis_core.app_user_subscriber
+        public: true
+
+    oswis_org_oswis_core.app_user_edit_request_subscriber:
+        class: OswisOrg\OswisCoreBundle\EventSubscriber\AppUserEditRequestSubscriber
+        autowire: true
+        tags: [ { name: 'kernel.view' } ]
+        public: true
+        arguments:
+            - '@oswis_org_oswis_core.app_user_edit_request_service'
+    OswisOrg\OswisCoreBundle\EventSubscriber\AppUserEditRequestSubscriber:
+        alias: oswis_org_oswis_core.app_user_edit_request_subscriber
+        public: true
+
+    oswis_org_oswis_core.app_user_edit_subscriber:
+        class: OswisOrg\OswisCoreBundle\EventSubscriber\AppUserEditSubscriber
+        autowire: true
+        tags: [ { name: 'kernel.view' } ]
+        public: true
+        arguments:
+            - '@oswis_org_oswis_core.app_user_edit_service'
+    OswisOrg\OswisCoreBundle\EventSubscriber\AppUserEditSubscriber:
+        alias: oswis_org_oswis_core.app_user_edit_subscriber
         public: true
 
     oswis_org_oswis_core.lexik_jwt_payload_attach_subscriber:

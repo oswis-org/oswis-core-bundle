@@ -15,20 +15,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Entity/AppUser/AppUserEdit.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Entity/AppUser/AppUserEditRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Entity/AppUserMail/AppUserEditMail.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Enum/AppUserEditTypeEnum.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EventSubscriber/AppUserEditRequestSubscriber.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EventSubscriber/AppUserEditSubscriber.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/views/e-mail/pages/app-user-edit.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Service/AppUserEditRequestService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Service/AppUserEditService.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/AbstractClass/AbstractFileAction.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/AbstractClass/AbstractFileAction.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/Web/SiteWebManifestController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/Web/SiteWebManifestController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controller/AppUserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/AppUserController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DependencyInjection/Configuration.php" beforeDir="false" afterPath="$PROJECT_DIR$/DependencyInjection/Configuration.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DependencyInjection/OswisOrgOswisCoreExtension.php" beforeDir="false" afterPath="$PROJECT_DIR$/DependencyInjection/OswisOrgOswisCoreExtension.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/NonPersistent/BankAccount.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/NonPersistent/BankAccount.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/Revisions/AbstractRevision.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Revisions/AbstractRevision.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Form/AbstractClass/AbstractFileType.php" beforeDir="false" afterPath="$PROJECT_DIR$/Form/AbstractClass/AbstractFileType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Provider/OswisCoreSettingsProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/Provider/OswisCoreSettingsProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/web/browserconfig.xml.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/browserconfig.xml.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Common/TypeTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/TypeTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Twig/Extension/ImageExtension.php" beforeDir="false" afterPath="$PROJECT_DIR$/Twig/Extension/ImageExtension.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Utils/DateTimeUtils.php" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/DateTimeUtils.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Utils/StringUtils.php" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/StringUtils.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractMail.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractMail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AppUserMail/AppUserMail.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUserMail/AppUserMail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EventSubscriber/AppUserSubscriber.php" beforeDir="false" afterPath="$PROJECT_DIR$/EventSubscriber/AppUserSubscriber.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/config/services.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/views/e-mail/pages/app-user-universal.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/e-mail/pages/app-user-universal.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Security/WebUserAuthenticator.php" beforeDir="false" afterPath="$PROJECT_DIR$/Security/WebUserAuthenticator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Service/AppUserMailService.php" beforeDir="false" afterPath="$PROJECT_DIR$/Service/AppUserMailService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Service/AppUserService.php" beforeDir="false" afterPath="$PROJECT_DIR$/Service/AppUserService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Service/AppUserTokenService.php" beforeDir="false" afterPath="$PROJECT_DIR$/Service/AppUserTokenService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -253,7 +262,7 @@
     </include_path>
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="1OdNRiB7J91AH4isXqLMtDEiNnC" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -263,30 +272,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;php.override.implement.member.chooser.php.doc&quot;: &quot;NONE&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.webide.settings.project.settings.php&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/T470P_DATA/DEV_PROJECTS_LOCAL/OSWIS/SERVER/oswis-core-bundle/Service",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "php.override.implement.member.chooser.php.doc": "NONE",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "reference.webide.settings.project.settings.php",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Service" />
+      <recent name="$PROJECT_DIR$/EventSubscriber" />
+      <recent name="$PROJECT_DIR$/Entity/AppUserMail" />
+      <recent name="$PROJECT_DIR$/Resources/views/e-mail/pages" />
       <recent name="$PROJECT_DIR$/EventSubscriber/LexikJwt" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/Service/Internal" />
-      <recent name="$PROJECT_DIR$/Interfaces/Extender" />
-      <recent name="$PROJECT_DIR$/DependencyInjection/CompilerPass" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Resources/views/web" />
@@ -978,14 +988,10 @@
       <workItem from="1652614598907" duration="1928000" />
       <workItem from="1652777241794" duration="1467000" />
       <workItem from="1653213053261" duration="11134000" />
-      <workItem from="1653299649508" duration="3217000" />
-    </task>
-    <task id="LOCAL-00774" summary="Added classes for UpdateExtender.">
-      <created>1600793367978</created>
-      <option name="number" value="00774" />
-      <option name="presentableId" value="LOCAL-00774" />
-      <option name="project" value="LOCAL" />
-      <updated>1600793367978</updated>
+      <workItem from="1653299649508" duration="5051000" />
+      <workItem from="1653381918415" duration="4107000" />
+      <workItem from="1653386144051" duration="10878000" />
+      <workItem from="1653481309408" duration="5306000" />
     </task>
     <task id="LOCAL-00775" summary="Fixed functions for &quot;register-root&quot; route.">
       <created>1600807970181</created>
@@ -1323,7 +1329,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653299919728</updated>
     </task>
-    <option name="localTasksCounter" value="823" />
+    <task id="LOCAL-00823" summary="Added redirection to portalUrl.">
+      <created>1653305564769</created>
+      <option name="number" value="00823" />
+      <option name="presentableId" value="LOCAL-00823" />
+      <option name="project" value="LOCAL" />
+      <updated>1653305564769</updated>
+    </task>
+    <option name="localTasksCounter" value="824" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

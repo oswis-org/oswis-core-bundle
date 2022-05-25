@@ -58,6 +58,8 @@ class AppUserMail extends AbstractMail
     public const TYPE_ACTIVATION_REQUEST = 'activation-request';
     public const TYPE_PASSWORD_CHANGE = 'password-change';
     public const TYPE_PASSWORD_CHANGE_REQUEST = 'password-change-request';
+    public const TYPE_USER_EDIT_REQUEST = 'user-edit-request';
+    public const TYPE_USER_EDIT = 'user-edit';
 
     /**
      * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser", fetch="EAGER")
@@ -75,16 +77,21 @@ class AppUserMail extends AbstractMail
      * @param  AppUser  $appUser
      * @param  string  $subject
      * @param  string|null  $type
-     * @param  AppUserToken|null  $token
+     * @param  AppUserToken|null  $appUserEditRequest
      * @param  string|null  $messageId
      *
      * @throws InvalidTypeException
      */
-    public function __construct(AppUser $appUser = null, string $subject = null, ?string $type = null, AppUserToken $token = null, ?string $messageId = null)
-    {
+    public function __construct(
+        AppUser $appUser = null,
+        string $subject = null,
+        ?string $type = null,
+        AppUserToken $appUserEditRequest = null,
+        ?string $messageId = null,
+    ) {
         parent::__construct($subject, $appUser?->getEmail(), $type, $appUser?->getName(), $messageId);
         $this->appUser = $appUser;
-        $this->appUserToken = $token;
+        $this->appUserToken = $appUserEditRequest;
     }
 
     public static function getAllowedTypesDefault(): array
@@ -95,6 +102,8 @@ class AppUserMail extends AbstractMail
             self::TYPE_ACTIVATION_REQUEST,
             self::TYPE_PASSWORD_CHANGE,
             self::TYPE_PASSWORD_CHANGE_REQUEST,
+            self::TYPE_USER_EDIT_REQUEST,
+            self::TYPE_USER_EDIT,
         ];
     }
 

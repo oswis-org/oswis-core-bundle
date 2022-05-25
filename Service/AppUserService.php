@@ -77,11 +77,12 @@ class AppUserService
      * @param  AppUser|null  $appUser
      * @param  bool  $sendConfirmation
      *
-     * @throws InvalidTypeException
-     * @throws NotFoundException
-     * @throws NotImplementedException
-     * @throws OswisException
-     * @throws UserNotFoundException
+     * @throws \OswisOrg\OswisCoreBundle\Exceptions\InvalidTypeException
+     * @throws \OswisOrg\OswisCoreBundle\Exceptions\NotFoundException
+     * @throws \OswisOrg\OswisCoreBundle\Exceptions\NotImplementedException
+     * @throws \OswisOrg\OswisCoreBundle\Exceptions\OswisException
+     * @throws \OswisOrg\OswisCoreBundle\Exceptions\TokenInvalidException
+     * @throws \OswisOrg\OswisCoreBundle\Exceptions\UserNotFoundException
      */
     public function requestPasswordChange(?AppUser $appUser, bool $sendConfirmation): void
     {
@@ -112,12 +113,13 @@ class AppUserService
      * @param  bool|null  $skipDuplicityError
      *
      * @return AppUser
-     * @throws InvalidTypeException
-     * @throws NotFoundException
-     * @throws NotImplementedException
-     * @throws OswisException
-     * @throws UserNotFoundException
-     * @throws UserNotUniqueException
+     * @throws \OswisOrg\OswisCoreBundle\Exceptions\InvalidTypeException
+     * @throws \OswisOrg\OswisCoreBundle\Exceptions\NotFoundException
+     * @throws \OswisOrg\OswisCoreBundle\Exceptions\NotImplementedException
+     * @throws \OswisOrg\OswisCoreBundle\Exceptions\OswisException
+     * @throws \OswisOrg\OswisCoreBundle\Exceptions\TokenInvalidException
+     * @throws \OswisOrg\OswisCoreBundle\Exceptions\UserNotFoundException
+     * @throws \OswisOrg\OswisCoreBundle\Exceptions\UserNotUniqueException
      */
     public function create(?AppUser $appUser = null, ?bool $activate = false, ?bool $sendMail = false, ?bool $skipDuplicityError = true): AppUser
     {
@@ -178,14 +180,16 @@ class AppUserService
      * @param  AppUser  $appUser
      * @param  bool  $sendConfirmation
      *
-     * @throws InvalidTypeException|NotFoundException
+     * @throws \OswisOrg\OswisCoreBundle\Exceptions\InvalidTypeException
+     * @throws \OswisOrg\OswisCoreBundle\Exceptions\NotFoundException
+     * @throws \OswisOrg\OswisCoreBundle\Exceptions\TokenInvalidException
      */
     public function activate(AppUser $appUser, bool $sendConfirmation = true): void
     {
         try {
             if (empty($appUser->getPassword())) {
                 $isRandom = empty($appUser->getPlainPassword());
-                $appUser->setPlainPassword($isRandom ? StringUtils::generatePassword() : $appUser->getPlainPassword(), $this->encoder, !$isRandom,);
+                $appUser->setPlainPassword($isRandom ? StringUtils::generatePassword() : $appUser->getPlainPassword(), $this->encoder, !$isRandom);
             }
             $appUser->activate();
             if ($sendConfirmation) {
@@ -204,11 +208,12 @@ class AppUserService
     /**
      * @param  AppUser|null  $appUser
      *
-     * @throws InvalidTypeException
-     * @throws NotFoundException
-     * @throws NotImplementedException
-     * @throws OswisException
-     * @throws UserNotFoundException
+     * @throws \OswisOrg\OswisCoreBundle\Exceptions\InvalidTypeException
+     * @throws \OswisOrg\OswisCoreBundle\Exceptions\NotFoundException
+     * @throws \OswisOrg\OswisCoreBundle\Exceptions\NotImplementedException
+     * @throws \OswisOrg\OswisCoreBundle\Exceptions\OswisException
+     * @throws \OswisOrg\OswisCoreBundle\Exceptions\TokenInvalidException
+     * @throws \OswisOrg\OswisCoreBundle\Exceptions\UserNotFoundException
      */
     public function requestActivation(?AppUser $appUser): void
     {
@@ -290,10 +295,11 @@ class AppUserService
      * @param  string|null  $password
      * @param  bool  $sendConfirmation
      *
-     * @throws InvalidTypeException
-     * @throws NotFoundException
-     * @throws NotImplementedException
-     * @throws OswisException
+     * @throws \OswisOrg\OswisCoreBundle\Exceptions\InvalidTypeException
+     * @throws \OswisOrg\OswisCoreBundle\Exceptions\NotFoundException
+     * @throws \OswisOrg\OswisCoreBundle\Exceptions\NotImplementedException
+     * @throws \OswisOrg\OswisCoreBundle\Exceptions\OswisException
+     * @throws \OswisOrg\OswisCoreBundle\Exceptions\TokenInvalidException
      */
     public function changePassword(AppUser $appUser, ?string $password, bool $sendConfirmation): void
     {

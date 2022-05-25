@@ -128,9 +128,9 @@ abstract class AbstractMail implements BasicInterface
         if (($previousMail = $sortedPastMails->first() ?: null) && $previousMail instanceof AppUserMail && !empty($previousMail->getMessageID())) {
             $headers->addIdHeader('In-Reply-To', $previousMail->getMessageID());
         }
-        $ids = $sortedPastMails->filter(fn(mixed $mail) => $mail instanceof AbstractMail && !empty($mail->getMessageID()),)->map(fn(mixed $mail) => $mail
-                                                                                                                                                    instanceof
-                                                                                                                                                    AbstractMail
+        $ids = $sortedPastMails->filter(fn(mixed $mail) => $mail instanceof AbstractMail && !empty($mail->getMessageID()))->map(fn(mixed $mail) => $mail
+                                                                                                                                                   instanceof
+                                                                                                                                                   AbstractMail
             ? $mail->getMessageID() : null,);
         if ($ids->count() > 0) {
             $headers->addIdHeader('References', $ids->toArray());

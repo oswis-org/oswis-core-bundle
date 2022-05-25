@@ -1,0 +1,63 @@
+{% extends '@OswisOrgOswisCore/e-mail/pages/app-user.html.twig' %}
+
+{% set propertyName = '' %}
+{% set propertyName2 = '' %}
+{% if editUserRequest.type|default === 'username' %}
+    {% set propertyName = ' uživatelského jména' %}
+    {% set propertyName2 = 'Nové uživatelské jméno' %}
+{% elseif editUserRequest.type|default === 'email' %}
+    {% set propertyName = ' e-mailu' %}
+    {% set propertyName2 = 'Nový e-mail' %}
+{% elseif editUserRequest.type|default === 'password' %}
+    {% set propertyName = ' hesla' %}
+    {% set propertyName2 = 'Nové heslo' %}
+{% endif %}
+
+{% block content_inner %}
+
+    {% if editUser|default %}
+
+        <p>
+            U {{ f ? 'Vašeho' : 'Tvého' }} uživatelského účtu v aplikaci
+            <b>{{ oswis.app.name|default }}</b>
+            došlo ke změně{{ propertyName }}.
+        </p>
+
+    {% else %}
+
+        {% set tokenUrl = oswis.app.portalUrl
+            ~ '/auth/login?user_edit_token=' ~ editUserRequest.token|default
+            ~ '&user_edit_property' ~ editUserRequest.type|default
+            ~ '&user_edit_identifier' ~ editUserRequest.userIdentifier|default %}
+
+        <p>
+            U {{ f ? 'Vašeho' : 'Tvého' }} uživatelského účtu v aplikaci
+            <b>{{ oswis.app.name|default }}</b>
+            byl zaznamenán požadavek na změnu{{ propertyName }}.
+        </p>
+
+        {% if tokenUrl|default %}
+            <p>
+                {{ propertyName2 }} nastaví{{ f ? 'te' : 'š' }} na adrese:<br>
+                <a href="{{ tokenUrl }}"
+                   class="token-box"
+                   title="Odkaz pro nastavení {{ propertyName }}"
+                   target="_blank">
+                    <small>{{ tokenUrl }}</small>
+                </a>
+                {% if appUserToken.validHours|default %}
+                    <br><small>Odkaz je platný {{ appUserToken.validHours }} hodin od vygenerování.</small>
+                {% endif %}
+            </p>
+        {% else %}
+            <p>
+                Odkaz pro změnu hesla se z neočekávaných důvodů nepodařilo vygenerovat.<br>
+                <small>Kontaktuj{{ f ? 'te' : '' }} nás, prosím, pro vyřešení situace.</small>
+            </p>
+        {% endif %}
+
+    {% endif %}
+
+{% endblock %}
+
+

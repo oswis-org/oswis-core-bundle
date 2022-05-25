@@ -9,11 +9,6 @@ namespace OswisOrg\OswisCoreBundle\EventSubscriber;
 
 use ApiPlatform\Core\EventListener\EventPriorities;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser;
-use OswisOrg\OswisCoreBundle\Exceptions\InvalidTypeException;
-use OswisOrg\OswisCoreBundle\Exceptions\NotFoundException;
-use OswisOrg\OswisCoreBundle\Exceptions\NotImplementedException;
-use OswisOrg\OswisCoreBundle\Exceptions\OswisException;
-use OswisOrg\OswisCoreBundle\Exceptions\UserNotFoundException;
 use OswisOrg\OswisCoreBundle\Service\AppUserService;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Exception\SuspiciousOperationException;
@@ -42,11 +37,12 @@ final class AppUserSubscriber implements EventSubscriberInterface
     /**
      * @param  ViewEvent  $event
      *
-     * @throws InvalidTypeException
-     * @throws NotFoundException
-     * @throws NotImplementedException
-     * @throws OswisException
-     * @throws UserNotFoundException
+     * @throws \OswisOrg\OswisCoreBundle\Exceptions\InvalidTypeException
+     * @throws \OswisOrg\OswisCoreBundle\Exceptions\NotFoundException
+     * @throws \OswisOrg\OswisCoreBundle\Exceptions\NotImplementedException
+     * @throws \OswisOrg\OswisCoreBundle\Exceptions\OswisException
+     * @throws \OswisOrg\OswisCoreBundle\Exceptions\TokenInvalidException
+     * @throws \OswisOrg\OswisCoreBundle\Exceptions\UserNotFoundException
      */
     public function makeAppUser(ViewEvent $event): void
     {

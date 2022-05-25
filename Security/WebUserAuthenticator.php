@@ -42,6 +42,9 @@ class WebUserAuthenticator extends AbstractAuthenticator
         return self::LOGIN_ROUTE === $request->attributes->get('_route') && $request->isMethod('POST');
     }
 
+    /**
+     * @throws \Symfony\Component\Security\Core\Exception\UserNotFoundException
+     */
     public function getUser(mixed $credentials, UserProviderInterface $userProvider): ?object
     {
         return $userProvider->loadUserByIdentifier(is_array($credentials) ? $credentials['username'] : null);

@@ -48,15 +48,16 @@ class AppUserController extends AbstractController
      * @param  Request  $request
      *
      * @return Response
-     * @throws InvalidTypeException
-     * @throws LogicException
-     * @throws NotFoundException
-     * @throws NotImplementedException
-     * @throws OswisException
-     * @throws OutOfBoundsException
-     * @throws RuntimeException
-     * @throws UserNotFoundException
-     * @throws UserNotUniqueException
+     * @throws \OswisOrg\OswisCoreBundle\Exceptions\InvalidTypeException
+     * @throws \OswisOrg\OswisCoreBundle\Exceptions\NotFoundException
+     * @throws \OswisOrg\OswisCoreBundle\Exceptions\NotImplementedException
+     * @throws \OswisOrg\OswisCoreBundle\Exceptions\OswisException
+     * @throws \OswisOrg\OswisCoreBundle\Exceptions\TokenInvalidException
+     * @throws \OswisOrg\OswisCoreBundle\Exceptions\UserNotFoundException
+     * @throws \OswisOrg\OswisCoreBundle\Exceptions\UserNotUniqueException
+     * @throws \Symfony\Component\Form\Exception\LogicException
+     * @throws \Symfony\Component\Form\Exception\OutOfBoundsException
+     * @throws \Symfony\Component\Form\Exception\RuntimeException
      */
     public function passwordChangeRequest(Request $request): Response
     {
@@ -90,15 +91,16 @@ class AppUserController extends AbstractController
      * @param  Request  $request
      *
      * @return Response
-     * @throws InvalidTypeException
-     * @throws LogicException
-     * @throws NotFoundException
-     * @throws NotImplementedException
-     * @throws OswisException
-     * @throws OutOfBoundsException
-     * @throws RuntimeException
-     * @throws UserNotFoundException
-     * @throws UserNotUniqueException
+     * @throws \OswisOrg\OswisCoreBundle\Exceptions\InvalidTypeException
+     * @throws \OswisOrg\OswisCoreBundle\Exceptions\NotFoundException
+     * @throws \OswisOrg\OswisCoreBundle\Exceptions\NotImplementedException
+     * @throws \OswisOrg\OswisCoreBundle\Exceptions\OswisException
+     * @throws \OswisOrg\OswisCoreBundle\Exceptions\TokenInvalidException
+     * @throws \OswisOrg\OswisCoreBundle\Exceptions\UserNotFoundException
+     * @throws \OswisOrg\OswisCoreBundle\Exceptions\UserNotUniqueException
+     * @throws \Symfony\Component\Form\Exception\LogicException
+     * @throws \Symfony\Component\Form\Exception\OutOfBoundsException
+     * @throws \Symfony\Component\Form\Exception\RuntimeException
      */
     public function activationRequest(Request $request): Response
     {
