@@ -1,12 +1,18 @@
 <?php
 
 /**
+ * @noinspection PhpUnused
  * @noinspection MethodShouldBeFinalInspection
  */
 declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Entity\AppUserMail;
 
+use Doctrine\ORM\Mapping\Cache;
+use Doctrine\ORM\Mapping\Entity;
+use Doctrine\ORM\Mapping\JoinColumn;
+use Doctrine\ORM\Mapping\ManyToOne;
+use Doctrine\ORM\Mapping\Table;
 use OswisOrg\OswisCoreBundle\Entity\AbstractClass\AbstractMail;
 use OswisOrg\OswisCoreBundle\Entity\AbstractClass\AbstractToken;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser;
@@ -15,8 +21,11 @@ use OswisOrg\OswisCoreBundle\Exceptions\InvalidTypeException;
 
 /**
  * E-mail sent to some user.
- * @Doctrine\ORM\Mapping\Entity()
- * @Doctrine\ORM\Mapping\Table(name="core_app_user_mail")
+ * @author Jakub Zak <mail@jakubzak.eu>
+ * @OswisOrg\OswisCoreBundle\Filter\SearchAnnotation({
+ *     "id",
+ *     "token"
+ * })
  * @ApiPlatform\Core\Annotation\ApiResource(
  *   attributes={
  *     "filters"={"search"},
@@ -45,13 +54,10 @@ use OswisOrg\OswisCoreBundle\Exceptions\InvalidTypeException;
  *     }
  *   }
  * )
- * @OswisOrg\OswisCoreBundle\Filter\SearchAnnotation({
- *     "id",
- *     "token"
- * })
- * @author Jakub Zak <mail@jakubzak.eu>
- * @Doctrine\ORM\Mapping\Cache(usage="NONSTRICT_READ_WRITE", region="core_app_user")
  */
+#[Entity]
+#[Table(name: 'core_app_user_mail')]
+#[Cache(usage: 'NONSTRICT_READ_WRITE', region: 'core_app_user')]
 class AppUserMail extends AbstractMail
 {
     public const TYPE_ACTIVATION = 'activation';
@@ -61,16 +67,12 @@ class AppUserMail extends AbstractMail
     public const TYPE_USER_EDIT_REQUEST = 'user-edit-request';
     public const TYPE_USER_EDIT = 'user-edit';
 
-    /**
-     * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser", fetch="EAGER")
-     * @Doctrine\ORM\Mapping\JoinColumn(name="app_user_id", referencedColumnName="id")
-     */
+    #[ManyToOne(targetEntity: AppUser::class, fetch: 'EAGER')]
+    #[JoinColumn(name: 'app_user_id', referencedColumnName: 'id')]
     protected ?AppUser $appUser = null;
 
-    /**
-     * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserToken", fetch="EAGER")
-     * @Doctrine\ORM\Mapping\JoinColumn(name="app_user_token_id", referencedColumnName="id")
-     */
+    #[ManyToOne(targetEntity: AppUserToken::class, fetch: 'EAGER')]
+    #[JoinColumn(name: 'app_user_token_id', referencedColumnName: 'id')]
     protected ?AppUserToken $appUserToken = null;
 
     /**

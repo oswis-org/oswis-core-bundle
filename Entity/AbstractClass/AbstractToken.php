@@ -9,6 +9,7 @@ namespace OswisOrg\OswisCoreBundle\Entity\AbstractClass;
 
 use DateInterval;
 use DateTime;
+use Doctrine\ORM\Mapping\Column;
 use Exception;
 use OswisOrg\OswisCoreBundle\Exceptions\InvalidTypeException;
 use OswisOrg\OswisCoreBundle\Exceptions\TokenInvalidException;
@@ -34,34 +35,22 @@ abstract class AbstractToken implements TokenInterface
     use TypeTrait;
     use EmailTrait;
 
-    /**
-     * @Doctrine\ORM\Mapping\Column(type="boolean", nullable=false)
-     */
+    #[Column(type: 'boolean', nullable: false)]
     protected bool $multipleUseAllowed = false;
 
-    /**
-     * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true)
-     */
+    #[Column(type: 'datetime', nullable: true)]
     protected ?DateTime $firstUsedAt = null;
 
-    /**
-     * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true)
-     */
+    #[Column(type: 'datetime', nullable: true)]
     protected ?DateTime $lastUsedAt = null;
 
-    /**
-     * @Doctrine\ORM\Mapping\Column(type="integer", nullable=false)
-     */
+    #[Column(type: 'integer', nullable: false)]
     protected int $timesUsed = 0;
 
-    /**
-     * @Doctrine\ORM\Mapping\Column(type="integer", nullable=false)
-     */
+    #[Column(type: 'integer', nullable: false)]
     protected int $validHours = self::DEFAULT_VALID_HOURS;
 
-    /**
-     * @Doctrine\ORM\Mapping\Column(type="string", length=170, nullable=false, unique=true)
-     */
+    #[Column(type: 'string', length: 170, unique: true, nullable: false)]
     protected string $token = '';
 
     /**

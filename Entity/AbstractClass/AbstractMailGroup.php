@@ -1,6 +1,7 @@
 <?php
 
 /**
+ * @noinspection PhpUnused
  * @noinspection MethodShouldBeFinalInspection
  */
 declare(strict_types=1);
@@ -8,7 +9,9 @@ declare(strict_types=1);
 namespace OswisOrg\OswisCoreBundle\Entity\AbstractClass;
 
 use DateTime;
-use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\Column;
+use Doctrine\ORM\Mapping\JoinColumn;
+use Doctrine\ORM\Mapping\ManyToOne;
 use OswisOrg\OswisCoreBundle\Entity\NonPersistent\DateTimeRange;
 use OswisOrg\OswisCoreBundle\Entity\NonPersistent\Nameable;
 use OswisOrg\OswisCoreBundle\Entity\TwigTemplate\TwigTemplate;
@@ -27,16 +30,14 @@ abstract class AbstractMailGroup implements MailGroupInterface
     use PriorityTrait;
     use DateRangeTrait;
 
-    /**
-     * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="OswisOrg\OswisCoreBundle\Entity\TwigTemplate\TwigTemplate", fetch="EAGER")
-     * @Doctrine\ORM\Mapping\JoinColumn(nullable=true)
-     */
+    #[ManyToOne(targetEntity: TwigTemplate::class, fetch: 'EAGER')]
+    #[JoinColumn(nullable: true)]
     protected ?TwigTemplate $twigTemplate = null;
 
     /**
      * @var bool Automatic mailing message that is sent to all recipients (restricted by restrictions).
-     * @ORM\Column(type="boolean", nullable=false)
      */
+    #[Column(type: 'boolean', nullable: false)]
     protected bool $automaticMailing = false;
 
     public function __construct(

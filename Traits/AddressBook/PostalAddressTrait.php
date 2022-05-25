@@ -1,76 +1,68 @@
 <?php
 
 /**
+ * @noinspection PhpUnused
  * @noinspection MethodShouldBeFinalInspection
  */
 declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Traits\AddressBook;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\RangeFilter;
+use Doctrine\ORM\Mapping\Column;
 use OswisOrg\OswisCoreBundle\Entity\NonPersistent\PostalAddress;
+use OswisOrg\OswisCoreBundle\Filter\SearchFilter;
 
 /**
  * Trait adds fields for postal address.
  */
 trait PostalAddressTrait
 {
-    /**
-     * @var string|null First line of street
-     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class, strategy="ipartial")
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
-     */
+    /** @var string|null First line of street. */
+    #[Column(type: 'string', nullable: true)]
+    #[ApiFilter(SearchFilter::class, strategy: 'ipartial')]
+    #[ApiFilter(OrderFilter::class)]
     protected ?string $street = null;
 
-    /**
-     * @var string|null Second line of street
-     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class, strategy="ipartial")
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
-     */
+    /** @var string|null Second line of street. */
+    #[Column(type: 'string', nullable: true)]
+    #[ApiFilter(SearchFilter::class, strategy: 'ipartial')]
+    #[ApiFilter(OrderFilter::class)]
     protected ?string $street2 = null;
 
-    /**
-     * @var string|null City
-     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class, strategy="ipartial")
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
-     */
+    /** @var string|null City. */
+    #[Column(type: 'string', nullable: true)]
+    #[ApiFilter(SearchFilter::class, strategy: 'ipartial')]
+    #[ApiFilter(OrderFilter::class)]
     protected ?string $city = null;
 
-    /**
-     * @var string|null Postal code
-     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class, strategy="ipartial")
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
-     */
+    /** @var string|null Postal code. */
+    #[Column(type: 'string', nullable: true)]
+    #[ApiFilter(SearchFilter::class, strategy: 'ipartial')]
+    #[ApiFilter(OrderFilter::class)]
     protected ?string $postalCode = null;
 
-    /**
-     * @var int|null House number
-     * @Doctrine\ORM\Mapping\Column(type="integer", nullable=true)
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class, strategy="ipartial")
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\RangeFilter::class)
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
-     */
+    /** @var int|null House number. */
+    #[Column(type: 'integer', nullable: true)]
+    #[ApiFilter(SearchFilter::class, strategy: 'ipartial')]
+    #[ApiFilter(OrderFilter::class)]
+    #[ApiFilter(RangeFilter::class)]
     protected ?int $houseNumber = null;
 
-    /**
-     * @var int|null Door number
-     * @Doctrine\ORM\Mapping\Column(type="integer", nullable=true)
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class, strategy="ipartial")
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\RangeFilter::class)
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
-     */
+    /** @var int|null Door number. */
+    #[Column(type: 'integer', nullable: true)]
+    #[ApiFilter(SearchFilter::class, strategy: 'ipartial')]
+    #[ApiFilter(OrderFilter::class)]
+    #[ApiFilter(RangeFilter::class)]
     protected ?int $doorNumber = null;
 
-    /**
-     * @var int|null Door number
-     * @Doctrine\ORM\Mapping\Column(type="integer", nullable=true)
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class, strategy="ipartial")
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\RangeFilter::class)
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
-     */
+    /** @var int|null Door number. */
+    #[Column(type: 'integer', nullable: true)]
+    #[ApiFilter(SearchFilter::class, strategy: 'ipartial')]
+    #[ApiFilter(OrderFilter::class)]
+    #[ApiFilter(RangeFilter::class)]
     protected ?int $orientationNumber = null;
 
     public function getStreet(): ?string

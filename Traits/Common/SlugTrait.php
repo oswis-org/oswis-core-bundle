@@ -7,6 +7,10 @@ declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Traits\Common;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
+use Doctrine\ORM\Mapping\Column;
+use OswisOrg\OswisCoreBundle\Filter\SearchFilter;
 use OswisOrg\OswisCoreBundle\Utils\StringUtils;
 
 /**
@@ -14,18 +18,16 @@ use OswisOrg\OswisCoreBundle\Utils\StringUtils;
  */
 trait SlugTrait
 {
-    /**
-     * Slug (slug is auto-generated if forcedSlug is not set).
-     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class, strategy="ipartial")
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
-     */
+    /** Slug (slug is auto-generated if forcedSlug is not set). */
+    #[ApiFilter(SearchFilter::class, strategy: 'ipartial')]
+    #[ApiFilter(OrderFilter::class)]
+    #[Column(type: 'string', nullable: true)]
     protected ?string $slug = null;
 
-    /**
-     * Forced slug - set by user, not auto-generated.
-     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
-     */
+    /** Forced slug - set by user, not auto-generated. */
+    #[Column(type: 'string', nullable: true)]
+    #[ApiFilter(SearchFilter::class, strategy: 'ipartial')]
+    #[ApiFilter(OrderFilter::class)]
     protected ?string $forcedSlug = null;
 
     public function getForcedSlug(): ?string

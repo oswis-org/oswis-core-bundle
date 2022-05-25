@@ -1,4 +1,5 @@
 <?php
+/** @noinspection PhpUnused */
 
 /**
  * @noinspection MethodShouldBeFinalInspection
@@ -7,6 +8,9 @@ declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Traits\User;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\ExistsFilter;
+use Doctrine\ORM\Mapping\Column;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 /**
@@ -19,22 +23,16 @@ trait EncryptedPasswordTrait
      */
     public ?string $plainPassword = null;
 
-    /**
-     * Encrypted password.
-     * @Doctrine\ORM\Mapping\Column(name="password", type="string", length=255, nullable=true)
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\ExistsFilter::class)
-     */
+    /** Encrypted password. */
+    #[Column(name: 'password', type: 'string', length: 255, nullable: true)]
+    #[ApiFilter(ExistsFilter::class)]
     protected ?string $password = null;
 
-    /**
-     * Salt that was originally used to encode the password.
-     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
-     */
+    /** Salt that was originally used to encode the password. */
+    #[Column(type: 'string', nullable: true)]
     protected ?string $salt = null;
 
-    /**
-     * Get encrypted password.
-     */
+    /** Get encrypted password. */
     public function getPassword(): ?string
     {
         return $this->password;

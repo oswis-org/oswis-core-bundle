@@ -7,32 +7,33 @@ declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Entity\AppUser;
 
+use Doctrine\ORM\Mapping\Cache;
+use Doctrine\ORM\Mapping\Entity;
+use Doctrine\ORM\Mapping\JoinColumn;
+use Doctrine\ORM\Mapping\ManyToOne;
+use Doctrine\ORM\Mapping\Table;
 use OswisOrg\OswisCoreBundle\Interfaces\Common\BasicInterface;
 use OswisOrg\OswisCoreBundle\Traits\Common\BasicTrait;
 
 /**
  * Connection between app user and used app user flag.
  *
- * @Doctrine\ORM\Mapping\Entity()
- * @Doctrine\ORM\Mapping\Table(name="core_app_user_flag_connection")
  * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
  * @author Jakub Zak <mail@jakubzak.eu>
- * @Doctrine\ORM\Mapping\Cache(usage="NONSTRICT_READ_WRITE", region="core_app_user")
  */
+#[Entity]
+#[Table(name: 'core_app_user_flag_connection')]
+#[Cache(usage: 'NONSTRICT_READ_WRITE', region: 'core_app_user')]
 class AppUserFlagConnection implements BasicInterface
 {
     use BasicTrait;
 
-    /**
-     * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserFlag", fetch="EAGER")
-     * @Doctrine\ORM\Mapping\JoinColumn(nullable=true)
-     */
+    #[ManyToOne(targetEntity: AppUserFlag::class, fetch: 'EAGER')]
+    #[JoinColumn(nullable: true)]
     protected ?AppUserFlag $appUserFlag = null;
 
-    /**
-     * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser", inversedBy="appUserFlags")
-     * @Doctrine\ORM\Mapping\JoinColumn(nullable=true)
-     */
+    #[ManyToOne(targetEntity: AppUser::class, inversedBy: 'appUserFlags')]
+    #[JoinColumn(nullable: true)]
     protected ?AppUser $appUser = null;
 
     public function getAppUser(): ?AppUser
@@ -48,7 +49,6 @@ class AppUserFlagConnection implements BasicInterface
         $this->appUser = $appUser;
         $this->appUser?->addAppUserFlag($this);
     }
-
 
     public function getAppUserFlag(): ?AppUserFlag
     {

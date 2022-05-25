@@ -10,8 +10,12 @@ namespace OswisOrg\OswisCoreBundle\Traits\AddressBook;
 use ADCI\FullNameParser\Exception\NameParsingException;
 use ADCI\FullNameParser\Name;
 use ADCI\FullNameParser\Parser as FullNameParser;
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
+use Doctrine\ORM\Mapping\Column;
 use Exception;
 use InvalidArgumentException;
+use OswisOrg\OswisCoreBundle\Filter\SearchFilter;
 use OswisOrg\OswisCoreBundle\Interfaces\AddressBook\ContactInterface;
 use OswisOrg\OswisCoreBundle\Traits\Common\NameableTrait;
 use Vokativ\Name as VokativName;
@@ -32,60 +36,46 @@ trait NameablePersonTrait
         updateName as traitUpdateName;
     }
 
-    /**
-     * Nickname.
-     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class, strategy="ipartial")
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
-     */
+    /** Nickname. */
+    #[Column(type: 'string', nullable: true)]
+    #[ApiFilter(SearchFilter::class, strategy: 'ipartial')]
+    #[ApiFilter(OrderFilter::class)]
     protected ?string $nickname = null;
 
-    /**
-     * First (given) name.
-     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class, strategy="ipartial")
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
-     */
+    /** First (given) name. */
+    #[Column(type: 'string', nullable: true)]
+    #[ApiFilter(SearchFilter::class, strategy: 'ipartial')]
+    #[ApiFilter(OrderFilter::class)]
     protected ?string $givenName = null;
 
-    /**
-     * Middle (additional) name.
-     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class, strategy="ipartial")
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
-     */
+    /** Middle (additional) name. */
+    #[Column(type: 'string', nullable: true)]
+    #[ApiFilter(SearchFilter::class, strategy: 'ipartial')]
+    #[ApiFilter(OrderFilter::class)]
     protected ?string $additionalName = null;
 
-    /**
-     * Last (family) name.
-     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class, strategy="ipartial")
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
-     */
+    /** Last (family) name. */
+    #[Column(type: 'string', nullable: true)]
+    #[ApiFilter(SearchFilter::class, strategy: 'ipartial')]
+    #[ApiFilter(OrderFilter::class)]
     protected ?string $familyName = null;
 
-    /**
-     * Prefix (title before name).
-     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class, strategy="ipartial")
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
-     */
+    /** Prefix (title before name). */
+    #[Column(type: 'string', nullable: true)]
+    #[ApiFilter(SearchFilter::class, strategy: 'ipartial')]
+    #[ApiFilter(OrderFilter::class)]
     protected ?string $honorificPrefix = null;
 
-    /**
-     * Suffix (title after name).
-     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class, strategy="ipartial")
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
-     */
+    /** Suffix (title after name). */
+    #[Column(type: 'string', nullable: true)]
+    #[ApiFilter(SearchFilter::class, strategy: 'ipartial')]
+    #[ApiFilter(OrderFilter::class)]
     protected ?string $honorificSuffix = null;
 
-    /**
-     * Full name of person.
-     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class, strategy="ipartial")
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
-     */
+    /** Full name of person. */
+    #[Column(type: 'string', nullable: true)]
+    #[ApiFilter(SearchFilter::class, strategy: 'ipartial')]
+    #[ApiFilter(OrderFilter::class)]
     protected ?string $name = null;
 
     public function setName(?string $fullName): ?string
@@ -107,8 +97,8 @@ trait NameablePersonTrait
                 $this->setHonorificSuffix($nameObject->getSuffix());
                 $this->setNickname($nameObject->getNicknames());
             }
-        } catch (NameParsingException $e) {
-            // Name not recognized. TODO: Do some magic. Or maybe throw some exception.
+        } catch (NameParsingException) {
+            // Name not recognized. Do some magic. Or maybe throw some exception.
         }
 
         return $this->updateName();

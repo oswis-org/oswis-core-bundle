@@ -7,30 +7,29 @@ declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Traits\User;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
+use Doctrine\ORM\Mapping\Column;
+use OswisOrg\OswisCoreBundle\Filter\SearchFilter;
+
 /**
  * Trait adds username field.
  */
 trait UsernameTrait
 {
-    /**
-     * Username.
-     * @Doctrine\ORM\Mapping\Column(name="username", type="string", length=50, unique=true, nullable=true)
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class, strategy="ipartial")
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
-     */
+    /** Username. */
+    #[ApiFilter(SearchFilter::class, strategy: 'ipartial')]
+    #[ApiFilter(OrderFilter::class)]
+    #[Column(name: 'username', type: 'string', length: 50, unique: true, nullable: true)]
     protected ?string $username = null;
 
-    /**
-     * Get username.
-     */
+    /** Get username. */
     public function getUsername(): ?string
     {
         return $this->username ?? null;
     }
 
-    /**
-     * Set username.
-     */
+    /** Set username. */
     public function setUsername(?string $username): void
     {
         $this->username = $username ?? null;

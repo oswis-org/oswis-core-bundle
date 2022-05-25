@@ -1,30 +1,35 @@
 <?php
 
 /**
+ * @noinspection PhpUnused
  * @noinspection MethodShouldBeFinalInspection
  */
 declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Traits\Common;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\ExistsFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
+use Doctrine\ORM\Mapping\Column;
+use OswisOrg\OswisCoreBundle\Filter\SearchFilter;
+
 trait FloatRangeTrait
 {
-    /**
-     * Minimal value.
-     * @Doctrine\ORM\Mapping\Column(type="float", nullable=true)
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class, strategy="exact")
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\RangeFilter::class)
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
-     */
+    /** Minimal value. */
+    #[Column(type: 'float', nullable: true)]
+    #[ApiFilter(SearchFilter::class, strategy: 'ipartial')]
+    #[ApiFilter(OrderFilter::class)]
+    #[ApiFilter(ExistsFilter::class)]
     protected ?float $min = null;
 
-    /**
-     * Maximal value.
-     * @Doctrine\ORM\Mapping\Column(type="float", nullable=true)
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class, strategy="exact")
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\RangeFilter::class)
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
-     */
+    /** Maximal value. */
+    #[Column(type: 'float', nullable: true)]
+    #[ApiFilter(SearchFilter::class, strategy: 'ipartial')]
+    #[ApiFilter(OrderFilter::class)]
+    #[ApiFilter(DateFilter::class)]
+    #[ApiFilter(ExistsFilter::class)]
     protected ?float $max = null;
 
     public function getMin(): ?float

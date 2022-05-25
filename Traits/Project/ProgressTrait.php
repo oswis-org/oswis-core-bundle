@@ -1,24 +1,31 @@
 <?php
 
 /**
+ * @noinspection PhpUnused
  * @noinspection MethodShouldBeFinalInspection
  */
 declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Traits\Project;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\RangeFilter;
+use Doctrine\ORM\Mapping\Column;
+use OswisOrg\OswisCoreBundle\Filter\SearchFilter;
+use Symfony\Component\Validator\Constraints\Range;
+
 /**
  * Trait that adds field related with some progress.
  */
 trait ProgressTrait
 {
-    /**
-     * Progress (number between 0.0 and 1.0).
-     * @Doctrine\ORM\Mapping\Column(nullable=true)
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class, strategy="ipartial")
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\RangeFilter::class)
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
-     */
+    /** Progress (number between 0.0 and 1.0). */
+    #[Column(nullable: true)]
+    #[ApiFilter(SearchFilter::class, strategy: 'ipartial')]
+    #[ApiFilter(RangeFilter::class)]
+    #[ApiFilter(OrderFilter::class)]
+    #[Range(min: 0, max: 1)]
     protected ?float $progress = null;
 
     /**
@@ -42,10 +49,7 @@ trait ProgressTrait
         }
     }
 
-    /**
-     * Summed progress from children if progress is not set (to be overwritten).
-     * @return float|null
-     */
+    /** Summed progress from children if progress is not set (to be overwritten). */
     public function getProgressRecursive(): ?float
     {
         return $this->progress;

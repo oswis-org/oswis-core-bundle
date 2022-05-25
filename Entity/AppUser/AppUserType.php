@@ -8,16 +8,34 @@ declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Entity\AppUser;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping\Cache;
+use Doctrine\ORM\Mapping\Column;
+use Doctrine\ORM\Mapping\Entity;
+use Doctrine\ORM\Mapping\JoinColumn;
+use Doctrine\ORM\Mapping\ManyToOne;
+use Doctrine\ORM\Mapping\Table;
 use OswisOrg\OswisCoreBundle\Entity\NonPersistent\Nameable;
+use OswisOrg\OswisCoreBundle\Filter\SearchFilter;
 use OswisOrg\OswisCoreBundle\Interfaces\Common\NameableInterface;
+use OswisOrg\OswisCoreBundle\Repository\AppUserTypeRepository;
 use OswisOrg\OswisCoreBundle\Traits\Common\NameableTrait;
 
 /**
  * Form of user (customer, manager, admin etc.).
- * @Doctrine\ORM\Mapping\Entity(repositoryClass="OswisOrg\OswisCoreBundle\Repository\AppUserTypeRepository")
- * @Doctrine\ORM\Mapping\Table(name="core_app_user_type")
+ * @author Jakub Zak <mail@jakubzak.eu>
+ * @OswisOrg\OswisCoreBundle\Filter\SearchAnnotation({
+ *     "id",
+ *     "slug",
+ *     "name",
+ *     "shortName",
+ *     "description",
+ *     "note"
+ * })
  * @ApiPlatform\Core\Annotation\ApiResource(
  *   attributes={
  *     "filters"={"search"},
@@ -44,41 +62,24 @@ use OswisOrg\OswisCoreBundle\Traits\Common\NameableTrait;
  *     }
  *   }
  * )
- * @OswisOrg\OswisCoreBundle\Filter\SearchAnnotation({
- *     "id",
- *     "slug",
- *     "name",
- *     "shortName",
- *     "description",
- *     "note"
- * })
- *
- * @author Jakub Zak <mail@jakubzak.eu>
- * @Doctrine\ORM\Mapping\Cache(usage="NONSTRICT_READ_WRITE", region="core_app_user")
  */
+#[Entity(repositoryClass: AppUserTypeRepository::class)]
+#[Table(name: 'core_app_user_type')]
+#[Cache(usage: 'NONSTRICT_READ_WRITE', region: 'core_app_user')]
 class AppUserType implements NameableInterface
 {
     use NameableTrait;
 
-    /**
-     * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserRole", fetch="EAGER")
-     * @Doctrine\ORM\Mapping\JoinColumn(name="app_user_role_id", referencedColumnName="id")
-     * @ApiPlatform\Core\Annotation\ApiFilter(
-     *     ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class,
-     *     properties={"appUserRole.id": "exact", "appUserRole.name": "ipartial", "appUserRole.slug": "ipartial"}
-     * )
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
-     * @todo Refactor for use of multiple roles.
-     */
+    #[ManyToOne(targetEntity: AppUserRole::class, fetch: 'EAGER')]
+    #[JoinColumn(name: 'app_user_role_id', referencedColumnName: 'id')]
+    #[ApiFilter(SearchFilter::class, properties: ["appUserRole.id" => "exact", "appUserRole.name" => "ipartial", "appUserRole.slug" => "ipartial"])]
+    #[ApiFilter(OrderFilter::class)]
     protected ?AppUserRole $appUserRole = null;
 
-    /**
-     * Indicates that user has access to administration/IS.
-     * @Doctrine\ORM\Mapping\Column(type="boolean", nullable=false, options={"default": false})
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter::class)
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
-     * @todo Make property used (probably has not effect now).
-     */
+    /** Indicates that user has access to administration/IS. */
+    #[Column(type: 'boolean', nullable: false, options: ['default' => false])]
+    #[ApiFilter(OrderFilter::class)]
+    #[ApiFilter(BooleanFilter::class)]
     protected bool $adminUser = false;
 
     public function __construct(?Nameable $entity = null, ?AppUserRole $appUserRole = null, ?bool $adminUser = false)
@@ -88,55 +89,37 @@ class AppUserType implements NameableInterface
         $this->setFieldsFromNameable($entity);
     }
 
-    /**
-     * User has access to administration/IS.
-     *
-     * @todo Make property used (probably has not effect now).
-     */
+    /** User has access to administration/IS. */
     public function getAdminUser(): bool
     {
         return $this->adminUser ?? false;
     }
 
-    /**
-     * Set if user has access to administration/IS.
-     *
-     * @todo Make property used (probably has not effect now).
-     */
+    /** Set if user has access to administration/IS. */
     public function setAdminUser(?bool $adminUser): void
     {
         $this->adminUser = $adminUser ?? false;
     }
 
-    /**
-     * Get name/string of role of this type.
-     */
+    /** Get name/string of role of this type. */
     public function getRoleName(): string
     {
         return $this->getAppUserRole()?->getRoleName() ?? '';
     }
 
-    /**
-     * Get role of this type.
-     *
-     * @return AppUserRole
-     */
+    /** Get role of this type. */
     public function getAppUserRole(): ?AppUserRole
     {
         return $this->appUserRole;
     }
 
-    /**
-     * Set role of this type.
-     */
+    /** Set role of this type. */
     public function setAppUserRole(?AppUserRole $appUserRole): void
     {
         $this->appUserRole = $appUserRole;
     }
 
-    /**
-     * Get names of all roles contained in this type.
-     */
+    /** Get names of all roles contained in this type. */
     public function getAllRoleNames(): Collection
     {
         return $this->getAppUserRole()?->getAllRoleNames() ?? new ArrayCollection();

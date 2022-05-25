@@ -4,14 +4,24 @@ declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Entity\TwigTemplate;
 
+use Doctrine\ORM\Mapping\Cache;
+use Doctrine\ORM\Mapping\Column;
+use Doctrine\ORM\Mapping\Entity;
+use Doctrine\ORM\Mapping\Table;
 use OswisOrg\OswisCoreBundle\Interfaces\Common\NameableInterface;
 use OswisOrg\OswisCoreBundle\Interfaces\Common\TextValueInterface;
+use OswisOrg\OswisCoreBundle\Repository\TwigTemplateRepository;
 use OswisOrg\OswisCoreBundle\Traits\Common\NameableTrait;
 use OswisOrg\OswisCoreBundle\Traits\Common\TextValueTrait;
 
 /**
- * @Doctrine\ORM\Mapping\Entity(repositoryClass="OswisOrg\OswisCoreBundle\Repository\TwigTemplateRepository")
- * @Doctrine\ORM\Mapping\Table(name="core_twig_template")
+ * @author Jakub Zak <mail@jakubzak.eu>
+ * @OswisOrg\OswisCoreBundle\Filter\SearchAnnotation({
+ *     "id",
+ *     "slug",
+ *     "type",
+ *     "name"
+ * })
  * @ApiPlatform\Core\Annotation\ApiResource(
  *   attributes={
  *     "filters"={"search"},
@@ -38,23 +48,16 @@ use OswisOrg\OswisCoreBundle\Traits\Common\TextValueTrait;
  *     }
  *   }
  * )
- * @OswisOrg\OswisCoreBundle\Filter\SearchAnnotation({
- *     "id",
- *     "slug",
- *     "type",
- *     "name"
- * })
- * @author Jakub Zak <mail@jakubzak.eu>
- * @Doctrine\ORM\Mapping\Cache(usage="NONSTRICT_READ_WRITE", region="core_twig_template")
  */
+#[Entity(repositoryClass: TwigTemplateRepository::class)]
+#[Table(name: 'core_twig_template')]
+#[Cache(usage: 'NONSTRICT_READ_WRITE', region: 'core_twig_template')]
 class TwigTemplate implements NameableInterface, TextValueInterface
 {
     use NameableTrait;
     use TextValueTrait;
 
-    /**
-     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
-     */
+    #[Column(type: 'string', nullable: true)]
     protected ?string $regularTemplateName = null;
 
     final public function isRegular(): bool
@@ -81,5 +84,4 @@ class TwigTemplate implements NameableInterface, TextValueInterface
     {
         return $this->getRegularTemplateName() ?? $this->getSlug();
     }
-
 }

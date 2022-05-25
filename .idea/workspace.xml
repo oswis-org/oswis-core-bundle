@@ -14,29 +14,72 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Entity/AppUser/AppUserEdit.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Entity/AppUser/AppUserEditRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Entity/AppUserMail/AppUserEditMail.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Enum/AppUserEditTypeEnum.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EventSubscriber/AppUserEditRequestSubscriber.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EventSubscriber/AppUserEditSubscriber.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/views/e-mail/pages/app-user-edit.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Service/AppUserEditRequestService.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Service/AppUserEditService.php" afterDir="false" />
+    <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="Transformed some annotations to attributes.">
+      <change afterPath="$PROJECT_DIR$/rector.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/AppUserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/AppUserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DependencyInjection/Configuration.php" beforeDir="false" afterPath="$PROJECT_DIR$/DependencyInjection/Configuration.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DependencyInjection/OswisOrgOswisCoreExtension.php" beforeDir="false" afterPath="$PROJECT_DIR$/DependencyInjection/OswisOrgOswisCoreExtension.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controller/WebAdmin/WebAdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/WebAdmin/WebAdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractFile.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractFile.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractImage.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractImage.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractMail.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractMail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractMailGroup.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractMailGroup.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AbstractClass/AbstractToken.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AbstractClass/AbstractToken.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AppUser/AppUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUser/AppUser.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AppUser/AppUserFlag.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUser/AppUserFlag.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AppUser/AppUserFlagConnection.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUser/AppUserFlagConnection.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AppUser/AppUserRole.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUser/AppUserRole.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AppUser/AppUserToken.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUser/AppUserToken.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AppUser/AppUserType.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUser/AppUserType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AppUserMail/AppUserEditMail.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUserMail/AppUserEditMail.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Entity/AppUserMail/AppUserMail.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUserMail/AppUserMail.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventSubscriber/AppUserSubscriber.php" beforeDir="false" afterPath="$PROJECT_DIR$/EventSubscriber/AppUserSubscriber.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/config/services.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/e-mail/pages/app-user-universal.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/e-mail/pages/app-user-universal.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Security/WebUserAuthenticator.php" beforeDir="false" afterPath="$PROJECT_DIR$/Security/WebUserAuthenticator.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/AppUserMailService.php" beforeDir="false" afterPath="$PROJECT_DIR$/Service/AppUserMailService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/AppUserService.php" beforeDir="false" afterPath="$PROJECT_DIR$/Service/AppUserService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/AppUserTokenService.php" beforeDir="false" afterPath="$PROJECT_DIR$/Service/AppUserTokenService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AppUserMail/AppUserMailCategory.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUserMail/AppUserMailCategory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/AppUserMail/AppUserMailGroup.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUserMail/AppUserMailGroup.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/Logger/ClientLogRecord.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Logger/ClientLogRecord.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/NonPersistent/BankAccount.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/NonPersistent/BankAccount.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/NonPersistent/Export/AbstractExportList.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/NonPersistent/Export/AbstractExportList.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/NonPersistent/Export/ExportListColumn.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/NonPersistent/Export/ExportListColumn.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/NonPersistent/SiteMapItem.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/NonPersistent/SiteMapItem.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/NonPersistent/WebMenuItem.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/NonPersistent/WebMenuItem.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/Security/RefreshToken.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Security/RefreshToken.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/TwigTemplate/TwigTemplate.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/TwigTemplate/TwigTemplate.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/AddressBook/EmailTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/AddressBook/EmailTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/AddressBook/NameablePersonTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/AddressBook/NameablePersonTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/AddressBook/PhoneTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/AddressBook/PhoneTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/AddressBook/PostalAddressTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/AddressBook/PostalAddressTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/AddressBook/UrlTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/AddressBook/UrlTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Common/ActivatedTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/ActivatedTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Common/BasicTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/BasicTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Common/BlameableTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/BlameableTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Common/ColorTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/ColorTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Common/DateRangeTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/DateRangeTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Common/DateTimeTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/DateTimeTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Common/DeletedTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/DeletedTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Common/DescriptionTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/DescriptionTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Common/EntityPublicTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/EntityPublicTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Common/ExternalIdTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/ExternalIdTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Common/FloatRangeTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/FloatRangeTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Common/FloatValueTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/FloatValueTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Common/IdTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/IdTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Common/InternalNoteTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/InternalNoteTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Common/ManagerConfirmationTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/ManagerConfirmationTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Common/NameTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/NameTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Common/NoteTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/NoteTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Common/NumericRangeTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/NumericRangeTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Common/NumericValueTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/NumericValueTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Common/PriorityTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/PriorityTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Common/SlugTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/SlugTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Common/TextValueTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/TextValueTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Common/TimestampableTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/TimestampableTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Common/TypeTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/TypeTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Common/UserConfirmationTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/UserConfirmationTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Form/FormValueTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Form/FormValueTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Payment/BankAccountTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Payment/BankAccountTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Payment/DepositValueTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Payment/DepositValueTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Project/ProgressTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Project/ProgressTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/User/AppUserTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/User/AppUserTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/User/EncryptedPasswordTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/User/EncryptedPasswordTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/User/UsernameTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/User/UsernameTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -259,10 +302,11 @@
       <path value="$PROJECT_DIR$/vendor/willdurand/negotiation" />
       <path value="$PROJECT_DIR$/vendor/psr/http-message" />
       <path value="$PROJECT_DIR$/vendor/php-http/message-factory" />
+      <path value="$PROJECT_DIR$/vendor/rector/rector" />
     </include_path>
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectId" id="1OdNRiB7J91AH4isXqLMtDEiNnC" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -991,14 +1035,7 @@
       <workItem from="1653299649508" duration="5051000" />
       <workItem from="1653381918415" duration="4107000" />
       <workItem from="1653386144051" duration="10878000" />
-      <workItem from="1653481309408" duration="5306000" />
-    </task>
-    <task id="LOCAL-00775" summary="Fixed functions for &quot;register-root&quot; route.">
-      <created>1600807970181</created>
-      <option name="number" value="00775" />
-      <option name="presentableId" value="LOCAL-00775" />
-      <option name="project" value="LOCAL" />
-      <updated>1600807970181</updated>
+      <workItem from="1653481309408" duration="15262000" />
     </task>
     <task id="LOCAL-00776" summary="Added check of user's IP.">
       <created>1601152036873</created>
@@ -1336,7 +1373,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653305564769</updated>
     </task>
-    <option name="localTasksCounter" value="824" />
+    <task id="LOCAL-00824" summary="Added reset password functionality.">
+      <created>1653486714883</created>
+      <option name="number" value="00824" />
+      <option name="presentableId" value="LOCAL-00824" />
+      <option name="project" value="LOCAL" />
+      <updated>1653486714884</updated>
+    </task>
+    <option name="localTasksCounter" value="825" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1385,8 +1429,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Update..." />
-    <MESSAGE value="Changed ApiPlatform's &quot;access_control&quot; attribute to &quot;security&quot;." />
     <MESSAGE value="Fixed routes definitions order for admin app." />
     <MESSAGE value="Updated composer packages." />
     <MESSAGE value="Updated to PHP 8.0 and Symfony 5.3." />
@@ -1410,7 +1452,9 @@
     <MESSAGE value="Moved javascripts to head (https://symfony.com/blog/moving-script-inside-head-and-the-defer-attribute)." />
     <MESSAGE value="Updated dependencies and configuration." />
     <MESSAGE value="Added redirection to portalUrl." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added redirection to portalUrl." />
+    <MESSAGE value="Added reset password functionality." />
+    <MESSAGE value="Transformed some annotations to attributes." />
+    <option name="LAST_COMMIT_MESSAGE" value="Transformed some annotations to attributes." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

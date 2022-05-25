@@ -1,34 +1,40 @@
 <?php
 
 /**
+ * @noinspection PhpUnused
  * @noinspection MethodShouldBeFinalInspection
  */
 declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Traits\Common;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\NumericFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\RangeFilter;
+use Doctrine\ORM\Mapping\Column;
+use Doctrine\ORM\Mapping\GeneratedValue;
+use Doctrine\ORM\Mapping\Id;
+use OswisOrg\OswisCoreBundle\Filter\SearchFilter;
+
 /**
  * Trait adds *id* and *customId* fields.
  */
 trait IdTrait
 {
-    /**
-     * Unique (auto-incremented) numeric identifier.
-     * @Doctrine\ORM\Mapping\Id()
-     * @Doctrine\ORM\Mapping\GeneratedValue(strategy="AUTO")
-     * @Doctrine\ORM\Mapping\Column(type="integer")
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class, strategy="exact")
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class, properties={"id": "ASC"})
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\NumericFilter::class)
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\RangeFilter::class)
-     */
+    /** Unique (auto-incremented) numeric identifier. */
+    #[Id]
+    #[GeneratedValue(strategy: 'AUTO')]
+    #[Column(type: 'integer')]
+    #[ApiFilter(SearchFilter::class, strategy: 'exact')]
+    #[ApiFilter(OrderFilter::class, properties: ['id' => 'ASC'])]
+    #[ApiFilter(NumericFilter::class)]
+    #[ApiFilter(RangeFilter::class)]
     protected ?int $id = null;
 
-    /**
-     * @Doctrine\ORM\Mapping\Column(type="string", length=170, nullable=true, unique=true)
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class, strategy="exact")
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
-     */
+    #[ApiFilter(SearchFilter::class, strategy: 'exact')]
+    #[ApiFilter(OrderFilter::class)]
+    #[Column(type: 'string', length: 170, unique: true, nullable: true)]
     protected ?string $customId = null;
 
     public function getCustomId(): ?string

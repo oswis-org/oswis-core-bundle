@@ -7,6 +7,11 @@ declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Traits\Common;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
+use Doctrine\ORM\Mapping\Column;
+use OswisOrg\OswisCoreBundle\Filter\SearchFilter;
+
 /**
  * Trait adds note field.
  *
@@ -14,12 +19,10 @@ namespace OswisOrg\OswisCoreBundle\Traits\Common;
  */
 trait NoteTrait
 {
-    /**
-     * Text note for entity.
-     * @Doctrine\ORM\Mapping\Column(type="text", nullable=true)
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class, strategy="ipartial")
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
-     */
+    /** Text note for entity. */
+    #[ApiFilter(SearchFilter::class, strategy: 'ipartial')]
+    #[ApiFilter(OrderFilter::class)]
+    #[Column(type: 'text', nullable: true)]
     protected ?string $note = null;
 
     public function getNote(): ?string

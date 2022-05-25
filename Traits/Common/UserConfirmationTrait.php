@@ -1,32 +1,37 @@
 <?php
 
 /**
+ * @noinspection PhpUnused
  * @noinspection MethodShouldBeFinalInspection
  */
 declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Traits\Common;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\ExistsFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use DateTime;
+use Doctrine\ORM\Mapping\Column;
+use Doctrine\ORM\Mapping\JoinColumn;
+use Doctrine\ORM\Mapping\ManyToOne;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser;
+use OswisOrg\OswisCoreBundle\Filter\SearchFilter;
 
 trait UserConfirmationTrait
 {
-    /**
-     * Date and time of user confirmation.
-     * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true)
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class, strategy="ipartial")
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter::class)
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\ExistsFilter::class)
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
-     */
+    /** Date and time of user confirmation. */
+    #[Column(type: 'datetime', nullable: true)]
+    #[ApiFilter(SearchFilter::class, strategy: 'ipartial')]
+    #[ApiFilter(DateFilter::class)]
+    #[ApiFilter(ExistsFilter::class)]
+    #[ApiFilter(OrderFilter::class)]
     protected ?DateTime $userConfirmedAt = null;
 
-    /**
-     * User who confirmed.
-     * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser", fetch="EAGER")
-     * @Doctrine\ORM\Mapping\JoinColumn(name="user_confirmed_by_id", referencedColumnName="id")
-     */
+    /** User who confirmed. */
+    #[ManyToOne(targetEntity: AppUser::class, fetch: 'EAGER')]
+    #[JoinColumn(name: 'user_confirmed_by_id', referencedColumnName: 'id')]
     protected ?AppUser $userConfirmedBy = null;
 
     public function getUserConfirmedBy(): ?AppUser

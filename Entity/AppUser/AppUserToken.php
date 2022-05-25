@@ -1,6 +1,7 @@
 <?php
 
 /**
+ * @noinspection PhpUnused
  * @noinspection MethodShouldBeFinalInspection
  */
 declare(strict_types=1);
@@ -8,13 +9,17 @@ declare(strict_types=1);
 namespace OswisOrg\OswisCoreBundle\Entity\AppUser;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use Doctrine\ORM\Mapping\Cache;
+use Doctrine\ORM\Mapping\Entity;
+use Doctrine\ORM\Mapping\JoinColumn;
+use Doctrine\ORM\Mapping\ManyToOne;
+use Doctrine\ORM\Mapping\Table;
 use OswisOrg\OswisCoreBundle\Entity\AbstractClass\AbstractToken;
 use OswisOrg\OswisCoreBundle\Exceptions\TokenInvalidException;
 use OswisOrg\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
+use OswisOrg\OswisCoreBundle\Repository\AppUserTokenRepository;
 
 /**
- * @Doctrine\ORM\Mapping\Entity(repositoryClass="OswisOrg\OswisCoreBundle\Repository\AppUserTokenRepository")
- * @Doctrine\ORM\Mapping\Table(name="core_app_user_token")
  * @ApiResource(
  *   attributes={
  *     "filters"={"search"},
@@ -48,14 +53,14 @@ use OswisOrg\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
  *     "token"
  * })
  * @author Jakub Zak <mail@jakubzak.eu>
- * @Doctrine\ORM\Mapping\Cache(usage="NONSTRICT_READ_WRITE", region="core_app_user")
  */
+#[Entity(repositoryClass: AppUserTokenRepository::class)]
+#[Table(name: 'core_app_user_token')]
+#[Cache(usage: 'NONSTRICT_READ_WRITE', region: 'core_app_user')]
 class AppUserToken extends AbstractToken
 {
-    /**
-     * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser", fetch="EAGER")
-     * @Doctrine\ORM\Mapping\JoinColumn(name="app_user_id", referencedColumnName="id")
-     */
+    #[ManyToOne(targetEntity: AppUser::class, fetch: 'EAGER')]
+    #[JoinColumn(name: 'app_user_id', referencedColumnName: 'id')]
     protected ?AppUser $appUser = null;
 
     public function __construct(

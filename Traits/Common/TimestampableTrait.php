@@ -8,7 +8,13 @@ declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Traits\Common;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use DateTime;
+use Doctrine\ORM\Mapping\Column;
+use Gedmo\Mapping\Annotation\Timestampable;
+use OswisOrg\OswisCoreBundle\Filter\SearchFilter;
 
 use function floor;
 
@@ -21,26 +27,20 @@ use function floor;
  */
 trait TimestampableTrait
 {
-    /**
-     * Date and time of entity creation.
-     *
-     * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true)
-     * @Gedmo\Mapping\Annotation\Timestampable(on="create")
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class, strategy="ipartial")
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter::class)
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
-     */
+    /** Date and time of entity creation. */
+    #[Column(type: 'datetime', nullable: true)]
+    #[Timestampable(on: 'create')]
+    #[ApiFilter(SearchFilter::class, strategy: 'ipartial')]
+    #[ApiFilter(DateFilter::class)]
+    #[ApiFilter(OrderFilter::class)]
     protected ?DateTime $createdAt = null;
 
-    /**
-     * Date and time of entity update.
-     *
-     * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true, options={"default" : null})
-     * @Gedmo\Mapping\Annotation\Timestampable(on="update")
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class, strategy="ipartial")
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter::class)
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
-     */
+    /** Date and time of entity update. */
+    #[Column(type: 'datetime', nullable: true, options: ['default' => null])]
+    #[Timestampable(on: 'update')]
+    #[ApiFilter(SearchFilter::class, strategy: 'ipartial')]
+    #[ApiFilter(DateFilter::class)]
+    #[ApiFilter(OrderFilter::class)]
     protected ?DateTime $updatedAt = null;
 
     public function getCreatedDaysAgo(): ?int

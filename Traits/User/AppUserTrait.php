@@ -1,4 +1,5 @@
 <?php
+/** @noinspection PhpUnused */
 
 /**
  * @noinspection MethodShouldBeFinalInspection
@@ -7,6 +8,8 @@ declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Traits\User;
 
+use Doctrine\ORM\Mapping\JoinColumn;
+use Doctrine\ORM\Mapping\ManyToOne;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser;
 
 /**
@@ -14,10 +17,8 @@ use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser;
  */
 trait AppUserTrait
 {
-    /**
-     * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="OswisOrg\OswisCoreBundle\Entity\AppUser", fetch="EAGER")
-     * @Doctrine\ORM\Mapping\JoinColumn(nullable=true)
-     */
+    #[ManyToOne(targetEntity: AppUser::class, fetch: 'EAGER')]
+    #[JoinColumn(nullable: true)]
     protected ?AppUser $appUser = null;
 
     public function getAppUser(): ?AppUser

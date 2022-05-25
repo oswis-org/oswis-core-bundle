@@ -4,7 +4,7 @@
     "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
     "This file is @generated automatically"
   ],
-  "content-hash": "64098160925ce71fbf85caec71ef8703",
+  "content-hash": "82b7aeeebe13aa2fe5863b4c87adf393",
   "packages": [
     {
       "name": "adci/full-name-parser",
@@ -12108,17 +12108,77 @@
       "time": "2022-05-24T09:05:09+00:00"
     },
     {
+      "name": "rector/rector",
+      "version": "0.13.0",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/rectorphp/rector.git",
+        "reference": "bb3b32dd590cbd0deb67c2ce8ae32801357ff059"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/rectorphp/rector/zipball/bb3b32dd590cbd0deb67c2ce8ae32801357ff059",
+        "reference": "bb3b32dd590cbd0deb67c2ce8ae32801357ff059",
+        "shasum": ""
+      },
+      "require": {
+        "php": "^7.2|^8.0",
+        "phpstan/phpstan": "^1.6.8"
+      },
+      "conflict": {
+        "phpstan/phpdoc-parser": "<1.2",
+        "rector/rector-cakephp": "*",
+        "rector/rector-doctrine": "*",
+        "rector/rector-laravel": "*",
+        "rector/rector-nette": "*",
+        "rector/rector-phpoffice": "*",
+        "rector/rector-phpunit": "*",
+        "rector/rector-prefixed": "*",
+        "rector/rector-symfony": "*"
+      },
+      "bin": [
+        "bin/rector"
+      ],
+      "type": "library",
+      "extra": {
+        "branch-alias": {
+          "dev-main": "0.12-dev"
+        }
+      },
+      "autoload": {
+        "files": [
+          "bootstrap.php"
+        ]
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
+      "description": "Instant Upgrade and Automated Refactoring of any PHP code",
+      "support": {
+        "issues": "https://github.com/rectorphp/rector/issues",
+        "source": "https://github.com/rectorphp/rector/tree/0.13.0"
+      },
+      "funding": [
+        {
+          "url": "https://github.com/tomasvotruba",
+          "type": "github"
+        }
+      ],
+      "time": "2022-05-23T10:26:32+00:00"
+    },
+    {
       "name": "roave/security-advisories",
       "version": "dev-latest",
       "source": {
         "type": "git",
         "url": "https://github.com/Roave/SecurityAdvisories.git",
-        "reference": "09c351f048fb405d8b8e73af45dce4e0197cc050"
+        "reference": "676a50c0c2b1bd909e4573d1bbbfaf0c8c3af13a"
       },
       "dist": {
         "type": "zip",
-        "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/09c351f048fb405d8b8e73af45dce4e0197cc050",
-        "reference": "09c351f048fb405d8b8e73af45dce4e0197cc050",
+        "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/676a50c0c2b1bd909e4573d1bbbfaf0c8c3af13a",
+        "reference": "676a50c0c2b1bd909e4573d1bbbfaf0c8c3af13a",
         "shasum": ""
       },
       "conflict": {
@@ -12255,7 +12315,7 @@
         "gree/jose": "<=2.2",
         "gregwar/rst": "<1.0.3",
         "grumpydictator/firefly-iii": "<5.6.5",
-        "guzzlehttp/guzzle": ">=4-rc.2,<4.2.4|>=5,<5.3.1|>=6,<6.2.1",
+        "guzzlehttp/guzzle": ">=4-rc.2,<6.5.6|>=7,<7.4.3",
         "guzzlehttp/psr7": "<1.8.4|>=2,<2.1.1",
         "helloxz/imgurl": "<=2.31",
         "hillelcoren/invoice-ninja": "<5.3.35",
@@ -12598,7 +12658,7 @@
           "type": "tidelift"
         }
       ],
-      "time": "2022-05-24T23:04:28+00:00"
+      "time": "2022-05-25T14:05:36+00:00"
     },
     {
       "name": "symfony/debug",

@@ -1,6 +1,7 @@
 <?php
 
 /**
+ * @noinspection PhpUnused
  * @noinspection MethodShouldBeFinalInspection
  */
 declare(strict_types=1);
@@ -9,6 +10,7 @@ namespace OswisOrg\OswisCoreBundle\Entity\AbstractClass;
 
 use DateTime;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping\Column;
 use LogicException;
 use OswisOrg\OswisCoreBundle\Entity\AppUserMail\AppUserMail;
 use OswisOrg\OswisCoreBundle\Exceptions\InvalidTypeException;
@@ -27,34 +29,22 @@ abstract class AbstractMail implements BasicInterface
     use BasicTrait;
     use TypeTrait;
 
-    /**
-     * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true)
-     */
+    #[Column(type: 'datetime', nullable: true)]
     protected ?DateTime $sent = null;
 
-    /**
-     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
-     */
+    #[Column(type: 'string', nullable: true)]
     protected ?string $recipientName = null;
 
-    /**
-     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
-     */
+    #[Column(type: 'string', nullable: true)]
     protected ?string $subject = null;
 
-    /**
-     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
-     */
+    #[Column(type: 'string', nullable: true)]
     protected ?string $messageID = null;
 
-    /**
-     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
-     */
+    #[Column(type: 'string', nullable: true)]
     protected ?string $statusMessage = null;
 
-    /**
-     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
-     */
+    #[Column(type: 'string', nullable: true)]
     protected ?string $address = null;
 
     protected ?TemplatedEmail $templatedEmail = null;
@@ -153,7 +143,7 @@ abstract class AbstractMail implements BasicInterface
         $this->templatedEmail->subject(''.$this->subject);
         try {
             $this->templatedEmail->to(new Address($this->address ?? '', $this->recipientName ?? ''));
-        } catch (LogicException $e) {
+        } catch (LogicException) {
             $this->templatedEmail->to($this->address ?? '');
         }
         $this->setMessageID();

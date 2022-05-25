@@ -14,8 +14,8 @@ class WebAdminController extends AbstractController
 {
     /**
      * @return Response
-     * @Route("/web_admin/homepage", name="web_admin_homepage")
      */
+    #[Route(path: '/web_admin/homepage', name: 'web_admin_homepage')]
     final public function showAdminHomepage(): Response
     {
         return $this->render('@OswisOrgOswisCore/web_admin/web-admin-homepage.html.twig');

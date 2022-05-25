@@ -1,6 +1,8 @@
 <?php
 
 /**
+ * @noinspection PhpUnused
+ * @noinspection PropertyCanBePrivateInspection
  * @noinspection MethodShouldBeFinalInspection
  */
 declare(strict_types=1);

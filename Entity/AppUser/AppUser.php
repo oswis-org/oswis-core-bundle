@@ -8,11 +8,22 @@ declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Entity\AppUser;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping\Cache;
+use Doctrine\ORM\Mapping\Entity;
+use Doctrine\ORM\Mapping\JoinColumn;
+use Doctrine\ORM\Mapping\ManyToOne;
+use Doctrine\ORM\Mapping\OneToMany;
+use Doctrine\ORM\Mapping\Table;
 use OswisOrg\OswisCoreBundle\Entity\AbstractClass\AbstractAppUser;
 use OswisOrg\OswisCoreBundle\Entity\NonPersistent\Export\ExportListColumn;
+use OswisOrg\OswisCoreBundle\Filter\SearchFilter;
 use OswisOrg\OswisCoreBundle\Interfaces\Export\PdfExportableInterface;
+use OswisOrg\OswisCoreBundle\Repository\AppUserRepository;
 use OswisOrg\OswisCoreBundle\Traits\Export\PdfExportableTrait;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -22,46 +33,7 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
  * AppUser is user of this application.
  * Every **user must be activated** by activating e-mail with link that is containing special token.
  * User is **active in interval** given by *startDateTime* and *endDateTime* (no need to use *deleted* property).
- * @Doctrine\ORM\Mapping\Entity(repositoryClass="OswisOrg\OswisCoreBundle\Repository\AppUserRepository")
- * @Doctrine\ORM\Mapping\Table(name="core_app_user")
- * @ApiPlatform\Core\Annotation\ApiResource(
- *   attributes={
- *     "filters"={"search"},
- *     "security"="is_granted('ROLE_USER')"
- *   },
- *   collectionOperations={
- *     "get"={
- *       "security"="is_granted('ROLE_MANAGER')",
- *       "normalization_context"={"groups"={"entities_get", "app_users_get"}, "enable_max_depth"=true},
- *     },
- *     "pdf"={
- *       "method"="GET",
- *       "path"="/app_users/export/pdf",
- *       "security"="is_granted('ROLE_MANAGER')",
- *       "normalization_context"={"groups"={"entities_get", "app_users_get"}, "enable_max_depth"=true},
- *     },
- *     "csv"={
- *       "method"="GET",
- *       "path"="/app_users/export/csv",
- *       "security"="is_granted('ROLE_MANAGER')",
- *       "normalization_context"={"groups"={"entities_get", "app_users_get"}, "enable_max_depth"=true},
- *     },
- *     "post"={
- *       "security"="is_granted('ROLE_ADMIN')",
- *       "denormalization_context"={"groups"={"entities_post", "app_users_post"}, "enable_max_depth"=true}
- *     }
- *   },
- *   itemOperations={
- *     "get"={
- *       "security"="is_granted('ROLE_MANAGER') or object.canRead(user)",
- *       "normalization_context"={"groups"={"entity_get", "app_user_get"}, "enable_max_depth"=true},
- *     },
- *     "put"={
- *       "security"="is_granted('ROLE_ADMIN') or object.canEdit(user)",
- *       "denormalization_context"={"groups"={"entity_put", "app_user_put"}, "enable_max_depth"=true}
- *     }
- *   }
- * )
+ * @author Jakub Zak <mail@jakubzak.eu>
  * @OswisOrg\OswisCoreBundle\Filter\SearchAnnotation({
  *     "id",
  *     "username",
@@ -78,45 +50,78 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
  *     "appUserType.shortName",
  *     "appUserType.slug"
  * })
- * @author Jakub Zak <mail@jakubzak.eu>
- * @Doctrine\ORM\Mapping\Cache(usage="NONSTRICT_READ_WRITE", region="core_app_user")
  */
+#[Entity(repositoryClass: AppUserRepository::class)]
+#[ApiResource( //
+    collectionOperations: [
+        'get'  => [
+            'security'              => "is_granted('ROLE_MANAGER')",
+            'normalization_context' => [
+                'groups'           => ["entities_get", "app_users_get"],
+                'enable_max_depth' => true,
+            ],
+        ],
+        'post' => [
+            'security'                => "is_granted('ROLE_ADMIN')",
+            'denormalization_context' => [
+                'groups'           => ["entities_post", "app_users_post"],
+                'enable_max_depth' => true,
+            ],
+        ],
+        'csv'  => [
+            'method'                => 'GET',
+            'path'                  => '/app_users/export/pdf',
+            'security'              => "is_granted('ROLE_MANAGER')",
+            'normalization_context' => [
+                'groups'           => ["entities_get", "app_users_get"],
+                'enable_max_depth' => true,
+            ],
+        ],
+        'pdf'  => [
+            'method'                => 'GET',
+            'path'                  => '/app_users/export/pdf',
+            'security'              => "is_granted('ROLE_MANAGER')",
+            'normalization_context' => [
+                'groups'           => ["entities_get", "app_users_get"],
+                'enable_max_depth' => true,
+            ],
+        ],
+    ], itemOperations: [
+    'get' => [
+        'security'              => "is_granted('ROLE_MANAGER') or object.canRead(user)",
+        'normalization_context' => [
+            'groups'           => ["entity_get", "app_user_get"],
+            'enable_max_depth' => true,
+        ],
+    ],
+    'put' => [
+        'security'                => "is_granted('ROLE_ADMIN') or object.canEdit(user)",
+        'denormalization_context' => [
+            'groups'           => ["entity_put", "app_user_put"],
+            'enable_max_depth' => true,
+        ],
+    ],
+], attributes: [
+    'filters'  => ['search'],
+    'security' => 'is_granted("ROLE_USER")',
+],)]
+#[Table(name: 'core_app_user')]
+#[Cache(usage: 'NONSTRICT_READ_WRITE', region: 'core_app_user')]
 class AppUser extends AbstractAppUser implements PdfExportableInterface, PasswordAuthenticatedUserInterface
 {
     use PdfExportableTrait;
 
     public const ENTITY_NAME = [1 => 'Uživatel', 11 => 'Uživatelé'];
 
-    /**
-     * @Doctrine\ORM\Mapping\OneToMany(
-     *     targetEntity="OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserFlagConnection",
-     *     cascade={"all"},
-     *     mappedBy="appUser",
-     *     fetch="EAGER",
-     * )
-     * @ApiPlatform\Core\Annotation\ApiFilter(
-     *     ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class,
-     *     properties={"appUserFlags.id": "exact", "appUserFlags.name": "ipartial", "appUserFlags.slug": "ipartial"}
-     * )
-     * @ApiPlatform\Core\Annotation\ApiFilter(
-     *     ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class,
-     *     properties={"appUserFlags.id", "appUserFlags.name", "appUserFlags.slug"}
-     * )
-     */
+    #[OneToMany(mappedBy: 'appUser', targetEntity: AppUserFlagConnection::class, cascade: ['all'], fetch: 'EAGER')]
+    #[ApiFilter(SearchFilter::class, properties: ["appUserFlags.id" => "exact", "appUserFlags.name" => "ipartial", "appUserFlags.slug" => "ipartial"])]
+    #[ApiFilter(OrderFilter::class, properties: ["appUserFlags.id", "appUserFlags.name", "appUserFlags.slug"])]
     protected ?Collection $appUserFlags = null;
 
-    /**
-     * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserType", fetch="EAGER")
-     * @Doctrine\ORM\Mapping\JoinColumn(name="app_user_type_id", referencedColumnName="id")
-     * @ApiPlatform\Core\Annotation\ApiFilter(
-     *     ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class,
-     *     properties={"appUserType.id": "exact", "appUserType.name": "ipartial", "appUserType.slug": "ipartial"}
-     * )
-     * @ApiPlatform\Core\Annotation\ApiFilter(
-     *     ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class,
-     *     properties={"appUserType.id", "appUserType.name", "appUserType.slug"}
-     * )
-     */
+    #[ManyToOne(targetEntity: AppUserType::class, fetch: 'EAGER')]
+    #[JoinColumn(name: 'app_user_type_id', referencedColumnName: 'id')]
+    #[ApiFilter(SearchFilter::class, properties: ["appUserType.id" => "exact", "appUserType.name" => "ipartial", "appUserType.slug" => "ipartial"])]
+    #[ApiFilter(OrderFilter::class, properties: ["appUserType.id", "appUserType.name", "appUserType.slug"])]
     protected ?AppUserType $appUserType = null;
 
     public function __construct(

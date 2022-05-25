@@ -1,27 +1,31 @@
 <?php
 
 /**
+ * @noinspection PhpUnused
  * @noinspection MethodShouldBeFinalInspection
  */
 declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Traits\Common;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use DateTime;
+use Doctrine\ORM\Mapping\Column;
 use Exception;
+use OswisOrg\OswisCoreBundle\Filter\SearchFilter;
 
 /**
  * Trait adds dateTime field.
  */
 trait DateTimeTrait
 {
-    /**
-     * Date and time.
-     * @Doctrine\ORM\Mapping\Column(type="datetime", nullable=true, options={"default" : null})
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class, strategy="ipartial")
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter::class)
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
-     */
+    /** Date and time. */
+    #[Column(type: 'datetime', nullable: true, options: ['default' => null])]
+    #[ApiFilter(SearchFilter::class, strategy: 'ipartial')]
+    #[ApiFilter(OrderFilter::class)]
+    #[ApiFilter(DateFilter::class)]
     protected ?DateTime $dateTime = null;
 
     public function getDaysAgo(?bool $decimal = false): ?float
@@ -34,7 +38,7 @@ trait DateTimeTrait
             }
 
             return null;
-        } catch (Exception $e) {
+        } catch (Exception) {
             return null;
         }
     }

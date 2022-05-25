@@ -5,6 +5,9 @@ declare(strict_types=1);
 namespace OswisOrg\OswisCoreBundle\Entity\AppUser;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use Doctrine\ORM\Mapping\Cache;
+use Doctrine\ORM\Mapping\Entity;
+use Doctrine\ORM\Mapping\Table;
 use OswisOrg\OswisCoreBundle\Entity\NonPersistent\Nameable;
 use OswisOrg\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
 use OswisOrg\OswisCoreBundle\Interfaces\Common\NameableInterface;
@@ -12,9 +15,6 @@ use OswisOrg\OswisCoreBundle\Traits\Common\NameableTrait;
 
 /**
  * Flag for app user.
- * @Doctrine\ORM\Mapping\Entity()
- * @Doctrine\ORM\Mapping\Table(name="core_app_user_flag")
- * @ApiResource()
  * @Searchable({
  *     "id",
  *     "name",
@@ -22,8 +22,11 @@ use OswisOrg\OswisCoreBundle\Traits\Common\NameableTrait;
  *     "note"
  * })
  * @author Jakub Zak <mail@jakubzak.eu>
- * @Doctrine\ORM\Mapping\Cache(usage="NONSTRICT_READ_WRITE", region="core_app_user")
  */
+#[ApiResource]
+#[Entity]
+#[Table(name: 'core_app_user_flag')]
+#[Cache(usage: 'NONSTRICT_READ_WRITE', region: 'core_app_user')]
 class AppUserFlag implements NameableInterface
 {
     use NameableTrait;

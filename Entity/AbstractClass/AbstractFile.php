@@ -1,6 +1,7 @@
 <?php
 
 /**
+ * @noinspection PhpUnused
  * @noinspection MethodShouldBeFinalInspection
  */
 declare(strict_types=1);
@@ -9,9 +10,12 @@ namespace OswisOrg\OswisCoreBundle\Entity\AbstractClass;
 
 use ApiPlatform\Core\Annotation\ApiProperty;
 use DateTime;
+use Doctrine\ORM\Mapping\Column;
 use OswisOrg\OswisCoreBundle\Interfaces\Common\BasicInterface;
 use OswisOrg\OswisCoreBundle\Traits\Common\BasicTrait;
 use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Validator\Constraints\NotNull;
+use Vich\UploaderBundle\Mapping\Annotation\UploadableField;
 
 /**
  * Abstract file class for use in uploads and forms.
@@ -21,33 +25,21 @@ abstract class AbstractFile implements BasicInterface
 {
     use BasicTrait;
 
-    /**
-     * @Symfony\Component\Validator\Constraints\NotNull()
-     * @Vich\UploaderBundle\Mapping\Annotation\UploadableField(
-     *     mapping="abstract_file", size="contentSize", fileNameProperty="contentName", mimeType="contentMimeType"
-     * )
-     */
+    #[NotNull]
+    #[UploadableField(mapping: 'abstract_file', fileNameProperty: 'contentName', size: 'contentSize', mimeType: 'contentMimeType')]
     protected ?File $file = null;
 
-    /**
-     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
-     * @ApiProperty(iri="https://schema.org/contentUrl")
-     */
+    #[ApiProperty(iri: 'https://schema.org/contentUrl')]
+    #[Column(type: 'string', nullable: true)]
     protected ?string $contentName = null;
 
-    /**
-     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
-     */
+    #[Column(type: 'string', nullable: true)]
     protected ?string $contentSize = null;
 
-    /**
-     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
-     */
+    #[Column(type: 'string', nullable: true)]
     protected ?string $contentMimeType = null;
 
-    /**
-     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
-     */
+    #[Column(type: 'string', nullable: true)]
     protected ?string $contentOriginalName = null;
 
     public function getFile(): ?File

@@ -8,6 +8,11 @@ declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Entity\AppUserMail;
 
+use Doctrine\ORM\Mapping\Cache;
+use Doctrine\ORM\Mapping\Entity;
+use Doctrine\ORM\Mapping\JoinColumn;
+use Doctrine\ORM\Mapping\ManyToOne;
+use Doctrine\ORM\Mapping\Table;
 use OswisOrg\OswisCoreBundle\Entity\AbstractClass\AbstractMail;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserEdit;
@@ -15,8 +20,11 @@ use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserEditRequest;
 
 /**
  * E-mail sent to some user about changes in account (password, e-mail or username).
- * @Doctrine\ORM\Mapping\Entity()
- * @Doctrine\ORM\Mapping\Table(name="core_app_user_edit_mail")
+ * @author Jakub Zak <mail@jakubzak.eu>
+ * @OswisOrg\OswisCoreBundle\Filter\SearchAnnotation({
+ *     "id",
+ *     "token"
+ * })
  * @ApiPlatform\Core\Annotation\ApiResource(
  *   attributes={
  *     "filters"={"search"},
@@ -45,40 +53,25 @@ use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserEditRequest;
  *     }
  *   }
  * )
- * @OswisOrg\OswisCoreBundle\Filter\SearchAnnotation({
- *     "id",
- *     "token"
- * })
- * @author Jakub Zak <mail@jakubzak.eu>
- * @Doctrine\ORM\Mapping\Cache(usage="NONSTRICT_READ_WRITE", region="core_app_user")
  */
+#[Entity]
+#[Table(name: 'core_app_user_edit_mail')]
+#[Cache(usage: 'NONSTRICT_READ_WRITE', region: 'core_app_user')]
 class AppUserEditMail extends AbstractMail
 {
     public const TYPE_USER_EDIT_REQUEST = 'user-edit-request';
     public const TYPE_USER_EDIT = 'user-edit';
 
-    /**
-     * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser", fetch="EAGER")
-     * @Doctrine\ORM\Mapping\JoinColumn(name="app_user_id", referencedColumnName="id")
-     */
+    #[ManyToOne(targetEntity: AppUser::class, fetch: 'EAGER')]
+    #[JoinColumn(name: 'app_user_id', referencedColumnName: 'id')]
     protected ?AppUser $appUser = null;
 
-    /**
-     * @Doctrine\ORM\Mapping\ManyToOne(
-     *     targetEntity="OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserEditRequest",
-     *     fetch="EAGER",
-     * )
-     * @Doctrine\ORM\Mapping\JoinColumn(name="app_user_edit_request_id", referencedColumnName="id")
-     */
+    #[ManyToOne(targetEntity: AppUserEditRequest::class, fetch: 'EAGER')]
+    #[JoinColumn(name: 'app_user_edit_request_id', referencedColumnName: 'id')]
     protected ?AppUserEditRequest $appUserEditRequest = null;
 
-    /**
-     * @Doctrine\ORM\Mapping\ManyToOne(
-     *     targetEntity="OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserEdit",
-     *     fetch="EAGER",
-     * )
-     * @Doctrine\ORM\Mapping\JoinColumn(name="app_user_edit_id", referencedColumnName="id")
-     */
+    #[ManyToOne(targetEntity: AppUserEdit::class, fetch: 'EAGER')]
+    #[JoinColumn(name: 'app_user_edit_id', referencedColumnName: 'id')]
     protected ?AppUserEdit $appUserEdit = null;
 
     /**

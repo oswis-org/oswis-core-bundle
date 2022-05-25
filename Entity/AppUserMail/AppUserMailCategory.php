@@ -7,11 +7,14 @@ declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Entity\AppUserMail;
 
+use Doctrine\ORM\Mapping\Cache;
+use Doctrine\ORM\Mapping\Entity;
+use Doctrine\ORM\Mapping\Table;
 use OswisOrg\OswisCoreBundle\Entity\AbstractClass\AbstractMailCategory;
 
 /**
- * @Doctrine\ORM\Mapping\Entity()
- * @Doctrine\ORM\Mapping\Table(name="core_app_user_mail_category")
+ * @author Jakub Zak <mail@jakubzak.eu>
+ * @OswisOrg\OswisCoreBundle\Filter\SearchAnnotation({"id"})
  * @ApiPlatform\Core\Annotation\ApiResource(
  *   attributes={
  *     "filters"={"search"},
@@ -40,10 +43,10 @@ use OswisOrg\OswisCoreBundle\Entity\AbstractClass\AbstractMailCategory;
  *     }
  *   }
  * )
- * @OswisOrg\OswisCoreBundle\Filter\SearchAnnotation({"id"})
- * @author Jakub Zak <mail@jakubzak.eu>
- * @Doctrine\ORM\Mapping\Cache(usage="NONSTRICT_READ_WRITE", region="core_app_user_mail")
  */
+#[Entity]
+#[Table(name: 'core_app_user_mail_category')]
+#[Cache(usage: 'NONSTRICT_READ_WRITE', region: 'core_app_user_mail')]
 class AppUserMailCategory extends AbstractMailCategory
 {
 }

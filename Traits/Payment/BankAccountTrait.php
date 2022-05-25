@@ -1,29 +1,25 @@
 <?php
 
 /**
+ * @noinspection PhpUnused
  * @noinspection MethodShouldBeFinalInspection
  */
 declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Traits\Payment;
 
+use Doctrine\ORM\Mapping\Column;
 use OswisOrg\OswisCoreBundle\Entity\NonPersistent\BankAccount;
 
 trait BankAccountTrait
 {
-    /**
-     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
-     */
+    #[Column(type: 'string', nullable: true)]
     protected ?string $bankAccountPrefix = null;
 
-    /**
-     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
-     */
+    #[Column(type: 'string', nullable: true)]
     protected ?string $bankAccountNumber = null;
 
-    /**
-     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
-     */
+    #[Column(type: 'string', nullable: true)]
     protected ?string $bankAccountBank = null;
 
     public function setBankAccount(?BankAccount $bankAccount): void

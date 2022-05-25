@@ -5,14 +5,17 @@ declare(strict_types=1);
 namespace OswisOrg\OswisCoreBundle\Entity\Logger;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use Doctrine\ORM\Mapping\Cache;
+use Doctrine\ORM\Mapping\Column;
+use Doctrine\ORM\Mapping\Entity;
+use Doctrine\ORM\Mapping\Table;
 use OswisOrg\OswisCoreBundle\Interfaces\Common\BasicInterface;
 use OswisOrg\OswisCoreBundle\Traits\Common\BasicTrait;
 
 /**
  * Log record from client.
+ * @author Jakub Zak <mail@jakubzak.eu>
  *
- * @Doctrine\ORM\Mapping\Entity()
- * @Doctrine\ORM\Mapping\Table(name="core_client_log_record")
  * @ApiResource(
  *   attributes={
  *     "filters"={"search"},
@@ -31,22 +34,18 @@ use OswisOrg\OswisCoreBundle\Traits\Common\BasicTrait;
  *     }
  *   }
  * )
- *
- * @author Jakub Zak <mail@jakubzak.eu>
- * @Doctrine\ORM\Mapping\Cache(usage="NONSTRICT_READ_WRITE", region="core_log")
  */
+#[Entity]
+#[Table(name: 'core_client_log_record')]
+#[Cache(usage: 'NONSTRICT_READ_WRITE', region: 'core_log')]
 class ClientLogRecord implements BasicInterface
 {
     use BasicTrait;
 
-    /**
-     * @Doctrine\ORM\Mapping\Column(type="integer", nullable=true)
-     */
+    #[Column(type: 'integer', nullable: true)]
     public ?int $level = null;
 
-    /**
-     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
-     */
+    #[Column(type: 'string', nullable: true)]
     public ?string $message = null;
 
     public function __construct(

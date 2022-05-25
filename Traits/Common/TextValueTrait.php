@@ -1,23 +1,27 @@
 <?php
 
 /**
+ * @noinspection PhpUnused
  * @noinspection MethodShouldBeFinalInspection
  */
 declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Traits\Common;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\ExistsFilter;
+use Doctrine\ORM\Mapping\Column;
+use OswisOrg\OswisCoreBundle\Filter\SearchFilter;
+
 /**
  * Trait adds textValue field.
  */
 trait TextValueTrait
 {
-    /**
-     * Text value.
-     * @Doctrine\ORM\Mapping\Column(type="text", nullable=true)
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class, strategy="ipartial")
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\ExistsFilter::class)
-     */
+    /** Text value. */
+    #[Column(type: 'text', nullable: true)]
+    #[ApiFilter(SearchFilter::class, strategy: 'ipartial')]
+    #[ApiFilter(ExistsFilter::class)]
     protected ?string $textValue = null;
 
     public function hasTextValue(): bool
@@ -25,17 +29,13 @@ trait TextValueTrait
         return !empty($this->getTextValue());
     }
 
-    /**
-     * Get text value.
-     */
+    /** Get text value. */
     public function getTextValue(): ?string
     {
         return $this->textValue;
     }
 
-    /**
-     * Set text value.
-     */
+    /** Set text value. */
     public function setTextValue(?string $textValue): void
     {
         $this->textValue = $textValue;

@@ -1,21 +1,28 @@
 <?php
 
 /**
+ * @noinspection PhpUnused
  * @noinspection MethodShouldBeFinalInspection
  */
 declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Entity\AppUserMail;
 
+use Doctrine\ORM\Mapping\Cache;
+use Doctrine\ORM\Mapping\Entity;
+use Doctrine\ORM\Mapping\JoinColumn;
+use Doctrine\ORM\Mapping\ManyToOne;
+use Doctrine\ORM\Mapping\Table;
 use OswisOrg\OswisCoreBundle\Entity\AbstractClass\AbstractMailGroup;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser;
 use OswisOrg\OswisCoreBundle\Entity\NonPersistent\DateTimeRange;
 use OswisOrg\OswisCoreBundle\Entity\NonPersistent\Nameable;
 use OswisOrg\OswisCoreBundle\Entity\TwigTemplate\TwigTemplate;
+use OswisOrg\OswisCoreBundle\Repository\AppUserMailGroupRepository;
 
 /**
- * @Doctrine\ORM\Mapping\Entity(repositoryClass="OswisOrg\OswisCoreBundle\Repository\AppUserMailGroupRepository")
- * @Doctrine\ORM\Mapping\Table(name="core_app_user_mail_group")
+ * @author Jakub Zak <mail@jakubzak.eu>
+ * @OswisOrg\OswisCoreBundle\Filter\SearchAnnotation({"id"})
  * @ApiPlatform\Core\Annotation\ApiResource(
  *   attributes={
  *     "filters"={"search"},
@@ -44,16 +51,14 @@ use OswisOrg\OswisCoreBundle\Entity\TwigTemplate\TwigTemplate;
  *     }
  *   }
  * )
- * @OswisOrg\OswisCoreBundle\Filter\SearchAnnotation({"id"})
- * @author Jakub Zak <mail@jakubzak.eu>
- * @Doctrine\ORM\Mapping\Cache(usage="NONSTRICT_READ_WRITE", region="core_app_user_mail")
  */
+#[Entity(repositoryClass: AppUserMailGroupRepository::class)]
+#[Table(name: 'core_app_user_mail_group')]
+#[Cache(usage: 'NONSTRICT_READ_WRITE', region: 'core_app_user_mail')]
 class AppUserMailGroup extends AbstractMailGroup
 {
-    /**
-     * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="OswisOrg\OswisCoreBundle\Entity\AppUserMail\AppUserMailCategory", fetch="EAGER")
-     * @Doctrine\ORM\Mapping\JoinColumn(nullable=true)
-     */
+    #[ManyToOne(targetEntity: AppUserMailCategory::class, fetch: 'EAGER')]
+    #[JoinColumn(nullable: true)]
     protected ?AppUserMailCategory $category = null;
 
     public function __construct(

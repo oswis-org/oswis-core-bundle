@@ -9,19 +9,38 @@ declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Entity\AppUser;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping\Cache;
+use Doctrine\ORM\Mapping\Column;
+use Doctrine\ORM\Mapping\Entity;
+use Doctrine\ORM\Mapping\JoinColumn;
+use Doctrine\ORM\Mapping\ManyToOne;
+use Doctrine\ORM\Mapping\Table;
 use InvalidArgumentException;
 use OswisOrg\OswisCoreBundle\Entity\NonPersistent\Nameable;
 use OswisOrg\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
+use OswisOrg\OswisCoreBundle\Filter\SearchFilter;
 use OswisOrg\OswisCoreBundle\Interfaces\Common\NameableInterface;
+use OswisOrg\OswisCoreBundle\Repository\AppUserRoleRepository;
 use OswisOrg\OswisCoreBundle\Traits\Common\NameableTrait;
 
 /**
  * Role of app user.
- * @Doctrine\ORM\Mapping\Entity(repositoryClass="OswisOrg\OswisCoreBundle\Repository\AppUserRoleRepository")
- * @Doctrine\ORM\Mapping\Table(name="core_app_user_role")
+ * @author Jakub Zak <mail@jakubzak.eu>
+ * @Searchable({
+ *     "id",
+ *     "slug",
+ *     "forcedSlug",
+ *     "name",
+ *     "shortName",
+ *     "description",
+ *     "note",
+ *     "roleString"
+ * })
  * @ApiResource(
  *   attributes={
  *     "filters"={"search"},
@@ -50,19 +69,10 @@ use OswisOrg\OswisCoreBundle\Traits\Common\NameableTrait;
  *     }
  *   }
  * )
- * @Searchable({
- *     "id",
- *     "slug",
- *     "forcedSlug",
- *     "name",
- *     "shortName",
- *     "description",
- *     "note",
- *     "roleString"
- * })
- * @author Jakub Zak <mail@jakubzak.eu>
- * @Doctrine\ORM\Mapping\Cache(usage="NONSTRICT_READ_WRITE", region="core_app_user")
  */
+#[Entity(repositoryClass: AppUserRoleRepository::class)]
+#[Table(name: 'core_app_user_role')]
+#[Cache(usage: 'NONSTRICT_READ_WRITE', region: 'core_app_user')]
 class AppUserRole implements NameableInterface
 {
     use NameableTrait;
@@ -74,7 +84,6 @@ class AppUserRole implements NameableInterface
     public const ROLE_MANAGER = 'ROLE_MANAGER';
     public const ROLE_ADMIN = 'ROLE_ADMIN';
     public const ROLE_ROOT = 'ROLE_ROOT';
-
     public const ROLES_PARENT
         = [
             self::ROLE_CUSTOMER => self::ROLE_EVERYBODY,
@@ -85,30 +94,23 @@ class AppUserRole implements NameableInterface
             self::ROLE_ROOT     => self::ROLE_ADMIN,
         ];
 
-    /**
-     * @Doctrine\ORM\Mapping\Column(type="string", nullable=true)
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class, strategy="ipartial")
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
-     */
+    #[ApiFilter(SearchFilter::class, strategy: 'ipartial')]
+    #[ApiFilter(OrderFilter::class)]
+    #[Column(type: 'string', nullable: true)]
     protected ?string $roleString = null;
 
-    /**
-     * @Doctrine\ORM\Mapping\ManyToOne(targetEntity="OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserRole", fetch="EAGER")
-     * @Doctrine\ORM\Mapping\JoinColumn(name="parent_id", referencedColumnName="id")
-     * @ApiPlatform\Core\Annotation\ApiFilter(
-     *     ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter::class,
-     *     properties={"parent.id": "exact", "parent.name": "ipartial", "parent.slug": "ipartial"}
-     * )
-     * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
-     */
-    protected ?AppUserRole $parent = null;
+    #[ManyToOne(targetEntity: self::class, fetch: 'EAGER')]
+    #[JoinColumn(name: 'parent_id', referencedColumnName: 'id')]
+    #[ApiFilter(SearchFilter::class, properties: ["parent.id" => "exact", "parent.name" => "ipartial", "parent.slug" => "ipartial"])]
+    #[ApiFilter(OrderFilter::class)]
+    protected ?self $parent = null;
 
     /**
      * AppUserRole constructor.
      *
      * @param  Nameable|null  $nameable
      * @param  string|null  $roleString
-     * @param  AppUserRole|null  $parent
+     * @param  \OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserRole|null  $parent
      *
      * @throws InvalidArgumentException
      */
@@ -120,21 +122,19 @@ class AppUserRole implements NameableInterface
         $this->setParent($parent);
     }
 
-    /**
-     * Get names of all contained roles.
-     */
+    /** Get names of all contained roles. */
     public function getAllRoleNames(): Collection
     {
-        return $this->getRoles()->map(fn(mixed $role) => $role instanceof AppUserRole ? $role->getRoleName() : null);
+        return $this->getRoles()->map(fn(mixed $role) => $role instanceof self ? $role->getRoleName() : null);
     }
 
     /**
      * Get all contained roles.
-     * @return Collection<\OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserRole>
+     * @return Collection<self>
      */
     public function getRoles(): Collection
     {
-        /** @var Collection<\OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserRole> $roles */
+        /** @var Collection<self> $roles */
         $roles = new ArrayCollection([$this]);
         foreach ($this->getParent()?->getRoles() ?? new ArrayCollection() as $role) {
             if (!$roles->contains($role)) {
@@ -151,7 +151,7 @@ class AppUserRole implements NameableInterface
     }
 
     /**
-     * @param  AppUserRole|null  $appUserRole
+     * @param  self|null  $appUserRole
      *
      * @throws InvalidArgumentException
      */
