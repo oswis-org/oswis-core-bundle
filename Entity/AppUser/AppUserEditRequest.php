@@ -31,7 +31,6 @@ use Symfony\Component\Validator\Constraints\NotBlank;
             'normalization_context' => ["entities_get", "app_user_edit_requests_get"],
         ],
         'post' => [
-            'security'                => '',
             'denormalization_context' => ["entities_get", "app_user_edit_requests_post"],
         ],
     ], itemOperations: [
@@ -39,20 +38,17 @@ use Symfony\Component\Validator\Constraints\NotBlank;
         'security'              => "is_granted('ROLE_ADMIN')",
         'normalization_context' => ["entity_get", "app_user_edit_request_get"],
     ],
-], attributes: [
-    'security' => "is_granted('ROLE_ADMIN')",
-],//
-)]
+])]
 class AppUserEditRequest implements BasicInterface
 {
     public const DEFAULT_VALID_HOURS = 24;
 
     use BasicTrait;
 
-    #[Column(type: 'datetime')]
+    #[Column(type: 'datetime', nullable: true)]
     protected ?DateTime $expireAt = null;
 
-    #[Column(type: 'datetime')]
+    #[Column(type: 'datetime', nullable: true)]
     protected ?DateTime $usedAt = null;
 
     #[Column(type: "string", enumType: AppUserEditTypeEnum::class)]
