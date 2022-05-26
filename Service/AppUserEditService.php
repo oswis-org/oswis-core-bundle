@@ -11,7 +11,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserEdit;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserEditRequest;
 use OswisOrg\OswisCoreBundle\Entity\AppUserMail\AppUserMail;
-use OswisOrg\OswisCoreBundle\Exceptions\TokenInvalidException;
+use OswisOrg\OswisCoreBundle\Exceptions\OswisException;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
@@ -31,7 +31,7 @@ class AppUserEditService
     /**
      * @param  \OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserEdit  $userEdit
      *
-     * @throws \OswisOrg\OswisCoreBundle\Exceptions\TokenInvalidException
+     * @throws \OswisOrg\OswisCoreBundle\Exceptions\OswisException
      */
     public function assignRequest(AppUserEdit $userEdit): void
     {
@@ -40,7 +40,7 @@ class AppUserEditService
             'userIdentifier' => $userEdit->getUserIdentifier(),
         ]);
         if (!$editRequest instanceof AppUserEditRequest) {
-            throw new TokenInvalidException('Token není platný.');
+            throw new OswisException('Token není platný.');
         }
         $userEdit->setHasher($this->hasher);
         $userEdit->setUsedEditRequest($editRequest);

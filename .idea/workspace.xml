@@ -17,7 +17,7 @@
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Entity/AppUser/AppUserEdit.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUser/AppUserEdit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventSubscriber/AppUserEditSubscriber.php" beforeDir="false" afterPath="$PROJECT_DIR$/EventSubscriber/AppUserEditSubscriber.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Service/AppUserEditService.php" beforeDir="false" afterPath="$PROJECT_DIR$/Service/AppUserEditService.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -973,14 +973,7 @@
       <workItem from="1653381918415" duration="4107000" />
       <workItem from="1653386144051" duration="10878000" />
       <workItem from="1653481309408" duration="15307000" />
-      <workItem from="1653516008632" duration="11463000" />
-    </task>
-    <task id="LOCAL-00787" summary="Upgraded Bootstrap to 5.">
-      <created>1623937029133</created>
-      <option name="number" value="00787" />
-      <option name="presentableId" value="LOCAL-00787" />
-      <option name="project" value="LOCAL" />
-      <updated>1623937029133</updated>
+      <workItem from="1653516008632" duration="12762000" />
     </task>
     <task id="LOCAL-00788" summary="Fixed some deprecations.">
       <created>1623937829255</created>
@@ -1318,7 +1311,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653560657478</updated>
     </task>
-    <option name="localTasksCounter" value="836" />
+    <task id="LOCAL-00836" summary="Transformed some annotations to attributes.">
+      <created>1653561370027</created>
+      <option name="number" value="00836" />
+      <option name="presentableId" value="LOCAL-00836" />
+      <option name="project" value="LOCAL" />
+      <updated>1653561370027</updated>
+    </task>
+    <option name="localTasksCounter" value="837" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

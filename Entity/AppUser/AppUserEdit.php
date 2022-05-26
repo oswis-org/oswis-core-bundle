@@ -104,8 +104,9 @@ class AppUserEdit implements BasicInterface
             throw new TokenInvalidException('expiroval, již byl použitý nebo má špatný typ');
         }
         $this->useValue();
-        $this->token = null;
         $usedEditRequest->markAsUsed();
+        $this->token = null;
+        $this->newValue = null;
     }
 
     public function getUsedEditRequest(): ?AppUserEditRequest
@@ -117,11 +118,6 @@ class AppUserEdit implements BasicInterface
     {
         $this->usedEditRequest = $usedEditRequest;
         $this->appUser = $usedEditRequest?->getAppUser();
-    }
-
-    public function getAppUser(): ?AppUser
-    {
-        return $this->appUser;
     }
 
     public function getType(): ?AppUserEditTypeEnum
@@ -137,7 +133,7 @@ class AppUserEdit implements BasicInterface
     /**
      * @throws \OswisOrg\OswisCoreBundle\Exceptions\OswisException
      */
-    protected function useValue(): void
+    private function useValue(): void
     {
         match ($this->getType()) {
             AppUserEditTypeEnum::Password => $this->usePassword(),
@@ -145,7 +141,6 @@ class AppUserEdit implements BasicInterface
             AppUserEditTypeEnum::EMail => $this->useEMail(),
             default => null,
         };
-        $this->newValue = null;
     }
 
     /**
@@ -157,6 +152,11 @@ class AppUserEdit implements BasicInterface
             throw new OswisException('Heslo nelze zakódovat.');
         }
         $this->getAppUser()?->setPassword($this->hasher->hashPassword($this->getAppUser(), $this->newValue));
+    }
+
+    public function getAppUser(): ?AppUser
+    {
+        return $this->appUser;
     }
 
     protected function useUsername(): void
