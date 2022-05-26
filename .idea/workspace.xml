@@ -972,14 +972,7 @@
       <workItem from="1653381918415" duration="4107000" />
       <workItem from="1653386144051" duration="10878000" />
       <workItem from="1653481309408" duration="15307000" />
-      <workItem from="1653516008632" duration="6729000" />
-    </task>
-    <task id="LOCAL-00782" summary="Updated composer packages.">
-      <created>1602228423079</created>
-      <option name="number" value="00782" />
-      <option name="presentableId" value="LOCAL-00782" />
-      <option name="project" value="LOCAL" />
-      <updated>1602228423079</updated>
+      <workItem from="1653516008632" duration="6980000" />
     </task>
     <task id="LOCAL-00783" summary="Updated composer packages.">
       <created>1602361598112</created>
@@ -1317,7 +1310,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653553813438</updated>
     </task>
-    <option name="localTasksCounter" value="831" />
+    <task id="LOCAL-00831" summary="Transformed some annotations to attributes.">
+      <created>1653555723871</created>
+      <option name="number" value="00831" />
+      <option name="presentableId" value="LOCAL-00831" />
+      <option name="project" value="LOCAL" />
+      <updated>1653555723871</updated>
+    </task>
+    <option name="localTasksCounter" value="832" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

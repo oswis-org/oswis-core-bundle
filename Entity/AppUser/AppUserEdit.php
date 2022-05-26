@@ -83,10 +83,12 @@ class AppUserEdit implements BasicInterface
         ?AppUserEditTypeEnum $type = null,
         ?string $token = null,
         ?string $newValue = null,
+        ?string $userIdentifier = null,
     ) {
         $this->type = $type;
         $this->token = $token;
         $this->newValue = $newValue;
+        $this->userIdentifier = $userIdentifier;
     }
 
     public function getUsedEditRequest(): ?AppUserEditRequest
