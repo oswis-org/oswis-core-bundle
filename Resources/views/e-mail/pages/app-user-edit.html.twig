@@ -27,7 +27,7 @@
 
         {% set tokenUrl = oswis.app.portalUrl
             ~ '/authentication/login?user_edit_token=' ~ userEditRequest.token|default
-            ~ '&user_edit_property=' ~ userEditRequest.type.value|default
+            ~ '&user_edit_type=' ~ userEditRequest.type.value|default
             ~ '&user_edit_identifier=' ~ userEditRequest.userIdentifier|default %}
 
         <p>
