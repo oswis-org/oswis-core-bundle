@@ -2,13 +2,13 @@
 
 {% set propertyName = '' %}
 {% set propertyName2 = '' %}
-{% if userEditRequest.type|default == 'username' %}
+{% if userEditRequest.type|default == 'username' or userEdit.type|default == 'username' %}
     {% set propertyName = ' uživatelského jména' %}
     {% set propertyName2 = 'Nové uživatelské jméno' %}
-{% elseif userEditRequest.type|default == 'email' %}
+{% elseif userEditRequest.type|default == 'email' or userEdit.type|default == 'email' %}
     {% set propertyName = ' e-mailu' %}
     {% set propertyName2 = 'Nový e-mail' %}
-{% elseif userEditRequest.type|default == 'password' %}
+{% elseif userEditRequest.type|default == 'password' or userEdit.type|default == 'password' %}
     {% set propertyName = ' hesla' %}
     {% set propertyName2 = 'Nové heslo' %}
 {% endif %}

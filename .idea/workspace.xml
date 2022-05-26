@@ -16,8 +16,7 @@
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AppUser/AppUserEdit.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUser/AppUserEdit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/AppUser/AppUserEditRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/AppUser/AppUserEditRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/views/e-mail/pages/app-user-edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/e-mail/pages/app-user-edit.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -973,14 +972,7 @@
       <workItem from="1653381918415" duration="4107000" />
       <workItem from="1653386144051" duration="10878000" />
       <workItem from="1653481309408" duration="15307000" />
-      <workItem from="1653516008632" duration="9002000" />
-    </task>
-    <task id="LOCAL-00784" summary="Updated to PHP 8.0 and Symfony 5.3.">
-      <created>1623861620304</created>
-      <option name="number" value="00784" />
-      <option name="presentableId" value="LOCAL-00784" />
-      <option name="project" value="LOCAL" />
-      <updated>1623861620304</updated>
+      <workItem from="1653516008632" duration="10011000" />
     </task>
     <task id="LOCAL-00785" summary="Fixed some errors.">
       <created>1623868766009</created>
@@ -1318,7 +1310,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653555975161</updated>
     </task>
-    <option name="localTasksCounter" value="833" />
+    <task id="LOCAL-00833" summary="Transformed some annotations to attributes.">
+      <created>1653558877992</created>
+      <option name="number" value="00833" />
+      <option name="presentableId" value="LOCAL-00833" />
+      <option name="project" value="LOCAL" />
+      <updated>1653558877992</updated>
+    </task>
+    <option name="localTasksCounter" value="834" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
