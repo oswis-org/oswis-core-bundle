@@ -59,16 +59,18 @@ class AppUserEdit implements BasicInterface
      * @var string|null Identifier (e-mail or username) of edited user.
      */
     #[NotBlank]
-    private ?string $userIdentifier = null;
+    private ?string $userIdentifier;
 
     /**
      * @var string|null Value to be set (to property given by AppUserToken). Deleted after use.
      */
+    #[NotBlank]
     private ?string $newValue;
 
     /**
      * @var string|null Used value that was set to user after token/request verification.
      */
+    #[Column(type: 'string', length: 170, unique: false, nullable: true)]
     private ?string $usedValue = null;
 
     /**
@@ -162,11 +164,13 @@ class AppUserEdit implements BasicInterface
 
     private function useUsername(): void
     {
+        $this->usedValue = $this->newValue;
         $this->getAppUser()?->setUsername($this->newValue);
     }
 
     private function useEMail(): void
     {
+        $this->usedValue = $this->newValue;
         $this->getAppUser()?->setEmail($this->newValue);
     }
 
@@ -189,6 +193,5 @@ class AppUserEdit implements BasicInterface
     {
         $this->hasher = $hasher;
     }
-
 
 }

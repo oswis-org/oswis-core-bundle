@@ -51,8 +51,8 @@ class AppUserEditRequest implements BasicInterface
     #[Column(type: 'datetime', nullable: true)]
     protected ?DateTime $usedAt = null;
 
-    #[Column(type: "string", enumType: AppUserEditTypeEnum::class)]
     #[NotBlank]
+    #[Column(type: "string", enumType: AppUserEditTypeEnum::class)]
     protected ?AppUserEditTypeEnum $type;
 
     #[Column(type: 'string', length: 170, unique: true, nullable: false)]
@@ -66,6 +66,7 @@ class AppUserEditRequest implements BasicInterface
      * @var string|null Identifier (e-mail or username) of edited user.
      */
     #[NotBlank]
+    #[Column(type: 'string', length: 170, unique: false, nullable: true)]
     protected ?string $userIdentifier;
 
     /**
