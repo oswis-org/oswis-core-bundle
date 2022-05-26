@@ -12,11 +12,8 @@ use Twig\Source;
 
 class DatabaseLoader implements LoaderInterface
 {
-    protected TwigTemplateRepository $repository;
-
-    public function __construct(TwigTemplateRepository $repository)
+    public function __construct(protected TwigTemplateRepository $repository)
     {
-        $this->repository = $repository;
     }
 
     final public function getSourceContext(string $name): Source
