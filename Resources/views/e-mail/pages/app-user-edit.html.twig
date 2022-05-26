@@ -2,20 +2,20 @@
 
 {% set propertyName = '' %}
 {% set propertyName2 = '' %}
-{% if editUserRequest.type|default === 'username' %}
+{% if userEditRequest.type|default == 'username' %}
     {% set propertyName = ' uživatelského jména' %}
     {% set propertyName2 = 'Nové uživatelské jméno' %}
-{% elseif editUserRequest.type|default === 'email' %}
+{% elseif userEditRequest.type|default == 'email' %}
     {% set propertyName = ' e-mailu' %}
     {% set propertyName2 = 'Nový e-mail' %}
-{% elseif editUserRequest.type|default === 'password' %}
+{% elseif userEditRequest.type|default == 'password' %}
     {% set propertyName = ' hesla' %}
     {% set propertyName2 = 'Nové heslo' %}
 {% endif %}
 
 {% block content_inner %}
 
-    {% if editUser|default %}
+    {% if userEdit|default %}
 
         <p>
             U {{ f ? 'Vašeho' : 'Tvého' }} uživatelského účtu v aplikaci
@@ -26,9 +26,9 @@
     {% else %}
 
         {% set tokenUrl = oswis.app.portalUrl
-            ~ '/auth/login?user_edit_token=' ~ editUserRequest.token|default
-            ~ '&user_edit_property' ~ editUserRequest.type|default
-            ~ '&user_edit_identifier' ~ editUserRequest.userIdentifier|default %}
+            ~ '/authentication/login?user_edit_token=' ~ userEditRequest.token|default
+            ~ '&user_edit_property=' ~ userEditRequest.type|default
+            ~ '&user_edit_identifier=' ~ userEditRequest.userIdentifier|default %}
 
         <p>
             U {{ f ? 'Vašeho' : 'Tvého' }} uživatelského účtu v aplikaci

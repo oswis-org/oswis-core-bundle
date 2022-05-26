@@ -117,7 +117,7 @@ class AppUserMailService
             'category'        => $category,
             'type'            => $type,
             'userEditRequest' => $userEditRequest,
-            'userEdit'        => $userEditRequest,
+            'userEdit'        => $userEdit,
         ];
         $appUserEMail->setPastMails($this->appUserMailRepository->findByAppUser($appUser));
         $this->em->persist($appUserEMail);
