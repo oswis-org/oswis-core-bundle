@@ -10,6 +10,7 @@ namespace OswisOrg\OswisCoreBundle\Service;
 use Doctrine\ORM\EntityManagerInterface;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserEdit;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserEditRequest;
+use OswisOrg\OswisCoreBundle\Entity\AppUserMail\AppUserMail;
 use OswisOrg\OswisCoreBundle\Exceptions\TokenInvalidException;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Mailer\MailerInterface;
@@ -53,7 +54,7 @@ class AppUserEditService
      */
     public function sendConfirmation(AppUserEdit $userEdit): void
     {
-        $this->appUserMailService->sendAppUserEditMail('', $userEdit->getUsedEditRequest(), $userEdit);
+        $this->appUserMailService->sendAppUserEditMail(AppUserMail::TYPE_USER_EDIT, $userEdit->getUsedEditRequest(), $userEdit);
     }
 
 }

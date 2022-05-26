@@ -9,6 +9,7 @@ namespace OswisOrg\OswisCoreBundle\Service;
 
 use Doctrine\ORM\EntityManagerInterface;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserEditRequest;
+use OswisOrg\OswisCoreBundle\Entity\AppUserMail\AppUserMail;
 use OswisOrg\OswisCoreBundle\Exceptions\UserNotFoundException;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Mailer\MailerInterface;
@@ -50,7 +51,7 @@ class AppUserEditRequestService
      */
     public function sendMail(AppUserEditRequest $userEditRequest): void
     {
-        $this->appUserMailService->sendAppUserEditMail('', $userEditRequest);
+        $this->appUserMailService->sendAppUserEditMail(AppUserMail::TYPE_USER_EDIT_REQUEST, $userEditRequest);
     }
 
 }
