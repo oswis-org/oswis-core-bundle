@@ -347,27 +347,18 @@ services:
         alias: oswis_org_oswis_core.app_user_subscriber
         public: true
 
-    oswis_org_oswis_core.app_user_edit_request_subscriber:
-        class: OswisOrg\OswisCoreBundle\EventSubscriber\AppUserEditRequestSubscriber
-        autowire: true
-        tags: [ { name: 'kernel.view' } ]
-        public: true
-        arguments:
-            - '@oswis_org_oswis_core.app_user_edit_request_service'
     OswisOrg\OswisCoreBundle\EventSubscriber\AppUserEditRequestSubscriber:
         alias: oswis_org_oswis_core.app_user_edit_request_subscriber
         public: true
+        tags: [ { name: 'kernel.view' } ]
+        arguments:
+            - '@oswis_org_oswis_core.app_user_edit_request_service'
 
-    oswis_org_oswis_core.app_user_edit_subscriber:
-        class: OswisOrg\OswisCoreBundle\EventSubscriber\AppUserEditSubscriber
-        autowire: true
+    OswisOrg\OswisCoreBundle\EventSubscriber\AppUserEditSubscriber:
         tags: [ { name: 'kernel.view' } ]
         public: true
         arguments:
             - '@oswis_org_oswis_core.app_user_edit_service'
-    OswisOrg\OswisCoreBundle\EventSubscriber\AppUserEditSubscriber:
-        alias: oswis_org_oswis_core.app_user_edit_subscriber
-        public: true
 
     oswis_org_oswis_core.lexik_jwt_payload_attach_subscriber:
         class: OswisOrg\OswisCoreBundle\EventSubscriber\LexikJwt\JwtPayloadAttachSubscriber
