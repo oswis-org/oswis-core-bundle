@@ -348,7 +348,6 @@ services:
         public: true
 
     OswisOrg\OswisCoreBundle\EventSubscriber\AppUserEditRequestSubscriber:
-        alias: oswis_org_oswis_core.app_user_edit_request_subscriber
         public: true
         tags: [ { name: 'kernel.view' } ]
         arguments:
