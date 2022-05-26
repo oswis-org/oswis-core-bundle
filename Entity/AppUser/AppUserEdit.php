@@ -25,14 +25,13 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 #[Table(name: 'core_app_user_edit')]
 #[Cache(usage: 'NONSTRICT_READ_WRITE', region: 'core_app_user')]
 #[ApiResource( //
-    description: 'User initiated change of e-mail, username or password. User must be authenticated by token (from AppUserEditReqeust).', //
+    description: 'User initiated change of e-mail, username or password. User must be authenticated by token (from AppUserEditRequest).', //
     collectionOperations: [
         'get'  => [
             'security'              => "is_granted('ROLE_ADMIN')",
             'normalization_context' => ["entities_get", "app_user_edits_get"],
         ],
         'post' => [
-            'security'                => '',
             'denormalization_context' => ["entities_get", "app_user_edits_post"],
         ],
     ], itemOperations: [
@@ -40,10 +39,7 @@ use Symfony\Component\Validator\Constraints\NotBlank;
         'security'              => "is_granted('ROLE_ADMIN')",
         'normalization_context' => ["entity_get", "app_user_edit_get"],
     ],
-], attributes: [
-    'security' => "is_granted('ROLE_ADMIN')",
-],//
-)]
+])]
 class AppUserEdit implements BasicInterface
 {
     use BasicTrait;
