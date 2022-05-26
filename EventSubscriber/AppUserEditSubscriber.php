@@ -42,6 +42,7 @@ final class AppUserEditSubscriber implements EventSubscriberInterface
     {
         if ($userEdit = $this->extractUserEdit($event)) {
             $this->editService->assignRequest($userEdit);
+            $userEdit->process();
         }
     }
 

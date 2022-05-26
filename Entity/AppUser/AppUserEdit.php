@@ -93,6 +93,21 @@ class AppUserEdit implements BasicInterface
         $this->userIdentifier = $userIdentifier;
     }
 
+    /**
+     * @throws \OswisOrg\OswisCoreBundle\Exceptions\TokenInvalidException
+     * @throws \OswisOrg\OswisCoreBundle\Exceptions\OswisException
+     */
+    public function process(): void
+    {
+        $usedEditRequest = $this->getUsedEditRequest();
+        if (!$usedEditRequest || !$usedEditRequest->isValid($this->getType(), $this->getUserIdentifier())) {
+            throw new TokenInvalidException('expiroval, již byl použitý nebo má špatný typ');
+        }
+        $this->useValue();
+        $this->token = null;
+        $usedEditRequest->markAsUsed();
+    }
+
     public function getUsedEditRequest(): ?AppUserEditRequest
     {
         return $this->usedEditRequest;
@@ -107,24 +122,6 @@ class AppUserEdit implements BasicInterface
     public function getAppUser(): ?AppUser
     {
         return $this->appUser;
-    }
-
-    /**
-     * @param  \OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserEditRequest  $usedToken
-     *
-     * @return void
-     * @throws \OswisOrg\OswisCoreBundle\Exceptions\TokenInvalidException
-     * @throws \OswisOrg\OswisCoreBundle\Exceptions\OswisException
-     */
-    public function useByToken(AppUserEditRequest $usedToken): void
-    {
-        if (!$usedToken->isValid($this->getType(), $this->getUserIdentifier())) {
-            throw new TokenInvalidException('expiroval, již byl použitý nebo má špatný typ');
-        }
-        $this->useValue();
-        $this->usedEditRequest = $usedToken;
-        $this->token = null;
-        $usedToken->markAsUsed();
     }
 
     public function getType(): ?AppUserEditTypeEnum
