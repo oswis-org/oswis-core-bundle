@@ -973,14 +973,7 @@
       <workItem from="1653381918415" duration="4107000" />
       <workItem from="1653386144051" duration="10878000" />
       <workItem from="1653481309408" duration="15307000" />
-      <workItem from="1653516008632" duration="10746000" />
-    </task>
-    <task id="LOCAL-00786" summary="Added some dependencies (moved from top level project).">
-      <created>1623925811626</created>
-      <option name="number" value="00786" />
-      <option name="presentableId" value="LOCAL-00786" />
-      <option name="project" value="LOCAL" />
-      <updated>1623925811627</updated>
+      <workItem from="1653516008632" duration="11463000" />
     </task>
     <task id="LOCAL-00787" summary="Upgraded Bootstrap to 5.">
       <created>1623937029133</created>
@@ -1318,7 +1311,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653559804909</updated>
     </task>
-    <option name="localTasksCounter" value="835" />
+    <task id="LOCAL-00835" summary="Transformed some annotations to attributes.">
+      <created>1653560657478</created>
+      <option name="number" value="00835" />
+      <option name="presentableId" value="LOCAL-00835" />
+      <option name="project" value="LOCAL" />
+      <updated>1653560657478</updated>
+    </task>
+    <option name="localTasksCounter" value="836" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

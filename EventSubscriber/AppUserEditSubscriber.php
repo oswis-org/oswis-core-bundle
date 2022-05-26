@@ -37,6 +37,7 @@ final class AppUserEditSubscriber implements EventSubscriberInterface
      * @param  \Symfony\Component\HttpKernel\Event\ViewEvent  $event
      *
      * @throws \OswisOrg\OswisCoreBundle\Exceptions\TokenInvalidException
+     * @throws \OswisOrg\OswisCoreBundle\Exceptions\OswisException
      */
     public function process(ViewEvent $event): void
     {

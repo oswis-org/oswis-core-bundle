@@ -46,40 +46,40 @@ class AppUserEdit implements BasicInterface
 
     #[ManyToOne(targetEntity: AppUser::class, cascade: ['persist'], fetch: 'EAGER')]
     #[JoinColumn(name: 'app_user_id', referencedColumnName: 'id')]
-    private ?AppUser $appUser = null;
+    protected ?AppUser $appUser = null;
 
     #[ManyToOne(targetEntity: AppUserEditRequest::class, cascade: ['persist'], fetch: 'EAGER')]
     #[JoinColumn(name: 'used_app_user_edit_request', referencedColumnName: 'id')]
-    private ?AppUserEditRequest $usedEditRequest = null;
+    protected ?AppUserEditRequest $usedEditRequest = null;
 
     #[Column(type: "string", enumType: AppUserEditTypeEnum::class)]
-    private ?AppUserEditTypeEnum $type;
+    protected ?AppUserEditTypeEnum $type;
 
     /**
      * @var string|null Identifier (e-mail or username) of edited user.
      */
     #[NotBlank]
-    private ?string $userIdentifier;
+    protected ?string $userIdentifier;
 
     /**
      * @var string|null Value to be set (to property given by AppUserToken). Deleted after use.
      */
     #[NotBlank]
-    private ?string $newValue;
+    protected ?string $newValue;
 
     /**
      * @var string|null Used value that was set to user after token/request verification.
      */
     #[Column(type: 'string', length: 170, unique: false, nullable: true)]
-    private ?string $usedValue = null;
+    protected ?string $usedValue = null;
 
     /**
      * @var string|null Token to be used. Deleted after use. Not persisted.
      */
     #[NotBlank]
-    private ?string $token;
+    protected ?string $token;
 
-    private ?UserPasswordHasherInterface $hasher = null;
+    protected ?UserPasswordHasherInterface $hasher = null;
 
     public function __construct(
         ?AppUserEditTypeEnum $type = null,
@@ -137,7 +137,7 @@ class AppUserEdit implements BasicInterface
     /**
      * @throws \OswisOrg\OswisCoreBundle\Exceptions\OswisException
      */
-    private function useValue(): void
+    protected function useValue(): void
     {
         match ($this->getType()) {
             AppUserEditTypeEnum::Password => $this->usePassword(),
@@ -151,7 +151,7 @@ class AppUserEdit implements BasicInterface
     /**
      * @throws \OswisOrg\OswisCoreBundle\Exceptions\OswisException
      */
-    private function usePassword(): void
+    protected function usePassword(): void
     {
         if (!$this->hasher || empty($this->newValue)) {
             throw new OswisException('Heslo nelze zakódovat.');
@@ -159,13 +159,13 @@ class AppUserEdit implements BasicInterface
         $this->getAppUser()?->setPassword($this->hasher->hashPassword($this->getAppUser(), $this->newValue));
     }
 
-    private function useUsername(): void
+    protected function useUsername(): void
     {
         $this->usedValue = $this->newValue;
         $this->getAppUser()?->setUsername($this->newValue);
     }
 
-    private function useEMail(): void
+    protected function useEMail(): void
     {
         $this->usedValue = $this->newValue;
         $this->getAppUser()?->setEmail($this->newValue);
