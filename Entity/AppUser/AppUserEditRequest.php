@@ -60,13 +60,13 @@ class AppUserEditRequest implements BasicInterface
 
     #[ManyToOne(targetEntity: AppUser::class, cascade: ['persist'], fetch: 'EAGER')]
     #[JoinColumn(name: 'app_user_id', referencedColumnName: 'id')]
-    private ?AppUser $appUser = null;
+    protected ?AppUser $appUser = null;
 
     /**
      * @var string|null Identifier (e-mail or username) of edited user.
      */
     #[NotBlank]
-    private ?string $userIdentifier = null;
+    protected ?string $userIdentifier;
 
     /**
      * @throws \Exception
@@ -115,6 +115,11 @@ class AppUserEditRequest implements BasicInterface
     public function getUserIdentifier(): ?string
     {
         return $this->userIdentifier;
+    }
+
+    public function getToken(): ?string
+    {
+        return $this->token;
     }
 
     public function getUsedAt(): ?DateTime
