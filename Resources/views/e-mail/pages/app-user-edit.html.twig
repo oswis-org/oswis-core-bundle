@@ -1,14 +1,15 @@
 {% extends '@OswisOrgOswisCore/e-mail/pages/app-user.html.twig' %}
 
+{% set type = userEditRequest.type.value|default(userEdit.type|default)|default %}
 {% set propertyName = '' %}
 {% set propertyName2 = '' %}
-{% if userEditRequest.type|default == 'username' or userEdit.type|default == 'username' %}
+{% if type == 'username' %}
     {% set propertyName = ' uživatelského jména' %}
     {% set propertyName2 = 'Nové uživatelské jméno' %}
-{% elseif userEditRequest.type|default == 'email' or userEdit.type|default == 'email' %}
+{% elseif type == 'email' %}
     {% set propertyName = ' e-mailu' %}
     {% set propertyName2 = 'Nový e-mail' %}
-{% elseif userEditRequest.type|default == 'password' or userEdit.type|default == 'password' %}
+{% elseif type == 'password' %}
     {% set propertyName = ' hesla' %}
     {% set propertyName2 = 'Nové heslo' %}
 {% endif %}
