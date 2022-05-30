@@ -1,6 +1,6 @@
-{% set f = f is defined ? f : (contact.formal is defined ? contact.formal : true) %}
-{% set a = a is defined ? a : (contact.czechSuffixA is defined ? contact.czechSuffixA : '') %}
-{% set salName = salutationName|default %}
+{% set f = f is defined ? f : (contact.formal|default(appUser.formal|default(true))) %}
+{% set a = a is defined ? a : (contact.czechSuffixA|default(appUser.czechSuffixA|default(''))) %}
+{% set salName = salutationName|default(contact.salutationName|default(appUser.salutationName|default)) %}
 {# {% set logo_src = logo is defined and logo ? logo : absolute_url(asset('@OswisOrgOswisCoreBundle/Resources/public/logo.png')) %} #}
 
 {% apply inky_to_html|inline_css(source('@OswisOrgOswisCore/e-mail/styles/foundation-emails.css.twig' )) %}

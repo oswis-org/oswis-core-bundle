@@ -1,7 +1,7 @@
 {% extends '@OswisOrgOswisCore/e-mail/pages/message.html.twig' %}
 {% set f = f is defined ? f : (appUser.formal is defined ? appUser.formal : true) %}
 {% set a = a is defined ? a : (appUser.czechSuffixA is defined ? appUser.czechSuffixA : '') %}
-{% set salName = appUser.salutationName|default(salutationName|default) %}
+{% set salName = salutationName|default(appUser.salutationName|default) %}
 
 {% set tokenUrl = appUserToken.appUser|default ? absolute_url(path('oswis_org_oswis_core_app_user_process_token',
     {'token': appUserToken.token|default, 'appUserId': appUserToken.appUser.id|default})) : null %}
