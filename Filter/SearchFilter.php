@@ -69,12 +69,12 @@ final class SearchFilter extends AbstractContextAwareFilter
         $parameterName = $queryNameGenerator->generateParameterName($property);
         $search = [];
         $mappedJoins = [];
-        foreach ($annotation->fields as $key => $field) {
+        foreach ($annotation->fields as $field) {
             $joins = explode('.', $field);
             // @noinspection ForeachInvariantsInspection
             for ($lastAlias = 'o', $i = 0, $num = count($joins); $i < $num; ++$i) {
                 $currentAlias = $joins[$i];
-                $currentAliasRenamed = $joins[$i].'_'.$key.'_'.$i;
+                $currentAliasRenamed = $joins[$i].'_'.$i;
                 // $currentAlias = $joins[$i];
                 if ($i === $num - 1) {
                     $search[] = "LOWER($lastAlias.$currentAlias) LIKE LOWER(:$parameterName)";
