@@ -11,14 +11,14 @@ services:
         public: false
 
     ### Search Filter
-    oswis_org_oswis_core.search_filter:
-        class: OswisOrg\OswisCoreBundle\Filter\SearchFilter
-        autowire: true
-        tags: [ { name: 'api_platform.filter', id: 'search' } ]
-        public: true
-    OswisOrg\OswisCoreBundle\Filter\SearchFilter:
-        alias: oswis_org_oswis_core.search_filter
-        public: true
+    #    oswis_org_oswis_core.search_filter:
+    #        class: OswisOrg\OswisCoreBundle\Filter\SearchFilter
+    #        autowire: true
+    #        tags: [ { name: 'api_platform.filter', id: 'search' } ]
+    #        public: true
+    #    OswisOrg\OswisCoreBundle\Filter\SearchFilter:
+    #        alias: oswis_org_oswis_core.search_filter
+    #        public: true
 
     ### OSWIS Core Settings Provider
     oswis_org_oswis_core.oswis_core_settings_provider:

@@ -75,7 +75,6 @@ final class SearchFilter extends AbstractContextAwareFilter
             for ($lastAlias = 'o', $i = 0, $num = count($joins); $i < $num; ++$i) {
                 $currentAlias = $joins[$i];
                 $currentAliasRenamed = $joins[$i].'_'.$i;
-                // $currentAlias = $joins[$i];
                 if ($i === $num - 1) {
                     $search[] = "LOWER($lastAlias.$currentAlias) LIKE LOWER(:$parameterName)";
                 }
@@ -89,9 +88,7 @@ final class SearchFilter extends AbstractContextAwareFilter
                 $lastAlias = $currentAliasRenamed;
             }
         }
-        error_log(var_dump($joins));
         $queryBuilder->andWhere(implode(' OR ', $search));
         $queryBuilder->setParameter($parameterName, '%'.$value.'%');
-        // \error_log('DQL: ' . $queryBuilder->getDQL());
     }
 }
