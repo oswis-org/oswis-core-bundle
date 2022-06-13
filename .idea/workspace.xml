@@ -978,14 +978,7 @@
       <workItem from="1653921224419" duration="3272000" />
       <workItem from="1654090905930" duration="1937000" />
       <workItem from="1654451459206" duration="10405000" />
-      <workItem from="1655113125410" duration="2222000" />
-    </task>
-    <task id="LOCAL-00802" summary="Did some changes.">
-      <created>1626102439588</created>
-      <option name="number" value="00802" />
-      <option name="presentableId" value="LOCAL-00802" />
-      <option name="project" value="LOCAL" />
-      <updated>1626102439588</updated>
+      <workItem from="1655113125410" duration="3899000" />
     </task>
     <task id="LOCAL-00803" summary="Did some changes.">
       <created>1626102524565</created>
@@ -1323,11 +1316,29 @@
       <option name="project" value="LOCAL" />
       <updated>1655114925410</updated>
     </task>
-    <option name="localTasksCounter" value="851" />
+    <task id="LOCAL-00851" summary="Fixed filter.">
+      <created>1655115355624</created>
+      <option name="number" value="00851" />
+      <option name="presentableId" value="LOCAL-00851" />
+      <option name="project" value="LOCAL" />
+      <updated>1655115355624</updated>
+    </task>
+    <option name="localTasksCounter" value="852" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="Space.CommitStatus" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">

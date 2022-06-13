@@ -91,6 +91,6 @@ final class SearchFilter extends AbstractContextAwareFilter
         }
         $queryBuilder->andWhere(implode(' OR ', $search));
         $queryBuilder->setParameter($parameterName, '%'.$value.'%');
-        \error_log('DQL: '.$queryBuilder->getDQL());
+        // \error_log('DQL: ' . $queryBuilder->getDQL());
     }
 }
