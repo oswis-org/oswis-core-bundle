@@ -16,7 +16,6 @@
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/Web/SiteMapWebController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/Web/SiteMapWebController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Filter/SearchFilter.php" beforeDir="false" afterPath="$PROJECT_DIR$/Filter/SearchFilter.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -979,21 +978,7 @@
       <workItem from="1653921224419" duration="3272000" />
       <workItem from="1654090905930" duration="1937000" />
       <workItem from="1654451459206" duration="10405000" />
-      <workItem from="1655113125410" duration="261000" />
-    </task>
-    <task id="LOCAL-00796" summary="Some changes, updates and refactoring.">
-      <created>1624832384863</created>
-      <option name="number" value="00796" />
-      <option name="presentableId" value="LOCAL-00796" />
-      <option name="project" value="LOCAL" />
-      <updated>1624832384863</updated>
-    </task>
-    <task id="LOCAL-00797" summary="Added some fields about AppUser to JsonWebToken.">
-      <created>1625341733405</created>
-      <option name="number" value="00797" />
-      <option name="presentableId" value="LOCAL-00797" />
-      <option name="project" value="LOCAL" />
-      <updated>1625341733406</updated>
+      <workItem from="1655113125410" duration="827000" />
     </task>
     <task id="LOCAL-00798" summary="Updated dependencies and reformatted.">
       <created>1625764337476</created>
@@ -1324,7 +1309,21 @@
       <option name="project" value="LOCAL" />
       <updated>1653934138691</updated>
     </task>
-    <option name="localTasksCounter" value="845" />
+    <task id="LOCAL-00845" summary="Reformatted.">
+      <created>1655113409523</created>
+      <option name="number" value="00845" />
+      <option name="presentableId" value="LOCAL-00845" />
+      <option name="project" value="LOCAL" />
+      <updated>1655113409524</updated>
+    </task>
+    <task id="LOCAL-00846" summary="Fixed filter.">
+      <created>1655113514332</created>
+      <option name="number" value="00846" />
+      <option name="presentableId" value="LOCAL-00846" />
+      <option name="project" value="LOCAL" />
+      <updated>1655113514333</updated>
+    </task>
+    <option name="localTasksCounter" value="847" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1373,8 +1372,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Updated composer packages." />
-    <MESSAGE value="Updated to PHP 8.0 and Symfony 5.3." />
     <MESSAGE value="Fixed some errors." />
     <MESSAGE value="Added some dependencies (moved from top level project)." />
     <MESSAGE value="Upgraded Bootstrap to 5." />
@@ -1398,7 +1395,9 @@
     <MESSAGE value="Added reset password functionality." />
     <MESSAGE value="Transformed some annotations to attributes." />
     <MESSAGE value="Fixed e-mail template." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed e-mail template." />
+    <MESSAGE value="Reformatted." />
+    <MESSAGE value="Fixed filter." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed filter." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
