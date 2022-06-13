@@ -15,7 +15,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Filter/SearchFilter.php" beforeDir="false" afterPath="$PROJECT_DIR$/Filter/SearchFilter.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -978,14 +977,7 @@
       <workItem from="1653921224419" duration="3272000" />
       <workItem from="1654090905930" duration="1937000" />
       <workItem from="1654451459206" duration="10405000" />
-      <workItem from="1655113125410" duration="827000" />
-    </task>
-    <task id="LOCAL-00798" summary="Updated dependencies and reformatted.">
-      <created>1625764337476</created>
-      <option name="number" value="00798" />
-      <option name="presentableId" value="LOCAL-00798" />
-      <option name="project" value="LOCAL" />
-      <updated>1625764337477</updated>
+      <workItem from="1655113125410" duration="964000" />
     </task>
     <task id="LOCAL-00799" summary="Replaced createdDateTime by createdAt and updatedDateTime by updatedAt.">
       <created>1625772117285</created>
@@ -1323,7 +1315,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655113514333</updated>
     </task>
-    <option name="localTasksCounter" value="847" />
+    <task id="LOCAL-00847" summary="Fixed filter.">
+      <created>1655113959635</created>
+      <option name="number" value="00847" />
+      <option name="presentableId" value="LOCAL-00847" />
+      <option name="project" value="LOCAL" />
+      <updated>1655113959635</updated>
+    </task>
+    <option name="localTasksCounter" value="848" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
