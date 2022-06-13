@@ -89,6 +89,7 @@ final class SearchFilter extends AbstractContextAwareFilter
                 $lastAlias = $currentAliasRenamed;
             }
         }
+        dd($joins);
         $queryBuilder->andWhere(implode(' OR ', $search));
         $queryBuilder->setParameter($parameterName, '%'.$value.'%');
         // \error_log('DQL: ' . $queryBuilder->getDQL());
