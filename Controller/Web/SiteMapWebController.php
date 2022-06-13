@@ -13,11 +13,8 @@ use Symfony\Component\HttpFoundation\Response;
 
 class SiteMapWebController extends AbstractController
 {
-    protected SiteMapService $siteMapService;
-
-    public function __construct(SiteMapService $siteMapService)
+    public function __construct(protected SiteMapService $siteMapService)
     {
-        $this->siteMapService = $siteMapService;
     }
 
     public function showSitemapXml(): Response
