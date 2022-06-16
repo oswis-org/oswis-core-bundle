@@ -16,8 +16,9 @@
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Filter/SearchFilter.php" beforeDir="false" afterPath="$PROJECT_DIR$/Filter/SearchFilter.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/config/services.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/NonPersistent/Publicity.php" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/NonPersistent/Publicity.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traits/Common/EntityPublicTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/EntityPublicTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -979,14 +980,9 @@
       <workItem from="1653921224419" duration="3272000" />
       <workItem from="1654090905930" duration="1937000" />
       <workItem from="1654451459206" duration="10405000" />
-      <workItem from="1655113125410" duration="5386000" />
-    </task>
-    <task id="LOCAL-00806" summary="Did some changes.">
-      <created>1627507747360</created>
-      <option name="number" value="00806" />
-      <option name="presentableId" value="LOCAL-00806" />
-      <option name="project" value="LOCAL" />
-      <updated>1627507747360</updated>
+      <workItem from="1655113125410" duration="5920000" />
+      <workItem from="1655199077299" duration="121000" />
+      <workItem from="1655381014334" duration="743000" />
     </task>
     <task id="LOCAL-00807" summary="Fixed configuration of LexikJwt.">
       <created>1627944730338</created>
@@ -1324,7 +1320,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655122812821</updated>
     </task>
-    <option name="localTasksCounter" value="855" />
+    <task id="LOCAL-00855" summary="Fixed filter.">
+      <created>1655140460801</created>
+      <option name="number" value="00855" />
+      <option name="presentableId" value="LOCAL-00855" />
+      <option name="project" value="LOCAL" />
+      <updated>1655140460801</updated>
+    </task>
+    <option name="localTasksCounter" value="856" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -8,8 +8,13 @@ class Publicity
 {
     public ?bool $publicOnWeb = null;
 
-    public function __construct(?bool $publicOnWeb = null)
-    {
+    public ?bool $publicInApp = null;
+
+    public function __construct(
+        ?bool $publicOnWeb = null,
+        ?bool $publicInApp = null,
+    ) {
         $this->publicOnWeb = $publicOnWeb;
+        $this->publicInApp = $publicInApp;
     }
 }
