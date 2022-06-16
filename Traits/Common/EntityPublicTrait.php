@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace OswisOrg\OswisCoreBundle\Traits\Common;
 
 use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\ExistsFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use Doctrine\ORM\Mapping\Column;
@@ -23,6 +24,7 @@ trait EntityPublicTrait
     #[Column(type: 'boolean', nullable: true)]
     #[ApiFilter(SearchFilter::class, strategy: 'ipartial')]
     #[ApiFilter(OrderFilter::class)]
+    #[ApiFilter(BooleanFilter::class)]
     #[ApiFilter(ExistsFilter::class)]
     protected ?bool $publicOnWeb = null;
 
@@ -30,6 +32,7 @@ trait EntityPublicTrait
     #[Column(type: 'boolean', nullable: true)]
     #[ApiFilter(SearchFilter::class, strategy: 'ipartial')]
     #[ApiFilter(OrderFilter::class)]
+    #[ApiFilter(BooleanFilter::class)]
     #[ApiFilter(ExistsFilter::class)]
     protected ?bool $publicInApp = null;
 
