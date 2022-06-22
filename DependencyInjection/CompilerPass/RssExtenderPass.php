@@ -28,7 +28,8 @@ class RssExtenderPass implements CompilerPassInterface
             return;
         }
         $definition = $container->findDefinition(RssService::class);
-        $taggedServices = $container->findTaggedServiceIds('oswis.rss_extender'); // find all service IDs with the app.mail_transport tag
+        $taggedServices
+            = $container->findTaggedServiceIds('oswis.rss_extender'); // find all service IDs with the app.mail_transport tag
         foreach ($taggedServices as $id => $tags) { // add the transport service to the TransportChain service
             $definition->addMethodCall('addExtender', [new Reference($id)]);
         }

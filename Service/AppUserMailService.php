@@ -55,7 +55,9 @@ class AppUserMailService
         if (null === ($category = $this->getCategoryByType($type))) {
             throw new NotImplementedException($type, 'u uživatelských účtů');
         }
-        if (null === ($group = $this->getGroup($appUser, $category)) || null === ($twigTemplate = $group->getTwigTemplate())) {
+        if (null === ($group = $this->getGroup($appUser, $category))
+            || null === ($twigTemplate
+                = $group->getTwigTemplate())) {
             throw new NotFoundException('Šablona e-mailu nebyla nalezena.');
         }
         $title = $twigTemplate->getName() ?? 'Změna u uživatelského účtu';
@@ -70,7 +72,9 @@ class AppUserMailService
         $appUserEMail->setPastMails($this->appUserMailRepository->findByAppUser($appUser));
         $this->em->persist($appUserEMail);
         $this->em->flush();
-        $templateName = $twigTemplate->getTemplateName() ?? '@OswisOrgOswisCore/e-mail/pages/app-user-universal.html.twig';
+        $templateName = $twigTemplate->getTemplateName()
+                        ??
+                        '@OswisOrgOswisCore/e-mail/pages/app-user-universal.html.twig';
         $this->mailService->sendEMail($appUserEMail, $templateName, $data);
         $this->em->flush();
     }
@@ -99,7 +103,8 @@ class AppUserMailService
         string $type,
         ?AppUserEditRequest $userEditRequest = null,
         ?AppUserEdit $userEdit = null,
-    ): void {
+    ): void
+    {
         $appUser = $userEditRequest?->getAppUser();
         if (null === $appUser) {
             throw new OswisException('Token není platný.');
@@ -107,7 +112,9 @@ class AppUserMailService
         if (null === ($category = $this->getCategoryByType($type))) {
             throw new NotImplementedException($type, 'u uživatelských účtů');
         }
-        if (null === ($group = $this->getGroup($appUser, $category)) || null === ($twigTemplate = $group->getTwigTemplate())) {
+        if (null === ($group = $this->getGroup($appUser, $category))
+            || null === ($twigTemplate
+                = $group->getTwigTemplate())) {
             throw new NotFoundException('Šablona e-mailu nebyla nalezena.');
         }
         $title = $twigTemplate->getName() ?? 'Změna u uživatelského účtu';
@@ -122,7 +129,9 @@ class AppUserMailService
         $appUserEMail->setPastMails($this->appUserMailRepository->findByAppUser($appUser));
         $this->em->persist($appUserEMail);
         $this->em->flush();
-        $templateName = $twigTemplate->getTemplateName() ?? '@OswisOrgOswisCore/e-mail/pages/app-user-universal.html.twig';
+        $templateName = $twigTemplate->getTemplateName()
+                        ??
+                        '@OswisOrgOswisCore/e-mail/pages/app-user-universal.html.twig';
         $this->mailService->sendEMail($appUserEMail, $templateName, $data);
         $this->em->flush();
     }

@@ -18,22 +18,22 @@ use function array_key_exists;
  */
 class DateTimeUtils
 {
-    public const RANGE_ALL = '';
-    public const RANGE_YEAR = 'year';
+    public const RANGE_ALL   = '';
+    public const RANGE_YEAR  = 'year';
     public const RANGE_MONTH = 'month';
-    public const RANGE_WEEK = 'week';
-    public const RANGE_DAY = 'day';
+    public const RANGE_WEEK  = 'week';
+    public const RANGE_DAY   = 'day';
 
     public const MIN_DATE_TIME_STRING = '1970-01-01 00:00:00';
     public const MAX_DATE_TIME_STRING = '2038-01-19 00:00:00';
 
-    public const DATE_TIME_SECONDS = 's';
-    public const DATE_TIME_MINUTES = 'i';
-    public const DATE_TIME_HOURS = 'h';
-    public const DATE_TIME_DAYS = 'd';
+    public const DATE_TIME_SECONDS  = 's';
+    public const DATE_TIME_MINUTES  = 'i';
+    public const DATE_TIME_HOURS    = 'h';
+    public const DATE_TIME_DAYS     = 'd';
     public const DATE_TIME_DAYS_ALL = 'days';
-    public const DATE_TIME_MONTHS = 'm';
-    public const DATE_TIME_YEARS = 'y';
+    public const DATE_TIME_MONTHS   = 'm';
+    public const DATE_TIME_YEARS    = 'y';
 
     public const PERIOD_TYPES_ALLOWED
         = [
@@ -232,7 +232,8 @@ class DateTimeUtils
 
     public static function isInOnePeriod(?string $period, ?DateTime $start, ?DateTime $end): ?bool
     {
-        if (empty($period) || null === $start || null === $end || !in_array($period, self::PERIOD_TYPES_ALLOWED, true)) {
+        if (empty($period) || null === $start || null === $end
+            || !in_array($period, self::PERIOD_TYPES_ALLOWED, true)) {
             return null;
         }
         if ($period === self::DATE_TIME_YEARS) {

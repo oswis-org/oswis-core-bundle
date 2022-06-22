@@ -57,7 +57,8 @@ abstract class AbstractAppUser implements UserInterface, EquatableInterface, Per
 
     /**
      * Removes sensitive data from the user.
-     * This is important if, at any given point, sensitive information like the plain-text password is stored on this object.
+     * This is important if, at any given point, sensitive information like the plain-text password is stored on this
+     * object.
      */
     public function eraseCredentials(): void
     {
@@ -75,7 +76,9 @@ abstract class AbstractAppUser implements UserInterface, EquatableInterface, Per
             return true;
         }
         foreach ($this->getRoles() as $role) {
-            if ((is_string($role) && $role === $roleName) || ($role instanceof AppUserRole && $role->getRoleString() === $roleName)) {
+            if ((is_string($role) && $role === $roleName)
+                || ($role instanceof AppUserRole
+                    && $role->getRoleString() === $roleName)) {
                 return true;
             }
         }

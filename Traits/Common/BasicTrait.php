@@ -47,6 +47,7 @@ trait BasicTrait
 
     public static function compare(BasicInterface $item1, BasicInterface $item2): int
     {
-        return 0 === ($result = $item1->getCreatedAt() <=> $item2->getCreatedAt()) ? $item1->getId() <=> $item2->getId() : $result;
+        return 0 === ($result = $item1->getCreatedAt() <=> $item2->getCreatedAt()) ? $item1->getId() <=> $item2->getId()
+            : $result;
     }
 }

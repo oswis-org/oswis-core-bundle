@@ -89,7 +89,10 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
                 'assets/assets/images'             => 'images',
                 'public/bundles/oswisorgoswiscore' => 'oswis',
             ],
-            'globals'              => ['oswis' => '@oswis_org_oswis_core.oswis_core_settings_provider'],
+            'globals'              => [
+                'oswis'    => '@oswis_org_oswis_core.oswis_core_settings_provider',
+                'timezone' => 'Europe/Prague',
+            ],
             'form_themes'          => ['bootstrap_5_layout.html.twig'],
             'date'                 => [
                 'format'   => 'j. n. Y H:i',
@@ -271,8 +274,10 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
      * @param  ContainerBuilder  $container
      * @param  array  $bundleNames
      */
-    final public static function prependForBundleTemplatesOverride(ContainerBuilder $container, array $bundleNames): void
-    {
+    final public static function prependForBundleTemplatesOverride(
+        ContainerBuilder $container,
+        array $bundleNames
+    ): void {
         $twigConfigs = $container->getExtensionConfig('twig');
         $paths = [];
         foreach ($twigConfigs as $twigConfig) {

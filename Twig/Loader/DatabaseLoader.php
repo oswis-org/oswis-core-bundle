@@ -22,7 +22,8 @@ class DatabaseLoader implements LoaderInterface
             throw new LoaderError(sprintf('Template "%s" does not exist in TwigTemplateRepository.', $name));
         }
         if ($template->isRegular()) {
-            throw new LoaderError(sprintf('Template "%s" is only reference to regular template "%s".', $name, $template->getRegularTemplateName()));
+            throw new LoaderError(sprintf('Template "%s" is only reference to regular template "%s".', $name,
+                $template->getRegularTemplateName()));
         }
 
         return new Source(''.$template->getTextValue(), $name);

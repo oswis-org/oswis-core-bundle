@@ -17,13 +17,13 @@ use Mpdf\MpdfException;
  */
 class PdfExportList extends AbstractExportList
 {
-    public const DEFAULT_TEMPLATE = '@OswisOrgOswisCore/export/pdf/document.pdf.html.twig';
+    public const DEFAULT_TEMPLATE        = '@OswisOrgOswisCore/export/pdf/document.pdf.html.twig';
     public const DEFAULT_HEADER_TEMPLATE = '@OswisOrgOswisCore/export/pdf/header.pdf.html.twig';
     public const DEFAULT_FOOTER_TEMPLATE = '@OswisOrgOswisCore/export/pdf/footer.pdf.html.twig';
-    public const DEFAULT_PAPER_FORMAT = 'A4';
+    public const DEFAULT_PAPER_FORMAT    = 'A4';
     public const DEFAULT_PAPER_LANDSCAPE = false;
-    public const DEFAULT_TITLE = 'Export';
-    public const DEFAULT_DATA = ['items' => null];
+    public const DEFAULT_TITLE           = 'Export';
+    public const DEFAULT_DATA            = ['items' => null];
 
     public string $format = self::DEFAULT_PAPER_FORMAT;
 

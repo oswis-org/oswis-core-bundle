@@ -72,7 +72,11 @@ class AppUserType implements NameableInterface
 
     #[ManyToOne(targetEntity: AppUserRole::class, fetch: 'EAGER')]
     #[JoinColumn(name: 'app_user_role_id', referencedColumnName: 'id')]
-    #[ApiFilter(SearchFilter::class, properties: ["appUserRole.id" => "exact", "appUserRole.name" => "ipartial", "appUserRole.slug" => "ipartial"])]
+    #[ApiFilter(SearchFilter::class, properties: [
+        "appUserRole.id"   => "exact",
+        "appUserRole.name" => "ipartial",
+        "appUserRole.slug" => "ipartial",
+    ])]
     #[ApiFilter(OrderFilter::class)]
     protected ?AppUserRole $appUserRole = null;
 

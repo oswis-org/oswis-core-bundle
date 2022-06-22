@@ -16,8 +16,11 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 abstract class AbstractFileAction
 {
-    public function __construct(protected ManagerRegistry $doctrine, protected FormFactoryInterface $factory, protected ValidatorInterface $validator)
-    {
+    public function __construct(
+        protected ManagerRegistry $doctrine,
+        protected FormFactoryInterface $factory,
+        protected ValidatorInterface $validator
+    ) {
     }
 
     /**

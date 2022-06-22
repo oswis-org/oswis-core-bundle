@@ -89,7 +89,8 @@ trait DateRangeTrait
 
     public function getLength(?string $type = DateTimeUtils::DATE_TIME_HOURS): ?int
     {
-        return DateTimeUtils::getLength($this->getStartDate(), $this->getEndDateTime(), $type ?? DateTimeUtils::DATE_TIME_HOURS);
+        return DateTimeUtils::getLength($this->getStartDate(), $this->getEndDateTime(),
+            $type ?? DateTimeUtils::DATE_TIME_HOURS);
     }
 
     public function getStartDate(): ?DateTime

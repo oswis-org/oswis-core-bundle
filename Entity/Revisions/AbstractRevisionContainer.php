@@ -12,7 +12,8 @@ use OswisOrg\OswisCoreBundle\Interfaces\Revisions\RevisionContainerInterface;
 use OswisOrg\OswisCoreBundle\Interfaces\Revisions\RevisionInterface;
 
 /**
- * Abstract class representing container of revisions/versions of some entity (of some entity which extends AbstractRevision).
+ * Abstract class representing container of revisions/versions of some entity (of some entity which extends
+ * AbstractRevision).
  *
  * @author Jakub Zak <mail@jakubzak.eu>
  */
@@ -68,7 +69,8 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
     }
 
     /**
-     * Get date and time of active/actual revision/version in some date and time (or now if referenceDateTime is not specified).
+     * Get date and time of active/actual revision/version in some date and time (or now if referenceDateTime is not
+     * specified).
      */
     final public function getLastRevisionDateTime(?DateTime $referenceDateTime = null): ?DateTime
     {

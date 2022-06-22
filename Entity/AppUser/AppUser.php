@@ -114,13 +114,21 @@ class AppUser extends AbstractAppUser implements PdfExportableInterface, Passwor
     public const ENTITY_NAME = [1 => 'Uživatel', 11 => 'Uživatelé'];
 
     #[OneToMany(mappedBy: 'appUser', targetEntity: AppUserFlagConnection::class, cascade: ['all'], fetch: 'EAGER')]
-    #[ApiFilter(SearchFilter::class, properties: ["appUserFlags.id" => "exact", "appUserFlags.name" => "ipartial", "appUserFlags.slug" => "ipartial"])]
+    #[ApiFilter(SearchFilter::class, properties: [
+        "appUserFlags.id"   => "exact",
+        "appUserFlags.name" => "ipartial",
+        "appUserFlags.slug" => "ipartial",
+    ])]
     #[ApiFilter(OrderFilter::class, properties: ["appUserFlags.id", "appUserFlags.name", "appUserFlags.slug"])]
     protected ?Collection $appUserFlags = null;
 
     #[ManyToOne(targetEntity: AppUserType::class, fetch: 'EAGER')]
     #[JoinColumn(name: 'app_user_type_id', referencedColumnName: 'id')]
-    #[ApiFilter(SearchFilter::class, properties: ["appUserType.id" => "exact", "appUserType.name" => "ipartial", "appUserType.slug" => "ipartial"])]
+    #[ApiFilter(SearchFilter::class, properties: [
+        "appUserType.id"   => "exact",
+        "appUserType.name" => "ipartial",
+        "appUserType.slug" => "ipartial",
+    ])]
     #[ApiFilter(OrderFilter::class, properties: ["appUserType.id", "appUserType.name", "appUserType.slug"])]
     protected ?AppUserType $appUserType = null;
 

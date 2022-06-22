@@ -55,7 +55,8 @@ class AppUserEditService
      */
     public function sendConfirmation(AppUserEdit $userEdit): void
     {
-        $this->appUserMailService->sendAppUserEditMail(AppUserMail::TYPE_USER_EDIT, $userEdit->getUsedEditRequest(), $userEdit);
+        $this->appUserMailService->sendAppUserEditMail(AppUserMail::TYPE_USER_EDIT, $userEdit->getUsedEditRequest(),
+            $userEdit);
     }
 
 }

@@ -54,9 +54,12 @@ class AppUserRepository extends ServiceEntityRepository implements UserLoaderInt
 
     public function findByEmail(string $email): Collection
     {
-        $builder = $this->createQueryBuilder('app_user')->where('app_user.email = :email')->setParameter('email', $email);
+        $builder = $this->createQueryBuilder('app_user')
+                        ->where('app_user.email = :email')
+                        ->setParameter('email', $email);
 
-        return new ArrayCollection(is_array($result = $builder->getQuery()->getResult(AbstractQuery::HYDRATE_OBJECT)) ? $result : [],);
+        return new ArrayCollection(is_array($result = $builder->getQuery()->getResult(AbstractQuery::HYDRATE_OBJECT))
+            ? $result : [],);
     }
 
     final public function findOneBy(array $criteria, array $orderBy = null): ?AppUser
@@ -107,7 +110,9 @@ class AppUserRepository extends ServiceEntityRepository implements UserLoaderInt
             $builder->setParameter('now', new DateTime());
         }
         try {
-            return ($result = $builder->getQuery()->getOneOrNullResult(AbstractQuery::HYDRATE_OBJECT)) instanceof AppUser ? $result : null;
+            return ($result = $builder->getQuery()->getOneOrNullResult(AbstractQuery::HYDRATE_OBJECT))
+                   instanceof
+                   AppUser ? $result : null;
         } catch (NonUniqueResultException) {
             throw new UserNotUniqueException();
         }

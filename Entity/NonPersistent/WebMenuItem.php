@@ -14,7 +14,7 @@ use Doctrine\Common\Collections\Collection;
 
 class WebMenuItem
 {
-    public const MAIN_MENU = 'main-menu';
+    public const MAIN_MENU      = 'main-menu';
     public const WEB_ADMIN_MENU = 'web-admin-menu';
 
     protected string $path;

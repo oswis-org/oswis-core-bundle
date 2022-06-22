@@ -18,11 +18,11 @@ use Doctrine\Common\Collections\Collection;
  */
 abstract class AbstractExportList
 {
-    public const DEFAULT_TEMPLATE = null;
+    public const DEFAULT_TEMPLATE        = null;
     public const DEFAULT_HEADER_TEMPLATE = null;
     public const DEFAULT_FOOTER_TEMPLATE = null;
-    public const DEFAULT_TITLE = 'Export';
-    public const DEFAULT_DATA = ['items' => null];
+    public const DEFAULT_TITLE           = 'Export';
+    public const DEFAULT_DATA            = ['items' => null];
 
     public string $title = self::DEFAULT_TITLE;
 

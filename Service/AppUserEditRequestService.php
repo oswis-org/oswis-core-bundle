@@ -33,7 +33,9 @@ class AppUserEditRequestService
      */
     public function assignAppUser(AppUserEditRequest $userEditRequest): void
     {
-        $appUser = $this->appUserService->getRepository()->findOneByUsernameOrMail(''.$userEditRequest->getUserIdentifier(), true);
+        $appUser = $this->appUserService->getRepository()->findOneByUsernameOrMail(''
+                                                                                   .$userEditRequest->getUserIdentifier(),
+            true);
         if ($appUser === null) {
             throw new UserNotFoundException();
         }

@@ -12,7 +12,7 @@ use OswisOrg\OswisCoreBundle\Interfaces\Common\NameableInterface;
 
 class SiteMapItem
 {
-    public const CHANGE_FREQUENCY_DAILY = 'daily';
+    public const CHANGE_FREQUENCY_DAILY  = 'daily';
     public const CHANGE_FREQUENCY_WEEKLY = 'weekly';
 
     public ?string $path = null;

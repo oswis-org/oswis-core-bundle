@@ -87,9 +87,10 @@ class WebUserAuthenticator extends AbstractAuthenticator
     {
         $userCredentials = $this->getCredentials($request);
 
-        return new Passport(new UserBadge($userCredentials['username']), new CustomCredentials(function (mixed $credentials, UserInterface $user) {
-            return $this->checkCredentials($credentials, $user);
-        }, $userCredentials,),);
+        return new Passport(new UserBadge($userCredentials['username']),
+            new CustomCredentials(function (mixed $credentials, UserInterface $user) {
+                return $this->checkCredentials($credentials, $user);
+            }, $userCredentials,),);
     }
 
     /**

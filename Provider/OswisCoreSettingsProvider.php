@@ -30,8 +30,14 @@ class OswisCoreSettingsProvider
 
     protected array $angularAdmin = [];
 
-    public function __construct(array $app, array $admin, array $email, array $web, array $adminIPs, array $angularAdmin)
-    {
+    public function __construct(
+        array $app,
+        array $admin,
+        array $email,
+        array $web,
+        array $adminIPs,
+        array $angularAdmin
+    ) {
         $this->app = $app;
         $this->admin = $admin;
         $this->email = $email;

@@ -15,17 +15,17 @@ namespace OswisOrg\OswisCoreBundle\Entity\NonPersistent\Export;
  */
 class ExportListColumn
 {
-    public const TYPE_BASIC = '';
-    public const TYPE_BOOLEAN = 'bool';
-    public const TYPE_DATE = 'date';
-    public const TYPE_DATETIME = 'datetime';
-    public const TYPE_URL = 'url';
-    public const TYPE_EMAIL = 'email';
-    public const TYPE_ID = 'id';
-    public const TYPE_ID_DATE = 'id+date';
+    public const TYPE_BASIC       = '';
+    public const TYPE_BOOLEAN     = 'bool';
+    public const TYPE_DATE        = 'date';
+    public const TYPE_DATETIME    = 'datetime';
+    public const TYPE_URL         = 'url';
+    public const TYPE_EMAIL       = 'email';
+    public const TYPE_ID          = 'id';
+    public const TYPE_ID_DATE     = 'id+date';
     public const TYPE_ID_DATETIME = 'id+datetime';
     public const TYPE_ID_USERNAME = 'id+username';
-    public const TYPE_NAME_EMAIL = 'name+email';
+    public const TYPE_NAME_EMAIL  = 'name+email';
 
     public const TYPES
         = [
@@ -85,8 +85,12 @@ class ExportListColumn
      */
     public ?string $type = null;
 
-    public function __construct(?string $name = null, ?string $type = null, ?string $title = null, ?string $textAlign = null)
-    {
+    public function __construct(
+        ?string $name = null,
+        ?string $type = null,
+        ?string $title = null,
+        ?string $textAlign = null
+    ) {
         $this->name = $name;
         $this->title = $title;
         $this->textAlign = $textAlign;

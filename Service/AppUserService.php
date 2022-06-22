@@ -30,12 +30,18 @@ use function random_int;
 
 class AppUserService
 {
-    public const PASSWORD_CHANGE = 'password-change';
+    public const PASSWORD_CHANGE         = 'password-change';
     public const PASSWORD_CHANGE_REQUEST = 'password-change-request';
-    public const ACTIVATION = 'activation';
-    public const ACTIVATION_REQUEST = 'activation-request';
+    public const ACTIVATION              = 'activation';
+    public const ACTIVATION_REQUEST      = 'activation-request';
 
-    public const ALLOWED_TYPES = [self::PASSWORD_CHANGE, self::PASSWORD_CHANGE_REQUEST, self::ACTIVATION, self::ACTIVATION_REQUEST];
+    public const ALLOWED_TYPES
+        = [
+            self::PASSWORD_CHANGE,
+            self::PASSWORD_CHANGE_REQUEST,
+            self::ACTIVATION,
+            self::ACTIVATION_REQUEST,
+        ];
 
     public function __construct(
         private readonly UserPasswordHasherInterface $encoder,
@@ -99,7 +105,10 @@ class AppUserService
             $andSent = $sendConfirmation ? ' and sent' : '';
             $this->logger->info("Created $andSent password change request for user ".$appUser->getId().'.');
         } catch (OswisException|InvalidTypeException $exception) {
-            $this->logger->error('User ('.$appUser->getId().') password change request FAILED. '.$exception->getMessage());
+            $this->logger->error('User ('
+                                 .$appUser->getId()
+                                 .') password change request FAILED. '
+                                 .$exception->getMessage());
             throw $exception;
         }
     }
@@ -121,8 +130,12 @@ class AppUserService
      * @throws \OswisOrg\OswisCoreBundle\Exceptions\UserNotFoundException
      * @throws \OswisOrg\OswisCoreBundle\Exceptions\UserNotUniqueException
      */
-    public function create(?AppUser $appUser = null, ?bool $activate = false, ?bool $sendMail = false, ?bool $skipDuplicityError = true): AppUser
-    {
+    public function create(
+        ?AppUser $appUser = null,
+        ?bool $activate = false,
+        ?bool $sendMail = false,
+        ?bool $skipDuplicityError = true
+    ): AppUser {
         if (null === $appUser) {
             throw new UserNotFoundException();
         }
@@ -132,7 +145,9 @@ class AppUserService
         if (empty($email = $appUser->getEmail())) {
             $appUser->setEmail($email = "$username@oswis.org");
         }
-        $existingAppUser = $this->getRepository()->findOneBy(['email' => $email]) ?? $this->getRepository()->findOneBy(['username' => $username]);
+        $existingAppUser = $this->getRepository()->findOneBy(['email' => $email])
+                           ??
+                           $this->getRepository()->findOneBy(['username' => $username]);
         if (null !== $existingAppUser) {
             $existingId = $existingAppUser->getId();
             if (!$skipDuplicityError) {
@@ -189,7 +204,8 @@ class AppUserService
         try {
             if (empty($appUser->getPassword())) {
                 $isRandom = empty($appUser->getPlainPassword());
-                $appUser->setPlainPassword($isRandom ? StringUtils::generatePassword() : $appUser->getPlainPassword(), $this->encoder, !$isRandom);
+                $appUser->setPlainPassword($isRandom ? StringUtils::generatePassword() : $appUser->getPlainPassword(),
+                    $this->encoder, !$isRandom);
             }
             $appUser->activate();
             if ($sendConfirmation) {
@@ -251,7 +267,8 @@ class AppUserService
 
     public function getToken(?string $token, ?int $appUserId): ?AppUserToken
     {
-        return $token && $appUserId ? $this->appUserTokenService->getRepository()->findByToken($token, $appUserId) : null;
+        return $token && $appUserId ? $this->appUserTokenService->getRepository()->findByToken($token, $appUserId)
+            : null;
     }
 
     /**

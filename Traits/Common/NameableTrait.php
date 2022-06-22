@@ -35,8 +35,8 @@ trait NameableTrait
 
     public function getNameable(): Nameable
     {
-        return new Nameable($this->getName(), $this->getShortName(), $this->getDescription(), $this->getNote(), $this->getForcedSlug(),
-            $this->getInternalNote());
+        return new Nameable($this->getName(), $this->getShortName(), $this->getDescription(), $this->getNote(),
+            $this->getForcedSlug(), $this->getInternalNote());
     }
 
     public function updateSlug(): string
@@ -51,6 +51,8 @@ trait NameableTrait
 
     public function getAutoSlug(): string
     {
-        return (new AsciiSlugger())->slug(''.($this->getName() ?? $this->getShortName() ?? $this->getId()))->lower()->toString();
+        return (new AsciiSlugger())->slug(''.($this->getName() ?? $this->getShortName() ?? $this->getId()))
+                                   ->lower()
+                                   ->toString();
     }
 }

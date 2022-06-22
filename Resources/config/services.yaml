@@ -376,6 +376,13 @@ services:
         public: true
         tags:
             - { name: twig.extension }
+    oswis_org_oswis_core.twig.date_range_extension:
+        class: OswisOrg\OswisCoreBundle\Twig\Extension\ImageExtension
+        public: true
+        arguments:
+            - '@twig'
+        tags:
+            - { name: twig.extension }
     oswis_org_oswis_core.twig.database_loader:
         class: OswisOrg\OswisCoreBundle\Twig\Loader\DatabaseLoader
         public: true

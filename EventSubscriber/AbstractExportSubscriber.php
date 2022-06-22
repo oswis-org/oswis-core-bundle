@@ -40,8 +40,12 @@ abstract class AbstractExportSubscriber implements EventSubscriberInterface
         ];
     }
 
-    public function getExportResponse(string $fileName, string $mimeType, string $data, int $code = Response::HTTP_OK): Response
-    {
+    public function getExportResponse(
+        string $fileName,
+        string $mimeType,
+        string $data,
+        int $code = Response::HTTP_OK
+    ): Response {
         return new JsonResponse([
             'fileName' => $fileName,
             'mimeType' => $mimeType,

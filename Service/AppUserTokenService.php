@@ -32,10 +32,15 @@ class AppUserTokenService
      * @return AppUserToken
      * @throws InvalidTypeException
      */
-    public function create(AppUser $appUser, ?string $type = null, ?bool $multipleUseAllowed = null, ?int $validHours = null): AppUserToken
-    {
+    public function create(
+        AppUser $appUser,
+        ?string $type = null,
+        ?bool $multipleUseAllowed = null,
+        ?int $validHours = null
+    ): AppUserToken {
         try {
-            $appUserToken = new AppUserToken($appUser, $appUser->getEmail(), $type, $multipleUseAllowed ?? false, $validHours,);
+            $appUserToken = new AppUserToken($appUser, $appUser->getEmail(), $type, $multipleUseAllowed ?? false,
+                $validHours,);
             $this->em->persist($appUserToken);
             $this->em->flush();
             $tokenId = $appUserToken->getId();

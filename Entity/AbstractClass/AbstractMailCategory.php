@@ -16,14 +16,15 @@ use OswisOrg\OswisCoreBundle\Traits\Common\PriorityTrait;
 use OswisOrg\OswisCoreBundle\Traits\Common\TypeTrait;
 
 /**
- * E-mail category represents some type of message (activation, activation request, password change, password change request...).
+ * E-mail category represents some type of message (activation, activation request, password change, password change
+ * request...).
  * @author Jakub Zak <mail@jakubzak.eu>
  */
 abstract class AbstractMailCategory implements MailCategoryInterface
 {
-    public const TYPE_ACTIVATION = AppUserService::ACTIVATION;
-    public const TYPE_ACTIVATION_REQUEST = AppUserService::ACTIVATION_REQUEST;
-    public const TYPE_PASSWORD_CHANGE = AppUserService::PASSWORD_CHANGE;
+    public const TYPE_ACTIVATION              = AppUserService::ACTIVATION;
+    public const TYPE_ACTIVATION_REQUEST      = AppUserService::ACTIVATION_REQUEST;
+    public const TYPE_PASSWORD_CHANGE         = AppUserService::PASSWORD_CHANGE;
     public const TYPE_PASSWORD_CHANGE_REQUEST = AppUserService::PASSWORD_CHANGE_REQUEST;
 
     use NameableTrait;
@@ -47,7 +48,13 @@ abstract class AbstractMailCategory implements MailCategoryInterface
 
     public static function getAllowedTypesDefault(): array
     {
-        return ['', self::TYPE_ACTIVATION, self::TYPE_ACTIVATION_REQUEST, self::TYPE_PASSWORD_CHANGE, self::TYPE_PASSWORD_CHANGE_REQUEST];
+        return [
+            '',
+            self::TYPE_ACTIVATION,
+            self::TYPE_ACTIVATION_REQUEST,
+            self::TYPE_PASSWORD_CHANGE,
+            self::TYPE_PASSWORD_CHANGE_REQUEST,
+        ];
     }
 
     public static function getAllowedTypesCustom(): array

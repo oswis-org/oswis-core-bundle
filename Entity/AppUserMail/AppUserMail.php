@@ -60,12 +60,12 @@ use OswisOrg\OswisCoreBundle\Exceptions\InvalidTypeException;
 #[Cache(usage: 'NONSTRICT_READ_WRITE', region: 'core_app_user')]
 class AppUserMail extends AbstractMail
 {
-    public const TYPE_ACTIVATION = 'activation';
-    public const TYPE_ACTIVATION_REQUEST = 'activation-request';
-    public const TYPE_PASSWORD_CHANGE = 'password-change';
+    public const TYPE_ACTIVATION              = 'activation';
+    public const TYPE_ACTIVATION_REQUEST      = 'activation-request';
+    public const TYPE_PASSWORD_CHANGE         = 'password-change';
     public const TYPE_PASSWORD_CHANGE_REQUEST = 'password-change-request';
-    public const TYPE_USER_EDIT_REQUEST = 'user-edit-request';
-    public const TYPE_USER_EDIT = 'user-edit';
+    public const TYPE_USER_EDIT_REQUEST       = 'user-edit-request';
+    public const TYPE_USER_EDIT               = 'user-edit';
 
     #[ManyToOne(targetEntity: AppUser::class, fetch: 'EAGER')]
     #[JoinColumn(name: 'app_user_id', referencedColumnName: 'id')]

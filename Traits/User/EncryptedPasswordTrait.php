@@ -65,8 +65,11 @@ trait EncryptedPasswordTrait
         return $this->plainPassword;
     }
 
-    public function setPlainPassword(?string $plainPassword, ?UserPasswordHasherInterface $encoder = null, bool $deletePlain = true): void
-    {
+    public function setPlainPassword(
+        ?string $plainPassword,
+        ?UserPasswordHasherInterface $encoder = null,
+        bool $deletePlain = true
+    ): void {
         $this->plainPassword = $deletePlain ? null : $plainPassword;
         if (null !== $encoder) {
             $this->encryptPassword($plainPassword, $encoder);

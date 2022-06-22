@@ -110,7 +110,8 @@ final class ImageExtension extends AbstractExtension
             return null;
         }
 
-        return $this->getImageComputedComment($imagePath) ?: $this->getImageExifComment($imagePath) ?: $this->getImageIfdComment($imagePath) ?: null;
+        return $this->getImageComputedComment($imagePath)
+            ?: $this->getImageExifComment($imagePath) ?: $this->getImageIfdComment($imagePath) ?: null;
     }
 
     public function getImageTypeConstant(?string $imagePath = null): ?int

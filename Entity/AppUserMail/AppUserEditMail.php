@@ -60,7 +60,7 @@ use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserEditRequest;
 class AppUserEditMail extends AbstractMail
 {
     public const TYPE_USER_EDIT_REQUEST = 'user-edit-request';
-    public const TYPE_USER_EDIT = 'user-edit';
+    public const TYPE_USER_EDIT         = 'user-edit';
 
     #[ManyToOne(targetEntity: AppUser::class, fetch: 'EAGER')]
     #[JoinColumn(name: 'app_user_id', referencedColumnName: 'id')]

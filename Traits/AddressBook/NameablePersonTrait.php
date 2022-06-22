@@ -113,7 +113,15 @@ trait NameablePersonTrait
 
     public function getSortableName(): string
     {
-        return $this->getFamilyName().' '.$this->getAdditionalName().' '.$this->getGivenName().' '.$this->getHonorificPrefix().' '.$this->getHonorificSuffix();
+        return $this->getFamilyName()
+               .' '
+               .$this->getAdditionalName()
+               .' '
+               .$this->getGivenName()
+               .' '
+               .$this->getHonorificPrefix()
+               .' '
+               .$this->getHonorificSuffix();
     }
 
     public function getFamilyName(): ?string
@@ -216,7 +224,8 @@ trait NameablePersonTrait
             return ContactInterface::GENDER_UNISEX;
         }
         try {
-            return (new VokativName())->isMale($this->getGivenName()) ? ContactInterface::GENDER_MALE : ContactInterface::GENDER_FEMALE;
+            return (new VokativName())->isMale($this->getGivenName()) ? ContactInterface::GENDER_MALE
+                : ContactInterface::GENDER_FEMALE;
         } catch (InvalidArgumentException $e) {
             return ContactInterface::GENDER_UNISEX;
         }

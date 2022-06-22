@@ -34,7 +34,7 @@ use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 class AppUserController extends AbstractController
 {
-    public const TEMPLATE_FORM = '@OswisOrgOswisCore/web/pages/form.html.twig';
+    public const TEMPLATE_FORM    = '@OswisOrgOswisCore/web/pages/form.html.twig';
     public const TEMPLATE_MESSAGE = '@OswisOrgOswisCore/web/pages/message.html.twig';
 
     public function __construct(

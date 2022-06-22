@@ -27,9 +27,9 @@ abstract class AbstractToken implements TokenInterface
 {
     public const DEFAULT_VALID_HOURS = 24;
 
-    public const TYPE_ACTIVATION = 'activation';
+    public const TYPE_ACTIVATION      = 'activation';
     public const TYPE_PASSWORD_CHANGE = 'password-change';
-    public const TYPE_ABUSE = 'abuse';
+    public const TYPE_ABUSE           = 'abuse';
 
     use BasicTrait;
     use TypeTrait;

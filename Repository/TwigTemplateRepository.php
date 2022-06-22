@@ -31,7 +31,9 @@ class TwigTemplateRepository extends ServiceEntityRepository
         $queryBuilder->orderBy("template.id", "ASC");
         $queryBuilder->setMaxResults(1);
         try {
-            return ($result = $queryBuilder->getQuery()->getOneOrNullResult(AbstractQuery::HYDRATE_OBJECT)) instanceof TwigTemplate ? $result : null;
+            return ($result = $queryBuilder->getQuery()->getOneOrNullResult(AbstractQuery::HYDRATE_OBJECT))
+                   instanceof
+                   TwigTemplate ? $result : null;
         } catch (Exception) {
             return null;
         }

@@ -37,7 +37,10 @@ final class SearchFilter extends AbstractContextAwareFilter
             'property' => 'search',
             'type'     => 'string',
             'required' => false,
-            'swagger'  => ['description' => 'FullTextFilter on '.implode(', ', $annotation instanceof SearchAnnotation ? $annotation->fields : [])],
+            'swagger'  => [
+                'description' => 'FullTextFilter on '.implode(', ',
+                        $annotation instanceof SearchAnnotation ? $annotation->fields : []),
+            ],
         ];
 
         return $description;

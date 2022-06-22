@@ -17,8 +17,8 @@ use OswisOrg\OswisCoreBundle\Traits\Common\TypeTrait;
 abstract class AbstractWebContent implements BasicInterface
 {
     public const HTML = 'html';
-    public const CSS = 'css';
-    public const JS = 'js';
+    public const CSS  = 'css';
+    public const JS   = 'js';
 
     use BasicTrait;
     use TypeTrait;

@@ -14,7 +14,7 @@ namespace OswisOrg\OswisCoreBundle\Entity\NonPersistent\Export;
  */
 class CsvExportList extends AbstractExportList
 {
-    public const DEFAULT_TEMPLATE = '@OswisOrgOswisCore/export/csv/document.pdf.html.twig';
+    public const DEFAULT_TEMPLATE        = '@OswisOrgOswisCore/export/csv/document.pdf.html.twig';
     public const DEFAULT_HEADER_TEMPLATE = '@OswisOrgOswisCore/export/csv/header.pdf.html.twig';
     public const DEFAULT_FOOTER_TEMPLATE = '@OswisOrgOswisCore/export/csv/footer.pdf.html.twig';
 }

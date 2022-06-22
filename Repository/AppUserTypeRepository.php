@@ -27,7 +27,8 @@ class AppUserTypeRepository extends ServiceEntityRepository
     {
         $query = $this->createQueryBuilder('t')->where('t.slug = :slug')->setParameter('slug', $slug)->getQuery();
         try {
-            return ($result = $query->getOneOrNullResult(AbstractQuery::HYDRATE_OBJECT)) instanceof AppUserType ? $result : null;
+            return ($result = $query->getOneOrNullResult(AbstractQuery::HYDRATE_OBJECT)) instanceof AppUserType
+                ? $result : null;
         } catch (Exception) {
             return null;
         }

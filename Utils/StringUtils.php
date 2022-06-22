@@ -112,7 +112,8 @@ class StringUtils
 
     public static function endsWith(string $haystack, string $needle): bool
     {
-        return (mb_strlen($haystack) >= mb_strlen($needle)) && (false !== mb_strpos($haystack, $needle, mb_strlen($haystack) - mb_strlen($needle)));
+        return (mb_strlen($haystack) >= mb_strlen($needle))
+               && (false !== mb_strpos($haystack, $needle, mb_strlen($haystack) - mb_strlen($needle)));
     }
 
     public static function capitalize(string $text): string

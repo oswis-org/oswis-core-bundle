@@ -52,8 +52,13 @@ abstract class AbstractMail implements BasicInterface
     /**
      * @throws InvalidTypeException
      */
-    public function __construct(string $subject = null, string $address = null, ?string $type = null, ?string $recipientName = null, ?string $messageID = null)
-    {
+    public function __construct(
+        string $subject = null,
+        string $address = null,
+        ?string $type = null,
+        ?string $recipientName = null,
+        ?string $messageID = null
+    ) {
         $this->subject = $subject;
         $this->address = $address;
         $this->recipientName = $recipientName;
@@ -115,13 +120,14 @@ abstract class AbstractMail implements BasicInterface
             return;
         }
         $headers = $templatedMail->getHeaders();
-        if (($previousMail = $sortedPastMails->first() ?: null) && $previousMail instanceof AppUserMail && !empty($previousMail->getMessageID())) {
+        if (($previousMail = $sortedPastMails->first() ?: null)
+            && $previousMail instanceof AppUserMail
+            && !empty($previousMail->getMessageID())) {
             $headers->addIdHeader('In-Reply-To', $previousMail->getMessageID());
         }
-        $ids = $sortedPastMails->filter(fn(mixed $mail) => $mail instanceof AbstractMail && !empty($mail->getMessageID()))->map(fn(mixed $mail) => $mail
-                                                                                                                                                   instanceof
-                                                                                                                                                   AbstractMail
-            ? $mail->getMessageID() : null,);
+        $ids = $sortedPastMails->filter(fn(mixed $mail) => $mail instanceof AbstractMail
+                                                           && !empty($mail->getMessageID()))->map(fn(mixed $mail
+        ) => $mail instanceof AbstractMail ? $mail->getMessageID() : null);
         if ($ids->count() > 0) {
             $headers->addIdHeader('References', $ids->toArray());
         }

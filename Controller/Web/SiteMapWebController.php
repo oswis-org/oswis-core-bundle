@@ -19,7 +19,8 @@ class SiteMapWebController extends AbstractController
 
     public function showSitemapXml(): Response
     {
-        return $this->renderXml($this->render('@OswisOrgOswisCore/web/sitemap.xml.twig', ['items' => $this->siteMapService->getItems()]));
+        return $this->renderXml($this->render('@OswisOrgOswisCore/web/sitemap.xml.twig',
+            ['items' => $this->siteMapService->getItems()]));
     }
 
     public function renderXml(Response $response): Response
