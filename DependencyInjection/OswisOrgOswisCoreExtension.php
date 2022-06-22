@@ -80,7 +80,7 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
 
     private function prependTwig(ContainerBuilder $container): void
     {
-        $twigConfig = [
+        $container->prependExtensionConfig('twig', [
             'default_path'         => '%kernel.project_dir%/templates',
             'debug'                => '%kernel.debug%',
             'strict_variables'     => '%kernel.debug%',
@@ -91,9 +91,11 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
             ],
             'globals'              => ['oswis' => '@oswis_org_oswis_core.oswis_core_settings_provider'],
             'form_themes'          => ['bootstrap_5_layout.html.twig'],
-            'date'                 => ['format' => 'j. n. Y H:i'],
-        ];
-        $container->prependExtensionConfig('twig', $twigConfig);
+            'date'                 => [
+                'format'   => 'j. n. Y H:i',
+                'timezone' => 'Europe/Prague',
+            ],
+        ]);
     }
 
     private function prependFramework(ContainerBuilder $container): void

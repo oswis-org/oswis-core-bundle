@@ -16,7 +16,7 @@
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Traits/Common/EntityPublicTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/Traits/Common/EntityPublicTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DependencyInjection/OswisOrgOswisCoreExtension.php" beforeDir="false" afterPath="$PROJECT_DIR$/DependencyInjection/OswisOrgOswisCoreExtension.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -980,14 +980,8 @@
       <workItem from="1654451459206" duration="10405000" />
       <workItem from="1655113125410" duration="5920000" />
       <workItem from="1655199077299" duration="121000" />
-      <workItem from="1655381014334" duration="2991000" />
-    </task>
-    <task id="LOCAL-00808" summary="Did some refactoring and updated dependencies.">
-      <created>1629148751331</created>
-      <option name="number" value="00808" />
-      <option name="presentableId" value="LOCAL-00808" />
-      <option name="project" value="LOCAL" />
-      <updated>1629148751331</updated>
+      <workItem from="1655381014334" duration="4216000" />
+      <workItem from="1655905470379" duration="1285000" />
     </task>
     <task id="LOCAL-00809" summary="Did some refactoring and updated dependencies.">
       <created>1637768030156</created>
@@ -1325,7 +1319,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655384018719</updated>
     </task>
-    <option name="localTasksCounter" value="857" />
+    <task id="LOCAL-00857" summary="Added publicInApp property to Publicity.">
+      <created>1655385628745</created>
+      <option name="number" value="00857" />
+      <option name="presentableId" value="LOCAL-00857" />
+      <option name="project" value="LOCAL" />
+      <updated>1655385628745</updated>
+    </task>
+    <option name="localTasksCounter" value="858" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
