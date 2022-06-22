@@ -377,7 +377,7 @@ services:
         tags:
             - { name: twig.extension }
     oswis_org_oswis_core.twig.date_range_extension:
-        class: OswisOrg\OswisCoreBundle\Twig\Extension\ImageExtension
+        class: OswisOrg\OswisCoreBundle\Twig\Extension\DateRangeExtension
         public: true
         arguments:
             - '@twig'
