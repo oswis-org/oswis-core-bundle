@@ -15,11 +15,17 @@ use OswisOrg\OswisCoreBundle\Utils\DateTimeUtils;
 use Twig\Environment;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
+use Twig\TwigFunction;
 
 final class DateRangeExtension extends AbstractExtension
 {
     public function __construct(private readonly Environment $twig)
     {
+    }
+
+    public function getFunctions(): array
+    {
+        return [new TwigFunction('date_range_string', [$this, 'dateRangeString'])];
     }
 
     public function getFilters(): array
