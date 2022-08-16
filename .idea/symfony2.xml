@@ -5,6 +5,7 @@
     <option name="directoryToWeb" value="Resources/public" />
     <option name="directoryToApp" value="" />
     <option name="pluginEnabled" value="true" />
+    <option name="objectSignatureTypeProvider" value="true" />
     <option name="profilerCsvPath" value="" />
     <option name="lastServiceGeneratorLanguage" value="yaml" />
   </component>

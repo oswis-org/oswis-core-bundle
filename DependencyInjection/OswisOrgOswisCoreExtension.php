@@ -21,7 +21,6 @@ use Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
-
 use function dirname;
 
 class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionInterface
@@ -255,14 +254,25 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
             ],
             'error_formats'           => [
                 'jsonproblem' => ['mime_types' => ['application/problem+json']],
-                'jsonapi'     => ['mime_types' => ['application/vnd.api+json']],
-                'jsonld'      => ['mime_types' => ['application/ld+json']],
+                'jsonapi' => ['mime_types' => ['application/vnd.api+json']],
+                'jsonld' => ['mime_types' => ['application/ld+json']],
             ],
-            'patch_formats'           => ['json' => ['application/merge-patch+json']],
-            'mapping'                 => [
+            'patch_formats' => ['json' => ['application/merge-patch+json']],
+            'mapping' => [
                 'paths' => [
                     '%kernel.project_dir%/vendor/oswis-org/oswis-core-bundle/Entity',
                     '%kernel.project_dir%/vendor/oswis-org/oswis-core-bundle/Api/Dto',
+                ],
+            ],
+            'defaults' => [
+                'normalization_context' => [
+                    'enable_max_depth' => true,
+                    'max_depth' => 4,
+                    'skip_null_values' => false,
+                ],
+                'denormalization_context' => [
+                    'enable_max_depth' => true,
+                    'max_depth' => 4,
                 ],
             ],
         ]);
