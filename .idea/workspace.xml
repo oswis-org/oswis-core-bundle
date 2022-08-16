@@ -15,9 +15,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/symfony2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/symfony2.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DependencyInjection/OswisOrgOswisCoreExtension.php" beforeDir="false" afterPath="$PROJECT_DIR$/DependencyInjection/OswisOrgOswisCoreExtension.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/config/serialization/BasicInterface.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/config/serialization/BasicInterface.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -986,14 +985,7 @@
       <workItem from="1655905470379" duration="1285000" />
       <workItem from="1655907918239" duration="6249000" />
       <workItem from="1659983220980" duration="3023000" />
-      <workItem from="1660588913269" duration="2306000" />
-    </task>
-    <task id="LOCAL-00812" summary="Did some refactoring and updated dependencies.">
-      <created>1640908719467</created>
-      <option name="number" value="00812" />
-      <option name="presentableId" value="LOCAL-00812" />
-      <option name="project" value="LOCAL" />
-      <updated>1640908719467</updated>
+      <workItem from="1660588913269" duration="2435000" />
     </task>
     <task id="LOCAL-00813" summary="Did some refactoring and updated dependencies.">
       <created>1641243311713</created>
@@ -1331,7 +1323,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655936293865</updated>
     </task>
-    <option name="localTasksCounter" value="861" />
+    <task id="LOCAL-00861" summary="Some changes and fixes.">
+      <created>1660639667738</created>
+      <option name="number" value="00861" />
+      <option name="presentableId" value="LOCAL-00861" />
+      <option name="project" value="LOCAL" />
+      <updated>1660639667738</updated>
+    </task>
+    <option name="localTasksCounter" value="862" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1391,7 +1390,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Upgraded Bootstrap to 5." />
     <MESSAGE value="Fixed some deprecations." />
     <MESSAGE value="Fixed some layout bugs." />
     <MESSAGE value="Updated dependencies." />
@@ -1416,7 +1414,8 @@
     <MESSAGE value="Fixed filter." />
     <MESSAGE value="Added publicInApp property to Publicity." />
     <MESSAGE value="Added DateRangeExtension for Twig." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added DateRangeExtension for Twig." />
+    <MESSAGE value="Some changes and fixes." />
+    <option name="LAST_COMMIT_MESSAGE" value="Some changes and fixes." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

@@ -19,7 +19,9 @@ OswisOrg\OswisCoreBundle\Interfaces\Common\BasicInterface:
                 - 'entity_get'
         createdBy:
             groups:
+                - 'entities_get'
                 - 'entity_get'
         updatedBy:
             groups:
+                - 'entities_get'
                 - 'entity_get'
