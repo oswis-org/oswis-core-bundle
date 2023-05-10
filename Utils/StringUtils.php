@@ -6,7 +6,6 @@ namespace OswisOrg\OswisCoreBundle\Utils;
 
 use Exception;
 use Symfony\Component\String\Slugger\AsciiSlugger;
-
 use function chr;
 use function ord;
 
@@ -207,6 +206,7 @@ class StringUtils
             $str = self::randomString($from, $to, --$length);
         }
         try {
+            /* @phpstan-ignore-next-line */
             return $str.chr(random_int(ord($from), ord($to)));
         } catch (Exception $e) {
             return null;

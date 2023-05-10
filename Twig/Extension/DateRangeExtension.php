@@ -37,7 +37,7 @@ final class DateRangeExtension extends AbstractExtension
     {
         $globals = $this->twig->getGlobals();
         $timezoneString = $globals['timezone'];
-        $timezone = new DateTimeZone($timezoneString);
+        $timezone = new DateTimeZone('' . $timezoneString);
         $start = $start?->setTimezone($timezone);
         $end = $end?->setTimezone($timezone);
         if (null === $start && null === $end) {

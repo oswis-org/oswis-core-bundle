@@ -15,8 +15,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/oswis-core-bundle.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/oswis-core-bundle.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/config/serialization/BasicInterface.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/config/serialization/BasicInterface.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EventSubscriber/MailerSubscriber.php" beforeDir="false" afterPath="$PROJECT_DIR$/EventSubscriber/MailerSubscriber.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Provider/OswisCoreSettingsProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/Provider/OswisCoreSettingsProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Twig/Extension/DateRangeExtension.php" beforeDir="false" afterPath="$PROJECT_DIR$/Twig/Extension/DateRangeExtension.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Utils/DateTimeUtils.php" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/DateTimeUtils.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Utils/StringUtils.php" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/StringUtils.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rector.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +107,6 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/sql-formatter" />
       <path value="$PROJECT_DIR$/vendor/egulias/email-validator" />
       <path value="$PROJECT_DIR$/vendor/endroid/qr-code" />
-      <path value="$PROJECT_DIR$/vendor/fig/link-util" />
       <path value="$PROJECT_DIR$/vendor/friendsofphp/php-cs-fixer" />
       <path value="$PROJECT_DIR$/vendor/friendsofphp/proxy-manager-lts" />
       <path value="$PROJECT_DIR$/vendor/gedmo/doctrine-extensions" />
@@ -116,8 +125,10 @@
       <path value="$PROJECT_DIR$/vendor/lexik/jwt-authentication-bundle" />
       <path value="$PROJECT_DIR$/vendor/liip/imagine-bundle" />
       <path value="$PROJECT_DIR$/vendor/lorenzo/pinky" />
+      <path value="$PROJECT_DIR$/vendor/masterminds/html5" />
       <path value="$PROJECT_DIR$/vendor/monolog/monolog" />
       <path value="$PROJECT_DIR$/vendor/mpdf/mpdf" />
+      <path value="$PROJECT_DIR$/vendor/mpdf/psr-log-aware-trait" />
       <path value="$PROJECT_DIR$/vendor/myclabs/deep-copy" />
       <path value="$PROJECT_DIR$/vendor/namshi/jose" />
       <path value="$PROJECT_DIR$/vendor/nelmio/cors-bundle" />
@@ -127,15 +138,16 @@
       <path value="$PROJECT_DIR$/vendor/ocramius/proxy-manager" />
       <path value="$PROJECT_DIR$/vendor/paragonie/random_compat" />
       <path value="$PROJECT_DIR$/vendor/php-console/php-console" />
-      <path value="$PROJECT_DIR$/vendor/php-cs-fixer/diff" />
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-common" />
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-docblock" />
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/type-resolver" />
       <path value="$PROJECT_DIR$/vendor/phpstan/phpdoc-parser" />
       <path value="$PROJECT_DIR$/vendor/phpstan/phpstan" />
       <path value="$PROJECT_DIR$/vendor/psr/cache" />
+      <path value="$PROJECT_DIR$/vendor/psr/clock" />
       <path value="$PROJECT_DIR$/vendor/psr/container" />
       <path value="$PROJECT_DIR$/vendor/psr/event-dispatcher" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-message" />
       <path value="$PROJECT_DIR$/vendor/psr/link" />
       <path value="$PROJECT_DIR$/vendor/psr/log" />
       <path value="$PROJECT_DIR$/vendor/psr/simple-cache" />
@@ -145,9 +157,9 @@
       <path value="$PROJECT_DIR$/vendor/rikudou/iban" />
       <path value="$PROJECT_DIR$/vendor/rikudou/qr-payment-interface" />
       <path value="$PROJECT_DIR$/vendor/rikudou/qr-payment-qr-code-provider" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/diff" />
       <path value="$PROJECT_DIR$/vendor/sensio/framework-extra-bundle" />
       <path value="$PROJECT_DIR$/vendor/setasign/fpdi" />
-      <path value="$PROJECT_DIR$/vendor/stella-maris/clock" />
       <path value="$PROJECT_DIR$/vendor/stof/doctrine-extensions-bundle" />
       <path value="$PROJECT_DIR$/vendor/symfony/apache-pack" />
       <path value="$PROJECT_DIR$/vendor/symfony/asset" />
@@ -236,10 +248,6 @@
       <path value="$PROJECT_DIR$/vendor/webimpress/safe-writer" />
       <path value="$PROJECT_DIR$/vendor/webmozart/assert" />
       <path value="$PROJECT_DIR$/vendor/willdurand/negotiation" />
-      <path value="$PROJECT_DIR$/vendor/psr/http-message" />
-      <path value="$PROJECT_DIR$/vendor/php-http/message-factory" />
-      <path value="$PROJECT_DIR$/vendor/rector/rector" />
-      <path value="$PROJECT_DIR$/vendor/masterminds/html5" />
     </include_path>
   </component>
   <component name="ProblemsViewState">
@@ -253,25 +261,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Project.color&quot;: &quot;105b0c&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/T470P_DATA/DEV_PROJECTS_LOCAL/OSWIS/SERVER/oswis-core-bundle/Twig/Extension&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;php.override.implement.member.chooser.php.doc&quot;: &quot;NONE&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;MTConfigurable&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Project.color": "105b0c",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/media/zakjakub/9098090d-8312-4759-939e-d44a990819d1/97adca56-5299-419e-93dd-3b29f9bd17e8/DEV_PROJECTS_LOCAL/OSWIS/SERVER/oswis-core-bundle",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "php.override.implement.member.chooser.php.doc": "NONE",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "MTConfigurable",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Twig/Extension" />
@@ -985,14 +993,9 @@
       <workItem from="1655905470379" duration="1285000" />
       <workItem from="1655907918239" duration="6249000" />
       <workItem from="1659983220980" duration="3023000" />
-      <workItem from="1660588913269" duration="2435000" />
-    </task>
-    <task id="LOCAL-00813" summary="Did some refactoring and updated dependencies.">
-      <created>1641243311713</created>
-      <option name="number" value="00813" />
-      <option name="presentableId" value="LOCAL-00813" />
-      <option name="project" value="LOCAL" />
-      <updated>1641243311718</updated>
+      <workItem from="1660588913269" duration="6306000" />
+      <workItem from="1661337047020" duration="1926000" />
+      <workItem from="1683703020514" duration="701000" />
     </task>
     <task id="LOCAL-00814" summary="Did some refactoring and updated dependencies.">
       <created>1651915225400</created>
@@ -1330,7 +1333,14 @@
       <option name="project" value="LOCAL" />
       <updated>1660639667738</updated>
     </task>
-    <option name="localTasksCounter" value="862" />
+    <task id="LOCAL-00862" summary="Some changes and fixes.">
+      <created>1660639788148</created>
+      <option name="number" value="00862" />
+      <option name="presentableId" value="LOCAL-00862" />
+      <option name="project" value="LOCAL" />
+      <updated>1660639788148</updated>
+    </task>
+    <option name="localTasksCounter" value="863" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1348,6 +1358,20 @@
     </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="TAB_STATES">
       <map>
         <entry key="BRANCHES_LOG">
@@ -1364,20 +1388,6 @@
                 </map>
               </option>
             </State>
-          </value>
-        </entry>
-      </map>
-    </option>
-    <option name="RECENT_FILTERS">
-      <map>
-        <entry key="Branch">
-          <value>
-            <list />
-          </value>
-        </entry>
-        <entry key="User">
-          <value>
-            <list />
           </value>
         </entry>
       </map>

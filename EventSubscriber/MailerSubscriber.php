@@ -63,7 +63,7 @@ class MailerSubscriber implements EventSubscriberInterface
             }
         }
         if (empty($email->getFrom()) && $this->coreSettings->getEmail()['address']) {
-            $fromAddress = $this->coreSettings->getEmail()['address'] ?? null;
+            $fromAddress = $this->coreSettings->getEmail()['address'];
             $fromName = $this->coreSettings->getEmail()['name'] ?? null;
             try {
                 $email->from(new Address($fromAddress, $fromName));

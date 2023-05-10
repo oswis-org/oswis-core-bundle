@@ -8,7 +8,6 @@ use DateInterval;
 use DateTime;
 use Exception;
 use InvalidArgumentException;
-
 use function array_key_exists;
 
 /**
@@ -186,7 +185,7 @@ class DateTimeUtils
         $m = (int)$dateTime->format('n');
         $d = (int)$dateTime->format('j');
         if (array_key_exists($m, $publicHolidays) && array_key_exists($d, $publicHolidays[$m])) {
-            return $publicHolidays[$m][$d] ?? null;
+            return $publicHolidays[$m][$d];
         }
 
         return null;
