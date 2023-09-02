@@ -42,7 +42,7 @@ class MailerSubscriber implements EventSubscriberInterface
         }
         $email->subject($email->getSubject() ?? $this->coreSettings->getEmail()['default_subject'] ?? '');
         // if ($email instanceof TemplatedEmail) {
-        // $email->embedFromPath('../assets/assets/images/logo.png', 'logo');
+        // $email->embedFromPath('../assets/images/logo.png', 'logo');
         // $email->getContext()['logo'] = $email->getContext()['logo'] ?? 'cid:logo';
         // $email->getContext()['oswis'] = $this->coreSettings->getArray();
         // }

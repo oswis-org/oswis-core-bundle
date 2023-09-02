@@ -78,7 +78,7 @@ class Configuration implements ConfigurationInterface
                  ->info('Path to app logo.')
                  ->example([
                      '@images/logo.png',
-                     '../assets/assets/images/logo.png',
+                     '../assets/images/logo.png',
                  ])
                  ->end()
                  ?->scalarNode('portalName')
@@ -228,12 +228,12 @@ class Configuration implements ConfigurationInterface
                  ->scalarNode('logo')
                  ->defaultValue('@images/logo.png')
                  ->info('Path to app logo.')
-                 ->example(['@images/logo.png', '../assets/assets/images/logo.png'])
+            ->example(['@images/logo.png', '../assets/images/logo.png'])
                  ->end()
                  ->scalarNode('social_image')
                  ->defaultValue('@images/logo.png')
                  ->info('Path to app logo.')
-                 ->example(['@images/logo.png', '../assets/assets/images/logo.png'])
+            ->example(['@images/logo.png', '../assets/images/logo.png'])
                  ->end()
                  ->scalarNode('author')
                  ->info('Author of application.')

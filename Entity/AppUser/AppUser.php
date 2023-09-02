@@ -208,7 +208,7 @@ class AppUser extends AbstractAppUser implements PdfExportableInterface, Passwor
 
     public function getName(): string
     {
-        return !empty($fullName = $this->getFullName()) ? $fullName : $this->getUsername();
+        return (!empty($fullName = $this->getFullName()) ? $fullName : $this->getUsername()) ?? '';
     }
 
     public function addAppUserFlag(?AppUserFlagConnection $flagInJobFairUser): void
