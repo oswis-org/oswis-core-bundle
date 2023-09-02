@@ -15,9 +15,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/oswis-core-bundle.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/oswis-core-bundle.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Twig/Extension/DateRangeExtension.php" beforeDir="false" afterPath="$PROJECT_DIR$/Twig/Extension/DateRangeExtension.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
     </list>
@@ -161,7 +161,6 @@
       <path value="$PROJECT_DIR$/vendor/symfony/config" />
       <path value="$PROJECT_DIR$/vendor/symfony/console" />
       <path value="$PROJECT_DIR$/vendor/symfony/css-selector" />
-      <path value="$PROJECT_DIR$/vendor/symfony/debug" />
       <path value="$PROJECT_DIR$/vendor/symfony/debug-bundle" />
       <path value="$PROJECT_DIR$/vendor/symfony/dependency-injection" />
       <path value="$PROJECT_DIR$/vendor/symfony/deprecation-contracts" />
@@ -240,11 +239,17 @@
       <path value="$PROJECT_DIR$/vendor/webimpress/safe-writer" />
       <path value="$PROJECT_DIR$/vendor/webmozart/assert" />
       <path value="$PROJECT_DIR$/vendor/willdurand/negotiation" />
+      <path value="$PROJECT_DIR$/vendor/symfony/stimulus-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/clock" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php83" />
     </include_path>
   </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="ProjectErrors" />
   </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 8
+}]]></component>
   <component name="ProjectId" id="1OdNRiB7J91AH4isXqLMtDEiNnC" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -260,7 +265,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/media/zakjakub/9098090d-8312-4759-939e-d44a990819d1/97adca56-5299-419e-93dd-3b29f9bd17e8/DEV_PROJECTS_LOCAL/OSWIS/SERVER/oswis-address-book-bundle&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/mnt/T470P_DATA_2TB/97adca56-5299-419e-93dd-3b29f9bd17e8/DEV_PROJECTS_LOCAL/OSWIS/SERVER/oswis-core-bundle&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -988,14 +993,9 @@
       <workItem from="1660588913269" duration="6306000" />
       <workItem from="1661337047020" duration="1926000" />
       <workItem from="1683703020514" duration="866000" />
-      <workItem from="1683739258858" duration="90000" />
-    </task>
-    <task id="LOCAL-00815" summary="Updated to Symfony 6.">
-      <created>1652020268780</created>
-      <option name="number" value="00815" />
-      <option name="presentableId" value="LOCAL-00815" />
-      <option name="project" value="LOCAL" />
-      <updated>1652020268780</updated>
+      <workItem from="1683739258858" duration="1367000" />
+      <workItem from="1690024312790" duration="911000" />
+      <workItem from="1693641197885" duration="229000" />
     </task>
     <task id="LOCAL-00816" summary="Updated to Symfony 6.">
       <created>1652037629814</created>
@@ -1333,7 +1333,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683703825588</updated>
     </task>
-    <option name="localTasksCounter" value="864" />
+    <task id="LOCAL-00864" summary="Updated dependencies.">
+      <created>1683739428883</created>
+      <option name="number" value="00864" />
+      <option name="presentableId" value="LOCAL-00864" />
+      <option name="project" value="LOCAL" />
+      <updated>1683739428886</updated>
+    </task>
+    <option name="localTasksCounter" value="865" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

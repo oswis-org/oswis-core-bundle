@@ -11,6 +11,7 @@ namespace OswisOrg\OswisCoreBundle\Twig\Extension;
 
 use DateTime;
 use DateTimeZone;
+use Exception;
 use OswisOrg\OswisCoreBundle\Utils\DateTimeUtils;
 use Twig\Environment;
 use Twig\Extension\AbstractExtension;
@@ -33,8 +34,24 @@ final class DateRangeExtension extends AbstractExtension
         return [new TwigFilter('date_range_string', [$this, 'dateRangeString'])];
     }
 
-    public function dateRangeString(?DateTime $start, ?DateTime $end, bool $withoutYear = false): string
+    public function dateRangeString(
+        DateTime|string|null $start,
+        DateTime|string|null $end,
+        bool                 $withoutYear = false,
+    ): string
     {
+        $start = empty($start) ? null : $start;
+        $end = empty($end) ? null : $end;
+        try {
+            $start = is_string($start) ? new DateTime($start) : $start;
+        } catch (Exception) {
+            $start = null;
+        }
+        try {
+            $end = is_string($end) ? new DateTime($end) : $end;
+        } catch (Exception) {
+            $end = null;
+        }
         $globals = $this->twig->getGlobals();
         $timezoneString = $globals['timezone'];
         $timezone = new DateTimeZone('' . $timezoneString);

@@ -78,6 +78,7 @@
     "symfony/requirements-checker": "^2.0",
     "symfony/security-bundle": "^6.2",
     "symfony/serializer-pack": "^1.2",
+    "symfony/stimulus-bundle": "^2.10",
     "symfony/string": "^6.2",
     "symfony/translation": "^6.2",
     "symfony/twig-bundle": "^6.2",
