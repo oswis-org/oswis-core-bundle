@@ -40,6 +40,7 @@
     "api-platform/core": "^v2.7",
     "bigit/vokativ": "dev-zakjakub-master",
     "cache/doctrine-adapter": "^1.2",
+    "doctrine/annotations": "^2.0",
     "doctrine/collections": "^1.8",
     "doctrine/doctrine-bundle": "^2.9",
     "doctrine/orm": "^2.15",
