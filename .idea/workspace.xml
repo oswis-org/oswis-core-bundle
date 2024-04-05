@@ -15,12 +15,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/symfony2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/symfony2.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Extender/CoreSitemapExtender.php" beforeDir="false" afterPath="$PROJECT_DIR$/Extender/CoreSitemapExtender.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Resources/views/web/html-skeleton-default.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/html-skeleton-default.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -254,25 +250,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Project.color": "105b0c",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/mnt/T470P_DATA_2TB/97adca56-5299-419e-93dd-3b29f9bd17e8/DEV_PROJECTS_LOCAL/OSWIS/SERVER/oswis-core-bundle/Resources/config",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "php.override.implement.member.chooser.php.doc": "NONE",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "Symfony2.SettingsForm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Project.color&quot;: &quot;105b0c&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/mnt/T470P_DATA_2TB/97adca56-5299-419e-93dd-3b29f9bd17e8/DEV_PROJECTS_LOCAL/OSWIS/SERVER/oswis-core-bundle/Resources/config&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;php.override.implement.member.chooser.php.doc&quot;: &quot;NONE&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;Symfony2.SettingsForm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Twig/Extension" />
@@ -998,7 +994,8 @@
       <workItem from="1711475487623" duration="740000" />
       <workItem from="1712156896338" duration="60000" />
       <workItem from="1712159237443" duration="1510000" />
-      <workItem from="1712323224518" duration="2526000" />
+      <workItem from="1712323224518" duration="5192000" />
+      <workItem from="1712346862141" duration="10000" />
     </task>
     <task id="LOCAL-00816" summary="Updated to Symfony 6.">
       <created>1652037629814</created>
@@ -1343,7 +1340,7 @@
       <option name="project" value="LOCAL" />
       <updated>1683739428886</updated>
     </task>
-    <option name="localTasksCounter" value="868" />
+    <option name="localTasksCounter" value="869" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
