@@ -14,6 +14,10 @@
         {% block html_meta_rss %}
             <link rel="alternate" type="application/rss+xml" href="{{ path('oswis_org_oswis_core_rss_xml') }}" title="RSS {{ oswis.web.name }}">
         {% endblock html_meta_rss %}
+        {% block html_meta_sitemap %}
+            <link rel="sitemap" type="application/xml" title="Sitemap :: {{ oswis.web.name }}"
+                  href="{{ path('oswis_org_oswis_core_sitemap_xml') }}">
+        {% endblock html_meta_sitemap %}
         <meta name="description"
               content="{% block html_description %}{{ description|default(default_description|default(oswis.web.description)) }}{% endblock html_description %}">
         <meta name='author' content='{% block meta_author %}{{ author|default('Jakub Zak (https://jakubzak.cz)') }}{% endblock meta_author %}'>

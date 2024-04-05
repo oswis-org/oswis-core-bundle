@@ -86,7 +86,7 @@
     "symfony/web-link": "^6.2",
     "symfony/web-profiler-bundle": "^6.2",
     "symfony/yaml": "^6.2",
-    "twbs/bootstrap": "^5.2",
+    "twbs/bootstrap": "^v5.3.3",
     "twig/cssinliner-extra": "^3.6",
     "twig/extra-bundle": "^3.6",
     "twig/inky-extra": "^3.6",
