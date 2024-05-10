@@ -54,11 +54,19 @@ class MailerSubscriber implements EventSubscriberInterface
         if (!empty($email->getFrom())) {
             $originalSenders = $email->getFrom();
             $email->from();
-            foreach ($originalSenders as $singleFrom) {
+            foreach ($originalSenders as $index => $singleFrom) {
                 try {
-                    $email->addFrom(new Address($singleFrom->getAddress(), $singleFrom->getName()));
+                    if ($index < 1) {
+                        $email->from(new Address($singleFrom->getAddress(), $singleFrom->getName()));
+                    } else {
+                        $email->addFrom(new Address($singleFrom->getAddress(), $singleFrom->getName()));
+                    }
                 } catch (LogicException|RfcComplianceException $e) {
-                    $email->addFrom($singleFrom);
+                    if ($index < 1) {
+                        $email->from($singleFrom);
+                    } else {
+                        $email->addFrom($singleFrom);
+                    }
                 }
             }
         }

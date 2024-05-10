@@ -16,7 +16,7 @@
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/views/web/html-skeleton-default.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web/html-skeleton-default.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EventSubscriber/MailerSubscriber.php" beforeDir="false" afterPath="$PROJECT_DIR$/EventSubscriber/MailerSubscriber.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -284,6 +284,14 @@
       <recent name="$PROJECT_DIR$/Interfaces/Web" />
       <recent name="$PROJECT_DIR$/Form/Login" />
     </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-PS-241.15989.102" />
+        <option value="bundled-php-predefined-ba97393d7c68-c76157a7178b-com.jetbrains.php.sharedIndexes-PS-241.15989.102" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="2" Folder0="$PROJECT_DIR$/../../../ZAKJ/.jetbrains-dic" Folder1="$USER_HOME$" CustomDictionaries="2" CustomDictionary0="$PROJECT_DIR$/../../../ZAKJ/.jetbrains-dic/cs.dic" CustomDictionary1="$USER_HOME$/cs.dic" DefaultDictionary="project-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
@@ -995,7 +1003,8 @@
       <workItem from="1712156896338" duration="60000" />
       <workItem from="1712159237443" duration="1510000" />
       <workItem from="1712323224518" duration="5192000" />
-      <workItem from="1712346862141" duration="10000" />
+      <workItem from="1712346862141" duration="584000" />
+      <workItem from="1715363014117" duration="66000" />
     </task>
     <task id="LOCAL-00816" summary="Updated to Symfony 6.">
       <created>1652037629814</created>
@@ -1340,7 +1349,7 @@
       <option name="project" value="LOCAL" />
       <updated>1683739428886</updated>
     </task>
-    <option name="localTasksCounter" value="869" />
+    <option name="localTasksCounter" value="870" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
