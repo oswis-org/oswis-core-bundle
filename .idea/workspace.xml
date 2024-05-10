@@ -1004,7 +1004,7 @@
       <workItem from="1712159237443" duration="1510000" />
       <workItem from="1712323224518" duration="5192000" />
       <workItem from="1712346862141" duration="584000" />
-      <workItem from="1715363014117" duration="66000" />
+      <workItem from="1715363014117" duration="248000" />
     </task>
     <task id="LOCAL-00816" summary="Updated to Symfony 6.">
       <created>1652037629814</created>
@@ -1349,7 +1349,7 @@
       <option name="project" value="LOCAL" />
       <updated>1683739428886</updated>
     </task>
-    <option name="localTasksCounter" value="870" />
+    <option name="localTasksCounter" value="871" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
