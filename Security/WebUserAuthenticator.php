@@ -105,9 +105,7 @@ class WebUserAuthenticator extends AbstractAuthenticator
                 },
                 $userCredentials,
             ),
-            [
-                new RememberMeBadge(),
-            ],
+            $userCredentials['remember_me'] ? [new RememberMeBadge()] : [],
         );
     }
 
@@ -120,6 +118,7 @@ class WebUserAuthenticator extends AbstractAuthenticator
         return [
             'username' => $request->request->get('_username'),
             'password' => $request->request->get('_password'),
+            'remember_me' => $request->request->get('_remember_me'),
         ];
     }
 
