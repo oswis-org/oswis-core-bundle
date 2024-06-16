@@ -27,6 +27,7 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Http\Authenticator\AbstractAuthenticator;
+use Symfony\Component\Security\Http\Authenticator\Passport\Badge\RememberMeBadge;
 use Symfony\Component\Security\Http\Authenticator\Passport\Badge\UserBadge;
 use Symfony\Component\Security\Http\Authenticator\Passport\Credentials\CustomCredentials;
 use Symfony\Component\Security\Http\Authenticator\Passport\Passport;
@@ -42,7 +43,8 @@ class WebUserAuthenticator extends AbstractAuthenticator
     public function __construct(
         private readonly UserPasswordHasherInterface $passwordEncoder,
         private readonly RouterInterface $router,
-    ) {
+    )
+    {
     }
 
     public function supports(Request $request): bool
@@ -61,7 +63,7 @@ class WebUserAuthenticator extends AbstractAuthenticator
     /**
      * Used to upgrade (rehash) the user's password automatically over time.
      *
-     * @param  array  $credentials
+     * @param array $credentials
      *
      * @return string|null
      */
@@ -71,9 +73,9 @@ class WebUserAuthenticator extends AbstractAuthenticator
     }
 
     /**
-     * @param  Request  $request
-     * @param  TokenInterface  $token
-     * @param  string  $firewallName
+     * @param Request $request
+     * @param TokenInterface $token
+     * @param string $firewallName
      *
      * @return Response|null
      * @throws InvalidArgumentException|SessionNotFoundException
@@ -95,10 +97,18 @@ class WebUserAuthenticator extends AbstractAuthenticator
     {
         $userCredentials = $this->getCredentials($request);
 
-        return new Passport(new UserBadge($userCredentials['username']),
-            new CustomCredentials(function (mixed $credentials, UserInterface $user) {
-                return $this->checkCredentials($credentials, $user);
-            }, $userCredentials,),);
+        return new Passport(
+            new UserBadge($userCredentials['username']),
+            new CustomCredentials(
+                function (mixed $credentials, UserInterface $user) {
+                    return $this->checkCredentials($credentials, $user);
+                },
+                $userCredentials,
+            ),
+            [
+                new RememberMeBadge(),
+            ],
+        );
     }
 
     /**

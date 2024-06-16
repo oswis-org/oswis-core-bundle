@@ -177,6 +177,13 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
                         'login_path' => 'oswis_org_oswis_core_web_admin_login',
                         'check_path' => 'oswis_org_oswis_core_web_admin_login',
                     ],
+                    'remember_me' => [
+                        'secret' => '%kernel.secret%',
+                        'lifetime' => 604800,
+                        'token_provider' => [
+                            'doctrine' => true,
+                        ],
+                    ],
                 ],
             ],
             'access_control'   => [
