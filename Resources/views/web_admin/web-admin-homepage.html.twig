@@ -28,8 +28,40 @@
                         <td>{{ app.user.appUserType.allRoleNames|join(', ') }}</td>
                     </tr>
                 </table>
+
+                <div class="m-3">
+                    <strong>Pokračovat:</strong>
+                    <ul>
+                        <li><a href="{{ path('oswis_org_oswis_core_homepage_action') }}">na&nbsp;web</a></li>
+                        <li><a href="{{ path('oswis_org_oswis_core_portal') }}">do&nbsp;aplikace</a></li>
+                    </ul>
+                </div>
+
             </div>
         </div>
+
+
+        <div class="row">
+            <div class="col">
+
+                {% if app.user.role('ROLE_MANAGER') or app.user.role('ROLE_ADMIN') %}
+                    <h2>Systémové akce</h2>
+                    <ul>
+                        <li>
+                            <a href="{{ path('oswis_org_oswis_core_internal_action_clear_cache') }}">Smazat cache</a>
+                            <a href="{{ path('oswis_org_oswis_core_web_admin_test_session') }}">Test session</a>
+                        </li>
+                    </ul>
+                {% endif %}
+
+                {% block additional_actions %}
+                {% endblock %}
+
+
+            </div>
+        </div>
+
+
     </main>
 {% endblock %}
 

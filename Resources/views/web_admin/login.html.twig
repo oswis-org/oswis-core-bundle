@@ -42,9 +42,11 @@
                     <ul>
                         <li><a href="{{ path('oswis_org_oswis_core_homepage_action') }}">na&nbsp;web</a></li>
                         {% if app.user.role('ROLE_MANAGER') or app.user.role('ROLE_ADMIN') %}
-                            <li><a href="{{ path('oswis_org_oswis_core_web_admin_homepage') }}">do&nbsp;administrace</a>
+                            <li>
+                                <a href="{{ path('oswis_org_oswis_core_web_admin_homepage') }}">do&nbsp;administrace</a>
                             </li>
                         {% endif %}
+                        <li><a href="{{ path('oswis_org_oswis_core_portal') }}">do&nbsp;aplikace</a></li>
                     </ul>
                 </div>
             </div>
@@ -62,14 +64,14 @@
                         <h1 class="h3 mb-3 font-weight-normal">Přihlášení</h1>
                         <label for="inputUsername">
                             <span>Uživatelské jméno nebo e-mail:<br></span>
-                            <input type="text" value="{{ last_username }}" name="username" id="inputUsername"
+                            <input type="text" value="{{ last_username }}" name="_username" id="inputUsername"
                                    class="form-control" required autofocus>
                         </label>
                     </div>
                     <div class="col-12">
                         <label for="inputPassword">
                             <span>Heslo:<br></span>
-                            <input type="password" name="password" id="inputPassword" class="form-control" required>
+                            <input type="password" name="_password" id="inputPassword" class="form-control" required>
                         </label>
                     </div>
                     <div class="col-12">
