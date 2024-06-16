@@ -8,13 +8,21 @@ declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Security;
 
+use InvalidArgumentException;
+use Symfony\Component\HttpFoundation\Exception\BadRequestException;
+use Symfony\Component\HttpFoundation\Exception\SessionNotFoundException;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\Routing\Exception\InvalidParameterException;
+use Symfony\Component\Routing\Exception\MissingMandatoryParametersException;
+use Symfony\Component\Routing\Exception\RouteNotFoundException;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
+use Symfony\Component\Security\Core\Exception\BadCredentialsException;
+use Symfony\Component\Security\Core\Exception\UserNotFoundException;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -43,7 +51,7 @@ class WebUserAuthenticator extends AbstractAuthenticator
     }
 
     /**
-     * @throws \Symfony\Component\Security\Core\Exception\UserNotFoundException
+     * @throws UserNotFoundException
      */
     public function getUser(mixed $credentials, UserProviderInterface $userProvider): ?object
     {
@@ -67,8 +75,8 @@ class WebUserAuthenticator extends AbstractAuthenticator
      * @param  TokenInterface  $token
      * @param  string  $firewallName
      *
-     * @return \Symfony\Component\HttpFoundation\Response|null
-     * @throws \InvalidArgumentException|\Symfony\Component\HttpFoundation\Exception\SessionNotFoundException
+     * @return Response|null
+     * @throws InvalidArgumentException|SessionNotFoundException
      */
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
@@ -80,8 +88,8 @@ class WebUserAuthenticator extends AbstractAuthenticator
     }
 
     /**
-     * @throws \InvalidArgumentException
-     * @throws \Symfony\Component\HttpFoundation\Exception\BadRequestException
+     * @throws InvalidArgumentException
+     * @throws BadRequestException|BadCredentialsException
      */
     public function authenticate(Request $request): Passport
     {
@@ -94,8 +102,8 @@ class WebUserAuthenticator extends AbstractAuthenticator
     }
 
     /**
-     * @throws \InvalidArgumentException
-     * @throws \Symfony\Component\HttpFoundation\Exception\BadRequestException
+     * @throws InvalidArgumentException
+     * @throws BadRequestException
      */
     public function getCredentials(Request $request): array
     {
@@ -114,11 +122,11 @@ class WebUserAuthenticator extends AbstractAuthenticator
     }
 
     /**
-     * @throws \Symfony\Component\Routing\Exception\RouteNotFoundException
-     * @throws \Symfony\Component\Routing\Exception\MissingMandatoryParametersException
-     * @throws \Symfony\Component\HttpFoundation\Exception\SessionNotFoundException
-     * @throws \InvalidArgumentException
-     * @throws \Symfony\Component\Routing\Exception\InvalidParameterException
+     * @throws RouteNotFoundException
+     * @throws MissingMandatoryParametersException
+     * @throws SessionNotFoundException
+     * @throws InvalidArgumentException
+     * @throws InvalidParameterException
      */
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception): ?Response
     {
