@@ -16,9 +16,8 @@
   <component name="ChangeListManager">
     <list default="true" id="384a84ce-dca2-4bd6-b6a3-67b5be1b7507" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DependencyInjection/OswisOrgOswisCoreExtension.php" beforeDir="false" afterPath="$PROJECT_DIR$/DependencyInjection/OswisOrgOswisCoreExtension.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controller/WebAdmin/WebAdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/WebAdmin/WebAdminController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Resources/views/web_admin/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/views/web_admin/login.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Security/WebUserAuthenticator.php" beforeDir="false" afterPath="$PROJECT_DIR$/Security/WebUserAuthenticator.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -1007,7 +1006,7 @@
       <workItem from="1712323224518" duration="5192000" />
       <workItem from="1712346862141" duration="584000" />
       <workItem from="1715363014117" duration="6126000" />
-      <workItem from="1718527322038" duration="935000" />
+      <workItem from="1718527322038" duration="1063000" />
     </task>
     <task id="LOCAL-00816" summary="Updated to Symfony 6.">
       <created>1652037629814</created>
@@ -1352,7 +1351,7 @@
       <option name="project" value="LOCAL" />
       <updated>1683739428886</updated>
     </task>
-    <option name="localTasksCounter" value="872" />
+    <option name="localTasksCounter" value="873" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

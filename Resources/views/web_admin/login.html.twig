@@ -18,9 +18,11 @@
                 <div class="m-3">
                     <strong>Pokračovat:</strong>
                     <ul>
-                        <li><a href="">na&nbsp;web</a></li>
+                        <li><a href="{{ path('oswis_org_oswis_core_homepage_action') }}">na&nbsp;web</a></li>
                         {% if app.user.role('ROLE_MANAGER') or app.user.role('ROLE_ADMIN') %}
-                        <li><a href="">do&nbsp;administrace</a></li>
+                            <li><a href="{{ path('oswis_org_oswis_core_web_admin_homepage') }}">do&nbsp;administrace</a>
+                            </li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>
