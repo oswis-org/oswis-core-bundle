@@ -8,8 +8,24 @@
             <div class="col">
                 <table>
                     <tr>
+                        <td>Jméno:</td>
+                        <td>{{ app.user.name }}</td>
+                    </tr>
+                    <tr>
                         <td>Uživatelské jméno:</td>
                         <td>{{ app.user.userIdentifier }}</td>
+                    </tr>
+                    <tr>
+                        <td>E-mail:</td>
+                        <td>{{ app.user.email }}</td>
+                    </tr>
+                    <tr>
+                        <td>Typ uživatele:</td>
+                        <td>{{ app.user.appUserType.name }}</td>
+                    </tr>
+                    <tr>
+                        <td>Role uživatele:</td>
+                        <td>{{ app.user.appUserType.allRoleNames|join(', ') }}</td>
                     </tr>
                 </table>
             </div>
