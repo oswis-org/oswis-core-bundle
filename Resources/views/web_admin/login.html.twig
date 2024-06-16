@@ -11,52 +11,62 @@
                 </div>
             {% endif %}
             {% if app.user %}
-            <div class="col-12">
-                <div class="m-3">
-                    Přihlášen(a) jako <strong>{{ app.user.userIdentifier }}</strong>.
+                <div class="col-12">
+                    <div class="m-3">
+                        Přihlášen(a) jako <strong>{{ app.user.userIdentifier }}</strong>.
+                    </div>
+                    <table class="list">
+                        <tbody>
+                        <tr>
+                            <td>Jméno:</td>
+                            <td>{{ app.user.name }}</td>
+                        </tr>
+                        </tbody>
+                        <tbody>
+                        <tr>
+                            <td>Uživatelské jméno:</td>
+                            <td>{{ app.user.userIdentifier }}</td>
+                        </tr>
+                        </tbody>
+                        <tbody>
+                        <tr>
+                            <td>E-mail:</td>
+                            <td>{{ app.user.email }}</td>
+                        </tr>
+                        </tbody>
+                        <tbody>
+                        <tr>
+                            <td>Typ uživatele:</td>
+                            <td>{{ app.user.appUserType.name }}</td>
+                        </tr>
+                        </tbody>
+                        <tbody>
+                        <tr>
+                            <td>Role uživatele:</td>
+                            <td>{{ app.user.appUserType.allRoleNames|join(', ') }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div class="m-3">
+                        <strong>Pokračovat:</strong>
+                        <ul>
+                            <li><a href="{{ path('oswis_org_oswis_core_homepage_action') }}">na&nbsp;web</a></li>
+                            {% if app.user.role('ROLE_MANAGER') or app.user.role('ROLE_ADMIN') %}
+                                <li>
+                                    <a href="{{ path('oswis_org_oswis_core_web_admin_homepage') }}">do&nbsp;administrace</a>
+                                </li>
+                            {% endif %}
+                            <li><a href="{{ path('oswis_org_oswis_core_portal') }}">do&nbsp;aplikace</a></li>
+                        </ul>
+                    </div>
                 </div>
-                <table class="m-3">
-                    <tr>
-                        <td>Jméno:</td>
-                        <td>{{ app.user.name }}</td>
-                    </tr>
-                    <tr>
-                        <td>Uživatelské jméno:</td>
-                        <td>{{ app.user.userIdentifier }}</td>
-                    </tr>
-                    <tr>
-                        <td>E-mail:</td>
-                        <td>{{ app.user.email }}</td>
-                    </tr>
-                    <tr>
-                        <td>Typ uživatele:</td>
-                        <td>{{ app.user.appUserType.name }}</td>
-                    </tr>
-                    <tr>
-                        <td>Role uživatele:</td>
-                        <td>{{ app.user.appUserType.allRoleNames|join(', ') }}</td>
-                    </tr>
-                </table>
-                <div class="m-3">
-                    <strong>Pokračovat:</strong>
-                    <ul>
-                        <li><a href="{{ path('oswis_org_oswis_core_homepage_action') }}">na&nbsp;web</a></li>
-                        {% if app.user.role('ROLE_MANAGER') or app.user.role('ROLE_ADMIN') %}
-                            <li>
-                                <a href="{{ path('oswis_org_oswis_core_web_admin_homepage') }}">do&nbsp;administrace</a>
-                            </li>
-                        {% endif %}
-                        <li><a href="{{ path('oswis_org_oswis_core_portal') }}">do&nbsp;aplikace</a></li>
-                    </ul>
+                <div class="col-12">
+                    <form action="{{ path('oswis_org_oswis_core_web_admin_logout') }}">
+                        <button class="btn btn-lg btn-primary m-3" type="submit">
+                            Odhlásit
+                        </button>
+                    </form>
                 </div>
-            </div>
-            <div class="col-12">
-                <form action="{{ path('oswis_org_oswis_core_web_admin_logout') }}">
-                    <button class="btn btn-lg btn-primary m-3" type="submit">
-                        Odhlásit
-                    </button>
-                </form>
-            </div>
             {% endif %}
             {% if not app.user %}
                 <form method="post">
