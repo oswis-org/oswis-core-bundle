@@ -35,6 +35,10 @@ final class ImageExtension extends AbstractExtension
     public function getFunctions(): array
     {
         $functions = [];
+        /**
+         * @var string                         $key
+         * @var array{fn: mixed, opts: ?array} $fn
+         */
         foreach ($this->getFunctionsArray() as $key => $fn) {
             try {
                 $functions[] = new TwigFunction($key, Callback::check($fn['fn']), $fn['opts'] ?? []);
@@ -45,6 +49,9 @@ final class ImageExtension extends AbstractExtension
         return $functions;
     }
 
+    /**
+     * @return  array<string, array{fn: array, opts?: array}>
+     */
     public function getFunctionsArray(): array
     {
         return [
@@ -60,6 +67,10 @@ final class ImageExtension extends AbstractExtension
     public function getFilters(): array
     {
         $functions = [];
+        /**
+         * @var string                         $key
+         * @var array{fn: mixed, opts?: array} $fn
+         */
         foreach ($this->getFunctionsArray() as $key => $fn) {
             try {
                 $functions[] = new TwigFilter($key, Callback::check($fn['fn']), $fn['opts'] ?? []);
@@ -70,17 +81,26 @@ final class ImageExtension extends AbstractExtension
         return $functions;
     }
 
-    public function getImageWidth(?string $imagePath = null): ?int
+    public function getImageWidth(?string $imagePath = null): int
     {
-        return $this->getImageSize($imagePath)[0];
+        return (int)$this->getImageSize($imagePath)[0];
     }
 
+
+    /**
+     * @param string|null $path
+     * @return array{0: int|null, 1: int|null, 2: int|null, 3: string|null, bits?: int|null, channels?: int|null, mime: string|null}|array{null, null, null, null}
+     */
     private function getImageSize(?string $path = null): array
     {
         $path = $this->getPath($path);
-        $imageSize = !empty($path) ? getimagesize($path) : null;
+        if (!empty($path)) {
+            $imageSize = (getimagesize($path) ?: [null, null, null, null]);
+        } else {
+            $imageSize = [null, null, null, null];
+        }
 
-        return is_array($imageSize) ? $imageSize : [null, null, null, null];
+        return $imageSize;
     }
 
     public function getPath(?string $imagePath = null): ?string
@@ -125,28 +145,48 @@ final class ImageExtension extends AbstractExtension
     public function getImageComputedComment(?string $imagePath = null): ?string
     {
         $imagePath = $this->getPath($imagePath);
-        $result = !empty($imagePath) ? (@exif_read_data($imagePath, 'COMPUTED') ?: null) : null;
+        if (!empty($imagePath)) {
+            $result = (@exif_read_data($imagePath, 'COMPUTED') ?: null);
+        } else {
+            $result = null;
+        }
 
-        return is_array($result) && is_array($result['COMPUTED']) ? $result['COMPUTED']['UserComment'] : null;
+        return (is_array($result) && is_array($result['COMPUTED']) && is_string($result['COMPUTED']['UserComment']))
+            ? $result['COMPUTED']['UserComment']
+            : null;
     }
 
     public function getImageExifComment(?string $imagePath = null): ?string
     {
         $imagePath = $this->getPath($imagePath);
-        $comments = !empty($imagePath) ? (@exif_read_data($imagePath, 'COMMENT') ?: null) : null;
+        if (!empty($imagePath)) {
+            $comments = (@exif_read_data($imagePath, 'COMMENT') ?: null);
+        } else {
+            $comments = null;
+        }
         if (!is_array($comments)) {
             return null;
         }
 
-        return is_array($comments['COMMENT']) ? implode("\n", $comments['COMMENT']) : $comments['COMMENT'];
+        if (is_array($comments['COMMENT'])) {
+            return implode("\n", $comments['COMMENT']);
+        }
+
+        return is_string($comments['COMMENT']) ? $comments['COMMENT'] : null;
     }
 
     public function getImageIfdComment(?string $imagePath = null): ?string
     {
         $imagePath = $this->getPath($imagePath);
-        $result = !empty($imagePath) ? @exif_read_data($imagePath, 'IFD0') : null;
+        if (!empty($imagePath)) {
+            $result = (@exif_read_data($imagePath, 'IFD0') ?: null);
+        } else {
+            $result = null;
+        }
 
-        return $result && is_array($result) && is_array($result['IFD0']) ? $result['IFD0']['UserComment'] : null;
+        return (is_array($result) && is_array($result['IFD0']) && is_string(
+                $result['IFD0']['UserComment']
+            )) ? $result['IFD0']['UserComment'] : null;
     }
 
     public function getImageMimeType(?string $imagePath = null): ?string

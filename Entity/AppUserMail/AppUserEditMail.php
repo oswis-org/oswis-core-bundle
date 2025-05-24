@@ -17,6 +17,7 @@ use OswisOrg\OswisCoreBundle\Entity\AbstractClass\AbstractMail;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserEdit;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserEditRequest;
+use OswisOrg\OswisCoreBundle\Exceptions\InvalidTypeException;
 
 /**
  * E-mail sent to some user about changes in account (password, e-mail or username).
@@ -59,8 +60,8 @@ use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserEditRequest;
 #[Cache(usage: 'NONSTRICT_READ_WRITE', region: 'core_app_user')]
 class AppUserEditMail extends AbstractMail
 {
-    public const TYPE_USER_EDIT_REQUEST = 'user-edit-request';
-    public const TYPE_USER_EDIT         = 'user-edit';
+    public const string TYPE_USER_EDIT_REQUEST = 'user-edit-request';
+    public const string TYPE_USER_EDIT = 'user-edit';
 
     #[ManyToOne(targetEntity: AppUser::class, fetch: 'EAGER')]
     #[JoinColumn(name: 'app_user_id', referencedColumnName: 'id')]
@@ -75,16 +76,16 @@ class AppUserEditMail extends AbstractMail
     protected ?AppUserEdit $appUserEdit = null;
 
     /**
-     * @param  string|null  $subject
-     * @param  string|null  $type
-     * @param  \OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserEditRequest|null  $appUserEditRequest
-     * @param  \OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserEdit|null  $appUserEdit
-     * @param  string|null  $messageId
+     * @param string|null             $subject
+     * @param string|null             $type
+     * @param AppUserEditRequest|null $appUserEditRequest
+     * @param AppUserEdit|null        $appUserEdit
+     * @param string|null             $messageId
      *
-     * @throws \OswisOrg\OswisCoreBundle\Exceptions\InvalidTypeException
+     * @throws InvalidTypeException
      */
     public function __construct(
-        string $subject = null,
+        ?string $subject = null,
         ?string $type = null,
         ?AppUserEditRequest $appUserEditRequest = null,
         ?AppUserEdit $appUserEdit = null,

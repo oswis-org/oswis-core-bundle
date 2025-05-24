@@ -11,7 +11,7 @@ use Symfony\Component\Serializer\Encoder\EncoderInterface;
 
 class PdfEncoder implements EncoderInterface, DecoderInterface
 {
-    public const FORMAT = 'pdf';
+    public const string FORMAT = 'pdf';
 
     /**
      * {@inheritDoc}
@@ -46,7 +46,7 @@ class PdfEncoder implements EncoderInterface, DecoderInterface
      * {@inheritDoc}
      * @noinspection MissingReturnTypeInspection
      */
-    final public function decode(string $data, string $format, array $context = [])
+    final public function decode(string $data, string $format, array $context = []): mixed
     {
         return null;
     }

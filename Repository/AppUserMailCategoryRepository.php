@@ -38,7 +38,7 @@ class AppUserMailCategoryRepository extends ServiceEntityRepository
         }
     }
 
-    final public function findOneBy(array $criteria, array $orderBy = null): ?AppUserMailCategory
+    final public function findOneBy(array $criteria, ?array $orderBy = null): ?AppUserMailCategory
     {
         $result = parent::findOneBy($criteria, $orderBy);
 

@@ -7,7 +7,6 @@ declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Controller\AbstractClass;
 
-use ApiPlatform\Core\Bridge\Symfony\Validator\Exception\ValidationException;
 use InvalidArgumentException;
 use OswisOrg\OswisCoreBundle\Entity\AbstractClass\AbstractImage;
 use Symfony\Component\Form\Exception\LogicException;
@@ -24,7 +23,6 @@ abstract class AbstractImageAction extends AbstractFileAction
      * @return AbstractImage
      * @throws InvalidOptionsException
      * @throws LogicException
-     * @throws ValidationException
      * @throws InvalidArgumentException
      */
     public function __invoke(Request $request): AbstractImage

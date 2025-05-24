@@ -8,7 +8,7 @@ declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Entity\AbstractClass;
 
-use ApiPlatform\Core\Annotation\ApiProperty;
+use ApiPlatform\Metadata\ApiProperty;
 use DateTime;
 use Doctrine\ORM\Mapping\Column;
 use OswisOrg\OswisCoreBundle\Interfaces\Common\BasicInterface;
@@ -29,7 +29,7 @@ abstract class AbstractFile implements BasicInterface
     #[UploadableField(mapping: 'abstract_file', fileNameProperty: 'contentName', size: 'contentSize', mimeType: 'contentMimeType')]
     protected ?File $file = null;
 
-    #[ApiProperty(iri: 'https://schema.org/contentUrl')]
+    #[ApiProperty(iris: ['https://schema.org/contentUrl'])]
     #[Column(type: 'string', nullable: true)]
     protected ?string $contentName = null;
 

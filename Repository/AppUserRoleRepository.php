@@ -34,7 +34,7 @@ class AppUserRoleRepository extends ServiceEntityRepository
         }
     }
 
-    final public function findOneBy(array $criteria, array $orderBy = null): ?AppUserRole
+    final public function findOneBy(array $criteria, ?array $orderBy = null): ?AppUserRole
     {
         $result = parent::findOneBy($criteria, $orderBy);
 

@@ -37,7 +37,9 @@ class ExportService
      */
     final public function getPdfAsString(PdfExportList $pdfList): string
     {
-        return $this->getMPdf($pdfList)->Output('', 'S');
+        $pdf = $this->getMPdf($pdfList)->Output('', 'S');
+
+        return is_string($pdf) ? $pdf : '';
     }
 
     /**

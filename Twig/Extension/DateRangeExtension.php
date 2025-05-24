@@ -26,12 +26,12 @@ final class DateRangeExtension extends AbstractExtension
 
     public function getFunctions(): array
     {
-        return [new TwigFunction('date_range_string', [$this, 'dateRangeString'])];
+        return [new TwigFunction('date_range_string', $this->dateRangeString(...))];
     }
 
     public function getFilters(): array
     {
-        return [new TwigFilter('date_range_string', [$this, 'dateRangeString'])];
+        return [new TwigFilter('date_range_string', $this->dateRangeString(...))];
     }
 
     public function dateRangeString(
@@ -54,9 +54,11 @@ final class DateRangeExtension extends AbstractExtension
         }
         $globals = $this->twig->getGlobals();
         $timezoneString = $globals['timezone'];
-        $timezone = new DateTimeZone('' . $timezoneString);
-        $start = $start?->setTimezone($timezone);
-        $end = $end?->setTimezone($timezone);
+        $timezone = is_string($timezoneString) ? new DateTimeZone($timezoneString) : null;
+        if ($timezone) {
+            $start = $start?->setTimezone($timezone);
+            $end = $end?->setTimezone($timezone);
+        }
         if (null === $start && null === $end) {
             return '';
         }
@@ -99,9 +101,13 @@ final class DateRangeExtension extends AbstractExtension
     public function getRangeAsTextHours(
         ?DateTime $start,
         ?DateTime $end,
-        ?bool $includeSecons = false,
+        ?bool $includeSeconds = false,
     ): ?string {
-        $format = 'H:i'.($includeSecons ? ':s' : '');
+        $format = 'H:i'.($includeSeconds ? ':s' : '');
+
+        if (!$start || $end) {
+            return null;
+        }
 
         return $this->getStartByFormat($start, $format).'–'.$this->getEndByFormat($end, $format);
     }
@@ -118,8 +124,11 @@ final class DateRangeExtension extends AbstractExtension
         ?DateTime $end,
         ?bool $withoutYear = false,
     ): ?string {
-        return $this->getStartByFormat($start, 'j. ').$this->getEndByFormat($end,
-                $withoutYear ? '\až j. n.' : '\až j. n. Y');
+        if (!$start || !$end) {
+            return null;
+        }
+
+        return $this->getStartByFormat($start, 'j. ').$this->getEndByFormat($end, $withoutYear ? '\až j. n.' : '\až j. n. Y');
     }
 
     public function getRangeAsTextYears(
@@ -127,8 +136,11 @@ final class DateRangeExtension extends AbstractExtension
         ?DateTime $end,
         ?bool $withoutYear = false,
     ): ?string {
-        return $this->getStartByFormat($start, 'j. n. ').$this->getEndByFormat($end,
-                $withoutYear ? '\až j. n.' : '\až j. n. Y');
+        if (!$start || !$end) {
+            return null;
+        }
+
+        return $this->getStartByFormat($start, 'j. n. ').$this->getEndByFormat($end, $withoutYear ? '\až j. n.' : '\až j. n. Y');
     }
 
 

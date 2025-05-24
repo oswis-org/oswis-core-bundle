@@ -18,7 +18,7 @@ use OswisOrg\OswisCoreBundle\Traits\Common\BasicTrait;
 /**
  * Connection between app user and used app user flag.
  *
- * @ApiPlatform\Core\Annotation\ApiFilter(ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter::class)
+ * @ApiPlatform\Metadata\ApiFilter(ApiPlatform\Doctrine\Orm\Filter\OrderFilter::class)
  * @author Jakub Zak <mail@jakubzak.eu>
  */
 #[Entity]

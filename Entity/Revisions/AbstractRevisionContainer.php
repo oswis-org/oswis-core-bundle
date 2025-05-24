@@ -12,7 +12,7 @@ use OswisOrg\OswisCoreBundle\Interfaces\Revisions\RevisionContainerInterface;
 use OswisOrg\OswisCoreBundle\Interfaces\Revisions\RevisionInterface;
 
 /**
- * Abstract class representing container of revisions/versions of some entity (of some entity which extends
+ * Abstract class representing a container of revisions/versions of some entity (of some entity which extends
  * AbstractRevision).
  *
  * @author Jakub Zak <mail@jakubzak.eu>
@@ -39,7 +39,7 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
     abstract public static function getRevisionClassName(): string;
 
     /**
-     * Set revision/version which is actual/active now.
+     * Set a revision/version which is actual/active now.
      *
      * @param  AbstractRevision  $activeRevision
      */
@@ -48,9 +48,10 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
         $this->activeRevision = $activeRevision;
     }
 
-    final public function getRevisionsOlderThanDateTime(DateTime $dateTime = null): array
+    final public function getRevisionsOlderThanDateTime(?DateTime $dateTime = null): array
     {
         $dateTime ??= new DateTime();
+        /** @var AbstractRevision[] $revisions */
         $revisions = $this->getRevisions()->filter(function (mixed $revision) use ($dateTime) {
             return $revision instanceof AbstractRevision && $dateTime >= $revision->getCreatedAt();
         })->toArray();
@@ -61,7 +62,7 @@ abstract class AbstractRevisionContainer implements RevisionContainerInterface
 
     /**
      * All revisions/versions of this container.
-     * @return Collection<RevisionInterface>
+     * @return Collection<int, RevisionInterface>
      */
     final public function getRevisions(): Collection
     {

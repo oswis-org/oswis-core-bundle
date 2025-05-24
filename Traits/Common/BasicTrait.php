@@ -31,6 +31,7 @@ trait BasicTrait
 
     public static function sortCollection(?Collection $items, bool $reversed = false): Collection
     {
+        /** @var BasicInterface[] $itemsArray */
         $itemsArray = ($items ?? new ArrayCollection())->toArray();
         self::sortArray($itemsArray);
         if ($reversed) {
@@ -40,6 +41,10 @@ trait BasicTrait
         return new ArrayCollection($itemsArray);
     }
 
+    /**
+     * @param BasicInterface[] $items
+     * @return void
+     */
     public static function sortArray(array &$items): void
     {
         usort($items, static fn(BasicInterface $item1, BasicInterface $item2) => self::compare($item1, $item2));

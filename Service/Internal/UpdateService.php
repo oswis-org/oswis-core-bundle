@@ -31,7 +31,7 @@ class UpdateService
     public function callItems(): void
     {
         foreach ($this->getItems() as $item) {
-            if ($item instanceof UpdateItem && is_callable($item->callable)) {
+            if (is_callable($item->callable)) {
                 call_user_func_array($item->callable, []);
             }
         }

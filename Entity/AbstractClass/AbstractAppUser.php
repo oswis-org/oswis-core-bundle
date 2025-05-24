@@ -32,12 +32,16 @@ abstract class AbstractAppUser implements UserInterface, EquatableInterface, Per
         ];
     }
 
+    /**
+     * @param array{id?: int, username?: string, email?: string, password?: string} $data
+     * @return void
+     */
     public function __unserialize(array $data): void
     {
-        $this->id = $data['id'];
-        $this->username = $data['username'];
-        $this->email = $data['email'];
-        $this->password = $data['password'];
+        $this->id = $data['id'] ?? null;
+        $this->username = $data['username'] ?? null;
+        $this->email = $data['email'] ?? null;
+        $this->password = $data['password'] ?? null;
     }
 
     public function isEqualTo(UserInterface $user): bool

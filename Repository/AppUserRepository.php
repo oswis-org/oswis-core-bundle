@@ -62,7 +62,7 @@ class AppUserRepository extends ServiceEntityRepository implements UserLoaderInt
             ? $result : [],);
     }
 
-    final public function findOneBy(array $criteria, array $orderBy = null): ?AppUser
+    final public function findOneBy(array $criteria, ?array $orderBy = null): ?AppUser
     {
         $result = parent::findOneBy($criteria, $orderBy);
 

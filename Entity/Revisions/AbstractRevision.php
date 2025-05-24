@@ -7,7 +7,6 @@ namespace OswisOrg\OswisCoreBundle\Entity\Revisions;
 use DateTime;
 use OswisOrg\OswisCoreBundle\Interfaces\Revisions\RevisionInterface;
 use OswisOrg\OswisCoreBundle\Utils\DateTimeUtils;
-
 use function array_reverse;
 use function usort;
 
@@ -19,7 +18,8 @@ use function usort;
 abstract class AbstractRevision implements RevisionInterface
 {
     /**
-     * Function for (in-place) sorting of array of revisions by createdAt and id.
+     * Function for (in-place) sorting of an array of revisions by createdAt and id.
+     * @param AbstractRevision[] $revisions
      */
     public static function sortByCreatedAt(array &$revisions): void
     {

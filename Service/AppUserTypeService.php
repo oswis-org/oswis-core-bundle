@@ -24,7 +24,7 @@ class AppUserTypeService
     public function create(AppUserType $type): AppUserType
     {
         $existing = $this->getRepository()->findBySlug($type->getSlug());
-        if (null === $existing || !($existing instanceof AppUserType)) {
+        if (null === $existing) {
             $this->em->persist($type);
             $this->em->flush();
         }

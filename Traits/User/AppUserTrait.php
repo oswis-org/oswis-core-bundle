@@ -1,7 +1,6 @@
 <?php
-/** @noinspection PhpUnused */
-
 /**
+ * @noinspection PhpUnused
  * @noinspection MethodShouldBeFinalInspection
  */
 declare(strict_types=1);
@@ -14,6 +13,7 @@ use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser;
 
 /**
  * Trait adds "appUser" field.
+ * @phpstan-ignore trait.unused
  */
 trait AppUserTrait
 {

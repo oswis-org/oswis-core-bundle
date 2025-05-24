@@ -7,7 +7,7 @@ declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\EventSubscriber;
 
-use ApiPlatform\Core\EventListener\EventPriorities;
+use ApiPlatform\Symfony\EventListener\EventPriorities;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser;
 use OswisOrg\OswisCoreBundle\Service\AppUserService;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
@@ -29,7 +29,7 @@ final class AppUserSubscriber implements EventSubscriberInterface
     {
         return [
             KernelEvents::VIEW => [
-                ['makeAppUser', EventPriorities::POST_WRITE,],
+                ['makeAppUser', (int)EventPriorities::POST_WRITE,],
             ],
         ];
     }

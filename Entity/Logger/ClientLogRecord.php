@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Entity\Logger;
 
-use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Metadata\ApiResource;
 use Doctrine\ORM\Mapping\Cache;
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;

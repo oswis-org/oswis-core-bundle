@@ -45,8 +45,8 @@ class AppUserDefaultsService
             'root'), 'ROOT'));
         $type = $this->appUserTypeService->create(new AppUserType(new Nameable('Root', null, null, null, 'root'), $role,
             true));
-        $fullName = $this->oswisCoreSettings->getAdmin()['name'] ?? $this->oswisCoreSettings->getEmail()['name'];
-        $email = $this->oswisCoreSettings->getAdmin()['email'] ?? $this->oswisCoreSettings->getEmail()['email'];
+        $fullName = $this->oswisCoreSettings->getAdmin()['name'] ?? $this->oswisCoreSettings->getEmail()['name'] ?? null;
+        $email = $this->oswisCoreSettings->getAdmin()['email'] ?? $this->oswisCoreSettings->getEmail()['address'] ?? null;
         $adminUser = new AppUser($fullName, 'admin', $email, null, $type);
         $this->appUserService->create($adminUser, false, true, false);
     }

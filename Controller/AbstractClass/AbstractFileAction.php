@@ -7,11 +7,13 @@ declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Controller\AbstractClass;
 
-use ApiPlatform\Core\Bridge\Symfony\Validator\Exception\ValidationException;
+use ApiPlatform\Validator\Exception\ValidationException;
 use Doctrine\Persistence\ManagerRegistry;
 use OswisOrg\OswisCoreBundle\Entity\AbstractClass\AbstractFile;
+use Symfony\Component\Form\Exception\LogicException;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\OptionsResolver\Exception\InvalidOptionsException;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 abstract class AbstractFileAction
@@ -24,12 +26,12 @@ abstract class AbstractFileAction
     }
 
     /**
-     * @param  Request  $request
+     * @param Request $request
      *
      * @return AbstractFile
-     * @throws \ApiPlatform\Core\Bridge\Symfony\Validator\Exception\ValidationException
-     * @throws \Symfony\Component\Form\Exception\LogicException
-     * @throws \Symfony\Component\OptionsResolver\Exception\InvalidOptionsException
+     * @throws InvalidOptionsException
+     * @throws LogicException
+     * @throws ValidationException
      */
     public function __invoke(Request $request): AbstractFile
     {

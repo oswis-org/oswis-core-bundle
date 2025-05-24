@@ -34,7 +34,7 @@ class AppUserTypeRepository extends ServiceEntityRepository
         }
     }
 
-    final public function findOneBy(array $criteria, array $orderBy = null): ?AppUserType
+    final public function findOneBy(array $criteria, ?array $orderBy = null): ?AppUserType
     {
         $result = parent::findOneBy($criteria, $orderBy);
 

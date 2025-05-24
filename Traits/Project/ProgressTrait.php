@@ -8,9 +8,9 @@ declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Traits\Project;
 
-use ApiPlatform\Core\Annotation\ApiFilter;
-use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
-use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\RangeFilter;
+use ApiPlatform\Doctrine\Orm\Filter\OrderFilter;
+use ApiPlatform\Doctrine\Orm\Filter\RangeFilter;
+use ApiPlatform\Metadata\ApiFilter;
 use Doctrine\ORM\Mapping\Column;
 use OswisOrg\OswisCoreBundle\Filter\SearchFilter;
 use Symfony\Component\Validator\Constraints\Range;

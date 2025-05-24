@@ -11,7 +11,6 @@ use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\Exception\UserNotFoundException;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
-
 use function get_class;
 
 class AppUserProvider implements UserProviderInterface
@@ -28,7 +27,7 @@ class AppUserProvider implements UserProviderInterface
      * @throws UnsupportedUserException
      * @throws UserNotFoundException
      */
-    final public function refreshUser(UserInterface $user): ?AppUser
+    final public function refreshUser(UserInterface $user): AppUser
     {
         if (!$user instanceof AppUser) {
             throw new UnsupportedUserException(sprintf('Instances of "%s" are not supported.', get_class($user)));
@@ -40,12 +39,12 @@ class AppUserProvider implements UserProviderInterface
     /**
      * @param  string  $username
      *
-     * @return AppUser|null
+     * @return AppUser
      * @throws UserNotUniqueException
      * @throws UserNotFoundException
      * @noinspection MissingParameterTypeDeclarationInspection
      */
-    final public function loadUserByUsername(string $username): ?AppUser
+    final public function loadUserByUsername(string $username): AppUser
     {
         if (null === ($user = $this->appUserRepository->loadUserByUsername($username))) {
             throw new UserNotFoundException(sprintf('Username "%s" does not exist.', $username));
@@ -71,6 +70,6 @@ class AppUserProvider implements UserProviderInterface
      */
     final public function loadUserByIdentifier(string $identifier): UserInterface
     {
-        return $this->loadUserByUsername($identifier) ?? throw new UserNotFoundException();
+        return $this->loadUserByUsername($identifier);
     }
 }

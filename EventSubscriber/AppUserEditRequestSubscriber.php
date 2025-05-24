@@ -7,8 +7,14 @@ declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\EventSubscriber;
 
-use ApiPlatform\Core\EventListener\EventPriorities;
+use ApiPlatform\Symfony\EventListener\EventPriorities;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserEditRequest;
+use OswisOrg\OswisCoreBundle\Exceptions\InvalidTypeException;
+use OswisOrg\OswisCoreBundle\Exceptions\NotFoundException;
+use OswisOrg\OswisCoreBundle\Exceptions\NotImplementedException;
+use OswisOrg\OswisCoreBundle\Exceptions\OswisException;
+use OswisOrg\OswisCoreBundle\Exceptions\UserNotFoundException;
+use OswisOrg\OswisCoreBundle\Exceptions\UserNotUniqueException;
 use OswisOrg\OswisCoreBundle\Service\AppUserEditRequestService;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Exception\SuspiciousOperationException;
@@ -34,10 +40,10 @@ final class AppUserEditRequestSubscriber implements EventSubscriberInterface
     }
 
     /**
-     * @param  \Symfony\Component\HttpKernel\Event\ViewEvent  $event
+     * @param ViewEvent $event
      *
-     * @throws \OswisOrg\OswisCoreBundle\Exceptions\UserNotFoundException
-     * @throws \OswisOrg\OswisCoreBundle\Exceptions\UserNotUniqueException
+     * @throws UserNotFoundException
+     * @throws UserNotUniqueException
      */
     public function assignUser(ViewEvent $event): void
     {
@@ -65,10 +71,10 @@ final class AppUserEditRequestSubscriber implements EventSubscriberInterface
     }
 
     /**
-     * @throws \OswisOrg\OswisCoreBundle\Exceptions\NotImplementedException
-     * @throws \OswisOrg\OswisCoreBundle\Exceptions\OswisException
-     * @throws \OswisOrg\OswisCoreBundle\Exceptions\InvalidTypeException
-     * @throws \OswisOrg\OswisCoreBundle\Exceptions\NotFoundException
+     * @throws NotImplementedException
+     * @throws OswisException
+     * @throws InvalidTypeException
+     * @throws NotFoundException
      */
     public function sendMail(ViewEvent $event): void
     {

@@ -10,8 +10,8 @@ namespace OswisOrg\OswisCoreBundle\Traits\AddressBook;
 use ADCI\FullNameParser\Exception\NameParsingException;
 use ADCI\FullNameParser\Name;
 use ADCI\FullNameParser\Parser as FullNameParser;
-use ApiPlatform\Core\Annotation\ApiFilter;
-use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
+use ApiPlatform\Doctrine\Orm\Filter\OrderFilter;
+use ApiPlatform\Metadata\ApiFilter;
 use Doctrine\ORM\Mapping\Column;
 use Exception;
 use InvalidArgumentException;
@@ -19,7 +19,6 @@ use OswisOrg\OswisCoreBundle\Filter\SearchFilter;
 use OswisOrg\OswisCoreBundle\Interfaces\AddressBook\ContactInterface;
 use OswisOrg\OswisCoreBundle\Traits\Common\NameableTrait;
 use Vokativ\Name as VokativName;
-
 use function trim;
 
 /**

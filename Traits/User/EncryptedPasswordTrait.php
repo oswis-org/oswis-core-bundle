@@ -8,8 +8,8 @@ declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Traits\User;
 
-use ApiPlatform\Core\Annotation\ApiFilter;
-use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\ExistsFilter;
+use ApiPlatform\Doctrine\Orm\Filter\ExistsFilter;
+use ApiPlatform\Metadata\ApiFilter;
 use Doctrine\ORM\Mapping\Column;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 

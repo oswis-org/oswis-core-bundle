@@ -49,7 +49,7 @@ class AppUserMailGroupRepository extends ServiceEntityRepository
         return null;
     }
 
-    final public function findOneBy(array $criteria, array $orderBy = null): ?AppUserMailGroup
+    final public function findOneBy(array $criteria, ?array $orderBy = null): ?AppUserMailGroup
     {
         $result = parent::findOneBy($criteria, $orderBy);
 

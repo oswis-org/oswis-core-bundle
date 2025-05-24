@@ -5,15 +5,22 @@ parameters:
         - .
 
     excludePaths:
-        - vendor/*
-        - var/*
-        - tests/*
-        - node_modules/*
-        - bin/*
-        - public/check.php
-        - public/comet_api
-        - DependencyInjection/Configuration.php
+        - vendor/* (?)
+        - var/* (?)
+        - tests/* (?)
+        - node_modules/* (?)
+        - bin/* (?)
+        - public/check.php (?)
+        - DependencyInjection/Configuration.php (?)
 
-    checkGenericClassInNonGenericObjectType: false
+    ignoreErrors:
+        -
+            identifier: missingType.iterableValue
+        -
+            identifier: missingType.generics
+        -
+            identifier: trait.unused
+        -
+            identifier: staticMethod.resultUnused
 
-    checkMissingIterableValueType: false
+

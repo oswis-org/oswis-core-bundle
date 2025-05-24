@@ -60,12 +60,12 @@ use OswisOrg\OswisCoreBundle\Exceptions\InvalidTypeException;
 #[Cache(usage: 'NONSTRICT_READ_WRITE', region: 'core_app_user')]
 class AppUserMail extends AbstractMail
 {
-    public const TYPE_ACTIVATION              = 'activation';
-    public const TYPE_ACTIVATION_REQUEST      = 'activation-request';
-    public const TYPE_PASSWORD_CHANGE         = 'password-change';
-    public const TYPE_PASSWORD_CHANGE_REQUEST = 'password-change-request';
-    public const TYPE_USER_EDIT_REQUEST       = 'user-edit-request';
-    public const TYPE_USER_EDIT               = 'user-edit';
+    public const string TYPE_ACTIVATION = 'activation';
+    public const string TYPE_ACTIVATION_REQUEST = 'activation-request';
+    public const string TYPE_PASSWORD_CHANGE = 'password-change';
+    public const string TYPE_PASSWORD_CHANGE_REQUEST = 'password-change-request';
+    public const string TYPE_USER_EDIT_REQUEST = 'user-edit-request';
+    public const string TYPE_USER_EDIT = 'user-edit';
 
     #[ManyToOne(targetEntity: AppUser::class, fetch: 'EAGER')]
     #[JoinColumn(name: 'app_user_id', referencedColumnName: 'id')]
@@ -85,10 +85,10 @@ class AppUserMail extends AbstractMail
      * @throws InvalidTypeException
      */
     public function __construct(
-        AppUser $appUser = null,
-        string $subject = null,
+        ?AppUser $appUser = null,
+        ?string $subject = null,
         ?string $type = null,
-        AppUserToken $appUserEditRequest = null,
+        ?AppUserToken $appUserEditRequest = null,
         ?string $messageId = null,
     ) {
         parent::__construct($subject, $appUser?->getEmail(), $type, $appUser?->getName(), $messageId);

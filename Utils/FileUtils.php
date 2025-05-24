@@ -40,7 +40,7 @@ class FileUtils
             }
         }
 
-        return $max_size;
+        return is_int($max_size) ? $max_size : -1;
     }
 
     final public static function parseSize(string $size): int

@@ -8,14 +8,13 @@ declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Traits\Common;
 
-use ApiPlatform\Core\Annotation\ApiFilter;
-use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
-use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
+use ApiPlatform\Doctrine\Orm\Filter\DateFilter;
+use ApiPlatform\Doctrine\Orm\Filter\OrderFilter;
+use ApiPlatform\Metadata\ApiFilter;
 use DateTime;
 use Doctrine\ORM\Mapping\Column;
 use Gedmo\Mapping\Annotation\Timestampable;
 use OswisOrg\OswisCoreBundle\Filter\SearchFilter;
-
 use function floor;
 
 /**

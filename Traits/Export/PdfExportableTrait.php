@@ -14,7 +14,7 @@ use OswisOrg\OswisCoreBundle\Entity\NonPersistent\Export\PdfExportList;
 
 trait PdfExportableTrait
 {
-    public static function getPdfListConfig(bool $complex = false, array $data = null): PdfExportList
+    public static function getPdfListConfig(bool $complex = false, ?array $data = null): PdfExportList
     {
         return new PdfExportList(self::getExportEntityName(11), self::getPdfListColumns($complex), $data);
     }

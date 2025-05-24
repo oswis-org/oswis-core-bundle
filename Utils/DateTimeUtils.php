@@ -17,24 +17,24 @@ use function array_key_exists;
  */
 class DateTimeUtils
 {
-    public const RANGE_ALL   = '';
-    public const RANGE_YEAR  = 'year';
-    public const RANGE_MONTH = 'month';
-    public const RANGE_WEEK  = 'week';
-    public const RANGE_DAY   = 'day';
+    public const string RANGE_ALL = '';
+    public const string RANGE_YEAR = 'year';
+    public const string RANGE_MONTH = 'month';
+    public const string RANGE_WEEK = 'week';
+    public const string RANGE_DAY = 'day';
 
-    public const MIN_DATE_TIME_STRING = '1970-01-01 00:00:00';
-    public const MAX_DATE_TIME_STRING = '2038-01-19 00:00:00';
+    public const string MIN_DATE_TIME_STRING = '1970-01-01 00:00:00';
+    public const string MAX_DATE_TIME_STRING = '2038-01-19 00:00:00';
 
-    public const DATE_TIME_SECONDS  = 's';
-    public const DATE_TIME_MINUTES  = 'i';
-    public const DATE_TIME_HOURS    = 'h';
-    public const DATE_TIME_DAYS     = 'd';
-    public const DATE_TIME_DAYS_ALL = 'days';
-    public const DATE_TIME_MONTHS   = 'm';
-    public const DATE_TIME_YEARS    = 'y';
+    public const string DATE_TIME_SECONDS = 's';
+    public const string DATE_TIME_MINUTES = 'i';
+    public const string DATE_TIME_HOURS = 'h';
+    public const string DATE_TIME_DAYS = 'd';
+    public const string DATE_TIME_DAYS_ALL = 'days';
+    public const string DATE_TIME_MONTHS = 'm';
+    public const string DATE_TIME_YEARS = 'y';
 
-    public const PERIOD_TYPES_ALLOWED
+    public const array PERIOD_TYPES_ALLOWED
         = [
             self::DATE_TIME_HOURS,
             self::DATE_TIME_DAYS,
@@ -42,7 +42,7 @@ class DateTimeUtils
             self::DATE_TIME_YEARS,
         ];
 
-    public const LENGTH_TYPES_ALLOWED
+    public const array LENGTH_TYPES_ALLOWED
         = [
             ...self::PERIOD_TYPES_ALLOWED,
             self::DATE_TIME_SECONDS,
@@ -126,14 +126,6 @@ class DateTimeUtils
         throw new InvalidArgumentException("Rozsah '$range' není povolen.");
     }
 
-    /**
-     * @param  DateTime|null  $dateTime
-     * @param  bool|null  $isEnd
-     *
-     * @return DateTime
-     * @throws Exception
-     * @noinspection PhpUndefinedClassInspection
-     */
     private static function getByRangeAll(?DateTime $dateTime, ?bool $isEnd = false): DateTime
     {
         return $dateTime ?? new DateTime($isEnd ? self::MAX_DATE_TIME_STRING : self::MIN_DATE_TIME_STRING);
@@ -165,6 +157,7 @@ class DateTimeUtils
 
     public static function getPublicHolidays(DateTime $dateTime): ?string
     {
+        /** @var array<int, array<int, string>> $publicHolidays */
         $publicHolidays = [];
         $publicHolidays[1][1] = 'Den obnovy samostatného českého státu';
         $publicHolidays[5][1] = 'Svátek práce';

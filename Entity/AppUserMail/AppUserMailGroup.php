@@ -67,7 +67,7 @@ class AppUserMailGroup extends AbstractMailGroup
         ?DateTimeRange $range = null,
         ?TwigTemplate $twigTemplate = null,
         bool $automaticMailing = false,
-        AppUserMailCategory $appUserMailCategory = null
+        ?AppUserMailCategory $appUserMailCategory = null
     ) {
         parent::__construct($nameable, $priority, $range, $twigTemplate, $automaticMailing);
         $this->setCategory($appUserMailCategory);

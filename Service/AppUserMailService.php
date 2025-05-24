@@ -16,9 +16,11 @@ use OswisOrg\OswisCoreBundle\Entity\AppUserMail\AppUserEditMail;
 use OswisOrg\OswisCoreBundle\Entity\AppUserMail\AppUserMail;
 use OswisOrg\OswisCoreBundle\Entity\AppUserMail\AppUserMailCategory;
 use OswisOrg\OswisCoreBundle\Entity\AppUserMail\AppUserMailGroup;
+use OswisOrg\OswisCoreBundle\Exceptions\InvalidTypeException;
 use OswisOrg\OswisCoreBundle\Exceptions\NotFoundException;
 use OswisOrg\OswisCoreBundle\Exceptions\NotImplementedException;
 use OswisOrg\OswisCoreBundle\Exceptions\OswisException;
+use OswisOrg\OswisCoreBundle\Exceptions\TokenInvalidException;
 use OswisOrg\OswisCoreBundle\Interfaces\Mail\MailCategoryInterface;
 use OswisOrg\OswisCoreBundle\Repository\AppUserMailCategoryRepository;
 use OswisOrg\OswisCoreBundle\Repository\AppUserMailGroupRepository;
@@ -40,11 +42,11 @@ class AppUserMailService
      * @param  string  $type
      * @param  AppUserToken|null  $appUserToken
      *
-     * @throws \OswisOrg\OswisCoreBundle\Exceptions\InvalidTypeException
-     * @throws \OswisOrg\OswisCoreBundle\Exceptions\NotFoundException
-     * @throws \OswisOrg\OswisCoreBundle\Exceptions\NotImplementedException
-     * @throws \OswisOrg\OswisCoreBundle\Exceptions\OswisException
-     * @throws \OswisOrg\OswisCoreBundle\Exceptions\TokenInvalidException
+     * @throws InvalidTypeException
+     * @throws NotFoundException
+     * @throws NotImplementedException
+     * @throws OswisException
+     * @throws TokenInvalidException
      */
     public function sendAppUserMail(AppUser $appUser, string $type, ?AppUserToken $appUserToken = null): void
     {
@@ -72,9 +74,7 @@ class AppUserMailService
         $appUserEMail->setPastMails($this->appUserMailRepository->findByAppUser($appUser));
         $this->em->persist($appUserEMail);
         $this->em->flush();
-        $templateName = $twigTemplate->getTemplateName()
-                        ??
-                        '@OswisOrgOswisCore/e-mail/pages/app-user-universal.html.twig';
+        $templateName = $twigTemplate->getTemplateName();
         $this->mailService->sendEMail($appUserEMail, $templateName, $data);
         $this->em->flush();
     }
@@ -90,14 +90,14 @@ class AppUserMailService
     }
 
     /**
-     * @param  string  $type
-     * @param  \OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserEditRequest|null  $userEditRequest
-     * @param  \OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserEdit|null  $userEdit
+     * @param string                  $type
+     * @param AppUserEditRequest|null $userEditRequest
+     * @param AppUserEdit|null        $userEdit
      *
-     * @throws \OswisOrg\OswisCoreBundle\Exceptions\InvalidTypeException
-     * @throws \OswisOrg\OswisCoreBundle\Exceptions\NotFoundException
-     * @throws \OswisOrg\OswisCoreBundle\Exceptions\NotImplementedException
-     * @throws \OswisOrg\OswisCoreBundle\Exceptions\OswisException
+     * @throws InvalidTypeException
+     * @throws NotFoundException
+     * @throws NotImplementedException
+     * @throws OswisException
      */
     public function sendAppUserEditMail(
         string $type,
@@ -129,9 +129,7 @@ class AppUserMailService
         $appUserEMail->setPastMails($this->appUserMailRepository->findByAppUser($appUser));
         $this->em->persist($appUserEMail);
         $this->em->flush();
-        $templateName = $twigTemplate->getTemplateName()
-                        ??
-                        '@OswisOrgOswisCore/e-mail/pages/app-user-universal.html.twig';
+        $templateName = $twigTemplate->getTemplateName();
         $this->mailService->sendEMail($appUserEMail, $templateName, $data);
         $this->em->flush();
     }

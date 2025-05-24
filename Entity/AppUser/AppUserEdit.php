@@ -6,7 +6,10 @@
 
 namespace OswisOrg\OswisCoreBundle\Entity\AppUser;
 
-use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Post;
 use Doctrine\ORM\Mapping\Cache;
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
@@ -24,22 +27,22 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 #[Entity]
 #[Table(name: 'core_app_user_edit')]
 #[Cache(usage: 'NONSTRICT_READ_WRITE', region: 'core_app_user')]
-#[ApiResource( //
-    description: 'User initiated change of e-mail, username or password. User must be authenticated by token (from AppUserEditRequest).', //
-    collectionOperations: [
-        'get'  => [
-            'security'              => "is_granted('ROLE_ADMIN')",
-            'normalization_context' => ["entities_get", "app_user_edits_get"],
-        ],
-        'post' => [
-            'denormalization_context' => ["entities_get", "app_user_edits_post"],
-        ],
-    ], itemOperations: [
-    'get' => [
-        'security'              => "is_granted('ROLE_ADMIN')",
-        'normalization_context' => ["entity_get", "app_user_edit_get"],
-    ],
-])]
+#[ApiResource(
+    description: 'User initiated change of e-mail, username or password. User must be authenticated by token (from AppUserEditRequest).',
+    operations: [
+        new GetCollection(
+            normalizationContext: ['groups' => ['entities_get', 'app_user_edits_get']],
+            security: "is_granted('ROLE_ADMIN')"
+        ),
+        new Post(
+            denormalizationContext: ['groups' => ['entities_get', 'app_user_edits_post']]
+        ),
+        new Get(
+            normalizationContext: ['groups' => ['entity_get', 'app_user_edit_get']],
+            security: "is_granted('ROLE_ADMIN')"
+        ),
+    ]
+)]
 class AppUserEdit implements BasicInterface
 {
     use BasicTrait;
@@ -94,8 +97,8 @@ class AppUserEdit implements BasicInterface
     }
 
     /**
-     * @throws \OswisOrg\OswisCoreBundle\Exceptions\TokenInvalidException
-     * @throws \OswisOrg\OswisCoreBundle\Exceptions\OswisException
+     * @throws TokenInvalidException
+     * @throws OswisException
      */
     public function process(): void
     {
@@ -131,7 +134,7 @@ class AppUserEdit implements BasicInterface
     }
 
     /**
-     * @throws \OswisOrg\OswisCoreBundle\Exceptions\OswisException
+     * @throws OswisException
      */
     private function useValue(): void
     {
@@ -144,7 +147,7 @@ class AppUserEdit implements BasicInterface
     }
 
     /**
-     * @throws \OswisOrg\OswisCoreBundle\Exceptions\OswisException
+     * @throws OswisException
      */
     protected function usePassword(): void
     {

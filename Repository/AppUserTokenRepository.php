@@ -37,7 +37,7 @@ class AppUserTokenRepository extends ServiceEntityRepository
         }
     }
 
-    final public function findOneBy(array $criteria, array $orderBy = null): ?AppUserToken
+    final public function findOneBy(array $criteria, ?array $orderBy = null): ?AppUserToken
     {
         $result = parent::findOneBy($criteria, $orderBy);
 

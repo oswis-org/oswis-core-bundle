@@ -7,8 +7,13 @@ declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\EventSubscriber;
 
-use ApiPlatform\Core\EventListener\EventPriorities;
+use ApiPlatform\Symfony\EventListener\EventPriorities;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserEdit;
+use OswisOrg\OswisCoreBundle\Exceptions\InvalidTypeException;
+use OswisOrg\OswisCoreBundle\Exceptions\NotFoundException;
+use OswisOrg\OswisCoreBundle\Exceptions\NotImplementedException;
+use OswisOrg\OswisCoreBundle\Exceptions\OswisException;
+use OswisOrg\OswisCoreBundle\Exceptions\TokenInvalidException;
 use OswisOrg\OswisCoreBundle\Service\AppUserEditService;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Exception\SuspiciousOperationException;
@@ -34,10 +39,10 @@ final class AppUserEditSubscriber implements EventSubscriberInterface
     }
 
     /**
-     * @param  \Symfony\Component\HttpKernel\Event\ViewEvent  $event
+     * @param ViewEvent $event
      *
-     * @throws \OswisOrg\OswisCoreBundle\Exceptions\TokenInvalidException
-     * @throws \OswisOrg\OswisCoreBundle\Exceptions\OswisException
+     * @throws TokenInvalidException
+     * @throws OswisException
      */
     public function process(ViewEvent $event): void
     {
@@ -48,9 +53,9 @@ final class AppUserEditSubscriber implements EventSubscriberInterface
     }
 
     /**
-     * @param  \Symfony\Component\HttpKernel\Event\ViewEvent  $event
+     * @param ViewEvent $event
      *
-     * @return \OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserEdit|null
+     * @return AppUserEdit|null
      */
     private function extractUserEdit(ViewEvent $event): ?AppUserEdit
     {
@@ -71,10 +76,10 @@ final class AppUserEditSubscriber implements EventSubscriberInterface
     }
 
     /**
-     * @throws \OswisOrg\OswisCoreBundle\Exceptions\NotImplementedException
-     * @throws \OswisOrg\OswisCoreBundle\Exceptions\OswisException
-     * @throws \OswisOrg\OswisCoreBundle\Exceptions\InvalidTypeException
-     * @throws \OswisOrg\OswisCoreBundle\Exceptions\NotFoundException
+     * @throws NotImplementedException
+     * @throws OswisException
+     * @throws InvalidTypeException
+     * @throws NotFoundException
      */
     public function sendConfirmation(ViewEvent $event): void
     {

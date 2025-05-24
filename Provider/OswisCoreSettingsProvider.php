@@ -20,8 +20,10 @@ class OswisCoreSettingsProvider
 {
     protected array $app = [];
 
+    /** @var array{name?: string, email?: string, web?: string, phone?: string} $admin */
     protected array $admin = [];
 
+    /** @var array{address?: string, name?: string, reply_path?: string, return_path?: string, archive_address?: string, archive_name?: string, default_subject?: string, logo?: string} $email */
     protected array $email = [];
 
     protected array $web = [];
@@ -30,6 +32,14 @@ class OswisCoreSettingsProvider
 
     protected array $angularAdmin = [];
 
+    /**
+     * @param array                                                                                                                                                                       $app
+     * @param array{name?: string, email?: string, web?: string, phone?: string}                                                                                                          $admin
+     * @param array{address?: string, name?: string, reply_path?: string, return_path?: string, archive_address?: string, archive_name?: string, default_subject?: string, logo?: string} $email
+     * @param array                                                                                                                                                                       $web
+     * @param array                                                                                                                                                                       $adminIPs
+     * @param array                                                                                                                                                                       $angularAdmin
+     */
     public function __construct(
         array $app,
         array $admin,
@@ -63,11 +73,17 @@ class OswisCoreSettingsProvider
         return $this->app;
     }
 
+    /**
+     * @return array{name?: string, email?: string, web?: string, phone?: string}
+     */
     final public function getAdmin(): array
     {
         return $this->admin;
     }
 
+    /**
+     * @return array{address?: string, name?: string, reply_path?: string, return_path?: string, archive_address?: string, archive_name?: string, default_subject?: string, logo?: string}
+     */
     final public function getEmail(): array
     {
         return $this->email;

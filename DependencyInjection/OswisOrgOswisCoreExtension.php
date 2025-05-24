@@ -73,6 +73,7 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
         $this->prependSecurity($container);
         $this->prependJwtRefresh($container);
         $this->prependNelmioCors($container);
+        /** @phpstan-ignore-next-line */
         $this->prependApiPlatform($container, $config);
         self::prependForBundleTemplatesOverride($container, ['Twig']);
     }
@@ -80,21 +81,21 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
     private function prependTwig(ContainerBuilder $container): void
     {
         $container->prependExtensionConfig('twig', [
-            'default_path'         => '%kernel.project_dir%/templates',
-            'debug'                => '%kernel.debug%',
-            'strict_variables'     => '%kernel.debug%',
+            'default_path' => '%kernel.project_dir%/templates',
+            'debug' => '%kernel.debug%',
+            'strict_variables' => '%kernel.debug%',
             'exception_controller' => null,
-            'paths'                => [
+            'paths' => [
                 'assets/images' => 'images',
                 'public/bundles/oswisorgoswiscore' => 'oswis',
             ],
-            'globals'              => [
-                'oswis'    => '@oswis_org_oswis_core.oswis_core_settings_provider',
+            'globals' => [
+                'oswis' => '@oswis_org_oswis_core.oswis_core_settings_provider',
                 'timezone' => 'Europe/Prague',
             ],
-            'form_themes'          => ['bootstrap_5_layout.html.twig'],
-            'date'                 => [
-                'format'   => 'j. n. Y H:i',
+            'form_themes' => ['bootstrap_5_layout.html.twig'],
+            'date' => [
+                'format' => 'j. n. Y H:i',
                 'timezone' => 'Europe/Prague',
             ],
         ]);
@@ -103,12 +104,12 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
     private function prependFramework(ContainerBuilder $container): void
     {
         $container->prependExtensionConfig('framework', [
-            'router'     => ['utf8' => true],
+            'router' => ['utf8' => true],
             'php_errors' => ['log' => true],
-            'esi'        => ['enabled' => true],
-            'secret'     => '%env(APP_SECRET)%',
-            'fragments'  => [
-                'path'                      => '/_fragment',
+            'esi' => ['enabled' => true],
+            'secret' => '%env(APP_SECRET)%',
+            'fragments' => [
+                'path' => '/_fragment',
                 'hinclude_default_template' => '@OswisOrgOswisCore/web/parts/hinclude.html.twig',
             ],
             'validation' => ['email_validation_mode' => 'html5'],
@@ -117,10 +118,10 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
                     'paths' => ['%kernel.project_dir%/config/serialization'],
                 ],
             ],
-            'mailer'     => [
+            'mailer' => [
                 'dsn' => '%env(MAILER_DSN)%',
             ],
-            'assets'     => ['json_manifest_path' => '%kernel.project_dir%/public/build/manifest.json'],
+            'assets' => ['json_manifest_path' => '%kernel.project_dir%/public/build/manifest.json'],
         ]);
     }
 
@@ -133,46 +134,46 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
                     'algorithm' => 'auto',
                 ],
             ],
-            'providers'                    => [
+            'providers' => [
                 'app_user_provider' => [
                     'id' => AppUserProvider::class,
                 ],
             ],
-            'firewalls'        => [
-                'dev'               => [
-                    'pattern'  => '^/(_(profiler|wdt)|css|images|js)/',
+            'firewalls' => [
+                'dev' => [
+                    'pattern' => '^/(_(profiler|wdt)|css|images|js)/',
                     'security' => false,
                 ],
                 'api_token_refresh' => [
-                    'pattern'     => '^/api/token/refresh',
-                    'stateless'   => true,
+                    'pattern' => '^/api/token/refresh',
+                    'stateless' => true,
                     'refresh_jwt' => [],
                 ],
-                'api_login'         => [
-                    'pattern'    => '^/api/login',
-                    'stateless'  => true,
-                    'provider'   => 'app_user_provider',
+                'api_login' => [
+                    'pattern' => '^/api/login',
+                    'stateless' => true,
+                    'provider' => 'app_user_provider',
                     'json_login' => [
-                        'check_path'      => '/api/login',
+                        'check_path' => '/api/login',
                         'success_handler' => 'lexik_jwt_authentication.handler.authentication_success',
                         'failure_handler' => 'lexik_jwt_authentication.handler.authentication_failure',
                     ],
                 ],
-                'api'               => [
-                    'pattern'   => '^/api',
+                'api' => [
+                    'pattern' => '^/api',
                     'stateless' => true,
-                    'provider'  => 'app_user_provider',
-                    'jwt'       => [],
-                    'logout'    => [
+                    'provider' => 'app_user_provider',
+                    'jwt' => [],
+                    'logout' => [
                         'path' => 'api_token_invalidate',
                     ],
                 ],
-                'main'              => [
-                    'provider'              => 'app_user_provider',
-                    'stateless'             => false,
-                    'lazy'                  => true,
+                'main' => [
+                    'provider' => 'app_user_provider',
+                    'stateless' => false,
+                    'lazy' => true,
                     'custom_authenticators' => [WebUserAuthenticator::class],
-                    'logout'                => ['path' => 'oswis_org_oswis_core_web_admin_logout'],
+                    'logout' => ['path' => 'oswis_org_oswis_core_web_admin_logout'],
                     'form_login' => [
                         'login_path' => 'oswis_org_oswis_core_web_admin_login',
                         'check_path' => 'oswis_org_oswis_core_web_admin_login',
@@ -186,7 +187,7 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
                     ],
                 ],
             ],
-            'access_control'   => [
+            'access_control' => [
                 ['path' => '^/web_admin/login', 'roles' => 'PUBLIC_ACCESS'],
                 ['path' => '^/web_admin', 'roles' => AppUserRole::ROLE_CUSTOMER],
                 ['path' => '^/api/token/refresh', 'roles' => 'PUBLIC_ACCESS'],
@@ -211,33 +212,39 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
     {
         $container->prependExtensionConfig('nelmio_cors', [
             'defaults' => [
-                'origin_regex'   => true,
-                'allow_origin'   => ['%env(CORS_ALLOW_ORIGIN)%'],
-                'allow_methods'  => ['GET', 'OPTIONS', 'POST', 'PUT', 'PATCH', 'DELETE'],
-                'allow_headers'  => ['Content-Type', 'Authorization'],
+                'origin_regex' => true,
+                'allow_origin' => ['%env(CORS_ALLOW_ORIGIN)%'],
+                'allow_methods' => ['GET', 'OPTIONS', 'POST', 'PUT', 'PATCH', 'DELETE'],
+                'allow_headers' => ['Content-Type', 'Authorization'],
                 'expose_headers' => ['Link'],
-                'max_age'        => 3600,
+                'max_age' => 3600,
             ],
-            'paths'    => [
+            'paths' => [
                 '^/' => null,
             ],
         ]);
     }
 
+    /**
+     * @param ContainerBuilder                  $container
+     * @param array{app: array<string, string>} $config
+     * @return void
+     */
     private function prependApiPlatform(ContainerBuilder $container, array $config): void
     {
         $container->prependExtensionConfig('api_platform', [
-            'title'                   => $config['app']['name'] ?? null,
-            'description'             => $config['app']['description'] ?? null,
-            'version'                 => $config['app']['version'] ?? null,
+            'event_listeners_backward_compatibility_layer' => true,
+            'title' => $config['app']['name'] ?? null,
+            'description' => $config['app']['description'] ?? null,
+            'version' => $config['app']['version'] ?? null,
             'allow_plain_identifiers' => true,
-            'eager_loading'           => [
-                'enabled'       => true,
+            'eager_loading' => [
+                'enabled' => true,
                 'fetch_partial' => false,
-                'max_joins'     => 40,
-                'force_eager'   => true,
+                'max_joins' => 40,
+                'force_eager' => true,
             ],
-            'swagger'                 => [
+            'swagger' => [
                 'versions' => [3],
                 'api_keys' => [
                     'apiKey' => [
@@ -246,24 +253,24 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
                     ],
                 ],
             ],
-            'collection'              => [
+            'collection' => [
                 'pagination' => [
-                    'items_per_page'                => 5000,
-                    'client_enabled'                => true,
-                    'client_items_per_page'         => true,
+                    'items_per_page' => 5000,
+                    'client_enabled' => true,
+                    'client_items_per_page' => true,
                     'items_per_page_parameter_name' => 'itemsPerPage',
-                    'enabled_parameter_name'        => 'pagination',
+                    'enabled_parameter_name' => 'pagination',
                 ],
             ],
-            'formats'                 => [
-                'json'    => ['mime_types' => ['application/json']],
-                'jsonld'  => ['mime_types' => ['application/ld+json']],
+            'formats' => [
+                'json' => ['mime_types' => ['application/json']],
+                'jsonld' => ['mime_types' => ['application/ld+json']],
                 'jsonapi' => ['mime_types' => ['application/vnd.api+json']],
-                'html'    => ['mime_types' => ['text/html']],
-                'csv'     => ['mime_types' => ['text/csv']],
-                'xml'     => ['mime_types' => ['application/xml']],
+                'html' => ['mime_types' => ['text/html']],
+                'csv' => ['mime_types' => ['text/csv']],
+                'xml' => ['mime_types' => ['application/xml']],
             ],
-            'error_formats'           => [
+            'error_formats' => [
                 'jsonproblem' => ['mime_types' => ['application/problem+json']],
                 'jsonapi' => ['mime_types' => ['application/vnd.api+json']],
                 'jsonld' => ['mime_types' => ['application/ld+json']],
@@ -276,6 +283,9 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
                 ],
             ],
             'defaults' => [
+                'extra_properties' => [
+                    'standard_put' => false,
+                ],
                 'normalization_context' => [
                     'enable_max_depth' => true,
                     'max_depth' => 4,
@@ -292,8 +302,8 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
     /**
      * This work-around allows overriding of other bundles templates by OswisCore.
      *
-     * @param  ContainerBuilder  $container
-     * @param  array  $bundleNames
+     * @param ContainerBuilder $container
+     * @param string[]         $bundleNames
      */
     final public static function prependForBundleTemplatesOverride(
         ContainerBuilder $container,
@@ -303,7 +313,7 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
         $paths = [];
         foreach ($twigConfigs as $twigConfig) {
             if (isset($twigConfig['paths'])) {
-                $paths += $twigConfig['paths'];
+                $paths[] = $twigConfig['paths'];
             }
         }
         foreach ($bundleNames as $bundleName) {
@@ -311,7 +321,7 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
             $paths[dirname(__DIR__).'/Resources/views/bundles/'.$bundleName.'Bundle/'] = $bundleName;
         }
         $container->prependExtensionConfig('twig', [
-            'paths'        => $paths,
+            'paths' => $paths,
             'default_path' => '%kernel.project_dir%/templates',
         ]);
     }

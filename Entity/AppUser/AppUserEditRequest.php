@@ -5,7 +5,10 @@
 
 namespace OswisOrg\OswisCoreBundle\Entity\AppUser;
 
-use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Post;
 use DateInterval;
 use DateTime;
 use Doctrine\ORM\Mapping\Cache;
@@ -23,25 +26,25 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 #[Entity]
 #[Table(name: 'core_app_user_edit_request')]
 #[Cache(usage: 'NONSTRICT_READ_WRITE', region: 'core_app_user')]
-#[ApiResource( //
-    description: 'User initiated request for change of e-mail, username or password. User is notified by e-mail with token that ', //
-    collectionOperations: [
-        'get'  => [
-            'security'              => "is_granted('ROLE_ADMIN')",
-            'normalization_context' => ["entities_get", "app_user_edit_requests_get"],
-        ],
-        'post' => [
-            'denormalization_context' => ["entities_get", "app_user_edit_requests_post"],
-        ],
-    ], itemOperations: [
-    'get' => [
-        'security'              => "is_granted('ROLE_ADMIN')",
-        'normalization_context' => ["entity_get", "app_user_edit_request_get"],
-    ],
-])]
+#[ApiResource(
+    description: 'User initiated request for change of e-mail, username or password. User is notified by e-mail with token that ',
+    operations: [
+        new GetCollection(
+            normalizationContext: ['groups' => ["entities_get", "app_user_edit_requests_get"]],
+            security: "is_granted('ROLE_ADMIN')"
+        ),
+        new Post(
+            denormalizationContext: ['groups' => ["entities_get", "app_user_edit_requests_post"]]
+        ),
+        new Get(
+            normalizationContext: ['groups' => ["entity_get", "app_user_edit_request_get"]],
+            security: "is_granted('ROLE_ADMIN')"
+        ),
+    ]
+)]
 class AppUserEditRequest implements BasicInterface
 {
-    public const DEFAULT_VALID_HOURS = 24;
+    public const int DEFAULT_VALID_HOURS = 24;
 
     use BasicTrait;
 
@@ -62,9 +65,6 @@ class AppUserEditRequest implements BasicInterface
     #[JoinColumn(name: 'app_user_id', referencedColumnName: 'id')]
     protected ?AppUser $appUser = null;
 
-    /**
-     * @var string|null Identifier (e-mail or username) of edited user.
-     */
     #[NotBlank]
     #[Column(type: 'string', length: 170, unique: false, nullable: true)]
     protected ?string $userIdentifier;
@@ -82,7 +82,7 @@ class AppUserEditRequest implements BasicInterface
         $this->token = StringUtils::generateToken();
     }
 
-    public function isValid(AppUserEditTypeEnum $type = null, ?string $userIdentifier = null): bool
+    public function isValid(?AppUserEditTypeEnum $type = null, ?string $userIdentifier = null): bool
     {
         return !$this->isExpired()
                && !$this->isUsed()

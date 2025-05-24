@@ -82,7 +82,7 @@ class TwigTemplate implements NameableInterface, TextValueInterface
         return $updatedAt?->getTimestamp() <= ($timestamp ?? time());
     }
 
-    final public function getTemplateName(): ?string
+    final public function getTemplateName(): string
     {
         return $this->getRegularTemplateName() ?? $this->getSlug();
     }

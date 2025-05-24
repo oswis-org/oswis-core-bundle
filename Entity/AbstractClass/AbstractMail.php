@@ -53,8 +53,8 @@ abstract class AbstractMail implements BasicInterface
      * @throws InvalidTypeException
      */
     public function __construct(
-        string $subject = null,
-        string $address = null,
+        ?string $subject = null,
+        ?string $address = null,
         ?string $type = null,
         ?string $recipientName = null,
         ?string $messageID = null
@@ -108,7 +108,7 @@ abstract class AbstractMail implements BasicInterface
     }
 
     /**
-     * @param  \Doctrine\Common\Collections\Collection<\OswisOrg\OswisCoreBundle\Entity\AbstractClass\AbstractMail>  $sortedPastMails
+     * @param Collection<AbstractMail> $sortedPastMails
      *
      * @return void
      */
@@ -168,12 +168,12 @@ abstract class AbstractMail implements BasicInterface
             return;
         }
         try {
-            if (empty($messageID) && null !== $this->getTemplatedEmail()) {
+            if (empty($messageID)) {
                 $this->messageID = $this->templatedEmail?->generateMessageId();
 
                 return;
             }
-        } catch (OswisException|\Symfony\Component\Mime\Exception\LogicException) {
+        } catch (\Symfony\Component\Mime\Exception\LogicException) {
         }
         $this->messageID = $messageID;
     }

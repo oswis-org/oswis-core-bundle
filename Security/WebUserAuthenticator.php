@@ -53,23 +53,25 @@ class WebUserAuthenticator extends AbstractAuthenticator
     }
 
     /**
+     * @param array{username?: string, identifier?: string, password?: string} $credentials
+     *
      * @throws UserNotFoundException
      */
     public function getUser(mixed $credentials, UserProviderInterface $userProvider): ?object
     {
-        return $userProvider->loadUserByIdentifier(is_array($credentials) ? $credentials['username'] : null);
+        return $userProvider->loadUserByIdentifier($credentials['username'] ?? '');
     }
 
     /**
      * Used to upgrade (rehash) the user's password automatically over time.
      *
-     * @param array $credentials
+     * @param array{identifier?: string, password?: string} $credentials
      *
      * @return string|null
      */
     public function getPassword(array $credentials): ?string
     {
-        return $credentials['password'];
+        return $credentials['password'] ?? '';
     }
 
     /**
@@ -95,39 +97,53 @@ class WebUserAuthenticator extends AbstractAuthenticator
      */
     public function authenticate(Request $request): Passport
     {
+        /** @var array{identifier?: string, username?: string, password?: string, remember_me?: bool} $userCredentials */
         $userCredentials = $this->getCredentials($request);
 
         return new Passport(
-            new UserBadge($userCredentials['username']),
+            new UserBadge($userCredentials['username'] ?? ''),
             new CustomCredentials(
+            /** @var array{identifier?: string, username?: string, password?: string, remember_me?: bool} $credentials */
                 function (mixed $credentials, UserInterface $user) {
+                    assert(is_array($credentials));
+
+                    /** @phpstan-ignore-next-line */
                     return $this->checkCredentials($credentials, $user);
                 },
                 $userCredentials,
             ),
-            $userCredentials['remember_me'] ? [new RememberMeBadge()] : [],
+            ($userCredentials['remember_me'] ?? false) ? [new RememberMeBadge()] : [],
         );
     }
 
     /**
+     * @return array{username?: string, password?: string, remember_me?: bool}
+     *
      * @throws InvalidArgumentException
      * @throws BadRequestException
      */
     public function getCredentials(Request $request): array
     {
-        return [
-            'username' => $request->request->get('_username'),
-            'password' => $request->request->get('_password'),
-            'remember_me' => $request->request->get('_remember_me'),
-        ];
+        $username = $request->request->get('_username');
+        assert(is_string($username));
+        $password = $request->request->get('_password');
+        assert(is_string($password));
+        $rememberMe = $request->request->get('_remember_me');
+        assert(is_bool($rememberMe));
+
+        return ['username' => $username, 'password' => $password, 'remember_me' => $rememberMe];
     }
 
+    /**
+     * @param array{username?: string, password?: string, _remember_me?: bool} $credentials
+     * @param UserInterface                                                    $user
+     * @return bool
+     */
     public function checkCredentials(mixed $credentials, UserInterface $user): bool
     {
         assert($user instanceof PasswordAuthenticatedUserInterface);
-        assert(is_array($credentials));
 
-        return $this->passwordEncoder->isPasswordValid($user, $credentials['password']);
+        return $this->passwordEncoder->isPasswordValid($user, $credentials['password'] ?? '');
     }
 
     /**

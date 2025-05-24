@@ -29,5 +29,5 @@ interface AgeRangeInterface
      *
      * @throws Exception
      */
-    public function containsAccommodatedPerson(DateTime $birthDate, DateTime $referenceDateTime = null): bool;
+    public function containsAccommodatedPerson(DateTime $birthDate, ?DateTime $referenceDateTime = null): bool;
 }

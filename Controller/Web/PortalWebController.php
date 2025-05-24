@@ -13,7 +13,7 @@ class PortalWebController extends AbstractController
     /**
      * Temporary Portal placement route (or redirect if app.portalUrl is set).
      *
-     * @param  \OswisOrg\OswisCoreBundle\Provider\OswisCoreSettingsProvider  $oswisCoreSettings
+     * @param OswisCoreSettingsProvider $oswisCoreSettings
      *
      * @return Response
      */
@@ -21,7 +21,7 @@ class PortalWebController extends AbstractController
         OswisCoreSettingsProvider $oswisCoreSettings,
     ): Response {
         $portalUrl = $oswisCoreSettings->getApp()['portalUrl'];
-        if (!empty($portalUrl)) {
+        if (!empty($portalUrl) && is_string($portalUrl)) {
             return $this->redirect($portalUrl);
         }
 

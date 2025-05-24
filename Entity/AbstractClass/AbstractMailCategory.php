@@ -22,10 +22,10 @@ use OswisOrg\OswisCoreBundle\Traits\Common\TypeTrait;
  */
 abstract class AbstractMailCategory implements MailCategoryInterface
 {
-    public const TYPE_ACTIVATION              = AppUserService::ACTIVATION;
-    public const TYPE_ACTIVATION_REQUEST      = AppUserService::ACTIVATION_REQUEST;
-    public const TYPE_PASSWORD_CHANGE         = AppUserService::PASSWORD_CHANGE;
-    public const TYPE_PASSWORD_CHANGE_REQUEST = AppUserService::PASSWORD_CHANGE_REQUEST;
+    public const string TYPE_ACTIVATION = AppUserService::ACTIVATION;
+    public const string TYPE_ACTIVATION_REQUEST = AppUserService::ACTIVATION_REQUEST;
+    public const string TYPE_PASSWORD_CHANGE = AppUserService::PASSWORD_CHANGE;
+    public const string TYPE_PASSWORD_CHANGE_REQUEST = AppUserService::PASSWORD_CHANGE_REQUEST;
 
     use NameableTrait;
     use PriorityTrait;

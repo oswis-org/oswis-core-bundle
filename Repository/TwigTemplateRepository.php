@@ -39,7 +39,7 @@ class TwigTemplateRepository extends ServiceEntityRepository
         }
     }
 
-    final public function findOneBy(array $criteria, array $orderBy = null): ?TwigTemplate
+    final public function findOneBy(array $criteria, ?array $orderBy = null): ?TwigTemplate
     {
         $result = parent::findOneBy($criteria, $orderBy);
 

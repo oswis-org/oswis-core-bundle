@@ -8,7 +8,7 @@ declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\EventSubscriber;
 
-use ApiPlatform\Core\EventListener\EventPriorities;
+use ApiPlatform\Symfony\EventListener\EventPriorities;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Mpdf\MpdfException;

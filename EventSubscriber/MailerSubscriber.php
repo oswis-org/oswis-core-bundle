@@ -34,13 +34,14 @@ class MailerSubscriber implements EventSubscriberInterface
         }
         $this->processFromAddresses($email);
         $this->processRecipients($email);
-        if ($email->getReturnPath() ?? $this->coreSettings->getEmail()['return_path']) {
-            $email->returnPath($email->getReturnPath() ?? $this->coreSettings->getEmail()['return_path']);
+        $coreEmailSettings = $this->coreSettings->getEmail();
+        if ($email->getReturnPath() ?? $coreEmailSettings['return_path'] ?? null) {
+            $email->returnPath($email->getReturnPath() ?? $coreEmailSettings['return_path'] ?? '');
         }
-        if ($email->getReplyTo()[0] ?? $this->coreSettings->getEmail()['reply_path']) {
-            $email->replyTo($email->getReplyTo()[0] ?? $this->coreSettings->getEmail()['reply_path']);
+        if ($email->getReplyTo()[0] ?? $coreEmailSettings['reply_path'] ?? null) {
+            $email->replyTo($email->getReplyTo()[0] ?? $coreEmailSettings['reply_path'] ?? '');
         }
-        $email->subject($email->getSubject() ?? $this->coreSettings->getEmail()['default_subject'] ?? '');
+        $email->subject($email->getSubject() ?? $coreEmailSettings['default_subject'] ?? '');
         // if ($email instanceof TemplatedEmail) {
         // $email->embedFromPath('../assets/images/logo.png', 'logo');
         // $email->getContext()['logo'] = $email->getContext()['logo'] ?? 'cid:logo';
@@ -51,6 +52,7 @@ class MailerSubscriber implements EventSubscriberInterface
 
     private function processFromAddresses(Email $email): void
     {
+        $coreEmailSettings = $this->coreSettings->getEmail();
         if (!empty($email->getFrom())) {
             $originalSenders = $email->getFrom();
             foreach ($originalSenders as $index => $singleFrom) {
@@ -65,9 +67,9 @@ class MailerSubscriber implements EventSubscriberInterface
                 }
             }
         }
-        if (empty($email->getFrom()) && $this->coreSettings->getEmail()['address']) {
-            $fromAddress = $this->coreSettings->getEmail()['address'];
-            $fromName = $this->coreSettings->getEmail()['name'] ?? null;
+        if (($coreEmailSettings['address'] ?? null) && empty($email->getFrom())) {
+            $fromAddress = $coreEmailSettings['address'];
+            $fromName = $coreEmailSettings['name'] ?? '';
             try {
                 $email->from(new Address($fromAddress, $fromName));
             } catch (LogicException|RfcComplianceException $e) {
