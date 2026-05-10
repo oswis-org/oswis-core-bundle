@@ -296,9 +296,11 @@ class AppUserService
             $this->em->flush();
             if (AbstractToken::TYPE_ACTIVATION === $type) {
                 $this->activate($appUserToken->getAppUser());
+                return;
             }
             if (AbstractToken::TYPE_PASSWORD_CHANGE === $type) {
                 $this->changePassword($appUserToken->getAppUser(), $newPassword, true);
+                return;
             }
             throw new TokenInvalidException('neznámý typ tokenu', $token);
         } catch (OswisException|TokenInvalidException|InvalidTypeException $exception) {
