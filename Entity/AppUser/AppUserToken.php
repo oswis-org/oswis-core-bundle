@@ -18,6 +18,7 @@ use OswisOrg\OswisCoreBundle\Entity\AbstractClass\AbstractToken;
 use OswisOrg\OswisCoreBundle\Exceptions\TokenInvalidException;
 use OswisOrg\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
 use OswisOrg\OswisCoreBundle\Repository\AppUserTokenRepository;
+#[Searchable(['id', 'token'])]
 
 /**
  * @ApiResource(
@@ -48,10 +49,6 @@ use OswisOrg\OswisCoreBundle\Repository\AppUserTokenRepository;
  *     }
  *   }
  * )
- * @Searchable({
- *     "id",
- *     "token"
- * })
  * @author Jakub Zak <mail@jakubzak.eu>
  */
 #[Entity(repositoryClass: AppUserTokenRepository::class)]

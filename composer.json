@@ -39,7 +39,6 @@
     "api-platform/api-pack": "^1.4",
     "api-platform/core": "^4.3",
     "bigit/vokativ": "dev-zakjakub-master",
-    "doctrine/annotations": "^2.0",
     "doctrine/collections": "^2.3",
     "doctrine/doctrine-bundle": "^2.14 || ^3.0",
     "doctrine/orm": "^3.5",

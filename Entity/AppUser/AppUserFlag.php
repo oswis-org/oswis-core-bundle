@@ -12,15 +12,10 @@ use OswisOrg\OswisCoreBundle\Entity\NonPersistent\Nameable;
 use OswisOrg\OswisCoreBundle\Filter\SearchAnnotation as Searchable;
 use OswisOrg\OswisCoreBundle\Interfaces\Common\NameableInterface;
 use OswisOrg\OswisCoreBundle\Traits\Common\NameableTrait;
+#[Searchable(['id', 'name', 'description', 'note'])]
 
 /**
  * Flag for app user.
- * @Searchable({
- *     "id",
- *     "name",
- *     "description",
- *     "note"
- * })
  * @author Jakub Zak <mail@jakubzak.eu>
  */
 #[ApiResource]

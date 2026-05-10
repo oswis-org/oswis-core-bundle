@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Entity\AppUser;
 
+use OswisOrg\OswisCoreBundle\Filter\SearchAnnotation;
 use ApiPlatform\Doctrine\Orm\Filter\BooleanFilter;
 use ApiPlatform\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Metadata\ApiFilter;
@@ -33,14 +34,6 @@ use OswisOrg\OswisCoreBundle\Traits\Common\NameableTrait;
 /**
  * Form of user (customer, manager, admin etc.).
  * @author Jakub Zak <mail@jakubzak.eu>
- * @OswisOrg\OswisCoreBundle\Filter\SearchAnnotation({
- *     "id",
- *     "slug",
- *     "name",
- *     "shortName",
- *     "description",
- *     "note"
- * })
  */
 #[ApiResource(
     operations: [
@@ -64,6 +57,7 @@ use OswisOrg\OswisCoreBundle\Traits\Common\NameableTrait;
     filters: ['search'],
     security: "is_granted('ROLE_MANAGER')",
 )]
+#[SearchAnnotation(['id', 'slug', 'name', 'shortName', 'description', 'note'])]
 #[Entity(repositoryClass: AppUserTypeRepository::class)]
 #[Table(name: 'core_app_user_type')]
 #[Cache(usage: 'NONSTRICT_READ_WRITE', region: 'core_app_user')]

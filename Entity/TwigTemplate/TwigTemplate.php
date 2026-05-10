@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Entity\TwigTemplate;
 
+use OswisOrg\OswisCoreBundle\Filter\SearchAnnotation;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
@@ -21,12 +22,6 @@ use OswisOrg\OswisCoreBundle\Traits\Common\TextValueTrait;
 
 /**
  * @author Jakub Zak <mail@jakubzak.eu>
- * @OswisOrg\OswisCoreBundle\Filter\SearchAnnotation({
- *     "id",
- *     "slug",
- *     "type",
- *     "name"
- * })
  */
 #[ApiResource(
     operations: [
@@ -50,6 +45,7 @@ use OswisOrg\OswisCoreBundle\Traits\Common\TextValueTrait;
     filters: ['search'],
     security: "is_granted('ROLE_ADMIN')",
 )]
+#[SearchAnnotation(['id', 'slug', 'type', 'name'])]
 #[Entity(repositoryClass: TwigTemplateRepository::class)]
 #[Table(name: 'core_twig_template')]
 #[Cache(usage: 'NONSTRICT_READ_WRITE', region: 'core_twig_template')]

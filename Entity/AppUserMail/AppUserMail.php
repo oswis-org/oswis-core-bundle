@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Entity\AppUserMail;
 
+use OswisOrg\OswisCoreBundle\Filter\SearchAnnotation;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
@@ -27,10 +28,6 @@ use OswisOrg\OswisCoreBundle\Exceptions\InvalidTypeException;
 /**
  * E-mail sent to some user.
  * @author Jakub Zak <mail@jakubzak.eu>
- * @OswisOrg\OswisCoreBundle\Filter\SearchAnnotation({
- *     "id",
- *     "token"
- * })
  */
 #[ApiResource(
     operations: [
@@ -56,6 +53,7 @@ use OswisOrg\OswisCoreBundle\Exceptions\InvalidTypeException;
     denormalizationContext: ['groups' => ['app_user_mails_post'], 'enable_max_depth' => true],
     security: "is_granted('ROLE_ADMIN')",
 )]
+#[SearchAnnotation(['id', 'token'])]
 #[Entity]
 #[Table(name: 'core_app_user_mail')]
 #[Cache(usage: 'NONSTRICT_READ_WRITE', region: 'core_app_user')]

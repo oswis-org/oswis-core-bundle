@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Entity\AppUser;
 
+use OswisOrg\OswisCoreBundle\Filter\SearchAnnotation;
 use ApiPlatform\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Metadata\ApiFilter;
 use ApiPlatform\Metadata\ApiResource;
@@ -34,22 +35,6 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
  * Every **user must be activated** by activating e-mail with link that is containing special token.
  * User is **active in interval** given by *startDateTime* and *endDateTime* (no need to use *deleted* property).
  * @author Jakub Zak <mail@jakubzak.eu>
- * @OswisOrg\OswisCoreBundle\Filter\SearchAnnotation({
- *     "id",
- *     "username",
- *     "email",
- *     "givenName",
- *     "additionalName",
- *     "familyName",
- *     "nickname",
- *     "honorificPrefix",
- *     "honorificSuffix",
- *     "description",
- *     "note",
- *     "appUserType.name",
- *     "appUserType.shortName",
- *     "appUserType.slug"
- * })
  */
 #[ApiResource(
     operations: [
@@ -98,6 +83,7 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
     "appUserType.name",
     "appUserType.slug",
 ])]
+#[SearchAnnotation(['id', 'username', 'email', 'givenName', 'additionalName', 'familyName', 'nickname', 'honorificPrefix', 'honorificSuffix', 'description', 'note', 'appUserType.name', 'appUserType.shortName', 'appUserType.slug'])]
 #[ORM\Entity(repositoryClass: AppUserRepository::class)]
 #[ORM\Table(name: 'core_app_user')]
 #[ORM\Cache(usage: 'NONSTRICT_READ_WRITE', region: 'core_app_user')]

@@ -4,37 +4,19 @@ declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Filter;
 
-use Doctrine\Common\Annotations\Annotation;
-use Doctrine\Common\Annotations\Annotation\Target;
-use Doctrine\Common\Annotations\AnnotationException;
+use Attribute;
 
-use function is_array;
-use function is_string;
-
-/**
- * @Annotation
- * @Target("CLASS")
- */
+#[Attribute(Attribute::TARGET_CLASS)]
 final class SearchAnnotation
 {
     /** @var list<string> */
-    public array $fields = [];
+    public array $fields;
 
     /**
-     * @param  array  $data  key-value for properties to be defined in this class
-     *
-     * @throws AnnotationException
+     * @param list<string> $fields
      */
-    public function __construct(array $data)
+    public function __construct(array $fields = [])
     {
-        if (!isset($data['value']) || !is_array($data['value'])) {
-            throw new AnnotationException('Options must be a array of strings.');
-        }
-        foreach ($data['value'] as $value) {
-            if (!is_string($value)) {
-                throw new AnnotationException('Options must be a array of strings.');
-            }
-            $this->fields[] = $value;
-        }
+        $this->fields = array_values(array_filter($fields, 'is_string'));
     }
 }

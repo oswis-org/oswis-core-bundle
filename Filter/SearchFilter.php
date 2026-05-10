@@ -1,9 +1,7 @@
 <?php
-
 /**
  * @noinspection PhpComposerExtensionStubsInspection
  * @noinspection MissingParameterTypeDeclarationInspection
- * @noinspection ForeachInvariantsInspection
  */
 declare(strict_types=1);
 
@@ -12,7 +10,6 @@ namespace OswisOrg\OswisCoreBundle\Filter;
 use ApiPlatform\Doctrine\Orm\Filter\AbstractFilter;
 use ApiPlatform\Doctrine\Orm\Util\QueryNameGeneratorInterface;
 use ApiPlatform\Metadata\Operation;
-use Doctrine\Common\Annotations\AnnotationReader;
 use Doctrine\ORM\QueryBuilder;
 use HttpInvalidParamException;
 use ReflectionClass;
@@ -21,7 +18,6 @@ use function count;
 use function in_array;
 
 /**
- * Search filter.
  * @noinspection ClassNameCollisionInspection
  */
 final class SearchFilter extends AbstractFilter
@@ -31,8 +27,7 @@ final class SearchFilter extends AbstractFilter
      */
     public function getDescription(string $resourceClass): array
     {
-        $reader = new AnnotationReader();
-        $annotation = $reader->getClassAnnotation(new ReflectionClass(new $resourceClass()), SearchAnnotation::class);
+        $annotation = self::readSearchAttribute($resourceClass);
 
         return [
             'search' => [
@@ -41,9 +36,9 @@ final class SearchFilter extends AbstractFilter
                 'required' => false,
                 'swagger' => [
                     'description' => 'FullTextFilter on '.implode(
-                            ', ',
-                            $annotation instanceof SearchAnnotation ? $annotation->fields : []
-                        ),
+                        ', ',
+                        $annotation?->fields ?? []
+                    ),
                 ],
             ],
         ];
@@ -69,18 +64,15 @@ final class SearchFilter extends AbstractFilter
         }
         $stringValue = self::mixedToString($value);
         $this->logger->info('Search for: "'.$stringValue.'"');
-        $reader = new AnnotationReader();
-        $annotation = $reader->getClassAnnotation(new ReflectionClass(new $resourceClass()), SearchAnnotation::class);
-        if (empty($annotation)) {
+        $annotation = self::readSearchAttribute($resourceClass);
+        if (null === $annotation || [] === $annotation->fields) {
             throw new HttpInvalidParamException('No Search implemented.');
         }
         $parameterName = $queryNameGenerator->generateParameterName($property);
         $search = [];
         $mappedJoins = [];
         foreach ($annotation->fields as $field) {
-            $field = self::mixedToString($field);
             $joins = explode('.', $field);
-            // @noinspection ForeachInvariantsInspection
             for ($lastAlias = 'o', $i = 0, $num = count($joins); $i < $num; ++$i) {
                 $currentAlias = $joins[$i];
                 $currentAliasRenamed = $joins[$i].'_'.$i;
@@ -101,24 +93,39 @@ final class SearchFilter extends AbstractFilter
         $queryBuilder->setParameter($parameterName, '%'.$stringValue.'%');
     }
 
+    /**
+     * @param class-string $resourceClass
+     * @throws ReflectionException
+     */
+    private static function readSearchAttribute(string $resourceClass): ?SearchAnnotation
+    {
+        $reflection = new ReflectionClass($resourceClass);
+        $attributes = $reflection->getAttributes(SearchAnnotation::class);
+        if ([] === $attributes) {
+            return null;
+        }
+
+        return $attributes[0]->newInstance();
+    }
+
     public static function mixedToString(mixed $mixed): string
     {
         if ($mixed === null) {
-            return ""; // Convert null to an empty string
+            return '';
         }
         if (is_scalar($mixed)) {
-            return (string)$mixed; // Convert scalar values to strings
+            return (string)$mixed;
         }
         if (is_object($mixed) && method_exists($mixed, '__toString')) {
-            return (string)$mixed; // Use __toString method if available
+            return (string)$mixed;
         }
         if (is_array($mixed)) {
-            return "Array"; // Handle arrays (you might want to serialize or handle differently) <sup data-citation="1"><a href="https://www.php.net/manual/en/language.types.string.php" target="_blank" title="Strings - Manual - PHP">1</a></sup>
+            return 'Array';
         }
         if (is_resource($mixed)) {
-            return "Resource"; // Handle resources <sup data-citation="1"><a href="https://www.php.net/manual/en/language.types.string.php" target="_blank" title="Strings - Manual - PHP">1</a></sup>
+            return 'Resource';
         }
 
-        return ""; // Default to empty string for unknown types
+        return '';
     }
 }

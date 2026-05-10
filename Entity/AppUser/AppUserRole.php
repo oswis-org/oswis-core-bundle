@@ -27,20 +27,11 @@ use OswisOrg\OswisCoreBundle\Filter\SearchFilter;
 use OswisOrg\OswisCoreBundle\Interfaces\Common\NameableInterface;
 use OswisOrg\OswisCoreBundle\Repository\AppUserRoleRepository;
 use OswisOrg\OswisCoreBundle\Traits\Common\NameableTrait;
+#[Searchable(['id', 'slug', 'forcedSlug', 'name', 'shortName', 'description', 'note', 'roleString'])]
 
 /**
  * Role of app user.
  * @author Jakub Zak <mail@jakubzak.eu>
- * @Searchable({
- *     "id",
- *     "slug",
- *     "forcedSlug",
- *     "name",
- *     "shortName",
- *     "description",
- *     "note",
- *     "roleString"
- * })
  * @ApiResource(
  *   attributes={
  *     "filters"={"search"},

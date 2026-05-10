@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Entity\AppUserMail;
 
+use OswisOrg\OswisCoreBundle\Filter\SearchAnnotation;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
@@ -27,7 +28,6 @@ use OswisOrg\OswisCoreBundle\Repository\AppUserMailGroupRepository;
 
 /**
  * @author Jakub Zak <mail@jakubzak.eu>
- * @OswisOrg\OswisCoreBundle\Filter\SearchAnnotation({"id"})
  */
 #[ApiResource(
     operations: [
@@ -53,6 +53,7 @@ use OswisOrg\OswisCoreBundle\Repository\AppUserMailGroupRepository;
     denormalizationContext: ['groups' => ['app_user_mail_groups_post'], 'enable_max_depth' => true],
     security: "is_granted('ROLE_ADMIN')",
 )]
+#[SearchAnnotation(['id'])]
 #[Entity(repositoryClass: AppUserMailGroupRepository::class)]
 #[Table(name: 'core_app_user_mail_group')]
 #[Cache(usage: 'NONSTRICT_READ_WRITE', region: 'core_app_user_mail')]
