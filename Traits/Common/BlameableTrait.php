@@ -16,7 +16,7 @@ use Doctrine\ORM\Mapping\ManyToOne;
 use Gedmo\Mapping\Annotation\Blameable;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser;
 use OswisOrg\OswisCoreBundle\Filter\SearchFilter;
-use Symfony\Component\Serializer\Annotation\MaxDepth;
+use Symfony\Component\Serializer\Attribute\MaxDepth;
 
 trait BlameableTrait
 {

@@ -84,7 +84,6 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
             'default_path' => '%kernel.project_dir%/templates',
             'debug' => '%kernel.debug%',
             'strict_variables' => '%kernel.debug%',
-            'exception_controller' => null,
 //            'paths' => [
 //                'assets/images' => 'images',
 //                'public/bundles/oswisorgoswiscore' => 'oswis',
@@ -232,7 +231,7 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
     private function prependApiPlatform(ContainerBuilder $container, array $config): void
     {
         $container->prependExtensionConfig('api_platform', [
-            'event_listeners_backward_compatibility_layer' => true,
+            'use_symfony_listeners' => true,
             'title' => $config['app']['name'] ?? null,
             'description' => $config['app']['description'] ?? null,
             'version' => $config['app']['version'] ?? null,
