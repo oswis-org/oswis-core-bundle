@@ -12,6 +12,10 @@ namespace OswisOrg\OswisCoreBundle\Entity\AppUser;
 use ApiPlatform\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Metadata\ApiFilter;
 use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Post;
+use ApiPlatform\Metadata\Put;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping\Cache;
@@ -27,40 +31,36 @@ use OswisOrg\OswisCoreBundle\Filter\SearchFilter;
 use OswisOrg\OswisCoreBundle\Interfaces\Common\NameableInterface;
 use OswisOrg\OswisCoreBundle\Repository\AppUserRoleRepository;
 use OswisOrg\OswisCoreBundle\Traits\Common\NameableTrait;
-#[Searchable(['id', 'slug', 'forcedSlug', 'name', 'shortName', 'description', 'note', 'roleString'])]
 
 /**
  * Role of app user.
  * @author Jakub Zak <mail@jakubzak.eu>
- * @ApiResource(
- *   attributes={
- *     "filters"={"search"},
- *     "security"="is_granted('ROLE_ADMIN')",
- *     "normalization_context"={"groups"={"app_user_roles_get"}, "enable_max_depth"=true},
- *     "denormalization_context"={"groups"={"app_user_roles_post"}, "enable_max_depth"=true}
- *   },
- *   collectionOperations={
- *     "get"={
- *       "security"="is_granted('ROLE_ADMIN')",
- *       "normalization_context"={"groups"={"app_user_roles_get"}, "enable_max_depth"=true},
- *     },
- *     "post"={
- *       "security"="is_granted('ROLE_ROOT')",
- *       "denormalization_context"={"groups"={"app_user_roles_post"}, "enable_max_depth"=true}
- *     }
- *   },
- *   itemOperations={
- *     "get"={
- *       "security"="is_granted('ROLE_ADMIN')",
- *       "normalization_context"={"groups"={"app_user_role_get"}, "enable_max_depth"=true},
- *     },
- *     "put"={
- *       "security"="is_granted('ROLE_ROOT')",
- *       "denormalization_context"={"groups"={"app_user_role_put"}, "enable_max_depth"=true}
- *     }
- *   }
- * )
  */
+#[ApiResource(
+    operations: [
+        new GetCollection(
+            normalizationContext: ['groups' => ['app_user_roles_get'], 'enable_max_depth' => true],
+            security: "is_granted('ROLE_ADMIN')",
+        ),
+        new Post(
+            denormalizationContext: ['groups' => ['app_user_roles_post'], 'enable_max_depth' => true],
+            security: "is_granted('ROLE_ROOT')",
+        ),
+        new Get(
+            normalizationContext: ['groups' => ['app_user_role_get'], 'enable_max_depth' => true],
+            security: "is_granted('ROLE_ADMIN')",
+        ),
+        new Put(
+            denormalizationContext: ['groups' => ['app_user_role_put'], 'enable_max_depth' => true],
+            security: "is_granted('ROLE_ROOT')",
+        ),
+    ],
+    filters: ['search'],
+    normalizationContext: ['groups' => ['app_user_roles_get'], 'enable_max_depth' => true],
+    denormalizationContext: ['groups' => ['app_user_roles_post'], 'enable_max_depth' => true],
+    security: "is_granted('ROLE_ADMIN')",
+)]
+#[Searchable(['id', 'slug', 'forcedSlug', 'name', 'shortName', 'description', 'note', 'roleString'])]
 #[Entity(repositoryClass: AppUserRoleRepository::class)]
 #[Table(name: 'core_app_user_role')]
 #[Cache(usage: 'NONSTRICT_READ_WRITE', region: 'core_app_user')]

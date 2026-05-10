@@ -43,8 +43,13 @@ class AppUserRepository extends ServiceEntityRepository implements UserLoaderInt
             return null;
         }
         try {
-            $builder = $this->createQueryBuilder('u')->where('(u.id = :id) AND'); // TODO: Is in range??????!!!!!!
-            $appUser = $builder->setParameter('id', $id)->getQuery()->getOneOrNullResult(AbstractQuery::HYDRATE_OBJECT);
+            $builder = $this->createQueryBuilder('u')
+                ->where('u.id = :id')
+                ->andWhere('u.activated <= :now')
+                ->andWhere('u.deletedAt IS NULL OR u.deletedAt >= :now')
+                ->setParameter('id', $id)
+                ->setParameter('now', new DateTime());
+            $appUser = $builder->getQuery()->getOneOrNullResult(AbstractQuery::HYDRATE_OBJECT);
         } catch (NonUniqueResultException) {
             throw new UserNotUniqueException();
         }

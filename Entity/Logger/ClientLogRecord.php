@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace OswisOrg\OswisCoreBundle\Entity\Logger;
 
 use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\Post;
 use Doctrine\ORM\Mapping\Cache;
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
@@ -15,26 +17,20 @@ use OswisOrg\OswisCoreBundle\Traits\Common\BasicTrait;
 /**
  * Log record from client.
  * @author Jakub Zak <mail@jakubzak.eu>
- *
- * @ApiResource(
- *   attributes={
- *     "filters"={"search"},
- *     "normalization_context"={"groups"={"entities_get", "client_log_records_get"}},
- *     "denormalization_context"={"groups"={"entities_post", "client_log_records_post"}}
- *   },
- *   collectionOperations={
- *     "post"={
- *       "denormalization_context"={"groups"={"entities_post", "client_log_records_post"}}
- *     }
- *   },
- *   itemOperations={
- *     "get"={
- *       "security"="is_granted('ROLE_MANAGER')",
- *       "denormalization_context"={"groups"={"entities_post", "client_log_record_get"}}
- *     }
- *   }
- * )
  */
+#[ApiResource(
+    operations: [
+        new Post(
+            denormalizationContext: ['groups' => ['entities_post', 'client_log_records_post']],
+        ),
+        new Get(
+            normalizationContext: ['groups' => ['entities_post', 'client_log_record_get']],
+            security: "is_granted('ROLE_MANAGER')",
+        ),
+    ],
+    normalizationContext: ['groups' => ['entities_get', 'client_log_records_get']],
+    denormalizationContext: ['groups' => ['entities_post', 'client_log_records_post']],
+)]
 #[Entity]
 #[Table(name: 'core_client_log_record')]
 #[Cache(usage: 'NONSTRICT_READ_WRITE', region: 'core_log')]
