@@ -17,24 +17,24 @@ use Exception;
 use InvalidArgumentException;
 use OswisOrg\OswisCoreBundle\Filter\SearchFilter;
 use OswisOrg\OswisCoreBundle\Interfaces\AddressBook\ContactInterface;
-use OswisOrg\OswisCoreBundle\Traits\Common\NameableTrait;
 use Vokativ\Name as VokativName;
 use function trim;
 
 /**
- * Trait adds name field and __toString().
+ * Adds person-specific name fields and overrides name handling.
  *
- * Trait adds field *name* that contains name or title of entity.
- * Trait implements __toString() that returns that name.
+ * Designed for entities that already inherit name/sortableName/shortName via
+ * {@see \OswisOrg\OswisCoreBundle\Traits\Common\NameableTrait} from a parent
+ * class (e.g. AbstractPerson extending AbstractContact). Use this trait
+ * instead of {@see NameablePersonTrait} to avoid duplicate Doctrine column
+ * declarations under Doctrine ORM 3+ strict validation.
+ *
+ * If you need both the person-specific overrides AND the underlying name
+ * machinery in a single class (with no parent providing it), use
+ * {@see NameablePersonTrait} which composes NameableTrait directly.
  */
-trait NameablePersonTrait
+trait PersonNameOnlyTrait
 {
-    use NameableTrait {
-        getSortableName as traitSortableName;
-        setName as traitName;
-        updateName as traitUpdateName;
-    }
-
     /** Nickname. */
     #[Column(type: 'string', nullable: true)]
     #[ApiFilter(SearchFilter::class, strategy: 'ipartial')]
@@ -71,12 +71,6 @@ trait NameablePersonTrait
     #[ApiFilter(OrderFilter::class)]
     protected ?string $honorificSuffix = null;
 
-    /** Full name of person. */
-    #[Column(type: 'string', nullable: true)]
-    #[ApiFilter(SearchFilter::class, strategy: 'ipartial')]
-    #[ApiFilter(OrderFilter::class)]
-    protected ?string $name = null;
-
     public function setName(?string $fullName): ?string
     {
         return $this->setFullName($fullName);
@@ -97,7 +91,7 @@ trait NameablePersonTrait
                 $this->setNickname($nameObject->getNicknames());
             }
         } catch (NameParsingException) {
-            // Name not recognized. Do some magic. Or maybe throw some exception.
+            // Name not recognized.
         }
 
         return $this->updateName();
@@ -203,7 +197,7 @@ trait NameablePersonTrait
             $salutationName = $vokativName->vokativ($this->getGivenName(), null, false);
 
             return ucfirst($salutationName);
-        } catch (Exception $e) {
+        } catch (Exception) {
             return $this->getGivenName();
         }
     }
@@ -212,7 +206,7 @@ trait NameablePersonTrait
     {
         try {
             return new VokativName()->isMale(''.$this->getGivenName()) ? '' : 'a';
-        } catch (Exception $e) {
+        } catch (Exception) {
             return '';
         }
     }
@@ -225,7 +219,7 @@ trait NameablePersonTrait
         try {
             return new VokativName()->isMale($this->getGivenName()) ? ContactInterface::GENDER_MALE
                 : ContactInterface::GENDER_FEMALE;
-        } catch (InvalidArgumentException $e) {
+        } catch (InvalidArgumentException) {
             return ContactInterface::GENDER_UNISEX;
         }
     }

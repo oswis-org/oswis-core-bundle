@@ -27,7 +27,7 @@ trait EmailTrait
     #[ApiFilter(SearchFilter::class, strategy: 'ipartial')]
     #[ApiFilter(ExistsFilter::class)]
     #[ApiFilter(OrderFilter::class)]
-    #[Assert\NotBlank()]
+    #[Assert\NotBlank]
     #[Email(message: "Zadaná adresa {{ value }} není platná.", mode: 'strict')]
     protected ?string $email = null;
 

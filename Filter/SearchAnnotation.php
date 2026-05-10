@@ -17,6 +17,7 @@ use function is_string;
  */
 final class SearchAnnotation
 {
+    /** @var list<string> */
     public array $fields = [];
 
     /**

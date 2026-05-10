@@ -70,7 +70,7 @@ class AppUserRepository extends ServiceEntityRepository implements UserLoaderInt
     }
 
     /**
-     * @throws \OswisOrg\OswisCoreBundle\Exceptions\UserNotUniqueException
+     * @throws UserNotUniqueException
      */
     public function loadUserByIdentifier(string $identifier): null|UserInterface
     {

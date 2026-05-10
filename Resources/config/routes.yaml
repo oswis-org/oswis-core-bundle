@@ -22,7 +22,7 @@ api_platform:
 ### Controller folder.
 controllers:
     resource: ../../Controller/
-    type: annotation
+    type: attribute
 
 ### Endpoint for token processing.
 oswis_org_oswis_core_app_user_process_token:

@@ -17,6 +17,7 @@ use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\JoinColumn;
 use Doctrine\ORM\Mapping\ManyToOne;
 use Doctrine\ORM\Mapping\Table;
+use Exception;
 use OswisOrg\OswisCoreBundle\Enum\AppUserEditTypeEnum;
 use OswisOrg\OswisCoreBundle\Interfaces\Common\BasicInterface;
 use OswisOrg\OswisCoreBundle\Traits\Common\BasicTrait;
@@ -70,7 +71,7 @@ class AppUserEditRequest implements BasicInterface
     protected ?string $userIdentifier;
 
     /**
-     * @throws \Exception
+     * @throws Exception
      */
     public function __construct(
         ?string $userIdentifier = null,
@@ -78,7 +79,7 @@ class AppUserEditRequest implements BasicInterface
     ) {
         $this->userIdentifier = $userIdentifier;
         $this->type = $type;
-        $this->expireAt = (new DateTime())->add(new DateInterval('PT'.self::DEFAULT_VALID_HOURS.'H'));
+        $this->expireAt = new DateTime()->add(new DateInterval('PT'.self::DEFAULT_VALID_HOURS.'H'));
         $this->token = StringUtils::generateToken();
     }
 
@@ -106,7 +107,7 @@ class AppUserEditRequest implements BasicInterface
     }
 
     /**
-     * @return \OswisOrg\OswisCoreBundle\Enum\AppUserEditTypeEnum
+     * @return AppUserEditTypeEnum
      */
     public function getType(): ?AppUserEditTypeEnum
     {

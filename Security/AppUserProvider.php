@@ -65,8 +65,8 @@ class AppUserProvider implements UserProviderInterface
     }
 
     /**
-     * @throws \OswisOrg\OswisCoreBundle\Exceptions\UserNotUniqueException
-     * @throws \Symfony\Component\Security\Core\Exception\UserNotFoundException
+     * @throws UserNotUniqueException
+     * @throws UserNotFoundException
      */
     final public function loadUserByIdentifier(string $identifier): UserInterface
     {

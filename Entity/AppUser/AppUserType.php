@@ -11,6 +11,11 @@ namespace OswisOrg\OswisCoreBundle\Entity\AppUser;
 use ApiPlatform\Doctrine\Orm\Filter\BooleanFilter;
 use ApiPlatform\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Metadata\ApiFilter;
+use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Post;
+use ApiPlatform\Metadata\Put;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping\Cache;
@@ -36,33 +41,29 @@ use OswisOrg\OswisCoreBundle\Traits\Common\NameableTrait;
  *     "description",
  *     "note"
  * })
- * @ApiPlatform\Core\Annotation\ApiResource(
- *   attributes={
- *     "filters"={"search"},
- *     "security"="is_granted('ROLE_MANAGER')"
- *   },
- *   collectionOperations={
- *     "get"={
- *       "security"="is_granted('ROLE_MANAGER')",
- *       "normalization_context"={"groups"={"entities_get", "app_user_types_get"}, "enable_max_depth"=true},
- *     },
- *     "post"={
- *       "security"="is_granted('ROLE_ROOT')",
- *       "denormalization_context"={"groups"={"entities_post", "app_user_types_post"}, "enable_max_depth"=true}
- *     }
- *   },
- *   itemOperations={
- *     "get"={
- *       "security"="is_granted('ROLE_MANAGER')",
- *       "normalization_context"={"groups"={"entity_get", "app_user_type_get"}, "enable_max_depth"=true},
- *     },
- *     "put"={
- *       "security"="is_granted('ROLE_ROOT')",
- *       "denormalization_context"={"groups"={"entity_put", "app_user_type_put"}, "enable_max_depth"=true}
- *     }
- *   }
- * )
  */
+#[ApiResource(
+    operations: [
+        new GetCollection(
+            normalizationContext: ['groups' => ['entities_get', 'app_user_types_get'], 'enable_max_depth' => true],
+            security: "is_granted('ROLE_MANAGER')",
+        ),
+        new Post(
+            denormalizationContext: ['groups' => ['entities_post', 'app_user_types_post'], 'enable_max_depth' => true],
+            security: "is_granted('ROLE_ROOT')",
+        ),
+        new Get(
+            normalizationContext: ['groups' => ['entity_get', 'app_user_type_get'], 'enable_max_depth' => true],
+            security: "is_granted('ROLE_MANAGER')",
+        ),
+        new Put(
+            denormalizationContext: ['groups' => ['entity_put', 'app_user_type_put'], 'enable_max_depth' => true],
+            security: "is_granted('ROLE_ROOT')",
+        ),
+    ],
+    filters: ['search'],
+    security: "is_granted('ROLE_MANAGER')",
+)]
 #[Entity(repositoryClass: AppUserTypeRepository::class)]
 #[Table(name: 'core_app_user_type')]
 #[Cache(usage: 'NONSTRICT_READ_WRITE', region: 'core_app_user')]

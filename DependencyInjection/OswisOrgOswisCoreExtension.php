@@ -128,7 +128,6 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
     private function prependSecurity(ContainerBuilder $container): void
     {
         $config = [
-            'enable_authenticator_manager' => true,
             'password_hashers' => [
                 AppUser::class => [
                     'algorithm' => 'auto',
@@ -237,7 +236,6 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
             'title' => $config['app']['name'] ?? null,
             'description' => $config['app']['description'] ?? null,
             'version' => $config['app']['version'] ?? null,
-            'allow_plain_identifiers' => true,
             'eager_loading' => [
                 'enabled' => true,
                 'fetch_partial' => false,
@@ -255,9 +253,6 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
             ],
             'collection' => [
                 'pagination' => [
-                    'items_per_page' => 5000,
-                    'client_enabled' => true,
-                    'client_items_per_page' => true,
                     'items_per_page_parameter_name' => 'itemsPerPage',
                     'enabled_parameter_name' => 'pagination',
                 ],
@@ -283,6 +278,9 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
                 ],
             ],
             'defaults' => [
+                'pagination_items_per_page' => 5000,
+                'pagination_client_enabled' => true,
+                'pagination_client_items_per_page' => true,
                 'extra_properties' => [
                     'standard_put' => false,
                 ],
@@ -312,8 +310,8 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
         $twigConfigs = $container->getExtensionConfig('twig');
         $paths = [];
         foreach ($twigConfigs as $twigConfig) {
-            if (isset($twigConfig['paths'])) {
-                $paths[] = $twigConfig['paths'];
+            if (isset($twigConfig['paths']) && \is_array($twigConfig['paths'])) {
+                $paths = array_merge($paths, $twigConfig['paths']);
             }
         }
         foreach ($bundleNames as $bundleName) {

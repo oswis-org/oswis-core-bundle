@@ -169,7 +169,7 @@ final class ImageExtension extends AbstractExtension
         }
 
         if (is_array($comments['COMMENT'])) {
-            return implode("\n", $comments['COMMENT']);
+            return implode("\n", array_filter($comments['COMMENT'], 'is_string'));
         }
 
         return is_string($comments['COMMENT']) ? $comments['COMMENT'] : null;

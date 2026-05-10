@@ -38,13 +38,13 @@ class ExportSubscriber extends AbstractExportSubscriber
     }
 
     /**
-     * @param  ViewEvent  $event
-     * @param  \Doctrine\Common\Collections\Collection  $items
+     * @param  ViewEvent $event
+     * @param Collection $items
      *
-     * @throws \Mpdf\MpdfException
-     * @throws \Twig\Error\LoaderError
-     * @throws \Twig\Error\RuntimeError
-     * @throws \Twig\Error\SyntaxError
+     * @throws MpdfException
+     * @throws LoaderError
+     * @throws RuntimeError
+     * @throws SyntaxError
      */
     public function exportPdfList(ViewEvent $event, Collection $items): void
     {

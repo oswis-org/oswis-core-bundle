@@ -51,7 +51,7 @@ trait NameableTrait
 
     public function getAutoSlug(): string
     {
-        return (new AsciiSlugger())->slug(''.($this->getName() ?? $this->getShortName() ?? $this->getId()))
+        return new AsciiSlugger()->slug(''.($this->getName() ?? $this->getShortName() ?? $this->getId()))
                                    ->lower()
                                    ->toString();
     }

@@ -11,6 +11,9 @@ use Doctrine\ORM\EntityManagerInterface;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserEdit;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserEditRequest;
 use OswisOrg\OswisCoreBundle\Entity\AppUserMail\AppUserMail;
+use OswisOrg\OswisCoreBundle\Exceptions\InvalidTypeException;
+use OswisOrg\OswisCoreBundle\Exceptions\NotFoundException;
+use OswisOrg\OswisCoreBundle\Exceptions\NotImplementedException;
 use OswisOrg\OswisCoreBundle\Exceptions\OswisException;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Mailer\MailerInterface;
@@ -29,9 +32,9 @@ class AppUserEditService
     }
 
     /**
-     * @param  \OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserEdit  $userEdit
+     * @param AppUserEdit $userEdit
      *
-     * @throws \OswisOrg\OswisCoreBundle\Exceptions\OswisException
+     * @throws OswisException
      */
     public function assignRequest(AppUserEdit $userEdit): void
     {
@@ -48,10 +51,10 @@ class AppUserEditService
     }
 
     /**
-     * @throws \OswisOrg\OswisCoreBundle\Exceptions\OswisException
-     * @throws \OswisOrg\OswisCoreBundle\Exceptions\NotImplementedException
-     * @throws \OswisOrg\OswisCoreBundle\Exceptions\InvalidTypeException
-     * @throws \OswisOrg\OswisCoreBundle\Exceptions\NotFoundException
+     * @throws OswisException
+     * @throws NotImplementedException
+     * @throws InvalidTypeException
+     * @throws NotFoundException
      */
     public function sendConfirmation(AppUserEdit $userEdit): void
     {

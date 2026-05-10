@@ -21,10 +21,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\ViewEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 
-final class AppUserEditSubscriber implements EventSubscriberInterface
+final readonly class AppUserEditSubscriber implements EventSubscriberInterface
 {
     public function __construct(
-        private readonly AppUserEditService $editService,
+        private AppUserEditService $editService,
     ) {
     }
 

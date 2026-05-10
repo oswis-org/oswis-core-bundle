@@ -112,9 +112,9 @@ class AppUserRole implements NameableInterface
     /**
      * AppUserRole constructor.
      *
-     * @param  Nameable|null  $nameable
-     * @param  string|null  $roleString
-     * @param  \OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserRole|null  $parent
+     * @param  Nameable|null   $nameable
+     * @param  string|null     $roleString
+     * @param AppUserRole|null $parent
      *
      * @throws InvalidArgumentException
      */

@@ -47,22 +47,6 @@ services:
         alias: oswis_org_oswis_core.web_user_authenticator
         public: true
 
-    gedmo.listener.timestampable:
-        class: Gedmo\Timestampable\TimestampableListener
-        tags:
-            - { name: doctrine.event_subscriber, connection: default }
-        calls:
-            - [ setAnnotationReader, [ '@annotation_reader' ] ]
-        public: true
-
-    gedmo.listener.blameable:
-        class: Gedmo\Blameable\BlameableListener
-        tags:
-            - { name: doctrine.event_subscriber, connection: default }
-        calls:
-            - [ setAnnotationReader, [ '@annotation_reader' ] ]
-        public: true
-
     ####
     #### SERVICES
     ####

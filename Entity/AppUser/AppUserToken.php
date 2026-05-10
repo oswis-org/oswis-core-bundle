@@ -85,7 +85,7 @@ class AppUserToken extends AbstractToken
     }
 
     /**
-     * @throws \OswisOrg\OswisCoreBundle\Exceptions\TokenInvalidException
+     * @throws TokenInvalidException
      */
     public function getAppUser(): AppUser
     {

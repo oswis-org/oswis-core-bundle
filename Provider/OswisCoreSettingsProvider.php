@@ -126,8 +126,9 @@ class OswisCoreSettingsProvider
      */
     public function getArchiveMailerAddress(): ?Address
     {
-        if ($this->getEmail() && $this->getEmail()['archive_address'] && $this->getEmail()['archive_name']) {
-            return new Address($this->getEmail()['archive_address'], $this->getEmail()['archive_name']);
+        $email = $this->getEmail();
+        if ($email && !empty($email['archive_address']) && !empty($email['archive_name'])) {
+            return new Address($email['archive_address'], $email['archive_name']);
         }
 
         return null;
