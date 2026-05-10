@@ -11,9 +11,9 @@ use ApiPlatform\Doctrine\Orm\Filter\AbstractFilter;
 use ApiPlatform\Doctrine\Orm\Util\QueryNameGeneratorInterface;
 use ApiPlatform\Metadata\Operation;
 use Doctrine\ORM\QueryBuilder;
-use HttpInvalidParamException;
 use ReflectionClass;
 use ReflectionException;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use function count;
 use function in_array;
 
@@ -48,7 +48,7 @@ final class SearchFilter extends AbstractFilter
      * @param mixed $value
      *
      * @throws ReflectionException
-     * @throws HttpInvalidParamException
+     * @throws BadRequestHttpException
      */
     public function filterProperty(
         string $property,
@@ -66,7 +66,7 @@ final class SearchFilter extends AbstractFilter
         $this->logger->info('Search for: "'.$stringValue.'"');
         $annotation = self::readSearchAttribute($resourceClass);
         if (null === $annotation || [] === $annotation->fields) {
-            throw new HttpInvalidParamException('No Search implemented.');
+            throw new BadRequestHttpException('No Search implemented.');
         }
         $parameterName = $queryNameGenerator->generateParameterName($property);
         $search = [];
