@@ -9,6 +9,7 @@ declare(strict_types=1);
 namespace OswisOrg\OswisCoreBundle\Controller;
 
 use InvalidArgumentException;
+use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserToken;
 use OswisOrg\OswisCoreBundle\Exceptions\InvalidTypeException;
 use OswisOrg\OswisCoreBundle\Exceptions\NotFoundException;
@@ -64,8 +65,8 @@ class AppUserController extends AbstractController
         $form = $this->createForm(PasswordChangeRequestType::class, []);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid() && is_string($username = $form->get('username')->getData())) {
-            $appUser = $this->appUserService->getRepository()->loadUserByUsername($username);
-            if (null === $appUser) {
+            $appUser = $this->appUserService->getRepository()->loadUserByIdentifier($username);
+            if (!$appUser instanceof AppUser) {
                 throw new UserNotFoundException();
             }
             $this->appUserService->requestPasswordChange($appUser, true);
@@ -107,8 +108,8 @@ class AppUserController extends AbstractController
         $form = $this->createForm(ActivationRequestType::class, []);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid() && is_string($username = $form->get('username')->getData())) {
-            $appUser = $this->appUserService->getRepository()->loadUserByUsername($username);
-            if (null === $appUser) {
+            $appUser = $this->appUserService->getRepository()->loadUserByIdentifier($username);
+            if (!$appUser instanceof AppUser) {
                 throw new UserNotFoundException();
             }
             $this->appUserService->requestActivation($appUser);

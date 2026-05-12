@@ -33,32 +33,12 @@ class AppUserProvider implements UserProviderInterface
             throw new UnsupportedUserException(sprintf('Instances of "%s" are not supported.', get_class($user)));
         }
 
-        return $this->loadUserByUsername(''.$user->getUsername());
+        $loaded = $this->loadUserByIdentifier(''.$user->getUserIdentifier());
+        assert($loaded instanceof AppUser);
+
+        return $loaded;
     }
 
-    /**
-     * @param  string  $username
-     *
-     * @return AppUser
-     * @throws UserNotUniqueException
-     * @throws UserNotFoundException
-     * @noinspection MissingParameterTypeDeclarationInspection
-     */
-    final public function loadUserByUsername(string $username): AppUser
-    {
-        if (null === ($user = $this->appUserRepository->loadUserByUsername($username))) {
-            throw new UserNotFoundException(sprintf('Username "%s" does not exist.', $username));
-        }
-
-        return $user;
-    }
-
-    /**
-     * @param  string  $class
-     *
-     * @return bool
-     * @noinspection MissingParameterTypeDeclarationInspection
-     */
     final public function supportsClass(string $class): bool
     {
         return AppUser::class === $class;
@@ -70,6 +50,10 @@ class AppUserProvider implements UserProviderInterface
      */
     final public function loadUserByIdentifier(string $identifier): UserInterface
     {
-        return $this->loadUserByUsername($identifier);
+        if (null === ($user = $this->appUserRepository->loadUserByIdentifier($identifier))) {
+            throw new UserNotFoundException(sprintf('Identifier "%s" does not exist.', $identifier));
+        }
+
+        return $user;
     }
 }

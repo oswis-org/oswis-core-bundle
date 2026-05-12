@@ -1,17 +1,15 @@
 <?php
 
-/**
- * @noinspection MethodShouldBeFinalInspection
- */
 declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Controller\WebAdmin;
 
+use LogicException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
-class WebSecurityController extends AbstractController
+final class WebSecurityController extends AbstractController
 {
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
@@ -21,8 +19,14 @@ class WebSecurityController extends AbstractController
         ]);
     }
 
-    public function logout(): void
+    /**
+     * Logout is handled by the Symfony security firewall (`logout:` config) —
+     * the request never reaches this method. The route exists purely to give
+     * the firewall something to match against; if you see this exception you
+     * are missing the firewall's `logout` entry.
+     */
+    public function logout(): never
     {
-        // Dummy method for logout action.
+        throw new LogicException('Logout is handled by the firewall; this controller method should never be called.');
     }
 }

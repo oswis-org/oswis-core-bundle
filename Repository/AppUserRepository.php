@@ -79,19 +79,7 @@ class AppUserRepository extends ServiceEntityRepository implements UserLoaderInt
      */
     public function loadUserByIdentifier(string $identifier): null|UserInterface
     {
-        return $this->loadUserByUsername($identifier);
-    }
-
-    /**
-     * @param  string|null  $username
-     *
-     * @return AppUser|null
-     * @throws UserNotUniqueException
-     * @noinspection MissingParameterTypeDeclarationInspection
-     */
-    public function loadUserByUsername(?string $username): ?AppUser
-    {
-        $appUser = $this->findOneByUsernameOrMail($username, true);
+        $appUser = $this->findOneByUsernameOrMail($identifier, true);
 
         return ($appUser instanceof AppUser) && $appUser->isActive() ? $appUser : null;
     }

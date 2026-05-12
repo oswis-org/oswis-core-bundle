@@ -1,14 +1,9 @@
 <?php
 
-/**
- * @noinspection MethodVisibilityInspection
- * @noinspection MethodShouldBeFinalInspection
- */
 declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Security;
 
-use InvalidArgumentException;
 use Symfony\Component\HttpFoundation\Exception\BadRequestException;
 use Symfony\Component\HttpFoundation\Exception\SessionNotFoundException;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -22,10 +17,8 @@ use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\Exception\BadCredentialsException;
-use Symfony\Component\Security\Core\Exception\UserNotFoundException;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Http\Authenticator\AbstractAuthenticator;
 use Symfony\Component\Security\Http\Authenticator\Passport\Badge\RememberMeBadge;
 use Symfony\Component\Security\Http\Authenticator\Passport\Badge\UserBadge;
@@ -34,7 +27,7 @@ use Symfony\Component\Security\Http\Authenticator\Passport\Passport;
 use Symfony\Component\Security\Http\SecurityRequestAttributes;
 use Symfony\Component\Security\Http\Util\TargetPathTrait;
 
-class WebUserAuthenticator extends AbstractAuthenticator
+final class WebUserAuthenticator extends AbstractAuthenticator
 {
     use TargetPathTrait;
 
@@ -43,8 +36,7 @@ class WebUserAuthenticator extends AbstractAuthenticator
     public function __construct(
         private readonly UserPasswordHasherInterface $passwordEncoder,
         private readonly RouterInterface $router,
-    )
-    {
+    ) {
     }
 
     public function supports(Request $request): bool
@@ -53,34 +45,50 @@ class WebUserAuthenticator extends AbstractAuthenticator
     }
 
     /**
-     * @param array{username?: string, identifier?: string, password?: string} $credentials
-     *
-     * @throws UserNotFoundException
+     * @throws BadRequestException|BadCredentialsException
      */
-    public function getUser(mixed $credentials, UserProviderInterface $userProvider): ?object
+    public function authenticate(Request $request): Passport
     {
-        return $userProvider->loadUserByIdentifier($credentials['username'] ?? '');
+        $credentials = $this->getCredentials($request);
+        $passwordEncoder = $this->passwordEncoder;
+
+        return new Passport(
+            new UserBadge($credentials['username']),
+            new CustomCredentials(
+                static function (mixed $given, UserInterface $user) use ($passwordEncoder): bool {
+                    if (!is_array($given) || !is_string($given['password'] ?? null)) {
+                        return false;
+                    }
+                    if (!$user instanceof PasswordAuthenticatedUserInterface) {
+                        return false;
+                    }
+
+                    return $passwordEncoder->isPasswordValid($user, $given['password']);
+                },
+                $credentials,
+            ),
+            $credentials['remember_me'] ? [new RememberMeBadge()] : [],
+        );
     }
 
     /**
-     * Used to upgrade (rehash) the user's password automatically over time.
+     * @return array{username: string, password: string, remember_me: bool}
      *
-     * @param array{identifier?: string, password?: string} $credentials
-     *
-     * @return string|null
+     * @throws BadRequestException
      */
-    public function getPassword(array $credentials): ?string
+    private function getCredentials(Request $request): array
     {
-        return $credentials['password'] ?? '';
+        // Request::getString() / getBoolean() return concrete types with safe defaults,
+        // so we don't need defensive assert()/instanceof on the result.
+        return [
+            'username'    => $request->request->getString('_username'),
+            'password'    => $request->request->getString('_password'),
+            'remember_me' => $request->request->getBoolean('_remember_me'),
+        ];
     }
 
     /**
-     * @param Request $request
-     * @param TokenInterface $token
-     * @param string $firewallName
-     *
-     * @return Response|null
-     * @throws InvalidArgumentException|SessionNotFoundException
+     * @throws SessionNotFoundException
      */
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
@@ -92,65 +100,9 @@ class WebUserAuthenticator extends AbstractAuthenticator
     }
 
     /**
-     * @throws InvalidArgumentException
-     * @throws BadRequestException|BadCredentialsException
-     */
-    public function authenticate(Request $request): Passport
-    {
-        /** @var array{identifier?: string, username?: string, password?: string, remember_me?: bool} $userCredentials */
-        $userCredentials = $this->getCredentials($request);
-
-        return new Passport(
-            new UserBadge($userCredentials['username'] ?? ''),
-            new CustomCredentials(
-            /** @var array{identifier?: string, username?: string, password?: string, remember_me?: bool} $credentials */
-                function (mixed $credentials, UserInterface $user) {
-                    assert(is_array($credentials));
-
-                    /** @phpstan-ignore-next-line */
-                    return $this->checkCredentials($credentials, $user);
-                },
-                $userCredentials,
-            ),
-            ($userCredentials['remember_me'] ?? false) ? [new RememberMeBadge()] : [],
-        );
-    }
-
-    /**
-     * @return array{username?: string, password?: string, remember_me?: bool}
-     *
-     * @throws InvalidArgumentException
-     * @throws BadRequestException
-     */
-    public function getCredentials(Request $request): array
-    {
-        $username = $request->request->get('_username');
-        assert(is_string($username));
-        $password = $request->request->get('_password');
-        assert(is_string($password));
-        $rememberMe = $request->request->get('_remember_me');
-        assert(is_bool($rememberMe));
-
-        return ['username' => $username, 'password' => $password, 'remember_me' => $rememberMe];
-    }
-
-    /**
-     * @param array{username?: string, password?: string, _remember_me?: bool} $credentials
-     * @param UserInterface                                                    $user
-     * @return bool
-     */
-    public function checkCredentials(mixed $credentials, UserInterface $user): bool
-    {
-        assert($user instanceof PasswordAuthenticatedUserInterface);
-
-        return $this->passwordEncoder->isPasswordValid($user, $credentials['password'] ?? '');
-    }
-
-    /**
      * @throws RouteNotFoundException
      * @throws MissingMandatoryParametersException
      * @throws SessionNotFoundException
-     * @throws InvalidArgumentException
      * @throws InvalidParameterException
      */
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception): ?Response
