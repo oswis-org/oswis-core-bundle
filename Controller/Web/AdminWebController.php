@@ -10,28 +10,24 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class AdminWebController extends AbstractController
+final class AdminWebController extends AbstractController
 {
-    public OswisCoreSettingsProvider $coreSettings;
-
-    public function __construct(OswisCoreSettingsProvider $coreSettings)
-    {
-        $this->coreSettings = $coreSettings;
+    public function __construct(
+        private readonly OswisCoreSettingsProvider $coreSettings,
+    ) {
     }
 
     /**
      * Angular front-end administration.
-     *
-     * @return Response
      */
-    final public function admin(): Response
+    public function admin(): Response
     {
         return $this->render('@OswisOrgOswisCore/web/pages/admin.html.twig');
     }
 
-
-    final public function adminSiteWebManifest(Request $request): Response
+    public function adminSiteWebManifest(Request $request): Response
     {
+        $iconBase = '/bundles/oswisorgoswiscore/favicons/';
         $response = new JsonResponse([
             'lang'             => 'cs',
             'dir'              => 'ltr',
@@ -43,46 +39,16 @@ class AdminWebController extends AbstractController
             'background_color' => '#FAFAFA',
             'theme_color'      => $this->coreSettings->getWeb()['color'],
             'icons'            => [
-                [
-                    'src'   => $request->getUriForPath('/bundles/oswisorgoswiscore/favicons/apple-touch-icon.png'),
-                    'sizes' => '180x180',
-                    'type'  => 'image/png',
-                ],
-                [
-                    'src'   => $request->getUriForPath('/bundles/oswisorgoswiscore/favicons/favicon-32x32.png'),
-                    'sizes' => '32x32',
-                    'type'  => 'image/png',
-                ],
-                [
-                    'src'   => $request->getUriForPath('/bundles/oswisorgoswiscore/favicons/favicon-194x194.png'),
-                    'sizes' => '194x194',
-                    'type'  => 'image/png',
-                ],
-                [
-                    'src'   => $request->getUriForPath('/bundles/oswisorgoswiscore/favicons/android-chrome-192x192.png'),
-                    'sizes' => '192x192',
-                    'type'  => 'image/png',
-                ],
-                [
-                    'src'   => $request->getUriForPath('/bundles/oswisorgoswiscore/favicons/favicon-16x16.png'),
-                    'sizes' => '16x16',
-                    'type'  => 'image/png',
-                ],
-                [
-                    'src'   => $request->getUriForPath('/bundles/oswisorgoswiscore/favicons/android-chrome-192x192.png'),
-                    'sizes' => '192x192',
-                    'type'  => 'image/png',
-                ],
-                [
-                    'src'   => $request->getUriForPath('/bundles/oswisorgoswiscore/favicons/android-chrome-512x512.png'),
-                    'sizes' => '512x512',
-                    'type'  => 'image/png',
-                ],
+                ['src' => $request->getUriForPath($iconBase.'apple-touch-icon.png'),         'sizes' => '180x180', 'type' => 'image/png'],
+                ['src' => $request->getUriForPath($iconBase.'favicon-16x16.png'),            'sizes' => '16x16',   'type' => 'image/png'],
+                ['src' => $request->getUriForPath($iconBase.'favicon-32x32.png'),            'sizes' => '32x32',   'type' => 'image/png'],
+                ['src' => $request->getUriForPath($iconBase.'favicon-194x194.png'),          'sizes' => '194x194', 'type' => 'image/png'],
+                ['src' => $request->getUriForPath($iconBase.'android-chrome-192x192.png'),   'sizes' => '192x192', 'type' => 'image/png'],
+                ['src' => $request->getUriForPath($iconBase.'android-chrome-512x512.png'),   'sizes' => '512x512', 'type' => 'image/png'],
             ],
         ]);
         $response->headers->set('Content-Type', 'application/manifest+json');
 
         return $response;
     }
-
 }
