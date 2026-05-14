@@ -27,9 +27,16 @@ abstract class AbstractToken implements TokenInterface
 {
     public const DEFAULT_VALID_HOURS = 24;
 
-    public const TYPE_ACTIVATION      = 'activation';
-    public const TYPE_PASSWORD_CHANGE = 'password-change';
-    public const TYPE_ABUSE           = 'abuse';
+    public const TYPE_ACTIVATION         = 'activation';
+    public const TYPE_PASSWORD_CHANGE    = 'password-change';
+    public const TYPE_ABUSE              = 'abuse';
+    /**
+     * Magic-link login token used when a returning participant tries to
+     * register again. Single-use, 24-hour TTL; consuming the token logs
+     * the user in and redirects them back to a specific registration
+     * offer (range slug encoded in the URL).
+     */
+    public const TYPE_REGISTRATION_LOGIN = 'registration-login';
 
     use BasicTrait;
     use TypeTrait;
@@ -77,7 +84,7 @@ abstract class AbstractToken implements TokenInterface
 
     public static function getAllowedTypesDefault(): array
     {
-        return ['', self::TYPE_ACTIVATION, self::TYPE_PASSWORD_CHANGE, self::TYPE_ABUSE];
+        return ['', self::TYPE_ACTIVATION, self::TYPE_PASSWORD_CHANGE, self::TYPE_ABUSE, self::TYPE_REGISTRATION_LOGIN];
     }
 
     public static function getAllowedTypesCustom(): array

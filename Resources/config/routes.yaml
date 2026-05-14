@@ -41,6 +41,15 @@ oswis_org_oswis_core_app_user_password_change_request:
     controller: oswis_org_oswis_core.app_user_controller::passwordChangeRequest
     path: "/uzivatel/zmena-hesla"
 
+### Endpoint for magic-link registration login (returning participant).
+### Consumes single-use token, programmatically logs the user in, and
+### redirects them back to the registration form for `rangeSlug`.
+oswis_org_oswis_core_app_user_registration_login:
+    controller: oswis_org_oswis_core.app_user_controller::registrationLogin
+    path: "/uzivatel/prihlaska-login/{token}/{appUserId}/{rangeSlug}"
+    requirements:
+        appUserId: '\d+'
+
 oswis_org_oswis_core_app_user_register_root:
     controller: oswis_org_oswis_core.app_user_controller::registerRoot
     path: "/internal/register-root"

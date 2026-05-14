@@ -11,6 +11,7 @@ namespace OswisOrg\OswisCoreBundle\Controller;
 use InvalidArgumentException;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserToken;
+use OswisOrg\OswisCoreBundle\Entity\AbstractClass\AbstractToken;
 use OswisOrg\OswisCoreBundle\Exceptions\InvalidTypeException;
 use OswisOrg\OswisCoreBundle\Exceptions\NotFoundException;
 use OswisOrg\OswisCoreBundle\Exceptions\NotImplementedException;
@@ -24,7 +25,9 @@ use OswisOrg\OswisCoreBundle\Form\PasswordChange\PasswordChangeType;
 use OswisOrg\OswisCoreBundle\Provider\OswisCoreSettingsProvider;
 use OswisOrg\OswisCoreBundle\Service\AppUserDefaultsService;
 use OswisOrg\OswisCoreBundle\Service\AppUserService;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\Form\Exception\LogicException;
 use Symfony\Component\Form\Exception\OutOfBoundsException;
 use Symfony\Component\Form\Exception\RuntimeException;
@@ -222,6 +225,54 @@ class AppUserController extends AbstractController
         return $this->render(self::TEMPLATE_MESSAGE, [
             'title'   => 'Heslo změněno!',
             'message' => 'Heslo u uživatelského účtu bylo úspěšně změněno.',
+        ]);
+    }
+
+    /**
+     * Consume a TYPE_REGISTRATION_LOGIN token: log the bound AppUser into
+     * the `main` session firewall and bounce the browser onto the
+     * registration form for the offer encoded in `rangeSlug`. Single-use,
+     * 24-hour TTL per the token entity defaults.
+     *
+     * @throws InvalidTypeException
+     * @throws NotFoundException
+     * @throws NotImplementedException
+     * @throws OswisException
+     * @throws TokenInvalidException
+     */
+    public function registrationLogin(
+        Security $security,
+        EntityManagerInterface $entityManager,
+        string $token,
+        int $appUserId,
+        string $rangeSlug,
+    ): Response {
+        try {
+            $appUserToken = $this->appUserService->getVerifiedToken($token, $appUserId);
+            if (AbstractToken::TYPE_REGISTRATION_LOGIN !== $appUserToken->getType()) {
+                throw new TokenInvalidException('Tento odkaz neslouží k přihlášení k registraci.');
+            }
+            $appUserToken->use();
+            $appUser = $appUserToken->getAppUser();
+            if (!$appUser instanceof AppUser) {
+                throw new UserNotFoundException();
+            }
+            $entityManager->flush();
+        } catch (TokenInvalidException|UserNotFoundException) {
+            // Don't let TokenInvalidException (HTTP 403) bubble — Symfony's
+            // access listener would redirect to /web_admin/login, which is
+            // wrong context for a regular visitor whose magic-link expired.
+            return $this->render(self::TEMPLATE_MESSAGE, [
+                'title'   => 'Odkaz již není platný',
+                'message' => 'Tento odkaz pro pokračování v přihlášce už vypršel, byl použit, '
+                             .'nebo není platný. Zkus prosím odeslat přihlašovací formulář znovu '
+                             .'— pošleme Ti nový odkaz.',
+            ]);
+        }
+        $security->login($appUser, firewallName: 'main');
+
+        return $this->redirectToRoute('oswis_org_oswis_calendar_web_registration', [
+            'rangeSlug' => $rangeSlug,
         ]);
     }
 

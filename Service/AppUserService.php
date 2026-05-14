@@ -24,6 +24,10 @@ use OswisOrg\OswisCoreBundle\Exceptions\UserNotUniqueException;
 use OswisOrg\OswisCoreBundle\Repository\AppUserRepository;
 use OswisOrg\OswisCoreBundle\Utils\StringUtils;
 use Psr\Log\LoggerInterface;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Address;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 use function random_int;
@@ -34,6 +38,7 @@ class AppUserService
     public const PASSWORD_CHANGE_REQUEST = 'password-change-request';
     public const ACTIVATION              = 'activation';
     public const ACTIVATION_REQUEST      = 'activation-request';
+    public const REGISTRATION_LOGIN      = 'registration-login';
 
     public const ALLOWED_TYPES
         = [
@@ -41,6 +46,7 @@ class AppUserService
             self::PASSWORD_CHANGE_REQUEST,
             self::ACTIVATION,
             self::ACTIVATION_REQUEST,
+            self::REGISTRATION_LOGIN,
         ];
 
     public function __construct(
@@ -51,6 +57,7 @@ class AppUserService
         private readonly AppUserMailService $appUserMailService,
         private readonly AppUserTypeService $appUserTypeService,
         private readonly AppUserRepository $appUserRepository,
+        private readonly MailerInterface $mailer,
     ) {
     }
 
@@ -111,6 +118,53 @@ class AppUserService
                                  .$exception->getMessage());
             throw $exception;
         }
+    }
+
+    /**
+     * Send a one-shot magic-link email that, when clicked, logs the user in
+     * and bounces them onto the registration form for the given offer.
+     *
+     * Used when a public registration submission collides with an existing
+     * AppUser (returning participant). Bypasses the DB-driven mail-category
+     * dispatch on purpose: this is a system-level flow with a fixed
+     * template, not an admin-customisable transactional mail.
+     *
+     * @throws InvalidTypeException
+     * @throws TransportExceptionInterface
+     */
+    public function sendRegistrationLoginLink(
+        AppUser $appUser,
+        string $rangeSlug,
+        bool $formal = false,
+    ): void {
+        $appUserToken = $this->appUserTokenService->create(
+            $appUser,
+            AbstractToken::TYPE_REGISTRATION_LOGIN,
+            false,
+        );
+        $this->em->persist($appUser);
+        $this->em->flush();
+
+        $recipient = (string) $appUser->getEmail();
+        $email = (new TemplatedEmail())
+            ->to(new Address($recipient, $appUser->getFullName() ?? $recipient))
+            ->subject('Pokračování v přihlášce na akci')
+            ->htmlTemplate('@OswisOrgOswisCore/e-mail/pages/registration-login.html.twig')
+            ->context([
+                'appUser'      => $appUser,
+                'appUserToken' => $appUserToken,
+                'rangeSlug'    => $rangeSlug,
+                // Explicit formal flag — AppUser entity has no `formal` field,
+                // so the parent app-user.html.twig template falls back to
+                // formal "Vy" by default. The caller knows the registration
+                // context (per ParticipantCategory) and passes the right tone.
+                'f'            => $formal,
+            ]);
+        $this->mailer->send($email);
+
+        $this->logger->info(
+            "Sent registration-login link to user ".$appUser->getId()." for range $rangeSlug.",
+        );
     }
 
     /**

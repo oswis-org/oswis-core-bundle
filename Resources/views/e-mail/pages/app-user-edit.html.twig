@@ -14,51 +14,47 @@
     {% set propertyName2 = 'Nové heslo' %}
 {% endif %}
 
-{% block content_inner %}
+{% block html_title %}{{ email.subject|default('Změna v uživatelském účtu') }}{% endblock %}
 
+{% block content_outer %}
     {% if userEdit|default %}
-
-        <p>
+        <mj-text>
             U {{ f ? 'Vašeho' : 'Tvého' }} uživatelského účtu v aplikaci
             <b>{{ oswis.app.name|default }}</b>
             došlo ke změně{{ propertyName }}.
-        </p>
-
+        </mj-text>
     {% else %}
-
         {% set tokenUrl = oswis.app.portalUrl
             ~ '/authentication/user-edit?user_edit_token=' ~ userEditRequest.token|default
             ~ '&user_edit_type=' ~ userEditRequest.type.value|default
             ~ '&user_edit_identifier=' ~ userEditRequest.userIdentifier|default %}
 
-        <p>
+        <mj-text>
             U {{ f ? 'Vašeho' : 'Tvého' }} uživatelského účtu v aplikaci
             <b>{{ oswis.app.name|default }}</b>
             byl zaznamenán požadavek na změnu{{ propertyName }}.
-        </p>
+        </mj-text>
 
         {% if tokenUrl|default %}
-            <p>
-                {{ propertyName2 }} nastaví{{ f ? 'te' : 'š' }} na adrese:<br>
-                <a href="{{ tokenUrl }}"
-                   class="token-box"
-                   title="Odkaz pro nastavení {{ propertyName }}"
-                   target="_blank">
-                    <small>{{ tokenUrl }}</small>
-                </a>
-                {% if appUserToken.validHours|default %}
-                    <br><small>Odkaz je platný {{ appUserToken.validHours }} hodin od vygenerování.</small>
-                {% endif %}
-            </p>
+            <mj-button href="{{ tokenUrl }}" background-color="#006FAD" color="#ffffff" font-weight="700" font-size="16px" inner-padding="14px 24px" border-radius="4px">
+                {{ propertyName2|default('Pokračovat') }}
+            </mj-button>
+            <mj-text font-size="11px" color="#666666">
+                Pokud tlačítko nefunguje, zkopíruj{{ f ? 'te' : '' }} si tuto adresu do prohlížeče:<br>
+                <a href="{{ tokenUrl }}" style="color:#006FAD; word-break:break-all;">{{ tokenUrl }}</a>
+            </mj-text>
+            {% if appUserToken.validHours|default %}
+                <mj-text font-size="11px" color="#888888">
+                    Odkaz je platný {{ appUserToken.validHours }} hodin od vygenerování.
+                </mj-text>
+            {% endif %}
         {% else %}
-            <p>
-                Odkaz pro změnu hesla se z neočekávaných důvodů nepodařilo vygenerovat.<br>
-                <small>Kontaktuj{{ f ? 'te' : '' }} nás, prosím, pro vyřešení situace.</small>
-            </p>
+            <mj-text>
+                Odkaz pro nastavení{{ propertyName }} se z neočekávaných důvodů nepodařilo vygenerovat.
+            </mj-text>
+            <mj-text font-size="11px" color="#888888">
+                Kontaktuj{{ f ? 'te' : '' }} nás, prosím, pro vyřešení situace.
+            </mj-text>
         {% endif %}
-
     {% endif %}
-
 {% endblock %}
-
-

@@ -1,132 +1,117 @@
+{# Root base for all OSWIS e-mail templates.
+
+Child templates override blocks (content_header_inner / content_inner /
+content_footer_inner / message_message_inner / etc.) and the parent compiles
+the result via the `mjml_to_html` Twig filter (Node `mjml` CLI behind a cache).
+
+The set-statements below mirror the legacy inky version: leaf templates and
+the calling PHP context can pre-seed `f` (formal vs informal Czech),
+`a` (czech gender suffix), `salName` (vocative salutation), and the parent
+falls back to whatever is reachable on the bound `contact` / `appUser`.
+#}
 {% set f = f is defined ? f : (contact.formal|default(appUser.formal|default(true))) %}
 {% set a = a is defined ? a : (contact.czechSuffixA|default(appUser.czechSuffixA|default(''))) %}
 {% set salName = salutationName|default(contact.salutationName|default(appUser.salutationName|default)) %}
-{# {% set logo_src = logo is defined and logo ? logo : absolute_url(asset('@OswisOrgOswisCoreBundle/Resources/public/logo.png')) %} #}
 
-{% apply inky_to_html|inline_css(source('@OswisOrgOswisCore/e-mail/styles/foundation-emails.css.twig' )) %}
-    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-    <html xmlns="http://www.w3.org/1999/xhtml" lang='{% block html_lang %}cs-CZ{% endblock %}' dir="ltr">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <title>{% block html_title %}{{ email.subject|default('Zpráva z OSWIS (One Simple Web IS)') }}{% endblock %}</title>
-        <meta name='DC.Language' content='{{ block('html_lang') }}'>
-        <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name='format-detection' content='telephone=yes'>
-        <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0'/>
-        <meta name='author'
-              content='{% block meta_author %}{{ author|default(oswis.app.author|default('Jakub Zak (https://www.jakubzak.cz)')) }}{% endblock meta_author %}'>
-        <meta name='copyright'
-              content='{% block meta_copyright %}{{ copyright|default(oswis.app.copyright|default('Jakub Zak (https://www.jakubzak.cz)')) }}{% endblock meta_copyright %}'>
-        <meta name='generator' content='{% block meta_generator %}OSWIS (One Simple Web IS, https://www.owsis.org){% endblock meta_generator %}'>
-        <meta name="description"
-              content="{% block html_description %}{{ description|default(default_description|default(oswis.web.description)) }}{% endblock html_description %}">
-        <meta name='Designer' content='{% block meta_designer %}{{ designer|default('Jakub Zak (https://jakubzak.cz)') }}{% endblock meta_designer %}'>
-        {% block meta_revisit_after_outer %}
-            <meta name='Revisit-After' content='{% block meta_revisit_after %}{{ revisit_after|default('1 day') }}{% endblock meta_revisit_after %}'>
-        {% endblock meta_revisit_after_outer %}
-        {% block html_meta_rss %}
-            <link rel="alternate" type="application/rss+xml" href="{{ path('oswis_org_oswis_core_rss_xml') }}" title="RSS {{ oswis.web.name }}">
-        {% endblock html_meta_rss %}
-        {% block meta_geo %}
-            <meta name='geo.position' content='{% block meta_geo_position %}{{ block('meta_geo_x') }},{{ block('meta_geo_y') }}{% endblock %}'>
-            <meta name='ICBM' content='{{ block('meta_geo_position') }}'>
-        {% endblock meta_geo %}
-        {% block meta_tags_app %}
-            <meta name="application-name" content="{% block meta_app_name %}{{ oswis.app.name|default(block('html_title')) }}{% endblock %}">
-            <meta name="apple-mobile-web-app-title" content="{% block meta_app_title_apple %}{{ block('meta_app_name') }}{% endblock %}">
-        {% endblock meta_tags_app %}
-        {% block meta_tags_color %}
-            <meta name="theme-color" content="{% block meta_theme_color %}{{ oswis.web.color|default('#3498d0') }}{% endblock %}">
-            <meta name="msapplication-TileColor" content="{% block meta_tile_color %}{{ block('meta_theme_color') }}{% endblock %}">
-        {% endblock meta_tags_color %}
-        {% block meta_tags_icons %}
-            <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/images/icons/apple-touch-icon.png') }}">
-            <link rel="icon" type="image/x-icon" href="{{ asset('assets/images/icons/favicon.ico') }}">
-            <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/images/icons/favicon-32x32.png') }}">
-            <link rel="icon" type="image/png" sizes="194x194" href="{{ asset('assets/images/icons/favicon-194x194.png') }}">
-            <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('assets/images/icons/android-chrome-192x192.png') }}">
-            <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/images/icons/favicon-16x16.png') }}">
-            <link rel="mask-icon" href="{{ asset('assets/images/icons/safari-pinned-tab.svg') }}" color="{{ block('meta_theme_color') }}">
-            <link rel="shortcut icon" href="{{ asset('assets/images/icons/favicon.ico') }}">
-            <meta name="msapplication-TileImage" content="{{ asset('assets/images/icons/mstile-144x144.png') }}">
-        {% endblock meta_tags_icons %}
-        {% block meta_og %}
-            <meta property="og:site_name" content="{{ block('meta_app_name') }}">
-            <meta property="og:title" content="{{ block('html_title') }}">
-            <meta property="og:description" content="{{ block('html_description') }}">
-            <meta property="og:locale" content="{{ block('html_lang') }}">
-            <meta property="og:type" content="{% block og_type %}{{ og_type|default('website') }}{% endblock %}">
-            {% block meta_og_image %}
-            {% endblock meta_og_image %}
-            {% block meta_og_twitter %}
-                <meta name="twitter:card" content="summary">
-                <meta name="twitter:site" content="{{ block('meta_app_name') }}">
-                <meta name="twitter:creator" content="{{ block('meta_author') }}">
-            {% endblock meta_og_twitter %}
-            {% block meta_og_geo %}
-                <meta property="og:latitude" content="{% block meta_geo_x %}{{ geo_lat|default(oswis.web.geo_x) }}{% endblock %}"/>
-                <meta property="og:longitude" content="{% block meta_geo_y %}{{ geo_lon|default(oswis.web.geo_y) }}{% endblock %}"/>
-            {% endblock meta_og_geo %}
-            {% block meta_og_additional %}{% endblock meta_og_additional %}
-        {% endblock meta_og %}
-    </head>
+{% apply mjml_to_html %}
+<mjml>
+    <mj-head>
+        <mj-title>{% block html_title %}{{ email.subject|default('Zpráva z ' ~ oswis.app.name|default('OSWIS')) }}{% endblock %}</mj-title>
+        <mj-preview>{% block html_preview %}{{ block('html_title') }}{% endblock %}</mj-preview>
+        <mj-attributes>
+            <mj-all font-family="Ubuntu, Helvetica, Arial, sans-serif" />
+            <mj-text font-size="14px" line-height="1.5" color="#103010" padding="10px 20px" />
+            <mj-section padding="0" />
+            <mj-button background-color="#006FAD" color="#ffffff" font-weight="700" border-radius="4px" />
+        </mj-attributes>
+        <mj-style inline="inline">
+            a { text-decoration: none; }
+            a:hover { text-decoration: underline; }
+            h2, h3, h4 { color: #006FAD; font-weight: bold; margin-top: 0.8em; margin-bottom: 0.4em; }
+            h2 { font-size: 1.7em; }
+            h3 { font-size: 1.45em; }
+            h4 { font-size: 1.3em; }
+            small { color: #606060; }
+            .warning { color: red; font-weight: bold; }
+            .error-box {
+                display: block; width: 100%; color: red; border: 2px solid red;
+                background-color: #f08080; padding: 0.5em 1em; margin: 0.5em 0;
+            }
+            .token-box {
+                display: block; width: 100%; text-align: center;
+                border: 1px solid lightgrey; background-color: rgba(0, 111, 173, 0.1);
+                padding: 0.5em 1em; margin-top: 0.3em; word-break: break-all;
+                font-family: monospace; font-size: 0.85em;
+            }
+        </mj-style>
+    </mj-head>
 
-    {% block html_inner %}
-        <style type='text/css'>
-            {% include '@OswisOrgOswisCore/e-mail/styles/message.css.twig' %}
-        </style>
-        {% block additional_css %}{% endblock additional_css %}
+    <mj-body background-color="#f5f5f5">
+        {% block header_outer %}
+            <mj-section background-color="#ffffff" padding="20px 0">
+                {% block header_inner %}
+                    <mj-column>
+                        {% block header_logo %}
+                            {% if logo_disabled is defined and logo_disabled %}
+                            {% elseif logo_src is defined and logo_src %}
+                                <mj-image src="{{ logo_src }}" alt="{{ oswis.app.name }}" width="200px" />
+                            {% elseif oswis.app.logo|default %}
+                                <mj-text align="center" font-size="22px" font-weight="700" color="#006FAD">{{ oswis.app.name|default('OSWIS') }}</mj-text>
+                            {% else %}
+                                <mj-text align="center" font-size="22px" font-weight="700" color="#006FAD">{{ oswis.app.name|default('OSWIS') }}</mj-text>
+                            {% endif %}
+                        {% endblock header_logo %}
+                    </mj-column>
+                {% endblock header_inner %}
+            </mj-section>
+        {% endblock header_outer %}
 
-        <body>
-        {% block body_outer %}
-            <container class="header">
-                {% block header_outer %}
-                    {% include '@OswisOrgOswisCore/e-mail/parts/message_header.html.twig' %}
-                {% endblock header_outer %}
-            </container>
-
-            <container class="content">
+        <mj-section background-color="#ffffff">
+            <mj-column>
                 {% block content_header_outer %}
-                    <row>
-                        <columns small="12" large="12">
-                            {% block content_header_inner %}
-                                {% if f %}Dobrý den{% else %}Ahoj{% endif %}{{ salName ? ' ' ~ salName : '' }}!
-                            {% endblock content_header_inner %}
-                        </columns>
-                    </row>
+                    <mj-text>
+                        {% block content_header_inner %}
+                            {% if f %}Dobrý den{% else %}Ahoj{% endif %}{{ salName ? ' ' ~ salName : '' }}!
+                        {% endblock content_header_inner %}
+                    </mj-text>
                 {% endblock content_header_outer %}
-                {% block content_outer %}
-                    <row>
-                        <columns small="12" large="12">
-                            {% block content_inner %}
-                                <div class="error-box">
-                                    <p>Nastala chyba při odesílání zprávy a její obsah nebyl načten.</p>
-                                    <p>Kontaktuj{{ f ? 'te' : '' }} nás, prosím, ať můžeme nastalou situaci co nejrychleji vyřešit.</p>
-                                    <p style="color:grey;font-weight:normal;">Požadovaná šablona: {{ type|default('neznámá') }}</p>
-                                </div>
-                            {% endblock content_inner %}
-                        </columns>
-                    </row>
-                {% endblock content_outer %}
-                {% block content_footer_outer %}
-                    <row>
-                        <columns small="12" large="12">
-                            {% block content_footer_inner %}
-                                V případě nejasností nebo problémů nás neváhej{{ f ? 'te' : '' }} kontaktovat.
-                            {% endblock content_footer_inner %}
-                        </columns>
-                    </row>
-                {% endblock content_footer_outer %}
-            </container>
 
-            <container class="footer">
-                {% block footer_outer %}
-                    {% include '@OswisOrgOswisCore/e-mail/parts/message_footer.html.twig' %}
-                {% endblock footer_outer %}
-            </container>
-        {% endblock body_outer %}
-        </body>
-    {% endblock html_inner %}
-    </html>
+                {% block content_outer %}
+                    <mj-text>
+                        {% block content_inner %}
+                            <div class="error-box">
+                                <p>Nastala chyba při odesílání zprávy a její obsah nebyl načten.</p>
+                                <p>Kontaktuj{{ f ? 'te' : '' }} nás, prosím, ať můžeme nastalou situaci co nejrychleji vyřešit.</p>
+                                <p style="color:grey;font-weight:normal;">Požadovaná šablona: {{ type|default('neznámá') }}</p>
+                            </div>
+                        {% endblock content_inner %}
+                    </mj-text>
+                {% endblock content_outer %}
+
+                {% block content_footer_outer %}
+                    <mj-text>
+                        {% block content_footer_inner %}
+                            V případě nejasností nebo problémů nás neváhej{{ f ? 'te' : '' }} kontaktovat.
+                        {% endblock content_footer_inner %}
+                    </mj-text>
+                {% endblock content_footer_outer %}
+            </mj-column>
+        </mj-section>
+
+        {% block footer_outer %}
+            <mj-section background-color="#ffffff" padding="0 20px 20px">
+                <mj-column>
+                    <mj-divider border-color="#dddddd" border-width="1px" padding="10px 0" />
+                    {% block footer_inner %}
+                        <mj-text font-size="11px" color="#888888" align="center">
+                            Tento automatický e-mail jsi obdržel{{ a }}, protože se s touto adresou někdo zaregistroval
+                            v aplikaci <a href="{{ oswis.app.url|default('#') }}" title="{{ oswis.app.name_long|default(oswis.app.name|default('')) }}">{{ oswis.app.name_short|default(oswis.app.name|default('OSWIS')) }}</a>.
+                            Pokud {{ f ? 'jste' : 'jsi' }} to nebyl{{ a }} {{ f ? 'Vy' : 'ty' }}, informuj{{ f ? 'te' : '' }} nás, prosím.
+                        </mj-text>
+                    {% endblock footer_inner %}
+                </mj-column>
+            </mj-section>
+        {% endblock footer_outer %}
+    </mj-body>
+</mjml>
 {% endapply %}

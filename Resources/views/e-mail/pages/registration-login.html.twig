@@ -1,0 +1,43 @@
+{% extends '@OswisOrgOswisCore/e-mail/pages/app-user.html.twig' %}
+
+{% block html_title %}{{ email.subject|default('Pokračování v přihlášce') }}{% endblock %}
+
+{% block content_outer %}
+    {# Override tokenUrl from app-user.html.twig's top-level set (which points at
+       the password-change handler) with the magic-link variant carrying the
+       target rangeSlug. Block-local scope, so the parent's global tokenUrl
+       isn't disturbed for any other rendering. #}
+    {% set tokenUrl = appUserToken.appUser|default and rangeSlug|default
+        ? absolute_url(path('oswis_org_oswis_core_app_user_registration_login',
+            {'token': appUserToken.token, 'appUserId': appUserToken.appUser.id, 'rangeSlug': rangeSlug}))
+        : null %}
+
+    <mj-text>
+        zaregistroval{{ a }} ses na naši akci a my jsme zjistili, že u nás
+        z dřívějška už uživatelský účet máš (pod stejným e-mailem).
+        Aby{{ f ? 'ste' : 's' }} nemusel{{ a }} zadávat své údaje znovu,
+        klikni{{ f ? 'te' : '' }} na tlačítko níže — bezpečně {{ f ? 'Vás' : 'Tě' }}
+        přihlásíme a vrátíme na formulář s předvyplněnými údaji o sobě, kde stačí vyplnit
+        už jen detaily k aktuální akci.
+    </mj-text>
+
+    {% if tokenUrl %}
+        <mj-button href="{{ tokenUrl }}" background-color="#006FAD" color="#ffffff" font-weight="700" font-size="16px" inner-padding="14px 24px" border-radius="4px">
+            Pokračovat v přihlášce
+        </mj-button>
+        <mj-text font-size="11px" color="#666666">
+            Pokud tlačítko nefunguje, zkopíruj{{ f ? 'te' : '' }} si tuto adresu do prohlížeče:<br>
+            <a href="{{ tokenUrl }}" style="color:#006FAD; word-break:break-all;">{{ tokenUrl }}</a>
+        </mj-text>
+        <mj-text font-size="11px" color="#888888">
+            Odkaz je jednorázový a platí {{ appUserToken.validHours|default(24) }} hodin.
+            Pokud {{ f ? 'jste' : 'jsi' }} tuto akci nevyvolal{{ a }} {{ f ? 'sami' : 'sám' }},
+            tento e-mail prosím ignoruj{{ f ? 'te' : '' }} — nikdo se k {{ f ? 'Vašemu' : 'Tvému' }} účtu nedostal.
+        </mj-text>
+    {% else %}
+        <mj-text>
+            Odkaz pro pokračování v přihlášce se z neočekávaných důvodů nepodařilo
+            vygenerovat. Kontaktuj{{ f ? 'te' : '' }} nás, prosím, pro vyřešení situace.
+        </mj-text>
+    {% endif %}
+{% endblock %}

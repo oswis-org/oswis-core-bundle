@@ -367,6 +367,18 @@ services:
             - '@twig'
         tags:
             - { name: twig.extension }
+    oswis_org_oswis_core.twig.mjml_extension:
+        class: OswisOrg\OswisCoreBundle\Twig\Extension\MjmlExtension
+        public: true
+        arguments:
+            - '@cache.app'
+            - '%kernel.project_dir%'
+            - '%env(default::OSWIS_MJML_BINARY)%'
+        tags:
+            - { name: twig.extension }
+    OswisOrg\OswisCoreBundle\Twig\Extension\MjmlExtension:
+        alias: oswis_org_oswis_core.twig.mjml_extension
+        public: true
     oswis_org_oswis_core.twig.database_loader:
         class: OswisOrg\OswisCoreBundle\Twig\Loader\DatabaseLoader
         public: true
