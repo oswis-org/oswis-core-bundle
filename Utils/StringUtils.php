@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Utils;
 
-use Exception;
 use Symfony\Component\String\Slugger\AsciiSlugger;
 use function chr;
 use function ord;
@@ -180,46 +179,28 @@ class StringUtils
 
     public static function generatePassword(bool $addSpecialChar = false): string
     {
-        $numbers = self::randomString('0', '9', 3);
-        $lowerCase = self::randomString('a', 'z', 3);
-        $upperCase = self::randomString('A', 'Z', 3);
-        $specialChars = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '.', ','];
-        $password = $numbers.$lowerCase.$upperCase;
+        $chars = [];
+        foreach ([['0', '9'], ['a', 'z'], ['A', 'Z']] as [$from, $to]) {
+            for ($i = 0; $i < 3; $i++) {
+                $chars[] = chr(random_int(ord($from), ord($to)));
+            }
+        }
         if ($addSpecialChar) {
-            $password .= $specialChars[array_rand($specialChars)];
+            $specialChars = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '.', ','];
+            $chars[] = $specialChars[random_int(0, count($specialChars) - 1)];
+        }
+        for ($i = count($chars) - 1; $i > 0; $i--) {
+            $j = random_int(0, $i);
+            [$chars[$i], $chars[$j]] = [$chars[$j], $chars[$i]];
         }
 
-        return str_shuffle($password);
-    }
-
-    /**
-     * @param  string  $from  Start char
-     * @param  string  $to  End char
-     * @param  int  $length  Length
-     *
-     * @return string Random string from required chars
-     */
-    private static function randomString(string $from, string $to, int $length): ?string
-    {
-        $str = '';
-        if ($length > 1) {
-            $str = self::randomString($from, $to, --$length);
-        }
-        try {
-            /* @phpstan-ignore-next-line */
-            return $str.chr(random_int(ord($from), ord($to)));
-        } catch (Exception $e) {
-            return null;
-        }
+        return implode('', $chars);
     }
 
     public static function generateToken(?int $level = self::DEFAULT_TOKEN_LEVEL): string
     {
-        $level ??= self::DEFAULT_TOKEN_LEVEL;
-        $numbers = self::randomString('0', '9', $level);
-        $lowerCase = self::randomString('a', 'z', $level);
-        $upperCase = self::randomString('A', 'Z', $level);
+        $level = max(1, $level ?? self::DEFAULT_TOKEN_LEVEL);
 
-        return str_shuffle($numbers.$lowerCase.$upperCase);
+        return bin2hex(random_bytes($level * 2));
     }
 }

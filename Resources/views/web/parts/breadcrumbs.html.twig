@@ -2,28 +2,26 @@
     <div class="row">
         <nav class="col-12 mt-5 mb-0 small bg-light" aria-label="breadcrumb">
             <ol class="breadcrumb mb-0" itemscope itemtype="https://schema.org/BreadcrumbList">
-                {% apply spaceless %}
-                    {% block breadcrumb_homapage %}
+                {% block breadcrumb_homapage %}
+                    {% include '@OswisOrgOswisCore/web/parts/breadcrumb-item.html.twig'
+                        with {'b_url': path('oswis_org_oswis_core_homepage_action'), 'b_title': oswis.web.name} %}
+                {% endblock breadcrumb_homapage %}
+                {% block breadcrumb_loop %}
+                    {% for b in breadcrumbs|default %}
                         {% include '@OswisOrgOswisCore/web/parts/breadcrumb-item.html.twig'
-                            with {'b_url': path('oswis_org_oswis_core_homepage_action'), 'b_title': oswis.web.name} %}
-                    {% endblock breadcrumb_homapage %}
-                    {% block breadcrumb_loop %}
-                        {% for b in breadcrumbs|default %}
-                            {% include '@OswisOrgOswisCore/web/parts/breadcrumb-item.html.twig'
-                                with {'b_url': b.url, 'b_title': b.title} %}
-                        {% endfor %}
-                    {% endblock breadcrumb_loop %}
-                    {% block breadcrumb_additional %}
-                    {% endblock breadcrumb_additional %}
-                    {% block breadcrumb_last %}
-                        {% include '@OswisOrgOswisCore/web/parts/breadcrumb-item.html.twig'
-                            with {
-                            'b_url': path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')),
-                            'b_title': block('html_title') is defined ? block('html_title') : title|default(default_title)|default,
-                            'b_active': true
-                        } %}
-                    {% endblock breadcrumb_last %}
-                {% endapply %}
+                            with {'b_url': b.url, 'b_title': b.title} %}
+                    {% endfor %}
+                {% endblock breadcrumb_loop %}
+                {% block breadcrumb_additional %}
+                {% endblock breadcrumb_additional %}
+                {% block breadcrumb_last %}
+                    {% include '@OswisOrgOswisCore/web/parts/breadcrumb-item.html.twig'
+                        with {
+                        'b_url': path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')),
+                        'b_title': block('html_title') is defined ? block('html_title') : title|default(default_title)|default,
+                        'b_active': true
+                    } %}
+                {% endblock breadcrumb_last %}
             </ol>
         </nav>
     </div>

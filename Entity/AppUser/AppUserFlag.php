@@ -18,7 +18,9 @@ use OswisOrg\OswisCoreBundle\Traits\Common\NameableTrait;
  * Flag for app user.
  * @author Jakub Zak <mail@jakubzak.eu>
  */
-#[ApiResource]
+#[ApiResource(
+    security: "is_granted('ROLE_ADMIN')",
+)]
 #[Entity]
 #[Table(name: 'core_app_user_flag')]
 #[Cache(usage: 'NONSTRICT_READ_WRITE', region: 'core_app_user')]
