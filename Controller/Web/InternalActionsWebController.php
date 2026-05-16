@@ -9,6 +9,7 @@ namespace OswisOrg\OswisCoreBundle\Controller\Web;
 
 use OswisOrg\OswisCoreBundle\Provider\OswisCoreSettingsProvider;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\Filesystem\Exception\IOException;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\IpUtils;
@@ -18,11 +19,11 @@ use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 class InternalActionsWebController extends AbstractController
 {
-    protected OswisCoreSettingsProvider $coreSettings;
-
-    public function __construct(OswisCoreSettingsProvider $coreSettings)
-    {
-        $this->coreSettings = $coreSettings;
+    public function __construct(
+        protected OswisCoreSettingsProvider $coreSettings,
+        #[Autowire('%kernel.project_dir%')]
+        protected string $projectDir,
+    ) {
     }
 
     /**
@@ -36,7 +37,7 @@ class InternalActionsWebController extends AbstractController
     {
         $this->checkIP($request);
         $filesystem = new Filesystem();
-        $filesystem->remove('../var/cache');
+        $filesystem->remove($this->projectDir.'/var/cache');
 
         return $this->render('@OswisOrgOswisCore/web/pages/message.html.twig',
             ['title' => 'OK', 'message' => 'Akce úspěšně provedena.']);

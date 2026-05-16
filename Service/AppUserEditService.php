@@ -38,7 +38,6 @@ class AppUserEditService
      */
     public function assignRequest(AppUserEdit $userEdit): void
     {
-        $this->logger->alert('assignRequest()');
         $editRequest = $this->em->getRepository(AppUserEditRequest::class)->findOneBy([
             'token'          => $userEdit->getToken(),
             'userIdentifier' => $userEdit->getUserIdentifier(),

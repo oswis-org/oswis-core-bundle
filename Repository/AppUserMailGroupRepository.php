@@ -6,8 +6,8 @@ namespace OswisOrg\OswisCoreBundle\Repository;
 
 use DateTime;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\DBAL\Exception as DBALException;
 use Doctrine\Persistence\ManagerRegistry;
-use Exception;
 use LogicException;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser;
 use OswisOrg\OswisCoreBundle\Entity\AppUserMail\AppUserMailGroup;
@@ -43,7 +43,7 @@ class AppUserMailGroupRepository extends ServiceEntityRepository
                     }
                 }
             }
-        } catch (Exception) {
+        } catch (DBALException) {
         }
 
         return null;
