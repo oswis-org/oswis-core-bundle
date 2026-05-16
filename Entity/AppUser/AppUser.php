@@ -163,17 +163,17 @@ class AppUser extends AbstractAppUser implements PdfExportableInterface, Passwor
     /**
      * Can user edit this user?
      */
-    public function canEdit(self $user): bool
+    public function canEdit(?self $user = null): bool
     {
-        return $this->canRead($user) && $user === $this;
+        return $this->canRead($user);
     }
 
     /**
      * Can user read this user?
      */
-    public function canRead(self $user): bool
+    public function canRead(?self $user = null): bool
     {
-        return $user === $this;
+        return null !== $user && $user->getId() === $this->getId();
     }
 
     /**
