@@ -278,6 +278,7 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
             ],
             'defaults' => [
                 'pagination_items_per_page' => 5000,
+                'pagination_maximum_items_per_page' => 10000,
                 'pagination_client_enabled' => true,
                 'pagination_client_items_per_page' => true,
                 'extra_properties' => [
