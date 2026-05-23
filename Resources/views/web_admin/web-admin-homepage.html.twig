@@ -61,6 +61,19 @@
                             <a href="{{ path('oswis_org_oswis_core_internal_action_clear_cache') }}">Smazat cache</a>
                         </li>
                     </ul>
+
+                    <h2>Platby</h2>
+                    <ul>
+                        <li>
+                            <a href="{{ path('oswis_org_oswis_calendar_web_admin_participant_payments_list', { filter: 'orphaned' }) }}">Nepřiřazené platby</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('oswis_org_oswis_calendar_web_admin_participant_payments_list', { filter: 'all' }) }}">Přehled plateb</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('oswis_org_oswis_calendar_web_admin_participant_payments_import') }}">Import plateb (CSV)</a>
+                        </li>
+                    </ul>
                 {% endif %}
 
                 {% block additional_actions %}
