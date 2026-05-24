@@ -1,6 +1,8 @@
-<nav id="website-main-menu" class="website-main-menu" itemscope itemtype="https://schema.org/SiteNavigationElement">
+<nav id="website-main-menu" class="website-main-menu" itemscope itemtype="https://schema.org/SiteNavigationElement"
+     style="display: flex; flex-wrap: wrap; gap: .25rem 1rem; align-items: center;">
     {% for menuItem in items|filter(item => 0 == item.requiredRole|default|length or (app.user|default and app.user.role(item.requiredRole)))|sort((a, b) => b.priority <=> a.priority) %}
-        <a href="{{ menuItem.path }}" itemprop="url" {{ menuItem.newPage|default ? "target='_blank'" : '' }}>
+        <a href="{{ menuItem.path }}" itemprop="url" {{ menuItem.newPage|default ? "target='_blank'" : '' }}
+           style="white-space: nowrap;">
             <span itemprop="name">{{ menuItem.title }}</span>
         </a>
     {% endfor %}
