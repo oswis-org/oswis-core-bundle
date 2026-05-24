@@ -74,6 +74,35 @@
                             <a href="{{ path('oswis_org_oswis_calendar_web_admin_participant_payments_import') }}">Import plateb (CSV)</a>
                         </li>
                     </ul>
+
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <h2>Administrace přihlášek</h2>
+                        <ul>
+                            <li>
+                                <a href="{{ path('oswis_org_oswis_calendar_web_admin_bulk_reassign') }}">Hromadný přesun účastníků</a>
+                            </li>
+                        </ul>
+
+                        <h2>Komunikace</h2>
+                        <ul>
+                            <li>
+                                <a href="{{ path('oswis_org_oswis_calendar_web_admin_imap_unmatched') }}">Nezařazené e-maily (IMAP)</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('oswis_org_oswis_calendar_web_admin_mail_config') }}">Konfigurace e-mailů (šablony, skupiny, kategorie)</a>
+                            </li>
+                        </ul>
+
+                        <h2>Pokročilé</h2>
+                        <ul>
+                            <li>
+                                <a href="{{ path('app_web_admin_clone_year') }}">Klonovat ročník</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('app_web_admin_users_list') }}">Uživatelé</a>
+                            </li>
+                        </ul>
+                    {% endif %}
                 {% endif %}
 
                 {% block additional_actions %}
