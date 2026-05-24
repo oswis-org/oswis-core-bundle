@@ -93,7 +93,7 @@ class AppUser extends AbstractAppUser implements PdfExportableInterface, Passwor
 
     public const ENTITY_NAME = [1 => 'Uživatel', 11 => 'Uživatelé'];
 
-    #[ORM\OneToMany(targetEntity: AppUserFlagConnection::class, mappedBy: 'appUser', cascade: ['all'], fetch: 'EAGER')]
+    #[ORM\OneToMany(targetEntity: AppUserFlagConnection::class, mappedBy: 'appUser', cascade: ['all'])]
     #[ApiFilter(SearchFilter::class, properties: [
         "appUserFlags.id"   => "exact",
         "appUserFlags.name" => "ipartial",
