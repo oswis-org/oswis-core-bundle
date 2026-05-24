@@ -192,4 +192,27 @@ abstract class AbstractMail implements BasicInterface
     {
         $this->statusMessage = $message;
     }
+
+    /**
+     * Compute deterministic thread key from subject + recipient email.
+     *
+     * Used to group mail / phone / chat entries belonging to one conversation
+     * even when In-Reply-To headers are missing or broken. Stable across re-sends
+     * because we strip Re:/Fwd: prefix and lowercase.
+     */
+    public static function computeThreadKey(?string $subject, ?string $email): ?string
+    {
+        if (null === $email || '' === trim($email)) {
+            return null;
+        }
+        $rawSubject = trim($subject ?? '');
+        $normalizedSubject = preg_replace('/^(re|fwd?|fw|odp|odpoved|odpověď)\s*:\s*/iu', '', $rawSubject);
+        if (!is_string($normalizedSubject) || '' === trim($normalizedSubject)) {
+            $normalizedSubject = '(no subject)';
+        }
+        $normalizedSubject = mb_strtolower(trim($normalizedSubject));
+        $normalizedEmail = mb_strtolower(trim($email));
+
+        return sha1($normalizedSubject.'|'.$normalizedEmail);
+    }
 }
