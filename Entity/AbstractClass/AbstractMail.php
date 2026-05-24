@@ -12,7 +12,6 @@ use DateTime;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping\Column;
 use LogicException;
-use OswisOrg\OswisCoreBundle\Entity\AppUserMail\AppUserMail;
 use OswisOrg\OswisCoreBundle\Exceptions\InvalidTypeException;
 use OswisOrg\OswisCoreBundle\Exceptions\OswisException;
 use OswisOrg\OswisCoreBundle\Interfaces\Common\BasicInterface;
@@ -121,7 +120,7 @@ abstract class AbstractMail implements BasicInterface
         }
         $headers = $templatedMail->getHeaders();
         if (($previousMail = $sortedPastMails->first() ?: null)
-            && $previousMail instanceof AppUserMail
+            && $previousMail instanceof self
             && !empty($previousMail->getMessageID())) {
             $headers->addIdHeader('In-Reply-To', $previousMail->getMessageID());
         }
