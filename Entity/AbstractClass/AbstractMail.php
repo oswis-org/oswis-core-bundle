@@ -169,13 +169,21 @@ abstract class AbstractMail implements BasicInterface
         if (!empty($this->getMessageID())) {
             return;
         }
-        try {
-            if (empty($messageID)) {
-                $this->messageID = $this->templatedEmail?->generateMessageId();
-
-                return;
+        // Symfony\Mime\Message::generateMessageId() requires a From / Sender
+        // header that MailerSubscriber only attaches at send-time → it threw
+        // LogicException here, the previous code caught it and ended up
+        // storing $this->messageID = null. The DB column then stayed NULL
+        // across 20 000+ sent mails → no threading possible. Generate the
+        // ID ourselves in the standard Symfony format, bind it onto the
+        // outgoing Email's headers so the wire copy matches the DB row.
+        if (empty($messageID)) {
+            $messageID = bin2hex(random_bytes(16)).'@oswis.seznamovakup.cz';
+        }
+        if (null !== $this->templatedEmail) {
+            $headers = $this->templatedEmail->getHeaders();
+            if (!$headers->has('Message-ID')) {
+                $headers->addIdHeader('Message-ID', $messageID);
             }
-        } catch (\Symfony\Component\Mime\Exception\LogicException) {
         }
         $this->messageID = $messageID;
     }
