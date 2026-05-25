@@ -258,5 +258,4 @@ Není potřeba:
 
 ## Kontakt
 
-OSWIS vyvíjí GitHub organizace [oswis-org](https://github.com/oswis-org).
-Dotazy, demo, zájem o nasazení: [mail@jakubzak.eu](mailto:mail@jakubzak.eu).
+OSWIS vyvíjí Jakub Žák — [mail@jakubzak.eu](mailto:mail@jakubzak.eu), [github.com/oswis-org](https://github.com/oswis-org).
