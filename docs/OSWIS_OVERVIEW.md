@@ -44,18 +44,17 @@ Aktuálně běží jeden produkční deploy (Seznamovák UP).
 
 ### E-mailová komunikace
 
-- Šablonovaný systém přes Twig + MJML (MJML build přes Node CLI binary).
-- Admin editor šablon — skupiny mailů, kategorie, Twig šablony.
-- Threading podle RFC 5322: `Message-ID`, `In-Reply-To`, `References`. Maily ke konkrétní přihlášce se v Gmailu/Outlooku slepí do jednoho vlákna. Threading scope je per účastník (ne per uživatel, jinak by se ročníky slévaly).
-- IMAP fetch odchozích i příchozích mailů do databáze.
-- Communication timeline u účastníka — mail, telefon, chat v jedné chronologické ose.
-- Manuální zápisy komunikace (telefonát, osobní setkání, chat) — admin zapíše rukou.
-- Ad-hoc compose — admin píše individuální e-mail účastníkovi z přehledu, s threading.
-- `Auto-Submitted: auto-generated` (RFC 3834) pro systémové maily — brání mail-loopy s out-of-office respondery. Pro admin ad-hoc compose je hodnota `no`.
+- Šablonovaný systém přes Twig + MJML (HTML maily, které drží i v Outlooku).
+- Admin editor šablon — skupiny mailů, kategorie, vlastní Twig šablony.
+- Vlákna v poště — maily ke konkrétní přihlášce se v Gmailu / Outlooku slepí do jednoho vlákna (per účastník, ne per uživatel, takže se ročníky neslévají).
+- Historie komunikace u účastníka — chronologická osa s e-maily, telefonáty a chatem; telefonáty a chat se zapisují ručně.
+- Ad-hoc compose — admin píše individuální e-mail účastníkovi z přehledu, naváže se na existující vlákno.
 - Resend systémových mailů z adminu (s aktualizací tokenů a stavu).
+- IMAP import přijaté pošty od účastníků do timeline.
 - Auto-BCC na archivační adresu.
-- České skloňování jmen v oslovení (vokativ) přes knihovnu `bigit/vokativ`.
-- CLI příkaz pro doplnění chybějícího threading na historických mailech.
+- Detekce automatických mailů (RFC 3834) — out-of-office respondery nedělají loopy. Ad-hoc compose se naopak prezentuje jako lidská korespondence.
+- České skloňování jmen v oslovení (vokativ — „Petře" místo „Petr").
+- Strukturovaná data pro shrnutí přihlášky — JSON-LD a HTML5 microdata schema.org `EventReservation`, plus přiložený `.ics` kalendář. Příjemce má v moderních mail klientech jednoklikem „Přidat do kalendáře", konkrétní podpora závisí na klientovi.
 
 ### Adresář kontaktů
 
@@ -98,14 +97,20 @@ Aktuálně běží jeden produkční deploy (Seznamovák UP).
 - CSV (RFC 4180, UTF-8 BOM pro Excel).
 - QR kódy přes Endroid — CZ QR platba, identifikační QR.
 
-### Web (CMS-light)
+### Web a stránky
 
-- Statické stránky se slugem, rich-text obsahem.
-- Aktuality.
-- FAQ.
-- Media galerie.
-- Sitemap, robots.txt, Open Graph metadata.
-- Site web manifest a browserconfig.xml.
+- Statické stránky se slugem a rich-text obsahem, aktuality, FAQ, media galerie.
+- Hlavní menu a footer, položky lze přidávat z různých bundlů.
+- Sitemap a RSS feed — každý bundle si do nich přidává vlastní položky přes extender interfaces (`SitemapExtenderInterface`, `RssExtenderInterface`); sitemap pro vyhledávače, RSS pro čtečky (vlastní stylesheet pro hezké zobrazení v prohlížeči). Robots.txt.
+- PWA — instalovatelnost přes `site.webmanifest` (theme color, splash, jméno aplikace), `browserconfig.xml` pro Windows tiles, kompletní set ikon (favicon 16/32, Apple touch 180, Android 192, msTile, safari-pinned-tab, mask-icon).
+
+### SEO a sémantika
+
+- Kompletní HTML meta tagy — title, description, autor, copyright, generator, Dublin Core jazyk, Revisit-After, canonical URL per stránka, geo lokace (`geo.position`, `ICBM`, OG latitude/longitude).
+- Otevřený graf (Open Graph) a Twitter Card pro hezké náhledy při sdílení (title, description, image, locale, type, URL).
+- App-level meta — `application-name`, `apple-mobile-web-app-title`, `theme-color`, `msapplication-TileColor` / `TileImage` — sjednocený vzhled v prohlížečích i jako home-screen app.
+- Strukturovaná data schema.org pro vyhledávače — `Event` s datem začátku/konce, místem, organizátorem, hierarchií (`superEvent`), módem (`eventAttendanceMode`), stavem (`eventStatus`); breadcrumbs jako `BreadcrumbList`; navigace jako `SiteNavigationElement`.
+- Optimalizace načítání — preload kritických CSS/JS, DNS prefetch a preconnect pro známé externí služby (Google Tag Manager, Analytics, fonty), asynchronní fragmenty přes hinclude.
 
 ### API
 
@@ -148,25 +153,44 @@ Aktuálně běží jeden produkční deploy (Seznamovák UP).
 
 ## Architektura
 
-Backend: PHP 8.4+ (produkčně 8.5), Symfony 8.0, Doctrine ORM 3.6, API Platform 4.3.
-DB: MariaDB 10.5+ nebo PostgreSQL 13+ (aktuálně produkčně MariaDB).
-Mail: Symfony Mailer (SMTP), MJML pipeline, IMAP přes `webklex/php-imap`.
-Web admin: Twig + Webpack Encore + Bootstrap 5.
-Mobile: Ionic 8 / Angular 21, Capacitor 8 pro Android, PWA pro iOS.
-Asset upload: Vich Uploader + Liip Imagine.
-Auth: Symfony Security + Lexik JWT + Gesdinet refresh-token.
-PDF: mPDF. Excel: PhpSpreadsheet. QR: Endroid + Shoptet CZ QR Payment.
-Doctrine extensions: Gedmo (Timestampable, SoftDeleteable, Sluggable).
-Quality gate: PHPStan level `max`.
+OSWIS je rozdělen do čtyř Symfony bundlů, každý jako samostatný GitHub repozitář s vlastní historií a vlastním release cyklem:
 
-OSWIS je rozdělen do čtyř Symfony bundlů (každý samostatný repozitář):
-
-- `oswis-core-bundle` — uživatelé, autentizace, JWT, QR, PDF, mailer subscriber, framework primitives, Twig extensions.
+- `oswis-core-bundle` — uživatelé, autentizace, JWT, QR, PDF, mailer subscriber, framework primitives, Twig extensions, RSS / sitemap / menu skeleton.
 - `oswis-address-book-bundle` — kontakty, osoby, organizace, kontaktní detaily, místa.
 - `oswis-calendar-bundle` — události, účastníci, příznaky, platby, IMAP, CZ QR platba, communication module.
 - `oswis-web-bundle` — webové stránky, aktuality, FAQ, media galerie.
 
-Plus produkční aplikace `oswis-seznamovak-up` (Symfony app pro Seznamovák UP) a mobilní klient `seznamovak-up` (Ionic + Angular).
+Plus produkční aplikace `oswis-seznamovak-up` (Symfony app, která 4 bundly slepí dohromady) a mobilní klient `seznamovak-up` (Ionic + Angular).
+
+Bundly mezi sebou nejsou tight-coupled — komunikují přes extender interfaces a compiler passy. Aplikace si v `config/bundles.php` vybere, které z bundlů načte; novou položku do sitemapy, RSS feedu, menu nebo widgetu na úvodní stránce přidá libovolný bundle bez nutnosti změny core. To je hlavní mechanismus rozšíření OSWIS o vlastní funkce — `SitemapExtenderInterface`, `RssExtenderInterface`, `WebMenuExtenderInterface`, `UpdateExtenderInterface`.
+
+### Použité technologie
+
+Backend:
+
+- **PHP 8.4+** (produkčně 8.5), **Symfony 8.0**.
+- **Doctrine ORM 3.6** + **DBAL** pro databázi; rozšíření **Gedmo** pro Timestampable, SoftDeleteable, Sluggable, Loggable, Blameable.
+- **API Platform 4.3** pro REST/JSON-LD API; integrace JWT přes **Lexik JWT Authentication Bundle** + refresh tokeny přes **Gesdinet JWT Refresh Token Bundle**; CORS přes **Nelmio**.
+- **Symfony Mailer** s vlastním `MailerSubscriber` (Auto-Submitted, archiv BCC, Reply-To). **MJML** CLI pipeline pro responsivní HTML maily.
+- **webklex/php-imap** pro IMAP fetch (read-only).
+- **mPDF** pro PDF generování, **PhpSpreadsheet** pro Excel, **Endroid QR Code** + **Shoptet CzQrPayment** pro QR kódy.
+- **bigit/vokativ** (vlastní fork) pro české skloňování jmen.
+- **Vich Uploader** pro upload souborů, **Liip Imagine** pro varianty obrázků.
+- **Symfony Rate Limiter** pro login throttling.
+
+Frontend (admin web):
+
+- **Twig** šablony, **Webpack Encore** asset pipeline.
+- **Bootstrap 5**, **Stimulus** pro interaktivitu, **Symfony WebLink** pro preload hinting.
+
+Frontend (mobilní / účastnický portál):
+
+- **Ionic 8** + **Angular 21**, **Capacitor 8** pro Android build, PWA pro iOS.
+- **Leaflet** pro mapy (OpenStreetMap, MapyCz, OpenTopoMap).
+
+Databáze: **MariaDB 10.5+** nebo **PostgreSQL 13+** (aktuálně produkčně MariaDB).
+
+Quality gate: **PHPStan** level `max` napříč všemi bundly.
 
 ---
 
