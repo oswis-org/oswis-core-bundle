@@ -1,6 +1,6 @@
 # OSWIS
 
-Informační systém pro pořádání registračních akcí. Vznikl pro provoz na produkci (Seznamovák UP, Univerzita Palackého v Olomouci), kde se používá od roku 2018 pro cca 700+ účastníků ročně. Pokrývá přihlášky, platby, e-mailovou komunikaci s účastníky, evidenci kontaktů a provozní administraci.
+Informační systém pro pořádání registračních akcí. Vznikl jako následník původního IS na míru pro Seznamovák pro studenty UP (Univerzita Palackého v Olomouci) a od roku 2019 ho pro Seznamovák provozuje (cca 400+ účastníků, s organizačním týmem 500+ osob ročně). Pokrývá přihlášky, platby, e-mailovou komunikaci s účastníky, evidenci kontaktů a provozní administraci.
 
 Kód je open source, sebehostitelný, bez závislostí na placených SaaS službách. Stack: PHP 8.4+ / Symfony 8 / Doctrine ORM 3.6 / API Platform 4 na backendu, Ionic 8 / Angular 21 pro mobilní aplikaci.
 
