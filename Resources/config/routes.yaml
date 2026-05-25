@@ -41,6 +41,16 @@ oswis_org_oswis_core_app_user_password_change_request:
     controller: oswis_org_oswis_core.app_user_controller::passwordChangeRequest
     path: "/uzivatel/zmena-hesla"
 
+### W3C "A Well-Known URL for Changing Passwords" (https://w3c.github.io/webappsec-change-password-url/).
+### Password manageři (1Password, Bitwarden, iCloud Keychain) navigují na tento path,
+### když nabídnou uživateli změnu hesla. Redirect na náš existující formulář.
+oswis_org_oswis_core_well_known_change_password:
+    path: /.well-known/change-password
+    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::redirectToRoute
+    defaults:
+        route: oswis_org_oswis_core_app_user_password_change_request
+        permanent: false
+
 ### Endpoint for magic-link registration login (returning participant).
 ### Consumes single-use token, programmatically logs the user in, and
 ### redirects them back to the registration form for `rangeSlug`.

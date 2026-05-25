@@ -176,6 +176,12 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
                         'login_path' => 'oswis_org_oswis_core_web_admin_login',
                         'check_path' => 'oswis_org_oswis_core_web_admin_login',
                     ],
+                    // Brute-force ochrana: max 5 pokusů na IP+username za minutu.
+                    // Symfony si k tomu samo vytvoří rate-limiter (limiter:main).
+                    'login_throttling' => [
+                        'max_attempts' => 5,
+                        'interval' => '1 minute',
+                    ],
                     'remember_me' => [
                         'secret' => '%kernel.secret%',
                         'lifetime' => 604800,

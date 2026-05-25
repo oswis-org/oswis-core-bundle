@@ -42,6 +42,7 @@ class MailerSubscriber implements EventSubscriberInterface
             $email->replyTo($email->getReplyTo()[0] ?? $coreEmailSettings['reply_path'] ?? '');
         }
         $email->subject($email->getSubject() ?? $coreEmailSettings['default_subject'] ?? '');
+        $this->addRfcComplianceHeaders($email);
         // if ($email instanceof TemplatedEmail) {
         // $email->embedFromPath('../assets/images/logo.png', 'logo');
         // $email->getContext()['logo'] = $email->getContext()['logo'] ?? 'cid:logo';
@@ -75,6 +76,36 @@ class MailerSubscriber implements EventSubscriberInterface
             } catch (LogicException|RfcComplianceException $e) {
                 $email->from($fromAddress);
             }
+        }
+    }
+
+    /**
+     * RFC 3834 (Auto-Submitted) header.
+     *
+     * Auto-Submitted brání mail-loopy s out-of-office respondery — ale jen
+     * pro skutečně automatické maily (Shrnutí přihlášky, potvrzení platby,
+     * activation/magic-link). Maily, které admin posílá ručně z aplikace
+     * (ad-hoc compose), jsou normální korespondence a Auto-Submitted by je
+     * z příjemcovy strany kategorizovalo jako bezosobní systém.
+     *
+     * Marker: call-site nastaví na TemplatedEmail header `X-OSWIS-Manual: 1`.
+     * Subscriber ho přečte, nastaví Auto-Submitted=no a marker odstraní z
+     * odchozího mailu, aby se na drátě neukázal (interní detail).
+     *
+     * (List-Id schválně NEpřidáváme — Gmail by transakční maily kvůli němu
+     * mohlo zařadit do tab „Updates" místo „Primary". Stripe / PayPal /
+     * banky List-Id u transakčních mailů taky nemají.)
+     */
+    private function addRfcComplianceHeaders(Email $email): void
+    {
+        $headers = $email->getHeaders();
+
+        $isManual = $headers->has('X-OSWIS-Manual');
+        if ($isManual) {
+            $headers->remove('X-OSWIS-Manual');
+        }
+        if (!$headers->has('Auto-Submitted')) {
+            $headers->addTextHeader('Auto-Submitted', $isManual ? 'no' : 'auto-generated');
         }
     }
 

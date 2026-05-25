@@ -70,6 +70,7 @@
     "symfony/monolog-bundle": "^3.10 || ^4.0",
     "symfony/orm-pack": "^2.4",
     "symfony/process": "^7.3 || ^8.0",
+    "symfony/rate-limiter": "^7.3 || ^8.0",
     "symfony/requirements-checker": "^2.0",
     "symfony/security-bundle": "^7.3 || ^8.0",
     "symfony/serializer-pack": "^1.3",

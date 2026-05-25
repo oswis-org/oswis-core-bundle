@@ -164,6 +164,27 @@ abstract class AbstractMail implements BasicInterface
         return $this->messageID;
     }
 
+    /**
+     * Označí mail jako ručně skládaný (admin compose, ne automatický).
+     *
+     * MailerSubscriber detekuje hlavičku X-OSWIS-Manual a nastaví
+     * Auto-Submitted: no (RFC 3834) místo auto-generated. Hlavičku samotnou
+     * pak ze zprávy odstraní, takže se na drátě neukáže — je to interní
+     * marker, nikoli veřejné metadata.
+     */
+    public function markAsManual(): void
+    {
+        try {
+            $templatedEmail = $this->getTemplatedEmail();
+        } catch (OswisException) {
+            return;
+        }
+        $headers = $templatedEmail->getHeaders();
+        if (!$headers->has('X-OSWIS-Manual')) {
+            $headers->addTextHeader('X-OSWIS-Manual', '1');
+        }
+    }
+
     public function setMessageID(?string $messageID = null): void
     {
         if (!empty($this->getMessageID())) {
