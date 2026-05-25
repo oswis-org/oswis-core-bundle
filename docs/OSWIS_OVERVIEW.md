@@ -35,12 +35,15 @@ Aktuálně běží jeden produkční deploy (Seznamovák UP).
 
 ### Události
 
-- Event s libovolně vnořenou hierarchií přes superEvent / subEvents. V praxi typicky dvě úrovně (ročník + turnus).
+- Hierarchie událostí je rekurzivní (libovolný počet úrovní) — `Event` se odkazuje na `superEvent` a má kolekci `subEvents`. V praxi typicky: **ročník → turnus → sub-event** (např. „Seznamovák 2026" → „1. turnus" → „Workshop", „Sportovní odpoledne"). Datový model neomezuje hloubku, takže lze modelovat třeba sérii ročníků, dlouhodobé programy, vícefázové akce.
+- Kategorie událostí (`EventCategory`) — pro odlišení typů (Seznamovák, workshop, schůze, výlet, ...) a jejich vlastní logiky.
+- Každá úroveň má vlastní termín (start/end), místo, organizátora (jako Participant typu *organizer*), kapacitu a viditelnost (public / draft / archived).
+- Registrační rozsahy (`RegistrationOffer`) — jeden Event může mít několik nabídek registrace (pro různé kategorie účastníků, různé časové okno, různé cenové úrovně). Každý rozsah má vlastní cenu, zálohu, kapacitu, datum od/do.
+- Příznaky (`ParticipantFlag`) seskupené do `FlagGroup` (s vlastní kategorií) jsou navázané na rozsah jako `RegistrationFlagOffer` / `RegistrationFlagGroupOffer` — modifikátor ceny/zálohy a kapacity (typ ubytování, dieta, doprava, velikost trička, slevové kódy). Skupina má pravidla výběru (jeden z, alespoň jeden, libovolně).
+- Sub-event docházka (`SubEventAttendance`) — účastník přihlášený na nadřazenou akci si může vybrat konkrétní podakce, kterých se zúčastní.
 - Year-clone wizard — kompletní zkopírování ročníku (turnusy, ceny, příznaky, organizační účastníci, e-mailové šablony), substituce roku v názvech a slugách, úprava dat per turnus.
-- Kapacity a využití přepočítané live na úrovni akce, turnusu i příznaku.
-- Historický snapshot agregací — kdo byl účastník k danému dni.
-- Stavy viditelnosti (public, draft, archived).
-- Veřejné stránky kalendáře akcí, letáku akce, seznamů budoucích a minulých akcí.
+- Kapacity a využití přepočítané live na úrovni akce, turnusu i příznaku; navíc historický snapshot — kdo byl účastník k danému dni (pro účetnictví a reporting).
+- Veřejné stránky: kalendář akcí, leták akce, seznamy budoucích a minulých akcí.
 
 ### E-mailová komunikace
 
@@ -58,13 +61,14 @@ Aktuálně běží jeden produkční deploy (Seznamovák UP).
 
 ### Adresář kontaktů
 
-- Osoby a organizace jako samostatné entity, vazby pozic (kdo kde co dělá).
-- Strukturované adresy (ulice, obec, PSČ, stát, GPS).
-- Typované kontaktní detaily (mail, telefon, web).
-- Address books — sub-skupiny kontaktů.
-- Připojené soubory a obrázky ke kontaktu, s automaticky generovanými variantami velikostí.
-- Místa (Place) s GPS pro vazbu na události a sub-eventy.
-- Poznámky ke kontaktům.
+- `AbstractContact` jako polymorfní základ — dva konkrétní typy: `Person` (osoba) a `Organization` (organizace). Sdílejí kontaktní detaily, adresy, soubory, poznámky, vazby na akce.
+- Pozice (`Position`) — vazba osoba ↔ organizace s funkcí. Jedna osoba může mít více pozic v různých organizacích, v jedné organizaci i v různých funkcích, vázáno na časové období.
+- Adresy (`ContactAddress`) — strukturovaně (ulice, číslo popisné, město, PSČ, stát, GPS souřadnice). Kontakt může mít víc adres (domov, práce, doručovací) s typem.
+- Kontaktní detaily (`ContactDetail`) — typované (e-mail, telefon, web, IČO, DIČ, datová schránka, sociální sítě). Kontakt může mít víc detailů s rozlišením kategorie (osobní mail / pracovní mail / mobil / pevná linka / …). Kategorie (`ContactDetailCategory`) jsou rozšiřitelné — admin si přidá vlastní typ.
+- Místa (`Place`) — samostatná entita s GPS pro vazbu na události, sub-eventy a mapu. Místa mohou tvořit vlastní hierarchii (`subPlaces` / `parentPlace`), označení patra a místnosti, vlastní ikonu pro mapu.
+- Adresáře (`AddressBook`) — pojmenované skupiny kontaktů (instruktoři ročníku, partneři, dárci, alumni). Kontakt v ní je přes connection entitu, takže může být ve více adresářích současně.
+- Připojené soubory a obrázky ke kontaktu, s automaticky generovanými variantami velikostí přes Liip Imagine.
+- Poznámky ke kontaktům — interní / veřejné, s historií.
 
 ### Admin rozhraní (web)
 
@@ -209,6 +213,18 @@ Frontend (mobilní / účastnický portál):
 Databáze: **MariaDB 10.5+** nebo **PostgreSQL 13+** (aktuálně produkčně MariaDB).
 
 Quality gate: **PHPStan** level `max` napříč všemi bundly.
+
+### Historicky použité technologie
+
+OSWIS prošel postupnou modernizací — některé volby z dřívějších let už neplatí:
+
+- **Zurb Inky** (Foundation for Emails) pro responsivní HTML maily — nahrazeno **MJML** pipeline kvůli lepší podpoře v Outlooku a údržbě šablon.
+- **Symfony 6.x / 7.x** → aktuálně **Symfony 8.0**.
+- **API Platform 2.x / 3.x** → aktuálně **API Platform 4.3**.
+- **Doctrine ORM 2.x** → **Doctrine ORM 3.6** (strict identity collision check).
+- **PHP 7.x → 8.x → 8.4 → 8.5** (postupné upgrady).
+- **Ionic 5 + Angular 14 + Capacitor 5** → aktuálně **Ionic 8 + Angular 21 + Capacitor 8**.
+- Mobilní iOS dříve plánována jako Capacitor build → dnes distribuovaná jako PWA (jednodušší údržba, žádný Apple Developer Program).
 
 ---
 
