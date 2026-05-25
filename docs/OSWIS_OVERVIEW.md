@@ -20,7 +20,7 @@ Aktuálně běží jeden produkční deploy (Seznamovák UP).
 - Kategorie účastníků: účastník, organizátor, team-member, staff. Každá s vlastním formulářem a workflow.
 - Soft-delete s možností obnovy v adminu (účastník, kontakt, příznak, nabídka).
 - Wizard pro hromadný přesun účastníků mezi turnusy nebo příznaky.
-- Ochrana proti duplicitám: server-side deduplikace na úrovni vytvoření přihlášky (sliding window 60 s) + klient-side guard proti iOS Safari opakovanému odeslání formuláře.
+- Ochrana proti duplicitám: server-side deduplikace na úrovni vytvoření přihlášky (krátký časový limit) plus klient-side guard proti iOS Safari opakovanému odeslání formuláře.
 
 ### Platby
 
@@ -145,7 +145,7 @@ Technologie a distribuce:
 
 ### Bezpečnost
 
-- Login throttling — 5 pokusů z IP+username za minutu (Symfony rate-limiter).
+- Login throttling — opakované neúspěšné pokusy z téže IP a uživatelského jména spouští brzdu (Symfony rate-limiter).
 - HTTP security headers: HSTS preload, CSP, Referrer-Policy, COOP, X-Content-Type-Options.
 - HTTP/2 + HTTP/3, TLS 1.3.
 - `/.well-known/security.txt` (RFC 9116).
