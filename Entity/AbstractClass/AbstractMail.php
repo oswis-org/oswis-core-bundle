@@ -40,7 +40,10 @@ abstract class AbstractMail implements BasicInterface
     #[Column(type: 'string', nullable: true)]
     protected ?string $messageID = null;
 
-    #[Column(type: 'string', nullable: true)]
+    // type=text (LONGTEXT in MySQL) instead of VARCHAR(255). Mailer error
+    // strings from Symfony/Mailer can easily exceed 255 chars — caught the
+    // 2026 launch (1406 Data too long on a perfectly normal mail try).
+    #[Column(type: 'text', nullable: true)]
     protected ?string $statusMessage = null;
 
     #[Column(type: 'string', nullable: true)]
