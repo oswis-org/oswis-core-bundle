@@ -157,7 +157,7 @@ Technologie a distribuce:
 
 ### Provozní vlastnosti
 
-- CLI příkazy: `oswis:imap:fetch`, `oswis:mail:backfill-threading`.
+- CLI příkazy pro operativní úlohy (IMAP fetch, doplňování dat, dávkové operace) — spustitelné z cronu i ručně.
 - Doctrine migrations.
 - PHPStan level `max` napříč všemi bundly.
 - Monolog strukturovaný logging.
