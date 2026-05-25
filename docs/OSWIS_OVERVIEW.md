@@ -2,7 +2,7 @@
 
 Informační systém pro pořádání registračních akcí. Vznikl pro provoz na produkci (Seznamovák UP, Univerzita Palackého v Olomouci), kde se používá od roku 2018 pro cca 700+ účastníků ročně. Pokrývá přihlášky, platby, e-mailovou komunikaci s účastníky, evidenci kontaktů a provozní administraci.
 
-Kód je open source, sebehostitelný, bez závislostí na placených SaaS službách. Stack: Symfony 7 + Doctrine 3 + API Platform 3 na backendu, Ionic 8 / Angular 21 pro mobilní aplikaci.
+Kód je open source, sebehostitelný, bez závislostí na placených SaaS službách. Stack: PHP 8.4+ / Symfony 8 / Doctrine ORM 3.6 / API Platform 4 na backendu, Ionic 8 / Angular 21 pro mobilní aplikaci.
 
 Aktuálně běží jeden produkční deploy (Seznamovák UP).
 
@@ -110,7 +110,7 @@ Aktuálně běží jeden produkční deploy (Seznamovák UP).
 
 ### API
 
-- REST + JSON-LD / Hydra přes API Platform 3.4.
+- REST + JSON-LD / Hydra přes API Platform 4.
 - OpenAPI dokumentace automatická (Swagger UI, ReDoc).
 - JWT (Lexik) s refresh tokeny (Gesdinet).
 - CORS konfigurovatelné (Nelmio).
@@ -149,7 +149,7 @@ Aktuálně běží jeden produkční deploy (Seznamovák UP).
 
 ## Architektura
 
-Backend: PHP 8.4, Symfony 7.3, Doctrine ORM 3.5, API Platform 3.4.
+Backend: PHP 8.4+ (produkčně 8.5), Symfony 8.0, Doctrine ORM 3.6, API Platform 4.3.
 DB: MariaDB 10.5+ nebo PostgreSQL 13+ (aktuálně produkčně MariaDB).
 Mail: Symfony Mailer (SMTP), MJML pipeline, IMAP přes `webklex/php-imap`.
 Web admin: Twig + Webpack Encore + Bootstrap 5.
@@ -187,8 +187,8 @@ Potřeba:
 
 - PHP 8.4+ (CLI a FPM)
 - MariaDB 10.5+ nebo PostgreSQL 13+
-- SMTP server (libovolný)
-- IMAP server pokud chcete automatický import bankovních notifikací (read-only přístup stačí)
+- SMTP přístup pro odesílání pošty (libovolný provider)
+- IMAP přístup k mailboxu, do kterého chodí bankovní notifikace, pokud chcete automatické párování plateb (read-only přístup stačí)
 - Node.js pro build mail šablon a admin assetů
 
 Není potřeba:
