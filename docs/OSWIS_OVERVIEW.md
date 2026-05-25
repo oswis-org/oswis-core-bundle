@@ -186,6 +186,20 @@ Plus produkční aplikace `oswis-seznamovak-up` (Symfony app, která 4 bundly sl
 
 Bundly mezi sebou nejsou tight-coupled — komunikují přes extender interfaces a compiler passy. Aplikace si v `config/bundles.php` vybere, které z bundlů načte; novou položku do sitemapy, RSS feedu, menu nebo widgetu na úvodní stránce přidá libovolný bundle bez nutnosti změny core. To je hlavní mechanismus rozšíření OSWIS o vlastní funkce — `SitemapExtenderInterface`, `RssExtenderInterface`, `WebMenuExtenderInterface`, `UpdateExtenderInterface`.
 
+### Dědičnost šablon
+
+- Twig: base layout v core-bundle definuje strukturu (head, navigace, footer, bloky pro obsah, asset pipeline). Konkrétní bundle si pro vlastní stránky specializuje, aplikace si přes standardní Symfony override mechanism (`templates/bundles/<BundleName>/...`) může jakoukoli šablonu přepsat **bez nutnosti forkovat bundle**.
+- E-maily: vlastní MJML base layout (logo, hlavička, patička, ikony, jednotný vzhled), který extendují konkrétní typy mailů (shrnutí přihlášky, potvrzení platby, ad-hoc admin compose…). Změny brandingu se promítnou centrálně.
+- Admin: vlastní base layout (`page-skeleton-web-admin.html.twig`) sdílený napříč bundly.
+
+### Branding a tenant konfigurace
+
+- Centrální konfigurace v `oswis.yaml` (PHP DI extension) — logo, theme color, jméno aplikace, jméno webu, organizační údaje, doména pro Message-ID, výchozí odesílatel pošty, archivační BCC adresa, jazyk a lokalizace.
+- Asset overrides — ikony (favicon, Apple touch, Android, msTile, safari-pinned-tab), logo pro web i pro maily, OG image jsou per-deploy v `public/assets/`.
+- Webové CSS i admin CSS přes Webpack Encore — aplikace má vlastní entry pointy a může přepsat Sass proměnné (barvy, fonty, breakpointy) bez zásahu do bundlu.
+- Per-event branding — události a podakce mají vlastní barvu, krátký název, popis, slug, organizátora; promítá se na veřejných stránkách, do mailových šablon i do generovaných dokumentů.
+- Konfigurace SMTP, IMAP, JWT secret, refresh token TTL a další citlivé hodnoty žijí mimo veřejné config soubory (env vars / `.env.local`), nikoli v deploy artefaktu.
+
 ### Použité technologie
 
 Backend:
