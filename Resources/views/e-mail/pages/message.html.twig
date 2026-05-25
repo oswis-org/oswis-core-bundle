@@ -56,7 +56,7 @@ falls back to whatever is reachable on the bound `contact` / `appUser`.
                             {% elseif logo_src is defined and logo_src %}
                                 <mj-image src="{{ logo_src }}" alt="{{ oswis.app.name }}" width="200px" />
                             {% elseif oswis.app.logo|default %}
-                                <mj-text align="center" font-size="22px" font-weight="700" color="#006FAD">{{ oswis.app.name|default('OSWIS') }}</mj-text>
+                                <mj-image src="{{ absolute_url(asset(oswis.app.logo)) }}" alt="{{ oswis.app.name }}" width="200px" />
                             {% else %}
                                 <mj-text align="center" font-size="22px" font-weight="700" color="#006FAD">{{ oswis.app.name|default('OSWIS') }}</mj-text>
                             {% endif %}
