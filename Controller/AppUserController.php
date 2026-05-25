@@ -269,7 +269,13 @@ class AppUserController extends AbstractController
                              .'— pošleme Ti nový odkaz.',
             ]);
         }
-        $security->login($appUser, firewallName: 'main');
+        // Symfony 7/8: explicit authenticator name is required when the
+        // firewall has >1 authenticator. "main" firewall has both
+        // WebUserAuthenticator (custom) and form_login. Magic-link login
+        // skips the password challenge — use the form_login flow so the
+        // session + remember-me cookie are set the same way as a normal
+        // /web_admin/login_check would set them.
+        $security->login($appUser, 'form_login', 'main');
 
         return $this->redirectToRoute('oswis_org_oswis_calendar_web_registration', [
             'rangeSlug' => $rangeSlug,
