@@ -80,15 +80,33 @@ Aktuálně běží jeden produkční deploy (Seznamovák UP).
 - Payments import — UI pro upload CSV a ruční párování.
 - Notes — interní poznámky napříč entitami.
 
-### Mobilní aplikace
+### Ionic aplikace (mobilní / portál / admin)
 
-- Ionic 8 + Angular 21, Capacitor 8 (Android build). iOS přes PWA.
-- JWT + refresh token autentizace.
-- Profil účastníka — jeho registrace, platby, kalendář.
-- Mapa s místy akce. Tile vrstvy: OpenStreetMap, MapyCz, OpenTopoMap. Lokalizace polohy s kompasem (s timeout a guardem proti uvíznutému „Zjišťování polohy…").
-- Komunikační historie — timeline mailů, telefonů, chatu pro vlastní účet.
+Jedna codebase, dva režimy podle role uživatele.
+
+**Účastnický portál** (pro přihlášeného účastníka):
+
+- Profil — vlastní registrace, platby, kalendář akcí.
+- Mapa s místy akce (ubytování, sběrná místa, program) s lokalizací polohy a kompasem.
+- Komunikační historie — timeline e-mailů, telefonátů, chatu k vlastnímu účtu.
 - Quick-action deep-links — z mailu nebo notifikace přímo do konkrétní stránky v appce.
-- Settings modal — backend switcher, cache management, push consent, diagnostika.
+- Settings modal — backend switcher (test/prod), cache management, push consent, diagnostika.
+
+**Administrátorské rozhraní** (pro organizační tým):
+
+- Dashboard s přehledy.
+- Účastníci — seznamy, detail s registracemi, platbami, příznaky, poznámkami; ruční zápis telefonátu / chatu do timeline.
+- Události — přehled, detail, podakce (sub-events), kapacity, ceny, příznaky.
+- Kalendář — všechny akce v časové ose.
+- Adresář — osoby, organizace, místa, pozice.
+- Web — správa stránek, aktualit.
+
+Technologie a distribuce:
+
+- **Ionic 8** + **Angular 21**.
+- **Capacitor 8** — build native Android APK; iOS distribuovaná jako PWA (instalace „Add to Home Screen" ze Safari).
+- JWT + refresh token autentizace, sdílená s REST API backendem.
+- **Leaflet** pro mapy, s podporou několika tile vrstev (OpenStreetMap, MapyCz, OpenTopoMap).
 
 ### Generování dokumentů
 
