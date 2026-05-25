@@ -46,7 +46,7 @@ oswis_org_oswis_core_app_user_password_change_request:
 ### když nabídnou uživateli změnu hesla. Redirect na náš existující formulář.
 oswis_org_oswis_core_well_known_change_password:
     path: /.well-known/change-password
-    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::redirectToRoute
+    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::redirectAction
     defaults:
         route: oswis_org_oswis_core_app_user_password_change_request
         permanent: false
