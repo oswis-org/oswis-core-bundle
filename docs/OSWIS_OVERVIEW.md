@@ -28,7 +28,6 @@ Aktuálně běží jeden produkční deploy (Seznamovák UP).
 - Variabilní symbol = posledních 9 cifer telefonu účastníka, fallback ID přihlášky.
 - Párování přijatých plateb na účastníky podle VS, jména, e-mailu, částky a aktivní akce. Nejednoznačné případy se nepárují automaticky, čekají na admina.
 - Import bankovního výpisu z CSV přes admin UI.
-- IMAP fetch e-mailových notifikací z banky — automatické párování bez ručního importu. Read-only přístup k mailboxu (jen SEARCH/FETCH s BODY.PEEK, žádné MOVE/STORE/EXPUNGE), tracking přes vlastní `last_seen_uid` v DB.
 - Vratky a opravy plateb jako oddělené záznamy se zápornou hodnotou, s e-mailovou notifikací účastníkovi.
 - Záloha + doplatek workflow — registrace se aktivuje po zaplacení zálohy, doplatek do termínu.
 - Export pro účetní v CSV a XLSX, agregace po turnusech a kategoriích.
@@ -188,7 +187,7 @@ Potřeba:
 - PHP 8.4+ (CLI a FPM)
 - MariaDB 10.5+ nebo PostgreSQL 13+
 - SMTP přístup pro odesílání pošty (libovolný provider)
-- IMAP přístup k mailboxu, do kterého chodí bankovní notifikace, pokud chcete automatické párování plateb (read-only přístup stačí)
+- IMAP přístup k mailboxu, kam chodí pošta od účastníků (info@…), pokud chcete automatický import vlákna komunikace do admin timeline. Read-only přístup stačí.
 - Node.js pro build mail šablon a admin assetů
 
 Není potřeba:
