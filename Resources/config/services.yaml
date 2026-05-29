@@ -182,6 +182,10 @@ services:
         alias: oswis_org_oswis_core.export_service
         public: true
 
+    OswisOrg\OswisCoreBundle\Service\CsvExportService:
+        autowire: true
+        public: true
+
     oswis_org_oswis_core.site_map_service:
         class: OswisOrg\OswisCoreBundle\Service\Web\SiteMapService
         autowire: true
@@ -305,6 +309,7 @@ services:
         public: true
         arguments:
             - '@oswis_org_oswis_core.export_service'
+            - '@OswisOrg\OswisCoreBundle\Service\CsvExportService'
     OswisOrg\OswisCoreBundle\EventSubscriber\ExportSubscriber:
         alias: oswis_org_oswis_core.app_user_action_subscriber
         public: true
