@@ -67,4 +67,23 @@ class ExportService
 
         return $mPdf;
     }
+
+    /**
+     * Vyrenderuje libovolné HTML do PDF (string). Pro generický export framework.
+     *
+     * @throws MpdfException
+     */
+    public function getPdfFromHtml(string $html, bool $landscape = false): string
+    {
+        $mPdf = new Mpdf(['format' => 'A4'.($landscape ? '-L' : ''), 'mode' => 'utf-8']);
+        $mPdf->setLogger($this->logger);
+        $mPdf->SetAuthor($this->oswisCoreSettings->getApp()['name']);
+        $mPdf->SetCreator($this->oswisCoreSettings->getCoreAppName());
+        $mPdf->useSubstitutions = true;
+        $mPdf->showImageErrors = true;
+        $mPdf->WriteHTML($html);
+        $output = $mPdf->Output('', 'S');
+
+        return is_string($output) ? $output : '';
+    }
 }

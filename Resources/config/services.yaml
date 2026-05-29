@@ -10,6 +10,10 @@ services:
         autoconfigure: true
         public: false
 
+    _instanceof:
+        OswisOrg\OswisCoreBundle\Export\ExportDefinitionInterface:
+            tags: [ 'oswis.export_definition' ]
+
     ### Search Filter
     #    oswis_org_oswis_core.search_filter:
     #        class: OswisOrg\OswisCoreBundle\Filter\SearchFilter
@@ -185,6 +189,19 @@ services:
     OswisOrg\OswisCoreBundle\Service\CsvExportService:
         autowire: true
         public: true
+
+    OswisOrg\OswisCoreBundle\Export\ExportManager:
+        autowire: true
+        public: true
+
+    OswisOrg\OswisCoreBundle\Export\ExportResponseFactory:
+        autowire: true
+        public: true
+
+    OswisOrg\OswisCoreBundle\Export\ExportDefinitionRegistry:
+        public: true
+        arguments:
+            - !tagged_iterator 'oswis.export_definition'
 
     oswis_org_oswis_core.site_map_service:
         class: OswisOrg\OswisCoreBundle\Service\Web\SiteMapService
