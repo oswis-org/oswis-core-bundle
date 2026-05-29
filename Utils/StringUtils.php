@@ -5,8 +5,6 @@ declare(strict_types=1);
 namespace OswisOrg\OswisCoreBundle\Utils;
 
 use Symfony\Component\String\Slugger\AsciiSlugger;
-use function chr;
-use function ord;
 
 /**
  * @todo Refactor to use Symfony String component.
@@ -180,9 +178,10 @@ class StringUtils
     public static function generatePassword(bool $addSpecialChar = false): string
     {
         $chars = [];
-        foreach ([['0', '9'], ['a', 'z'], ['A', 'Z']] as [$from, $to]) {
+        foreach (['0123456789', 'abcdefghijklmnopqrstuvwxyz', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'] as $set) {
+            $maxIndex = strlen($set) - 1;
             for ($i = 0; $i < 3; $i++) {
-                $chars[] = chr(random_int(ord($from), ord($to)));
+                $chars[] = $set[random_int(0, $maxIndex)];
             }
         }
         if ($addSpecialChar) {

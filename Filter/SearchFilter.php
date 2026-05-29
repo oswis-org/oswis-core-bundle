@@ -28,6 +28,7 @@ final class SearchFilter extends AbstractFilter
     public function getDescription(string $resourceClass): array
     {
         $annotation = self::readSearchAttribute($resourceClass);
+        $fields = $annotation instanceof SearchAnnotation ? $annotation->fields : [];
 
         return [
             'search' => [
@@ -35,10 +36,7 @@ final class SearchFilter extends AbstractFilter
                 'type' => 'string',
                 'required' => false,
                 'swagger' => [
-                    'description' => 'FullTextFilter on '.implode(
-                        ', ',
-                        $annotation?->fields ?? []
-                    ),
+                    'description' => 'FullTextFilter on '.implode(', ', $fields),
                 ],
             ],
         ];

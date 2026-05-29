@@ -105,7 +105,7 @@ final class WebUserAuthenticator extends AbstractAuthenticator
      * @throws SessionNotFoundException
      * @throws InvalidParameterException
      */
-    public function onAuthenticationFailure(Request $request, AuthenticationException $exception): ?Response
+    public function onAuthenticationFailure(Request $request, AuthenticationException $exception): Response
     {
         $request->getSession()->set(SecurityRequestAttributes::AUTHENTICATION_ERROR, $exception);
 
