@@ -145,7 +145,11 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
                 'api_token_refresh' => [
                     'pattern' => '^/api/token/refresh',
                     'stateless' => true,
-                    'refresh_jwt' => [],
+                    // gesdinet/jwt-refresh-token-bundle v2: authenticator místo controlleru.
+                    // check_path MUSÍ odpovídat reálné cestě, jinak supports() vrací false
+                    // (default je '/login_check') a request spadne na (v2 už neexistující)
+                    // controller gesdinet.jwtrefreshtoken::refresh → 500.
+                    'refresh_jwt' => ['check_path' => '/api/token/refresh'],
                 ],
                 'api_login' => [
                     'pattern' => '^/api/login',

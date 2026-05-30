@@ -6,9 +6,13 @@ login_check:
     methods: [ POST ]
 
 ### Endpoint for refresh of JWT token.
+### gesdinet/jwt-refresh-token-bundle v2 nemá controller — refresh obsluhuje
+### `refresh_jwt` authenticator na firewallu `api_token_refresh` (viz security
+### config v OswisOrgOswisCoreExtension). Routa drží jen path; controller se
+### nesmí uvádět (v1 service `gesdinet.jwtrefreshtoken` ve v2 neexistuje → 500).
 gesdinet_jwt_refresh_token:
     path: /api/token/refresh
-    controller: gesdinet.jwtrefreshtoken::refresh
+    methods: [ POST ]
 
 api_token_invalidate:
     path: /api/token/invalidate
