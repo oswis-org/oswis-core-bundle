@@ -8,6 +8,7 @@ use ApiPlatform\OpenApi\Factory\OpenApiFactoryInterface;
 use ApiPlatform\OpenApi\Model\Operation;
 use ApiPlatform\OpenApi\Model\PathItem;
 use ApiPlatform\OpenApi\Model\RequestBody;
+use ApiPlatform\OpenApi\Model\Response as OpenApiResponse;
 use ApiPlatform\OpenApi\OpenApi;
 use ArrayObject;
 use Symfony\Component\HttpFoundation\Response;
@@ -47,19 +48,16 @@ final class OpenApiFactory implements OpenApiFactoryInterface
         ];
         $openApi = $openApi->withComponents($openApi->getComponents()->withSchemas($schemas));
         $responses = [
-            Response::HTTP_OK => [
-                'description' => 'Get JWT token',
-                'content'     => [
-                    'application/json' => [
-                        'schema' => [
-                            'properties' => [
-                                'token'         => ['type' => 'string'],
-                                'refresh_token' => ['type' => 'string'],
-                            ],
+            Response::HTTP_OK => new OpenApiResponse('Get JWT token', new ArrayObject([
+                'application/json' => [
+                    'schema' => [
+                        'properties' => [
+                            'token'         => ['type' => 'string'],
+                            'refresh_token' => ['type' => 'string'],
                         ],
                     ],
                 ],
-            ],
+            ])),
         ];
         $requestBody = new RequestBody('Create new JWT Token', new ArrayObject([
             'application/json' => [

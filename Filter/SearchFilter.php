@@ -37,7 +37,7 @@ final class SearchFilter extends AbstractFilter
                 'swagger' => [
                     'description' => 'FullTextFilter on '.implode(
                         ', ',
-                        $annotation?->fields ?? []
+                        $annotation->fields ?? []
                     ),
                 ],
             ],

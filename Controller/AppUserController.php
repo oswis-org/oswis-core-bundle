@@ -254,9 +254,6 @@ class AppUserController extends AbstractController
             }
             $appUserToken->use();
             $appUser = $appUserToken->getAppUser();
-            if (!$appUser instanceof AppUser) {
-                throw new UserNotFoundException();
-            }
             $entityManager->flush();
         } catch (TokenInvalidException|UserNotFoundException) {
             // Don't let TokenInvalidException (HTTP 403) bubble — Symfony's
