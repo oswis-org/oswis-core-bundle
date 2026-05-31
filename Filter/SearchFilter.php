@@ -63,6 +63,13 @@ final class SearchFilter extends AbstractFilter
             return;
         }
         $stringValue = self::mixedToString($value);
+        // Skip the unindexed multi-column LOWER(...) LIKE '%term%' scan (with auto
+        // leftJoins) for too-short terms: a single character matches almost every
+        // row across every searched field/join — the worst-case full scan. Search
+        // for terms of >= 2 characters is unchanged.
+        if (mb_strlen(trim($stringValue)) < 2) {
+            return;
+        }
         $this->logger->info('Search for: "'.$stringValue.'"');
         $annotation = self::readSearchAttribute($resourceClass);
         if (null === $annotation || [] === $annotation->fields) {
