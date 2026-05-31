@@ -147,7 +147,7 @@ class AppUserService
 
         $recipient = (string) $appUser->getEmail();
         $email = (new TemplatedEmail())
-            ->to(new Address($recipient, $appUser->getFullName() ?? $recipient))
+            ->to(new Address($recipient, $appUser->getFullName()))
             ->subject('Pokračování v přihlášce na akci')
             ->htmlTemplate('@OswisOrgOswisCore/e-mail/pages/registration-login.html.twig')
             ->context([
