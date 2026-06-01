@@ -136,6 +136,32 @@ class StringUtils
         return strtr($text, self::ACCENTS_TABLE);
     }
 
+    private static ?\Collator $czechCollator = null;
+
+    /**
+     * Locale-independent, Czech-aware comparison for sorting names alphabetically.
+     *
+     * Uses ext-intl's Collator('cs_CZ'), so Č/Š/Ř/Ž/Á/Í/… sort into their correct
+     * Czech alphabetical positions regardless of the server's LC_COLLATE locale.
+     * Plain strcmp() (byte order) and strcoll() (locale-dependent, C-locale fallback)
+     * both push accented letters to the very end of the list — the bug this replaces.
+     * Falls back to an accent-folded strcmp if ext-intl is somehow unavailable.
+     */
+    public static function compareCzech(?string $first, ?string $second): int
+    {
+        $first ??= '';
+        $second ??= '';
+        if (class_exists(\Collator::class)) {
+            self::$czechCollator ??= new \Collator('cs_CZ');
+            $result = self::$czechCollator->compare($first, $second);
+            if (false !== $result) {
+                return $result;
+            }
+        }
+
+        return strcmp(self::removeAccents($first), self::removeAccents($second));
+    }
+
     public static function hyphensToCamel(string $text, bool $uncapitalize = true): string
     {
         return self::convertToCamel($text, '-', $uncapitalize);
