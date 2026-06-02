@@ -1,0 +1,22 @@
+{% extends '@OswisOrgOswisCore/web_admin/page-skeleton-web-admin.html.twig' %}
+
+{# Admin-side counterpart of web/pages/message.html.twig: same title/message interface,
+   but rendered inside the admin skeleton so completed/failed admin actions keep the
+   admin header + menu instead of dropping the user onto the public site. #}
+{% block body_content %}
+    <main id="message" class="container">
+        <div class="row">
+            <div class="col">
+                <header>
+                    <h2 class="text-uppercase">{{ title|default }}</h2>
+                </header>
+                <section>
+                    <p>{{ message|default }}</p>
+                </section>
+                {% if backUrl|default %}
+                    <p><a class="btn btn-outline-secondary btn-sm" href="{{ backUrl }}">← Zpět</a></p>
+                {% endif %}
+            </div>
+        </div>
+    </main>
+{% endblock body_content %}

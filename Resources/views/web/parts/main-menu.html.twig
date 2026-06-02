@@ -4,4 +4,35 @@
             <span itemprop="name">{{ menuItem.title }}</span>
         </a>
     {% endfor %}
+    {% if is_granted('ROLE_ADMIN') %}
+        <a href="{{ path('oswis_org_oswis_core_web_admin_homepage') }}" itemprop="url"
+           class="website-main-menu-admin" title="Administrace">
+            <span itemprop="name">Administrace</span>
+        </a>
+    {% endif %}
 </nav>
+{# Active-item highlight: done client-side because this menu is ESI-rendered (the
+   fragment's app.request is not the page request), so the longest matching link
+   wins (e.g. /web_admin/... highlights "Administrace"). #}
+<style>
+    #website-main-menu a.is-active { font-weight: 700; box-shadow: inset 0 -2px 0 0 currentColor; }
+    #website-main-menu a.website-main-menu-admin { font-weight: 700; opacity: .85; }
+</style>
+<script>
+    (function () {
+        var nav = document.getElementById('website-main-menu');
+        if (!nav) { return; }
+        var strip = function (p) { return (p || '').replace(/\/+$/, '') || '/'; };
+        var here = strip(window.location.pathname);
+        var best = null, bestLen = -1;
+        nav.querySelectorAll('a[href]').forEach(function (a) {
+            var p;
+            try { p = strip(new URL(a.getAttribute('href'), window.location.origin).pathname); }
+            catch (e) { return; }
+            if (here === p || (p !== '/' && here.indexOf(p + '/') === 0)) {
+                if (p.length > bestLen) { best = a; bestLen = p.length; }
+            }
+        });
+        if (best) { best.classList.add('is-active'); best.setAttribute('aria-current', 'page'); }
+    })();
+</script>
