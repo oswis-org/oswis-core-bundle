@@ -71,6 +71,16 @@ trait PersonNameOnlyTrait
     #[ApiFilter(OrderFilter::class)]
     protected ?string $honorificSuffix = null;
 
+    /**
+     * Manual gender override (ContactInterface::GENDER_MALE / GENDER_FEMALE), or null to
+     * auto-detect from the given name via vokativ. Set this when the automatic detection is
+     * wrong (ambiguous/foreign names — vokativ defaults unknowns to male) or doesn't match
+     * the person's gender (e.g. trans participants). Drives getGender(), the Czech salutation
+     * and the byl/byla suffix everywhere the contact is used.
+     */
+    #[Column(type: 'string', length: 8, nullable: true)]
+    protected ?string $genderOverride = null;
+
     public function setName(?string $fullName): ?string
     {
         return $this->setFullName($fullName);
@@ -187,14 +197,29 @@ trait PersonNameOnlyTrait
         $this->nickname = $nickname;
     }
 
+    public function getGenderOverride(): ?string
+    {
+        return $this->genderOverride;
+    }
+
+    public function setGenderOverride(?string $genderOverride): void
+    {
+        $this->genderOverride = in_array($genderOverride, [ContactInterface::GENDER_MALE, ContactInterface::GENDER_FEMALE], true)
+            ? $genderOverride : null;
+    }
+
     public function getSalutationName(): ?string
     {
         if (empty($this->getGivenName())) {
             return $this->getFullName();
         }
         try {
-            $vokativName = new VokativName();
-            $salutationName = $vokativName->vokativ($this->getGivenName(), null, false);
+            // Respect the gender override (if any) so the Czech vocative matches the person's
+            // gender; null lets vokativ auto-detect from the name (original behaviour).
+            $gender = $this->getGender();
+            $isWoman = ContactInterface::GENDER_FEMALE === $gender ? true
+                : (ContactInterface::GENDER_MALE === $gender ? false : null);
+            $salutationName = new VokativName()->vokativ($this->getGivenName(), $isWoman, false);
 
             return ucfirst($salutationName);
         } catch (Exception) {
@@ -204,15 +229,15 @@ trait PersonNameOnlyTrait
 
     public function getCzechSuffixA(): string
     {
-        try {
-            return new VokativName()->isMale(''.$this->getGivenName()) ? '' : 'a';
-        } catch (Exception) {
-            return '';
-        }
+        // Derived from getGender() → honours the override (byl/byl-a in mails).
+        return ContactInterface::GENDER_FEMALE === $this->getGender() ? 'a' : '';
     }
 
     public function getGender(): string
     {
+        if (null !== $this->genderOverride && '' !== $this->genderOverride) {
+            return $this->genderOverride;
+        }
         if (empty($this->getGivenName())) {
             return ContactInterface::GENDER_UNISEX;
         }
