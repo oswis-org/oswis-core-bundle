@@ -2,4 +2,18 @@
 
 {% block body_header %}
     {% include '@OswisOrgOswisCore/web_admin/header.html.twig' %}
+    {# Drobečková navigace: vždy odkaz na Úvod (admin hub) + titulek aktuální stránky.
+       Odvozeno z existující proměnné `title` (oříznut suffix " :: ADMIN"), žádná nová
+       redundantní proměnná. Stránky můžou blok přepsat bohatší cestou. #}
+    {% block admin_breadcrumb %}
+        {% set crumbTitle = (title|default(''))|split(' :: ')|first|trim %}
+        {% if app.request.attributes.get('_route') != 'oswis_org_oswis_core_web_admin_homepage' %}
+            <nav aria-label="breadcrumb" class="container" style="padding-top:.25rem;">
+                <ol class="breadcrumb" style="margin:.35rem 0; font-size:.9rem;">
+                    <li class="breadcrumb-item"><a href="{{ path('oswis_org_oswis_core_web_admin_homepage') }}">Úvod</a></li>
+                    {% if crumbTitle %}<li class="breadcrumb-item active" aria-current="page">{{ crumbTitle }}</li>{% endif %}
+                </ol>
+            </nav>
+        {% endif %}
+    {% endblock admin_breadcrumb %}
 {% endblock body_header %}
