@@ -6,7 +6,7 @@
        Odvozeno z existující proměnné `title` (oříznut suffix " :: ADMIN"), žádná nová
        redundantní proměnná. Stránky můžou blok přepsat bohatší cestou. #}
     {% block admin_breadcrumb %}
-        {% set crumbTitle = (title|default(''))|split(' :: ')|first|trim %}
+        {% set crumbTitle = (title|default(''))|split(' :: ')|first|split(' · ')|first|trim %}
         {% if app.request.attributes.get('_route') != 'oswis_org_oswis_core_web_admin_homepage' %}
             <nav aria-label="breadcrumb" class="container" style="padding-top:.25rem;">
                 <ol class="breadcrumb" style="margin:.35rem 0; font-size:.9rem;">
