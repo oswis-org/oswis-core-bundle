@@ -45,13 +45,18 @@ final class ExportManager
         $header = array_map(static fn (ExportColumn $c): string => $c->label, $columns);
 
         $rows = [];
+        $numericSums = []; // index sloupce => součet (jen NUMBER sloupce)
         foreach ($entities as $entity) {
             if (!is_object($entity)) {
                 continue;
             }
             $row = [];
-            foreach ($columns as $column) {
-                $row[] = $this->formatValue($column->extract($entity), $column->type);
+            foreach ($columns as $i => $column) {
+                $raw = $column->extract($entity);
+                if (ExportColumn::TYPE_NUMBER === $column->type && is_numeric($raw)) {
+                    $numericSums[$i] = ($numericSums[$i] ?? 0.0) + (float) $raw;
+                }
+                $row[] = $this->formatValue($raw, $column->type);
             }
             $rows[] = $row;
         }
@@ -60,10 +65,29 @@ final class ExportManager
         if ($request->format->isCsv()) {
             $content = $this->csvExportService->build($header, $rows, $request->format->toCsvFormat());
         } else {
+            // PDF: číselné sloupce vpravo + řádek součtů (jen číselné sloupce).
+            $align = array_map(
+                static fn (ExportColumn $c): string => ExportColumn::TYPE_NUMBER === $c->type ? 'right' : 'left',
+                $columns,
+            );
+            $hasTotals = [] !== $numericSums;
+            $totals = [];
+            if ($hasTotals) {
+                foreach (array_keys($columns) as $i) {
+                    $totals[$i] = array_key_exists($i, $numericSums)
+                        ? rtrim(rtrim(number_format($numericSums[$i], 2, ',', ' '), '0'), ',')
+                        : '';
+                }
+            }
             $html = $this->twig->render(self::PDF_TEMPLATE, [
-                'title'  => $definition->getTitle(),
-                'header' => $header,
-                'rows'   => $rows,
+                'title'     => $definition->getTitle(),
+                'subtitle'  => $request->subtitle,
+                'header'    => $header,
+                'rows'      => $rows,
+                'align'     => $align,
+                'totals'    => $totals,
+                'hasTotals' => $hasTotals,
+                'count'     => count($rows),
             ]);
             $content = $this->exportService->getPdfFromHtml($html, count($columns) >= self::PDF_LANDSCAPE_MIN);
         }

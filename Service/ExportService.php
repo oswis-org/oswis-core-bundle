@@ -75,12 +75,29 @@ class ExportService
      */
     public function getPdfFromHtml(string $html, bool $landscape = false): string
     {
-        $mPdf = new Mpdf(['format' => 'A4'.($landscape ? '-L' : ''), 'mode' => 'utf-8']);
+        $app = $this->oswisCoreSettings->getApp();
+        $appName = is_string($app['name'] ?? null) ? $app['name'] : '';
+        $mPdf = new Mpdf([
+            'format'        => 'A4'.($landscape ? '-L' : ''),
+            'mode'          => 'utf-8',
+            'margin_top'    => 14,
+            'margin_bottom' => 14,
+            'margin_left'   => 10,
+            'margin_right'  => 10,
+            'margin_footer' => 6,
+        ]);
         $mPdf->setLogger($this->logger);
-        $mPdf->SetAuthor($this->oswisCoreSettings->getApp()['name']);
+        $mPdf->SetAuthor($appName);
         $mPdf->SetCreator($this->oswisCoreSettings->getCoreAppName());
         $mPdf->useSubstitutions = true;
         $mPdf->showImageErrors = true;
+        // Brandovaná patička: appka + datum generování vlevo, číslo stránky vpravo.
+        $mPdf->SetHTMLFooter(
+            '<table width="100%" style="font-family:sans-serif; font-size:7pt; color:#888; border-top:0.5px solid #ccc; padding-top:2px;"><tr>'
+            .'<td>'.htmlspecialchars($appName).' · vygenerováno '.date('j. n. Y H:i').'</td>'
+            .'<td align="right">strana {PAGENO} / {nbpg}</td>'
+            .'</tr></table>'
+        );
         $mPdf->WriteHTML($html);
         $output = $mPdf->Output('', 'S');
 
