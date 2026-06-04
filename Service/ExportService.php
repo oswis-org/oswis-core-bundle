@@ -71,12 +71,17 @@ class ExportService
     /**
      * Vyrenderuje libovolné HTML do PDF (string). Pro generický export framework.
      *
+     * @param string|null       $title    PDF metadata: titulek dokumentu (viewer / vyhledávání)
+     * @param string|null       $subject  PDF metadata: předmět (scope dokumentu)
+     * @param list<string>      $keywords PDF metadata: klíčová slova
+     *
      * @throws MpdfException
      */
-    public function getPdfFromHtml(string $html, bool $landscape = false): string
+    public function getPdfFromHtml(string $html, bool $landscape = false, ?string $title = null, ?string $subject = null, array $keywords = []): string
     {
         $app = $this->oswisCoreSettings->getApp();
         $appName = is_string($app['name'] ?? null) ? $app['name'] : '';
+        $creator = $this->oswisCoreSettings->getCoreAppName();
         $mPdf = new Mpdf([
             'format'        => 'A4'.($landscape ? '-L' : ''),
             'mode'          => 'utf-8',
@@ -87,8 +92,18 @@ class ExportService
             'margin_footer' => 6,
         ]);
         $mPdf->setLogger($this->logger);
+        // Plná sada PDF metadat (Producer/CreationDate/ModDate doplní mPDF automaticky).
         $mPdf->SetAuthor($appName);
-        $mPdf->SetCreator($this->oswisCoreSettings->getCoreAppName());
+        $mPdf->SetCreator($creator);
+        if (null !== $title && '' !== $title) {
+            $mPdf->SetTitle($title);
+        }
+        $mPdf->SetSubject($subject ?? ($title ?? ''));
+        $kw = array_values(array_filter([$appName, ...$keywords]));
+        if ([] !== $kw) {
+            $mPdf->SetKeywords(implode(', ', $kw));
+        }
+        $mPdf->SetDisplayMode('fullpage');
         $mPdf->useSubstitutions = true;
         $mPdf->showImageErrors = true;
         // Brandovaná patička: appka + datum generování vlevo, číslo stránky vpravo.

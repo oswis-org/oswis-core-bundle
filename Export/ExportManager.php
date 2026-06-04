@@ -89,7 +89,13 @@ final class ExportManager
                 'hasTotals' => $hasTotals,
                 'count'     => count($rows),
             ]);
-            $content = $this->exportService->getPdfFromHtml($html, count($columns) >= self::PDF_LANDSCAPE_MIN);
+            $content = $this->exportService->getPdfFromHtml(
+                $html,
+                count($columns) >= self::PDF_LANDSCAPE_MIN,
+                $definition->getTitle(),
+                $request->subtitle,
+                ['export', $definition->getKey()],
+            );
         }
 
         return new ExportResult($filename, $request->format->mimeType(), $content);
