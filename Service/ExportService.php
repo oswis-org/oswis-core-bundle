@@ -25,8 +25,31 @@ class ExportService
     public function __construct(
         protected LoggerInterface $logger,
         protected Environment $templating,
-        protected OswisCoreSettingsProvider $oswisCoreSettings
+        protected OswisCoreSettingsProvider $oswisCoreSettings,
+        protected string $projectDir = ''
     ) {
+    }
+
+    /**
+     * Resolve the configured app logo (oswis.app.logo, a project-relative path) to an absolute
+     * filesystem path mPDF can embed. Tries the public web root first, then the project root.
+     * Returns '' when not configured or the file is missing (header then degrades to text only).
+     */
+    private function resolveLogoPath(): string
+    {
+        $app = $this->oswisCoreSettings->getApp();
+        $logoRel = is_string($app['logo'] ?? null) ? trim($app['logo']) : '';
+        if ('' === $logoRel || '' === $this->projectDir) {
+            return '';
+        }
+        foreach (['/public/', '/'] as $prefix) {
+            $candidate = $this->projectDir.$prefix.ltrim($logoRel, '/');
+            if (is_file($candidate)) {
+                return $candidate;
+            }
+        }
+
+        return '';
     }
 
     /**
@@ -85,10 +108,11 @@ class ExportService
         $mPdf = new Mpdf([
             'format'        => 'A4'.($landscape ? '-L' : ''),
             'mode'          => 'utf-8',
-            'margin_top'    => 14,
+            'margin_top'    => 24, // room for the branded (logo) running header
             'margin_bottom' => 14,
             'margin_left'   => 10,
             'margin_right'  => 10,
+            'margin_header' => 8,
             'margin_footer' => 6,
         ]);
         $mPdf->setLogger($this->logger);
@@ -117,10 +141,19 @@ class ExportService
         if ((int) ini_get('pcre.recursion_limit') < $needed) {
             ini_set('pcre.recursion_limit', (string) $needed);
         }
-        // Brandovaná patička: appka + datum generování vlevo, číslo stránky vpravo.
+        // Brandovaná opakující se hlavička: logo vlevo, název appky vpravo (na každé stránce).
+        $logoPath = $this->resolveLogoPath();
+        $logoTag = '' !== $logoPath ? '<img src="'.htmlspecialchars($logoPath).'" height="30">' : '';
+        $mPdf->SetHTMLHeader(
+            '<table width="100%" style="border-bottom:0.5px solid #006FAD; padding-bottom:3px;"><tr>'
+            .'<td style="vertical-align:middle;">'.$logoTag.'</td>'
+            .'<td align="right" style="vertical-align:middle; font-family:sans-serif; font-size:8pt; color:#006FAD; font-weight:bold;">'.htmlspecialchars($appName).'</td>'
+            .'</tr></table>'
+        );
+        // Brandovaná patička: datum generování vlevo, číslo stránky vpravo.
         $mPdf->SetHTMLFooter(
             '<table width="100%" style="font-family:sans-serif; font-size:7pt; color:#888; border-top:0.5px solid #ccc; padding-top:2px;"><tr>'
-            .'<td>'.htmlspecialchars($appName).' · vygenerováno '.date('j. n. Y H:i').'</td>'
+            .'<td>vygenerováno '.date('j. n. Y H:i').'</td>'
             .'<td align="right">strana {PAGENO} / {nbpg}</td>'
             .'</tr></table>'
         );

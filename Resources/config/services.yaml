@@ -182,6 +182,7 @@ services:
             - '@monolog.logger'
             - '@twig'
             - '@oswis_org_oswis_core.oswis_core_settings_provider'
+            - '%kernel.project_dir%'
     OswisOrg\OswisCoreBundle\Service\ExportService:
         alias: oswis_org_oswis_core.export_service
         public: true
