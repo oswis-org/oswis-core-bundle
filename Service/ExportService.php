@@ -104,8 +104,19 @@ class ExportService
             $mPdf->SetKeywords(implode(', ', $kw));
         }
         $mPdf->SetDisplayMode('fullpage');
+        // Outline/záložky: H1 (titulek dokumentu) → záložka — navigace ve vícestránkových PDF.
+        $mPdf->h2bookmarks = ['H1' => 0];
         $mPdf->useSubstitutions = true;
         $mPdf->showImageErrors = true;
+        // Robustnost velkých exportů: u rozsáhlého HTML (stovky+ řádků) hrozí
+        // "HTML code size is larger than pcre.backtrack_limit" → navýšit limit dle délky HTML.
+        $needed = strlen($html) * 2 + 200000;
+        if ((int) ini_get('pcre.backtrack_limit') < $needed) {
+            ini_set('pcre.backtrack_limit', (string) $needed);
+        }
+        if ((int) ini_get('pcre.recursion_limit') < $needed) {
+            ini_set('pcre.recursion_limit', (string) $needed);
+        }
         // Brandovaná patička: appka + datum generování vlevo, číslo stránky vpravo.
         $mPdf->SetHTMLFooter(
             '<table width="100%" style="font-family:sans-serif; font-size:7pt; color:#888; border-top:0.5px solid #ccc; padding-top:2px;"><tr>'
