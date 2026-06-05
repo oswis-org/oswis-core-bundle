@@ -16,4 +16,16 @@
             </nav>
         {% endif %}
     {% endblock admin_breadcrumb %}
+    {# Flash zprávy (chyby/varování/úspěch). Web admin dosud žádné nerenderoval — bez tohoto
+       by upozornění z controllerů (např. odmítnutý příliš velký export) byla neviditelná. #}
+    {% block admin_flashes %}
+        {% for type, messages in app.flashes %}
+            {% set cssType = {'danger':'danger','error':'danger','warning':'warning','success':'success','notice':'info','info':'info'}[type]|default('info') %}
+            {% for message in messages %}
+                <div class="container" style="padding-top:.35rem;">
+                    <div class="alert alert-{{ cssType }}" role="alert" style="margin:.35rem 0;">{{ message }}</div>
+                </div>
+            {% endfor %}
+        {% endfor %}
+    {% endblock admin_flashes %}
 {% endblock body_header %}
