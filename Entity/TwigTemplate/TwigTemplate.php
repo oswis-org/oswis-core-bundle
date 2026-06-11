@@ -51,11 +51,59 @@ use OswisOrg\OswisCoreBundle\Traits\Common\TextValueTrait;
 #[Cache(usage: 'NONSTRICT_READ_WRITE', region: 'core_twig_template')]
 class TwigTemplate implements NameableInterface, TextValueInterface
 {
+    /** Transactional system mail (activation/summary/payment) — usually a file reference. */
+    public const KIND_SYSTEM = 'system';
+
+    /** Marketing/campaign mail (infomail/feedback/…) — full Twig in textValue, extends the wrapper. */
+    public const KIND_CAMPAIGN = 'campaign';
+
+    /** Reusable body fragment/block inserted into a composed mail (not a complete e-mail). */
+    public const KIND_SNIPPET = 'snippet';
+
+    /** Reserved for future non-mail templates (web page / PDF) so they can coexist in this store. */
+    public const KIND_PAGE = 'page';
+
+    public const KIND_PDF = 'pdf';
+
     use NameableTrait;
     use TextValueTrait;
 
     #[Column(type: 'string', nullable: true)]
     protected ?string $regularTemplateName = null;
+
+    /**
+     * Semantic kind of this template (one of the KIND_* constants). Lets the mail config editor
+     * group/filter and the bulk composer offer the right templates (campaigns to start from,
+     * snippets to insert). Nullable for legacy rows not yet classified.
+     */
+    #[Column(type: 'string', length: 16, nullable: true)]
+    protected ?string $kind = null;
+
+    /** @return list<string> */
+    public static function getAllowedKinds(): array
+    {
+        return [self::KIND_SYSTEM, self::KIND_CAMPAIGN, self::KIND_SNIPPET, self::KIND_PAGE, self::KIND_PDF];
+    }
+
+    public function getKind(): ?string
+    {
+        return $this->kind;
+    }
+
+    public function setKind(?string $kind): void
+    {
+        $this->kind = (null === $kind || in_array($kind, self::getAllowedKinds(), true)) ? $kind : null;
+    }
+
+    public function isCampaign(): bool
+    {
+        return self::KIND_CAMPAIGN === $this->kind;
+    }
+
+    public function isSnippet(): bool
+    {
+        return self::KIND_SNIPPET === $this->kind;
+    }
 
     final public function isRegular(): bool
     {
