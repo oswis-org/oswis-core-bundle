@@ -156,3 +156,41 @@ oswis_org_oswis_core_web_admin_logout:
 
 
 
+## Admin-managed short links (WebRedirect): public follow + QR-friendly alias.
+oswis_org_oswis_core_redirect:
+    controller: OswisOrg\OswisCoreBundle\Controller\Web\RedirectWebController::follow
+    path: "/redirect/{slug}"
+    methods: [GET]
+
+oswis_org_oswis_core_redirect_short:
+    controller: OswisOrg\OswisCoreBundle\Controller\Web\RedirectWebController::follow
+    path: "/r/{slug}"
+    methods: [GET]
+
+oswis_org_oswis_core_web_admin_redirects:
+    controller: OswisOrg\OswisCoreBundle\Controller\WebAdmin\WebAdminRedirectController::index
+    path: "/web_admin/presmerovani"
+    methods: [GET]
+
+oswis_org_oswis_core_web_admin_redirect_new:
+    controller: OswisOrg\OswisCoreBundle\Controller\WebAdmin\WebAdminRedirectController::new
+    path: "/web_admin/presmerovani/nove"
+    methods: [GET, POST]
+
+oswis_org_oswis_core_web_admin_redirect_edit:
+    controller: OswisOrg\OswisCoreBundle\Controller\WebAdmin\WebAdminRedirectController::edit
+    path: "/web_admin/presmerovani/{id}/upravit"
+    requirements: { id: '\d+' }
+    methods: [GET, POST]
+
+oswis_org_oswis_core_web_admin_redirect_delete:
+    controller: OswisOrg\OswisCoreBundle\Controller\WebAdmin\WebAdminRedirectController::delete
+    path: "/web_admin/presmerovani/{id}/smazat"
+    requirements: { id: '\d+' }
+    methods: [POST]
+
+oswis_org_oswis_core_web_admin_redirect_restore:
+    controller: OswisOrg\OswisCoreBundle\Controller\WebAdmin\WebAdminRedirectController::restore
+    path: "/web_admin/presmerovani/{id}/obnovit"
+    requirements: { id: '\d+' }
+    methods: [POST]

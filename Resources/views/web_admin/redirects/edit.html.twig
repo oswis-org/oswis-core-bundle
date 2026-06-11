@@ -1,0 +1,27 @@
+{% extends '@OswisOrgOswisCore/web_admin/page-skeleton-web-admin.html.twig' %}
+
+{% block html_title %}{{ page_title }}{% endblock %}
+
+{% block body_content %}
+    <main class="container">
+        <h2>{{ pageTitle }}</h2>
+        <p>
+            <a class="btn btn-sm btn-link"
+               href="{{ path('oswis_org_oswis_core_web_admin_redirects') }}">← Zpět na přesměrování</a>
+        </p>
+        {{ form_start(form, { attr: { novalidate: 'novalidate' } }) }}
+        {{ form_widget(form) }}
+        {{ form_end(form, { render_rest: false }) }}
+
+        {% if entity.id and entity.slug %}
+            <p style="margin-top: .75rem;">
+                Veřejné adresy:
+                <a href="{{ path('oswis_org_oswis_core_redirect', { slug: entity.slug }) }}" target="_blank" rel="noopener">
+                    <code>{{ url('oswis_org_oswis_core_redirect', { slug: entity.slug }) }}</code></a>
+                ·
+                <a href="{{ path('oswis_org_oswis_core_redirect_short', { slug: entity.slug }) }}" target="_blank" rel="noopener">
+                    <code>{{ url('oswis_org_oswis_core_redirect_short', { slug: entity.slug }) }}</code></a>
+            </p>
+        {% endif %}
+    </main>
+{% endblock %}

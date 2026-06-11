@@ -1,0 +1,66 @@
+{% extends '@OswisOrgOswisCore/web_admin/page-skeleton-web-admin.html.twig' %}
+
+{% block html_title %}{{ page_title }}{% endblock %}
+
+{% block body_content %}
+    <main class="container">
+        <h2>{{ pageTitle }}</h2>
+        <p>
+            Krátké odkazy <code>/redirect/{slug}</code> (alias <code>/r/{slug}</code>) — zpětné vazby,
+            FB eventy, QR kódy… Cíl lze kdykoli změnit bez zásahu do rozeslaných e-mailů či tisků.
+        </p>
+        <p>
+            <a class="btn btn-sm btn-primary" href="{{ path('oswis_org_oswis_core_web_admin_redirect_new') }}">+ Nové přesměrování</a>
+        </p>
+        <table class="list" style="width: 100%;">
+            <thead>
+                <tr>
+                    <th style="width: 3rem;">ID</th>
+                    <th>Slug</th>
+                    <th>Název</th>
+                    <th>Cíl</th>
+                    <th style="width: 5rem; text-align: right;" title="Počet použití">Hitů</th>
+                    <th style="width: 9rem;" title="Poslední použití">Naposledy</th>
+                    <th style="width: 11rem;"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for r in redirects %}
+                    <tr{% if r.deletedAt %} style="opacity: .55;"{% endif %}>
+                        <td>{{ r.id }}</td>
+                        <td>
+                            <code>{{ r.slug }}</code>
+                            {% if r.deletedAt %}<small style="color: #b02a37;"> (deaktivováno)</small>{% endif %}
+                        </td>
+                        <td>{{ r.name|default('—') }}</td>
+                        <td style="max-width: 28rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                            <a href="{{ r.targetUrl }}" target="_blank" rel="noopener" title="{{ r.targetUrl }}">{{ r.targetUrl }}</a>
+                        </td>
+                        <td style="text-align: right;">{{ r.hitCount }}</td>
+                        <td>{{ r.lastHitAt ? r.lastHitAt|date('j. n. Y H:i') : '—' }}</td>
+                        <td>
+                            <a class="btn btn-sm btn-outline-primary"
+                               href="{{ path('oswis_org_oswis_core_web_admin_redirect_edit', { id: r.id }) }}">✎ Upravit</a>
+                            {% if r.deletedAt %}
+                                <form method="post" style="display: inline;"
+                                      action="{{ path('oswis_org_oswis_core_web_admin_redirect_restore', { id: r.id }) }}">
+                                    <input type="hidden" name="_token" value="{{ csrf_token('web_redirect_restore_' ~ r.id) }}">
+                                    <button class="btn btn-sm btn-outline-success" type="submit">↻ Obnovit</button>
+                                </form>
+                            {% else %}
+                                <form method="post" style="display: inline;"
+                                      action="{{ path('oswis_org_oswis_core_web_admin_redirect_delete', { id: r.id }) }}"
+                                      onsubmit="return confirm('Deaktivovat přesměrování „{{ r.slug }}“? Veřejná adresa přestane fungovat (lze obnovit).');">
+                                    <input type="hidden" name="_token" value="{{ csrf_token('web_redirect_delete_' ~ r.id) }}">
+                                    <button class="btn btn-sm btn-outline-danger" type="submit">🗑 Deaktivovat</button>
+                                </form>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr><td colspan="7" style="text-align: center; color: #6c757d;">Zatím žádná přesměrování.</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+{% endblock %}
