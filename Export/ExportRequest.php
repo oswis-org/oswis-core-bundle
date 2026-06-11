@@ -10,10 +10,12 @@ final class ExportRequest
 {
     /**
      * @param list<string>|null $columnKeys vybrané sloupce v pořadí; null = výchozí sada
+     * @param string|null       $subtitle   scope do hlavičky PDF (akce/typ/počet); null = bez podtitulku
      */
     public function __construct(
         public readonly ExportFormat $format,
         public readonly ?array $columnKeys = null,
+        public readonly ?string $subtitle = null,
     ) {
     }
 }
