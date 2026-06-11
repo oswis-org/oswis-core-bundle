@@ -607,3 +607,21 @@ services:
         arguments: [ '@OswisOrg\OswisCoreBundle\OpenApi\OpenApiFactory.inner' ]
         autoconfigure: false
         decoration_priority: 1000
+
+    ## Admin-managed short links (WebRedirect): public follow controller + admin CRUD + repository.
+    OswisOrg\OswisCoreBundle\Controller\Web\RedirectWebController:
+        autowire: true
+        autoconfigure: true
+        public: true
+        tags: [ 'controller.service_arguments' ]
+
+    OswisOrg\OswisCoreBundle\Controller\WebAdmin\WebAdminRedirectController:
+        autowire: true
+        autoconfigure: true
+        public: true
+        tags: [ 'controller.service_arguments' ]
+
+    OswisOrg\OswisCoreBundle\Repository\Web\WebRedirectRepository:
+        autowire: true
+        autoconfigure: true
+        tags: [ 'doctrine.repository_service' ]
