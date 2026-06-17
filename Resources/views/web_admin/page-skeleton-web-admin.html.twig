@@ -2,31 +2,6 @@
 
 {% block body_header %}
     {% include '@OswisOrgOswisCore/web_admin/header.html.twig' %}
-    {# Drobečková navigace: „Úvod" je vždy první, pak cesta libovolné hloubky.
-       Stránka může předat `crumbs` = [{label, url?}, …] (poslední = aktuální stránka, bez odkazu).
-       Bez `crumbs` se odvodí jednoúrovňová cesta z titulku stránky (block `html_title`,
-       oříznut suffix " :: …"), takže drobeček funguje i bez explicitní konfigurace. #}
-    {% block admin_breadcrumb %}
-        {% if app.request.attributes.get('_route') != 'oswis_org_oswis_core_web_admin_homepage' %}
-            {% set crumbList = crumbs|default([]) %}
-            {% if crumbList is empty %}
-                {% set crumbTitle = block('html_title')|split(' :: ')|first|split(' · ')|first|trim %}
-                {% if crumbTitle %}{% set crumbList = [{ 'label': crumbTitle }] %}{% endif %}
-            {% endif %}
-            <nav aria-label="breadcrumb" class="container" style="padding-top:.25rem;">
-                <ol class="breadcrumb" style="margin:.35rem 0; font-size:.9rem;">
-                    <li class="breadcrumb-item"><a href="{{ path('oswis_org_oswis_core_web_admin_homepage') }}">Úvod</a></li>
-                    {% for crumb in crumbList %}
-                        {% if crumb.url is defined and crumb.url and not loop.last %}
-                            <li class="breadcrumb-item"><a href="{{ crumb.url }}">{{ crumb.label }}</a></li>
-                        {% else %}
-                            <li class="breadcrumb-item active" aria-current="page">{{ crumb.label }}</li>
-                        {% endif %}
-                    {% endfor %}
-                </ol>
-            </nav>
-        {% endif %}
-    {% endblock admin_breadcrumb %}
     {# Flash zprávy (chyby/varování/úspěch). Web admin dosud žádné nerenderoval — bez tohoto
        by upozornění z controllerů (např. odmítnutý příliš velký export) byla neviditelná. #}
     {% block admin_flashes %}
@@ -40,3 +15,38 @@
         {% endfor %}
     {% endblock admin_flashes %}
 {% endblock body_header %}
+
+{# Drobečková navigace adminu = TÁŽ komponenta jako na webu (web/parts/breadcrumbs.html.twig),
+   jen nakrmená admin cestou — žádný vlastní/jiný breadcrumb. Stránka předá `crumbs` =
+   [{label, url?}, …] (poslední = aktuální stránka). Bez `crumbs` se odvodí jednoúrovňová cesta
+   z titulku (block html_title). Přepisujeme jen bloky komponenty: domovskou položku na admin
+   „Úvod", smyčku na admin cestu a poslední (aktivní) položku. #}
+{% block body_breadcrumbs %}
+    {% if app.request.attributes.get('_route') != 'oswis_org_oswis_core_web_admin_homepage' %}
+        {% set crumbList = crumbs|default([]) %}
+        {% if crumbList is empty %}
+            {% set crumbTitle = block('html_title')|split(' :: ')|first|split(' · ')|first|trim %}
+            {% if crumbTitle %}{% set crumbList = [{ 'label': crumbTitle }] %}{% endif %}
+        {% endif %}
+        {% embed '@OswisOrgOswisCore/web/parts/breadcrumbs.html.twig' %}
+            {% block breadcrumb_homapage %}
+                {% include '@OswisOrgOswisCore/web/parts/breadcrumb-item.html.twig'
+                    with { 'b_url': path('oswis_org_oswis_core_web_admin_homepage'), 'b_title': 'Úvod' } %}
+            {% endblock breadcrumb_homapage %}
+            {% block breadcrumb_loop %}
+                {% for crumb in crumbList %}
+                    {% if not loop.last %}
+                        {% include '@OswisOrgOswisCore/web/parts/breadcrumb-item.html.twig'
+                            with { 'b_url': crumb.url|default(''), 'b_title': crumb.label } %}
+                    {% endif %}
+                {% endfor %}
+            {% endblock breadcrumb_loop %}
+            {% block breadcrumb_last %}
+                {% if crumbList|length > 0 %}
+                    {% include '@OswisOrgOswisCore/web/parts/breadcrumb-item.html.twig'
+                        with { 'b_url': '', 'b_title': (crumbList|last).label|default('Tato stránka'), 'b_active': true } %}
+                {% endif %}
+            {% endblock breadcrumb_last %}
+        {% endembed %}
+    {% endif %}
+{% endblock body_breadcrumbs %}
