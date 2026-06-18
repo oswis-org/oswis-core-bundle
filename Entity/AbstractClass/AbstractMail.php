@@ -49,6 +49,16 @@ abstract class AbstractMail implements BasicInterface
     #[Column(type: 'string', nullable: true)]
     protected ?string $address = null;
 
+    // Rendered body of the sent mail, captured at send-time by MailService so the
+    // admin communication timeline can show what was actually delivered. type=text
+    // (LONGTEXT in MySQL) — full HTML mails far exceed VARCHAR. Old rows stay NULL
+    // (no backfill) and the timeline falls back to "tělo není k dispozici".
+    #[Column(type: 'text', nullable: true)]
+    protected ?string $bodyHtml = null;
+
+    #[Column(type: 'text', nullable: true)]
+    protected ?string $body = null;
+
     protected ?TemplatedEmail $templatedEmail = null;
 
     /**
@@ -222,6 +232,26 @@ abstract class AbstractMail implements BasicInterface
     public function setStatusMessage(?string $message): void
     {
         $this->statusMessage = $message;
+    }
+
+    public function getBodyHtml(): ?string
+    {
+        return $this->bodyHtml;
+    }
+
+    public function setBodyHtml(?string $bodyHtml): void
+    {
+        $this->bodyHtml = $bodyHtml;
+    }
+
+    public function getBody(): ?string
+    {
+        return $this->body;
+    }
+
+    public function setBody(?string $body): void
+    {
+        $this->body = $body;
     }
 
     /**

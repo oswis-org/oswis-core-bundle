@@ -14,6 +14,7 @@ use OswisOrg\OswisCoreBundle\Entity\AbstractClass\AbstractMail;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\BodyRendererInterface;
 
 class MailService
 {
@@ -21,6 +22,7 @@ class MailService
         protected LoggerInterface $logger,
         protected MailerInterface $mailer,
         protected EntityManagerInterface $em,
+        protected BodyRendererInterface $bodyRenderer,
     ) {
     }
 
@@ -30,6 +32,16 @@ class MailService
         $class = get_class($eMail);
         try {
             $mail = $eMail->getTemplatedEmail()->htmlTemplate($template)->context($data);
+            // Render now — transport-independent (works even if mail later goes async
+            // via Messenger, where the mailer listener would otherwise render in the
+            // worker) — so we can persist exactly what we deliver for the admin timeline.
+            $this->bodyRenderer->render($mail);
+            if (is_string($renderedHtml = $mail->getHtmlBody())) {
+                $eMail->setBodyHtml($renderedHtml);
+            }
+            if (is_string($renderedText = $mail->getTextBody())) {
+                $eMail->setBody($renderedText);
+            }
             $this->mailer->send($mail);
             $eMail->setSent(new DateTime());
             $this->em->flush();
