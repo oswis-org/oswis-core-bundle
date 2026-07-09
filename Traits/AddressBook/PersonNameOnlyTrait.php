@@ -111,7 +111,7 @@ trait PersonNameOnlyTrait
             $this->setFamilyName($nameObject->getLastName());
             $this->setHonorificSuffix($nameObject->getSuffix());
             $this->setNickname($nameObject->getNicknames());
-            if ('' !== $this->getFullName()) {
+            if ('' !== $this->getFullName() && !self::onlyWhitespaceDiffers($name, $this->getFullName())) {
                 return $this->updateName();
             }
         }
@@ -123,6 +123,19 @@ trait PersonNameOnlyTrait
         $this->setRawNameParts($name);
 
         return $this->updateName();
+    }
+
+    /**
+     * The parser may reorder tokens ("Novák, Jan" → "Jan Novák"), but it must never invent or drop a
+     * space. When the only difference is whitespace, it split something it shouldn't have — typically
+     * on a hyphen — and re-saving would keep adding spaces ("Anna -Líza" → "Anna - Líza" → …). Keeping
+     * the raw input in that case makes setName(getName()) idempotent, so an already-damaged legacy row
+     * cannot decay further before it gets repaired.
+     */
+    private static function onlyWhitespaceDiffers(string $rawName, string $parsedName): bool
+    {
+        return $rawName !== $parsedName
+               && str_replace(' ', '', $rawName) === str_replace(' ', '', $parsedName);
     }
 
     /**

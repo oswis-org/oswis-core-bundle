@@ -105,7 +105,7 @@ trait NameablePersonTrait
             $this->setFamilyName($nameObject->getLastName());
             $this->setHonorificSuffix($nameObject->getSuffix());
             $this->setNickname($nameObject->getNicknames());
-            if ('' !== $this->getFullName()) {
+            if ('' !== $this->getFullName() && !self::onlyWhitespaceDiffers($name, $this->getFullName())) {
                 return $this->updateName();
             }
         }
@@ -113,6 +113,13 @@ trait NameablePersonTrait
         $this->setRawNameParts($name);
 
         return $this->updateName();
+    }
+
+    /** Parser smí tokeny přeskládat, ale nesmí přidat ani ubrat mezeru. See PersonNameOnlyTrait. */
+    private static function onlyWhitespaceDiffers(string $rawName, string $parsedName): bool
+    {
+        return $rawName !== $parsedName
+               && str_replace(' ', '', $rawName) === str_replace(' ', '', $parsedName);
     }
 
     /**
