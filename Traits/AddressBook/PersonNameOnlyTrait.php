@@ -92,16 +92,17 @@ trait PersonNameOnlyTrait
         if ('' === $name) {
             return $this->updateName();
         }
-        try {
-            $nameObject = new FullNameParser()->parse($name);
-        } catch (NameParsingException) {
-            // The parser rejects any input it cannot decompose — most commonly a single token
-            // with no surname ("Sonička", "Nguyen", a nickname). Swallowing the exception left
-            // every name part null, and the updateName() below then rebuilt `name` from those
-            // nulls as '' — silently destroying the name the user typed, while their e-mail and
-            // phone were stored. That produced the "half-saved registration" rows (prod 1480,
-            // 1548, 1549, 1925, 2742, 2874, 2929, 3320, 3343, 3395 — 2022 through 2026).
-            $nameObject = null;
+        $nameObject = null;
+        // A single token carries no surname, so the parser can only damage it: it either throws
+        // NameParsingException ("Sonička", "Nguyen", a nickname) or splits on a hyphen and inserts
+        // a space ("Anna-Líza" → "Anna -Líza", which grows another space on every re-save).
+        // Multi-token names with hyphens ("Marie Nováková-Svobodová") parse correctly.
+        if (str_contains($name, ' ')) {
+            try {
+                $nameObject = new FullNameParser()->parse($name);
+            } catch (NameParsingException) {
+                $nameObject = null;
+            }
         }
         if ($nameObject instanceof Name) {
             $this->setHonorificPrefix($nameObject->getAcademicTitle());
@@ -110,12 +111,16 @@ trait PersonNameOnlyTrait
             $this->setFamilyName($nameObject->getLastName());
             $this->setHonorificSuffix($nameObject->getSuffix());
             $this->setNickname($nameObject->getNicknames());
+            if ('' !== $this->getFullName()) {
+                return $this->updateName();
+            }
         }
-        // Invariant: a non-empty input must never end up as an empty name. Covers both the
-        // rejected-input path above and any parse that yields nothing usable.
-        if ('' === $this->getFullName()) {
-            $this->setRawNameParts($name);
-        }
+        // Parser skipped, refused the input, or produced nothing usable. Keeping the raw name is
+        // what stops a non-empty input from being silently stored as ''. Swallowing the exception
+        // and letting updateName() rebuild `name` from the resulting nulls is what produced the
+        // "half-saved registration" rows on production (2022 through 2026): e-mail and phone
+        // stored, name gone.
+        $this->setRawNameParts($name);
 
         return $this->updateName();
     }

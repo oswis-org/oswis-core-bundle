@@ -88,12 +88,15 @@ trait NameablePersonTrait
         if ('' === $name) {
             return $this->updateName();
         }
-        try {
-            $nameObject = new FullNameParser()->parse($name);
-        } catch (NameParsingException) {
-            // See PersonNameOnlyTrait::setFullName() — the parser rejects single-token names and
-            // swallowing that used to blank the name the user typed.
-            $nameObject = null;
+        $nameObject = null;
+        // See PersonNameOnlyTrait::setFullName() — a single token is only ever damaged by the
+        // parser (thrown exception, or a hyphen split that inserts a space), never understood.
+        if (str_contains($name, ' ')) {
+            try {
+                $nameObject = new FullNameParser()->parse($name);
+            } catch (NameParsingException) {
+                $nameObject = null;
+            }
         }
         if ($nameObject instanceof Name) {
             $this->setHonorificPrefix($nameObject->getAcademicTitle());
@@ -102,11 +105,12 @@ trait NameablePersonTrait
             $this->setFamilyName($nameObject->getLastName());
             $this->setHonorificSuffix($nameObject->getSuffix());
             $this->setNickname($nameObject->getNicknames());
+            if ('' !== $this->getFullName()) {
+                return $this->updateName();
+            }
         }
         // Invariant: a non-empty input must never end up as an empty name.
-        if ('' === $this->getFullName()) {
-            $this->setRawNameParts($name);
-        }
+        $this->setRawNameParts($name);
 
         return $this->updateName();
     }
