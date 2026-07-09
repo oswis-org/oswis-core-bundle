@@ -88,23 +88,54 @@ trait PersonNameOnlyTrait
 
     public function setFullName(?string $name): ?string
     {
-        $parser = new FullNameParser();
+        $name = trim(''.preg_replace('!\s+!', ' ', ''.$name));
+        if ('' === $name) {
+            return $this->updateName();
+        }
         try {
-            $name = preg_replace('!\s+!', ' ', ''.$name);
-            $nameObject = $parser->parse(trim(''.$name));
-            if ($nameObject instanceof Name) {
-                $this->setHonorificPrefix($nameObject->getAcademicTitle());
-                $this->setGivenName($nameObject->getFirstName());
-                $this->setAdditionalName($nameObject->getMiddleName());
-                $this->setFamilyName($nameObject->getLastName());
-                $this->setHonorificSuffix($nameObject->getSuffix());
-                $this->setNickname($nameObject->getNicknames());
-            }
+            $nameObject = new FullNameParser()->parse($name);
         } catch (NameParsingException) {
-            // Name not recognized.
+            // The parser rejects any input it cannot decompose — most commonly a single token
+            // with no surname ("Sonička", "Nguyen", a nickname). Swallowing the exception left
+            // every name part null, and the updateName() below then rebuilt `name` from those
+            // nulls as '' — silently destroying the name the user typed, while their e-mail and
+            // phone were stored. That produced the "half-saved registration" rows (prod 1480,
+            // 1548, 1549, 1925, 2742, 2874, 2929, 3320, 3343, 3395 — 2022 through 2026).
+            $nameObject = null;
+        }
+        if ($nameObject instanceof Name) {
+            $this->setHonorificPrefix($nameObject->getAcademicTitle());
+            $this->setGivenName($nameObject->getFirstName());
+            $this->setAdditionalName($nameObject->getMiddleName());
+            $this->setFamilyName($nameObject->getLastName());
+            $this->setHonorificSuffix($nameObject->getSuffix());
+            $this->setNickname($nameObject->getNicknames());
+        }
+        // Invariant: a non-empty input must never end up as an empty name. Covers both the
+        // rejected-input path above and any parse that yields nothing usable.
+        if ('' === $this->getFullName()) {
+            $this->setRawNameParts($name);
         }
 
         return $this->updateName();
+    }
+
+    /**
+     * Fallback decomposition for names the parser cannot handle: first token is the given name
+     * (a lone token is overwhelmingly a first name or nickname, and getSalutationName()/getGender()
+     * both read givenName), last token — if any — is the family name, the rest is the middle name.
+     *
+     * @param string $name Whitespace-normalised, non-empty full name.
+     */
+    private function setRawNameParts(string $name): void
+    {
+        $parts = explode(' ', $name);
+        $this->setHonorificPrefix(null);
+        $this->setHonorificSuffix(null);
+        $this->setNickname(null);
+        $this->setGivenName(array_shift($parts));
+        $this->setFamilyName([] === $parts ? null : array_pop($parts));
+        $this->setAdditionalName([] === $parts ? null : implode(' ', $parts));
     }
 
     public function updateName(): ?string
