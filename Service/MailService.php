@@ -30,7 +30,6 @@ class MailService
     {
         $this->em->persist($eMail);
         $class = get_class($eMail);
-        $physicallySent = false;
         try {
             $mail = $eMail->getTemplatedEmail()->htmlTemplate($template)->context($data);
             // Render now — transport-independent (works even if mail later goes async
@@ -44,42 +43,53 @@ class MailService
                 $eMail->setBody($renderedText);
             }
             $this->mailer->send($mail);
-            $physicallySent = true;
-            $eMail->setSent(new DateTime());
-            $this->em->flush();
-            $id = $eMail->getId();
-            $messageID = $eMail->getMessageID();
-            $this->logger->info("E-mail ($class) sent with ID '$id' and Message-ID '$messageID'.");
         } catch (Exception|TransportExceptionInterface $exception) {
             $this->logger->error("E-mail ($class) NOT sent: ".$exception->getMessage());
-            if ($physicallySent) {
-                // The message left the mailer but the row saying so never hit the DB, so every
-                // "unmailed" query still sees this recipient — the next cron run will send it again.
-                // Nothing here can undo the delivery; make sure a human can find out.
-                $this->logger->critical(
-                    "E-mail ($class) BYL odeslán, ale zápis o odeslání selhal — hrozí duplicitní odeslání: "
-                    .$exception->getMessage()
-                );
-            }
             $eMail->setStatusMessage($exception->getMessage());
-            // A failed flush closes the EntityManager (UnitOfWork::commit() → em->close() in finally),
-            // and every later flush()/persist() throws EntityManagerClosed. Flushing blindly here used
-            // to let that secondary exception escape sendEMail() uncaught: the original error was never
-            // logged and the whole cron/registration request died on the first bad mail.
-            if (!$this->em->isOpen()) {
-                $this->logger->error(
-                    "E-mail ($class): EntityManager je zavřený, stav e-mailu se do DB nezapsal."
-                );
+            $this->persistState($eMail, $class);
 
-                return;
-            }
-            try {
-                $this->em->flush();
-            } catch (Exception $flushException) {
-                $this->logger->error(
-                    "E-mail ($class): stav e-mailu se nepodařilo zapsat: ".$flushException->getMessage()
-                );
-            }
+            return;
+        }
+        // Od tohoto bodu je zpráva FYZICKY doručena mailerem. Cokoli se pokazí dál se už nedá vzít
+        // zpět — jde jen o to, aby se o tom vědělo a aby to neshodilo zbytek běhu.
+        $eMail->setSent(new DateTime());
+        try {
+            $this->em->flush();
+        } catch (Exception $exception) {
+            // Neúspěšný commit zavře EntityManager (`UnitOfWork::commit()` → `em->close()` ve `finally`),
+            // takže sloupec `sent` v DB nikdy nebude. Dotazy na „neodmailované" příjemce ho tedy dál
+            // vidí a příští běh cronu mu pošle TÝŽ e-mail znovu.
+            $this->logger->critical(
+                "E-mail ($class) BYL odeslán, ale zápis o odeslání selhal — hrozí duplicitní odeslání: "
+                .$exception->getMessage()
+            );
+            $eMail->setStatusMessage($exception->getMessage());
+            $this->persistState($eMail, $class);
+
+            return;
+        }
+        $id = $eMail->getId();
+        $messageID = $eMail->getMessageID();
+        $this->logger->info("E-mail ($class) sent with ID '$id' and Message-ID '$messageID'.");
+    }
+
+    /**
+     * Zápis stavu e-mailu po chybě. Na zavřeném EntityManageru by každý `flush()` hodil
+     * `EntityManagerClosed`; dřív se flushovalo naslepo a ta druhá výjimka utekla ze `sendEMail()`
+     * nezachycená — původní chyba se nikdy nezalogovala a celý cron / request spadl na prvním
+     * vadném e-mailu.
+     */
+    private function persistState(AbstractMail $eMail, string $class): void
+    {
+        if (!$this->em->isOpen()) {
+            $this->logger->error("E-mail ($class): EntityManager je zavřený, stav se do DB nezapsal.");
+
+            return;
+        }
+        try {
+            $this->em->flush();
+        } catch (Exception $exception) {
+            $this->logger->error("E-mail ($class): stav se nepodařilo zapsat: ".$exception->getMessage());
         }
     }
 }
