@@ -339,6 +339,7 @@ services:
         tags: [ 'kernel.event_subscriber' ]
         arguments:
             - '@oswis_org_oswis_core.oswis_core_settings_provider'
+            - '@logger'
     OswisOrg\OswisCoreBundle\EventSubscriber\MailerSubscriber:
         alias: oswis_org_oswis_core.mailer_subscriber
         public: true

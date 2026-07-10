@@ -43,15 +43,53 @@ class MailService
                 $eMail->setBody($renderedText);
             }
             $this->mailer->send($mail);
-            $eMail->setSent(new DateTime());
-            $this->em->flush();
-            $id = $eMail->getId();
-            $messageID = $eMail->getMessageID();
-            $this->logger->info("E-mail ($class) sent with ID '$id' and Message-ID '$messageID'.");
         } catch (Exception|TransportExceptionInterface $exception) {
-            $eMail->setStatusMessage($exception->getMessage());
-            $this->em->flush();
             $this->logger->error("E-mail ($class) NOT sent: ".$exception->getMessage());
+            $eMail->setStatusMessage($exception->getMessage());
+            $this->persistState($eMail, $class);
+
+            return;
+        }
+        // Od tohoto bodu je zpráva FYZICKY doručena mailerem. Cokoli se pokazí dál se už nedá vzít
+        // zpět — jde jen o to, aby se o tom vědělo a aby to neshodilo zbytek běhu.
+        $eMail->setSent(new DateTime());
+        try {
+            $this->em->flush();
+        } catch (Exception $exception) {
+            // Neúspěšný commit zavře EntityManager (`UnitOfWork::commit()` → `em->close()` ve `finally`),
+            // takže sloupec `sent` v DB nikdy nebude. Dotazy na „neodmailované" příjemce ho tedy dál
+            // vidí a příští běh cronu mu pošle TÝŽ e-mail znovu.
+            $this->logger->critical(
+                "E-mail ($class) BYL odeslán, ale zápis o odeslání selhal — hrozí duplicitní odeslání: "
+                .$exception->getMessage()
+            );
+            $eMail->setStatusMessage($exception->getMessage());
+            $this->persistState($eMail, $class);
+
+            return;
+        }
+        $id = $eMail->getId();
+        $messageID = $eMail->getMessageID();
+        $this->logger->info("E-mail ($class) sent with ID '$id' and Message-ID '$messageID'.");
+    }
+
+    /**
+     * Zápis stavu e-mailu po chybě. Na zavřeném EntityManageru by každý `flush()` hodil
+     * `EntityManagerClosed`; dřív se flushovalo naslepo a ta druhá výjimka utekla ze `sendEMail()`
+     * nezachycená — původní chyba se nikdy nezalogovala a celý cron / request spadl na prvním
+     * vadném e-mailu.
+     */
+    private function persistState(AbstractMail $eMail, string $class): void
+    {
+        if (!$this->em->isOpen()) {
+            $this->logger->error("E-mail ($class): EntityManager je zavřený, stav se do DB nezapsal.");
+
+            return;
+        }
+        try {
+            $this->em->flush();
+        } catch (Exception $exception) {
+            $this->logger->error("E-mail ($class): stav se nepodařilo zapsat: ".$exception->getMessage());
         }
     }
 }

@@ -8,6 +8,7 @@ declare(strict_types=1);
 namespace OswisOrg\OswisCoreBundle\EventSubscriber;
 
 use OswisOrg\OswisCoreBundle\Provider\OswisCoreSettingsProvider;
+use Psr\Log\LoggerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Mailer\Event\MessageEvent;
 use Symfony\Component\Mime\Address;
@@ -17,8 +18,10 @@ use Symfony\Component\Mime\Exception\RfcComplianceException;
 
 class MailerSubscriber implements EventSubscriberInterface
 {
-    public function __construct(protected OswisCoreSettingsProvider $coreSettings)
-    {
+    public function __construct(
+        protected OswisCoreSettingsProvider $coreSettings,
+        protected LoggerInterface $logger,
+    ) {
     }
 
     public static function getSubscribedEvents(): array
@@ -125,7 +128,13 @@ class MailerSubscriber implements EventSubscriberInterface
             if ($archiveAddress) {
                 $email->addBcc($archiveAddress);
             }
-        } catch (RfcComplianceException|LogicException) {
+        } catch (RfcComplianceException|LogicException $exception) {
+            // Swallowing this silently meant the mail still reached its recipient while the archive
+            // copy vanished — a misconfigured archive address could stay unnoticed for years.
+            $this->logger->error(
+                'Archivní kopie e-mailu nebyla připojena (neplatná archivní adresa v konfiguraci): '
+                .$exception->getMessage()
+            );
         }
     }
 }

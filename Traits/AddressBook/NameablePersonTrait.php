@@ -84,23 +84,58 @@ trait NameablePersonTrait
 
     public function setFullName(?string $name): ?string
     {
-        $parser = new FullNameParser();
-        try {
-            $name = preg_replace('!\s+!', ' ', ''.$name);
-            $nameObject = $parser->parse(trim(''.$name));
-            if ($nameObject instanceof Name) {
-                $this->setHonorificPrefix($nameObject->getAcademicTitle());
-                $this->setGivenName($nameObject->getFirstName());
-                $this->setAdditionalName($nameObject->getMiddleName());
-                $this->setFamilyName($nameObject->getLastName());
-                $this->setHonorificSuffix($nameObject->getSuffix());
-                $this->setNickname($nameObject->getNicknames());
-            }
-        } catch (NameParsingException) {
-            // Name not recognized. Do some magic. Or maybe throw some exception.
+        $name = trim(''.preg_replace('!\s+!', ' ', ''.$name));
+        if ('' === $name) {
+            return $this->updateName();
         }
+        $nameObject = null;
+        // See PersonNameOnlyTrait::setFullName() — a single token is only ever damaged by the
+        // parser (thrown exception, or a hyphen split that inserts a space), never understood.
+        if (str_contains($name, ' ')) {
+            try {
+                $nameObject = new FullNameParser()->parse($name);
+            } catch (NameParsingException) {
+                $nameObject = null;
+            }
+        }
+        if ($nameObject instanceof Name) {
+            $this->setHonorificPrefix($nameObject->getAcademicTitle());
+            $this->setGivenName($nameObject->getFirstName());
+            $this->setAdditionalName($nameObject->getMiddleName());
+            $this->setFamilyName($nameObject->getLastName());
+            $this->setHonorificSuffix($nameObject->getSuffix());
+            $this->setNickname($nameObject->getNicknames());
+            if ('' !== $this->getFullName() && !self::onlyWhitespaceDiffers($name, $this->getFullName())) {
+                return $this->updateName();
+            }
+        }
+        // Invariant: a non-empty input must never end up as an empty name.
+        $this->setRawNameParts($name);
 
         return $this->updateName();
+    }
+
+    /** Parser smí tokeny přeskládat, ale nesmí přidat ani ubrat mezeru. See PersonNameOnlyTrait. */
+    private static function onlyWhitespaceDiffers(string $rawName, string $parsedName): bool
+    {
+        return $rawName !== $parsedName
+               && str_replace(' ', '', $rawName) === str_replace(' ', '', $parsedName);
+    }
+
+    /**
+     * Fallback decomposition for names the parser cannot handle. See PersonNameOnlyTrait.
+     *
+     * @param string $name Whitespace-normalised, non-empty full name.
+     */
+    private function setRawNameParts(string $name): void
+    {
+        $parts = explode(' ', $name);
+        $this->setHonorificPrefix(null);
+        $this->setHonorificSuffix(null);
+        $this->setNickname(null);
+        $this->setGivenName(array_shift($parts));
+        $this->setFamilyName([] === $parts ? null : array_pop($parts));
+        $this->setAdditionalName([] === $parts ? null : implode(' ', $parts));
     }
 
     public function updateName(): ?string
