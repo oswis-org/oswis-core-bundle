@@ -64,7 +64,10 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
                 'groups' => ["entity_put", "app_user_put"],
                 'enable_max_depth' => true,
             ],
-            security: "is_granted('ROLE_ADMIN') or object.canEdit(user)"
+            // Pouze ROLE_ADMIN. Skupina 'app_user_put' obsahuje appUserType (= role uživatele),
+            // takže sebe-editace (object.canEdit) by dovolila povýšit vlastní účet na admin/root.
+            // Vlastní změny (e-mail/heslo/username) mají zabezpečený tok přes AppUserEditRequest.
+            security: "is_granted('ROLE_ADMIN')"
         ),
         new Get(
             uriTemplate: '/app_users/export/pdf',
