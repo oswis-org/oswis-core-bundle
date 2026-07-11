@@ -33,6 +33,50 @@ class AppUserRepository extends ServiceEntityRepository implements UserLoaderInt
     }
 
     /**
+     * Admin user list: newest first, optionally narrowed by a free-text query over
+     * name / username / e-mail (substring). Capped at $limit so the page stays fast;
+     * WITH a query the admin can reach any user beyond the default window (fixes the
+     * old hard 500-newest cap that hid the bulk of the user base).
+     *
+     * @return list<AppUser>
+     */
+    public function searchForAdmin(?string $q, int $limit = 500): array
+    {
+        $builder = $this->createQueryBuilder('u')->orderBy('u.id', 'DESC')->setMaxResults(max(1, $limit));
+        if (null !== $q && '' !== $q) {
+            $builder->andWhere('u.name LIKE :q OR u.username LIKE :q OR u.email LIKE :q')
+                ->setParameter('q', '%'.$q.'%');
+        }
+        /** @var list<AppUser> $result */
+        $result = $builder->getQuery()->getResult();
+
+        return $result;
+    }
+
+    /**
+     * Real counts over the WHOLE user base (not just the loaded window) for the admin
+     * filter tabs. Mirrors AppUser::isActivated()/isDeleted(): active = activated in the
+     * past and not (yet) deleted; deleted = deletedAt in the past; inactive = the rest.
+     *
+     * @return array{all: int, active: int, inactive: int, deleted: int}
+     */
+    public function adminStatusCounts(?DateTime $now = null): array
+    {
+        $now ??= new DateTime();
+        $all = (int) $this->createQueryBuilder('a')->select('COUNT(a.id)')
+            ->getQuery()->getSingleScalarResult();
+        $deleted = (int) $this->createQueryBuilder('a')->select('COUNT(a.id)')
+            ->andWhere('a.deletedAt IS NOT NULL AND a.deletedAt < :now')->setParameter('now', $now)
+            ->getQuery()->getSingleScalarResult();
+        $active = (int) $this->createQueryBuilder('a')->select('COUNT(a.id)')
+            ->andWhere('a.activated IS NOT NULL AND a.activated <= :now')
+            ->andWhere('(a.deletedAt IS NULL OR a.deletedAt >= :now)')->setParameter('now', $now)
+            ->getQuery()->getSingleScalarResult();
+
+        return ['all' => $all, 'active' => $active, 'inactive' => $all - $active, 'deleted' => $deleted];
+    }
+
+    /**
      * @param  int  $id
      *
      * @throws UserNotUniqueException
