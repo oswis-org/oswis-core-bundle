@@ -48,8 +48,11 @@ class ClientLogRecord implements BasicInterface
     #[Column(type: 'integer', nullable: true)]
     public ?int $level = null;
 
-    #[Column(type: 'string', nullable: true)]
-    #[Assert\Length(max: 255)] // odpovídá VARCHAR(255) (Doctrine default) → žádná schema změna; brání truncation/DB erroru
+    // Log message = chybová hláška / stack trace z klienta; VARCHAR(255) je na to
+    // krátké, proto TEXT. Assert\Length(max: 16000) je obranný strop (bezpečně se
+    // vejde i do TEXT/utf8mb4), spolu s povinným přihlášením na POSTu brání zneužití.
+    #[Column(type: 'text', nullable: true)]
+    #[Assert\Length(max: 16000)]
     public ?string $message = null;
 
     public function __construct(
