@@ -36,7 +36,11 @@ abstract class AbstractFileAction
     public function __invoke(Request $request): AbstractFile
     {
         $mediaObject = $this::getFileNewInstance();
-        $form = $this->factory->create($this::getFileClassName(), $mediaObject);
+        // POZOR: form factory potřebuje třídu FORMULÁŘE (FormType), NE entity.
+        // getFileClassName() vrací entitu (správně pro AbstractFileType::data_class),
+        // proto samostatná getFileFormClass() vrací odpovídající *Type. Dřív se sem
+        // omylem dávala getFileClassName() (entita) → „does not implement FormTypeInterface" 500.
+        $form = $this->factory->create($this::getFileFormClass(), $mediaObject);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->doctrine->getManager();
@@ -51,5 +55,9 @@ abstract class AbstractFileAction
 
     abstract public static function getFileNewInstance(): AbstractFile;
 
+    /** Třída ENTITY (media objektu) — používá {@see AbstractFileType} pro `data_class`. */
     abstract public static function getFileClassName(): string;
+
+    /** Třída FORMULÁŘE (FormType) pro nahrání — používá form factory v {@see __invoke}. */
+    abstract public static function getFileFormClass(): string;
 }
