@@ -344,6 +344,15 @@ services:
         alias: oswis_org_oswis_core.mailer_subscriber
         public: true
 
+    oswis_org_oswis_core.api_docs_access_listener:
+        class: OswisOrg\OswisCoreBundle\EventListener\ApiDocsAccessListener
+        autoconfigure: false
+        tags: [ 'kernel.event_subscriber' ]
+        arguments:
+            - '%kernel.environment%'
+    OswisOrg\OswisCoreBundle\EventListener\ApiDocsAccessListener:
+        alias: oswis_org_oswis_core.api_docs_access_listener
+
     oswis_org_oswis_core.app_user_subscriber:
         class: OswisOrg\OswisCoreBundle\EventSubscriber\AppUserSubscriber
         autowire: true
