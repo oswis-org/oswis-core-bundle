@@ -13,6 +13,7 @@ use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\Table;
 use OswisOrg\OswisCoreBundle\Interfaces\Common\BasicInterface;
 use OswisOrg\OswisCoreBundle\Traits\Common\BasicTrait;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Log record from client.
@@ -22,6 +23,12 @@ use OswisOrg\OswisCoreBundle\Traits\Common\BasicTrait;
     operations: [
         new Post(
             denormalizationContext: ['groups' => ['entities_post', 'client_log_records_post']],
+            // Hardening: dřív bez security = kdokoli NEPŘIHLÁŠENÝ mohl neomezeně
+            // plnit tabulku core_client_log_record (DoS / vyčerpání úložiště).
+            // Endpoint nikdo nevolá (0 záznamů, grep 0 v Ionic i web); klientský
+            // log dává smysl jen pro přihlášeného klienta. Operační security se
+            // na stateless /api firewallu vynutí (na rozdíl od access_control).
+            security: "is_granted('IS_AUTHENTICATED_FULLY')",
         ),
         new Get(
             normalizationContext: ['groups' => ['entities_post', 'client_log_record_get']],
@@ -42,6 +49,7 @@ class ClientLogRecord implements BasicInterface
     public ?int $level = null;
 
     #[Column(type: 'string', nullable: true)]
+    #[Assert\Length(max: 255)] // odpovídá VARCHAR(255) (Doctrine default) → žádná schema změna; brání truncation/DB erroru
     public ?string $message = null;
 
     public function __construct(
