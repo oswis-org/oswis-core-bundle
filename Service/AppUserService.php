@@ -262,12 +262,25 @@ class AppUserService
                     $this->encoder, !$isRandom);
             }
             $appUser->activate();
-            if ($sendConfirmation) {
-                $this->appUserMailService->sendAppUserMail($appUser, self::ACTIVATION);
-            }
+            // Aktivaci ulož DŘÍV, než pošleme potvrzovací mail — aktivace musí být durabilní i když
+            // mail selže. (Dřív: persist+flush AŽ za sendAppUserMail; při OswisException z mailu se
+            // aktivace neuložila, ale volající už spotřeboval aktivační token → uživatel uvízl
+            // s neaktivním účtem. Overlaps activation rework #233.)
             $this->em->persist($appUser);
             $this->em->flush();
             $this->logger->info('Successfully activated user ('.$appUser->getId().').');
+            if ($sendConfirmation) {
+                try {
+                    $this->appUserMailService->sendAppUserMail($appUser, self::ACTIVATION);
+                } catch (OswisException $mailException) {
+                    // Mail je notifikace — jeho selhání NEsmí zvrátit už uloženou aktivaci.
+                    $this->logger->error(sprintf(
+                        'User (%s) activated, but confirmation mail failed: %s',
+                        $appUser->getId() ?? 0,
+                        $mailException->getMessage(),
+                    ));
+                }
+            }
         } catch (OswisException $exception) {
             $id = $appUser->getId();
             $message = $exception->getMessage();
