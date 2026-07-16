@@ -38,9 +38,11 @@ trait SlugTrait
     public function setForcedSlug(?string $forcedSlug): void
     {
         $this->forcedSlug = StringUtils::hyphenize($forcedSlug);
-        /** @phpstan-ignore-next-line */
-        method_exists($this, 'updateSlug') ? $this->updateSlug() : $this->setSlug($this->getSlug());
+        $this->updateSlug();
     }
+
+    /** Přepočet slugu po změně vstupů (implementuje NameableTrait). */
+    abstract public function updateSlug(): string;
 
     public function getSlug(): string
     {
