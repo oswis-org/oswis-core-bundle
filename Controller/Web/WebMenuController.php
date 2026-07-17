@@ -23,7 +23,9 @@ class WebMenuController extends AbstractController
 
     public function showMenu(?string $menu = WebMenuItem::MAIN_MENU): Response
     {
-        return $this->render('@OswisOrgOswisCore/web/parts/main-menu.html.twig',
-            ['items' => $this->webMenuService->getItems($menu)]);
+        return $this->render('@OswisOrgOswisCore/web/parts/main-menu.html.twig', [
+            'items' => $this->webMenuService->getItems($menu),
+            'menu'  => $menu,
+        ]);
     }
 }
