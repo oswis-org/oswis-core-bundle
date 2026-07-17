@@ -197,7 +197,13 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
             ],
             'access_control' => [
                 ['path' => '^/web_admin/login', 'roles' => 'PUBLIC_ACCESS'],
-                ['path' => '^/web_admin', 'roles' => AppUserRole::ROLE_CUSTOMER],
+                // Staff floor for the whole admin. Was ROLE_CUSTOMER — the LOWEST authenticated role,
+                // which every registered participant holds — so any logged-in participant passed the
+                // firewall, and admin controllers without their own #[IsGranted] (participant list,
+                // payments, aggregations…) were reachable by them. ROLE_MANAGER is the lowest role any
+                // legitimate admin controller requires (check-in), and ROLE_ADMIN controllers still
+                // enforce their own level on top.
+                ['path' => '^/web_admin', 'roles' => AppUserRole::ROLE_MANAGER],
                 ['path' => '^/api/token/refresh', 'roles' => 'PUBLIC_ACCESS'],
                 ['path' => '^/api/login', 'roles' => 'PUBLIC_ACCESS'],
                 ['path' => '^/api/register', 'roles' => 'PUBLIC_ACCESS'],
