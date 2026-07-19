@@ -40,7 +40,7 @@
                         <td>{{ r.lastHitAt ? r.lastHitAt|date('j. n. Y H:i') : '—' }}</td>
                         <td>
                             <a class="btn btn-sm btn-outline-primary"
-                               href="{{ path('oswis_org_oswis_core_web_admin_redirect_edit', { id: r.id }) }}">✎ Upravit</a>
+                               href="{{ path('oswis_org_oswis_core_web_admin_redirect_edit', { id: r.id }) }}"><twig:ux:icon name="tabler:pencil" class="oa-icon" /> Upravit</a>
                             {% if r.deletedAt %}
                                 <form method="post" style="display: inline;"
                                       action="{{ path('oswis_org_oswis_core_web_admin_redirect_restore', { id: r.id }) }}">
@@ -52,7 +52,7 @@
                                       action="{{ path('oswis_org_oswis_core_web_admin_redirect_delete', { id: r.id }) }}"
                                       onsubmit="return confirm('Deaktivovat přesměrování „{{ r.slug }}“? Veřejná adresa přestane fungovat (lze obnovit).');">
                                     <input type="hidden" name="_token" value="{{ csrf_token('web_redirect_delete_' ~ r.id) }}">
-                                    <button class="btn btn-sm btn-outline-danger" type="submit">🗑 Deaktivovat</button>
+                                    <button class="btn btn-sm btn-outline-danger" type="submit"><twig:ux:icon name="tabler:trash" class="oa-icon" /> Deaktivovat</button>
                                 </form>
                             {% endif %}
                         </td>
