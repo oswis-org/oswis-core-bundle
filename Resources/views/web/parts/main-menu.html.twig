@@ -1,4 +1,17 @@
-<nav id="website-main-menu" class="website-main-menu" itemscope itemtype="https://schema.org/SiteNavigationElement">
+{% set is_admin_menu = (menu|default('main-menu')) == 'web-admin-menu' %}
+<nav id="website-main-menu" class="website-main-menu{{ is_admin_menu ? ' website-main-menu--admin' : '' }}" itemscope itemtype="https://schema.org/SiteNavigationElement">
+    {% if is_admin_menu %}
+        {# Mobile hamburger (CSS-only, admin-scoped): the checkbox holds the open/closed state and the
+           label is the tappable bar. On desktop (≥601px) both are hidden and the links lay out in a row
+           exactly as before. The collapse logic lives in app.scss under .website-main-menu--admin, so the
+           public-web menu (rendered from this same template with menu='main-menu') is left unchanged. #}
+        <input type="checkbox" id="web-admin-menu-toggle" class="wm-toggle-checkbox">
+        <label for="web-admin-menu-toggle" class="wm-toggle-label" aria-label="Menu">
+            <twig:ux:icon name="tabler:menu-2" class="wm-toggle-icon wm-toggle-icon--open" />
+            <twig:ux:icon name="tabler:x" class="wm-toggle-icon wm-toggle-icon--close" />
+            <span class="wm-toggle-text">Menu</span>
+        </label>
+    {% endif %}
     {% for menuItem in items|filter(item => 0 == item.requiredRole|default|length or (app.user|default and app.user.role(item.requiredRole)))|sort((a, b) => b.priority <=> a.priority) %}
         <a href="{{ menuItem.path }}" itemprop="url" {{ menuItem.newPage|default ? "target='_blank'" : '' }}>
             <span itemprop="name">{{ menuItem.title }}</span>
