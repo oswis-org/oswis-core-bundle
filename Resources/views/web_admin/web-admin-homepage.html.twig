@@ -119,6 +119,11 @@
                         <li>
                             <a href="{{ path('oswis_org_oswis_calendar_web_admin_catalog', { tab: 'flag-offers' }) }}">Nabídky příznaků</a>
                         </li>
+                        <li>
+                            {# Číselník funkcí týmu — spotřebovává ho rozpis služeb i obsazení aktivit;
+                               bez něj je rozpis prázdný, a jinde se funkce založit nedají. #}
+                            <a href="{{ path('oswis_org_oswis_calendar_web_admin_staff_roles') }}">Funkce týmu (rozpis služeb)</a>
+                        </li>
                     </ul>
 
                     {% if is_granted('ROLE_ADMIN') %}
