@@ -256,6 +256,11 @@ class AppUserService
     public function activate(AppUser $appUser, bool $sendConfirmation = true): void
     {
         try {
+            // Potvrzovací mail jen při PRVNÍ aktivaci. Aktivační token se schválně nespotřebovává
+            // (odkaz zůstane po dobu platnosti klikací → re-klik ukáže „aktivováno" místo chyby), takže
+            // bez tohoto guardu by KAŽDÝ re-klik znovu odeslal aktivační e-mail. Zrcadlo guardu v
+            // ParticipantService::activate (audit 2026-06-25, A2-Bug1). `activate()` je idempotentní.
+            $alreadyActivated = $appUser->isActivated();
             if (empty($appUser->getPassword())) {
                 $isRandom = empty($appUser->getPlainPassword());
                 $appUser->setPlainPassword($isRandom ? StringUtils::generatePassword() : $appUser->getPlainPassword(),
@@ -269,7 +274,7 @@ class AppUserService
             $this->em->persist($appUser);
             $this->em->flush();
             $this->logger->info('Successfully activated user ('.$appUser->getId().').');
-            if ($sendConfirmation) {
+            if ($sendConfirmation && !$alreadyActivated) {
                 try {
                     $this->appUserMailService->sendAppUserMail($appUser, self::ACTIVATION);
                 } catch (OswisException $mailException) {
