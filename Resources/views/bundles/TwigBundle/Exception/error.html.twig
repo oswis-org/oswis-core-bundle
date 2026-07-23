@@ -1,4 +1,11 @@
-{% extends '@OswisOrgOswisCore/web/page-skeleton-default.html.twig' %}
+{# Web-admin chyby (404/403/500) se musí vykreslit v ADMIN layoutu (admin menu),
+   ne ve veřejném — jinak admin klikne na neexistující /web_admin URL a spadne do
+   veřejného webu (Informace/Novinky/…). Rozhodujeme dle cesty požadavku; `app.request`
+   je v error kontextu dostupný (níž se používá `app.request.requestUri`), `and`
+   short-circuituje, kdyby výjimečně nebyl. #}
+{% extends (app.request and app.request.pathinfo starts with '/web_admin')
+    ? '@OswisOrgOswisCore/web_admin/page-skeleton-web-admin.html.twig'
+    : '@OswisOrgOswisCore/web/page-skeleton-default.html.twig' %}
 
 {% block html_title %}{{ block('error_title') }} :: {{ oswis.web.name }}{% endblock %}
 {% block html_description %}{{ block('error_content') }}{% endblock %}
