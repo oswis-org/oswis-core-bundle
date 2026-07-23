@@ -17,7 +17,9 @@
             <span itemprop="name">{{ menuItem.title }}</span>
         </a>
     {% endfor %}
-    {% if is_granted('ROLE_ADMIN') %}
+    {# „Administrace" = skok do adminu z VEŘEJNÉHO menu. Na admin menu se NEzobrazuje — tam by byl
+       redundantní (míří na /web_admin stejně jako položka „Úvod"). #}
+    {% if is_granted('ROLE_ADMIN') and not is_admin_menu %}
         <a href="{{ path('oswis_org_oswis_core_web_admin_homepage') }}" itemprop="url"
            class="website-main-menu-admin" title="Administrace">
             <span itemprop="name">Administrace</span>
