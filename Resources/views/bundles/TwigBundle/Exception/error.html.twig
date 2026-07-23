@@ -26,6 +26,15 @@
                 {% endblock error_content %}
                 <p><small><strong>HTTP {{ status_code }}</strong> {{ status_text }}</small></p>
                 <p><small>Požadovaná URL: <strong>{{ app.request.requestUri }}</strong></small></p>
+                {# Statický odkaz zpět — v admin layoutu se ESI menu na error stránce nenaplní
+                   (role-gated položky + v error kontextu chybí app.user), takže bez tohoto by
+                   admin neměl jak zpět. #}
+                {% if app.request and app.request.pathinfo starts with '/web_admin' %}
+                    <p style="margin-top: 1.25rem;">
+                        <a class="btn btn-sm btn-outline-primary"
+                           href="{{ path('oswis_org_oswis_core_web_admin_homepage') }}">← Zpět na administraci</a>
+                    </p>
+                {% endif %}
             </div>
         </div>
     </main>
