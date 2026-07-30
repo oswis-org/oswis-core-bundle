@@ -16,6 +16,9 @@ Aktuálně běží jeden produkční deploy (Seznamovák UP) — PHP 8.5.8, Symf
 - Magic-link login — vracející se účastník se přihlásí kliknutím na odkaz v e-mailu, bez hesla.
 - Aktivace účtu přes potvrzovací e-mail po vytvoření přihlášky.
 - Tokeny pro magic-link, aktivaci a reset hesla; admin je může resendnout, prodloužit nebo vytvořit nový.
+- Samoobslužná změna přístupových údajů (`AppUserEditRequest` → `AppUserEdit`) — uživatel si sám požádá o změnu
+  e-mailu, uživatelského jména nebo hesla; přijde mu potvrzovací odkaz s platností a změna se provede až po
+  potvrzení. Nová hodnota tedy nikdy nezávisí jen na tom, kdo měl otevřenou session.
 - Příznaky (flags) s kapacitami a cenovými/zálohovými modifikátory — typ ubytování, dieta, doprava, velikost trička apod. Skupiny příznaků mají pravidla výběru (jeden z, alespoň jeden, libovolně).
 - Kategorie účastníků: účastník, organizátor, team-member, staff. Každá s vlastním formulářem a workflow.
 - Soft-delete s možností obnovy v adminu (účastník, kontakt, příznak, nabídka).
@@ -43,6 +46,14 @@ Aktuálně běží jeden produkční deploy (Seznamovák UP) — PHP 8.5.8, Symf
 - Sub-event docházka (`SubEventAttendance`) — účastník přihlášený na nadřazenou akci si může vybrat konkrétní podakce, kterých se zúčastní.
 - Year-clone wizard — kompletní zkopírování ročníku (turnusy, ceny, příznaky, organizační účastníci, e-mailové šablony), substituce roku v názvech a slugách, úprava dat per turnus.
 - Kapacity a využití přepočítané live na úrovni akce, turnusu i příznaku; navíc historický snapshot — kdo byl účastník k danému dni (pro účetnictví a reporting).
+- Obsah a přílohy akce — strukturované textové bloky (`EventContent`), připojené soubory (`EventFile`)
+  a obrázky (`EventImage`) s automatickými variantami velikostí. Akce má i vlastní příznaky (`EventFlag`)
+  nezávislé na příznacích přihlášky — pro vlastnosti samotné akce, ne účastníka.
+- Skupiny účastníků (`ParticipantGroup`) — pojmenované skupiny s **barvou** (odpovídá barvě pásku na ruce)
+  a **pořadím na jídlo** (`mealOrder`, dietáři první). Drží se jich check-in, výdej stravy i tiskové seznamy,
+  takže jde o provozní kostru akce, ne jen o štítek.
+- Podtýmy (`StaffTeam`) — pojmenovaný tým v rámci akce se svými členy. Na podtým lze obsadit program
+  najednou, místo vypisování jednotlivců.
 - Veřejné stránky: kalendář akcí, leták akce, seznamy budoucích a minulých akcí.
 
 ### Program akce
@@ -59,6 +70,9 @@ Aktuálně běží jeden produkční deploy (Seznamovák UP) — PHP 8.5.8, Symf
 - Přiřazení (`StaffAssignment`) — kdo dělá co a kdy. Obsadit lze **konkrétní osobu**, **celý podtým** nebo **externího člověka** (jméno bez účtu, typicky lektor zvenčí).
 - Rozvrh obsazení („rošt") — mřížka sekce × role, s přehledem, co je neobsazené. Editovatelná ve webovém adminu i v mobilní aplikaci.
 - Rozpis pro instruktora — každý člen týmu vidí jen svoje bloky, v mobilu i jako PDF.
+- **Rozpis služeb** — druhá mřížka, dny × funkce, pro služby nenavázané na konkrétní program (kuchyň, noční
+  hlídka, úklid, řidič). Připravuje se v klidu ve webovém adminu, v terénu se dolaďuje v mobilu; obojí nad
+  týmiž daty, ne dva modely. Tiskne se jako PDF.
 
 ### Check-in a příjezd
 
@@ -113,6 +127,9 @@ Aktuálně běží jeden produkční deploy (Seznamovák UP) — PHP 8.5.8, Symf
 - Editace příznaků u přihlášky — včetně kategorií, které se při registraci nenabízejí (sleva, zkrácený pobyt, poznámka k platbě), textových hodnot u příznaku a možnosti vědomě překročit kapacitu.
 - Check-in obrazovky turnusu, přehled průběhu příjezdu a tiskové seznamy.
 - Editor programu — dny, sekce, bloky a rotace, výstupy, obsazení týmem.
+- Správa přesměrování (`WebRedirect`) — stará adresa → nová, s **počítadlem zásahů a časem posledního**, takže
+  je vidět, které přesměrování ještě někdo používá a které lze zrušit. Nutné, když se mezi ročníky mění slugy.
+- Správa uživatelů a rolí, správa míst, správa stanic check-inu, rozpis služeb.
 - České řazení podle abecedy (Collator `cs_CZ`) — Č za C, Š za S, ne podle bajtů.
 - Detail události — všechny turnusy, příznaky, kapacity, ceny, data, agregace.
 - Soft-delete restore.
@@ -135,7 +152,10 @@ Jedna codebase, dva režimy podle role uživatele.
 - Mapa s místy akce (ubytování, sběrná místa, program) s lokalizací polohy a kompasem.
 - Komunikační historie — timeline e-mailů, telefonátů, chatu k vlastnímu účtu.
 - Quick-action deep-links — z mailu nebo notifikace přímo do konkrétní stránky v appce.
+- Správa vlastního účtu — změna hesla i žádost o změnu údajů, potvrzovaná odkazem v e-mailu.
+- Aktuality a obsahové stránky z webu přímo v aplikaci.
 - Settings modal — backend switcher (test/prod), cache management, push consent, diagnostika.
+- Diagnostické obrazovky (o aplikaci / o zařízení) — verze, prostředí, stav úložiště; k použití při hlášení chyby.
 
 **Administrátorské rozhraní** (pro organizační tým):
 
@@ -145,7 +165,11 @@ Jedna codebase, dva režimy podle role uživatele.
 - Kalendář — všechny akce v časové ose.
 - Adresář — osoby, organizace, místa, pozice.
 - Web — správa stránek, aktualit.
-- **Editor programu v mobilu** — dny, sekce, bloky a rotace a k tomu mřížka obsazení („rošt"): kdo má jakou roli v které sekci. Obsadit lze osobu, celý podtým nebo externího člověka. Tohle je hlavní nástroj programové koordinátorky v terénu, kde není u počítače.
+- **Editor programu v mobilu** — dny, sekce, bloky a rotace a k tomu mřížka obsazení: kdo má jakou roli v které
+  sekci. Obsadit lze osobu, celý podtým nebo externího člověka. Hlavní nástroj programové koordinátorky v terénu.
+- **Check-in v mobilu** — obrazovky stanic pro příjezd, aby se účastníci odškrtávali u stolu na telefonu nebo
+  tabletu, ne na papíře přenášeném do počítače.
+- **Rozpis pro instruktora** — každý člen týmu vidí svůj itinerář.
 
 Technologie a distribuce:
 
@@ -159,11 +183,16 @@ Technologie a distribuce:
 - PDF přes mPDF (přehledy, potvrzení, prezenční listina, hromadné štítky).
 - XLSX přes PhpSpreadsheet.
 - CSV (RFC 4180, UTF-8 BOM pro Excel).
+- Jednotná exportní pipeline — každý typ exportu je definice (sloupce, řazení, formát), takže CSV, XLSX i PDF
+  vznikají z jednoho popisu a nedivergují. Součástí jsou stropy na počet řádků, aby export nesestřelil provoz.
 - QR kódy přes Endroid — CZ QR platba, identifikační QR.
 
 ### Web a stránky
 
 - Statické stránky se slugem a rich-text obsahem, aktuality, FAQ, media galerie.
+- Stránka o zpracování osobních údajů (GDPR) jako součást skeletu — odkazuje se na ni registrační formulář i maily.
+- Banner nad obsahem pro dočasná oznámení (změna termínu, uzavření přihlášek).
+- Účastnický portál i ve webové verzi — kdo si nechce instalovat aplikaci, vidí své přihlášky a platby v prohlížeči.
 - Hlavní menu a footer, položky lze přidávat z různých bundlů.
 - Sitemap a RSS feed — každý bundle si do nich přidává vlastní položky přes extender interfaces (`SitemapExtenderInterface`, `RssExtenderInterface`); sitemap pro vyhledávače, RSS pro čtečky (vlastní stylesheet pro hezké zobrazení v prohlížeči). Robots.txt.
 - PWA — instalovatelnost přes `site.webmanifest` (theme color, splash, jméno aplikace), `browserconfig.xml` pro Windows tiles, kompletní set ikon (favicon 16/32, Apple touch 180, Android 192, msTile, safari-pinned-tab, mask-icon).
@@ -184,6 +213,9 @@ Technologie a distribuce:
 - CORS konfigurovatelné (Nelmio).
 - Paginace, filtering, sorting přes API Platform.
 - Serializační skupiny pro kontrolu shape resource.
+- Dedikované endpointy tam, kde generický REST nestačí — změna turnusu u přihlášky, úprava příznaků, výstupy
+  programu, export přihlášek. Důvod je praktický: API Platform 4 neresolvuje vnořené `{id}` relací, takže
+  operace měnící vazbu mají vlastní endpoint s explicitním kontraktem místo tichého selhání.
 
 ### Bezpečnost
 
@@ -199,7 +231,10 @@ Technologie a distribuce:
 
 ### Provozní vlastnosti
 
-- CLI příkazy pro operativní úlohy (IMAP fetch, doplňování dat, dávkové operace) — spustitelné z cronu i ručně.
+- CLI příkazy pro operativní úlohy — spustitelné z cronu i ručně. Provozně nejdůležitější dva: **rozeslání
+  naplánovaných mailů** (respektuje časová okna a co už komu odešlo) a **stahování pošty z IMAPu**
+  (přírůstkové, se zapamatovaným stavem synchronizace, s limitem na dávku). Vedle nich sada jednorázových:
+  doplnění vláken do historie, oprava jmen kontaktů, nasazení výchozích stanic check-inu a příznaků ročníku.
 - Doctrine migrations.
 - PHPStan level `max` napříč všemi bundly.
 - Monolog strukturovaný logging.
@@ -226,7 +261,7 @@ OSWIS je rozdělen do čtyř Symfony bundlů, každý jako samostatný GitHub re
 
 Plus produkční aplikace `oswis-seznamovak-up` (Symfony app, která 4 bundly slepí dohromady) a mobilní klient `seznamovak-up` (Ionic + Angular).
 
-Bundly mezi sebou nejsou tight-coupled — komunikují přes extender interfaces a compiler passy. Aplikace si v `config/bundles.php` vybere, které z bundlů načte; novou položku do sitemapy, RSS feedu, menu nebo widgetu na úvodní stránce přidá libovolný bundle bez nutnosti změny core. To je hlavní mechanismus rozšíření OSWIS o vlastní funkce — `SitemapExtenderInterface`, `RssExtenderInterface`, `WebMenuExtenderInterface`, `UpdateExtenderInterface`.
+Bundly mezi sebou nejsou tight-coupled — komunikují přes extender interfaces a compiler passy. Aplikace si v `config/bundles.php` vybere, které z bundlů načte.
 
 ### Dědičnost šablon
 
@@ -241,6 +276,37 @@ Bundly mezi sebou nejsou tight-coupled — komunikují přes extender interfaces
 - Webové CSS i admin CSS přes Webpack Encore — aplikace má vlastní entry pointy a může přepsat Sass proměnné (barvy, fonty, breakpointy) bez zásahu do bundlu.
 - Per-event branding — události a podakce mají vlastní barvu, krátký název, popis, slug, organizátora; promítá se na veřejných stránkách, do mailových šablon i do generovaných dokumentů.
 - Konfigurace SMTP, IMAP, JWT secret, refresh token TTL a další citlivé hodnoty žijí mimo veřejné config soubory (env vars / `.env.local`), nikoli v deploy artefaktu.
+
+### Možnosti rozšíření
+
+OSWIS je stavěný tak, aby se vlastní funkce přidávaly **vedle** bundlů, ne do nich — fork není potřeba
+a upgrade zůstane možný.
+
+**Vlastní bundle jako plugin.** Nový Symfony bundle se zaregistruje v `config/bundles.php` a může přinést
+vlastní entity, API resources, stránky, admin obrazovky, konzolové příkazy i migrace. Do existujících částí
+systému se zapojí přes rozšiřovací rozhraní, která core vyhledá compiler passem — takže stačí službu
+otagovat, nikde se nic neregistruje ručně:
+
+- `SiteMapExtenderInterface` — vlastní položky do sitemapy pro vyhledávače.
+- `RssExtenderInterface` — vlastní položky do RSS feedu.
+- `WebMenuExtenderInterface` — položky do veřejného menu i do admin menu (včetně rozklikávacích sekcí a omezení podle role).
+- `WebAdminMenuExtenderInterface` — položky specificky do administrace.
+- `UpdateExtenderInterface` — vlastní krok do hromadné údržbové akce.
+- `ExportDefinitionInterface` — vlastní typ exportu (sloupce, řazení, strop řádků); dostane zdarma CSV, XLSX i PDF.
+
+**Bez psaní kódu** se dá změnit překvapivě mnoho, protože model je datově řízený: kategorie účastníků,
+registrační nabídky s cenami a kapacitami, příznaky a jejich skupiny s pravidly výběru, kategorie
+kontaktních detailů, funkce v týmu, stanice check-inu, e-mailové šablony (Twig se edituje v adminu),
+skupiny a barvy pásků. Nová akce jiného typu je tedy typicky konfigurace, ne vývoj.
+
+**Přepsání vzhledu a textů.** Jakoukoli Twig šablonu bundlu lze přepsat v aplikaci standardním Symfony
+mechanismem (`templates/bundles/<BundleName>/...`) — bez forku. Branding (logo, barvy, ikony, patička,
+odesílatel pošty) je konfigurace a assety, ne kód. Admin i web CSS jsou vlastní Encore entry pointy
+aplikace, takže se dají přepsat Sass proměnné bez zásahu do bundlu.
+
+**Kde rozšíření naopak nemá smysl.** Provoz akce (služby, doprava, ubytování, check-in) záměrně nežije
+v entitě `Event` — ta popisuje jen *co se koná*. Pro provozní věci existují vlastní modely, a nová
+provozní funkce by měla přidat svůj, ne rozšiřovat `Event` o další sloupce.
 
 ### Použité technologie
 
@@ -285,6 +351,36 @@ OSWIS prošel postupnou modernizací — některé volby z dřívějších let u
 - Mobilní iOS dříve plánována jako Capacitor build → dnes distribuovaná jako PWA (jednodušší údržba, žádný Apple Developer Program).
 
 ---
+
+## Rozpracované a plánované
+
+Poctivý stav, ne wishlist. OSWIS se vyvíjí proti jednomu reálnému provozu, takže se tu potkává hotový
+kód s tím, co ještě nemá naplněná data nebo čeká na rozhodnutí.
+
+**Hotové, ale zatím nepoužívané v provozu.** Ubytování a spolubydlení (objekty, pokoje, postele,
+rezervace, preference spolubydlících) je postavené a v administraci dostupné, ale reálně se ještě
+nepoužilo — přidělování dosud probíhá mimo systém. Totéž platí pro skupiny a barvy pásků: model stojí,
+ale dokud je tým nenaplní, čekají na ně tiskové seznamy pro výdej stravy a řazení „dietáři první".
+Program má editor i výstupy; naplnění konkrétního ročníku je organizační práce, ne vývoj.
+
+**Rozpracované.** Informační architektura administrace se přestavuje — horní menu už je rozklikávací
+podle oblastí, zbývá dotáhnout drobečkovou navigaci napříč stránkami a zeštíhlit úvodní obrazovku.
+U obsazení programu celým podtýmem chybí možnost někoho z týmu pro danou sekci **odečíst**
+(„celý tým bez jednoho") — bez toho by rozpis pro instruktora lhal, takže se to nejdřív musí dopočítat
+na backendu a teprve pak nabídnout v rozhraní.
+
+**Postavené, ale úmyslně nezapnuté.** Upomínky nezaplacených plateb existují, ale v jediném dnešním
+provozu se nepoužívají — je to rozhodnutí organizátorů, ne chybějící funkce.
+
+**Kam to míří.** Automatizované testy jsou zatím tenké: hlavní kvalitní branou je statická analýza
+na nejvyšší úrovni plus ruční a smoke ověření. Rozšiřování funkčního pokrytí je průběžná práce.
+Vedle toho se plánují provozní kontroly, které samy hlásí tiché selhání — typicky „potvrzená přihláška
+bez odeslaného shrnutí" nebo „e-mail, u kterého se odeslání nepovedlo" — protože právě nepřítomnost
+akce je to, co běžný monitoring ani typová analýza neodhalí.
+
+**Úvahy o větší přestavbě.** Existují návrhy na generační obměnu (čistý datový model bez historické
+zátěže). Nejde se do ní překlápět naráz — místo toho se její návrhy vstřebávají do dnešního systému
+po modulech, aby provoz nikdy nestál na rozestavěné verzi.
 
 ## Pro koho to dává smysl
 
