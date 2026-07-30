@@ -34,7 +34,12 @@ use Symfony\Component\Validator\Constraints\NotBlank;
             normalizationContext: ['groups' => ["entities_get", "app_user_edit_requests_get"]],
             security: "is_granted('ROLE_ADMIN')"
         ),
+        // Odpověď MUSÍ mít vlastní úzkou grupu. Bez `normalizationContext` serializuje API Platform
+        // celou entitu — včetně `token`u. Endpoint je záměrně veřejný (zapomenuté heslo = uživatel
+        // se nemůže přihlásit), takže by kdokoli mohl poslat CIZÍ e-mail a v odpovědi dostat token
+        // k jeho účtu = převzetí účtu. Vrací se proto jen potvrzení, co bylo o co požádáno.
         new Post(
+            normalizationContext: ['groups' => ['app_user_edit_request_created']],
             denormalizationContext: ['groups' => ["entities_get", "app_user_edit_requests_post"]]
         ),
         new Get(

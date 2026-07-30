@@ -1,0 +1,20 @@
+# /config/serialization/AppUserEdit.yaml
+#
+# Provedení změny údaje = DRUHÝ krok obnovy hesla: účastník přijde z odkazu v e-mailu s tokenem
+# a pošle novou hodnotu. Také nepřihlášený → POST operace bez `security`; oprávnění nese TOKEN.
+#
+# ⚠️ Stejná vada jako u {@see AppUserEditRequest.yaml}: grupa `app_user_edits_post` neměla jedinou
+# vlastnost, takže se zahodilo celé tělo a druhý krok skončil na 422 stejně jako první.
+#
+# `token` a `newValue` jsou ZÁPISOVÉ, nikdy čtené — `newValue` je nové HESLO v otevřené podobě
+# a nesmí se dostat do žádné odpovědi (ani administrátorovi). Proto nejsou v žádné `*_get` grupě.
+OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserEdit:
+    attributes:
+        type:
+            groups: [ 'app_user_edits_post', 'app_user_edits_get', 'app_user_edit_get', 'app_user_edit_created' ]
+        userIdentifier:
+            groups: [ 'app_user_edits_post', 'app_user_edits_get', 'app_user_edit_get', 'app_user_edit_created' ]
+        token:
+            groups: [ 'app_user_edits_post' ]
+        newValue:
+            groups: [ 'app_user_edits_post' ]

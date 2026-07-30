@@ -1,0 +1,24 @@
+# /config/serialization/AppUserEditRequest.yaml
+#
+# Žádost o změnu údajů = PRVNÍ krok obnovy zapomenutého hesla (účastník ji posílá NEPŘIHLÁŠENÝ,
+# proto POST operace nemá `security`).
+#
+# ⚠️ Bez tohoto mapování byla denormalizační grupa `app_user_edit_requests_post` PRÁZDNÁ — žádná
+# vlastnost do ní nepatřila — takže serializer zahodil celé tělo požadavku, `type` i `userIdentifier`
+# dorazily jako null a validátor vrátil 422 „Tato hodnota nesmí být prázdná". Historicky to fungovalo
+# jen díky tomu, že starší Symfony plnilo argumenty KONSTRUKTORU přímo z payloadu bez ohledu na grupy;
+# novější Symfony grupy aplikuje i na ně, takže obnova hesla po upgradu (SF 8.1 / API Platform 4.3)
+# tiše přestala fungovat. Poslední úspěšná obnova 2025-09-03, pak 38 marných pokusů v prod logu.
+#
+# `token` se ZÁMĚRNĚ nevystavuje ani ke čtení — je to jednorázové tajemství z e-mailu; kdo ho zná,
+# může změnit heslo. Do API nepatří ani pro administrátora.
+OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserEditRequest:
+    attributes:
+        type:
+            groups: [ 'app_user_edit_requests_post', 'app_user_edit_requests_get', 'app_user_edit_request_get', 'app_user_edit_request_created' ]
+        userIdentifier:
+            groups: [ 'app_user_edit_requests_post', 'app_user_edit_requests_get', 'app_user_edit_request_get', 'app_user_edit_request_created' ]
+        expireAt:
+            groups: [ 'app_user_edit_requests_get', 'app_user_edit_request_get', 'app_user_edit_request_created' ]
+        usedAt:
+            groups: [ 'app_user_edit_requests_get', 'app_user_edit_request_get' ]

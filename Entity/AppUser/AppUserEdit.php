@@ -34,7 +34,11 @@ use Symfony\Component\Validator\Constraints\NotBlank;
             normalizationContext: ['groups' => ['entities_get', 'app_user_edits_get']],
             security: "is_granted('ROLE_ADMIN')"
         ),
+        // Úzká grupa pro odpověď — bez ní by se serializovala celá entita včetně `token`u
+        // a `newValue`, tedy NOVÉHO HESLA v otevřené podobě. Endpoint je veřejný (oprávnění nese
+        // token z e-mailu), takže by to bylo přímé vyzrazení. Vrací se jen potvrzení.
         new Post(
+            normalizationContext: ['groups' => ['app_user_edit_created']],
             denormalizationContext: ['groups' => ['entities_get', 'app_user_edits_post']]
         ),
         new Get(
