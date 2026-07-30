@@ -282,23 +282,23 @@ u stolu při příjezdu, v areálu.
   na jakém turnusu je.
 - Kalendář akcí s detailem a odskokem z místa v programu na mapu.
 - Mapa míst akce (ubytování, sběrná místa, program) s vlastní polohou a několika podkladovými vrstvami.
-- Vlastní historie komunikace v jedné časové ose.
 - Výběr podakcí, kterých se zúčastní.
 
 **Administrace pro organizační tým:**
 
-- Dashboard s přehledy; účastníci se seznamem, detailem a exportem vybraných; ruční zápis telefonátu
-  nebo chatu do historie.
+- Účastníci se seznamem, detailem, historií komunikace a exportem vybraných; ruční zápis telefonátu
+  nebo chatu. ⚠️ Úvodní obrazovka je zatím jen vítací text, ne přehled (widgety jsou naplánované).
 - Akce, podakce, kapacity, ceny, příznaky, registrační nabídky.
 - **Program** — rozcestník a editor: dny, sekce, aktivity, bloky a rotace.
 - **Mřížka obsazení a rozpis služeb**; **itinerář** pro každého člena týmu.
 - **Příjezd** — obrazovky stanic, aby se odškrtávalo u stolu na telefonu nebo tabletu.
-- Adresář, kalendář, ubytování, správa stránek a aktualit (formuláře se generují z popisu, takže se pro
-  každý typ obsahu nepíše vlastní).
+- Adresář, kalendář, správa stránek a aktualit (formuláře se generují z popisu, takže se pro každý typ
+  obsahu nepíše vlastní). ⚠️ **Ubytování obrazovku v aplikaci nemá** — jen modely a datová služba.
 
-**Vlastní účet:** přihlášení heslem i magic-linkem, změna hesla a žádost o změnu údajů potvrzovaná
-e-mailem, nastavení (přepínač backendu test/produkce, správa lokální cache) a diagnostika (verze,
-prostředí, stav úložiště — k přiložení do hlášení chyby).
+**Vlastní účet:** přihlášení heslem i magic-linkem a odhlášení; nastavení (přepínač backendu
+test/produkce, správa lokální cache) a diagnostika (verze, prostředí, stav úložiště — k přiložení
+do hlášení chyby). ⚠️ **Změna hesla a úprava údajů v aplikaci hotové nejsou** — cesty existují, ale
+obrazovka změny hesla je prázdná skořápka a z rozhraní na ni nic nevede; účet se dnes spravuje na webu.
 
 **Chování, které stojí za zmínku:**
 
@@ -537,6 +537,28 @@ offline režim** — u vícedenní akce v areálu se slabým signálem je to re�
 Distribuce přes obchody (Google Play, App Store) zatím není; zvýšila by dosah, ale nese si vlastní režii
 vydávání a recenzí. A především: dokud se tým nezaregistruje jako účastníci s příslušnou funkcí, nemá
 editor obsazení koho nabízet — chybí data, ne funkce.
+
+**Naplánované a rozhodnuté, zatím nepostavené.** Tohle není wishlist — na každou položku existuje
+rozhodnutí a u většiny i napsaný implementační plán; řadí se podle závislostí, ne podle chuti:
+
+*Provoz a administrace* — přehledové widgety na úvodní obrazovce administrace (dnes je tam jen rozcestník)
+· sloučení duplicitních přihlášek · dokončení komunikace: skládací vlákna, odpověď přímo z časové osy
+a přidělení vlákna řešiteli · generátor provozních tisků (jmenovky, bezpečnostní list k podpisu, seznamy
+podle barvy pásku, zápisové archy) · evidence techniky s logem závad (nahradí papír v kiosku) · workflow
+návštěv (externí přednášející, lektoři, partneři mají jiný příjezdový režim než účastník).
+
+*Účastnická aplikace* — pokyny k platbě: zbývající částka, číslo účtu, variabilní symbol a QR (backend to
+umí do mailu, aplikaci chybí) · aktivace přihlášky a reset hesla · dotažení programu: upozornění na kolize
+a režimy přihlašování na podakce · jídelníček s volbou jídla (volí účastník, nebo tým u příjezdu; kuchyň
+dostane počty, u omezení se jmény) · push oznámení místo plakátů „dnes večer" a „změna kvůli počasí"
+· offline čtení pro areál se slabým signálem.
+
+*Týmové nástroje* — zápis na podakci za účastníka a označení zaplaceno · potvrzený výdej triček
+· **per-turnus funkční role** (zdravotník vidí diety, ubytování pokoje, jídelna agregace) — dnes je
+přístup do administrace všechno-nebo-nic.
+
+*Data, ne kód* — dokončení stravovacích příznaků včetně alergenů a pojmenovaného kuchyňského seznamu;
+poslední roky se dieta řešila jen poznámkou v přihlášce.
 
 **Postavené, ale úmyslně nezapnuté.** Upomínky nezaplacených plateb existují, ale v jediném dnešním
 provozu se nepoužívají — je to rozhodnutí organizátorů, ne chybějící funkce.
