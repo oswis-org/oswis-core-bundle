@@ -2,9 +2,9 @@
 
 Informační systém pro pořádání registračních akcí. Vznikl jako nedokončená bakalářská práce na Katedře informatiky Přírodovědecké fakulty Univerzity Palackého v Olomouci (KMI PřF UP). Od roku 2019 ho pro Seznamovák pro studenty UP používá studentská organizace STUDENTLIFE z.s. (která Seznamovák pořádá), jako následník původního IS na míru — ročně eviduje 450+ uživatelů (účastníci včetně organizačního týmu). Pokrývá přihlášky, platby, e-mailovou komunikaci s účastníky, evidenci kontaktů a provozní administraci.
 
-Kód je open source, sebehostitelný, bez závislostí na placených SaaS službách. Stack: PHP 8.4+ / Symfony 8 / Doctrine ORM 3.6 / API Platform 4 na backendu, Ionic 8 / Angular 21 pro mobilní aplikaci.
+Kód je open source, sebehostitelný, bez závislostí na placených SaaS službách. Stack: PHP 8.5 / Symfony 8.1 / Doctrine ORM 3.6 / DBAL 4 / API Platform 4.3 na backendu, Ionic 8 / Angular 22 / Capacitor 8 pro mobilní aplikaci.
 
-Aktuálně běží jeden produkční deploy (Seznamovák UP).
+Aktuálně běží jeden produkční deploy (Seznamovák UP) — PHP 8.5.8, Symfony 8.1.0, MariaDB 11.8, nginx → Apache → PHP-FPM.
 
 ---
 
@@ -45,6 +45,36 @@ Aktuálně běží jeden produkční deploy (Seznamovák UP).
 - Kapacity a využití přepočítané live na úrovni akce, turnusu i příznaku; navíc historický snapshot — kdo byl účastník k danému dni (pro účetnictví a reporting).
 - Veřejné stránky: kalendář akcí, leták akce, seznamy budoucích a minulých akcí.
 
+### Program akce
+
+- Program se skládá po dnech (`ProgramDay`) a sekcích (`EventSection`) — sekce je blok programu s časem, místem a typem (aktivita, jídlo, přesun, volno, schůze).
+- Bloky a rotace — jedna aktivita se může konat v několika paralelních běhech, kterými skupiny rotují; editor to umí rozgenerovat, ne opisovat ručně.
+- Jídelní sloty — čas výdeje jídla po skupinách (dietáři první), navázané na provoz kuchyně.
+- Výstupy programu — z jednoho zdroje se generují různé pohledy: program pro účastníka, rozpis pro instruktora, rozpis pro kuchyň. HTML i PDF.
+- Brána zveřejnění — program se účastníkům zobrazí teprve po explicitním zveřejnění; do té doby ho vidí jen tým.
+
+### Obsazení programu týmem
+
+- Funkce v týmu (`StaffRole`) — pojmenované role s pořadím (hlavní instruktor, zdravotník, fotograf, kuchyň, technika…).
+- Přiřazení (`StaffAssignment`) — kdo dělá co a kdy. Obsadit lze **konkrétní osobu**, **celý podtým** nebo **externího člověka** (jméno bez účtu, typicky lektor zvenčí).
+- Rozvrh obsazení („rošt") — mřížka sekce × role, s přehledem, co je neobsazené. Editovatelná ve webovém adminu i v mobilní aplikaci.
+- Rozpis pro instruktora — každý člen týmu vidí jen svoje bloky, v mobilu i jako PDF.
+
+### Check-in a příjezd
+
+- Check-in obrazovka per turnus — označení příjezdu, přehled kdo dorazil / nedorazil, řazení podle skupiny (dietáři první), barvy pásku nebo abecedy.
+- Stanice check-inu (`CheckInStation`) a průchody (`ParticipantStationVisit`) — účastník během příjezdu projde několika stanicemi (registrace, platba, pásek, bezpečnostní list, technika) a je vidět, kde se tvoří front.
+- Přehled průběhu pro vzdálené sledování — kolik přijelo, kolik prošlo kterou stanicí, seznam nedorazivších; read-only, auto-refresh.
+- Papírový fallback jako plnohodnotná varianta (tým ho drží u stolu — nespoléhá na wifi a baterky): tiskový seznam check-inu, seznam po skupinách a páscích pro výdej stravy, předvyplněné bezpečnostní listy k podpisu.
+- Parkování — příznaky na přihlášce (SPZ, karta) s nulovou cenou, aby se řešilo u příjezdu, ne dodatečně.
+
+### Ubytování a spolubydlení
+
+- Objekty a jednotky (`Facility`, `AccommodationUnit`, `Bed`) — budova → pokoj → konkrétní postel, včetně přistýlek.
+- Rezervace (`Reservation`) — přidělení účastníka na postel, s cenovými šablonami (`PricingTemplate`) pro různé typy ubytování.
+- Spolubydlení (`RoommateGroup`, `RoommatePreference`) — účastníci si mohou vyjádřit, s kým chtějí být; přidělování to bere v potaz.
+- Kontroly při přidělování (`AccommodationWarning`) — upozorní na kolize (kluci a holky v jednom pokoji, přistýlka obsazená dřív než regulérní postel, nesplněná vzájemná preference); varují, neblokují.
+
 ### E-mailová komunikace
 
 - Šablonovaný systém přes Twig + MJML (HTML maily, které drží i v Outlooku).
@@ -52,7 +82,10 @@ Aktuálně běží jeden produkční deploy (Seznamovák UP).
 - Vlákna v poště — maily ke konkrétní přihlášce se v Gmailu / Outlooku slepí do jednoho vlákna (per účastník, ne per uživatel, takže se ročníky neslévají).
 - Historie komunikace u účastníka — chronologická osa s e-maily, telefonáty a chatem; telefonáty a chat se zapisují ručně.
 - Ad-hoc compose — admin píše individuální e-mail účastníkovi z přehledu, naváže se na existující vlákno.
-- Resend systémových mailů z adminu (s aktualizací tokenů a stavu).
+- Hromadný e-mail vybraným přihláškám — výběr v seznamu (i podle filtru), jeden text, samostatné zprávy do vlastních vláken.
+- Automatické maily podle časového okna — šablona se naplánuje na období a cron ji rozešle těm, komu ještě neodešla. Součástí je **dry-run náhled** (komu by to teď šlo a proč), aby se dávka dala zkontrolovat před odesláním.
+- Oznámení o změně a zrušení přihlášky — místo přeposlání celého shrnutí se pošle **výčet toho, co se změnilo**; při zrušení samostatné oznámení. Stejné chování z webového adminu, z API i z aplikace.
+- Resend systémových mailů z adminu (s aktualizací tokenů a stavu). Typy, jejichž obsah nelze věrně zrekonstruovat (potvrzení konkrétní platby, aktivační odkaz), se odmítnou přeposlat — pro ně jsou dedikované akce, které vyrobí platný obsah: **„Aktivační e-mail"** (nový token) a **„Shrnutí přihlášky"** (pokyny k platbě a QR z aktuálních dat).
 - IMAP import přijaté pošty od účastníků do timeline.
 - Auto-BCC na archivační adresu.
 - Detekce automatických mailů (RFC 3834) — out-of-office respondery nedělají loopy. Ad-hoc compose se naopak prezentuje jako lidská korespondence.
@@ -72,7 +105,15 @@ Aktuálně běží jeden produkční deploy (Seznamovák UP).
 
 ### Admin rozhraní (web)
 
+- **Sjednocený přehled přihlášek** — jeden seznam pro všechny řezy. Rozsah (ročník / turnus / všechny akce, kategorie účastníka) a filtr jsou v URL, takže je pohled odkazovatelný a dá se poslat kolegovi. Rychlé filtry (zaplaceno, nedoplaceno, nezaplacená záloha, přeplaceno, neaktivované, s poznámkou, stravovací omezení), fasety podle příznaků, řazení kliknutím na hlavičku a tiskový pohled.
+- **Vyhledávání bez diakritiky** napříč jménem, e-mailem, telefonem a variabilním symbolem, s našeptávačem.
+- **Pokročilý filtr výrazem** — booleovský výraz nad přihláškou (`hasFlag`, `hasFlagInCategory`, `isPaid`, `remainingPrice`, `isConfirmed`, `gender`, `eventSlug` …) pro dotazy, na které se pilulky nehodí.
+- **Hromadné akce nad výběrem** — smazání (vratné), export (CSV/PDF), hromadný e-mail, přesun mezi turnusy. S limity na dávku a záznamem, co se povedlo a co ne.
 - Detail účastníka — kontakt, registrace, platby, komunikace, poznámky, tokeny.
+- Editace příznaků u přihlášky — včetně kategorií, které se při registraci nenabízejí (sleva, zkrácený pobyt, poznámka k platbě), textových hodnot u příznaku a možnosti vědomě překročit kapacitu.
+- Check-in obrazovky turnusu, přehled průběhu příjezdu a tiskové seznamy.
+- Editor programu — dny, sekce, bloky a rotace, výstupy, obsazení týmem.
+- České řazení podle abecedy (Collator `cs_CZ`) — Č za C, Š za S, ne podle bajtů.
 - Detail události — všechny turnusy, příznaky, kapacity, ceny, data, agregace.
 - Soft-delete restore.
 - CRUD nad katalogem příznaků, skupin příznaků, kategorií a registračních rozsahů.
@@ -104,10 +145,11 @@ Jedna codebase, dva režimy podle role uživatele.
 - Kalendář — všechny akce v časové ose.
 - Adresář — osoby, organizace, místa, pozice.
 - Web — správa stránek, aktualit.
+- **Editor programu v mobilu** — dny, sekce, bloky a rotace a k tomu mřížka obsazení („rošt"): kdo má jakou roli v které sekci. Obsadit lze osobu, celý podtým nebo externího člověka. Tohle je hlavní nástroj programové koordinátorky v terénu, kde není u počítače.
 
 Technologie a distribuce:
 
-- **Ionic 8** + **Angular 21**.
+- **Ionic 8** + **Angular 22**.
 - **Capacitor 8** — build native Android APK; iOS distribuovaná jako PWA (instalace „Add to Home Screen" ze Safari).
 - JWT + refresh token autentizace, sdílená s REST API backendem.
 - **Leaflet** pro mapy, s podporou několika tile vrstev (OpenStreetMap, MapyCz, OpenTopoMap).
@@ -204,8 +246,8 @@ Bundly mezi sebou nejsou tight-coupled — komunikují přes extender interfaces
 
 Backend:
 
-- **PHP 8.4+** (produkčně 8.5), **Symfony 8.0**.
-- **Doctrine ORM 3.6** + **DBAL** pro databázi; rozšíření **Gedmo** pro Timestampable, SoftDeleteable, Sluggable, Loggable, Blameable.
+- **PHP 8.5+** (produkčně 8.5.8), **Symfony 8.1**.
+- **Doctrine ORM 3.6** + **DBAL 4** pro databázi; rozšíření **Gedmo** pro Timestampable, SoftDeleteable, Sluggable, Loggable, Blameable.
 - **API Platform 4.3** pro REST/JSON-LD API; integrace JWT přes **Lexik JWT Authentication Bundle** + refresh tokeny přes **Gesdinet JWT Refresh Token Bundle**; CORS přes **Nelmio**.
 - **Symfony Mailer** s vlastním `MailerSubscriber` (Auto-Submitted, archiv BCC, Reply-To). **MJML** CLI pipeline pro responsivní HTML maily.
 - **webklex/php-imap** pro IMAP fetch (read-only).
@@ -221,10 +263,12 @@ Frontend (admin web):
 
 Frontend (mobilní / účastnický portál):
 
-- **Ionic 8** + **Angular 21**, **Capacitor 8** pro Android build, PWA pro iOS.
+- **Ionic 8** + **Angular 22** + **TypeScript 6**, **Capacitor 8** pro Android build, PWA pro iOS.
 - **Leaflet** pro mapy (OpenStreetMap, MapyCz, OpenTopoMap).
 
-Databáze: **MariaDB 10.5+** nebo **PostgreSQL 13+** (aktuálně produkčně MariaDB).
+Databáze: **MariaDB** (produkčně 11.8; DBAL 4 zvládne i 10.5+, doporučeno 10.6+ kvůli deprecacím).
+Doctrine samo umí i PostgreSQL, ale OSWIS na něm **není provozně vyzkoušený** — schéma vzniklo a je udržované
+nad MariaDB, takže pro PostgreSQL počítejte s vlastním ověřením migrací.
 
 Quality gate: **PHPStan** level `max` napříč všemi bundly.
 
@@ -233,11 +277,11 @@ Quality gate: **PHPStan** level `max` napříč všemi bundly.
 OSWIS prošel postupnou modernizací — některé volby z dřívějších let už neplatí:
 
 - **Zurb Inky** (Foundation for Emails) pro responsivní HTML maily — nahrazeno **MJML** pipeline kvůli lepší podpoře v Outlooku a údržbě šablon.
-- **Symfony 6.x / 7.x** → aktuálně **Symfony 8.0**.
+- **Symfony 6.x / 7.x / 8.0** → aktuálně **Symfony 8.1**.
 - **API Platform 2.x / 3.x** → aktuálně **API Platform 4.3**.
 - **Doctrine ORM 2.x** → **Doctrine ORM 3.6** (strict identity collision check).
 - **PHP 7.x → 8.x → 8.4 → 8.5** (postupné upgrady).
-- **Ionic 5 + Angular 14 + Capacitor 5** → aktuálně **Ionic 8 + Angular 21 + Capacitor 8**.
+- **Ionic 5 + Angular 14 + Capacitor 5** → aktuálně **Ionic 8 + Angular 22 + Capacitor 8**.
 - Mobilní iOS dříve plánována jako Capacitor build → dnes distribuovaná jako PWA (jednodušší údržba, žádný Apple Developer Program).
 
 ---
@@ -256,11 +300,12 @@ OSWIS je standardní Symfony aplikace. Běží na VPS s PHP-FPM + nginx, na sdí
 
 Potřeba:
 
-- PHP 8.4+ (CLI a FPM)
-- MariaDB 10.5+ nebo PostgreSQL 13+
+- PHP 8.5+ (CLI a FPM)
+- MariaDB 10.6+ (produkčně 11.8)
 - SMTP přístup pro odesílání pošty (libovolný provider)
 - IMAP přístup k mailboxu, kam chodí pošta od účastníků (info@…), pokud chcete automatický import vlákna komunikace do admin timeline. Read-only přístup stačí.
-- Node.js pro build mail šablon a admin assetů
+- Node.js pro build mail šablon a admin assetů. **Není volitelný:** bez nainstalovaných balíčků chybí MJML
+  binárka, render mailu spadne a zpráva se neodešle — v evidenci zůstane záznam s důvodem, ale příjemci nic nepřijde.
 
 Není potřeba:
 
