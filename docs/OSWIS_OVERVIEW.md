@@ -142,41 +142,58 @@ Aktuálně běží jeden produkční deploy (Seznamovák UP) — PHP 8.5.8, Symf
 - Payments import — UI pro upload CSV a ruční párování.
 - Notes — interní poznámky napříč entitami.
 
-### Ionic aplikace (mobilní / portál / admin)
+### Frontendová aplikace (mobil / portál / administrace)
 
-Jedna codebase, dva režimy podle role uživatele.
+Jedna codebase, dva režimy podle role přihlášeného uživatele. Běží jako nativní Android build,
+jako PWA na iOS i jako běžná webová aplikace v prohlížeči.
 
 **Účastnický portál** (pro přihlášeného účastníka):
 
-- Profil — vlastní registrace, platby, kalendář akcí.
-- Mapa s místy akce (ubytování, sběrná místa, program) s lokalizací polohy a kompasem.
-- Komunikační historie — timeline e-mailů, telefonátů, chatu k vlastnímu účtu.
-- Quick-action deep-links — z mailu nebo notifikace přímo do konkrétní stránky v appce.
-- Správa vlastního účtu — změna hesla i žádost o změnu údajů, potvrzovaná odkazem v e-mailu.
-- Aktuality a obsahové stránky z webu přímo v aplikaci.
-- Settings modal — backend switcher (test/prod), cache management, push consent, diagnostika.
-- Diagnostické obrazovky (o aplikaci / o zařízení) — verze, prostředí, stav úložiště; k použití při hlášení chyby.
+- Přehled vlastních přihlášek a jejich detail — co má zaplaceno, kolik zbývá, jaké má příznaky, na jakém turnusu je.
+- Kalendář akcí s detailem a možností odskočit z místa v programu na mapu.
+- Mapa míst akce (ubytování, sběrná místa, program) s vlastní polohou; několik podkladových vrstev.
+- Historie komunikace — vlastní e-maily, telefonáty a záznamy kontaktu v jedné časové ose.
+- Docházka na podakce — účastník si vybere, kterých dílčích programů se zúčastní.
 
-**Administrátorské rozhraní** (pro organizační tým):
+**Administrace pro organizační tým:**
 
 - Dashboard s přehledy.
-- Účastníci — seznamy, detail s registracemi, platbami, příznaky, poznámkami; ruční zápis telefonátu / chatu do timeline.
-- Události — přehled, detail, podakce (sub-events), kapacity, ceny, příznaky.
-- Kalendář — všechny akce v časové ose.
-- Adresář — osoby, organizace, místa, pozice.
-- Web — správa stránek, aktualit.
-- **Editor programu v mobilu** — dny, sekce, bloky a rotace a k tomu mřížka obsazení: kdo má jakou roli v které
-  sekci. Obsadit lze osobu, celý podtým nebo externího člověka. Hlavní nástroj programové koordinátorky v terénu.
-- **Check-in v mobilu** — obrazovky stanic pro příjezd, aby se účastníci odškrtávali u stolu na telefonu nebo
-  tabletu, ne na papíře přenášeném do počítače.
-- **Rozpis pro instruktora** — každý člen týmu vidí svůj itinerář.
+- Účastníci — seznamy a detail s registracemi, platbami, příznaky a poznámkami; ruční zápis telefonátu nebo chatu do historie; export vybraných.
+- Události — přehled, detail, podakce, kapacity, ceny, příznaky, registrační nabídky.
+- **Program** — rozcestník a editor: dny, sekce, aktivity, bloky a rotace.
+- **Mřížka obsazení a rozpis služeb** — kdo má jakou funkci v které sekci; obsadit lze osobu, celý podtým nebo externího člověka.
+- **Itinerář** — každý člen týmu vidí jen svoje bloky.
+- **Check-in** — obrazovky stanic pro příjezd, aby se odškrtávalo u stolu na telefonu nebo tabletu.
+- Adresář — osoby, organizace, místa, pozice a funkce v organizacích.
+- Kalendář všech akcí v časové ose.
+- Web — správa stránek a aktualit včetně formulářů generovaných z popisu (nemusí se pro každý typ obsahu psát vlastní).
+- Ubytování — přehled objektů, jednotek a přidělení.
 
-Technologie a distribuce:
+**Vlastní účet:**
 
-- **Ionic 8** + **Angular 22**.
-- **Capacitor 8** — build native Android APK; iOS distribuovaná jako PWA (instalace „Add to Home Screen" ze Safari).
-- JWT + refresh token autentizace, sdílená s REST API backendem.
-- **Leaflet** pro mapy, s podporou několika tile vrstev (OpenStreetMap, MapyCz, OpenTopoMap).
+- Přihlášení heslem i magic-linkem, odhlášení.
+- Změna hesla a žádost o změnu údajů, potvrzovaná odkazem v e-mailu.
+- Nastavení — přepínač backendu (test/produkce), správa lokální cache, obecné volby.
+- Diagnostika (o aplikaci / o zařízení) — verze, prostředí, stav úložiště; k přiložení do hlášení chyby.
+
+Technologie a chování:
+
+- **Ionic 8** + **Angular 22** + **TypeScript 6**, **Capacitor 8** pro Android build, PWA pro iOS
+  („Přidat na plochu" ze Safari — žádný Apple Developer Program).
+- **Zoneless change detection** — aplikace neběží na `zone.js`, změny se propagují signály. Je to výrazně
+  úspornější, ale platí se za to: části Ionicu, které na `zone.js` spoléhaly, se musely nahradit vlastními
+  komponentami. Nové UI se proto staví signálově, ne přes zapouzdřené overlaye.
+- **JWT + refresh token** sdílené s REST API. Vypršení tokenu se řeší v HTTP interceptoru: požadavek, který
+  narazí na neautorizováno, se **automaticky obnoví a zopakuje** — uživatel o tom neví a nepřihlašuje se znovu.
+- Lokální úložiště pro přihlášení a rozpracovaná data; přepínač backendu, aby se šlo připojit na testovací instanci.
+- Ochrana rozpracované práce — odchod ze stránky s neuloženými změnami se ptá, role rozhodují o dostupnosti obrazovek.
+- **Leaflet** pro mapy (OpenStreetMap, MapyCz, OpenTopoMap).
+- Formuláře generované z popisu (Formly) tam, kde by jinak vznikaly desítky téměř stejných šablon.
+
+Co v aplikaci **není**, ať to nikoho nemate: **push notifikace** (žádný plugin ani serverová část — oznámení
+chodí e-mailem), **skenování QR kódů** (QR se generují, nečtou) a **plnohodnotný offline režim** (aplikace
+potřebuje připojení; lokální úložiště drží jen přihlášení a rozpracované formuláře). Distribuce zatím jde
+mimo obchody — Android jako APK, iOS jako PWA.
 
 ### Generování dokumentů
 
@@ -205,27 +222,61 @@ Technologie a distribuce:
 - Strukturovaná data schema.org pro vyhledávače — `Event` s datem začátku/konce, místem, organizátorem, hierarchií (`superEvent`), módem (`eventAttendanceMode`), stavem (`eventStatus`); breadcrumbs jako `BreadcrumbList`; navigace jako `SiteNavigationElement`.
 - Optimalizace načítání — preload kritických CSS/JS, DNS prefetch a preconnect pro známé externí služby (Google Tag Manager, Analytics, fonty), asynchronní fragmenty přes hinclude.
 
-### API
+### Autentizace a autorizace
 
-- REST + JSON-LD / Hydra přes API Platform 4.
-- OpenAPI dokumentace automatická (Swagger UI, ReDoc).
-- JWT (Lexik) s refresh tokeny (Gesdinet).
-- CORS konfigurovatelné (Nelmio).
-- Paginace, filtering, sorting přes API Platform.
-- Serializační skupiny pro kontrolu shape resource.
-- Dedikované endpointy tam, kde generický REST nestačí — změna turnusu u přihlášky, úprava příznaků, výstupy
-  programu, export přihlášek. Důvod je praktický: API Platform 4 neresolvuje vnořené `{id}` relací, takže
-  operace měnící vazbu mají vlastní endpoint s explicitním kontraktem místo tichého selhání.
+- **Sedm rolí v hierarchii** — `ROLE_EVERYBODY` → `ROLE_CUSTOMER` → `ROLE_USER` → `ROLE_MEMBER` →
+  `ROLE_MANAGER` → `ROLE_ADMIN` → `ROLE_ROOT`. Vyšší role dědí oprávnění nižších. Účastník po registraci
+  drží nejnižší přihlášenou roli (`ROLE_CUSTOMER`), administrace začíná až na `ROLE_MANAGER`. Role jsou
+  entita v databázi, takže se dají pojmenovat a spravovat, ne jen zadrátovat v konfiguraci.
+- **Celá administrace má podlahu na `ROLE_MANAGER`** už na úrovni firewallu, ne až v kontrolerech.
+  Historicky tam byl `ROLE_CUSTOMER`, takže kterýkoli přihlášený účastník prošel firewallem a obrazovky
+  bez vlastní kontroly role byly dosažitelné; kontrolery navíc svou vyšší úroveň vynucují samostatně.
+- **Přihlášení bez hesla (magic-link)** — vracející se účastník klikne na odkaz v e-mailu. Vedle toho
+  klasické přihlášení heslem pro tým a „zapamatuj si mě" na týden.
+- **Typované jednorázové tokeny** s expirací: aktivace přihlášky, změna hesla, přihlášení z registrace,
+  nahlášení zneužití. Admin je může poslat znovu, prodloužit nebo vydat nový.
+- **Brzda proti hádání hesel** — nejvýše 5 pokusů na kombinaci IP a jména za minutu.
+- **Autorizace na třech úrovních současně:** pravidla nad cestami (firewall), atribut požadované role
+  na kontroleru a bezpečnostní výraz na API resource. Nic nespoléhá na jedinou vrstvu.
+- **Firewally konfiguruje sám core bundle** (ne aplikace) — pět oddělených: vývojářské nástroje bez
+  zabezpečení, obnovení tokenu, přihlášení do API, stateless API na JWT a stavová webová část.
+  Aplikace tedy nemá vlastní `security.yaml`, který by se rozcházel s tím, co bundle očekává.
+
+### Komunikace přes API
+
+Mobilní aplikace i portál mluví s backendem výhradně přes toto API — není to druhá cesta k datům
+vedle webu, je to *ta* cesta. Cokoli se v API změní (tvar resource, serializační skupiny, autorizace),
+projeví se v aplikaci.
+
+- **REST + JSON-LD / Hydra** přes API Platform 4.3, dokumentace se generuje sama (Swagger UI, ReDoc).
+- **Přihlášení** — `POST /api/login` (jméno a heslo v JSON) vrátí **JWT s platností 1 hodiny** a refresh token.
+  `POST /api/token/refresh` vydá nový JWT, odhlášení refresh token zneplatní. Veřejné jsou jen tyto
+  cesty a registrace; vše ostatní pod `/api` vyžaduje platný JWT.
+- **Stateless** — API nemá session ani cookie; každý požadavek nese `Authorization: Bearer`.
+  Vypršení tokenu si klient neřeší ručně: interceptor požadavek obnoví a zopakuje.
+- **CORS** je allowlist — povolené originy se konfigurují prostředím (ne hvězdička), povolené metody
+  `GET, OPTIONS, POST, PUT, PATCH, DELETE`, hlavičky `Content-Type` a `Authorization`, `Link` se vystavuje
+  kvůli stránkování.
+- **Filtrování, řazení a stránkování** deklarativně na resource; **serializační skupiny** určují, co která
+  operace vrací a přijímá, aby se do odpovědi nedostalo víc, než má.
+- **Dedikované endpointy** tam, kde generický REST nestačí — změna turnusu u přihlášky, úprava příznaků,
+  výstupy programu, export přihlášek. Důvod je praktický: API Platform 4 neresolvuje vnořené `{id}` relací,
+  takže operace měnící vazbu mají vlastní endpoint s explicitním kontraktem místo tichého selhání.
+- **Relace se posílají jako IRI** (`/api/events/12`), ne jako vnořený objekt — a při vytváření záznamu se
+  nastavují setterem, ne konstruktorem, jinak zůstanou nenavázané.
+- ⚠️ **Pozor při self-hostingu za WAFem:** aplikační firewall (např. OWASP CRS) běžně zahazuje `PUT`
+  a `DELETE`, případně požadavky, jejichž tělo obsahuje adresu s parametry — a klient dostane chybu, která
+  vypadá jako chyba API, přitom se do aplikace vůbec nedostala. Pokud API ze zařízení „náhodně" selhává,
+  je to první místo, kam se podívat.
 
 ### Bezpečnost
 
-- Login throttling — opakované neúspěšné pokusy z téže IP a uživatelského jména spouští brzdu (Symfony rate-limiter).
 - HTTP security headers: HSTS preload, CSP, Referrer-Policy, COOP, X-Content-Type-Options.
 - HTTP/2 + HTTP/3, TLS 1.3.
 - `/.well-known/security.txt` (RFC 9116).
 - `/.well-known/change-password` (W3C webappsec).
 - Cookie Secure + HttpOnly + SameSite=Lax.
-- CSRF na formulářích.
+- CSRF na formulářích. Role, přihlašování, tokeny a brzda proti hádání hesel → viz *Autentizace a autorizace*.
 - Soft-delete a audit přes Doctrine Gedmo extensions.
 - Trusted proxies pro stack s TLS terminací na nginxu.
 
@@ -349,6 +400,8 @@ OSWIS prošel postupnou modernizací — některé volby z dřívějších let u
 - **PHP 7.x → 8.x → 8.4 → 8.5** (postupné upgrady).
 - **Ionic 5 + Angular 14 + Capacitor 5** → aktuálně **Ionic 8 + Angular 22 + Capacitor 8**.
 - Mobilní iOS dříve plánována jako Capacitor build → dnes distribuovaná jako PWA (jednodušší údržba, žádný Apple Developer Program).
+- Angular se `zone.js` → **zoneless** se signály. Úspornější a předvídatelnější, ale vynutilo si nahradit
+  ty části Ionicu, které na `zone.js` spoléhaly, vlastními komponentami.
 
 ---
 
@@ -368,6 +421,14 @@ podle oblastí, zbývá dotáhnout drobečkovou navigaci napříč stránkami a 
 U obsazení programu celým podtýmem chybí možnost někoho z týmu pro danou sekci **odečíst**
 („celý tým bez jednoho") — bez toho by rozpis pro instruktora lhal, takže se to nejdřív musí dopočítat
 na backendu a teprve pak nabídnout v rozhraní.
+
+**Ve frontendové aplikaci konkrétně.** Editor programu i mřížka obsazení jsou hotové a v provozu;
+obsazení **celým podtýmem** je postavené, ale ještě nevydané. Chybí to, co není vývoj, ale data — dokud se
+tým nezaregistruje jako účastníci s příslušnou funkcí, nemá editor koho nabízet. Dál chybí **push
+notifikace** (potřebují klientský plugin i serverovou stranu, dnes je nahrazuje e-mail), **skenování QR**
+(mohlo by zrychlit check-in u stolu) a **plnohodnotný offline režim** — u vícedenní akce v areálu s horším
+signálem je to reálné omezení, ne kosmetika. Distribuce přes obchody (Google Play, App Store) zatím není;
+zvýšila by dosah, ale přináší si vlastní režii vydávání a recenzí.
 
 **Postavené, ale úmyslně nezapnuté.** Upomínky nezaplacených plateb existují, ale v jediném dnešním
 provozu se nepoužívají — je to rozhodnutí organizátorů, ne chybějící funkce.
