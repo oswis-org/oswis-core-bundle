@@ -86,6 +86,20 @@ class BankAccount
         return null;
     }
 
+    /**
+     * Platební příkaz jako TEXT ve formátu SPD 1.0 — na rozdíl od {@see getQrImage()}, který vrací
+     * hotové PNG do e-mailu. Klient (mobilní aplikace) si z řetězce vykreslí QR sám: ostré na retině,
+     * žádný request navíc a funguje i offline. Dá se i zobrazit/zkopírovat jako text.
+     */
+    public function getQrString(?int $value = 0, ?string $variableSymbol = '', ?string $comment = ''): ?string
+    {
+        try {
+            return $this->getQrPayment($value, $variableSymbol, $comment)?->getQrString();
+        } catch (Exception) {
+            return null;
+        }
+    }
+
     private function getQrPayment(?int $value = 0, ?string $variableSymbol = '', ?string $comment = ''): ?QrPayment
     {
         try {
