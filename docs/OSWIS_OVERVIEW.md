@@ -1,261 +1,361 @@
 # OSWIS
 
-Informační systém pro pořádání registračních akcí. Vznikl jako nedokončená bakalářská práce na Katedře informatiky Přírodovědecké fakulty Univerzity Palackého v Olomouci (KMI PřF UP). Od roku 2019 ho pro Seznamovák pro studenty UP používá studentská organizace STUDENTLIFE z.s. (která Seznamovák pořádá), jako následník původního IS na míru — ročně eviduje 450+ uživatelů (účastníci včetně organizačního týmu). Pokrývá přihlášky, platby, e-mailovou komunikaci s účastníky, evidenci kontaktů a provozní administraci.
+Informační systém pro pořádání registračních akcí — od přihlášky a platby přes komunikaci s účastníky
+až po program, obsazení týmem a příjezd na místo.
 
-Kód je open source, sebehostitelný, bez závislostí na placených SaaS službách. Stack: PHP 8.5 / Symfony 8.1 / Doctrine ORM 3.6 / DBAL 4 / API Platform 4.3 na backendu, Ionic 8 / Angular 22 / Capacitor 8 pro mobilní aplikaci.
+Vznikl jako nedokončená bakalářská práce na Katedře informatiky Přírodovědecké fakulty Univerzity
+Palackého v Olomouci (KMI PřF UP). Od roku 2019 ho pro Seznamovák pro studenty UP používá studentská
+organizace STUDENTLIFE z.s., která Seznamovák pořádá, jako následníka původního IS na míru — ročně
+eviduje 450+ uživatelů včetně organizačního týmu.
 
-Aktuálně běží jeden produkční deploy (Seznamovák UP) — PHP 8.5.8, Symfony 8.1.0, MariaDB 11.8, nginx → Apache → PHP-FPM.
+Kód je open source, sebehostitelný, bez závislostí na placených SaaS službách. Stack: PHP 8.5 /
+Symfony 8.1 / Doctrine ORM 3.6 / DBAL 4 / API Platform 4.3 na backendu, Ionic 8 / Angular 22 /
+Capacitor 8 pro mobilní aplikaci. Běží jeden produkční deploy (Seznamovák UP) — PHP 8.5.8,
+Symfony 8.1.0, MariaDB 11.8, nginx → Apache → PHP-FPM.
+
+## Obsah
+
+- [Pro koho to dává smysl](#pro-koho-to-dává-smysl)
+- **[Co systém umí](#co-systém-umí)** — [Přihlášky a účastníci](#přihlášky-a-účastníci) ·
+  [Platby](#platby) · [Akce a jejich struktura](#akce-a-jejich-struktura) ·
+  [Program a obsazení týmem](#program-a-obsazení-týmem) · [Příjezd a check-in](#příjezd-a-check-in) ·
+  [Ubytování a spolubydlení](#ubytování-a-spolubydlení) ·
+  [Komunikace s účastníky](#komunikace-s-účastníky) · [Adresář kontaktů](#adresář-kontaktů) ·
+  [Veřejný web](#veřejný-web) · [Dokumenty a exporty](#dokumenty-a-exporty)
+- **[Rozhraní — kdo v čem pracuje](#rozhraní--kdo-v-čem-pracuje)** —
+  [Webová administrace](#webová-administrace) · [Frontendová aplikace](#frontendová-aplikace)
+- **[Platforma](#platforma)** — [Autentizace a autorizace](#autentizace-a-autorizace) ·
+  [Komunikace přes API](#komunikace-přes-api) · [Bezpečnost](#bezpečnost) ·
+  [Provoz a údržba](#provoz-a-údržba) · [Lokalizace a formáty](#lokalizace-a-formáty)
+- **[Architektura a rozšiřitelnost](#architektura-a-rozšiřitelnost)** —
+  [Rozdělení do bundlů](#rozdělení-do-bundlů) · [Dědičnost šablon](#dědičnost-šablon) ·
+  [Branding a konfigurace nasazení](#branding-a-konfigurace-nasazení) ·
+  [Možnosti rozšíření](#možnosti-rozšíření) · [Použité technologie](#použité-technologie) ·
+  [Co se během let vyměnilo](#co-se-během-let-vyměnilo)
+- [Rozpracované a plánované](#rozpracované-a-plánované)
+- [Self-hosting](#self-hosting)
 
 ---
 
-## Co OSWIS dělá
+## Pro koho to dává smysl
 
-### Registrace účastníků
+OSWIS vznikl pro vícedenní pobytovou akci se silnou organizační složkou (Seznamovák UP). Hodí se na
+podobné akce — turnusy, příznaky pro ubytování a stravu, hromadná komunikace s účastníky, organizační
+tým s rolemi a programem.
 
-- Veřejný registrační formulář na vlastní subdoméně. K dispozici i embed verze pro vložení do externího webu (typicky se OSWIS spojí s marketingovým WordPressem na hlavní doméně).
-- Magic-link login — vracející se účastník se přihlásí kliknutím na odkaz v e-mailu, bez hesla.
-- Aktivace účtu přes potvrzovací e-mail po vytvoření přihlášky.
-- Tokeny pro magic-link, aktivaci a reset hesla; admin je může resendnout, prodloužit nebo vytvořit nový.
-- Samoobslužná změna přístupových údajů (`AppUserEditRequest` → `AppUserEdit`) — uživatel si sám požádá o změnu
-  e-mailu, uživatelského jména nebo hesla; přijde mu potvrzovací odkaz s platností a změna se provede až po
-  potvrzení. Nová hodnota tedy nikdy nezávisí jen na tom, kdo měl otevřenou session.
-- Příznaky (flags) s kapacitami a cenovými/zálohovými modifikátory — typ ubytování, dieta, doprava, velikost trička apod. Skupiny příznaků mají pravidla výběru (jeden z, alespoň jeden, libovolně).
-- Kategorie účastníků: účastník, organizátor, team-member, staff. Každá s vlastním formulářem a workflow.
-- Soft-delete s možností obnovy v adminu (účastník, kontakt, příznak, nabídka).
-- Wizard pro hromadný přesun účastníků mezi turnusy nebo příznaky.
-- Ochrana proti duplicitám: server-side deduplikace na úrovni vytvoření přihlášky (krátký časový limit) plus klient-side guard proti iOS Safari opakovanému odeslání formuláře.
+Nepokrývá oblasti, kde existují lepší specializované nástroje — účetnictví, daně, faktury, smlouvy,
+fotogalerie, externí marketing. Data se exportují ven (CSV, XLSX, PDF) pro účetní a navazující software.
+
+---
+
+## Co systém umí
+
+### Přihlášky a účastníci
+
+- Veřejný registrační formulář na vlastní subdoméně. K dispozici i embed verze pro vložení do externího
+  webu (typicky se OSWIS spojí s marketingovým WordPressem na hlavní doméně).
+- Aktivace přihlášky potvrzovacím e-mailem; přihlašování bez hesla magic-linkem →
+  viz [Autentizace a autorizace](#autentizace-a-autorizace).
+- Příznaky s kapacitami a cenovými i zálohovými modifikátory — typ ubytování, dieta, doprava, velikost
+  trička. Skupiny příznaků mají pravidla výběru (jeden z, alespoň jeden, libovolně).
+- Kategorie účastníků: účastník, organizátor, člen týmu, staff. Každá s vlastním formulářem a workflow.
+- Soft-delete s obnovou — smazaná přihláška, kontakt, příznak i nabídka se dají vrátit.
+- Hromadný přesun účastníků mezi turnusy nebo příznaky (průvodce).
+- Ochrana proti duplicitám: serverová deduplikace při vytváření přihlášky (krátké časové okno) a klientská
+  pojistka proti opakovanému odeslání formuláře na iOS Safari.
 
 ### Platby
 
-- Bankovní převod s českým QR kódem (CZ QR Payment). Klient skenuje, banka vyplní příkaz.
-- Variabilní symbol = posledních 9 cifer telefonu účastníka, fallback ID přihlášky.
-- Párování přijatých plateb na účastníky podle VS, jména, e-mailu, částky a aktivní akce. Nejednoznačné případy se nepárují automaticky, čekají na admina.
-- Import bankovního výpisu z CSV přes admin UI.
-- Vratky a opravy plateb jako oddělené záznamy se zápornou hodnotou, s e-mailovou notifikací účastníkovi.
-- Záloha + doplatek workflow — registrace se aktivuje po zaplacení zálohy, doplatek do termínu.
-- Export pro účetní v CSV a XLSX, agregace po turnusech a kategoriích.
-- Přehledy nezaplacených (zálohy i doplatky).
+- Bankovní převod s českým QR kódem (CZ QR Payment) — účastník naskenuje, banka vyplní příkaz.
+- Variabilní symbol = posledních 9 cifer telefonu účastníka, jinak ID přihlášky.
+- Párování přijatých plateb podle VS, jména, e-mailu, částky a aktivní akce. Nejednoznačné případy se
+  nepárují automaticky a čekají na obsluhu.
+- Import bankovního výpisu z CSV.
+- Vratky a opravy jako samostatné záznamy se zápornou hodnotou, s notifikací účastníkovi.
+- Záloha + doplatek — přihláška se aktivuje po zaplacení zálohy, doplatek do termínu.
+- Přehledy nezaplacených záloh i doplatků; agregace po turnusech a kategoriích; podklady pro účetní
+  → viz [Dokumenty a exporty](#dokumenty-a-exporty).
 
-### Události
+### Akce a jejich struktura
 
-- Hierarchie událostí je rekurzivní (libovolný počet úrovní) — `Event` se odkazuje na `superEvent` a má kolekci `subEvents`. V praxi typicky: **ročník → turnus → sub-event** (např. „Seznamovák 2026" → „1. turnus" → „Workshop", „Sportovní odpoledne"). Datový model neomezuje hloubku, takže lze modelovat třeba sérii ročníků, dlouhodobé programy, vícefázové akce.
-- Kategorie událostí (`EventCategory`) — pro odlišení typů (Seznamovák, workshop, schůze, výlet, ...) a jejich vlastní logiky.
-- Každá úroveň má vlastní termín (start/end), místo, organizátora (jako Participant typu *organizer*), kapacitu a viditelnost (public / draft / archived).
-- Registrační rozsahy (`RegistrationOffer`) — jeden Event může mít několik nabídek registrace (pro různé kategorie účastníků, různé časové okno, různé cenové úrovně). Každý rozsah má vlastní cenu, zálohu, kapacitu, datum od/do.
-- Příznaky (`ParticipantFlag`) seskupené do `FlagGroup` (s vlastní kategorií) jsou navázané na rozsah jako `RegistrationFlagOffer` / `RegistrationFlagGroupOffer` — modifikátor ceny/zálohy a kapacity (typ ubytování, dieta, doprava, velikost trička, slevové kódy). Skupina má pravidla výběru (jeden z, alespoň jeden, libovolně).
-- Sub-event docházka (`SubEventAttendance`) — účastník přihlášený na nadřazenou akci si může vybrat konkrétní podakce, kterých se zúčastní.
-- Year-clone wizard — kompletní zkopírování ročníku (turnusy, ceny, příznaky, organizační účastníci, e-mailové šablony), substituce roku v názvech a slugách, úprava dat per turnus.
-- Kapacity a využití přepočítané live na úrovni akce, turnusu i příznaku; navíc historický snapshot — kdo byl účastník k danému dni (pro účetnictví a reporting).
-- Obsah a přílohy akce — strukturované textové bloky (`EventContent`), připojené soubory (`EventFile`)
+- **Rekurzivní hierarchie** — `Event` odkazuje na `superEvent` a má kolekci `subEvents`. V praxi
+  typicky ročník → turnus → podakce („Seznamovák 2026" → „1. turnus" → „Workshop"). Model hloubku
+  neomezuje, takže lze modelovat i série ročníků, dlouhodobé programy nebo vícefázové akce.
+- Každá úroveň má vlastní termín, místo, organizátora, kapacitu a viditelnost (veřejné / rozpracované /
+  archivované). Kategorie akcí (`EventCategory`) odlišuje typy a jejich logiku.
+- **Registrační nabídky** (`RegistrationOffer`) — jedna akce může mít víc nabídek (různé kategorie
+  účastníků, časová okna, cenové úrovně), každá s vlastní cenou, zálohou, kapacitou a platností.
+  Příznaky se na nabídku váží jako `RegistrationFlagOffer` / `RegistrationFlagGroupOffer`.
+- **Docházka na podakce** (`SubEventAttendance`) — přihlášený na nadřazenou akci si vybere, kterých
+  dílčích programů se zúčastní.
+- **Klonování ročníku** — zkopíruje turnusy, ceny, příznaky, organizační účastníky i e-mailové šablony,
+  nahradí rok v názvech a slugách a nechá upravit data per turnus.
+- Kapacity a využití se počítají live na úrovni akce, turnusu i příznaku; navíc historický snapshot,
+  kdo byl účastníkem k danému dni (pro účetnictví a reporting).
+- **Obsah a přílohy akce** — strukturované textové bloky (`EventContent`), soubory (`EventFile`)
   a obrázky (`EventImage`) s automatickými variantami velikostí. Akce má i vlastní příznaky (`EventFlag`)
-  nezávislé na příznacích přihlášky — pro vlastnosti samotné akce, ne účastníka.
-- Skupiny účastníků (`ParticipantGroup`) — pojmenované skupiny s **barvou** (odpovídá barvě pásku na ruce)
-  a **pořadím na jídlo** (`mealOrder`, dietáři první). Drží se jich check-in, výdej stravy i tiskové seznamy,
-  takže jde o provozní kostru akce, ne jen o štítek.
-- Podtýmy (`StaffTeam`) — pojmenovaný tým v rámci akce se svými členy. Na podtým lze obsadit program
-  najednou, místo vypisování jednotlivců.
-- Veřejné stránky: kalendář akcí, leták akce, seznamy budoucích a minulých akcí.
+  nezávislé na příznacích přihlášky — pro vlastnosti akce, ne účastníka.
+- **Skupiny účastníků** (`ParticipantGroup`) — pojmenované skupiny s **barvou** (odpovídá barvě pásku na
+  ruce) a **pořadím na jídlo** (dietáři první). Drží se jich check-in, výdej stravy i tiskové seznamy,
+  takže jde o provozní kostru akce, ne o štítek.
+- **Podtýmy** (`StaffTeam`) — pojmenovaný tým v rámci akce se svými členy; lze na něj obsadit program
+  najednou místo vypisování jednotlivců.
 
-### Program akce
+### Program a obsazení týmem
 
-- Program se skládá po dnech (`ProgramDay`) a sekcích (`EventSection`) — sekce je blok programu s časem, místem a typem (aktivita, jídlo, přesun, volno, schůze).
-- Bloky a rotace — jedna aktivita se může konat v několika paralelních běhech, kterými skupiny rotují; editor to umí rozgenerovat, ne opisovat ručně.
-- Jídelní sloty — čas výdeje jídla po skupinách (dietáři první), navázané na provoz kuchyně.
-- Výstupy programu — z jednoho zdroje se generují různé pohledy: program pro účastníka, rozpis pro instruktora, rozpis pro kuchyň. HTML i PDF.
-- Brána zveřejnění — program se účastníkům zobrazí teprve po explicitním zveřejnění; do té doby ho vidí jen tým.
+**Program:**
 
-### Obsazení programu týmem
+- Skládá se po dnech (`ProgramDay`) a sekcích (`EventSection`) — sekce je blok s časem, místem a typem
+  (aktivita, jídlo, přesun, volno, schůze).
+- **Bloky a rotace** — jedna aktivita se koná v několika paralelních bězích, kterými skupiny rotují;
+  editor je rozgeneruje, neopisují se ručně.
+- **Jídelní sloty** — čas výdeje po skupinách, navázaný na provoz kuchyně.
+- **Výstupy** — z jednoho zdroje se generují různé pohledy: program pro účastníka, rozpis pro instruktora,
+  rozpis pro kuchyň. HTML i PDF.
+- **Brána zveřejnění** — účastníci program uvidí až po explicitním zveřejnění, do té doby jen tým.
 
-- Funkce v týmu (`StaffRole`) — pojmenované role s pořadím (hlavní instruktor, zdravotník, fotograf, kuchyň, technika…).
-- Přiřazení (`StaffAssignment`) — kdo dělá co a kdy. Obsadit lze **konkrétní osobu**, **celý podtým** nebo **externího člověka** (jméno bez účtu, typicky lektor zvenčí).
-- Rozvrh obsazení („rošt") — mřížka sekce × role, s přehledem, co je neobsazené. Editovatelná ve webovém adminu i v mobilní aplikaci.
-- Rozpis pro instruktora — každý člen týmu vidí jen svoje bloky, v mobilu i jako PDF.
-- **Rozpis služeb** — druhá mřížka, dny × funkce, pro služby nenavázané na konkrétní program (kuchyň, noční
-  hlídka, úklid, řidič). Připravuje se v klidu ve webovém adminu, v terénu se dolaďuje v mobilu; obojí nad
-  týmiž daty, ne dva modely. Tiskne se jako PDF.
+**Obsazení:**
 
-### Check-in a příjezd
+- **Funkce v týmu** (`StaffRole`) — pojmenované role s pořadím (hlavní instruktor, zdravotník, fotograf,
+  kuchyň, technika).
+- **Přiřazení** (`StaffAssignment`) — kdo dělá co a kdy. Obsadit lze **konkrétní osobu**, **celý podtým**
+  nebo **externího člověka** (jméno bez účtu, typicky lektor zvenčí).
+- **Mřížka obsazení programu** — sekce × funkce, s přehledem, co je neobsazené.
+- **Rozpis služeb** — druhá mřížka, dny × funkce, pro služby nenavázané na program (kuchyň, noční hlídka,
+  úklid, řidič). Připravuje se v klidu ve webové administraci, v terénu se dolaďuje v mobilu; obojí nad
+  týmiž daty, ne dva modely.
+- **Itinerář** — každý člen týmu vidí jen svoje bloky, v mobilu i jako PDF.
 
-- Check-in obrazovka per turnus — označení příjezdu, přehled kdo dorazil / nedorazil, řazení podle skupiny (dietáři první), barvy pásku nebo abecedy.
-- Stanice check-inu (`CheckInStation`) a průchody (`ParticipantStationVisit`) — účastník během příjezdu projde několika stanicemi (registrace, platba, pásek, bezpečnostní list, technika) a je vidět, kde se tvoří front.
-- Přehled průběhu pro vzdálené sledování — kolik přijelo, kolik prošlo kterou stanicí, seznam nedorazivších; read-only, auto-refresh.
-- Papírový fallback jako plnohodnotná varianta (tým ho drží u stolu — nespoléhá na wifi a baterky): tiskový seznam check-inu, seznam po skupinách a páscích pro výdej stravy, předvyplněné bezpečnostní listy k podpisu.
-- Parkování — příznaky na přihlášce (SPZ, karta) s nulovou cenou, aby se řešilo u příjezdu, ne dodatečně.
+### Příjezd a check-in
+
+- Obrazovka příjezdu per turnus — označení příjezdu, kdo dorazil a kdo ne, řazení podle skupiny
+  (dietáři první), barvy pásku nebo abecedy.
+- **Stanice** (`CheckInStation`) a **průchody** (`ParticipantStationVisit`) — účastník během příjezdu
+  projde několika stanicemi (registrace, platba, pásek, bezpečnostní list, technika) a je vidět,
+  kde se tvoří front.
+- **Přehled průběhu pro vzdálené sledování** — kolik přijelo, kolik prošlo kterou stanicí, seznam
+  nedorazivších; jen ke čtení, s automatickým obnovováním.
+- **Papírový fallback jako plnohodnotná varianta** — tým ho drží u stolu a nespoléhá na wifi ani baterky:
+  tiskový seznam příjezdu, seznam po skupinách a páscích pro výdej stravy, předvyplněné bezpečnostní
+  listy k podpisu.
+- **Parkování** — příznaky na přihlášce (SPZ, karta) s nulovou cenou, aby se řešilo u příjezdu, ne dodatečně.
 
 ### Ubytování a spolubydlení
 
-- Objekty a jednotky (`Facility`, `AccommodationUnit`, `Bed`) — budova → pokoj → konkrétní postel, včetně přistýlek.
-- Rezervace (`Reservation`) — přidělení účastníka na postel, s cenovými šablonami (`PricingTemplate`) pro různé typy ubytování.
-- Spolubydlení (`RoommateGroup`, `RoommatePreference`) — účastníci si mohou vyjádřit, s kým chtějí být; přidělování to bere v potaz.
-- Kontroly při přidělování (`AccommodationWarning`) — upozorní na kolize (kluci a holky v jednom pokoji, přistýlka obsazená dřív než regulérní postel, nesplněná vzájemná preference); varují, neblokují.
+- Objekty a jednotky (`Facility`, `AccommodationUnit`, `Bed`) — budova → pokoj → konkrétní postel,
+  včetně přistýlek.
+- Rezervace (`Reservation`) — přidělení účastníka na postel, s cenovými šablonami (`PricingTemplate`)
+  pro různé typy ubytování.
+- Spolubydlení (`RoommateGroup`, `RoommatePreference`) — účastníci vyjádří, s kým chtějí být;
+  přidělování to bere v potaz.
+- Kontroly při přidělování — upozorní na kolize (kluci a holky v jednom pokoji, přistýlka obsazená dřív
+  než regulérní postel, nesplněná vzájemná preference). **Varují, neblokují.**
 
-### E-mailová komunikace
+### Komunikace s účastníky
 
-- Šablonovaný systém přes Twig + MJML (HTML maily, které drží i v Outlooku).
-- Admin editor šablon — skupiny mailů, kategorie, vlastní Twig šablony.
-- Vlákna v poště — maily ke konkrétní přihlášce se v Gmailu / Outlooku slepí do jednoho vlákna (per účastník, ne per uživatel, takže se ročníky neslévají).
-- Historie komunikace u účastníka — chronologická osa s e-maily, telefonáty a chatem; telefonáty a chat se zapisují ručně.
-- Ad-hoc compose — admin píše individuální e-mail účastníkovi z přehledu, naváže se na existující vlákno.
-- Hromadný e-mail vybraným přihláškám — výběr v seznamu (i podle filtru), jeden text, samostatné zprávy do vlastních vláken.
-- Automatické maily podle časového okna — šablona se naplánuje na období a cron ji rozešle těm, komu ještě neodešla. Součástí je **dry-run náhled** (komu by to teď šlo a proč), aby se dávka dala zkontrolovat před odesláním.
-- Oznámení o změně a zrušení přihlášky — místo přeposlání celého shrnutí se pošle **výčet toho, co se změnilo**; při zrušení samostatné oznámení. Stejné chování z webového adminu, z API i z aplikace.
-- Resend systémových mailů z adminu (s aktualizací tokenů a stavu). Typy, jejichž obsah nelze věrně zrekonstruovat (potvrzení konkrétní platby, aktivační odkaz), se odmítnou přeposlat — pro ně jsou dedikované akce, které vyrobí platný obsah: **„Aktivační e-mail"** (nový token) a **„Shrnutí přihlášky"** (pokyny k platbě a QR z aktuálních dat).
-- IMAP import přijaté pošty od účastníků do timeline.
-- Auto-BCC na archivační adresu.
-- Detekce automatických mailů (RFC 3834) — out-of-office respondery nedělají loopy. Ad-hoc compose se naopak prezentuje jako lidská korespondence.
-- České skloňování jmen v oslovení (vokativ — „Petře" místo „Petr").
-- Strukturovaná data pro shrnutí přihlášky — JSON-LD a HTML5 microdata schema.org `EventReservation`, plus přiložený `.ics` kalendář. Příjemce má v moderních mail klientech jednoklikem „Přidat do kalendáře", konkrétní podpora závisí na klientovi.
+- Šablony přes Twig + MJML — HTML maily, které drží i v Outlooku. Šablony se edituje v administraci,
+  ne v kódu.
+- **Vlákna v poště** — maily ke konkrétní přihlášce se v Gmailu i Outlooku slepí do jednoho vlákna,
+  a to per přihláška, ne per uživatel, takže se ročníky neslévají.
+- **Historie komunikace u účastníka** — jedna časová osa s e-maily, telefonáty a chatem; telefonát
+  a chat se zapisují ručně.
+- **Individuální e-mail** účastníkovi z administrace, naváže se na existující vlákno.
+- **Hromadný e-mail** vybraným přihláškám — jeden text, samostatné zprávy do vlastních vláken.
+- **Automatické maily podle časového okna** — šablona se naplánuje na období a cron ji rozešle těm,
+  komu ještě neodešla. Součástí je **náhled nasucho** (komu by to teď šlo a proč), aby se dávka dala
+  zkontrolovat před odesláním.
+- **Oznámení o změně a zrušení přihlášky** — místo přeposlání celého shrnutí se pošle **výčet toho, co se
+  změnilo**; při zrušení samostatné oznámení. Stejné chování z administrace, z API i z aplikace.
+- **Opětovné odeslání systémového mailu.** Typy, jejichž obsah nelze věrně zrekonstruovat (potvrzení
+  konkrétní platby, aktivační odkaz), se přeposlat odmítnou — jinak by účastníkovi přišla nepravda nebo
+  mrtvý odkaz. Pro ně jsou dedikované akce, které vyrobí platný obsah: **„Aktivační e-mail"** (vydá nový
+  token) a **„Shrnutí přihlášky"** (pokyny k platbě a QR z aktuálních dat).
+- **Import přijaté pošty přes IMAP** do historie; co se nepodařilo přiřadit, čeká v samostatné frontě.
+- Archivační kopie (BCC) na zadanou adresu.
+- **Detekce automatických odpovědí** (RFC 3834) — out-of-office respondery nedělají smyčky. Individuální
+  mail od obsluhy se naopak prezentuje jako lidská korespondence.
+- **Strukturovaná data ve shrnutí přihlášky** — JSON-LD a microdata schema.org `EventReservation`
+  a přiložený `.ics`. V moderních klientech tak jde přidat akci do kalendáře jedním klikem.
+- Oslovení ve správném pádu → viz [Lokalizace a formáty](#lokalizace-a-formáty).
 
 ### Adresář kontaktů
 
-- `AbstractContact` jako polymorfní základ — dva konkrétní typy: `Person` (osoba) a `Organization` (organizace). Sdílejí kontaktní detaily, adresy, soubory, poznámky, vazby na akce.
-- Pozice (`Position`) — vazba osoba ↔ organizace s funkcí. Jedna osoba může mít více pozic v různých organizacích, v jedné organizaci i v různých funkcích, vázáno na časové období.
-- Adresy (`ContactAddress`) — strukturovaně (ulice, číslo popisné, město, PSČ, stát, GPS souřadnice). Kontakt může mít víc adres (domov, práce, doručovací) s typem.
-- Kontaktní detaily (`ContactDetail`) — typované (e-mail, telefon, web, IČO, DIČ, datová schránka, sociální sítě). Kontakt může mít víc detailů s rozlišením kategorie (osobní mail / pracovní mail / mobil / pevná linka / …). Kategorie (`ContactDetailCategory`) jsou rozšiřitelné — admin si přidá vlastní typ.
-- Místa (`Place`) — samostatná entita s GPS pro vazbu na události, sub-eventy a mapu. Místa mohou tvořit vlastní hierarchii (`subPlaces` / `parentPlace`), označení patra a místnosti, vlastní ikonu pro mapu.
-- Adresáře (`AddressBook`) — pojmenované skupiny kontaktů (instruktoři ročníku, partneři, dárci, alumni). Kontakt v ní je přes connection entitu, takže může být ve více adresářích současně.
-- Připojené soubory a obrázky ke kontaktu, s automaticky generovanými variantami velikostí přes Liip Imagine.
-- Poznámky ke kontaktům — interní / veřejné, s historií.
+- `AbstractContact` jako polymorfní základ se dvěma konkrétními typy: `Person` a `Organization`.
+  Sdílejí kontaktní detaily, adresy, soubory, poznámky i vazby na akce.
+- **Pozice** (`Position`) — vazba osoba ↔ organizace s funkcí a časovým obdobím. Jedna osoba může mít
+  víc pozic v různých organizacích i víc funkcí v jedné.
+- **Adresy** (`ContactAddress`) — strukturovaně (ulice, číslo, město, PSČ, stát, GPS), víc adres s typem
+  (domov, práce, doručovací).
+- **Kontaktní detaily** (`ContactDetail`) — typované (e-mail, telefon, web, IČO, DIČ, datová schránka,
+  sociální sítě) s kategorií (osobní / pracovní mail, mobil, pevná linka). Kategorie jsou rozšiřitelné
+  z administrace.
+- **Místa** (`Place`) — samostatná entita s GPS pro vazbu na akce, podakce a mapu. Místa mají vlastní
+  hierarchii (budova → patro → místnost) a ikonu pro mapu.
+- **Adresáře** (`AddressBook`) — pojmenované skupiny kontaktů (instruktoři ročníku, partneři, dárci,
+  alumni); kontakt může být ve víc adresářích současně.
+- Připojené soubory a obrázky s automaticky generovanými variantami velikostí.
+- Poznámky ke kontaktům — interní i veřejné, s historií.
 
-### Admin rozhraní (web)
+### Veřejný web
 
-- **Sjednocený přehled přihlášek** — jeden seznam pro všechny řezy. Rozsah (ročník / turnus / všechny akce, kategorie účastníka) a filtr jsou v URL, takže je pohled odkazovatelný a dá se poslat kolegovi. Rychlé filtry (zaplaceno, nedoplaceno, nezaplacená záloha, přeplaceno, neaktivované, s poznámkou, stravovací omezení), fasety podle příznaků, řazení kliknutím na hlavičku a tiskový pohled.
-- **Vyhledávání bez diakritiky** napříč jménem, e-mailem, telefonem a variabilním symbolem, s našeptávačem.
-- **Pokročilý filtr výrazem** — booleovský výraz nad přihláškou (`hasFlag`, `hasFlagInCategory`, `isPaid`, `remainingPrice`, `isConfirmed`, `gender`, `eventSlug` …) pro dotazy, na které se pilulky nehodí.
-- **Hromadné akce nad výběrem** — smazání (vratné), export (CSV/PDF), hromadný e-mail, přesun mezi turnusy. S limity na dávku a záznamem, co se povedlo a co ne.
-- Detail účastníka — kontakt, registrace, platby, komunikace, poznámky, tokeny.
-- Editace příznaků u přihlášky — včetně kategorií, které se při registraci nenabízejí (sleva, zkrácený pobyt, poznámka k platbě), textových hodnot u příznaku a možnosti vědomě překročit kapacitu.
-- Check-in obrazovky turnusu, přehled průběhu příjezdu a tiskové seznamy.
-- Editor programu — dny, sekce, bloky a rotace, výstupy, obsazení týmem.
-- Správa přesměrování (`WebRedirect`) — stará adresa → nová, s **počítadlem zásahů a časem posledního**, takže
-  je vidět, které přesměrování ještě někdo používá a které lze zrušit. Nutné, když se mezi ročníky mění slugy.
-- Správa uživatelů a rolí, správa míst, správa stanic check-inu, rozpis služeb.
-- České řazení podle abecedy (Collator `cs_CZ`) — Č za C, Š za S, ne podle bajtů.
-- Detail události — všechny turnusy, příznaky, kapacity, ceny, data, agregace.
-- Soft-delete restore.
-- CRUD nad katalogem příznaků, skupin příznaků, kategorií a registračních rozsahů.
-- Editor e-mailových šablon.
-- Bulk reassign wizard.
-- Year-clone wizard.
-- Aggregations — počty účastníků a plateb v různých řezech, live i historický snapshot.
-- Communication module — timeline, unmatched IMAP inbox, admin compose, ruční IMAP refresh.
-- Payments import — UI pro upload CSV a ruční párování.
-- Notes — interní poznámky napříč entitami.
+- Statické stránky se slugem a rich-text obsahem, aktuality, FAQ, media galerie.
+- Kalendář akcí, leták akce, seznamy budoucích i minulých akcí.
+- Stránka o zpracování osobních údajů (GDPR) jako součást skeletu — odkazuje se na ni registrační
+  formulář i maily.
+- Banner nad obsahem pro dočasná oznámení (změna termínu, uzavření přihlášek).
+- **Účastnický portál i ve webové verzi** — kdo si nechce instalovat aplikaci, vidí své přihlášky
+  a platby v prohlížeči.
+- Hlavní menu a patička; položky do nich přidávají jednotlivé bundly →
+  viz [Možnosti rozšíření](#možnosti-rozšíření).
+- Sitemap, RSS feed (s vlastním stylesheetem, aby byl čitelný i v prohlížeči) a robots.txt.
+- **Instalovatelnost jako PWA** — `site.webmanifest` (barva tématu, splash, jméno), `browserconfig.xml`
+  pro Windows tiles a kompletní set ikon (favicon 16/32, Apple touch 180, Android 192, msTile,
+  safari-pinned-tab, mask-icon).
 
-### Frontendová aplikace (mobil / portál / administrace)
+**SEO a sémantika:**
 
-Jedna codebase, dva režimy podle role přihlášeného uživatele. Běží jako nativní Android build,
-jako PWA na iOS i jako běžná webová aplikace v prohlížeči.
+- Kompletní meta tagy — title, description, autor, copyright, generator, jazyk podle Dublin Core,
+  canonical URL per stránka, geo lokace (`geo.position`, `ICBM`, OG souřadnice).
+- Open Graph a Twitter Card pro náhledy při sdílení.
+- Meta na úrovni aplikace — `application-name`, `apple-mobile-web-app-title`, `theme-color`,
+  `msapplication-TileColor` / `TileImage` — sjednocený vzhled v prohlížeči i po přidání na plochu.
+- Strukturovaná data schema.org — `Event` s termínem, místem, organizátorem, hierarchií (`superEvent`),
+  módem a stavem; drobečky jako `BreadcrumbList`; navigace jako `SiteNavigationElement`.
+- Optimalizace načítání — preload kritických CSS/JS, DNS prefetch a preconnect pro známé externí služby,
+  asynchronní fragmenty.
 
-**Účastnický portál** (pro přihlášeného účastníka):
+### Dokumenty a exporty
 
-- Přehled vlastních přihlášek a jejich detail — co má zaplaceno, kolik zbývá, jaké má příznaky, na jakém turnusu je.
-- Kalendář akcí s detailem a možností odskočit z místa v programu na mapu.
-- Mapa míst akce (ubytování, sběrná místa, program) s vlastní polohou; několik podkladových vrstev.
-- Historie komunikace — vlastní e-maily, telefonáty a záznamy kontaktu v jedné časové ose.
-- Docházka na podakce — účastník si vybere, kterých dílčích programů se zúčastní.
+- **PDF** (mPDF) — přehledy, potvrzení, prezenční listiny, hromadné štítky, tiskové seznamy pro příjezd
+  a kuchyň, bezpečnostní listy, rozpisy programu a služeb.
+- **XLSX** (PhpSpreadsheet) a **CSV** (RFC 4180, UTF-8 BOM pro Excel).
+- **Jednotná exportní pipeline** — každý typ exportu je definice (sloupce, řazení, formát), takže CSV,
+  XLSX i PDF vznikají z jednoho popisu a nedivergují. Součástí jsou stropy na počet řádků, aby export
+  nesestřelil provoz.
+- **QR kódy** (Endroid) — CZ QR platba i identifikační kód.
+
+---
+
+## Rozhraní — kdo v čem pracuje
+
+Obě rozhraní pracují nad **týmiž daty a týmiž pravidly** — nejde o dvě aplikace, ale o dvě vstupní cesty.
+Co která oblast dělá, je popsané výš; tady je jen to, čím se rozhraní od sebe liší.
+
+### Webová administrace
+
+Nástroj pro registrační sezonu a přípravu akce — desktop, malý tým, hodně dat na obrazovce.
+
+- **Sjednocený přehled přihlášek.** Jeden seznam pro všechny řezy. Rozsah (ročník / turnus / všechny akce,
+  kategorie účastníka) i filtr jsou v URL, takže je pohled odkazovatelný a dá se poslat kolegovi. Rychlé
+  filtry (zaplaceno, nedoplaceno, nezaplacená záloha, přeplaceno, neaktivované, s poznámkou, stravovací
+  omezení), fasety podle příznaků, řazení kliknutím na hlavičku, tiskový pohled.
+- **Vyhledávání bez ohledu na diakritiku** napříč jménem, e-mailem, telefonem a variabilním symbolem,
+  s našeptávačem.
+- **Filtr výrazem** — booleovský výraz nad přihláškou (`hasFlag`, `hasFlagInCategory`, `isPaid`,
+  `remainingPrice`, `isConfirmed`, `gender`, `eventSlug`) pro dotazy, na které se pilulky nehodí.
+- **Hromadné akce nad výběrem** — smazání (vratné), export, hromadný e-mail, přesun mezi turnusy.
+  S limity na dávku a výpisem, co se povedlo a co ne.
+- **Detail účastníka** — kontakt, registrace, platby, historie komunikace, poznámky, tokeny.
+  Včetně **editace příznaků**: i kategorie, které se při registraci nenabízejí (sleva, zkrácený pobyt,
+  poznámka k platbě), textové hodnoty u příznaku a vědomé překročení kapacity.
+- **Detail akce** — turnusy, příznaky, kapacity, ceny, termíny, agregace.
+- **Katalog** — příznaky, skupiny příznaků, kategorie a registrační nabídky.
+- **Agregace** — počty účastníků a plateb v různých řezech, live i k historickému dni.
+- **Komunikační modul** — časová osa, fronta nepřiřazené pošty z IMAPu, psaní zprávy, ruční stažení pošty.
+- **Import plateb** — nahrání výpisu a ruční dopárování.
+- **Editor e-mailových šablon**, klonování ročníku, hromadný přesun, obnova smazaných záznamů.
+- **Správa přesměrování** — stará adresa → nová, s **počítadlem zásahů a časem posledního**. Je tak vidět,
+  které přesměrování ještě někdo používá a které lze zrušit; nutné, když se mezi ročníky mění slugy.
+- Správa uživatelů a rolí, míst, stanic příjezdu.
+- Obrazovky pro **program, rozpis služeb a příjezd** — tytéž oblasti jako v aplikaci, na velké obrazovce
+  a s klávesnicí.
+
+### Frontendová aplikace
+
+Jedna codebase, dva režimy podle role přihlášeného uživatele. Běží jako nativní Android build, jako PWA
+na iOS i jako běžná webová aplikace v prohlížeči. Slouží tomu, co se děje **v terénu** — na schůzi,
+u stolu při příjezdu, v areálu.
+
+**Účastnický portál:**
+
+- Přehled vlastních přihlášek a jejich detail — co má zaplaceno, kolik zbývá, jaké má příznaky,
+  na jakém turnusu je.
+- Kalendář akcí s detailem a odskokem z místa v programu na mapu.
+- Mapa míst akce (ubytování, sběrná místa, program) s vlastní polohou a několika podkladovými vrstvami.
+- Vlastní historie komunikace v jedné časové ose.
+- Výběr podakcí, kterých se zúčastní.
 
 **Administrace pro organizační tým:**
 
-- Dashboard s přehledy.
-- Účastníci — seznamy a detail s registracemi, platbami, příznaky a poznámkami; ruční zápis telefonátu nebo chatu do historie; export vybraných.
-- Události — přehled, detail, podakce, kapacity, ceny, příznaky, registrační nabídky.
+- Dashboard s přehledy; účastníci se seznamem, detailem a exportem vybraných; ruční zápis telefonátu
+  nebo chatu do historie.
+- Akce, podakce, kapacity, ceny, příznaky, registrační nabídky.
 - **Program** — rozcestník a editor: dny, sekce, aktivity, bloky a rotace.
-- **Mřížka obsazení a rozpis služeb** — kdo má jakou funkci v které sekci; obsadit lze osobu, celý podtým nebo externího člověka.
-- **Itinerář** — každý člen týmu vidí jen svoje bloky.
-- **Check-in** — obrazovky stanic pro příjezd, aby se odškrtávalo u stolu na telefonu nebo tabletu.
-- Adresář — osoby, organizace, místa, pozice a funkce v organizacích.
-- Kalendář všech akcí v časové ose.
-- Web — správa stránek a aktualit včetně formulářů generovaných z popisu (nemusí se pro každý typ obsahu psát vlastní).
-- Ubytování — přehled objektů, jednotek a přidělení.
+- **Mřížka obsazení a rozpis služeb**; **itinerář** pro každého člena týmu.
+- **Příjezd** — obrazovky stanic, aby se odškrtávalo u stolu na telefonu nebo tabletu.
+- Adresář, kalendář, ubytování, správa stránek a aktualit (formuláře se generují z popisu, takže se pro
+  každý typ obsahu nepíše vlastní).
 
-**Vlastní účet:**
+**Vlastní účet:** přihlášení heslem i magic-linkem, změna hesla a žádost o změnu údajů potvrzovaná
+e-mailem, nastavení (přepínač backendu test/produkce, správa lokální cache) a diagnostika (verze,
+prostředí, stav úložiště — k přiložení do hlášení chyby).
 
-- Přihlášení heslem i magic-linkem, odhlášení.
-- Změna hesla a žádost o změnu údajů, potvrzovaná odkazem v e-mailu.
-- Nastavení — přepínač backendu (test/produkce), správa lokální cache, obecné volby.
-- Diagnostika (o aplikaci / o zařízení) — verze, prostředí, stav úložiště; k přiložení do hlášení chyby.
+**Chování, které stojí za zmínku:**
 
-Technologie a chování:
+- **Zoneless change detection** — aplikace neběží na `zone.js`, změny se propagují signály. Je to
+  úspornější a předvídatelnější, ale platí se za to: části Ionicu, které na `zone.js` spoléhaly, se
+  musely nahradit vlastními komponentami, takže nové UI se staví signálově.
+- **Vypršení tokenu řeší interceptor** — požadavek, který narazí na neautorizováno, se automaticky obnoví
+  a zopakuje. Uživatel se nepřihlašuje znovu a o ničem neví.
+- Lokální úložiště pro přihlášení a rozpracovaná data; odchod ze stránky s neuloženými změnami se ptá;
+  role rozhodují o dostupnosti obrazovek.
 
-- **Ionic 8** + **Angular 22** + **TypeScript 6**, **Capacitor 8** pro Android build, PWA pro iOS
-  („Přidat na plochu" ze Safari — žádný Apple Developer Program).
-- **Zoneless change detection** — aplikace neběží na `zone.js`, změny se propagují signály. Je to výrazně
-  úspornější, ale platí se za to: části Ionicu, které na `zone.js` spoléhaly, se musely nahradit vlastními
-  komponentami. Nové UI se proto staví signálově, ne přes zapouzdřené overlaye.
-- **JWT + refresh token** sdílené s REST API. Vypršení tokenu se řeší v HTTP interceptoru: požadavek, který
-  narazí na neautorizováno, se **automaticky obnoví a zopakuje** — uživatel o tom neví a nepřihlašuje se znovu.
-- Lokální úložiště pro přihlášení a rozpracovaná data; přepínač backendu, aby se šlo připojit na testovací instanci.
-- Ochrana rozpracované práce — odchod ze stránky s neuloženými změnami se ptá, role rozhodují o dostupnosti obrazovek.
-- **Leaflet** pro mapy (OpenStreetMap, MapyCz, OpenTopoMap).
-- Formuláře generované z popisu (Formly) tam, kde by jinak vznikaly desítky téměř stejných šablon.
+**Co v aplikaci není**, ať to nikoho nemate: **push notifikace** (žádný klientský plugin ani serverová
+část — oznámení chodí e-mailem), **skenování QR kódů** (QR se generují, nečtou) a **plnohodnotný offline
+režim** (aplikace potřebuje připojení; lokální úložiště drží jen přihlášení a rozpracované formuláře).
+Distribuce jde mimo obchody — Android jako APK, iOS jako PWA.
 
-Co v aplikaci **není**, ať to nikoho nemate: **push notifikace** (žádný plugin ani serverová část — oznámení
-chodí e-mailem), **skenování QR kódů** (QR se generují, nečtou) a **plnohodnotný offline režim** (aplikace
-potřebuje připojení; lokální úložiště drží jen přihlášení a rozpracované formuláře). Distribuce zatím jde
-mimo obchody — Android jako APK, iOS jako PWA.
+---
 
-### Generování dokumentů
-
-- PDF přes mPDF (přehledy, potvrzení, prezenční listina, hromadné štítky).
-- XLSX přes PhpSpreadsheet.
-- CSV (RFC 4180, UTF-8 BOM pro Excel).
-- Jednotná exportní pipeline — každý typ exportu je definice (sloupce, řazení, formát), takže CSV, XLSX i PDF
-  vznikají z jednoho popisu a nedivergují. Součástí jsou stropy na počet řádků, aby export nesestřelil provoz.
-- QR kódy přes Endroid — CZ QR platba, identifikační QR.
-
-### Web a stránky
-
-- Statické stránky se slugem a rich-text obsahem, aktuality, FAQ, media galerie.
-- Stránka o zpracování osobních údajů (GDPR) jako součást skeletu — odkazuje se na ni registrační formulář i maily.
-- Banner nad obsahem pro dočasná oznámení (změna termínu, uzavření přihlášek).
-- Účastnický portál i ve webové verzi — kdo si nechce instalovat aplikaci, vidí své přihlášky a platby v prohlížeči.
-- Hlavní menu a footer, položky lze přidávat z různých bundlů.
-- Sitemap a RSS feed — každý bundle si do nich přidává vlastní položky přes extender interfaces (`SitemapExtenderInterface`, `RssExtenderInterface`); sitemap pro vyhledávače, RSS pro čtečky (vlastní stylesheet pro hezké zobrazení v prohlížeči). Robots.txt.
-- PWA — instalovatelnost přes `site.webmanifest` (theme color, splash, jméno aplikace), `browserconfig.xml` pro Windows tiles, kompletní set ikon (favicon 16/32, Apple touch 180, Android 192, msTile, safari-pinned-tab, mask-icon).
-
-### SEO a sémantika
-
-- Kompletní HTML meta tagy — title, description, autor, copyright, generator, Dublin Core jazyk, Revisit-After, canonical URL per stránka, geo lokace (`geo.position`, `ICBM`, OG latitude/longitude).
-- Otevřený graf (Open Graph) a Twitter Card pro hezké náhledy při sdílení (title, description, image, locale, type, URL).
-- App-level meta — `application-name`, `apple-mobile-web-app-title`, `theme-color`, `msapplication-TileColor` / `TileImage` — sjednocený vzhled v prohlížečích i jako home-screen app.
-- Strukturovaná data schema.org pro vyhledávače — `Event` s datem začátku/konce, místem, organizátorem, hierarchií (`superEvent`), módem (`eventAttendanceMode`), stavem (`eventStatus`); breadcrumbs jako `BreadcrumbList`; navigace jako `SiteNavigationElement`.
-- Optimalizace načítání — preload kritických CSS/JS, DNS prefetch a preconnect pro známé externí služby (Google Tag Manager, Analytics, fonty), asynchronní fragmenty přes hinclude.
+## Platforma
 
 ### Autentizace a autorizace
 
 - **Sedm rolí v hierarchii** — `ROLE_EVERYBODY` → `ROLE_CUSTOMER` → `ROLE_USER` → `ROLE_MEMBER` →
-  `ROLE_MANAGER` → `ROLE_ADMIN` → `ROLE_ROOT`. Vyšší role dědí oprávnění nižších. Účastník po registraci
-  drží nejnižší přihlášenou roli (`ROLE_CUSTOMER`), administrace začíná až na `ROLE_MANAGER`. Role jsou
-  entita v databázi, takže se dají pojmenovat a spravovat, ne jen zadrátovat v konfiguraci.
+  `ROLE_MANAGER` → `ROLE_ADMIN` → `ROLE_ROOT`. Vyšší dědí oprávnění nižších. Účastník po registraci drží
+  nejnižší přihlášenou roli (`ROLE_CUSTOMER`), administrace začíná až na `ROLE_MANAGER`. Role jsou entita
+  v databázi, takže se dají pojmenovat a spravovat, ne jen zadrátovat v konfiguraci.
 - **Celá administrace má podlahu na `ROLE_MANAGER`** už na úrovni firewallu, ne až v kontrolerech.
-  Historicky tam byl `ROLE_CUSTOMER`, takže kterýkoli přihlášený účastník prošel firewallem a obrazovky
-  bez vlastní kontroly role byly dosažitelné; kontrolery navíc svou vyšší úroveň vynucují samostatně.
-- **Přihlášení bez hesla (magic-link)** — vracející se účastník klikne na odkaz v e-mailu. Vedle toho
-  klasické přihlášení heslem pro tým a „zapamatuj si mě" na týden.
+  Historicky tam byl `ROLE_CUSTOMER`, tedy nejnižší přihlášená role — takže kterýkoli přihlášený účastník
+  firewallem prošel a obrazovky bez vlastní kontroly role byly dosažitelné. Kontrolery navíc svou vyšší
+  úroveň vynucují samostatně.
+- **Přihlášení bez hesla (magic-link)** pro vracející se účastníky, klasické heslo pro tým,
+  „zapamatuj si mě" na týden.
 - **Typované jednorázové tokeny** s expirací: aktivace přihlášky, změna hesla, přihlášení z registrace,
-  nahlášení zneužití. Admin je může poslat znovu, prodloužit nebo vydat nový.
+  nahlášení zneužití. Obsluha je může poslat znovu, prodloužit nebo vydat nový.
+- **Samoobslužná změna přístupových údajů** (`AppUserEditRequest` → `AppUserEdit`) — uživatel požádá
+  o změnu e-mailu, uživatelského jména nebo hesla a změna se provede až po potvrzení odkazem s platností.
+  Nová hodnota tedy nikdy nezávisí jen na tom, kdo měl otevřenou session.
 - **Brzda proti hádání hesel** — nejvýše 5 pokusů na kombinaci IP a jména za minutu.
-- **Autorizace na třech úrovních současně:** pravidla nad cestami (firewall), atribut požadované role
-  na kontroleru a bezpečnostní výraz na API resource. Nic nespoléhá na jedinou vrstvu.
-- **Firewally konfiguruje sám core bundle** (ne aplikace) — pět oddělených: vývojářské nástroje bez
-  zabezpečení, obnovení tokenu, přihlášení do API, stateless API na JWT a stavová webová část.
-  Aplikace tedy nemá vlastní `security.yaml`, který by se rozcházel s tím, co bundle očekává.
+- **Autorizace na třech úrovních současně:** pravidla nad cestami (firewall), požadovaná role na
+  kontroleru a bezpečnostní výraz na API resource. Nic nespoléhá na jedinou vrstvu.
+- **Firewally konfiguruje sám core bundle**, ne aplikace — pět oddělených: vývojářské nástroje bez
+  zabezpečení, obnovení tokenu, přihlášení do API, stateless API na JWT a stavová webová část. Aplikace
+  proto nemá vlastní `security.yaml`, který by se rozcházel s tím, co bundle očekává.
 
 ### Komunikace přes API
 
-Mobilní aplikace i portál mluví s backendem výhradně přes toto API — není to druhá cesta k datům
-vedle webu, je to *ta* cesta. Cokoli se v API změní (tvar resource, serializační skupiny, autorizace),
-projeví se v aplikaci.
+Mobilní aplikace i portál mluví s backendem výhradně přes toto API — není to druhá cesta k datům vedle
+webu, je to *ta* cesta. Cokoli se v API změní (tvar resource, serializační skupiny, autorizace), projeví
+se v aplikaci.
 
-- **REST + JSON-LD / Hydra** přes API Platform 4.3, dokumentace se generuje sama (Swagger UI, ReDoc).
-- **Přihlášení** — `POST /api/login` (jméno a heslo v JSON) vrátí **JWT s platností 1 hodiny** a refresh token.
-  `POST /api/token/refresh` vydá nový JWT, odhlášení refresh token zneplatní. Veřejné jsou jen tyto
+- **REST + JSON-LD / Hydra** přes API Platform; dokumentace se generuje sama (Swagger UI, ReDoc).
+- **Přihlášení** — `POST /api/login` (jméno a heslo v JSON) vrátí **JWT s platností 1 hodiny** a refresh
+  token. `POST /api/token/refresh` vydá nový JWT, odhlášení refresh token zneplatní. Veřejné jsou jen tyto
   cesty a registrace; vše ostatní pod `/api` vyžaduje platný JWT.
-- **Stateless** — API nemá session ani cookie; každý požadavek nese `Authorization: Bearer`.
-  Vypršení tokenu si klient neřeší ručně: interceptor požadavek obnoví a zopakuje.
-- **CORS** je allowlist — povolené originy se konfigurují prostředím (ne hvězdička), povolené metody
-  `GET, OPTIONS, POST, PUT, PATCH, DELETE`, hlavičky `Content-Type` a `Authorization`, `Link` se vystavuje
+- **Stateless** — žádná session ani cookie, každý požadavek nese `Authorization: Bearer`.
+- **CORS je allowlist** — povolené originy se konfigurují prostředím (ne hvězdička), metody
+  `GET, OPTIONS, POST, PUT, PATCH, DELETE`, hlavičky `Content-Type` a `Authorization`; `Link` se vystavuje
   kvůli stránkování.
 - **Filtrování, řazení a stránkování** deklarativně na resource; **serializační skupiny** určují, co která
   operace vrací a přijímá, aby se do odpovědi nedostalo víc, než má.
@@ -265,68 +365,81 @@ projeví se v aplikaci.
 - **Relace se posílají jako IRI** (`/api/events/12`), ne jako vnořený objekt — a při vytváření záznamu se
   nastavují setterem, ne konstruktorem, jinak zůstanou nenavázané.
 - ⚠️ **Pozor při self-hostingu za WAFem:** aplikační firewall (např. OWASP CRS) běžně zahazuje `PUT`
-  a `DELETE`, případně požadavky, jejichž tělo obsahuje adresu s parametry — a klient dostane chybu, která
-  vypadá jako chyba API, přitom se do aplikace vůbec nedostala. Pokud API ze zařízení „náhodně" selhává,
-  je to první místo, kam se podívat.
+  a `DELETE`, případně požadavky, jejichž tělo obsahuje adresu s parametry. Klient dostane chybu, která
+  vypadá jako chyba API, přitom se požadavek do aplikace vůbec nedostal. Když API ze zařízení „náhodně"
+  selhává, je tohle první místo, kam se podívat.
 
 ### Bezpečnost
 
-- HTTP security headers: HSTS preload, CSP, Referrer-Policy, COOP, X-Content-Type-Options.
+- HTTP hlavičky: HSTS preload, CSP, Referrer-Policy, COOP, X-Content-Type-Options.
 - HTTP/2 + HTTP/3, TLS 1.3.
-- `/.well-known/security.txt` (RFC 9116).
-- `/.well-known/change-password` (W3C webappsec).
-- Cookie Secure + HttpOnly + SameSite=Lax.
-- CSRF na formulářích. Role, přihlašování, tokeny a brzda proti hádání hesel → viz *Autentizace a autorizace*.
-- Soft-delete a audit přes Doctrine Gedmo extensions.
+- `/.well-known/security.txt` (RFC 9116) a `/.well-known/change-password` (W3C webappsec).
+- Cookie Secure + HttpOnly + SameSite=Lax; CSRF na formulářích.
+- Soft-delete a auditní stopa přes Doctrine Gedmo (kdo a kdy záznam vytvořil, změnil, smazal).
 - Trusted proxies pro stack s TLS terminací na nginxu.
+- Role, přihlašování a tokeny → viz [Autentizace a autorizace](#autentizace-a-autorizace).
 
-### Provozní vlastnosti
+### Provoz a údržba
 
-- CLI příkazy pro operativní úlohy — spustitelné z cronu i ručně. Provozně nejdůležitější dva: **rozeslání
+- **Konzolové příkazy** spustitelné z cronu i ručně. Provozně nejdůležitější dva: **rozeslání
   naplánovaných mailů** (respektuje časová okna a co už komu odešlo) a **stahování pošty z IMAPu**
   (přírůstkové, se zapamatovaným stavem synchronizace, s limitem na dávku). Vedle nich sada jednorázových:
-  doplnění vláken do historie, oprava jmen kontaktů, nasazení výchozích stanic check-inu a příznaků ročníku.
-- Doctrine migrations.
-- PHPStan level `max` napříč všemi bundly.
-- Monolog strukturovaný logging.
-- Webpack Encore pro admin assety.
-- MJML CLI pipeline pro mail šablony.
+  doplnění vláken do historie, oprava jmen kontaktů, nasazení výchozích stanic příjezdu a příznaků ročníku.
+- Databázové migrace (Doctrine).
+- **Statická analýza na nejvyšší úrovni** (PHPStan level `max`) napříč všemi bundly jako hlavní kvalitní brána.
+- Strukturované logování (Monolog).
+- Asset pipeline pro administraci (Webpack Encore) a MJML pipeline pro maily.
 
-### Lokalizace
+### Lokalizace a formáty
 
-- Čeština (UI, e-maily, dokumenty).
-- Vokativ pro oslovení v mailech.
-- UTF-8 napříč DB / HTTP / mail / PDF.
-- ISO 8601 / RFC 3339 datetime v API, DD. MM. YYYY v UI, formátování CZK.
+- Čeština v UI, e-mailech i dokumentech.
+- **Oslovení ve správném pádu** — vokativ („Petře" místo „Petr").
+- **Řazení podle české abecedy** (Collator `cs_CZ`) — Č za C, Š za S, ne podle bajtů.
+- UTF-8 napříč databází, HTTP, poštou i PDF.
+- ISO 8601 / RFC 3339 v API, `DD. MM. YYYY` v UI, formátování korunových částek.
 
 ---
 
-## Architektura
+## Architektura a rozšiřitelnost
 
-OSWIS je rozdělen do čtyř Symfony bundlů, každý jako samostatný GitHub repozitář s vlastní historií a vlastním release cyklem:
+### Rozdělení do bundlů
 
-- `oswis-core-bundle` — uživatelé, autentizace, JWT, QR, PDF, mailer subscriber, framework primitives, Twig extensions, RSS / sitemap / menu skeleton.
+OSWIS je rozdělen do čtyř Symfony bundlů, každý jako samostatný GitHub repozitář s vlastní historií
+a vlastním release cyklem:
+
+- `oswis-core-bundle` — uživatelé, autentizace, JWT, QR, PDF, mailer subscriber, primitivy frameworku,
+  Twig rozšíření, skelet RSS / sitemapy / menu.
 - `oswis-address-book-bundle` — kontakty, osoby, organizace, kontaktní detaily, místa.
-- `oswis-calendar-bundle` — události, účastníci, příznaky, platby, IMAP, CZ QR platba, communication module.
+- `oswis-calendar-bundle` — akce, účastníci, příznaky, platby, program, obsazení, příjezd, ubytování,
+  IMAP, CZ QR platba, komunikační modul.
 - `oswis-web-bundle` — webové stránky, aktuality, FAQ, media galerie.
 
-Plus produkční aplikace `oswis-seznamovak-up` (Symfony app, která 4 bundly slepí dohromady) a mobilní klient `seznamovak-up` (Ionic + Angular).
+Plus produkční aplikace `oswis-seznamovak-up`, která bundly slepí dohromady, a mobilní klient
+`seznamovak-up` (Ionic + Angular).
 
-Bundly mezi sebou nejsou tight-coupled — komunikují přes extender interfaces a compiler passy. Aplikace si v `config/bundles.php` vybere, které z bundlů načte.
+Bundly na sobě nevisí těsně — komunikují přes rozšiřovací rozhraní a compiler passy. Aplikace si
+v `config/bundles.php` vybere, které z nich načte.
 
 ### Dědičnost šablon
 
-- Twig: base layout v core-bundle definuje strukturu (head, navigace, footer, bloky pro obsah, asset pipeline). Konkrétní bundle si pro vlastní stránky specializuje, aplikace si přes standardní Symfony override mechanism (`templates/bundles/<BundleName>/...`) může jakoukoli šablonu přepsat **bez nutnosti forkovat bundle**.
-- E-maily: vlastní MJML base layout (logo, hlavička, patička, ikony, jednotný vzhled), který extendují konkrétní typy mailů (shrnutí přihlášky, potvrzení platby, ad-hoc admin compose…). Změny brandingu se promítnou centrálně.
-- Admin: vlastní base layout (`page-skeleton-web-admin.html.twig`) sdílený napříč bundly.
+- **Web:** base layout v core bundlu definuje strukturu (head, navigace, patička, bloky pro obsah, asset
+  pipeline). Konkrétní bundle si ji pro své stránky specializuje; aplikace může jakoukoli šablonu přepsat
+  standardním Symfony mechanismem (`templates/bundles/<BundleName>/…`) **bez forku bundlu**.
+- **E-maily:** vlastní MJML base layout (logo, hlavička, patička, ikony), který extendují konkrétní typy
+  mailů. Změna brandingu se promítne centrálně.
+- **Administrace:** vlastní base layout sdílený napříč bundly.
 
-### Branding a tenant konfigurace
+### Branding a konfigurace nasazení
 
-- Centrální konfigurace v `oswis.yaml` (PHP DI extension) — logo, theme color, jméno aplikace, jméno webu, organizační údaje, doména pro Message-ID, výchozí odesílatel pošty, archivační BCC adresa, jazyk a lokalizace.
-- Asset overrides — ikony (favicon, Apple touch, Android, msTile, safari-pinned-tab), logo pro web i pro maily, OG image jsou per-deploy v `public/assets/`.
-- Webové CSS i admin CSS přes Webpack Encore — aplikace má vlastní entry pointy a může přepsat Sass proměnné (barvy, fonty, breakpointy) bez zásahu do bundlu.
-- Per-event branding — události a podakce mají vlastní barvu, krátký název, popis, slug, organizátora; promítá se na veřejných stránkách, do mailových šablon i do generovaných dokumentů.
-- Konfigurace SMTP, IMAP, JWT secret, refresh token TTL a další citlivé hodnoty žijí mimo veřejné config soubory (env vars / `.env.local`), nikoli v deploy artefaktu.
+- Centrální konfigurace v `oswis.yaml` — logo, barva tématu, jméno aplikace i webu, organizační údaje,
+  doména pro Message-ID, výchozí odesílatel pošty, archivační BCC adresa, jazyk a lokalizace.
+- Assety per nasazení v `public/assets/` — ikony, logo pro web i pro maily, OG image.
+- Web i admin CSS jsou vlastní Encore entry pointy aplikace, takže lze přepsat Sass proměnné (barvy,
+  fonty, breakpointy) bez zásahu do bundlu.
+- **Branding per akce** — akce a podakce mají vlastní barvu, krátký název, popis, slug a organizátora;
+  promítá se na veřejné stránky, do mailových šablon i do generovaných dokumentů.
+- Citlivé hodnoty (SMTP, IMAP, JWT secret, TTL refresh tokenu) žijí v env proměnných, ne v deploy
+  artefaktu.
 
 ### Možnosti rozšíření
 
@@ -334,144 +447,138 @@ OSWIS je stavěný tak, aby se vlastní funkce přidávaly **vedle** bundlů, ne
 a upgrade zůstane možný.
 
 **Vlastní bundle jako plugin.** Nový Symfony bundle se zaregistruje v `config/bundles.php` a může přinést
-vlastní entity, API resources, stránky, admin obrazovky, konzolové příkazy i migrace. Do existujících částí
-systému se zapojí přes rozšiřovací rozhraní, která core vyhledá compiler passem — takže stačí službu
+vlastní entity, API resources, stránky, admin obrazovky, konzolové příkazy i migrace. Do existujících
+částí systému se zapojí přes rozšiřovací rozhraní, která core vyhledá compiler passem — stačí službu
 otagovat, nikde se nic neregistruje ručně:
 
-- `SiteMapExtenderInterface` — vlastní položky do sitemapy pro vyhledávače.
-- `RssExtenderInterface` — vlastní položky do RSS feedu.
-- `WebMenuExtenderInterface` — položky do veřejného menu i do admin menu (včetně rozklikávacích sekcí a omezení podle role).
-- `WebAdminMenuExtenderInterface` — položky specificky do administrace.
-- `UpdateExtenderInterface` — vlastní krok do hromadné údržbové akce.
-- `ExportDefinitionInterface` — vlastní typ exportu (sloupce, řazení, strop řádků); dostane zdarma CSV, XLSX i PDF.
+| Rozhraní | K čemu |
+|---|---|
+| `SiteMapExtenderInterface` | vlastní položky do sitemapy pro vyhledávače |
+| `RssExtenderInterface` | vlastní položky do RSS feedu |
+| `WebMenuExtenderInterface` | položky do veřejného i admin menu (včetně rozklikávacích sekcí a omezení podle role) |
+| `WebAdminMenuExtenderInterface` | položky specificky do administrace |
+| `UpdateExtenderInterface` | vlastní krok do hromadné údržbové akce |
+| `ExportDefinitionInterface` | vlastní typ exportu (sloupce, řazení, strop řádků); dostane zdarma CSV, XLSX i PDF |
 
 **Bez psaní kódu** se dá změnit překvapivě mnoho, protože model je datově řízený: kategorie účastníků,
 registrační nabídky s cenami a kapacitami, příznaky a jejich skupiny s pravidly výběru, kategorie
-kontaktních detailů, funkce v týmu, stanice check-inu, e-mailové šablony (Twig se edituje v adminu),
-skupiny a barvy pásků. Nová akce jiného typu je tedy typicky konfigurace, ne vývoj.
+kontaktních detailů, funkce v týmu, stanice příjezdu, e-mailové šablony, skupiny a barvy pásků. Nová akce
+jiného typu je tedy typicky konfigurace, ne vývoj.
 
-**Přepsání vzhledu a textů.** Jakoukoli Twig šablonu bundlu lze přepsat v aplikaci standardním Symfony
-mechanismem (`templates/bundles/<BundleName>/...`) — bez forku. Branding (logo, barvy, ikony, patička,
-odesílatel pošty) je konfigurace a assety, ne kód. Admin i web CSS jsou vlastní Encore entry pointy
-aplikace, takže se dají přepsat Sass proměnné bez zásahu do bundlu.
+**Přepsání vzhledu a textů** → viz [Dědičnost šablon](#dědičnost-šablon)
+a [Branding](#branding-a-konfigurace-nasazení).
 
-**Kde rozšíření naopak nemá smysl.** Provoz akce (služby, doprava, ubytování, check-in) záměrně nežije
-v entitě `Event` — ta popisuje jen *co se koná*. Pro provozní věci existují vlastní modely, a nová
-provozní funkce by měla přidat svůj, ne rozšiřovat `Event` o další sloupce.
+**Kde rozšíření naopak nemá smysl.** Provoz akce (služby, doprava, ubytování, příjezd) záměrně nežije
+v entitě `Event` — ta popisuje jen *co se koná*. Provozní věci mají vlastní modely, a nová provozní funkce
+by měla přidat svůj, ne rozšiřovat `Event` o další sloupce.
 
 ### Použité technologie
 
-Backend:
+**Backend:**
 
 - **PHP 8.5+** (produkčně 8.5.8), **Symfony 8.1**.
-- **Doctrine ORM 3.6** + **DBAL 4** pro databázi; rozšíření **Gedmo** pro Timestampable, SoftDeleteable, Sluggable, Loggable, Blameable.
-- **API Platform 4.3** pro REST/JSON-LD API; integrace JWT přes **Lexik JWT Authentication Bundle** + refresh tokeny přes **Gesdinet JWT Refresh Token Bundle**; CORS přes **Nelmio**.
-- **Symfony Mailer** s vlastním `MailerSubscriber` (Auto-Submitted, archiv BCC, Reply-To). **MJML** CLI pipeline pro responsivní HTML maily.
-- **webklex/php-imap** pro IMAP fetch (read-only).
-- **mPDF** pro PDF generování, **PhpSpreadsheet** pro Excel, **Endroid QR Code** + **Shoptet CzQrPayment** pro QR kódy.
+- **Doctrine ORM 3.6** + **DBAL 4**; rozšíření **Gedmo** pro Timestampable, SoftDeleteable, Sluggable,
+  Loggable, Blameable.
+- **API Platform 4.3** pro REST/JSON-LD; JWT přes **Lexik JWT Authentication Bundle**, refresh tokeny přes
+  **Gesdinet JWT Refresh Token Bundle**, CORS přes **Nelmio**.
+- **Symfony Mailer** s vlastním `MailerSubscriber` (Auto-Submitted, archivní BCC, Reply-To);
+  **MJML** pipeline pro responsivní HTML maily.
+- **webklex/php-imap** pro čtení pošty (read-only).
+- **mPDF** pro PDF, **PhpSpreadsheet** pro XLSX, **Endroid QR Code** + **Shoptet CzQrPayment** pro QR.
 - **bigit/vokativ** (vlastní fork) pro české skloňování jmen.
 - **Vich Uploader** pro upload souborů, **Liip Imagine** pro varianty obrázků.
-- **Symfony Rate Limiter** pro login throttling.
+- **Symfony Rate Limiter** pro brzdu přihlašování.
 
-Frontend (admin web):
+**Webová administrace:** **Twig**, **Webpack Encore**, **Bootstrap 5**, **Stimulus**,
+**Symfony WebLink** pro preload hinting.
 
-- **Twig** šablony, **Webpack Encore** asset pipeline.
-- **Bootstrap 5**, **Stimulus** pro interaktivitu, **Symfony WebLink** pro preload hinting.
+**Frontendová aplikace:** **Ionic 8** + **Angular 22** + **TypeScript 6**, **Capacitor 8** pro Android
+build, PWA pro iOS; **Leaflet** pro mapy (OpenStreetMap, MapyCz, OpenTopoMap); **Formly** pro formuláře
+generované z popisu.
 
-Frontend (mobilní / účastnický portál):
+**Databáze:** **MariaDB** (produkčně 11.8; DBAL 4 zvládne i 10.5+, doporučeno 10.6+ kvůli deprecacím).
+Doctrine samo umí i PostgreSQL, ale OSWIS na něm **není provozně vyzkoušený** — schéma vzniklo a je
+udržované nad MariaDB, takže pro PostgreSQL počítejte s vlastním ověřením migrací.
 
-- **Ionic 8** + **Angular 22** + **TypeScript 6**, **Capacitor 8** pro Android build, PWA pro iOS.
-- **Leaflet** pro mapy (OpenStreetMap, MapyCz, OpenTopoMap).
+### Co se během let vyměnilo
 
-Databáze: **MariaDB** (produkčně 11.8; DBAL 4 zvládne i 10.5+, doporučeno 10.6+ kvůli deprecacím).
-Doctrine samo umí i PostgreSQL, ale OSWIS na něm **není provozně vyzkoušený** — schéma vzniklo a je udržované
-nad MariaDB, takže pro PostgreSQL počítejte s vlastním ověřením migrací.
-
-Quality gate: **PHPStan** level `max` napříč všemi bundly.
-
-### Historicky použité technologie
-
-OSWIS prošel postupnou modernizací — některé volby z dřívějších let už neplatí:
-
-- **Zurb Inky** (Foundation for Emails) pro responsivní HTML maily — nahrazeno **MJML** pipeline kvůli lepší podpoře v Outlooku a údržbě šablon.
-- **Symfony 6.x / 7.x / 8.0** → aktuálně **Symfony 8.1**.
-- **API Platform 2.x / 3.x** → aktuálně **API Platform 4.3**.
-- **Doctrine ORM 2.x** → **Doctrine ORM 3.6** (strict identity collision check).
-- **PHP 7.x → 8.x → 8.4 → 8.5** (postupné upgrady).
-- **Ionic 5 + Angular 14 + Capacitor 5** → aktuálně **Ionic 8 + Angular 22 + Capacitor 8**.
-- Mobilní iOS dříve plánována jako Capacitor build → dnes distribuovaná jako PWA (jednodušší údržba, žádný Apple Developer Program).
+- **Zurb Inky** (Foundation for Emails) → **MJML** kvůli lepší podpoře v Outlooku a údržbě šablon.
+- **Symfony 6.x / 7.x / 8.0** → **Symfony 8.1**.
+- **API Platform 2.x / 3.x** → **API Platform 4.3**.
+- **Doctrine ORM 2.x** → **3.6** (striktní kontrola kolize identit).
+- **PHP 7.x → 8.x → 8.4 → 8.5.**
+- **Ionic 5 + Angular 14 + Capacitor 5** → **Ionic 8 + Angular 22 + Capacitor 8**.
 - Angular se `zone.js` → **zoneless** se signály. Úspornější a předvídatelnější, ale vynutilo si nahradit
   ty části Ionicu, které na `zone.js` spoléhaly, vlastními komponentami.
+- iOS dříve plánován jako Capacitor build → dnes PWA (jednodušší údržba, žádný Apple Developer Program).
 
 ---
 
 ## Rozpracované a plánované
 
-Poctivý stav, ne wishlist. OSWIS se vyvíjí proti jednomu reálnému provozu, takže se tu potkává hotový
-kód s tím, co ještě nemá naplněná data nebo čeká na rozhodnutí.
+Poctivý stav, ne wishlist. OSWIS se vyvíjí proti jednomu reálnému provozu, takže se tu potkává hotový kód
+s tím, co ještě nemá naplněná data nebo čeká na rozhodnutí.
 
-**Hotové, ale zatím nepoužívané v provozu.** Ubytování a spolubydlení (objekty, pokoje, postele,
-rezervace, preference spolubydlících) je postavené a v administraci dostupné, ale reálně se ještě
-nepoužilo — přidělování dosud probíhá mimo systém. Totéž platí pro skupiny a barvy pásků: model stojí,
-ale dokud je tým nenaplní, čekají na ně tiskové seznamy pro výdej stravy a řazení „dietáři první".
-Program má editor i výstupy; naplnění konkrétního ročníku je organizační práce, ne vývoj.
+**Hotové, ale zatím nepoužité v provozu.** Ubytování a spolubydlení je postavené a v administraci
+dostupné, ale reálně se ještě nepoužilo — přidělování dosud probíhá mimo systém. Totéž platí pro skupiny
+a barvy pásků: model stojí, ale dokud je tým nenaplní, čekají na ně tiskové seznamy pro výdej stravy
+i řazení „dietáři první". Program má editor i výstupy; naplnění konkrétního ročníku je organizační práce,
+ne vývoj.
 
-**Rozpracované.** Informační architektura administrace se přestavuje — horní menu už je rozklikávací
-podle oblastí, zbývá dotáhnout drobečkovou navigaci napříč stránkami a zeštíhlit úvodní obrazovku.
-U obsazení programu celým podtýmem chybí možnost někoho z týmu pro danou sekci **odečíst**
-(„celý tým bez jednoho") — bez toho by rozpis pro instruktora lhal, takže se to nejdřív musí dopočítat
-na backendu a teprve pak nabídnout v rozhraní.
+**Rozpracované.** Informační architektura administrace se přestavuje — horní menu už je rozklikávací podle
+oblastí, zbývá dotáhnout drobečkovou navigaci napříč stránkami a zeštíhlit úvodní obrazovku.
+U obsazení programu celým podtýmem chybí možnost někoho z týmu pro danou sekci **odečíst** („celý tým bez
+jednoho"); bez toho by itinerář instruktora lhal, takže se to musí nejdřív dopočítat na backendu a teprve
+pak nabídnout v rozhraní. Obsazení celým podtýmem je v aplikaci postavené, ale ještě nevydané.
 
-**Ve frontendové aplikaci konkrétně.** Editor programu i mřížka obsazení jsou hotové a v provozu;
-obsazení **celým podtýmem** je postavené, ale ještě nevydané. Chybí to, co není vývoj, ale data — dokud se
-tým nezaregistruje jako účastníci s příslušnou funkcí, nemá editor koho nabízet. Dál chybí **push
-notifikace** (potřebují klientský plugin i serverovou stranu, dnes je nahrazuje e-mail), **skenování QR**
-(mohlo by zrychlit check-in u stolu) a **plnohodnotný offline režim** — u vícedenní akce v areálu s horším
-signálem je to reálné omezení, ne kosmetika. Distribuce přes obchody (Google Play, App Store) zatím není;
-zvýšila by dosah, ale přináší si vlastní režii vydávání a recenzí.
+**Ve frontendové aplikaci konkrétně.** Chybí **push notifikace** (potřebují klientský plugin i serverovou
+stranu, dnes je nahrazuje e-mail), **skenování QR** (mohlo by zrychlit příjezd u stolu) a **plnohodnotný
+offline režim** — u vícedenní akce v areálu se slabým signálem je to reálné omezení, ne kosmetika.
+Distribuce přes obchody (Google Play, App Store) zatím není; zvýšila by dosah, ale nese si vlastní režii
+vydávání a recenzí. A především: dokud se tým nezaregistruje jako účastníci s příslušnou funkcí, nemá
+editor obsazení koho nabízet — chybí data, ne funkce.
 
 **Postavené, ale úmyslně nezapnuté.** Upomínky nezaplacených plateb existují, ale v jediném dnešním
 provozu se nepoužívají — je to rozhodnutí organizátorů, ne chybějící funkce.
 
 **Kam to míří.** Automatizované testy jsou zatím tenké: hlavní kvalitní branou je statická analýza
-na nejvyšší úrovni plus ruční a smoke ověření. Rozšiřování funkčního pokrytí je průběžná práce.
-Vedle toho se plánují provozní kontroly, které samy hlásí tiché selhání — typicky „potvrzená přihláška
-bez odeslaného shrnutí" nebo „e-mail, u kterého se odeslání nepovedlo" — protože právě nepřítomnost
-akce je to, co běžný monitoring ani typová analýza neodhalí.
+na nejvyšší úrovni plus ruční a smoke ověření; rozšiřování funkčního pokrytí je průběžná práce. Vedle
+toho se plánují **provozní kontroly, které samy hlásí tiché selhání** — typicky „potvrzená přihláška bez
+odeslaného shrnutí" nebo „e-mail, u kterého se odeslání nepovedlo". Právě nepřítomnost akce je to, co
+běžný monitoring ani typová analýza neodhalí.
 
-**Úvahy o větší přestavbě.** Existují návrhy na generační obměnu (čistý datový model bez historické
-zátěže). Nejde se do ní překlápět naráz — místo toho se její návrhy vstřebávají do dnešního systému
-po modulech, aby provoz nikdy nestál na rozestavěné verzi.
-
-## Pro koho to dává smysl
-
-OSWIS vznikl pro vícedenní pobytovou akci se silnou organizační složkou (Seznamovák UP). Hodí se na podobné akce — turnusy, příznaky pro ubytování a stravu, hromadné komunikace s účastníky, organizační tým s rolemi.
-
-Nepokrývá oblasti, kde existují lepší specializované nástroje — účetnictví, daně, faktury, smlouvy, fotogalerie, externí marketing. Data se exportují ven (CSV, PDF) pro účetní a navazující SW.
+**Úvahy o větší přestavbě.** Existují návrhy na generační obměnu s čistým datovým modelem bez historické
+zátěže. Nejde se do ní překlápět naráz — místo toho se její návrhy vstřebávají do dnešního systému po
+modulech, aby provoz nikdy nestál na rozestavěné verzi.
 
 ---
 
 ## Self-hosting
 
-OSWIS je standardní Symfony aplikace. Běží na VPS s PHP-FPM + nginx, na sdíleném hostingu s SSH, nebo v kontejneru. Žádné fronty ani daemony nejsou povinné (Redis a Messenger jsou volitelné, default je sync).
+OSWIS je standardní Symfony aplikace. Běží na VPS s PHP-FPM + nginx, na sdíleném hostingu s SSH nebo
+v kontejneru. Žádné fronty ani démoni nejsou povinné (Redis a Messenger jsou volitelné, výchozí je
+synchronní zpracování).
 
-Potřeba:
+**Potřeba:**
 
-- PHP 8.5+ (CLI a FPM)
+- PHP 8.5+ (CLI i FPM)
 - MariaDB 10.6+ (produkčně 11.8)
-- SMTP přístup pro odesílání pošty (libovolný provider)
-- IMAP přístup k mailboxu, kam chodí pošta od účastníků (info@…), pokud chcete automatický import vlákna komunikace do admin timeline. Read-only přístup stačí.
-- Node.js pro build mail šablon a admin assetů. **Není volitelný:** bez nainstalovaných balíčků chybí MJML
-  binárka, render mailu spadne a zpráva se neodešle — v evidenci zůstane záznam s důvodem, ale příjemci nic nepřijde.
+- SMTP pro odesílání pošty (libovolný provider)
+- IMAP k mailboxu, kam chodí pošta od účastníků, pokud chcete automatický import komunikace do historie.
+  Stačí read-only přístup.
+- Node.js pro build mailových šablon a admin assetů. **Není volitelný:** bez nainstalovaných balíčků chybí
+  MJML binárka, render mailu spadne a zpráva se neodešle — v evidenci zůstane záznam s důvodem, ale
+  příjemci nepřijde nic.
 
-Není potřeba:
+**Není potřeba:**
 
 - Cloud, Kubernetes, message queue
 - Placené API třetí strany
-- Specializovaný dev tým — standardní Symfony deploy (composer, npm, migrations)
+- Specializovaný dev tým — standardní Symfony deploy (composer, npm, migrace)
 
 ---
 
 ## Kontakt
 
-OSWIS vyvíjí Jakub Žák — [mail@jakubzak.eu](mailto:mail@jakubzak.eu), [github.com/oswis-org](https://github.com/oswis-org).
+OSWIS vyvíjí Jakub Žák — [mail@jakubzak.eu](mailto:mail@jakubzak.eu),
+[github.com/oswis-org](https://github.com/oswis-org).
