@@ -1,15 +1,20 @@
+{# Tabulkový export do PDF. Kontaktní sloupce (e-mail, telefon) se renderují jako klikací odkazy —
+   PDF se čte na tabletu u stolu a tým z něj potřebuje rovnou volat a psát, ne přepisovat čísla. #}
 <style>
     body { font-family: sans-serif; font-size: 8.5pt; color: #222; }
-    .doc-head { border-bottom: 1.5px solid #006FAD; padding-bottom: 4px; margin-bottom: 8px; }
-    .doc-head h1 { font-size: 14pt; margin: 0; color: #006FAD; }
-    .doc-head .sub { font-size: 9pt; color: #555; margin-top: 2px; }
+    .doc-head { border-bottom: 1.5px solid #006FAD; padding-bottom: 3px; margin-bottom: 6px; }
+    .doc-head h1 { font-size: 13pt; margin: 0; color: #006FAD; }
+    .doc-head .sub { font-size: 8.5pt; color: #555; margin-top: 1px; }
     table { width: 100%; border-collapse: collapse; }
-    th, td { border: 0.5px solid #bbb; padding: 2.5px 5px; vertical-align: top; }
+    th, td { border: 0.5px solid #bbb; padding: 2px 4px; vertical-align: top; }
     thead th { background: #006FAD; color: #fff; font-weight: bold; text-align: left; font-size: 8pt; }
     thead th.num { text-align: right; }
     tbody tr:nth-child(even) td { background: #f4f8fb; }
     td.num { text-align: right; white-space: nowrap; }
     tr.totals td { border-top: 1.5px solid #006FAD; font-weight: bold; background: #eaf3fb; }
+    /* Odkazy v tabulce nesmí křičet — barva ano (je to signál, že jde kliknout), podtržení ne:
+       na husté tabulce by rozbíjelo čitelnost. */
+    td a { color: #006FAD; text-decoration: none; }
 </style>
 <div class="doc-head">
     <h1>{{ title }}</h1>
@@ -24,7 +29,17 @@
     <tbody>
     {% for row in rows %}
         <tr>
-            {% for i, cell in row %}<td class="{{ align[i]|default('left') == 'right' ? 'num' : '' }}">{{ cell }}</td>{% endfor %}
+            {% for i, cell in row %}
+                <td class="{{ align[i]|default('left') == 'right' ? 'num' : '' }}">
+                    {%- set scheme = linkSchemes[i]|default(null) -%}
+                    {%- if scheme and cell is not empty -%}
+                        {#- U tel: pryč s mezerami, jinak telefon odkaz neotevře. -#}
+                        <a href="{{ scheme }}{{ scheme == 'tel:' ? cell|replace({' ': '', ' ': ''})|trim : cell|trim }}">{{ cell }}</a>
+                    {%- else -%}
+                        {{ cell }}
+                    {%- endif -%}
+                </td>
+            {% endfor %}
         </tr>
     {% else %}
         <tr><td colspan="{{ header|length }}">Žádná data.</td></tr>

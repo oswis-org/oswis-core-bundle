@@ -108,8 +108,8 @@ class ExportService
         $mPdf = new Mpdf([
             'format'        => 'A4'.($landscape ? '-L' : ''),
             'mode'          => 'utf-8',
-            'margin_top'    => 24, // room for the branded (logo) running header
-            'margin_bottom' => 14,
+            'margin_top'    => 16, // místo pro brandované záhlaví (logo 18px + linka)
+            'margin_bottom' => 11,
             'margin_left'   => 10,
             'margin_right'  => 10,
             'margin_header' => 8,
@@ -143,18 +143,21 @@ class ExportService
         }
         // Brandovaná opakující se hlavička: logo vlevo, název appky vpravo (na každé stránce).
         $logoPath = $this->resolveLogoPath();
-        $logoTag = '' !== $logoPath ? '<img src="'.htmlspecialchars($logoPath).'" height="30">' : '';
+        $logoTag = '' !== $logoPath ? '<img src="'.htmlspecialchars($logoPath).'" height="18">' : '';
+        // POZOR: mPDF kreslí tabulkám v záhlaví/zápatí rámečky, dokud se `border` explicitně nevypne
+        // NA BUŇKÁCH (styl na <table> nestačí) — jinak je přes celou stránku vidět orámovaná tabulka.
+        // Tabulka je tu jen kvůli rozvržení vlevo/vpravo, nemá být vidět.
         $mPdf->SetHTMLHeader(
-            '<table width="100%" style="border-bottom:0.5px solid #006FAD; padding-bottom:3px;"><tr>'
-            .'<td style="vertical-align:middle;">'.$logoTag.'</td>'
-            .'<td align="right" style="vertical-align:middle; font-family:sans-serif; font-size:8pt; color:#006FAD; font-weight:bold;">'.htmlspecialchars($appName).'</td>'
+            '<table width="100%" style="border-collapse:collapse; border:none; border-bottom:0.5px solid #006FAD;"><tr>'
+            .'<td style="border:none; padding:0 0 2px 0; vertical-align:middle;">'.$logoTag.'</td>'
+            .'<td align="right" style="border:none; padding:0 0 2px 0; vertical-align:middle; font-family:sans-serif; font-size:7.5pt; color:#006FAD; font-weight:bold;">'.htmlspecialchars($appName).'</td>'
             .'</tr></table>'
         );
         // Brandovaná patička: datum generování vlevo, číslo stránky vpravo.
         $mPdf->SetHTMLFooter(
-            '<table width="100%" style="font-family:sans-serif; font-size:7pt; color:#888; border-top:0.5px solid #ccc; padding-top:2px;"><tr>'
-            .'<td>vygenerováno '.date('j. n. Y H:i').'</td>'
-            .'<td align="right">strana {PAGENO} / {nbpg}</td>'
+            '<table width="100%" style="border-collapse:collapse; border:none; border-top:0.5px solid #ccc; font-family:sans-serif; font-size:7pt; color:#888;"><tr>'
+            .'<td style="border:none; padding:2px 0 0 0;">vygenerováno '.date('j. n. Y H:i').'</td>'
+            .'<td align="right" style="border:none; padding:2px 0 0 0;">strana {PAGENO} / {nbpg}</td>'
             .'</tr></table>'
         );
         $mPdf->WriteHTML($html);

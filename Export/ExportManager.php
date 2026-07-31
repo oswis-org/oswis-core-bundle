@@ -65,11 +65,11 @@ final class ExportManager
         if ($request->format->isCsv()) {
             $content = $this->csvExportService->build($header, $rows, $request->format->toCsvFormat());
         } else {
-            // PDF: číselné sloupce vpravo + řádek součtů (jen číselné sloupce).
-            $align = array_map(
-                static fn (ExportColumn $c): string => ExportColumn::TYPE_NUMBER === $c->type ? 'right' : 'left',
-                $columns,
-            );
+            // PDF: zarovnání dle sloupce (čísla vpravo; procenta/ID explicitně, ať se nesčítají)
+            // + řádek součtů jen z NUMBER sloupců.
+            $align = array_map(static fn (ExportColumn $c): string => $c->getAlign(), $columns);
+            // Kontaktní sloupce se v PDF vykreslí jako klikací odkaz (mailto:/tel:).
+            $linkSchemes = array_map(static fn (ExportColumn $c): ?string => $c->getLinkScheme(), $columns);
             $hasTotals = [] !== $numericSums;
             $totals = [];
             if ($hasTotals) {
@@ -85,6 +85,7 @@ final class ExportManager
                 'header'    => $header,
                 'rows'      => $rows,
                 'align'     => $align,
+                'linkSchemes' => $linkSchemes,
                 'totals'    => $totals,
                 'hasTotals' => $hasTotals,
                 'count'     => count($rows),
