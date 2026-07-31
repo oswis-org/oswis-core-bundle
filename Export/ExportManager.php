@@ -45,20 +45,25 @@ final class ExportManager
         $header = array_map(static fn (ExportColumn $c): string => $c->label, $columns);
 
         $rows = [];
+        $links = []; // stejný tvar jako $rows: [řádek][sloupec] => cíl odkazu nebo null
         $numericSums = []; // index sloupce => součet (jen NUMBER sloupce)
         foreach ($entities as $entity) {
             if (!is_object($entity)) {
                 continue;
             }
             $row = [];
+            $rowLinks = [];
             foreach ($columns as $i => $column) {
                 $raw = $column->extract($entity);
                 if (ExportColumn::TYPE_NUMBER === $column->type && is_numeric($raw)) {
                     $numericSums[$i] = ($numericSums[$i] ?? 0.0) + (float) $raw;
                 }
                 $row[] = $this->formatValue($raw, $column->type);
+                // Cíl odkazu se počítá v PHP (testovatelné), šablona ho jen vypíše.
+                $rowLinks[$i] = $column->buildHref($raw);
             }
             $rows[] = $row;
+            $links[] = $rowLinks;
         }
 
         $filename = $this->buildFilename($definition, $request);
@@ -68,8 +73,7 @@ final class ExportManager
             // PDF: zarovnání dle sloupce (čísla vpravo; procenta/ID explicitně, ať se nesčítají)
             // + řádek součtů jen z NUMBER sloupců.
             $align = array_map(static fn (ExportColumn $c): string => $c->getAlign(), $columns);
-            // Kontaktní sloupce se v PDF vykreslí jako klikací odkaz (mailto:/tel:).
-            $linkSchemes = array_map(static fn (ExportColumn $c): ?string => $c->getLinkScheme(), $columns);
+
             $hasTotals = [] !== $numericSums;
             $totals = [];
             if ($hasTotals) {
@@ -85,7 +89,7 @@ final class ExportManager
                 'header'    => $header,
                 'rows'      => $rows,
                 'align'     => $align,
-                'linkSchemes' => $linkSchemes,
+                'links'     => $links,
                 'totals'    => $totals,
                 'hasTotals' => $hasTotals,
                 'count'     => count($rows),

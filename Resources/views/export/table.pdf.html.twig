@@ -27,17 +27,12 @@
     </tr>
     </thead>
     <tbody>
-    {% for row in rows %}
+    {% for r, row in rows %}
         <tr>
             {% for i, cell in row %}
+                {%- set href = links[r][i]|default(null) -%}
                 <td class="{{ align[i]|default('left') == 'right' ? 'num' : '' }}">
-                    {%- set scheme = linkSchemes[i]|default(null) -%}
-                    {%- if scheme and cell is not empty -%}
-                        {#- U tel: pryč s mezerami, jinak telefon odkaz neotevře. -#}
-                        <a href="{{ scheme }}{{ scheme == 'tel:' ? cell|replace({' ': '', ' ': ''})|trim : cell|trim }}">{{ cell }}</a>
-                    {%- else -%}
-                        {{ cell }}
-                    {%- endif -%}
+                    {%- if href -%}<a href="{{ href }}">{{ cell }}</a>{%- else -%}{{ cell }}{%- endif -%}
                 </td>
             {% endfor %}
         </tr>

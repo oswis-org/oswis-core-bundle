@@ -52,14 +52,47 @@ final class ExportColumn
     }
 
     /**
-     * Předpona odkazu pro PDF, nebo null když se sloupec nelinkuje.
+     * Hotový cíl odkazu pro PDF, nebo null když se sloupec nelinkuje / hodnota je prázdná.
+     *
+     * ⚠️ **Proč u telefonu tečky:** mPDF rozhoduje, jestli je odkaz externí, podle toho, jestli
+     * obsahuje TEČKU (`Mpdf.php`: „assuming every external link has a dot indicating extension").
+     * `tel:730564041` tečku nemá → mPDF ho považuje za vnitřní kotvu a v PDF nevznikne žádný
+     * odkaz (ověřeno: bez tečky 0 anotací, s tečkou se vytvoří). Tečka je přitom podle RFC 3966
+     * legitimní vizuální oddělovač v `tel:` URI a telefon si ji při vytáčení odstraní — není to
+     * tedy obcházení, ale platný zápis, který navíc projde přes mPDF.
      */
-    public function getLinkScheme(): ?string
+    public function buildHref(mixed $value): ?string
     {
+        if (!is_scalar($value) && !$value instanceof \Stringable) {
+            return null;
+        }
+        $text = trim((string) $value);
+        if ('' === $text) {
+            return null;
+        }
+
         return match ($this->type) {
-            self::TYPE_EMAIL => 'mailto:',
-            self::TYPE_PHONE => 'tel:',
+            self::TYPE_EMAIL => 'mailto:'.$text,
+            self::TYPE_PHONE => self::telHref($text),
             default          => null,
         };
+    }
+
+    /**
+     * `tel:` URI s tečkami jako oddělovači (RFC 3966): „+420 777 123 456" → „tel:+420.777.123.456".
+     */
+    private static function telHref(string $phone): ?string
+    {
+        $plus = str_starts_with(ltrim($phone), '+');
+        $digits = preg_replace('/\D+/', '', $phone) ?? '';
+        if ('' === $digits) {
+            return null;
+        }
+        // Skupiny po třech zprava — česká konvence zápisu čísla.
+        $grouped = trim(chunk_split(strrev($digits), 3, '.'), '.');
+        $grouped = implode('.', array_reverse(explode('.', $grouped)));
+        $grouped = implode('.', array_map('strrev', explode('.', $grouped)));
+
+        return 'tel:'.($plus ? '+' : '').$grouped;
     }
 }
