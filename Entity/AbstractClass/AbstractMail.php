@@ -132,11 +132,14 @@ abstract class AbstractMail implements BasicInterface
             return;
         }
         $headers = $templatedMail->getHeaders();
-        if (($previousMail = $sortedPastMails->first() ?: null)
-            && $previousMail instanceof self
-            && !empty($previousMail->getMessageID())) {
-            $headers->addIdHeader('In-Reply-To', $previousMail->getMessageID());
-        }
+        // `In-Reply-To` se ZÁMĚRNĚ nenastavuje (rozhodnutí 2026-07-31): mířilo na poslední
+        // JAKOUKOLI předchozí zprávu bez ohledu na druh a ročník, takže se potvrzení platby
+        // zavěsilo třeba pod „Ověření přihlášky“ a účastníci pak zprávy nemohli najít.
+        //
+        // ⚠️ Vlákno tím ale nezanikne: Gmail od 2019 řadí do konverzace podle SHODY V `References`
+        // (a bez ní nevlákní ani zprávy se stejným předmětem), takže samotné odebrání `In-Reply-To`
+        // se u většiny účastníků neprojeví. Kdyby si na slepené konverzace stěžovali dál, řešení je
+        // ZÚŽIT rozsah právě zde — filtrovat `$sortedPastMails` na tentýž ročník a druh zprávy.
         $ids = $sortedPastMails->filter(fn(mixed $mail) => $mail instanceof AbstractMail
                                                            && !empty($mail->getMessageID()))->map(fn(mixed $mail
         ) => $mail instanceof AbstractMail ? $mail->getMessageID() : null);
