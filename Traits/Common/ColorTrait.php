@@ -22,9 +22,14 @@ trait ColorTrait
     #[Column(type: 'string', nullable: true)]
     protected ?string $color = null;
 
+    /**
+     * Barva textu čitelná na {@see getColor()} — počítá {@see ColorUtils::contrastTextColor()},
+     * aby na tuhle otázku existovala v celém systému jediná odpověď (dřív byly tři a dvě
+     * u středních tónů vracely nečitelnou kombinaci).
+     */
     public function getForegroundColor(): string
     {
-        return ColorUtils::isOppositeWhite($this->getColor()) ? '#ffffff' : '#000000';
+        return ColorUtils::contrastTextColor($this->getColor());
     }
 
     public function getColor(): ?string

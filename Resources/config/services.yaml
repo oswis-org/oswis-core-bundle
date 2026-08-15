@@ -393,6 +393,13 @@ services:
         public: true
         tags:
             - { name: twig.extension }
+    # Barva textu na pozadí, které přichází z dat (barvy příznaků, skupin, rolí si volí tým
+    # v adminu). V core, protože to není nic kalendářového — barevný štítek kreslí víc bundlů.
+    oswis_org_oswis_core.twig.color_extension:
+        class: OswisOrg\OswisCoreBundle\Twig\Extension\ColorExtension
+        public: true
+        tags:
+            - { name: twig.extension }
     oswis_org_oswis_core.twig.date_range_extension:
         class: OswisOrg\OswisCoreBundle\Twig\Extension\DateRangeExtension
         public: true
