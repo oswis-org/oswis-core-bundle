@@ -28,7 +28,11 @@ class AppUserTokenRepository extends ServiceEntityRepository
         $queryBuilder = $this->createQueryBuilder('token');
         $queryBuilder->where('token.token = :token')->setParameter('token', $token);
         $queryBuilder->andWhere('token.appUser = :app_user_id')->setParameter('app_user_id', $appUserId);
-        $query = $queryBuilder->getQuery();
+        // ⚠️ ZÁMĚRNĚ mimo druhoúrovňovou cache: `AppUserToken` ji má zapnutou
+        // (`NONSTRICT_READ_WRITE`, životnost 1200 s) a zastaralé čtení by vrátilo token
+        // v PŮVODNÍM stavu — tedy jako platný i poté, co byl použit nebo zneplatněn.
+        // Jednorázový odkaz (aktivace účtu, obnova hesla) by tak šel použít znovu až 20 minut.
+        $query = $queryBuilder->getQuery()->setCacheable(false);
         try {
             return ($result = $query->getOneOrNullResult(AbstractQuery::HYDRATE_OBJECT)) instanceof AppUserToken
                 ? $result : null;
