@@ -16,8 +16,16 @@ use OswisOrg\OswisCoreBundle\Filter\SearchFilter;
 
 trait ExternalIdTrait
 {
-    /** External unique identifier. */
-    #[Column(type: 'text', nullable: true)]
+    /**
+     * External unique identifier.
+     *
+     * ⚠️ `string(64)`, ne `text` — na `longtext` nejde dát unikátní index bez prefixu, a právě
+     * ten index je jediná spolehlivá pojistka proti duplicitám z importu (incident 2026-08-16:
+     * import plateb vložil každý řádek dvakrát, protože deduplikace v kódu četla přes zastaralou
+     * druhoúrovňovou cache). Nejdelší reálná hodnota má 35 znaků (ověřeno na produkci).
+     * Trait používá jediná entita — {@see ParticipantPayment}.
+     */
+    #[Column(type: 'string', length: 64, nullable: true)]
     #[ApiFilter(SearchFilter::class, strategy: 'ipartial')]
     #[ApiFilter(OrderFilter::class)]
     #[ApiFilter(ExistsFilter::class)]
