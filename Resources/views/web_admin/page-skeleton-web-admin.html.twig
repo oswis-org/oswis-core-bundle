@@ -1,5 +1,46 @@
 {% extends '@OswisOrgOswisCore/web/page-skeleton-default.html.twig' %}
 
+{# Pojistka proti DVOJÍMU ODESLÁNÍ formuláře — jednou pro celý web-admin.
+
+   PROČ: dvojí odeslání není teorie. 16. 8. 2026 se dvakrát zpracoval import plateb a vzniklo
+   102 fiktivních plateb za 349 735 Kč (docs/OSWIS_1_INCIDENT_PAYMENT_DUPLICATES_2026-08-16.md).
+   Ohrožené jsou hlavně akce, které něco ROZEŠLOU nebo VYTVOŘÍ — ad-hoc e-mail účastníkovi
+   (dvojí odeslání = dva maily reálnému člověku) nebo klonování ročníku. Přesměrování po úspěchu
+   chrání jen proti F5, ne proti dvojímu kliknutí; a iOS Safari umí odeslat formulář 3–5×.
+
+   Tohle je POSLEDNÍ vrstva, ne jediná — spolehlivou pojistkou zůstává zámek na serveru
+   (viz `ParticipantPaymentsImportService::processImport()`), protože JS lze obejít.
+
+   Detaily provedení, na kterých záleží:
+   - posluchač běží v bublací fázi a respektuje `defaultPrevented`, takže neposlepuje formulář,
+     jehož odeslání zrušil někdo jiný (validace, potvrzovací dialog),
+   - tlačítko se vypíná až v `setTimeout(…, 0)`, tedy PO serializaci — jinak by se jeho jméno
+     a hodnota nemusely odeslat (rozlišování více submit tlačítek),
+   - `GET` formuláře (filtry, hledání) a formuláře mířící do jiného okna se přeskakují. #}
+{% block body_end %}
+    {{ parent() }}
+    <script>
+        document.addEventListener('submit', function (event) {
+            if (event.defaultPrevented) { return; }
+            var form = event.target;
+            if (!form || form.tagName !== 'FORM') { return; }
+            if ((form.getAttribute('method') || 'get').toLowerCase() !== 'post') { return; }
+            if (form.getAttribute('target')) { return; }
+            if (form.dataset.oswisOdeslano === '1') {
+                event.preventDefault();
+                return;
+            }
+            form.dataset.oswisOdeslano = '1';
+            window.setTimeout(function () {
+                var tlacitka = form.querySelectorAll('button[type="submit"], input[type="submit"]');
+                for (var i = 0; i < tlacitka.length; i++) {
+                    tlacitka[i].disabled = true;
+                }
+            }, 0);
+        });
+    </script>
+{% endblock body_end %}
+
 {% block body_header %}
     {% include '@OswisOrgOswisCore/web_admin/header.html.twig' %}
     {# Flash zprávy (chyby/varování/úspěch). Web admin dosud žádné nerenderoval — bez tohoto
