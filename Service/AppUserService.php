@@ -97,20 +97,38 @@ class AppUserService
      * @throws TokenInvalidException
      * @throws UserNotFoundException
      */
-    public function requestPasswordChange(?AppUser $appUser, bool $sendConfirmation): void
+    /**
+     * @return bool odešel e-mail s odkazem? (`false` = token vznikl, ale mail NEDORAZIL)
+     *
+     * ⚠️ Selhání přenosu (SMTP) nevyhazuje výjimku, takže bez téhle návratové hodnoty stránka
+     * tvrdila „na e-mail byl odeslán odkaz pro změnu hesla" i tehdy, když se neodeslalo nic —
+     * a člověk pak marně čeká a nemá se jak dostat ke svému účtu. Důkaz odeslání je sloupec
+     * `sent`, ne to, že metoda nespadla.
+     */
+    public function requestPasswordChange(?AppUser $appUser, bool $sendConfirmation): bool
     {
         try {
             if (null === $appUser) {
                 throw new UserNotFoundException();
             }
             $appUserToken = $this->appUserTokenService->create($appUser, AbstractToken::TYPE_PASSWORD_CHANGE, false);
+            $odeslano = true;
             if ($sendConfirmation) {
-                $this->appUserMailService->sendAppUserMail($appUser, self::PASSWORD_CHANGE_REQUEST, $appUserToken);
+                $odeslano = $this->appUserMailService
+                    ->sendAppUserMail($appUser, self::PASSWORD_CHANGE_REQUEST, $appUserToken)
+                    ->isSent();
             }
             $this->em->persist($appUser);
             $this->em->flush();
             $andSent = $sendConfirmation ? ' and sent' : '';
             $this->logger->info("Created $andSent password change request for user ".$appUser->getId().'.');
+            if (!$odeslano) {
+                $this->logger->error(
+                    'Password change request mail for user '.$appUser->getId().' was NOT delivered.',
+                );
+            }
+
+            return $odeslano;
         } catch (OswisException|InvalidTypeException $exception) {
             $this->logger->error('User ('
                                  .$appUser->getId()
@@ -303,17 +321,32 @@ class AppUserService
      * @throws TokenInvalidException
      * @throws UserNotFoundException
      */
-    public function requestActivation(?AppUser $appUser): void
+    /**
+     * @return bool odešel aktivační e-mail? (`false` = token vznikl, ale mail NEDORAZIL)
+     *
+     * ⚠️ Stejný důvod jako u {@see self::requestPasswordChange()}: selhání SMTP nevyhazuje
+     * výjimku, takže „aktivační odkaz odeslán" bylo dřív tvrzení bez podkladu. Volající, kterým
+     * na tom nezáleží (registrace přes API), návratovou hodnotu prostě ignorují — registraci
+     * nesmí shodit výpadek pošty.
+     */
+    public function requestActivation(?AppUser $appUser): bool
     {
         try {
             if (null === $appUser) {
                 throw new UserNotFoundException();
             }
             $appUserToken = $this->appUserTokenService->create($appUser, AbstractToken::TYPE_ACTIVATION, false);
-            $this->appUserMailService->sendAppUserMail($appUser, self::ACTIVATION_REQUEST, $appUserToken);
+            $odeslano = $this->appUserMailService
+                ->sendAppUserMail($appUser, self::ACTIVATION_REQUEST, $appUserToken)
+                ->isSent();
             $this->em->persist($appUser);
             $this->em->flush();
             $this->logger->info('Created and sent activation request for user '.$appUser->getId().'.');
+            if (!$odeslano) {
+                $this->logger->error('Activation mail for user '.$appUser->getId().' was NOT delivered.');
+            }
+
+            return $odeslano;
         } catch (OswisException|InvalidTypeException $exception) {
             $this->logger->error('User ('.$appUser->getId().') activation request FAILED. '.$exception->getMessage());
             throw $exception;

@@ -72,9 +72,9 @@ class AppUserController extends AbstractController
             if (!$appUser instanceof AppUser) {
                 throw new UserNotFoundException();
             }
-            $this->appUserService->requestPasswordChange($appUser, true);
-
-            return $this->passwordChangeRequested();
+            return $this->passwordChangeRequested(
+                $this->appUserService->requestPasswordChange($appUser, true),
+            );
         }
 
         return $this->render(self::TEMPLATE_FORM, [
@@ -83,8 +83,24 @@ class AppUserController extends AbstractController
         ]);
     }
 
-    public function passwordChangeRequested(): Response
+    /**
+     * @param bool $odeslano opravdu odešel e-mail s odkazem? Viz {@see AppUserService::requestPasswordChange()}
+     *
+     * ⚠️ Dřív tahle stránka tvrdila „na e-mail byl odeslán odkaz" BEZ OHLEDU na to, jestli se
+     * mail podařilo odeslat — selhání přenosu totiž nevyhazuje výjimku. Člověk pak marně čeká
+     * na mail, který nikdy nepřijde, a nemá se jak dostat ke svému účtu. Radši ať ví, že se to
+     * nepovedlo, než aby čekal.
+     */
+    public function passwordChangeRequested(bool $odeslano = true): Response
     {
+        if (!$odeslano) {
+            return $this->render(self::TEMPLATE_MESSAGE, [
+                'title'   => 'E-mail se nepodařilo odeslat',
+                'message' => 'Žádost o změnu hesla jsme zpracovali, ale e-mail s odkazem se NEPODAŘILO odeslat. '
+                    .'Zkus to prosím za chvíli znovu; když to nepomůže, ozvi se nám.',
+            ]);
+        }
+
         return $this->render(self::TEMPLATE_MESSAGE, [
             'title'   => 'Žádost o změnu hesla odeslána!',
             'message' => 'Žádost o změnu hesla u uživatelského účtu byla úspěšně zpracována a na e-mail byl odeslán odkaz pro jeho změnu.',
@@ -115,9 +131,9 @@ class AppUserController extends AbstractController
             if (!$appUser instanceof AppUser) {
                 throw new UserNotFoundException();
             }
-            $this->appUserService->requestActivation($appUser);
-
-            return $this->userActivationRequested();
+            return $this->userActivationRequested(
+                $this->appUserService->requestActivation($appUser),
+            );
         }
 
         return $this->render(self::TEMPLATE_FORM, [
@@ -126,8 +142,17 @@ class AppUserController extends AbstractController
         ]);
     }
 
-    public function userActivationRequested(): Response
+    /** @param bool $odeslano opravdu odešel aktivační e-mail? (stejný důvod jako u změny hesla výš) */
+    public function userActivationRequested(bool $odeslano = true): Response
     {
+        if (!$odeslano) {
+            return $this->render(self::TEMPLATE_MESSAGE, [
+                'title'   => 'E-mail se nepodařilo odeslat',
+                'message' => 'Žádost o aktivaci jsme zpracovali, ale e-mail s odkazem se NEPODAŘILO odeslat. '
+                    .'Zkus to prosím za chvíli znovu; když to nepomůže, ozvi se nám.',
+            ]);
+        }
+
         return $this->render(self::TEMPLATE_MESSAGE, [
             'title'   => 'Žádost o aktivaci účtu odeslána!',
             'message' => 'Žádost o aktivaci uživatelského účtu byla úspěšně zpracována a na e-mail byl odeslán odkaz pro její provedení.',

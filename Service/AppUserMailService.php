@@ -38,9 +38,17 @@ class AppUserMailService
     }
 
     /**
-     * @param  AppUser  $appUser
-     * @param  string  $type
-     * @param  AppUserToken|null  $appUserToken
+     * Odešle e-mail k uživatelskému účtu a **vrátí ho, aby šlo zjistit, jestli opravdu odešel**.
+     *
+     * ⚠️ Selhání přenosu (SMTP) NEVYHAZUJE výjimku — jediný důkaz odeslání je sloupec `sent`
+     * ({@see AppUserMail::isSent()}). Dokud tahle metoda vracela `void`, nemohl to volající
+     * zjistit a stránky tvrdily „na e-mail byl odeslán odkaz" i tehdy, když se neodeslalo nic.
+     * U obnovy hesla to znamená člověka, který marně čeká na mail a nemá se jak dostat dovnitř.
+     *
+     * Záměrně se NEVYHAZUJE výjimka ani tady: tuhle metodu volá i aktivace při registraci, a
+     * výpadek SMTP nesmí shodit registraci (tatáž úvaha jako u
+     * {@see \OswisOrg\OswisCalendarBundle\Service\Participant\ParticipantMailService::sendSummary()}).
+     * Kdo potřebuje vědět, jak to dopadlo, ptá se na NÁVRATOVOU HODNOTU.
      *
      * @throws InvalidTypeException
      * @throws NotFoundException
@@ -48,7 +56,7 @@ class AppUserMailService
      * @throws OswisException
      * @throws TokenInvalidException
      */
-    public function sendAppUserMail(AppUser $appUser, string $type, ?AppUserToken $appUserToken = null): void
+    public function sendAppUserMail(AppUser $appUser, string $type, ?AppUserToken $appUserToken = null): AppUserMail
     {
         $isIS = false;
         if (null !== $appUserToken && $appUserToken->getAppUser() !== $appUser) {
@@ -77,6 +85,8 @@ class AppUserMailService
         $templateName = $twigTemplate->getTemplateName();
         $this->mailService->sendEMail($appUserEMail, $templateName, $data);
         $this->em->flush();
+
+        return $appUserEMail;
     }
 
     public function getCategoryByType(?string $type): ?AppUserMailCategory
