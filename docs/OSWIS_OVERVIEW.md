@@ -23,6 +23,7 @@ Symfony 8.1.0, MariaDB 11.8.6, nginx → Apache → PHP-FPM.
   [Platby](#platby) · [Akce a jejich struktura](#akce-a-jejich-struktura) ·
   [Program a obsazení týmem](#program-a-obsazení-týmem) · [Příjezd a check-in](#příjezd-a-check-in) ·
   [Ubytování a spolubydlení](#ubytování-a-spolubydlení) ·
+  [Stravování a jídelníček](#stravování-a-jídelníček) · [Nástěnka](#nástěnka) ·
   [Komunikace s účastníky](#komunikace-s-účastníky) · [Adresář kontaktů](#adresář-kontaktů) ·
   [Veřejný web](#veřejný-web) · [Dokumenty a exporty](#dokumenty-a-exporty)
 - **[Rozhraní — kdo v čem pracuje](#rozhraní--kdo-v-čem-pracuje)** —
@@ -162,6 +163,23 @@ fotogalerie, externí marketing. Data se exportují ven (CSV, XLSX, PDF) pro ú�
   přidělování to bere v potaz.
 - Kontroly při přidělování — upozorní na kolize (kluci a holky v jednom pokoji, přistýlka obsazená dřív
   než regulérní postel, nesplněná vzájemná preference). **Varují, neblokují.**
+
+### Stravování a jídelníček
+
+- **Jídelníček po turnusech** — tým zadá jídla na jednotlivé dny a časy (snídaně, oběd, večeře),
+  ke každému může být víc **variant** (běžná, bezmasá, bezlepková…).
+- **Volbu si dělá účastník sám** ve své aplikaci; kdo si nevybere nebo přijede bez telefonu, dostane
+  volbu zapsanou od týmu **u příjezdového stolu**.
+- **Brána zveřejnění** — dokud jídelníček není hotový, účastníci ho nevidí a sekce se jim vůbec
+  nenabízí; žádná prázdná obrazovka.
+- **Kuchyňský list ke stažení** — počty podle variant, u stravovacích omezení jmenovitě.
+- Jedna volba na jedno jídlo je vynucená **databází** (unikátní index), ne jen kontrolou v kódu.
+
+### Nástěnka
+
+- Krátké vzkazy týmu účastníkům přímo v aplikaci — „dnes večer od 20:00", „změna kvůli počasí".
+- Píše je tým ve své administraci, účastník je vidí na úvodní obrazovce portálu i ve vlastní sekci.
+- Vzniklo jako náhrada za plakáty a hromadné maily u věcí, které platí jen pár hodin.
 
 ### Komunikace s účastníky
 
@@ -571,8 +589,10 @@ a jejich pořízení je organizační práce. Zmiňuje se to schválně, protož
 a selže až v provozu** — navazující výstupy (tiskové seznamy pro výdej stravy, řazení „dietáři první",
 itineráře) bez naplnění nefungují.
 
-**Rozpracované.** Informační architektura administrace se přestavuje — horní menu už je rozklikávací podle
-oblastí, zbývá dotáhnout drobečkovou navigaci napříč stránkami a zeštíhlit úvodní obrazovku.
+**Rozpracované.** Informační architektura administrace se přestavuje. Úvodní obrazovka už není jen
+rozcestník (nahoře jsou počty a provozní hlídky, rozcestník pod nimi). **Rozklikávací horní menu podle
+oblastí je hotové, ale nevydané** — čeká jako nesloučená větev, protože se musí nasadit současně
+v jádru i v aplikaci. Zbývá k němu drobečková navigace napříč stránkami.
 U obsazení programu celým podtýmem chybí možnost někoho z týmu pro danou sekci **odečíst** („celý tým bez
 jednoho"); bez toho by itinerář instruktora lhal, takže se to musí nejdřív dopočítat na backendu a teprve
 pak nabídnout v rozhraní. Obsazení celým podtýmem je v aplikaci postavené, ale ještě nevydané.
