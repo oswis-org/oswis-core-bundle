@@ -5,13 +5,16 @@ až po program, obsazení týmem a příjezd na místo.
 
 Vznikl jako nedokončená bakalářská práce na Katedře informatiky Přírodovědecké fakulty Univerzity
 Palackého v Olomouci (KMI PřF UP). Od roku 2019 ho pro Seznamovák pro studenty UP používá studentská
-organizace STUDENTLIFE z.s., která Seznamovák pořádá, jako následníka původního IS na míru — ročně
-eviduje 450+ uživatelů včetně organizačního týmu.
+organizace STUDENTLIFE z.s., která Seznamovák pořádá, jako následníka původního IS na míru.
+
+Není to prototyp: systém stojí pod ostrým provozem, kde jde o peníze a o to, aby se stovky lidí
+dostaly na správné místo ve správný čas. Řádově jde o **stovky přihlášek ročně**, tisíce evidovaných
+plateb a desetitisíce odeslaných zpráv za dobu běhu.
 
 Kód je open source, sebehostitelný, bez závislostí na placených SaaS službách. Stack: PHP 8.5 /
 Symfony 8.1 / Doctrine ORM 3.6 / DBAL 4 / API Platform 4.3 na backendu, Ionic 8 / Angular 22 /
-Capacitor 8 pro mobilní aplikaci. Běží jeden produkční deploy (Seznamovák UP) — PHP 8.5.8,
-Symfony 8.1.0, MariaDB 11.8, nginx → Apache → PHP-FPM.
+Capacitor 8 pro mobilní aplikaci. Běží jeden produkční deploy (Seznamovák UP) — PHP 8.5.9,
+Symfony 8.1.0, MariaDB 11.8.6, nginx → Apache → PHP-FPM.
 
 ## Obsah
 
@@ -26,6 +29,7 @@ Symfony 8.1.0, MariaDB 11.8, nginx → Apache → PHP-FPM.
   [Webová administrace](#webová-administrace) · [Frontendová aplikace](#frontendová-aplikace)
 - **[Platforma](#platforma)** — [Autentizace a autorizace](#autentizace-a-autorizace) ·
   [Komunikace přes API](#komunikace-přes-api) · [Bezpečnost](#bezpečnost) ·
+  [Integrita dat při souběhu](#integrita-dat-při-souběhu) ·
   [Provoz a údržba](#provoz-a-údržba) · [Lokalizace a formáty](#lokalizace-a-formáty)
 - **[Architektura a rozšiřitelnost](#architektura-a-rozšiřitelnost)** —
   [Rozdělení do bundlů](#rozdělení-do-bundlů) · [Dědičnost šablon](#dědičnost-šablon) ·
@@ -58,6 +62,10 @@ fotogalerie, externí marketing. Data se exportují ven (CSV, XLSX, PDF) pro ú�
   viz [Autentizace a autorizace](#autentizace-a-autorizace).
 - Příznaky s kapacitami a cenovými i zálohovými modifikátory — typ ubytování, dieta, doprava, velikost
   trička. Skupiny příznaků mají pravidla výběru (jeden z, alespoň jeden, libovolně).
+- **Dvojí kapacita: běžná a maximální.** Běžně se počítá proti běžné; správce může u konkrétního zápisu
+  zaškrtnout „překročit kapacitu" a tím přepnout strop na maximální. Není to obejití limitu, jen posun
+  na druhé číslo — pokud maximální není nastavená výš, zaškrtnutí nic nezmění. Bez vyplněné maximální
+  kapacity znamená příznak „bez omezení".
 - Kategorie účastníků: účastník, organizátor, člen týmu, staff. Každá s vlastním formulářem a workflow.
 - Soft-delete s obnovou — smazaná přihláška, kontakt, příznak i nabídka se dají vrátit.
 - Hromadný přesun účastníků mezi turnusy nebo příznaky (průvodce).
@@ -70,7 +78,11 @@ fotogalerie, externí marketing. Data se exportují ven (CSV, XLSX, PDF) pro ú�
 - Variabilní symbol = posledních 9 cifer telefonu účastníka, jinak ID přihlášky.
 - Párování přijatých plateb podle VS, jména, e-mailu, částky a aktivní akce. Nejednoznačné případy se
   nepárují automaticky a čekají na obsluhu.
-- Import bankovního výpisu z CSV.
+- Import bankovního výpisu z CSV. **Opakovaný import nic nezdvojí:** jednoznačnost platby drží
+  unikátní index nad bankovním identifikátorem transakce a samotné zpracování výpisu je jištěné
+  atomickým zámkem, takže dvě souběžná spuštění téhož importu proběhnou jen jednou.
+- Potvrzení o přijaté platbě rozesílá cron, ne samotný import — u výpisu se stovkami řádků by
+  synchronní odesílání request neuneslo.
 - Vratky a opravy jako samostatné záznamy se zápornou hodnotou, s notifikací účastníkovi.
 - Záloha + doplatek — přihláška se aktivuje po zaplacení zálohy, doplatek do termínu.
 - Přehledy nezaplacených záloh i doplatků; agregace po turnusech a kategoriích; podklady pro účetní
@@ -243,7 +255,13 @@ Co která oblast dělá, je popsané výš; tady je jen to, čím se rozhraní o
 
 ### Webová administrace
 
-Nástroj pro registrační sezonu a přípravu akce — desktop, malý tým, hodně dat na obrazovce.
+Nástroj pro registrační sezonu a přípravu akce — hodně dat na obrazovce, malý tým. Těžiště je desktop,
+ale rozvržení je ověřené i na tabletu a telefonu (široké tabulky rolují ve vlastním rámečku, ne celou
+stránkou) — u příjezdového stolu se obsluhuje z mobilu.
+
+- **Úvodní obrazovka** — počty přihlášek po turnusech a **provozní hlídky**: kdo se přihlásil vícekrát
+  a komu se nedoručilo shrnutí s pokyny k platbě. Obojí jsou stavy, které z běžného seznamu nejsou
+  vidět, protože přihláška vypadá naprosto normálně.
 
 - **Sjednocený přehled přihlášek.** Jeden seznam pro všechny řezy. Rozsah (ročník / turnus / všechny akce,
   kategorie účastníka) i filtr jsou v URL, takže je pohled odkazovatelný a dá se poslat kolegovi. Rychlé
@@ -297,8 +315,10 @@ u stolu při příjezdu, v areálu.
 
 **Vlastní účet:** přihlášení heslem i magic-linkem a odhlášení; nastavení (přepínač backendu
 test/produkce, správa lokální cache) a diagnostika (verze, prostředí, stav úložiště — k přiložení
-do hlášení chyby). ⚠️ **Změna hesla a úprava údajů v aplikaci hotové nejsou** — cesty existují, ale
-obrazovka změny hesla je prázdná skořápka a z rozhraní na ni nic nevede; účet se dnes spravuje na webu.
+do hlášení chyby). **Obnova zapomenutého hesla je v aplikaci hotová** — z přihlašovací obrazovky se
+pošle žádost, z e-mailu se otevře obrazovka pro nastavení nového hesla (týž tokenový tok zvládá i změnu
+přihlašovacího jména a e-mailu). ⚠️ Přihlášený uživatel si ale **údaje sám změnit nemůže** — do nastavení
+to zavedené není a jedinou cestou zůstává odkaz z e-mailu.
 
 **Chování, které stojí za zmínku:**
 
@@ -379,6 +399,23 @@ se v aplikaci.
 - Trusted proxies pro stack s TLS terminací na nginxu.
 - Role, přihlašování a tokeny → viz [Autentizace a autorizace](#autentizace-a-autorizace).
 
+### Integrita dat při souběhu
+
+Zvláštní kapitola, protože klasické „zkontroluj a pak zapiš" ji neuhlídá: mezi kontrolou a zápisem je
+vždy mezera, do které se vejde druhý souběžný požadavek. Rozhodnout souběh umí jedině databáze.
+
+- **Unikátní indexy** tam, kde na jednoznačnosti záleží — bankovní identifikátor platby, aktivní
+  přihlášení na podakci (přes generovaný sloupec, aby šlo po odhlášení přihlásit znovu), volba jídla,
+  průchod stanicí příjezdu, spárovaná příchozí zpráva.
+- **Pesimistický zámek řádku** tam, kde je podmínkou POČET, který index ohlídat neumí — kapacita
+  podakce a kapacita příznaků. Zamyká se v ustáleném pořadí, aby se dvě úpravy nezablokovaly navzájem.
+- **Atomický zábor** (podmíněný `UPDATE` s kontrolou dotčených řádků) u operací, které smí proběhnout
+  jen jednou — zpracování importu plateb.
+- **Zámek v databázi** u dávek spustitelných z více míst naráz: automatické maily jdou pustit cronem
+  i tlačítkem v administraci, a databázový zámek jako jediný dosáhne přes hranici web ↔ CLI.
+- Klientská pojistka proti dvojímu odeslání formuláře v celé administraci. Je to poslední vrstva,
+  ne jediná — JavaScript jde obejít, server se musí ubránit sám.
+
 ### Provoz a údržba
 
 - **Konzolové příkazy** spustitelné z cronu i ručně. Provozně nejdůležitější dva: **rozeslání
@@ -386,7 +423,13 @@ se v aplikaci.
   (přírůstkové, se zapamatovaným stavem synchronizace, s limitem na dávku). Vedle nich sada jednorázových:
   doplnění vláken do historie, oprava jmen kontaktů, nasazení výchozích stanic příjezdu a příznaků ročníku.
 - Databázové migrace (Doctrine).
-- **Statická analýza na nejvyšší úrovni** (PHPStan level `max`) napříč všemi bundly jako hlavní kvalitní brána.
+- **Kvalitní brána: statická analýza + funkční smoke.** PHPStan level `max` s nulou nálezů napříč
+  všemi PHP bundly a funkční sada běžící nad klonem produkční databáze, ne nad vymyšlenými fixturami.
+  Není to plné pokrytí a netváří se tak: sada roste cíleně o stráže na místa, kde selhání nekřičí —
+  odeslání pošty, souběžný zápis, zápis přes API, rozvržení sestav.
+- **`doctrine:schema:validate` musí zůstat zelený** — mapování a databáze v souladu. Každý ručně psaný
+  index nebo constraint musí mít protějšek v atributu entity, jinak by ho příští generovaná migrace
+  tiše zahodila.
 - Strukturované logování (Monolog).
 - Asset pipeline pro administraci (Webpack Encore) a MJML pipeline pro maily.
 
@@ -476,10 +519,10 @@ by měla přidat svůj, ne rozšiřovat `Event` o další sloupce.
 
 **Backend:**
 
-- **PHP 8.5+** (produkčně 8.5.8), **Symfony 8.1**.
-- **Doctrine ORM 3.6** + **DBAL 4**; rozšíření **Gedmo** pro Timestampable, SoftDeleteable, Sluggable,
+- **PHP 8.5+** (produkčně 8.5.9), **Symfony 8.1** (8.1.0).
+- **Doctrine ORM 3.6** (3.6.7) + **DBAL 4** (4.4.3); rozšíření **Gedmo** pro Timestampable, SoftDeleteable, Sluggable,
   Loggable, Blameable.
-- **API Platform 4.3** pro REST/JSON-LD; JWT přes **Lexik JWT Authentication Bundle**, refresh tokeny přes
+- **API Platform 4.3** (4.3.16) pro REST/JSON-LD; JWT přes **Lexik JWT Authentication Bundle** (3.2), refresh tokeny přes
   **Gesdinet JWT Refresh Token Bundle**, CORS přes **Nelmio**.
 - **Symfony Mailer** s vlastním `MailerSubscriber` (Auto-Submitted, archivní BCC, Reply-To);
   **MJML** pipeline pro responsivní HTML maily.
@@ -492,11 +535,13 @@ by měla přidat svůj, ne rozšiřovat `Event` o další sloupce.
 **Webová administrace:** **Twig**, **Webpack Encore**, **Bootstrap 5**, **Stimulus**,
 **Symfony WebLink** pro preload hinting.
 
-**Frontendová aplikace:** **Ionic 8** + **Angular 22** + **TypeScript 6**, **Capacitor 8** pro Android
+**Frontendová aplikace:** **Ionic 8** (8.8) + **Angular 22** (22.0) + **TypeScript 6**, **Capacitor 8** (8.4) pro Android
 build, PWA pro iOS; **Leaflet** pro mapy (OpenStreetMap, MapyCz, OpenTopoMap); **Formly** pro formuláře
 generované z popisu.
 
-**Databáze:** **MariaDB** (produkčně 11.8; DBAL 4 zvládne i 10.5+, doporučeno 10.6+ kvůli deprecacím).
+**Databáze:** **MariaDB** (produkčně 11.8.6; DBAL 4 zvládne i 10.5+, doporučeno 10.6+ kvůli deprecacím).
+Schéma využívá **generovaný sloupec** s unikátním indexem (aktivní přihlášení na podakci), protože
+MariaDB nemá částečné indexy — s tím počítejte při případném přenosu na jiný stroj.
 Doctrine samo umí i PostgreSQL, ale OSWIS na něm **není provozně vyzkoušený** — schéma vzniklo a je
 udržované nad MariaDB, takže pro PostgreSQL počítejte s vlastním ověřením migrací.
 
@@ -519,11 +564,12 @@ udržované nad MariaDB, takže pro PostgreSQL počítejte s vlastním ověřen�
 Poctivý stav, ne wishlist. OSWIS se vyvíjí proti jednomu reálnému provozu, takže se tu potkává hotový kód
 s tím, co ještě nemá naplněná data nebo čeká na rozhodnutí.
 
-**Hotové, ale zatím nepoužité v provozu.** Ubytování a spolubydlení je postavené a v administraci
-dostupné, ale reálně se ještě nepoužilo — přidělování dosud probíhá mimo systém. Totéž platí pro skupiny
-a barvy pásků: model stojí, ale dokud je tým nenaplní, čekají na ně tiskové seznamy pro výdej stravy
-i řazení „dietáři první". Program má editor i výstupy; naplnění konkrétního ročníku je organizační práce,
-ne vývoj.
+**Hotové, ale zatím nepoužité v provozu.** U několika modulů stojí kód i obrazovky, ale v jediném
+dnešním nasazení se ještě nepoužily — přidělování ubytování a spolubydlení, skupiny a barvy pásků,
+naplnění programu konkrétního ročníku a obsazení programu týmem. Není to nedodělek kódu: chybí data,
+a jejich pořízení je organizační práce. Zmiňuje se to schválně, protože **modul bez dat vypadá hotově
+a selže až v provozu** — navazující výstupy (tiskové seznamy pro výdej stravy, řazení „dietáři první",
+itineráře) bez naplnění nefungují.
 
 **Rozpracované.** Informační architektura administrace se přestavuje — horní menu už je rozklikávací podle
 oblastí, zbývá dotáhnout drobečkovou navigaci napříč stránkami a zeštíhlit úvodní obrazovku.
@@ -541,14 +587,16 @@ editor obsazení koho nabízet — chybí data, ne funkce.
 **Naplánované a rozhodnuté, zatím nepostavené.** Tohle není wishlist — na každou položku existuje
 rozhodnutí a u většiny i napsaný implementační plán; řadí se podle závislostí, ne podle chuti:
 
-*Provoz a administrace* — přehledové widgety na úvodní obrazovce administrace (dnes je tam jen rozcestník)
-· sloučení duplicitních přihlášek · dokončení komunikace: skládací vlákna, odpověď přímo z časové osy
+*Provoz a administrace* — dotažení přehledových widgetů na úvodní obrazovce (dnes tam jsou počty po
+turnusech a provozní hlídky, chybí peníze a docházka) · sloučení duplicitních přihlášek (dnes se jen
+hlásí, slučovat se musí ručně) · dokončení komunikace: skládací vlákna, odpověď přímo z časové osy
 a přidělení vlákna řešiteli · generátor provozních tisků (jmenovky, bezpečnostní list k podpisu, seznamy
 podle barvy pásku, zápisové archy) · evidence techniky s logem závad (nahradí papír v kiosku) · workflow
 návštěv (externí přednášející, lektoři, partneři mají jiný příjezdový režim než účastník).
 
 *Účastnická aplikace* — pokyny k platbě: zbývající částka, číslo účtu, variabilní symbol a QR (backend to
-umí do mailu, aplikaci chybí) · aktivace přihlášky a reset hesla · dotažení programu: upozornění na kolize
+umí do mailu, aplikaci chybí) · aktivace přihlášky (reset hesla už hotový) · správa vlastních údajů
+za běhu · dotažení programu: upozornění na kolize
 a režimy přihlašování na podakce · jídelníček s volbou jídla (volí účastník, nebo tým u příjezdu; kuchyň
 dostane počty, u omezení se jmény) · push oznámení místo plakátů „dnes večer" a „změna kvůli počasí"
 · offline čtení pro areál se slabým signálem.
@@ -563,11 +611,19 @@ poslední roky se dieta řešila jen poznámkou v přihlášce.
 **Postavené, ale úmyslně nezapnuté.** Upomínky nezaplacených plateb existují, ale v jediném dnešním
 provozu se nepoužívají — je to rozhodnutí organizátorů, ne chybějící funkce.
 
-**Kam to míří.** Automatizované testy jsou zatím tenké: hlavní kvalitní branou je statická analýza
-na nejvyšší úrovni plus ruční a smoke ověření; rozšiřování funkčního pokrytí je průběžná práce. Vedle
-toho se plánují **provozní kontroly, které samy hlásí tiché selhání** — typicky „potvrzená přihláška bez
-odeslaného shrnutí" nebo „e-mail, u kterého se odeslání nepovedlo". Právě nepřítomnost akce je to, co
-běžný monitoring ani typová analýza neodhalí.
+**Kam to míří.** Hlavní kvalitní branou zůstává statická analýza na nejvyšší úrovni; funkční sada
+roste cíleně, ne plošně — přibývá do ní stráž pokaždé, když něco selže tiše.
+
+**Provozní kontroly, které samy hlásí tiché selhání**, jsou rozdělané a mají první hotové kusy: úvod
+administrace už vypisuje **přihlášky bez doručeného shrnutí** (tedy lidi bez pokynů k platbě, kteří
+by jinak nikoho netrápili, protože přihláška vypadá normálně) a **vícenásobné přihlášky téhož člověka**.
+Zbývá pokrýt zbytek — typicky e-mail, u kterého se odeslání nepovedlo. Právě nepřítomnost akce je to,
+co běžný monitoring ani typová analýza neodhalí; proto se hlídá v aplikaci, ne v logu.
+
+Vede to k zásadě, která se v systému drží napříč: **„kód nespadl" není důkaz, že se něco stalo.**
+Selhání SMTP nevyhazuje výjimku, chybějící serializační grupa vrátí `200` a pole zahodí, zakázaný
+formulářový prvek se neodešle. Proto se všude, kde na tom záleží, hlásí **doložený** výsledek — u pošty
+je důkazem záznam o odeslání, ne to, že odesílací metoda proběhla.
 
 **Úvahy o větší přestavbě.** Existují návrhy na generační obměnu s čistým datovým modelem bez historické
 zátěže. Nejde se do ní překlápět naráz — místo toho se její návrhy vstřebávají do dnešního systému po
@@ -584,7 +640,7 @@ synchronní zpracování).
 **Potřeba:**
 
 - PHP 8.5+ (CLI i FPM)
-- MariaDB 10.6+ (produkčně 11.8)
+- MariaDB 10.6+ (produkčně 11.8.6)
 - SMTP pro odesílání pošty (libovolný provider)
 - IMAP k mailboxu, kam chodí pošta od účastníků, pokud chcete automatický import komunikace do historie.
   Stačí read-only přístup.
