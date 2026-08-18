@@ -13,27 +13,9 @@
         </label>
     {% endif %}
     {% for menuItem in items|filter(item => 0 == item.requiredRole|default|length or (app.user|default and app.user.role(item.requiredRole)))|sort((a, b) => b.priority <=> a.priority) %}
-        {% if menuItem.hasChildren %}
-            {# Rozklikávací sekce = nativní <details> (desktop dropdown / mobil accordion, bez JS).
-               Podpoložky se filtrují dle role; sekce s 0 viditelnými dětmi se nevykreslí. #}
-            {% set visibleChildren = menuItem.children|filter(child => 0 == child.requiredRole|default|length or (app.user|default and app.user.role(child.requiredRole))) %}
-            {% if visibleChildren|length %}
-                <details class="wm-group">
-                    <summary class="wm-summary"><span>{{ menuItem.title }}</span></summary>
-                    <div class="wm-submenu">
-                        {% for child in visibleChildren %}
-                            <a href="{{ child.path }}" itemprop="url" {{ child.newPage|default ? "target='_blank'" : '' }}>
-                                <span itemprop="name">{{ child.title }}</span>
-                            </a>
-                        {% endfor %}
-                    </div>
-                </details>
-            {% endif %}
-        {% else %}
-            <a href="{{ menuItem.path }}" itemprop="url" {{ menuItem.newPage|default ? "target='_blank'" : '' }}>
-                <span itemprop="name">{{ menuItem.title }}</span>
-            </a>
-        {% endif %}
+        <a href="{{ menuItem.path }}" itemprop="url" {{ menuItem.newPage|default ? "target='_blank'" : '' }}>
+            <span itemprop="name">{{ menuItem.title }}</span>
+        </a>
     {% endfor %}
     {# „Administrace" = skok do adminu z VEŘEJNÉHO menu. Na admin menu se NEzobrazuje — tam by byl
        redundantní (míří na /web_admin stejně jako položka „Úvod"). #}
@@ -67,27 +49,5 @@
             }
         });
         if (best) { best.classList.add('is-active'); best.setAttribute('aria-current', 'page'); }
-
-        // Rozklikávací admin sekce (<details.wm-group>): klik-otevře je nativní; tohle jen
-        // zavře OSTATNÍ sekce při otevření jedné a zavře otevřenou při kliku vedle (desktop).
-        // Bez JS zůstane nativní klik funkční (jen se nezavírají samy).
-        var groups = nav.querySelectorAll('details.wm-group');
-        if (groups.length) {
-            var wide = window.matchMedia('(min-width: 601px)');
-            groups.forEach(function (d) {
-                // Desktop (≥601px) = HOVER otevře/zavře; mobil (úzké) hover neřeší → nativní KLIK (accordion).
-                d.addEventListener('mouseenter', function () { if (wide.matches) { d.open = true; } });
-                d.addEventListener('mouseleave', function () { if (wide.matches) { d.open = false; } });
-                // Otevření jedné sekce zavře ostatní (platí pro hover i klik).
-                d.addEventListener('toggle', function () {
-                    if (d.open) { groups.forEach(function (o) { if (o !== d) { o.open = false; } }); }
-                });
-            });
-            // Klik vedle zavře otevřenou (desktop; na mobilu accordion neřešíme klikem vedle).
-            document.addEventListener('click', function (e) {
-                if (!wide.matches) { return; }
-                groups.forEach(function (d) { if (d.open && !d.contains(e.target)) { d.open = false; } });
-            });
-        }
     })();
 </script>

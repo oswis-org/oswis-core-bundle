@@ -29,26 +29,13 @@ class WebMenuItem
 
     protected ?Collection $menus = null;
 
-    /**
-     * Podpoložky dropdownu (např. „Účastníci" → Seznam / Nezaplacené / …). Prázdné = přímý odkaz.
-     * Aditivní: položky bez dětí se renderují přesně jako dřív (veřejné menu je nemá), s dětmi se
-     * z položky stane rozklikávací skupina (`<details>` = desktop dropdown / mobil accordion).
-     *
-     * @var list<WebMenuItem>
-     */
-    protected array $children = [];
-
-    /**
-     * @param  list<WebMenuItem>  $children
-     */
     public function __construct(
         string $path,
         string $title,
         Collection $menus,
         ?string $requiredRole = null,
         ?int $priority = null,
-        bool $newPage = false,
-        array $children = []
+        bool $newPage = false
     ) {
         $this->menus = $menus;
         $this->path = $path;
@@ -56,20 +43,6 @@ class WebMenuItem
         $this->requiredRole = $requiredRole;
         $this->priority = $priority;
         $this->newPage = $newPage;
-        $this->children = $children;
-    }
-
-    /**
-     * @return list<WebMenuItem>
-     */
-    public function getChildren(): array
-    {
-        return $this->children;
-    }
-
-    public function hasChildren(): bool
-    {
-        return [] !== $this->children;
     }
 
     public function getPath(): string
