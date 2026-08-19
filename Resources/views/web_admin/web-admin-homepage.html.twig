@@ -44,6 +44,11 @@
                         <li>
                             <a href="{{ path('oswis_org_oswis_calendar_web_admin_participants_food') }}">Stravovací omezení</a>
                         </li>
+                        {# Trvalý vstup do rozcestníku — na úvodce se hláška o duplicitách ukazuje jen
+                           když nějaké jsou, ale obrazovka musí být dostupná i tehdy, když je čisto. #}
+                        <li>
+                            <a href="{{ path('oswis_org_oswis_calendar_web_admin_participants_duplicates') }}">Duplicitní přihlášky</a>
+                        </li>
                         {% if is_granted('ROLE_ADMIN') %}
                             <li>
                                 <a href="{{ path('oswis_org_oswis_calendar_web_admin_bulk_reassign') }}">Hromadný přesun účastníků</a>
