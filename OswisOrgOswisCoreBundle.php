@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle;
 
+use OswisOrg\OswisCoreBundle\DependencyInjection\CompilerPass\CistyTextMailuPass;
 use OswisOrg\OswisCoreBundle\DependencyInjection\CompilerPass\RssExtenderPass;
 use OswisOrg\OswisCoreBundle\DependencyInjection\CompilerPass\SiteMapExtenderPass;
 use OswisOrg\OswisCoreBundle\DependencyInjection\CompilerPass\WebMenuExtenderPass;
@@ -18,5 +19,6 @@ class OswisOrgOswisCoreBundle extends Bundle
         $container->addCompilerPass(new SiteMapExtenderPass());
         $container->addCompilerPass(new RssExtenderPass());
         $container->addCompilerPass(new WebMenuExtenderPass());
+        $container->addCompilerPass(new CistyTextMailuPass());
     }
 }

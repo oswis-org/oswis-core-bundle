@@ -642,3 +642,14 @@ services:
         autowire: true
         autoconfigure: true
         tags: [ 'doctrine.repository_service' ]
+
+    # Textová alternativa mailu se generuje z HTML převodníkem, který nezná `<script>` ani
+    # `<style>` a jejich obsah bere jako text. U shrnutí přihlášky (nese `ld+json` kvůli
+    # zobrazení rezervace v Gmailu) tak textová část začínala syrovým JSONem hned za oslovením.
+    # Dosazuje se přes CistyTextMailuPass; v HTML blok zůstává, tam patří.
+    OswisOrg\OswisCoreBundle\Mailer\CistyTextKonvertor:
+        arguments:
+            $puvodni: '@OswisOrg\OswisCoreBundle\Mailer\VychoziKonvertor'
+
+    OswisOrg\OswisCoreBundle\Mailer\VychoziKonvertor:
+        class: Symfony\Component\Mime\HtmlToTextConverter\LeagueHtmlToMarkdownConverter
