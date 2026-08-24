@@ -176,15 +176,37 @@ class AppUserController extends AbstractController
      */
     public function processToken(Request $request, ?string $token = null, ?int $appUserId = null): Response
     {
-        $appUserToken = $this->appUserService->getVerifiedToken($token, $appUserId);
-        $type = $appUserToken->getType();
-        if (AppUserService::ACTIVATION === $type) {
-            return $this->processTokenActivation($appUserToken);
+        try {
+            $appUserToken = $this->appUserService->getVerifiedToken($token, $appUserId);
+            $type = $appUserToken->getType();
+            if (AppUserService::ACTIVATION === $type) {
+                return $this->processTokenActivation($appUserToken);
+            }
+            if (AppUserService::PASSWORD_CHANGE === $type) {
+                return $this->processTokenPasswordChange($appUserToken, $request);
+            }
+
+            throw new TokenInvalidException('nebyla vykonána žádná akce');
+        } catch (TokenInvalidException|UserNotFoundException) {
+            // ⚠️ Tahle výjimka se dřív nechytala. TokenInvalidException je HTTP 403, takže
+            // Symfony návštěvníka odvezlo na přihlašovací stránku ADMINISTRACE — pro člověka,
+            // kterému jen propadl odkaz na potvrzení přihlášky, naprosto matoucí konec cesty.
+            // Doloženo v archivu pošty 24. 8. 2026: „nestihla jsem včas odpovědět, takže mi
+            // vypršela platnost odkazu. Mohli byste mi to prosím poslat znovu?"
+            //
+            // Odkaz se schválně NEobnovuje sám — o nový se říká týmu, aby bylo vidět, komu
+            // se to stalo. Podstatné je, že člověk odejde s návodem, ne s chybovou stránkou.
+            return $this->render(self::TEMPLATE_MESSAGE, [
+                'title'     => 'Odkaz už není platný',
+                'message'   => sprintf(
+                    'Odkaz na potvrzení přihlášky platí %d hodin a tenhle už vypršel, '
+                    .'nebo byl použit. Přihláška kvůli tomu nezanikla — jen ji zatím nemáme potvrzenou.',
+                    AppUserService::PLATNOST_ODKAZU_HODIN,
+                ),
+                'instrukce' => 'Nový odkaz Ti rádi pošleme.',
+                'kontakt'   => true,
+            ]);
         }
-        if (AppUserService::PASSWORD_CHANGE === $type) {
-            return $this->processTokenPasswordChange($appUserToken, $request);
-        }
-        throw new TokenInvalidException('nebyla vykonána žádná akce');
     }
 
     /**

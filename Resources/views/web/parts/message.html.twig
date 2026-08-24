@@ -1,3 +1,14 @@
+{#
+    Obecná stránka se zprávou (vypršelý odkaz, potvrzení akce, …).
+
+    ⚠️ Dřív uměla jen `title` + `message`, takže každá slepá ulička končila konstatováním
+    „odkaz už není platný" a člověku nezbylo než hádat, co dál. U vypršelé aktivace to
+    znamenalo, že napsal týmu (doloženo v archivu pošty 24. 8. 2026). Proto volitelné
+    `instrukce` a `kontakt`: kdo se sem dostane, musí odejít s tím, co má udělat.
+
+    Kontaktní adresa se bere z konfigurace (`oswis.email.address`), ne natvrdo — tenhle
+    balíček používá víc projektů.
+#}
 <div class="row text-justify">
     <div class="col-lg-9">
         <header>
@@ -5,6 +16,19 @@
         </header>
         <section>
             <p>{{ message|default }}</p>
+            {% if instrukce|default %}
+                <p>{{ instrukce }}</p>
+            {% endif %}
+            {% if kontakt|default and oswis.email.address|default %}
+                <p>
+                    Napiš{{ vykani|default(false) ? 'te' : '' }} nám na
+                    <a href="mailto:{{ oswis.email.address }}">{{ oswis.email.address }}</a>
+                    a pošleme {{ vykani|default(false) ? 'Vám' : 'Ti' }} nový odkaz.
+                    Do zprávy prosím uveď{{ vykani|default(false) ? 'te' : '' }}
+                    jméno a e-mail, se kterým {{ vykani|default(false) ? 'jste se hlásili' : 'ses hlásil(a)' }}
+                    — najdeme {{ vykani|default(false) ? 'Vaši' : 'Tvoji' }} přihlášku rychleji.
+                </p>
+            {% endif %}
         </section>
     </div>
     <div class="d-lg-none col-md-4 col-sm-3 col-xs-2"></div>

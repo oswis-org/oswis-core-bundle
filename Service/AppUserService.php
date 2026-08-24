@@ -36,6 +36,18 @@ class AppUserService
 {
     public const PASSWORD_CHANGE         = 'password-change';
     public const PASSWORD_CHANGE_REQUEST = 'password-change-request';
+
+    /**
+     * Platnost odkazů, které člověk dostane e-mailem a mají ho vrátit do rozdělané přihlášky.
+     *
+     * Týká se aktivace účtu a magic-linku „Pokračování v přihlášce". Výchozích 24 hodin bylo
+     * v praxi málo: kdo se přihlásí večer a e-mail otevře až druhý den po škole, stihne to
+     * jen tak tak; kdo si ho nechá na pozítří, má po platnosti. Obnovit si ho sám nemůže,
+     * takže píše týmu — a to se dělo.
+     *
+     * ⚠️ NEPOUŽÍVAT pro odkaz na změnu hesla; tam má krátká platnost smysl.
+     */
+    public const int PLATNOST_ODKAZU_HODIN = 48;
     public const ACTIVATION              = 'activation';
     public const ACTIVATION_REQUEST      = 'activation-request';
     public const REGISTRATION_LOGIN      = 'registration-login';
@@ -155,10 +167,12 @@ class AppUserService
         string $rangeSlug,
         bool $formal = false,
     ): void {
+        // Stejné okno jako u aktivace — viz PLATNOST_ODKAZU_HODIN.
         $appUserToken = $this->appUserTokenService->create(
             $appUser,
             AbstractToken::TYPE_REGISTRATION_LOGIN,
             false,
+            self::PLATNOST_ODKAZU_HODIN,
         );
         $this->em->persist($appUser);
         $this->em->flush();
@@ -335,7 +349,19 @@ class AppUserService
             if (null === $appUser) {
                 throw new UserNotFoundException();
             }
-            $appUserToken = $this->appUserTokenService->create($appUser, AbstractToken::TYPE_ACTIVATION, false);
+            // 48 hodin, ne výchozích 24. Lidé se hlásí večer, e-mail otevřou druhý den odpoledne
+            // a den nato už mají po platnosti — a protože se odkaz nedá obnovit sám, píšou týmu
+            // (doloženo v archivu: „nestihla jsem včas odpovědět, takže mi vypršela platnost").
+            // Delší okno tenhle případ z velké části mizí a bezpečnostně nic nemění: odkaz je
+            // jednorázový, vázaný na konkrétní účet a nedává víc než potvrzení vlastní adresy.
+            // ⚠️ Záměrně NE globální `DEFAULT_VALID_HOURS` — u odkazu na změnu hesla má krátká
+            // platnost smysl a měnit ji spolu s tímhle by bylo nechtěné.
+            $appUserToken = $this->appUserTokenService->create(
+                $appUser,
+                AbstractToken::TYPE_ACTIVATION,
+                false,
+                self::PLATNOST_ODKAZU_HODIN,
+            );
             $odeslano = $this->appUserMailService
                 ->sendAppUserMail($appUser, self::ACTIVATION_REQUEST, $appUserToken)
                 ->isSent();
