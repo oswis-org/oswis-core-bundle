@@ -112,6 +112,26 @@ class MailerSubscriber implements EventSubscriberInterface
         }
     }
 
+    /**
+     * Je adresa už mezi skrytými příjemci?
+     *
+     * `addBcc()` nic nekontroluje, takže druhé spuštění téhle obsluhy nad týmž e-mailem přidá
+     * archivní adresu podruhé a archivu chodí každá zpráva dvojmo. Zachyceno 25. 8. 2026 při
+     * měření shrnutí přihlášky: v obálce byl `archiv@` dvakrát. Jestli to způsobila obsluha,
+     * nebo lokální odchytávač pošty, se nepodařilo doložit — pojistka ale nic nestojí a chybu
+     * té třídy vylučuje bez ohledu na příčinu.
+     */
+    private function jeMeziPrijemci(Email $email, Address $adresa): bool
+    {
+        foreach ($email->getBcc() as $stavajici) {
+            if (strcasecmp($stavajici->getAddress(), $adresa->getAddress()) === 0) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     private function processRecipients(Email $email): void
     {
         $originalRecipients = $email->getTo();
@@ -125,7 +145,7 @@ class MailerSubscriber implements EventSubscriberInterface
         }
         try {
             $archiveAddress = $this->coreSettings->getArchiveMailerAddress();
-            if ($archiveAddress) {
+            if ($archiveAddress && !$this->jeMeziPrijemci($email, $archiveAddress)) {
                 $email->addBcc($archiveAddress);
             }
         } catch (RfcComplianceException|LogicException $exception) {
