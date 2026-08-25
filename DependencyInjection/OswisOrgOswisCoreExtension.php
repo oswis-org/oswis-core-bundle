@@ -206,6 +206,11 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
                 ['path' => '^/web_admin', 'roles' => AppUserRole::ROLE_MANAGER],
                 ['path' => '^/api/token/refresh', 'roles' => 'PUBLIC_ACCESS'],
                 ['path' => '^/api/login', 'roles' => 'PUBLIC_ACCESS'],
+                // ⚠️ `/api/register` NEEXISTUJE — ověřeno 25. 8. 2026 proti routám na produkci
+                // i proti Ionicu, který registraci nikdy nevolá (registruje se přes web).
+                // Pravidlo je tu ponecháno záměrně, ale POZOR: kdyby ten endpoint někdo doplnil,
+                // byl by tímhle řádkem rovnou VEŘEJNÝ, aniž by si toho všiml. Než se registrace
+                // z mobilu bude dělat, projít tenhle řádek vědomě.
                 ['path' => '^/api/register', 'roles' => 'PUBLIC_ACCESS'],
             ],
         ];
