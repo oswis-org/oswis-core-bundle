@@ -75,14 +75,34 @@ class AppUserRole implements NameableInterface
     public const ROLE_MANAGER   = 'ROLE_MANAGER';
     public const ROLE_ADMIN     = 'ROLE_ADMIN';
     public const ROLE_ROOT      = 'ROLE_ROOT';
+
+    /**
+     * Jak se role JMENUJE V DATABÁZI na úrovni „člen organizace".
+     *
+     * Role uživatele vzniká jako `ROLE_` + `core_app_user_role.role_string`, a tam je od začátku
+     * `USER_MEMBER`. Kód i celá hierarchie ale mluví o `ROLE_MEMBER`, takže se ty dvě jména nikdy
+     * nepotkala: držitel účtu typu „Člen organizace" neměl `ROLE_MEMBER` a všechno, co se jím brání
+     * (celý modul ubytování, stanice check-inu, kontakty, organizace), mu vracelo 401/403.
+     *
+     * Nejhorší na tom bylo, že se to netvářilo jako chyba oprávnění: průvodce v Ionicu pouští do
+     * týmové administrace právě podle `ROLE_USER_MEMBER`, takže se rozhraní otevřelo a teprve pak
+     * selhalo každé volání. Ověřeno měřením 26. 8. 2026 na účtu typu „Člen organizace":
+     * `/api/reservations` → 403, `/api/check_in_stations` → 401, `/web_admin` → odmítnut.
+     *
+     * Řeší se to tímhle mostem, ne přejmenováním řádku v databázi: na `ROLE_USER_MEMBER` staví
+     * mobilní klient (průvodce trasou i nastavení) a přejmenování by ho zavřelo týmu úplně.
+     */
+    public const ROLE_MEMBER_DB = 'ROLE_USER_MEMBER';
+
     public const ROLES_PARENT
                                 = [
-            self::ROLE_CUSTOMER => self::ROLE_EVERYBODY,
-            self::ROLE_USER     => self::ROLE_CUSTOMER,
-            self::ROLE_MEMBER   => self::ROLE_USER,
-            self::ROLE_MANAGER  => self::ROLE_MEMBER,
-            self::ROLE_ADMIN    => self::ROLE_MANAGER,
-            self::ROLE_ROOT     => self::ROLE_ADMIN,
+            self::ROLE_CUSTOMER  => self::ROLE_EVERYBODY,
+            self::ROLE_USER      => self::ROLE_CUSTOMER,
+            self::ROLE_MEMBER    => self::ROLE_USER,
+            self::ROLE_MEMBER_DB => self::ROLE_MEMBER,
+            self::ROLE_MANAGER   => self::ROLE_MEMBER,
+            self::ROLE_ADMIN     => self::ROLE_MANAGER,
+            self::ROLE_ROOT      => self::ROLE_ADMIN,
         ];
 
     #[ApiFilter(SearchFilter::class, strategy: 'ipartial')]
