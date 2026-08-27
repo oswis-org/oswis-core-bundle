@@ -269,14 +269,62 @@ abstract class AbstractMail implements BasicInterface
         if (null === $email || '' === trim($email)) {
             return null;
         }
-        $rawSubject = trim($subject ?? '');
-        $normalizedSubject = preg_replace('/^(re|fwd?|fw|odp|odpoved|odpověď)\s*:\s*/iu', '', $rawSubject);
-        if (!is_string($normalizedSubject) || '' === trim($normalizedSubject)) {
-            $normalizedSubject = '(no subject)';
-        }
-        $normalizedSubject = mb_strtolower(trim($normalizedSubject));
         $normalizedEmail = mb_strtolower(trim($email));
 
-        return sha1($normalizedSubject.'|'.$normalizedEmail);
+        return sha1(self::normalizeSubject($subject).'|'.$normalizedEmail);
+    }
+
+    /**
+     * Předmět zbavený prefixů odpovědi a přeposlání, malými písmeny.
+     *
+     * Slouží ke dvěma věcem: je to půlka `computeThreadKey()` a zároveň jediné vodítko,
+     * podle kterého se v přehledu komunikace pozná, že jde o TÉHOŽ vlákno.
+     *
+     * ⚠️ Na rozdíl od `computeThreadKey()` sem NEVSTUPUJE e-mailová adresa — a schválně:
+     * klíč vlákna je odvozený od odesílatele, takže naše odpověď a odpověď účastníka
+     * dostanou RŮZNÝ klíč, přestože jde o jednu konverzaci. Pro seskupení v přehledu
+     * je proto potřeba tahle, adresy si nevšímající, varianta.
+     */
+    public static function normalizeSubject(?string $subject): string
+    {
+        $bezPrefixu = preg_replace('/^((re|fwd?|fw|odp|odpoved|odpověď)\s*:\s*)+/iu', '', trim($subject ?? ''));
+        if (!is_string($bezPrefixu) || '' === trim($bezPrefixu)) {
+            return '(no subject)';
+        }
+        $zhustene = preg_replace('/\s+/u', ' ', $bezPrefixu);
+
+        return mb_strtolower(trim(is_string($zhustene) ? $zhustene : $bezPrefixu));
+    }
+
+    /**
+     * Čitelný text z HTML těla e-mailu — pro náhled v časové ose.
+     *
+     * PROČ to je potřeba: klienti jako Gmail nebo Outlook na webu posílají zprávu
+     * ČASTO JEN v HTML, textová část je prázdná. Náhled odvozený pouze z `body`
+     * pak u takové zprávy nevrátí nic a v přehledu komunikace vypadá celá odchozí
+     * půlka konverzace jako prázdné řádky. (Naměřeno 27. 8. 2026 na klonu:
+     * 96 z 372 odchozích zpráv mělo prázdné `body` a plné `body_html`.)
+     *
+     * Neřeší se tu bezpečnost — výstup je čistý text bez značek, takže se dá
+     * vypsat i tam, kde HTML nechceme.
+     */
+    public static function plainTextFromHtml(?string $html): ?string
+    {
+        if (null === $html || '' === trim($html)) {
+            return null;
+        }
+        // Skripty a styly nesou obsah, který by jinak v textu skončil jako smetí.
+        $bezSkriptu = preg_replace('#<(script|style)\b[^>]*>.*?</\1>#is', ' ', $html);
+        $text = is_string($bezSkriptu) ? $bezSkriptu : $html;
+        // Konce bloků na mezeru, ať se slova ze sousedních značek neslepí.
+        $sZlomy = preg_replace('#<(br|/p|/div|/tr|/li|/h[1-6])\s*/?>#i', ' ', $text);
+        $text = is_string($sZlomy) ? $sZlomy : $text;
+        $text = html_entity_decode(strip_tags($text), ENT_QUOTES | ENT_HTML5, 'UTF-8');
+        // Nezlomitelná mezera a BOM se v mailech objevují běžně a v náhledu ruší.
+        $text = str_replace(["\u{A0}", "\u{FEFF}"], ' ', $text);
+        $zhustene = preg_replace('/\s+/u', ' ', $text);
+        $text = trim(is_string($zhustene) ? $zhustene : $text);
+
+        return '' === $text ? null : $text;
     }
 }

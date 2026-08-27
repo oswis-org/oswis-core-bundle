@@ -37,14 +37,24 @@ enum CommunicationChannel: string
         };
     }
 
+    /**
+     * Jméno ikony pro `<twig:ux:icon>`.
+     *
+     * ⚠️ Sada je `tabler` a JEN ta, protože ikony se sem nestahují ze sítě — leží
+     * v `assets/icons/tabler/`. Dřív tu stály názvy z `mdi:`, které v projektu
+     * nejsou: v prostředí `dev` má UX Icons `ignore_not_found: false`, takže
+     * první použití téhle metody by shodilo stránku výjimkou, a na produkci by
+     * se místo ikony nevykreslilo mlčky nic. Metoda se do 27. 8. 2026 nikde
+     * nevolala, takže to nikdo nepotkal. Nové názvy vybírat z toho adresáře.
+     */
     public function iconifyName(): string
     {
         return match ($this) {
-            self::SYSTEM_MAIL,
-            self::AD_HOC_MAIL   => 'mdi:email-outline',
-            self::INCOMING_MAIL => 'mdi:email-sync-outline',
-            self::PHONE         => 'mdi:phone-outline',
-            self::CHAT          => 'mdi:chat-outline',
+            self::SYSTEM_MAIL   => 'tabler:device-desktop',
+            self::AD_HOC_MAIL   => 'tabler:mail-plus',
+            self::INCOMING_MAIL => 'tabler:mail',
+            self::PHONE         => 'tabler:phone',
+            self::CHAT          => 'tabler:message',
         };
     }
 }
