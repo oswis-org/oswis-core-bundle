@@ -43,9 +43,10 @@ enum CommunicationChannel: string
      * ⚠️ Sada je `tabler` a JEN ta, protože ikony se sem nestahují ze sítě — leží
      * v `assets/icons/tabler/`. Dřív tu stály názvy z `mdi:`, které v projektu
      * nejsou: v prostředí `dev` má UX Icons `ignore_not_found: false`, takže
-     * první použití téhle metody by shodilo stránku výjimkou, a na produkci by
-     * se místo ikony nevykreslilo mlčky nic. Metoda se do 27. 8. 2026 nikde
-     * nevolala, takže to nikdo nepotkal. Nové názvy vybírat z toho adresáře.
+     * vykreslení takového jména shodí stránku výjimkou, a na produkci se místo
+     * ikony mlčky nevykreslí nic. Nepadalo to jen proto, že jediným volajícím byl
+     * JSON endpoint komunikace, který jméno pouze přepošle dál — a mobilní klient
+     * ho má v modelu, ale nikde ho nezobrazuje. Nové názvy vybírat z toho adresáře.
      */
     public function iconifyName(): string
     {
