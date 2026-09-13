@@ -439,10 +439,22 @@ final class MailValidator
     private function checkMjml(string $fragment, MailValidationResult $result): void
     {
         $document = '<mjml><mj-body><mj-section><mj-column>'.$fragment.'</mj-column></mj-section></mj-body></mjml>';
-        foreach ($this->mjml->validate($document) as $message) {
+        $messages = $this->mjml->validate($document);
+        foreach ($messages as $message) {
             $result->error('MJML: '.$message);
         }
-        if (str_contains($this->mjml->mjmlToHtml($document), '<mj-')) {
+        try {
+            $html = $this->mjml->mjmlToHtml($document);
+        } catch (\Throwable $exception) {
+            // Selhal překladač (chybí node, časový limit…), ne text — chyba kontroly, ne pád stránky.
+            // Kontrola výš ho obvykle už nahlásila („MJML nejde přeložit"); podruhé ne.
+            if ([] === $messages) {
+                $result->error('MJML: MJML nejde přeložit: '.$exception->getMessage());
+            }
+
+            return;
+        }
+        if (str_contains($html, '<mj-')) {
             $result->error('Tlačítko, obrázek nebo oddělovač je uvnitř odstavce nebo seznamu — v mailu by nefungoval. Dej ho samostatně mezi odstavce.');
         }
     }
