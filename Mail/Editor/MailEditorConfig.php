@@ -30,7 +30,7 @@ final class MailEditorConfig
 
     /**
      * @return array{
-     *     variables: list<array{group: string, label: string, expression: string, mayBeEmpty: bool}>,
+     *     variables: list<array{group: string, label: string, expression: string, mayBeEmpty: bool, chip: string}>,
      *     conditions: list<array{group: string, label: string, expression: string}>,
      *     blocks: list<array{key: string, label: string, template: string}>,
      *     classes: list<string>,
@@ -46,7 +46,13 @@ final class MailEditorConfig
             if (MailCatalogItem::CONDITION === $item->kind) {
                 $conditions[] = ['group' => $item->group, 'label' => $item->label, 'expression' => $item->expression];
             } else {
-                $variables[] = ['group' => $item->group, 'label' => $item->label, 'expression' => $item->expression, 'mayBeEmpty' => $item->mayBeEmpty];
+                $variables[] = [
+                    'group'      => $item->group,
+                    'label'      => $item->label,
+                    'expression' => $item->expression,
+                    'mayBeEmpty' => $item->mayBeEmpty,
+                    'chip'       => $item->chip ?? $item->label,
+                ];
             }
         }
         $blocks = [];

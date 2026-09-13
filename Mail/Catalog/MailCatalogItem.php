@@ -11,8 +11,9 @@ final readonly class MailCatalogItem
     public const string CONDITION = 'condition';
 
     /**
-     * @param bool $mayBeEmpty výraz smí být u části příjemců prázdný (koncovka `a` u mužů) — kontrola
-     *                         na to neupozorňuje
+     * @param bool        $mayBeEmpty výraz smí být u části příjemců prázdný (koncovka `a` u mužů) — kontrola
+     *                                na to neupozorňuje
+     * @param string|null $chip       krátký text štítku v editoru („-a", „Oslovení"); bez něj = `label`
      */
     public function __construct(
         public string $group,
@@ -20,6 +21,7 @@ final readonly class MailCatalogItem
         public string $expression,
         public string $kind = self::VARIABLE,
         public bool $mayBeEmpty = false,
+        public ?string $chip = null,
     ) {
     }
 
