@@ -15,6 +15,8 @@ services:
             tags: [ 'oswis.export_definition' ]
         OswisOrg\OswisCoreBundle\Mail\Block\MailBlockProviderInterface:
             tags: [ 'oswis.mail_block_provider' ]
+        OswisOrg\OswisCoreBundle\Mail\Catalog\MailCatalogProviderInterface:
+            tags: [ 'oswis.mail_catalog_provider' ]
 
     ### Search Filter
     #    oswis_org_oswis_core.search_filter:
@@ -446,6 +448,11 @@ services:
         public: true
     OswisOrg\OswisCoreBundle\Twig\Extension\MailBlockExtension:
         tags: [ twig.extension ]
+    OswisOrg\OswisCoreBundle\Mail\Catalog\MailCatalog:
+        autowire: true
+        public: true
+        arguments:
+            $providers: !tagged_iterator oswis.mail_catalog_provider
 
 
 
