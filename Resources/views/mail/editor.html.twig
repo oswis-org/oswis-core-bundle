@@ -44,12 +44,12 @@
             {{ t.tool('small', 'Malé písmo', 'tabler:text-size') }}
         </div>
         <div class="btn-group me-1 mb-1" role="group" aria-label="Vložit">
-            {{ t.tool('link', 'Odkaz', 'tabler:link', 'Ctrl+K', false, true) }}
-            {{ t.tool('variable', 'Proměnná', 'tabler:braces', null, false, true) }}
-            {{ t.tool('condition', 'Podmínka', 'tabler:filter', null, false, true) }}
-            {{ t.tool('button', 'Tlačítko', 'tabler:hand-click', null, false, true) }}
+            {{ t.tool('link', 'Odkaz', 'tabler:link', 'Ctrl+K', false) }}
+            {{ t.tool('variable', 'Proměnná', 'tabler:braces', null, false) }}
+            {{ t.tool('condition', 'Podmínka', 'tabler:filter', null, false) }}
+            {{ t.tool('button', 'Tlačítko', 'tabler:hand-click', null, false) }}
             {{ t.tool('divider', 'Oddělovač', 'tabler:separator', null, false) }}
-            {{ t.tool('block', 'Vložený blok', 'tabler:layout-rows', null, false, true) }}
+            {{ t.tool('block', 'Vložený blok', 'tabler:layout-rows', null, false) }}
         </div>
         <div class="btn-group me-1 mb-1" role="group" aria-label="Úpravy">
             {{ t.tool('undo', 'Zpět', 'tabler:arrow-back-up', 'Ctrl+Z', false) }}
@@ -68,6 +68,111 @@
               data-mail-editor-target="source"{{ required|default(false) ? ' required' : '' }}
               style="font-family: monospace;">{{ value }}</textarea>
     <div class="invalid-feedback mail-editor__required-message">Napiš prosím text zprávy.</div>
-    {# DIALOGY #}
+    {#
+        Dialogy editoru. ⚠️ Editor bývá uvnitř formuláře zprávy: dialog proto NEMÁ vlastní <form>
+        (vnořený formulář parser zahodí), tlačítka jsou type="button" a pole bez `name` — nic z dialogu
+        se nesmí odeslat s mailem. Obsluha: assets/mail-editor/dialogs.ts (data-dialog-action, data-field).
+    #}
+    <dialog class="mail-editor__dialog" data-dialog="link" aria-labelledby="{{ id }}-dlg-link">
+        <div class="p-3">
+            <h3 class="h5" id="{{ id }}-dlg-link">Odkaz</h3>
+            <div class="mb-2"><label class="form-label" for="{{ id }}-link-href">Adresa</label>
+                <input class="form-control" id="{{ id }}-link-href" data-field="href" type="text" inputmode="url"
+                       placeholder="https://…" autocomplete="off" data-initial-focus></div>
+            <div class="mb-2"><label class="form-label" for="{{ id }}-link-title">Popisek (title)</label>
+                <input class="form-control" id="{{ id }}-link-title" data-field="title" type="text" autocomplete="off"></div>
+            <div class="text-danger small mb-2" data-dialog-error role="alert"></div>
+            <div class="d-flex flex-wrap gap-2">
+                <button type="button" class="btn btn-primary" data-dialog-action="apply">Použít</button>
+                <button type="button" class="btn btn-outline-danger" data-dialog-action="remove" data-edit-only hidden>Odebrat odkaz</button>
+                <button type="button" class="btn btn-link ms-auto" data-dialog-action="cancel">Zrušit</button>
+            </div>
+        </div>
+    </dialog>
+    <dialog class="mail-editor__dialog" data-dialog="variable" aria-labelledby="{{ id }}-dlg-variable">
+        <div class="p-3">
+            <h3 class="h5" id="{{ id }}-dlg-variable" data-title-edit="Změnit proměnnou">Vložit proměnnou</h3>
+            <label class="form-label" for="{{ id }}-variable-search">Hledat</label>
+            <input class="form-control mb-2" id="{{ id }}-variable-search" type="search" data-dialog-search
+                   autocomplete="off" data-initial-focus aria-describedby="{{ id }}-variable-hint">
+            <div class="form-text mt-0 mb-1" id="{{ id }}-variable-hint">Enter vloží první nalezenou.</div>
+            <div class="mail-editor__dialog-list">
+                {% for group, items in config.variableGroups %}
+                    <div role="group" aria-labelledby="{{ id }}-vg-{{ loop.index }}" data-dialog-group>
+                        <div class="mail-editor__dialog-group" id="{{ id }}-vg-{{ loop.index }}">{{ group }}</div>
+                        {% for item in items %}
+                            <button type="button" class="btn btn-sm btn-outline-secondary m-1" data-dialog-action="insert"
+                                    data-expression="{{ item.expression }}" data-search="{{ item.label }} {{ item.chip }} {{ item.expression }}"
+                                    title="{{ '{{ ' ~ item.expression ~ ' }}' }}">{{ item.label }}</button>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+                <p class="small text-muted my-2" data-dialog-empty hidden>Nic nenalezeno — zkus jiné slovo nebo vlastní výraz.</p>
+            </div>
+            <details class="mt-2"><summary>Vlastní výraz (pokročilé)</summary>
+                <label class="form-label mt-1" for="{{ id }}-variable-custom">Výraz Twigu</label>
+                <input class="form-control" id="{{ id }}-variable-custom" data-field="custom" data-enter="custom" type="text"
+                       placeholder="participant.contact.email" autocomplete="off">
+                <button type="button" class="btn btn-sm btn-primary mt-1" data-dialog-action="custom">Vložit výraz</button>
+            </details>
+            <div class="text-danger small my-2" data-dialog-error role="alert"></div>
+            <div class="d-flex flex-wrap gap-2">
+                <button type="button" class="btn btn-outline-danger" data-dialog-action="remove" data-edit-only hidden>Odebrat proměnnou</button>
+                <button type="button" class="btn btn-link ms-auto" data-dialog-action="cancel">Zrušit</button>
+            </div>
+        </div>
+    </dialog>
+    <dialog class="mail-editor__dialog" data-dialog="condition" aria-labelledby="{{ id }}-dlg-condition">
+        <div class="p-3">
+            <h3 class="h5" id="{{ id }}-dlg-condition">Podmínka</h3>
+            <p class="small text-muted">Vybrané odstavce uvidí jen příjemci, pro které podmínka platí.</p>
+            <div class="d-grid gap-1">
+                {% for item in config.conditions %}
+                    <button type="button" class="btn btn-outline-secondary text-start" data-dialog-action="apply"
+                            data-cond="{{ item.expression }}" aria-pressed="false" title="{{ '{% if ' ~ item.expression ~ ' %}' }}"
+                            {{- loop.first ? ' data-initial-focus' : '' }}>{{ item.label }}</button>
+                {% endfor %}
+            </div>
+            <details class="mt-2"><summary>Vlastní podmínka (pokročilé)</summary>
+                <label class="form-label mt-1" for="{{ id }}-cond-custom">Podmínka Twigu</label>
+                <input class="form-control" id="{{ id }}-cond-custom" data-field="customCond" data-enter="custom" type="text"
+                       placeholder="participant.price > 0" autocomplete="off">
+                <button type="button" class="btn btn-sm btn-primary mt-1" data-dialog-action="custom">Použít vlastní podmínku</button>
+            </details>
+            <div class="text-danger small my-2" data-dialog-error role="alert"></div>
+            <div class="text-end"><button type="button" class="btn btn-link" data-dialog-action="cancel">Zrušit</button></div>
+        </div>
+    </dialog>
+    <dialog class="mail-editor__dialog" data-dialog="button" aria-labelledby="{{ id }}-dlg-button">
+        <div class="p-3">
+            <h3 class="h5" id="{{ id }}-dlg-button">Tlačítko</h3>
+            <div class="mb-2"><label class="form-label" for="{{ id }}-button-text">Text tlačítka</label>
+                <input class="form-control" id="{{ id }}-button-text" data-field="text" type="text" autocomplete="off" data-initial-focus></div>
+            <div class="mb-2"><label class="form-label" for="{{ id }}-button-href">Adresa</label>
+                <input class="form-control" id="{{ id }}-button-href" data-field="href" type="text" inputmode="url"
+                       placeholder="https://…" autocomplete="off"></div>
+            <div class="mb-2"><label class="form-label" for="{{ id }}-button-title">Popisek pro čtečky (title)</label>
+                <input class="form-control" id="{{ id }}-button-title" data-field="title" type="text" autocomplete="off"></div>
+            <div class="text-danger small mb-2" data-dialog-error role="alert"></div>
+            <div class="d-flex flex-wrap gap-2">
+                <button type="button" class="btn btn-primary" data-dialog-action="apply">Použít</button>
+                <button type="button" class="btn btn-link ms-auto" data-dialog-action="cancel">Zrušit</button>
+            </div>
+        </div>
+    </dialog>
+    <dialog class="mail-editor__dialog" data-dialog="block" aria-labelledby="{{ id }}-dlg-block">
+        <div class="p-3">
+            <h3 class="h5" id="{{ id }}-dlg-block">Vložený blok</h3>
+            <p class="small text-muted">Obsah bloku doplní systém každému příjemci při odeslání.</p>
+            {% for block in config.blocks %}
+                <button type="button" class="btn btn-outline-secondary d-block w-100 text-start mb-1" data-dialog-action="insert"
+                        data-key="{{ block.key }}"{{ loop.first ? ' data-initial-focus' : '' }}>{{ block.label }}</button>
+            {% else %}
+                <p class="small">Žádné bloky nejsou k dispozici.</p>
+            {% endfor %}
+            <div class="text-danger small my-2" data-dialog-error role="alert"></div>
+            <div class="text-end"><button type="button" class="btn btn-link" data-dialog-action="cancel">Zrušit</button></div>
+        </div>
+    </dialog>
     {# NÁHLED #}
 </div>

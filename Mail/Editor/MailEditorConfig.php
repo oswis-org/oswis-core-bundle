@@ -31,6 +31,7 @@ final class MailEditorConfig
     /**
      * @return array{
      *     variables: list<array{group: string, label: string, expression: string, mayBeEmpty: bool, chip: string}>,
+     *     variableGroups: array<string, list<array{group: string, label: string, expression: string, mayBeEmpty: bool, chip: string}>>,
      *     conditions: list<array{group: string, label: string, expression: string}>,
      *     blocks: list<array{key: string, label: string, template: string}>,
      *     classes: list<string>,
@@ -55,18 +56,24 @@ final class MailEditorConfig
                 ];
             }
         }
+        // Nabídka proměnných po skupinách — Twig filtr pro seskupení nemá.
+        $variableGroups = [];
+        foreach ($variables as $variable) {
+            $variableGroups[$variable['group']][] = $variable;
+        }
         $blocks = [];
         foreach ($this->blocks->all() as $block) {
             $blocks[] = ['key' => $block->key, 'label' => $block->label, 'template' => $block->template];
         }
 
         return [
-            'variables'   => $variables,
-            'conditions'  => $conditions,
-            'blocks'      => $blocks,
-            'classes'     => self::EDITOR_CLASSES,
-            'alignments'  => self::ALIGNMENTS,
-            'linkSchemes' => MailMarkupPolicy::LINK_SCHEMES,
+            'variables'      => $variables,
+            'variableGroups' => $variableGroups,
+            'conditions'     => $conditions,
+            'blocks'         => $blocks,
+            'classes'        => self::EDITOR_CLASSES,
+            'alignments'     => self::ALIGNMENTS,
+            'linkSchemes'    => MailMarkupPolicy::LINK_SCHEMES,
         ];
     }
 }
