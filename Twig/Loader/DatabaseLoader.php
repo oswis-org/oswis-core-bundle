@@ -18,15 +18,19 @@ class DatabaseLoader implements LoaderInterface
 
     final public function getSourceContext(string $name): Source
     {
-        if (null === ($template = $this->getTemplate($name))) {
+        $row = $this->repository->findLoaderRowBySlug($name);
+        if (null === $row) {
             throw new LoaderError(sprintf('Template "%s" does not exist in TwigTemplateRepository.', $name));
         }
-        if ($template->isRegular()) {
-            throw new LoaderError(sprintf('Template "%s" is only reference to regular template "%s".', $name,
-                $template->getRegularTemplateName()));
+        if (null !== $row['regularTemplateName']) {
+            throw new LoaderError(sprintf(
+                'Template "%s" is only reference to regular template "%s".',
+                $name,
+                $row['regularTemplateName'],
+            ));
         }
 
-        return new Source(''.$template->getTextValue(), $name);
+        return new Source($row['textValue'] ?? '', $name);
     }
 
     final public function getTemplate(string $name): ?TwigTemplate
@@ -36,22 +40,33 @@ class DatabaseLoader implements LoaderInterface
 
     final public function exists(string $name): bool
     {
-        $template = $this->getTemplate($name);
+        $row = $this->repository->findLoaderRowBySlug($name);
 
-        return $template && !$template->isRegular();
+        return null !== $row && null === $row['regularTemplateName'];
     }
 
+    /**
+     * Klíč = název + id + otisk OBSAHU.
+     *
+     * PROČ: Twig pojmenuje třídu zkompilované šablony podle tohoto klíče
+     * (`Environment::getTemplateClass`). Na produkci je `auto_reload` vypnutý, `isFresh()` se tedy
+     * nevolá — s klíčem jen podle názvu se po úpravě textu brala stará zkompilovaná verze až do
+     * dalšího nasazení (nalezeno 13. 9. 2026). Otisk obsahu (ne `updatedAt`) funguje i pro dvě
+     * úpravy v téže sekundě a pro změnu mimo ORM.
+     */
     final public function getCacheKey(string $name): string
     {
-        return $name;
-    }
-
-    final public function isFresh(string $name, int $time): bool
-    {
-        if (null === ($template = $this->getTemplate($name))) {
-            return false;
+        $row = $this->repository->findLoaderRowBySlug($name);
+        if (null === $row) {
+            throw new LoaderError(sprintf('Template "%s" does not exist in TwigTemplateRepository.', $name));
         }
 
-        return $template->isFresh($time);
+        return $name.'#'.$row['id'].'#'.hash('xxh3', $row['textValue'] ?? '');
+    }
+
+    /** Každá změna obsahu = nový klíč = nová třída; při zapnutém `auto_reload` stačí existence. */
+    final public function isFresh(string $name, int $time): bool
+    {
+        return null !== $this->repository->findLoaderRowBySlug($name);
     }
 }
