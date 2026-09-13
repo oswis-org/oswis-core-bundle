@@ -6,11 +6,62 @@
     Parametry: name, id, value, config (MailEditorConfig::toArray()), required (bool), rows (int),
     label (popisek pro čtečky).
 #}
+{#
+    Tlačítko panelu. `toggle` = přepínač se stavem aria-pressed; `pending` = obsluhu dodá další
+    krok přestavby (zatím vypnuté). Příkazy obsluhuje kontroler (`mail-editor#command`).
+#}
+{% macro tool(name, label, icon, shortcut = null, toggle = true, pending = false) %}
+    <button type="button" class="btn btn-sm btn-outline-secondary" tabindex="-1"
+            data-action="mail-editor#command" data-mail-editor-name-param="{{ name }}"
+            aria-label="{{ label }}" title="{{ label }}{{ shortcut ? ' (' ~ shortcut ~ ')' : '' }}"
+            {{- toggle ? ' aria-pressed="false"' : '' }}{{ pending ? ' disabled' : '' }}>
+        <twig:ux:icon name="{{ icon }}" aria-hidden="true" />
+    </button>
+{% endmacro %}
+{% import _self as t %}
 <div class="mail-editor" {{ stimulus_controller('mail-editor', { config: config, label: label|default('Text zprávy') }) }}>
-    {# PANEL #}
+    <div class="mail-editor__toolbar btn-toolbar" role="toolbar" aria-label="Formátování textu"
+         aria-controls="{{ id }}-surface" data-mail-editor-target="toolbar">
+        <div class="btn-group me-1 mb-1" role="group" aria-label="Písmo">
+            {{ t.tool('bold', 'Tučně', 'tabler:bold', 'Ctrl+B') }}
+            {{ t.tool('italic', 'Kurzíva', 'tabler:italic', 'Ctrl+I') }}
+            {{ t.tool('underline', 'Podtržení', 'tabler:underline', 'Ctrl+U') }}
+        </div>
+        <div class="btn-group me-1 mb-1" role="group" aria-label="Odstavec">
+            {{ t.tool('heading2', 'Nadpis', 'tabler:h-2') }}
+            {{ t.tool('heading3', 'Podnadpis', 'tabler:h-3') }}
+            {{ t.tool('bulletList', 'Odrážky', 'tabler:list', 'Ctrl+Shift+8') }}
+            {{ t.tool('orderedList', 'Číslování', 'tabler:list-numbers', 'Ctrl+Shift+7') }}
+        </div>
+        <div class="btn-group me-1 mb-1" role="group" aria-label="Zarovnání">
+            {{ t.tool('alignLeft', 'Zarovnat vlevo', 'tabler:align-left') }}
+            {{ t.tool('alignCenter', 'Zarovnat na střed', 'tabler:align-center') }}
+            {{ t.tool('alignJustify', 'Zarovnat do bloku', 'tabler:align-justified') }}
+        </div>
+        <div class="btn-group me-1 mb-1" role="group" aria-label="Zvýraznění">
+            {{ t.tool('warning', 'Upozornění', 'tabler:alert-triangle') }}
+            {{ t.tool('highlight', 'Zvýraznění', 'tabler:highlight') }}
+            {{ t.tool('small', 'Malé písmo', 'tabler:text-size') }}
+        </div>
+        <div class="btn-group me-1 mb-1" role="group" aria-label="Vložit">
+            {{ t.tool('link', 'Odkaz', 'tabler:link', 'Ctrl+K', false, true) }}
+            {{ t.tool('variable', 'Proměnná', 'tabler:braces', null, false, true) }}
+            {{ t.tool('condition', 'Podmínka', 'tabler:filter', null, false, true) }}
+            {{ t.tool('button', 'Tlačítko', 'tabler:hand-click', null, false, true) }}
+            {{ t.tool('divider', 'Oddělovač', 'tabler:separator', null, false) }}
+            {{ t.tool('block', 'Vložený blok', 'tabler:layout-rows', null, false, true) }}
+        </div>
+        <div class="btn-group me-1 mb-1" role="group" aria-label="Úpravy">
+            {{ t.tool('undo', 'Zpět', 'tabler:arrow-back-up', 'Ctrl+Z', false) }}
+            {{ t.tool('redo', 'Znovu', 'tabler:arrow-forward-up', 'Ctrl+Shift+Z', false) }}
+        </div>
+        <div class="btn-group ms-auto mb-1" role="group" aria-label="Zobrazení">
+            {{ t.tool('code', 'Kód', 'tabler:code', null, true, true) }}
+        </div>
+    </div>
     <div class="mail-editor__frame">
         <div class="mail-editor__fixed" aria-hidden="true">Ahoj [Oslovení]! — doplní systém</div>
-        <div class="mail-editor__surface" data-mail-editor-target="surface"></div>
+        <div class="mail-editor__surface" id="{{ id }}-surface" data-mail-editor-target="surface"></div>
         <div class="mail-editor__fixed" aria-hidden="true">S pozdravem, Tým Seznamováku… — podpis a patičku doplní systém</div>
     </div>
     <textarea class="form-control mail-editor__source" name="{{ name }}" id="{{ id }}" rows="{{ rows|default(14) }}"
