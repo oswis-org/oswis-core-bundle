@@ -4,7 +4,8 @@
     než se editor načte) funguje jako kód. Chování dodává Stimulus kontroler `mail-editor` (aplikace).
 
     Parametry: name, id, value, config (MailEditorConfig::toArray()), required (bool), rows (int),
-    label (popisek pro čtečky).
+    label (popisek pro čtečky), preview (nepovinné — náhled vedle textu: {url, recipients: [{id, label}],
+    subjectField: id pole předmětu, templateField: id výběru kampaně}).
 #}
 {#
     Tlačítko panelu. `toggle` = přepínač se stavem aria-pressed; `pending` = obsluhu dodá další
@@ -19,7 +20,16 @@
     </button>
 {% endmacro %}
 {% import _self as t %}
-<div class="mail-editor" {{ stimulus_controller('mail-editor', { config: config, label: label|default('Text zprávy') }) }}>
+{% set previewConfig = preview|default(null) %}
+<div class="mail-editor{{ previewConfig ? ' mail-editor--with-preview' : '' }}" {{ stimulus_controller('mail-editor', {
+    config: config,
+    label: label|default('Text zprávy'),
+    previewUrl: previewConfig ? previewConfig.url : '',
+    previewToken: previewConfig ? csrf_token('mail_preview') : '',
+    previewSubjectField: previewConfig ? previewConfig.subjectField|default('') : '',
+    previewTemplateField: previewConfig ? previewConfig.templateField|default('') : '',
+}) }}>
+    <div class="mail-editor__main">
     <div class="mail-editor__toolbar btn-toolbar" role="toolbar" aria-label="Formátování textu"
          aria-controls="{{ id }}-surface" data-mail-editor-target="toolbar">
         <div class="btn-group me-1 mb-1" role="group" aria-label="Písmo">
@@ -174,5 +184,35 @@
             <div class="text-end"><button type="button" class="btn btn-link" data-dialog-action="cancel">Zrušit</button></div>
         </div>
     </dialog>
-    {# NÁHLED #}
+    </div>
+    {% if previewConfig %}
+        <section class="mail-editor__preview" aria-label="Náhled e-mailu">
+            <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
+                <label class="small mb-0" for="{{ id }}-preview-recipient">Náhled pro</label>
+                <select class="form-select form-select-sm w-auto mw-100" id="{{ id }}-preview-recipient"
+                        data-mail-editor-target="recipient" data-action="mail-editor#refreshPreview">
+                    {% for recipient in previewConfig.recipients %}
+                        <option value="{{ recipient.id }}">{{ recipient.label }}</option>
+                    {% endfor %}
+                </select>
+                <div class="btn-group btn-group-sm" role="group" aria-label="Šířka náhledu">
+                    <button type="button" class="btn btn-outline-secondary active" aria-pressed="true"
+                            data-action="mail-editor#previewWidth" data-mail-editor-width-param="desktop">
+                        <twig:ux:icon name="tabler:device-desktop" aria-hidden="true" /> Počítač</button>
+                    <button type="button" class="btn btn-outline-secondary" aria-pressed="false"
+                            data-action="mail-editor#previewWidth" data-mail-editor-width-param="mobile">
+                        <twig:ux:icon name="tabler:device-mobile" aria-hidden="true" /> Mobil</button>
+                </div>
+                <span class="small text-muted" role="status" data-mail-editor-target="previewStatus"></span>
+            </div>
+            <div class="small mb-1"><strong>Předmět:</strong> <span data-mail-editor-target="previewSubject">—</span></div>
+            <div class="mail-editor__problems" data-mail-editor-target="problems" aria-live="polite"></div>
+            <div class="mail-editor__preview-shell" data-mail-editor-target="previewShell">
+                {# sandbox: v náhledu neběží skripty ani formuláře; same-origin jen kvůli zachování posunu
+                   při obnově, odkazy se otevřou v novém okně (preview.ts vloží <base target="_blank">) #}
+                <iframe sandbox="allow-same-origin allow-popups allow-popups-to-escape-sandbox" title="Náhled e-mailu"
+                        data-mail-editor-target="previewFrame"></iframe>
+            </div>
+        </section>
+    {% endif %}
 </div>
