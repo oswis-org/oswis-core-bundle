@@ -62,7 +62,7 @@ final class MailValidator
         if (null === $subjectModule || null === $bodyModule) {
             return $result;
         }
-        $assigned = $this->checkUnknownVariables([$subjectModule, $bodyModule], $recipients[0]['context'] ?? [], $result);
+        ['assigned' => $assigned, 'unknown' => $unknown] = $this->collectVariables([$subjectModule, $bodyModule], $recipients[0]['context'] ?? []);
         $structures = [];
         // Předmět a text zvlášť — chyba v předmětu nesmí zakrýt chybu v textu.
         $renderBody = function (array $context) use ($body, &$structures): void {
@@ -71,6 +71,7 @@ final class MailValidator
             $structures[self::structureOf($mjml)] ??= $mjml;
         };
         $reported = $this->renderEach(['V předmětu' => $this->subjectRenderer($subject), 'V textu' => $renderBody], $recipients, $result);
+        self::warnUnknownVariables($unknown, $reported, $result);
         $this->checkEmptyForSomeRecipients($subject."\n".$body, $recipients, $assigned, $result);
         // Značky, odkazy a bloky se kontrolují vždy — i když některá proměnná nejde vyhodnotit (ta už
         // je hlášená výš). Benevolentní vykreslení = neznámá proměnná je prázdné místo; když nejde ani
@@ -118,12 +119,12 @@ final class MailValidator
             return $result;
         }
         /** @var list<ModuleNode> $modules */
-        $this->checkUnknownVariables($modules, $recipients[0]['context'] ?? [], $result);
+        $unknown = $this->collectVariables($modules, $recipients[0]['context'] ?? [])['unknown'];
         $parts = ['V šabloně' => fn (array $context): string => $this->twig->createTemplate($source)->render($context)];
         if (null !== $subject) {
             $parts['V předmětu'] = $this->subjectRenderer($subject);
         }
-        $this->renderEach($parts, $recipients, $result);
+        self::warnUnknownVariables($unknown, $this->renderEach($parts, $recipients, $result), $result);
 
         return $result;
     }
@@ -168,12 +169,15 @@ final class MailValidator
     }
 
     /**
+     * Proměnné ze stromu šablony: nastavené v textu (`{% set %}`, cyklus) a neznámé (mimo katalog,
+     * kontext, globální proměnné).
+     *
      * @param list<ModuleNode>     $modules
      * @param array<string, mixed> $context
      *
-     * @return list<string> proměnné nastavené v textu (`{% set %}`, cyklus)
+     * @return array{assigned: list<string>, unknown: list<string>}
      */
-    private function checkUnknownVariables(array $modules, array $context, MailValidationResult $result): array
+    private function collectVariables(array $modules, array $context): array
     {
         $used = [];
         $assigned = [];
@@ -187,13 +191,27 @@ final class MailValidator
             self::SPECIAL_NAMES,
             $assigned,
         );
-        foreach (array_unique($used) as $name) {
-            if (!in_array($name, $known, true)) {
+        return [
+            'assigned' => array_values(array_unique($assigned)),
+            'unknown'  => array_values(array_diff(array_unique($used), $known)),
+        ];
+    }
+
+    /**
+     * Proměnná mimo nabídku = varování — jen když ji už nehlásí chyba vykreslení („Neznámá proměnná"),
+     * tedy u zápisu, který prázdnotu jistí (`|default`, `is defined`) a překlep by jinak zůstal skrytý.
+     *
+     * @param list<string> $unknown
+     * @param list<string> $reported
+     */
+    private static function warnUnknownVariables(array $unknown, array $reported, MailValidationResult $result): void
+    {
+        foreach ($unknown as $name) {
+            $asError = sprintf('Neznámá proměnná „%s"', $name);
+            if ([] === array_filter($reported, static fn (string $message): bool => str_contains($message, $asError))) {
                 $result->warning(sprintf('Proměnná „%s" není v nabídce „Vložit" — zkontroluj, že je napsaná správně.', $name));
             }
         }
-
-        return array_values(array_unique($assigned));
     }
 
     /**
@@ -468,20 +486,28 @@ final class MailValidator
 
     private static function czech(string $raw): string
     {
+        // Pořadí je důležité: obecnější vzory až za konkrétními. {1}, {2} = zachycené části hlášky.
         $translations = [
-            '/^Variable "([^"]+)" does not exist\.?$/'                                  => 'Neznámá proměnná „%s"',
-            '/^Neither the property "([^"]+)" nor one of the methods .*$/'                => 'Neznámá vlastnost nebo metoda „%s"',
-            '/^Unknown "([^"]+)" function\.?.*$/'                                       => 'Neznámá funkce „%s"',
-            '/^Unknown "([^"]+)" filter\.?.*$/'                                         => 'Neznámý filtr „%s"',
-            '/^Unknown "([^"]+)" tag\.?.*$/'                                            => 'Neznámá značka „{%% %s %%}"',
-            '/^Unexpected "([^"]+)" tag .*$/'                                           => 'Značka „{%% %s %%}" tu nemá co dělat (chybí nebo přebývá ukončení bloku?)',
-            '/^Unclosed "([^"]+)"\.?$/'                                                 => 'Neuzavřený blok „%s" — chybí jeho ukončení',
-            '/^Impossible to access an attribute \("([^"]+)"\) on a null variable\.?$/' => 'Nejde přečíst „%s" — hodnota před ní je prázdná',
-            '/.*Unable to generate a URL for the named route "([^"]+)".*/s'              => 'Neexistující adresa (routa) „%s"',
+            '/^Variable "([^"]+)" does not exist\.?$/'                                  => 'Neznámá proměnná „{1}"',
+            '/^Neither the property "([^"]+)" nor one of the methods .*$/'                => 'Neznámá vlastnost nebo metoda „{1}"',
+            '/^Unknown "([^"]+)" function\..*$/s'                                        => 'Neznámá funkce „{1}"',
+            '/^Unknown "([^"]+)" filter\..*$/s'                                          => 'Neznámý filtr „{1}"',
+            '/^Unknown "(end\w+)" tag\..*$/s'                                           => 'Přebývá „{% {1} %}" — k ní chybí začátek bloku',
+            '/^Unknown "([^"]+)" tag\..*$/s'                                             => 'Neznámá značka „{% {1} %}"',
+            '/^Unexpected "(\w+)" tag \(expecting closing tag for the "(\w+)" tag.*$/s' => 'Značka „{% {1} %}" místo ukončení bloku „{2}"',
+            '/^Unexpected end of template\.?$/'                                         => 'Text končí uprostřed bloku — chybí jeho ukončení (např. {% endif %} nebo {% endfor %})',
+            '/^Unexpected token "end of statement block".*$/'                           => 'Ve značce {% … %} chybí podmínka nebo výraz',
+            '/^Unexpected token "[^"]+" of value "([^"]*)".*$/'                         => 'Tady nečekané „{1}" — zkontroluj zápis výrazu',
+            '/^Unexpected "(.)"\.?$/'                                                   => 'Nečekaný znak „{1}" (chybí druhá závorka?)',
+            '/^Unclosed "variable"\.?$/'                                                => 'Neuzavřená proměnná — chybí „}}"',
+            '/^Unclosed "(.+)"\.?$/'                                                    => 'Neuzavřené „{1}" — chybí jeho druhá polovina',
+            '/^A block must start with a tag name\.?$/'                                 => 'Značka {% %} musí začínat názvem (if, for, set…)',
+            '/^Impossible to access an attribute \("([^"]+)"\) on a null variable\.?$/' => 'Nejde přečíst „{1}" — hodnota před ní je prázdná',
+            '/.*Unable to generate a URL for the named route "([^"]+)".*/s'              => 'Neexistující adresa (routa) „{1}"',
         ];
         foreach ($translations as $pattern => $czech) {
             if (1 === preg_match($pattern, $raw, $match)) {
-                return sprintf($czech, $match[1]);
+                return strtr($czech, ['{1}' => $match[1] ?? '', '{2}' => $match[2] ?? '']);
             }
         }
 
