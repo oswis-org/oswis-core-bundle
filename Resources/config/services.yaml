@@ -453,6 +453,11 @@ services:
         public: true
         arguments:
             $providers: !tagged_iterator oswis.mail_catalog_provider
+    OswisOrg\OswisCoreBundle\Mail\Rendering\MailBodySanitizer: ~
+    OswisOrg\OswisCoreBundle\Mail\Rendering\MjmlBodySplitter: ~
+    OswisOrg\OswisCoreBundle\Mail\Rendering\MailRenderer:
+        autowire: true
+        public: true
 
 
 

@@ -1,0 +1,6 @@
+{# Obal pro text mailu ve formátu `body` (spec 2026-09-13 §3.3): `mjmlBody` je hotové MJML
+   z MailRenderer (mj-text / mj-button / mj-image / mj-divider). Oslovení, podpis a patičku dodá
+   message.html.twig (v aplikaci přepsaný). #}
+{% extends '@OswisOrgOswisCore/e-mail/pages/message.html.twig' %}
+
+{% block content_outer %}{{ mjmlBody|default('')|raw }}{% endblock %}

@@ -23,6 +23,8 @@ falls back to whatever is reachable on the bound `contact` / `appUser`.
             <mj-text font-size="14px" line-height="1.5" color="#103010" padding="10px 20px" />
             <mj-section padding="0" />
             <mj-button background-color="#006FAD" color="#ffffff" font-weight="700" border-radius="4px" />
+            {# Výchozí mj-divider v MJML je černá čára 4 px (ověřeno 13. 9. 2026) — jako oddělovač v patičce. #}
+            <mj-divider border-color="#dddddd" border-width="1px" padding="10px 20px" />
         </mj-attributes>
         <mj-style inline="inline">
             a { text-decoration: none; }
@@ -33,6 +35,7 @@ falls back to whatever is reachable on the bound `contact` / `appUser`.
             h4 { font-size: 1.3em; }
             small { color: #606060; }
             .warning { color: red; font-weight: bold; }
+            .highlight { color: #006FAD; font-weight: bold; }
             .error-box {
                 display: block; width: 100%; color: red; border: 2px solid red;
                 background-color: #f08080; padding: 0.5em 1em; margin: 0.5em 0;
