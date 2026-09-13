@@ -48,6 +48,19 @@ final class MailCatalog
         return $names;
     }
 
+    /** Smí výraz zůstat u části příjemců prázdný? (Jen když to říká položka katalogu.) */
+    public function mayBeEmpty(string $expression): bool
+    {
+        $normalized = MailCatalogItem::normalize($expression);
+        foreach ($this->items() as $item) {
+            if ($item->mayBeEmpty && MailCatalogItem::normalize($item->expression) === $normalized) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     /** @return array<string, list<array{label: string, token: string}>> */
     public function groupedForPanel(): array
     {

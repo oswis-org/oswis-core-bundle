@@ -27,7 +27,8 @@ use Twig\Source;
  *
  * - syntaxe Twigu; proměnná mimo katalog = varování;
  * - vykreslení se STRIKTNÍMI proměnnými pro každého příjemce (produkce je jinak benevolentní —
- *   překlep = prázdné místo), shodné chyby sloučené;
+ *   překlep = prázdné místo), shodné chyby sloučené; totéž pro uloženou šablonu (kampaň, blok);
+ * - výraz `{{ … }}` mimo podmínky, který je u části příjemců prázdný = varování;
  * - neznámé bloky; co by čištění zahodilo; odkazy (http = varování, nepovolený tvar = chyba);
  *   obrázek bez popisu;
  * - MJML `strict` pro každou odlišnou skladbu bloků (ne pro každého příjemce — 0,5 s na vykreslení)
@@ -35,8 +36,13 @@ use Twig\Source;
  */
 final class MailValidator
 {
-    /** @var list<string> */
-    private const array SPECIAL_NAMES = ['_self', '_context', '_charset', 'loop'];
+    /**
+     * Jména, která existují vždy: Twig (`_self`, `loop`…) a Symfony Mailer — ten při odeslání přidá
+     * `email` (WrappedTemplatedEmail, např. `email.image()` pro vložené obrázky).
+     *
+     * @var list<string>
+     */
+    private const array SPECIAL_NAMES = ['_self', '_context', '_charset', 'loop', 'email'];
 
     public function __construct(
         private readonly Environment $twig,
@@ -56,8 +62,16 @@ final class MailValidator
         if (null === $subjectModule || null === $bodyModule) {
             return $result;
         }
-        $this->checkUnknownVariables([$subjectModule, $bodyModule], $recipients[0]['context'] ?? [], $result);
-        [$structures, $reported] = $this->renderForRecipients($subject, $body, $recipients, $result);
+        $assigned = $this->checkUnknownVariables([$subjectModule, $bodyModule], $recipients[0]['context'] ?? [], $result);
+        $structures = [];
+        // Předmět a text zvlášť — chyba v předmětu nesmí zakrýt chybu v textu.
+        $renderBody = function (array $context) use ($body, &$structures): void {
+            /** @var array<string, mixed> $context */
+            $mjml = $this->renderer->renderBody($body, $context, false);
+            $structures[self::structureOf($mjml)] ??= $mjml;
+        };
+        $reported = $this->renderEach(['V předmětu' => $this->subjectRenderer($subject), 'V textu' => $renderBody], $recipients, $result);
+        $this->checkEmptyForSomeRecipients($subject."\n".$body, $recipients, $assigned, $result);
         // Značky, odkazy a bloky se kontrolují vždy — i když některá proměnná nejde vyhodnotit (ta už
         // je hlášená výš). Benevolentní vykreslení = neznámá proměnná je prázdné místo; když nejde ani
         // to (např. neexistující routa), kontroluje se aspoň zdroj.
@@ -88,22 +102,58 @@ final class MailValidator
         return $result;
     }
 
-    /** @param list<array{label: string, context: array<string, mixed>}> $recipients */
-    public function validateTemplateSource(string $source, array $recipients): MailValidationResult
+    /**
+     * Uložená šablona (kampaň, blok) před uložením — zdroj ještě není v DB.
+     *
+     * @param list<array{label: string, context: array<string, mixed>}> $recipients
+     */
+    public function validateTemplateSource(string $source, array $recipients, ?string $subject = null): MailValidationResult
     {
         $result = new MailValidationResult();
-        if (null === $this->parse('šablona', $source, $result)) {
+        $modules = [$this->parse('šablona', $source, $result)];
+        if (null !== $subject) {
+            $modules[] = $this->parse('předmět', $subject, $result);
+        }
+        if (in_array(null, $modules, true)) {
             return $result;
         }
-        foreach ($recipients as $recipient) {
-            try {
-                $this->twig->createTemplate($source)->render($recipient['context']);
-            } catch (\Throwable $exception) {
-                $result->error(sprintf('%s: %s', $recipient['label'], self::message($exception)));
-            }
+        /** @var list<ModuleNode> $modules */
+        $this->checkUnknownVariables($modules, $recipients[0]['context'] ?? [], $result);
+        $parts = ['V šabloně' => fn (array $context): string => $this->twig->createTemplate($source)->render($context)];
+        if (null !== $subject) {
+            $parts['V předmětu'] = $this->subjectRenderer($subject);
         }
+        $this->renderEach($parts, $recipients, $result);
 
         return $result;
+    }
+
+    /**
+     * Uložená šablona podle jména (slug v DB nebo soubor) — před zařazením hromadného mailu.
+     *
+     * @param list<array{label: string, context: array<string, mixed>}> $recipients
+     */
+    public function validateTemplate(string $name, array $recipients, ?string $subject = null): MailValidationResult
+    {
+        try {
+            $source = $this->twig->getLoader()->getSourceContext($name)->getCode();
+        } catch (TwigError) {
+            $result = new MailValidationResult();
+            $result->error(sprintf('Šablona „%s" neexistuje.', $name));
+
+            return $result;
+        }
+
+        return $this->validateTemplateSource($source, $recipients, $subject);
+    }
+
+    /** @return \Closure(array<string, mixed>): string */
+    private function subjectRenderer(string $subject): \Closure
+    {
+        return function (array $context) use ($subject): string {
+            /** @var array<string, mixed> $context */
+            return $this->renderer->renderSubject($subject, $context);
+        };
     }
 
     private function parse(string $part, string $source, MailValidationResult $result): ?ModuleNode
@@ -111,7 +161,7 @@ final class MailValidator
         try {
             return $this->twig->parse($this->twig->tokenize(new Source($source, 'mail-'.$part)));
         } catch (SyntaxError $exception) {
-            $result->error(sprintf('Chyba v zápisu (%s, řádek %d): %s', $part, $exception->getTemplateLine(), $exception->getRawMessage()));
+            $result->error(sprintf('Chyba v zápisu (%s, řádek %d): %s', $part, $exception->getTemplateLine(), self::czech($exception->getRawMessage())));
 
             return null;
         }
@@ -120,20 +170,30 @@ final class MailValidator
     /**
      * @param list<ModuleNode>     $modules
      * @param array<string, mixed> $context
+     *
+     * @return list<string> proměnné nastavené v textu (`{% set %}`, cyklus)
      */
-    private function checkUnknownVariables(array $modules, array $context, MailValidationResult $result): void
+    private function checkUnknownVariables(array $modules, array $context, MailValidationResult $result): array
     {
         $used = [];
         $assigned = [];
         foreach ($modules as $module) {
             self::collectNames($module, $used, $assigned);
         }
-        $known = array_merge($this->catalog->rootNames(), array_keys($context), self::SPECIAL_NAMES, $assigned);
+        $known = array_merge(
+            $this->catalog->rootNames(),
+            array_map(strval(...), array_keys($context)),
+            array_keys($this->twig->getGlobals()),
+            self::SPECIAL_NAMES,
+            $assigned,
+        );
         foreach (array_unique($used) as $name) {
             if (!in_array($name, $known, true)) {
                 $result->warning(sprintf('Proměnná „%s" není v nabídce „Vložit" — zkontroluj, že je napsaná správně.', $name));
             }
         }
+
+        return array_values(array_unique($assigned));
     }
 
     /**
@@ -180,27 +240,25 @@ final class MailValidator
     }
 
     /**
+     * Vykreslí části zprávy pro každého příjemce se striktními proměnnými. Chyba jedné části nezastaví
+     * ostatní; shodné chyby u více příjemců se sloučí („U 12 příjemců (např. …)").
+     *
+     * @param array<string, \Closure(array<string, mixed>): mixed>      $parts      popisek části → vykreslení
      * @param list<array{label: string, context: array<string, mixed>}> $recipients
      *
-     * @return array{0: array<string, string>, 1: list<string>} skladba bloků → MJML fragment; nahlášené chyby
+     * @return list<string> nahlášené chyby bez popisku příjemce (k vyloučení duplicit)
      */
-    private function renderForRecipients(string $subject, string $body, array $recipients, MailValidationResult $result): array
+    private function renderEach(array $parts, array $recipients, MailValidationResult $result): array
     {
-        $structures = [];
         $failures = [];
-        $this->withStrictVariables(true, function () use ($subject, $body, $recipients, &$structures, &$failures): void {
+        $this->withStrictVariables(true, static function () use ($parts, $recipients, &$failures): void {
             foreach ($recipients as $recipient) {
-                // Předmět a text zvlášť — chyba v předmětu nesmí zakrýt chybu v textu.
-                try {
-                    $this->renderer->renderSubject($subject, $recipient['context']);
-                } catch (\Throwable $exception) {
-                    $failures['V předmětu: '.self::message($exception)][] = $recipient['label'];
-                }
-                try {
-                    $mjml = $this->renderer->renderBody($body, $recipient['context'], false);
-                    $structures[self::structureOf($mjml)] ??= $mjml;
-                } catch (\Throwable $exception) {
-                    $failures['V textu: '.self::message($exception)][] = $recipient['label'];
+                foreach ($parts as $part => $render) {
+                    try {
+                        $render($recipient['context']);
+                    } catch (\Throwable $exception) {
+                        $failures[$part.': '.self::message($exception)][] = $recipient['label'];
+                    }
                 }
             }
         });
@@ -210,7 +268,89 @@ final class MailValidator
                 : sprintf('U %d příjemců (např. %s): %s', count($labels), $labels[0], $message));
         }
 
-        return [$structures, array_map(strval(...), array_keys($failures))];
+        return array_map(strval(...), array_keys($failures));
+    }
+
+    /**
+     * Výrazy `{{ … }}` mimo podmínky a cykly, které jsou u části příjemců prázdné (spec §3.5) — typicky
+     * údaj, který část lidí nevyplnila. Nehlásí se výrazy, které prázdné být smějí (katalog), ani
+     * proměnné nastavené v textu; výraz, který nejde vykreslit, je hlášený jinde.
+     *
+     * @param list<array{label: string, context: array<string, mixed>}> $recipients
+     * @param list<string>                                              $assigned
+     */
+    private function checkEmptyForSomeRecipients(string $source, array $recipients, array $assigned, MailValidationResult $result): void
+    {
+        if ([] === $recipients) {
+            return;
+        }
+        foreach (self::topLevelPrintExpressions($source) as $expression) {
+            $root = 1 === preg_match('/^[A-Za-z_]\w*/', $expression, $match) ? $match[0] : '';
+            if (in_array($root, $assigned, true) || $this->catalog->mayBeEmpty($expression)) {
+                continue;
+            }
+            $source = '{{ ('.$expression.') }}';
+            $empty = [];
+            try {
+                // Překládá se až uvnitř přepnutí: Twig striktní kontrolu proměnných zapéká do kódu.
+                $this->withStrictVariables(false, function () use ($source, $recipients, &$empty): void {
+                    $template = $this->twig->createTemplate($source);
+                    foreach ($recipients as $recipient) {
+                        // Značka (blok, obrázek) není prázdno — jen opravdu nic nebo mezery.
+                        if ('' !== trim($template->render($recipient['context']))) {
+                            continue;
+                        }
+                        // Prázdné jen proto, že výraz nejde vyhodnotit (překlep)? To je chyba hlášená
+                        // výš — varování by bylo jen šumem navíc (výjimka = výraz přeskočit).
+                        $this->withStrictVariables(true, fn (): string => $this->twig->createTemplate($source)->render($recipient['context']));
+                        $empty[] = $recipient['label'];
+                    }
+                });
+            } catch (\Throwable) {
+                continue;
+            }
+            if ([] === $empty) {
+                continue;
+            }
+            $total = count($recipients);
+            $result->warning(match (true) {
+                1 === $total        => sprintf('„{{ %s }}" je u příjemce prázdné.', $expression),
+                count($empty) === $total => sprintf('„{{ %s }}" je prázdné u všech příjemců.', $expression),
+                default             => sprintf('„{{ %s }}" je prázdné u %d z %d příjemců (např. %s).', $expression, count($empty), $total, $empty[0]),
+            });
+        }
+    }
+
+    /**
+     * `{{ výraz }}` na nejvyšší úrovni — ne uvnitř `{% if %}`, `{% for %}` apod., kde prázdnota
+     * bývá záměr. Stačí jednoduché procházení značek: jde o varování, ne o překlad.
+     *
+     * @return list<string>
+     */
+    private static function topLevelPrintExpressions(string $source): array
+    {
+        $nesting = ['if', 'for', 'with', 'macro', 'embed', 'verbatim'];
+        preg_match_all('/\{#.*?#\}|\{%-?\s*(\w+)(.*?)-?%\}|\{\{-?(.*?)-?\}\}/s', $source, $matches, PREG_SET_ORDER);
+        $depth = 0;
+        $expressions = [];
+        foreach ($matches as $match) {
+            $tag = $match[1] ?? '';
+            if ('' !== $tag) {
+                // `{% set x %}…{% endset %}` (bez `=`) obaluje obsah jako podmínka; `{% set x = … %}` ne.
+                if (in_array($tag, $nesting, true) || ('set' === $tag && !str_contains($match[2] ?? '', '='))) {
+                    ++$depth;
+                } elseif (str_starts_with($tag, 'end') && in_array(substr($tag, 3), [...$nesting, 'set'], true)) {
+                    $depth = max(0, $depth - 1);
+                }
+                continue;
+            }
+            $expression = trim($match[3] ?? '');
+            if (0 === $depth && '' !== $expression && !in_array($expression, $expressions, true)) {
+                $expressions[] = $expression;
+            }
+        }
+
+        return $expressions;
     }
 
     /** @param list<string> $keys */
@@ -322,22 +462,29 @@ final class MailValidator
         if (!$exception instanceof TwigError) {
             return $exception->getMessage();
         }
-        $raw = $exception->getRawMessage();
+
+        return sprintf('%s (řádek %d)', self::czech($exception->getRawMessage()), $exception->getTemplateLine());
+    }
+
+    private static function czech(string $raw): string
+    {
         $translations = [
-            '/^Variable "([^"]+)" does not exist\.?$/'                                    => 'Neznámá proměnná „%s"',
-            '/^Neither the property "([^"]+)" nor one of the methods .*$/'                  => 'Neznámá vlastnost nebo metoda „%s"',
-            '/^Unknown "([^"]+)" function\.?.*$/'                                         => 'Neznámá funkce „%s"',
-            '/^Unknown "([^"]+)" filter\.?.*$/'                                           => 'Neznámý filtr „%s"',
-            '/^Impossible to access an attribute \("([^"]+)"\) on a null variable\.?$/'   => 'Nejde přečíst „%s" — hodnota před ní je prázdná',
-            '/.*Unable to generate a URL for the named route "([^"]+)".*/s'                => 'Neexistující adresa (routa) „%s"',
+            '/^Variable "([^"]+)" does not exist\.?$/'                                  => 'Neznámá proměnná „%s"',
+            '/^Neither the property "([^"]+)" nor one of the methods .*$/'                => 'Neznámá vlastnost nebo metoda „%s"',
+            '/^Unknown "([^"]+)" function\.?.*$/'                                       => 'Neznámá funkce „%s"',
+            '/^Unknown "([^"]+)" filter\.?.*$/'                                         => 'Neznámý filtr „%s"',
+            '/^Unknown "([^"]+)" tag\.?.*$/'                                            => 'Neznámá značka „{%% %s %%}"',
+            '/^Unexpected "([^"]+)" tag .*$/'                                           => 'Značka „{%% %s %%}" tu nemá co dělat (chybí nebo přebývá ukončení bloku?)',
+            '/^Unclosed "([^"]+)"\.?$/'                                                 => 'Neuzavřený blok „%s" — chybí jeho ukončení',
+            '/^Impossible to access an attribute \("([^"]+)"\) on a null variable\.?$/' => 'Nejde přečíst „%s" — hodnota před ní je prázdná',
+            '/.*Unable to generate a URL for the named route "([^"]+)".*/s'              => 'Neexistující adresa (routa) „%s"',
         ];
         foreach ($translations as $pattern => $czech) {
             if (1 === preg_match($pattern, $raw, $match)) {
-                $raw = sprintf($czech, $match[1]);
-                break;
+                return sprintf($czech, $match[1]);
             }
         }
 
-        return sprintf('%s (řádek %d)', $raw, $exception->getTemplateLine());
+        return $raw;
     }
 }

@@ -10,12 +10,23 @@ final readonly class MailCatalogItem
     public const string VARIABLE = 'variable';
     public const string CONDITION = 'condition';
 
+    /**
+     * @param bool $mayBeEmpty výraz smí být u části příjemců prázdný (koncovka `a` u mužů) — kontrola
+     *                         na to neupozorňuje
+     */
     public function __construct(
         public string $group,
         public string $label,
         public string $expression,
         public string $kind = self::VARIABLE,
+        public bool $mayBeEmpty = false,
     ) {
+    }
+
+    /** Výraz bez rozdílů v mezerách — pro porovnání s tím, co autor napsal. */
+    public static function normalize(string $expression): string
+    {
+        return (string) preg_replace('/\s+/', '', $expression);
     }
 
     public function token(): string
