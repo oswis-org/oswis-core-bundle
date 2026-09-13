@@ -1,0 +1,22 @@
+{#
+    Editor textu mailu (spec 2026-09-13 §4) — JEDNA šablona pro „Novou zprávu", hromadný mail
+    i formulářové pole MailBodyType. Odesílané pole je <textarea name="{{ name }}">; bez JS (nebo
+    než se editor načte) funguje jako kód. Chování dodává Stimulus kontroler `mail-editor` (aplikace).
+
+    Parametry: name, id, value, config (MailEditorConfig::toArray()), required (bool), rows (int),
+    label (popisek pro čtečky).
+#}
+<div class="mail-editor" {{ stimulus_controller('mail-editor', { config: config, label: label|default('Text zprávy') }) }}>
+    {# PANEL #}
+    <div class="mail-editor__frame">
+        <div class="mail-editor__fixed" aria-hidden="true">Ahoj [Oslovení]! — doplní systém</div>
+        <div class="mail-editor__surface" data-mail-editor-target="surface"></div>
+        <div class="mail-editor__fixed" aria-hidden="true">S pozdravem, Tým Seznamováku… — podpis a patičku doplní systém</div>
+    </div>
+    <textarea class="form-control mail-editor__source" name="{{ name }}" id="{{ id }}" rows="{{ rows|default(14) }}"
+              data-mail-editor-target="source"{{ required|default(false) ? ' required' : '' }}
+              style="font-family: monospace;">{{ value }}</textarea>
+    <div class="invalid-feedback mail-editor__required-message">Napiš prosím text zprávy.</div>
+    {# DIALOGY #}
+    {# NÁHLED #}
+</div>
