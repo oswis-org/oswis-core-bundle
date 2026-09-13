@@ -94,9 +94,9 @@ final class MailMarkupPolicy
     }
 
     /**
-     * Rozdělí `style` na deklarace, které čištěním projdou, a vlastnosti, které zahodí — jedno
-     * místo pro čištění i pro kontrolu („při odeslání se odstraní…"). Hodnota s url(),
-     * expression(), javascript: nebo znaky < > " \ neprojde nikdy.
+     * Rozdělí `style` na deklarace, které čištěním projdou, a deklarace, které zahodí (tak, jak je
+     * autor napsal — kvůli radě ke zápisu) — jedno místo pro čištění i pro kontrolu („při odeslání se
+     * odstraní…"). Hodnota s url(), expression(), javascript: nebo znaky < > " \ neprojde nikdy.
      *
      * @return array{kept: list<string>, removed: list<string>}
      */
@@ -112,13 +112,30 @@ final class MailMarkupPolicy
                 continue;
             }
             if ('' === $value || !self::isAllowedCssProperty($property) || 1 === preg_match(self::UNSAFE_CSS_VALUE, $value)) {
-                $removed[] = $property;
+                $removed[] = trim($declaration);
                 continue;
             }
             $kept[] = $property.': '.$value;
         }
 
         return ['kept' => $kept, 'removed' => $removed];
+    }
+
+    /**
+     * Rada k deklaraci stylu, kterou čištění zahodí — hlavně pro nejčastější překlep v zarovnání
+     * (`align=justify`, `text-align=center` místo `text-align: justify`; nalezeno 13. 9. 2026
+     * v prvním hromadném mailu po nasazení). Null = rada není (nepovolená vlastnost).
+     */
+    public static function styleHint(string $declaration): ?string
+    {
+        if (1 === preg_match('/^(?:text-)?align\s*[=:]?\s*["\']?(left|right|center|justify)\b/i', trim($declaration), $match)) {
+            return sprintf('správně style="text-align: %s"', strtolower($match[1]));
+        }
+        if (!str_contains($declaration, ':')) {
+            return 'styl se píše „vlastnost: hodnota", např. style="text-align: justify"';
+        }
+
+        return null;
     }
 
     /** @return array{kept: list<string>, removed: list<string>} */

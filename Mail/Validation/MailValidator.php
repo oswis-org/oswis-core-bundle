@@ -403,8 +403,9 @@ final class MailValidator
                 if (!in_array($attributeName, $allowed[$name], true)) {
                     $removed[] = sprintf('atribut %s u <%s>', $attributeName, $name);
                 } elseif ('style' === $attributeName) {
-                    foreach (MailMarkupPolicy::splitStyle($attribute->value)['removed'] as $property) {
-                        $removed[] = sprintf('styl „%s" u <%s>', $property, $name);
+                    foreach (MailMarkupPolicy::splitStyle($attribute->value)['removed'] as $declaration) {
+                        $hint = MailMarkupPolicy::styleHint($declaration);
+                        $removed[] = sprintf('styl „%s" u <%s>', $declaration, $name).(null !== $hint ? ' ('.$hint.')' : '');
                     }
                 } elseif ('class' === $attributeName) {
                     foreach (MailMarkupPolicy::splitClasses($attribute->value)['removed'] as $class) {

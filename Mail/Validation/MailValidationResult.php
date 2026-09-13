@@ -42,4 +42,19 @@ final class MailValidationResult
     {
         return $this->problems;
     }
+
+    /**
+     * Otisk varování — potvrzení „odeslat i tak" platí jen pro TATO varování; po úpravě textu
+     * s jinými varováními se ptáme znovu.
+     */
+    public function warningsFingerprint(): string
+    {
+        return hash('xxh3', implode("\n", array_map(static fn (MailProblem $p): string => $p->message, $this->warnings())));
+    }
+
+    /** Smí se zpráva odeslat? Bez chyb a buď bez varování, nebo autor potvrdil právě tato varování. */
+    public function isConfirmedBy(?string $fingerprint): bool
+    {
+        return !$this->hasErrors() && ([] === $this->warnings() || $fingerprint === $this->warningsFingerprint());
+    }
 }
