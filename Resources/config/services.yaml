@@ -13,6 +13,8 @@ services:
     _instanceof:
         OswisOrg\OswisCoreBundle\Export\ExportDefinitionInterface:
             tags: [ 'oswis.export_definition' ]
+        OswisOrg\OswisCoreBundle\Mail\Block\MailBlockProviderInterface:
+            tags: [ 'oswis.mail_block_provider' ]
 
     ### Search Filter
     #    oswis_org_oswis_core.search_filter:
@@ -426,6 +428,24 @@ services:
             - '@OswisOrg\OswisCoreBundle\Repository\TwigTemplateRepository'
         tags:
             - { name: twig.loader }
+
+    ####
+    #### E-MAILY — bloky, vykreslení, katalog, kontrola (spec docs/superpowers/specs/2026-09-13-emaily-design.md)
+    ####
+    OswisOrg\OswisCoreBundle\Mail\Block\MailBlockRegistry:
+        autowire: true
+        public: true
+        arguments:
+            $providers: !tagged_iterator oswis.mail_block_provider
+    OswisOrg\OswisCoreBundle\Mail\Block\DatabaseSnippetBlockProvider:
+        autowire: true
+        tags:
+            - { name: oswis.mail_block_provider, priority: -10 }
+    OswisOrg\OswisCoreBundle\Mail\Rendering\MailBlockRenderer:
+        autowire: true
+        public: true
+    OswisOrg\OswisCoreBundle\Twig\Extension\MailBlockExtension:
+        tags: [ twig.extension ]
 
 
 
