@@ -15,6 +15,17 @@ use Symfony\Component\HtmlSanitizer\HtmlSanitizerConfig;
  */
 final class MailBodySanitizer
 {
+    /**
+     * Značky, jejichž obsah do textu mailu nepatří a které Symfony HtmlSanitizer v těle stránky
+     * nezahodí: `dropElement()` u „hlavičkových" značek (W3CReference::HEAD_ELEMENTS) v kontextu těla
+     * ignoruje a použije výchozí akci Block — CSS ze <style> by v mailu zůstalo jako viditelný text.
+     * Neukončený <style>/<title> parser čte do konce textu, proto se zahodí také do konce.
+     */
+    private const array DROPPED_WITH_CONTENT = [
+        '~<(style|title|head)\b[^>]*>.*?</\1\s*>~is',
+        '~<(style|title)\b[^>]*>.*$~is',
+    ];
+
     private ?HtmlSanitizer $sanitizer = null;
 
     public function sanitize(string $html): string
@@ -26,6 +37,8 @@ final class MailBodySanitizer
                 intdiv(MailMarkupPolicy::MAX_BODY_BYTES, 1000),
             ));
         }
+
+        $html = (string) preg_replace(self::DROPPED_WITH_CONTENT, '', $html);
 
         return ($this->sanitizer ??= $this->build())->sanitize($html);
     }
