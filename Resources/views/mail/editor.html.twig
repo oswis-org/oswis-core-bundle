@@ -66,13 +66,16 @@
             {{ t.tool('redo', 'Znovu', 'tabler:arrow-forward-up', 'Ctrl+Shift+Z', false) }}
         </div>
         <div class="btn-group ms-auto mb-1" role="group" aria-label="Zobrazení">
-            {{ t.tool('code', 'Kód', 'tabler:code', null, true, true) }}
+            {{ t.tool('code', 'Kód', 'tabler:code', null, true) }}
         </div>
     </div>
     <div class="mail-editor__frame">
         <div class="mail-editor__fixed" aria-hidden="true">Ahoj [Oslovení]! — doplní systém</div>
         <div class="mail-editor__surface" id="{{ id }}-surface" data-mail-editor-target="surface"></div>
         <div class="mail-editor__fixed" aria-hidden="true">S pozdravem, Tým Seznamováku… — podpis a patičku doplní systém</div>
+    </div>
+    <div class="mail-editor__code" data-mail-editor-target="code" hidden>
+        <div class="alert alert-danger py-2 mb-2 mail-editor__code-error" role="alert" data-mail-editor-target="codeError" hidden></div>
     </div>
     <textarea class="form-control mail-editor__source" name="{{ name }}" id="{{ id }}" rows="{{ rows|default(14) }}"
               data-mail-editor-target="source"{{ required|default(false) ? ' required' : '' }}
