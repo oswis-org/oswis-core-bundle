@@ -458,6 +458,9 @@ services:
     OswisOrg\OswisCoreBundle\Mail\Rendering\MailRenderer:
         autowire: true
         public: true
+    OswisOrg\OswisCoreBundle\Mail\Validation\MailValidator:
+        autowire: true
+        public: true
 
 
 

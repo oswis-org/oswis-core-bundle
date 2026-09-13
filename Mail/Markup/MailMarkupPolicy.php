@@ -19,6 +19,9 @@ final class MailMarkupPolicy
     /** Delší tělo se odmítne s hláškou (výchozí limit sanitizéru 20 000 B tělo potichu ořezával). */
     public const int MAX_BODY_BYTES = 500_000;
 
+    /** Hodnota CSS, která neprojde nikdy (načítání zdrojů, skripty, únik z atributu). */
+    private const string UNSAFE_CSS_VALUE = '/url\s*\(|expression\s*\(|javascript:|[<>"\\\\]/i';
+
     /** @var list<string> */
     public const array LINK_SCHEMES = ['http', 'https', 'mailto', 'tel'];
 
@@ -88,5 +91,49 @@ final class MailMarkupPolicy
     public static function isAllowedCssProperty(string $property): bool
     {
         return in_array(strtolower(trim($property)), self::CSS_PROPERTIES, true);
+    }
+
+    /**
+     * Rozdělí `style` na deklarace, které čištěním projdou, a vlastnosti, které zahodí — jedno
+     * místo pro čištění i pro kontrolu („při odeslání se odstraní…"). Hodnota s url(),
+     * expression(), javascript: nebo znaky < > " \ neprojde nikdy.
+     *
+     * @return array{kept: list<string>, removed: list<string>}
+     */
+    public static function splitStyle(string $style): array
+    {
+        $kept = [];
+        $removed = [];
+        foreach (explode(';', $style) as $declaration) {
+            [$property, $value] = array_pad(explode(':', $declaration, 2), 2, '');
+            $property = strtolower(trim($property));
+            $value = trim($value);
+            if ('' === $property && '' === $value) {
+                continue;
+            }
+            if ('' === $value || !self::isAllowedCssProperty($property) || 1 === preg_match(self::UNSAFE_CSS_VALUE, $value)) {
+                $removed[] = $property;
+                continue;
+            }
+            $kept[] = $property.': '.$value;
+        }
+
+        return ['kept' => $kept, 'removed' => $removed];
+    }
+
+    /** @return array{kept: list<string>, removed: list<string>} */
+    public static function splitClasses(string $classes): array
+    {
+        $kept = [];
+        $removed = [];
+        foreach (preg_split('/\s+/', trim($classes), -1, PREG_SPLIT_NO_EMPTY) ?: [] as $class) {
+            if (self::isAllowedClass($class)) {
+                $kept[] = $class;
+            } else {
+                $removed[] = $class;
+            }
+        }
+
+        return ['kept' => $kept, 'removed' => $removed];
     }
 }

@@ -68,6 +68,33 @@ final class MjmlExtension extends AbstractExtension
         });
     }
 
+    /**
+     * Přísná kontrola MJML (`--config.validationLevel=strict`) — seznam chyb, prázdný = v pořádku.
+     *
+     * Pozor: obsah „ending tagů" (mj-text, mj-button) validátor MJML nekontroluje — MJML značku
+     * uvnitř textu hlídá MailValidator zvlášť (žádné `<mj-` ve výsledném HTML). Ověřeno na 5.4.0.
+     *
+     * @return list<string>
+     */
+    public function validate(string $mjml): array
+    {
+        $process = new Process([$this->resolveBinary(), '-i', '-s', '--config.validationLevel=strict'], $this->projectDir);
+        $process->setInput($mjml);
+        $process->setTimeout(self::PROCESS_TIMEOUT_SECONDS);
+        $process->run();
+        if ($process->isSuccessful()) {
+            return [];
+        }
+        $messages = [];
+        foreach (preg_split('/\R/', $process->getErrorOutput().$process->getOutput()) ?: [] as $line) {
+            if (1 === preg_match('/Line (\d+) of .*? \((mj-[a-z-]+)\) — (.+)$/u', trim($line), $m)) {
+                $messages[] = sprintf('řádek %d (%s): %s', (int) $m[1], $m[2], $m[3]);
+            }
+        }
+
+        return [] === $messages ? ['MJML nejde přeložit: '.trim($process->getErrorOutput())] : $messages;
+    }
+
     private function compile(string $mjml): string
     {
         $binary = $this->resolveBinary();

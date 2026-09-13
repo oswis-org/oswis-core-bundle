@@ -11,8 +11,10 @@ use Twig\TwigFunction;
 /** `{{ blok('rekapitulace-prihlasky') }}` — zástupná značka; obsah dosadí MailBlockRenderer. */
 final class MailBlockExtension extends AbstractExtension
 {
+    public const string FUNCTION_NAME = 'blok';
+
     public function getFunctions(): array
     {
-        return [new TwigFunction('blok', MailBlockRenderer::placeholder(...), ['is_safe' => ['html']])];
+        return [new TwigFunction(self::FUNCTION_NAME, MailBlockRenderer::placeholder(...), ['is_safe' => ['html']])];
     }
 }

@@ -25,28 +25,12 @@ final class MailStyleClassAttributeSanitizer implements AttributeSanitizerInterf
     public function sanitizeAttribute(string $element, string $attribute, string $value, HtmlSanitizerConfig $config): ?string
     {
         if ('class' === $attribute) {
-            $classes = array_values(array_filter(
-                preg_split('/\s+/', trim($value)) ?: [],
-                static fn (string $class): bool => MailMarkupPolicy::isAllowedClass($class),
-            ));
+            $classes = MailMarkupPolicy::splitClasses($value)['kept'];
 
             return [] === $classes ? null : implode(' ', $classes);
         }
+        $declarations = MailMarkupPolicy::splitStyle($value)['kept'];
 
-        $kept = [];
-        foreach (explode(';', $value) as $declaration) {
-            [$property, $cssValue] = array_pad(explode(':', $declaration, 2), 2, '');
-            $property = strtolower(trim($property));
-            $cssValue = trim($cssValue);
-            if ('' === $property || '' === $cssValue || !MailMarkupPolicy::isAllowedCssProperty($property)) {
-                continue;
-            }
-            if (1 === preg_match('/url\s*\(|expression\s*\(|javascript:|[<>"\\\\]/i', $cssValue)) {
-                continue;
-            }
-            $kept[] = $property.': '.$cssValue;
-        }
-
-        return [] === $kept ? null : implode('; ', $kept).';';
+        return [] === $declarations ? null : implode('; ', $declarations).';';
     }
 }
