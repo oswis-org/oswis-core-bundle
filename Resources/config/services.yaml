@@ -453,6 +453,10 @@ services:
         public: true
         arguments:
             $providers: !tagged_iterator oswis.mail_catalog_provider
+    # Nastavení editoru textu mailu (katalog, bloky, pravidla čištění) — spec e-mailů §4.1
+    OswisOrg\OswisCoreBundle\Mail\Editor\MailEditorConfig:
+        autowire: true
+        public: true
     OswisOrg\OswisCoreBundle\Mail\Rendering\MailBodySanitizer: ~
     OswisOrg\OswisCoreBundle\Mail\Rendering\MjmlBodySplitter: ~
     OswisOrg\OswisCoreBundle\Mail\Rendering\MailRenderer:
