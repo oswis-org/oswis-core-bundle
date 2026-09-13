@@ -92,7 +92,8 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
                 'oswis' => '@oswis_org_oswis_core.oswis_core_settings_provider',
                 'timezone' => 'Europe/Prague',
             ],
-            'form_themes' => ['bootstrap_5_layout.html.twig'],
+            // Motiv editoru textu mailu (MailBodyType, spec e-mailů §4.1) pro všechny formuláře.
+            'form_themes' => ['bootstrap_5_layout.html.twig', '@OswisOrgOswisCore/form/mail_editor_theme.html.twig'],
             'date' => [
                 'format' => 'j. n. Y H:i',
                 'timezone' => 'Europe/Prague',

@@ -457,6 +457,10 @@ services:
     OswisOrg\OswisCoreBundle\Mail\Editor\MailEditorConfig:
         autowire: true
         public: true
+    # Pole textu mailu s editorem (formuláře „Nová zpráva" aj.)
+    OswisOrg\OswisCoreBundle\Form\Type\MailBodyType:
+        autowire: true
+        autoconfigure: true
     OswisOrg\OswisCoreBundle\Mail\Rendering\MailBodySanitizer: ~
     OswisOrg\OswisCoreBundle\Mail\Rendering\MjmlBodySplitter: ~
     OswisOrg\OswisCoreBundle\Mail\Rendering\MailRenderer:

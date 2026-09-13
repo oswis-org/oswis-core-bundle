@@ -1,0 +1,13 @@
+{# Motiv pole MailBodyType — editor textu mailu; odesílané pole zůstává textarea (name = full_name). #}
+{% block mail_body_widget %}
+    {% include '@OswisOrgOswisCore/mail/editor.html.twig' with {
+        name: full_name,
+        id: id,
+        value: value,
+        config: editor_config,
+        required: required,
+        rows: rows,
+        preview: preview,
+        label: label|default('Text zprávy'),
+    } only %}
+{% endblock %}

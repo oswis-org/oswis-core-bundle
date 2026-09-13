@@ -4,21 +4,16 @@ declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Mail\Catalog;
 
-use OswisOrg\OswisCoreBundle\Mail\Block\MailBlockRegistry;
-
 /**
- * Jediný serverový katalog proměnných, podmínek a bloků (spec 2026-09-13 §3.4). Krmí nabídku
- * „Vložit", kontrolu chyb (výraz mimo katalog = varování) a od dávky 2 i editor.
+ * Jediný serverový katalog proměnných a podmínek (spec 2026-09-13 §3.4). Krmí editor
+ * ({@see \OswisOrg\OswisCoreBundle\Mail\Editor\MailEditorConfig}) a kontrolu chyb (výraz mimo
+ * katalog = varování). Vložené bloky má {@see \OswisOrg\OswisCoreBundle\Mail\Block\MailBlockRegistry}.
  */
 final class MailCatalog
 {
-    public const string BLOCKS_GROUP = 'Vložené bloky';
-
     /** @param iterable<MailCatalogProviderInterface> $providers */
-    public function __construct(
-        private readonly iterable $providers,
-        private readonly MailBlockRegistry $blocks,
-    ) {
+    public function __construct(private readonly iterable $providers)
+    {
     }
 
     /** @return list<MailCatalogItem> */
@@ -59,19 +54,5 @@ final class MailCatalog
         }
 
         return false;
-    }
-
-    /** @return array<string, list<array{label: string, token: string}>> */
-    public function groupedForPanel(): array
-    {
-        $groups = [];
-        foreach ($this->items() as $item) {
-            $groups[$item->group][] = ['label' => $item->label, 'token' => $item->token()];
-        }
-        foreach ($this->blocks->all() as $block) {
-            $groups[self::BLOCKS_GROUP][] = ['label' => $block->label, 'token' => sprintf("{{ blok('%s') }}", $block->key)];
-        }
-
-        return $groups;
     }
 }

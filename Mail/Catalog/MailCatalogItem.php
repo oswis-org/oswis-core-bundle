@@ -31,13 +31,6 @@ final readonly class MailCatalogItem
         return (string) preg_replace('/\s+/', '', $expression);
     }
 
-    public function token(): string
-    {
-        return self::CONDITION === $this->kind
-            ? "{% if {$this->expression} %}\n  …\n{% endif %}"
-            : '{{ '.$this->expression.' }}';
-    }
-
     /** Kořenová proměnná výrazu (`participant.event(false).name` → `participant`). */
     public function rootName(): string
     {
