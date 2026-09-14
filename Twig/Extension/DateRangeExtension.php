@@ -15,6 +15,7 @@ use Exception;
 use OswisOrg\OswisCoreBundle\Utils\DateTimeUtils;
 use Twig\Environment;
 use Twig\Extension\AbstractExtension;
+use Twig\Extension\CoreExtension;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
 
@@ -31,7 +32,28 @@ final class DateRangeExtension extends AbstractExtension
 
     public function getFilters(): array
     {
-        return [new TwigFilter('date_range_string', $this->dateRangeString(...))];
+        return [
+            new TwigFilter('date_range_string', $this->dateRangeString(...)),
+            new TwigFilter('date_or', $this->dateOr(...)),
+        ];
+    }
+
+    /**
+     * Datum ve formátu, nebo `$fallback`, když hodnota chybí. Vestavěný `|date` z prázdné hodnoty vrátí AKTUÁLNÍ
+     * čas, takže `x|date(…)|default('—')` náhradu nikdy neukázal (audit 14. 9. 2026: „Reg. od <teď>" u rozsahů
+     * bez termínu). Vyplněnou hodnotu formátuje přesně jako `|date` (stejné časové pásmo Twigu).
+     */
+    public function dateOr(
+        \DateTimeInterface|\DateInterval|string|int|null $date,
+        ?string $format = null,
+        string $fallback = '',
+        \DateTimeZone|string|false|null $timezone = null,
+    ): string {
+        if (null === $date || '' === $date) {
+            return $fallback;
+        }
+
+        return $this->twig->getExtension(CoreExtension::class)->formatDate($date, $format, $timezone);
     }
 
     public function dateRangeString(
