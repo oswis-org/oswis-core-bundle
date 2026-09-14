@@ -91,7 +91,8 @@
                 <h3 class="h5" id="{{ id }}-dlg-link">Odkaz</h3>
                 <div class="mb-2"><label class="form-label" for="{{ id }}-link-href">Adresa</label>
                     <input class="form-control" id="{{ id }}-link-href" data-field="href" type="text" inputmode="url"
-                           placeholder="https://…" autocomplete="off" data-initial-focus></div>
+                           placeholder="https://…" autocomplete="off" data-initial-focus aria-describedby="{{ id }}-link-computed">
+                    <div class="form-text" id="{{ id }}-link-computed" data-computed-hint hidden>Adresa se počítá v kódu (Twig) — změnit ji jde v režimu kódu.</div></div>
                 <div class="mb-2"><label class="form-label" for="{{ id }}-link-title">Popisek (title)</label>
                     <input class="form-control" id="{{ id }}-link-title" data-field="title" type="text" autocomplete="off"></div>
                 <div class="text-danger small mb-2" data-dialog-error role="alert"></div>
@@ -163,7 +164,8 @@
                     <input class="form-control" id="{{ id }}-button-text" data-field="text" type="text" autocomplete="off" data-initial-focus></div>
                 <div class="mb-2"><label class="form-label" for="{{ id }}-button-href">Adresa</label>
                     <input class="form-control" id="{{ id }}-button-href" data-field="href" type="text" inputmode="url"
-                           placeholder="https://…" autocomplete="off"></div>
+                           placeholder="https://…" autocomplete="off" aria-describedby="{{ id }}-button-computed">
+                    <div class="form-text" id="{{ id }}-button-computed" data-computed-hint hidden>Adresa se počítá v kódu (Twig) — změnit ji jde v režimu kódu.</div></div>
                 <div class="mb-2"><label class="form-label" for="{{ id }}-button-title">Popisek pro čtečky (title)</label>
                     <input class="form-control" id="{{ id }}-button-title" data-field="title" type="text" autocomplete="off"></div>
                 <div class="text-danger small mb-2" data-dialog-error role="alert"></div>
