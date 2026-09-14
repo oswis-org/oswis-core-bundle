@@ -38,9 +38,13 @@ final class MailBodySanitizer
             ));
         }
 
-        $html = (string) preg_replace(self::DROPPED_WITH_CONTENT, '', $html);
+        $stripped = preg_replace(self::DROPPED_WITH_CONTENT, '', $html);
+        if (null === $stripped) {
+            // Selhání PCRE nesmí z textu udělat prázdný řetězec — mail by odešel prázdný.
+            throw new MailRenderingException('Text mailu se nepodařilo vyčistit (styly nebo titulek jsou příliš dlouhé). Zkrať je prosím.');
+        }
 
-        return ($this->sanitizer ??= $this->build())->sanitize($html);
+        return ($this->sanitizer ??= $this->build())->sanitize($stripped);
     }
 
     private function build(): HtmlSanitizer
