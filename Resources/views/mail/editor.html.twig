@@ -115,7 +115,7 @@
                         <div role="group" aria-labelledby="{{ id }}-vg-{{ loop.index }}" data-dialog-group>
                             <div class="mail-editor__dialog-group" id="{{ id }}-vg-{{ loop.index }}">{{ group }}</div>
                             {% for item in items %}
-                                <button type="button" class="btn btn-sm btn-outline-secondary m-1" data-dialog-action="insert"
+                                <button type="button" class="btn btn-sm btn-outline-primary m-1" data-dialog-action="insert"
                                         data-expression="{{ item.expression }}" data-search="{{ item.label }} {{ item.chip }} {{ item.expression }}"
                                         title="{{ '{{ ' ~ item.expression ~ ' }}' }}">{{ item.label }}</button>
                             {% endfor %}
@@ -142,7 +142,7 @@
                 <p class="small text-muted">Vybrané odstavce uvidí jen příjemci, pro které podmínka platí.</p>
                 <div class="d-grid gap-1">
                     {% for item in config.conditions %}
-                        <button type="button" class="btn btn-outline-secondary text-start" data-dialog-action="apply"
+                        <button type="button" class="btn btn-outline-primary text-start" data-dialog-action="apply"
                                 data-cond="{{ item.expression }}" aria-pressed="false" title="{{ '{% if ' ~ item.expression ~ ' %}' }}"
                                 {{- loop.first ? ' data-initial-focus' : '' }}>{{ item.label }}</button>
                     {% endfor %}
@@ -180,7 +180,7 @@
                 <h3 class="h5" id="{{ id }}-dlg-block">Vložený blok</h3>
                 <p class="small text-muted">Obsah bloku doplní systém každému příjemci při odeslání.</p>
                 {% for block in config.blocks %}
-                    <button type="button" class="btn btn-outline-secondary d-block w-100 text-start mb-1" data-dialog-action="insert"
+                    <button type="button" class="btn btn-outline-primary d-block w-100 text-start mb-1" data-dialog-action="insert"
                             data-key="{{ block.key }}"{{ loop.first ? ' data-initial-focus' : '' }}>{{ block.label }}</button>
                 {% else %}
                     <p class="small">Žádné bloky nejsou k dispozici.</p>
@@ -201,10 +201,10 @@
                     {% endfor %}
                 </select>
                 <div class="btn-group btn-group-sm" role="group" aria-label="Šířka náhledu">
-                    <button type="button" class="btn btn-outline-secondary active" aria-pressed="true"
+                    <button type="button" class="btn btn-outline-primary active" aria-pressed="true"
                             data-action="mail-editor#previewWidth" data-mail-editor-width-param="desktop">
                         <twig:ux:icon name="tabler:device-desktop" aria-hidden="true" /> Počítač</button>
-                    <button type="button" class="btn btn-outline-secondary" aria-pressed="false"
+                    <button type="button" class="btn btn-outline-primary" aria-pressed="false"
                             data-action="mail-editor#previewWidth" data-mail-editor-width-param="mobile">
                         <twig:ux:icon name="tabler:device-mobile" aria-hidden="true" /> Mobil</button>
                 </div>
