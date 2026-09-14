@@ -94,6 +94,9 @@
     "roave/security-advisories": "dev-latest",
     "symfony/error-handler": "^8.1"
   },
+  "conflict": {
+    "oswis-org/oswis-calendar-bundle": "<0.2.122"
+  },
   "autoload": {
     "psr-4": {
       "OswisOrg\\OswisCoreBundle\\": ""
