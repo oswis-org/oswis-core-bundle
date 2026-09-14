@@ -13,7 +13,8 @@
         </label>
     {% endif %}
     {% for menuItem in items|filter(item => 0 == item.requiredRole|default|length or (app.user|default and app.user.role(item.requiredRole)))|sort((a, b) => b.priority <=> a.priority) %}
-        <a href="{{ menuItem.path }}" itemprop="url" {{ menuItem.newPage|default ? "target='_blank'" : '' }}>
+        <a href="{{ menuItem.path }}" itemprop="url" {{ menuItem.newPage|default ? "target='_blank'" : '' }}
+           {%- if menuItem.activeRoutePrefixes|default([]) is not empty %} data-active-routes="{{ menuItem.activeRoutePrefixes|join(' ') }}"{% endif %}>
             <span itemprop="name">{{ menuItem.title }}</span>
         </a>
     {% endfor %}
@@ -27,8 +28,13 @@
     {% endif %}
 </nav>
 {# Active-item highlight: done client-side because this menu is ESI-rendered (the
-   fragment's app.request is not the page request), so the longest matching link
-   wins (e.g. /web_admin/... highlights "Administrace"). #}
+   fragment's app.request is not the page request).
+
+   Položky s `data-active-routes` (admin menu) se řídí ROUTOU stránky — tu dává kostra do
+   `<body data-route>`, protože fragment ji nezná. Vyhrává nejdelší shoda začátku názvu routy;
+   když se nic neshoduje (katalog, uživatelé, místa…), nesvítí nic — lepší než „Úvod", který
+   dřív svítil na většině obrazovek. Položky bez routy (veřejné menu) se řídí adresou jako dřív:
+   nejdelší shoda začátku cesty (e.g. /web_admin/... highlights "Administrace"). #}
 <style>
     #website-main-menu a.is-active { font-weight: 700; box-shadow: inset 0 -2px 0 0 currentColor; }
     #website-main-menu a.website-main-menu-admin { font-weight: 700; opacity: .85; }
@@ -40,6 +46,16 @@
         var strip = function (p) { return (p || '').replace(/\/+$/, '') || '/'; };
         var here = strip(window.location.pathname);
         var best = null, bestLen = -1;
+        var route = (document.body && document.body.getAttribute('data-route')) || '';
+        if (route && nav.querySelector('a[data-active-routes]')) {
+            nav.querySelectorAll('a[data-active-routes]').forEach(function (a) {
+                a.getAttribute('data-active-routes').split(/\s+/).forEach(function (prefix) {
+                    if (prefix && route.indexOf(prefix) === 0 && prefix.length > bestLen) { best = a; bestLen = prefix.length; }
+                });
+            });
+            if (best) { best.classList.add('is-active'); best.setAttribute('aria-current', 'page'); }
+            return;
+        }
         nav.querySelectorAll('a[href]').forEach(function (a) {
             var p;
             try { p = strip(new URL(a.getAttribute('href'), window.location.origin).pathname); }

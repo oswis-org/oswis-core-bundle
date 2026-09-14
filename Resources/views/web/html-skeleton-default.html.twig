@@ -110,7 +110,8 @@
     {% endblock javascripts %}
 </head>
 {% block html_inner %}
-    <body>
+    {# `body_attributes` — kostra adminu sem dává routu stránky pro zvýraznění menu (main-menu.html.twig). #}
+    <body{% block body_attributes %}{% endblock body_attributes %}>
     {% block body_outer %}
 
         {% block tag_manager_noscript %}{% endblock tag_manager_noscript %}

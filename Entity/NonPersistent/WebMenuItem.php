@@ -29,13 +29,30 @@ class WebMenuItem
 
     protected ?Collection $menus = null;
 
+    /**
+     * Začátky názvů rout, na kterých je položka aktivní (zvýrazněná). Rozhoduje nejdelší shoda napříč
+     * položkami, takže `…_participant_payments` (Platby) přebije `…_participant` (Účastníci).
+     *
+     * Proč routy a ne adresa: adresy sekcím neodpovídají (Agregace leží pod `/web_admin/prihlasky/…`,
+     * detail přihlášky pod `/web_admin/ucastnici/…`, seznam pod `/web_admin/seznam-prihlasek`), takže
+     * shoda začátku adresy rozsvítila „Úvod" na většině obrazovek administrace (audit 14. 9. 2026).
+     * Prázdný seznam = položka se řídí adresou jako dřív (veřejné menu).
+     *
+     * @var list<string>
+     */
+    protected array $activeRoutePrefixes = [];
+
+    /**
+     * @param list<string> $activeRoutePrefixes
+     */
     public function __construct(
         string $path,
         string $title,
         Collection $menus,
         ?string $requiredRole = null,
         ?int $priority = null,
-        bool $newPage = false
+        bool $newPage = false,
+        array $activeRoutePrefixes = [],
     ) {
         $this->menus = $menus;
         $this->path = $path;
@@ -43,6 +60,23 @@ class WebMenuItem
         $this->requiredRole = $requiredRole;
         $this->priority = $priority;
         $this->newPage = $newPage;
+        $this->activeRoutePrefixes = $activeRoutePrefixes;
+    }
+
+    /**
+     * @return list<string>
+     */
+    public function getActiveRoutePrefixes(): array
+    {
+        return $this->activeRoutePrefixes;
+    }
+
+    /**
+     * @param list<string> $activeRoutePrefixes
+     */
+    public function setActiveRoutePrefixes(array $activeRoutePrefixes): void
+    {
+        $this->activeRoutePrefixes = $activeRoutePrefixes;
     }
 
     public function getPath(): string

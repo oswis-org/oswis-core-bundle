@@ -1,5 +1,10 @@
 {% extends '@OswisOrgOswisCore/web/page-skeleton-default.html.twig' %}
 
+{# Routa stránky pro zvýraznění sekce v admin menu (web/parts/main-menu.html.twig). Menu je ESI
+   fragment a svou stránku nezná, proto ji nese <body>. Jen v administraci — veřejné menu se řídí
+   adresou a interní názvy rout na veřejný web nepatří. #}
+{% block body_attributes %} data-route="{{ app.request.attributes.get('_route')|default('') }}"{% endblock body_attributes %}
+
 {# Pojistka proti DVOJÍMU ODESLÁNÍ formuláře — jednou pro celý web-admin.
 
    PROČ: dvojí odeslání není teorie. 16. 8. 2026 se dvakrát zpracoval import plateb a vzniklo
