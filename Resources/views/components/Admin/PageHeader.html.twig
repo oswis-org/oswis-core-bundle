@@ -1,0 +1,8 @@
+{#- Admin page header: title (h2) followed by a row of action buttons passed as content.
+    Usage: <twig:OswisOrgOswisCore:Admin:PageHeader title="Event overview">…buttons…</twig:OswisOrgOswisCore:Admin:PageHeader>
+    Props: title – optional page title. -#}
+{%- props title = null -%}
+<div class="oa-page-header" style="display: flex; align-items: center; gap: .75rem; flex-wrap: wrap; margin-bottom: .5rem;">
+    {%- if title is not null -%}<h2 style="margin: 0;">{{ title }}</h2>{%- endif -%}
+    {% block content %}{% endblock %}
+</div>

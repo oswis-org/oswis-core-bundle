@@ -1,0 +1,8 @@
+{#- Group of action buttons with an optional caption on the left.
+    Usage: <twig:OswisOrgOswisCore:Admin:Toolbar label="Create:">…buttons…</twig:OswisOrgOswisCore:Admin:Toolbar>
+    Props: label – optional caption. -#}
+{%- props label = null -%}
+<span class="oa-toolbar" style="display: inline-flex; gap: .4rem; flex-wrap: wrap; align-items: center;">
+    {%- if label is not null -%}<span class="small text-muted" style="margin-right: .25rem; font-weight: 600;">{{ label }}</span>{%- endif -%}
+    {% block content %}{% endblock %}
+</span>

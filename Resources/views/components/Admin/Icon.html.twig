@@ -1,0 +1,5 @@
+{#- Admin icon: thin wrapper around UX Icons (Tabler set), sized to the surrounding text.
+    Usage: <twig:OswisOrgOswisCore:Admin:Icon name="pencil" label="Edit" />
+    Props: name – Tabler icon name without prefix; label – optional text after the icon. -#}
+{%- props name, label = null -%}
+<twig:ux:icon :name="'tabler:' ~ name" class="oa-icon" />{% if label is not null %} {{ label }}{% endif %}

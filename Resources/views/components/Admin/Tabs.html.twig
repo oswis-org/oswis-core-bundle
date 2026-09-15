@@ -1,0 +1,16 @@
+{#- Page tabs with optional counts.
+    Usage: <twig:OswisOrgOswisCore:Admin:Tabs :items="[{key: 'flags', label: 'Flags', url: path(…), count: 44}]" :current="activeTab" />
+    Props: items – list of {key, label, url, count?}; current – active key. -#}
+{%- props items, current = null -%}
+<div class="oa-tabs" style="margin: 1.5rem 0 1rem; display: flex; gap: .25rem; border-bottom: 2px solid #006FAD; flex-wrap: wrap;">
+    {%- for item in items -%}
+        {%- set active = item.key == current %}
+        <a href="{{ item.url }}" class="btn btn-sm"{% if active %} aria-current="page"{% endif %}
+           style="border-radius: .375rem .375rem 0 0; {{ active ? 'background: #006FAD; color: white;' : 'background: #f8f9fa; color: #006FAD;' }}">
+            {{ item.label }}
+            {% if item.count is defined and item.count is not null -%}
+                <span class="badge" style="margin-left: .25rem; {{ active ? 'background: rgba(255,255,255,.3); color: #fff;' : 'background: #dbe9f2; color: #005a8c;' }}">{{ item.count }}</span>
+            {%- endif %}
+        </a>
+    {%- endfor %}
+</div>

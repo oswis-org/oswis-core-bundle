@@ -38,17 +38,9 @@ class AppUserMailService
     }
 
     /**
-     * Odešle e-mail k uživatelskému účtu a **vrátí ho, aby šlo zjistit, jestli opravdu odešel**.
-     *
-     * ⚠️ Selhání přenosu (SMTP) NEVYHAZUJE výjimku — jediný důkaz odeslání je sloupec `sent`
-     * ({@see AppUserMail::isSent()}). Dokud tahle metoda vracela `void`, nemohl to volající
-     * zjistit a stránky tvrdily „na e-mail byl odeslán odkaz" i tehdy, když se neodeslalo nic.
-     * U obnovy hesla to znamená člověka, který marně čeká na mail a nemá se jak dostat dovnitř.
-     *
-     * Záměrně se NEVYHAZUJE výjimka ani tady: tuhle metodu volá i aktivace při registraci, a
-     * výpadek SMTP nesmí shodit registraci (tatáž úvaha jako u
-     * {@see \OswisOrg\OswisCalendarBundle\Service\Participant\ParticipantMailService::sendSummary()}).
-     * Kdo potřebuje vědět, jak to dopadlo, ptá se na NÁVRATOVOU HODNOTU.
+     * Sends an account e-mail and returns its record. A transport failure is logged, not thrown, so callers
+     * (e.g. activation during a registration) are not broken by a mail outage; use {@see AppUserMail::isSent()}
+     * to find out whether it was delivered.
      *
      * @throws InvalidTypeException
      * @throws NotFoundException

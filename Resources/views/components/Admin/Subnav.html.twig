@@ -1,0 +1,10 @@
+{#- Section / context sub-navigation; the active item is highlighted (styles: .oa-subnav).
+    Usage: <twig:OswisOrgOswisCore:Admin:Subnav :items="[{key: 'overview', label: 'Overview', url: path(…)}]" current="overview" />
+    Props: items – list of {key, label, url}; current – active key; label – optional caption; ariaLabel – accessible name. -#}
+{%- props items, current = null, label = null, ariaLabel = 'Podmenu' -%}
+<nav class="oa-subnav" aria-label="{{ ariaLabel }}">
+    {%- if label is not null and label != '' -%}<span class="oa-subnav__label">{{ label }}</span>{%- endif -%}
+    {%- for item in items -%}
+        <a class="oa-subnav__item{{ item.key == current ? ' is-active' : '' }}" href="{{ item.url }}"{{ item.key == current ? ' aria-current="page"' : '' }}>{{ item.label }}</a>
+    {%- endfor -%}
+</nav>

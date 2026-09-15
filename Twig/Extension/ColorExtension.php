@@ -9,16 +9,9 @@ use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 
 /**
- * Barvy ve výstupech — hlavně volba čitelné barvy textu na pozadí, které přichází z DAT.
- *
- * Proč to nemůže být natvrdo: barvu kategorie příznaku, skupiny nebo role si volí tým v adminu,
- * takže šablona dopředu neví, jestli bude tmavá nebo světlá. Napsat `color:#fff` znamená, že na
- * každé světlejší barvě je štítek nečitelný (naměřeno v prohlížeči: limetka `#B2C918` s bílým
- * textem = 1,86:1, oranžová PřF `#EB6D25` = 3,11:1 — obojí hluboko pod WCAG AA 4,5:1).
- *
- * Bydlí v CORE schválně: barvy nejsou nic kalendářového ani programového a stejný problém má
- * každý bundle, který kreslí barevný štítek. Dřív to byl privátní pomocník v
- * `OswisCalendarBundle\Twig\Extension\ProgramExtension` a používalo ho jediné místo.
+ * Colour helpers for templates — mainly a readable text colour for a background colour that comes from data
+ * (colours of categories, groups or roles are chosen in the admin, so a fixed text colour is unreadable on light
+ * backgrounds). Generic for every bundle that renders coloured labels.
  */
 final class ColorExtension extends AbstractExtension
 {
