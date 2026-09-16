@@ -41,7 +41,8 @@ class SystemMailService
         if (null !== $deliveryKey) {
             $mail->setDeliveryKey($deliveryKey);
         }
-        $this->em->persist($mail);
+        // `persist()` dělá `MailService` — až po kontrole klíče jedinečnosti, aby se záznam,
+        // který se nemá poslat podruhé, vůbec nedostal do jednotky práce.
         $this->mailService->sendEMail($mail, $template, $data);
 
         return $mail;

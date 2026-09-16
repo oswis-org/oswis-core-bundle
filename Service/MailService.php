@@ -60,8 +60,13 @@ class MailService
      */
     public function sendEMail(AbstractMail $eMail, string $template, array $data = []): AbstractMail
     {
-        $this->em->persist($eMail);
         $class = get_class($eMail);
+        // Ptát se na klíč PŘED `persist()`: jinak by záznam zůstal v jednotce práce a volající by
+        // ho svým `flush()` stejně zapsal — a narazil na unikátní index (a zavřel EntityManager).
+        if ($this->jeJizOdeslano($eMail, $class)) {
+            return $eMail;
+        }
+        $this->em->persist($eMail);
         try {
             $mail = $eMail->getTemplatedEmail()->htmlTemplate($template)->context($data);
             // Render now — transport-independent (works even if mail later goes async
@@ -130,6 +135,29 @@ class MailService
         $this->logger->info("E-mail ($class) sent with ID '$id' and Message-ID '$messageID'.");
 
         return $eMail;
+    }
+
+    /**
+     * Existuje už doručení s týmž klíčem jedinečnosti?
+     *
+     * Poslední slovo má unikátní index v databázi, ale narazit na něj bolí: Doctrine při porušení
+     * indexu ZAVŘE EntityManager, takže by hromadná rozesílka spadla a příští běh by začal na témže
+     * záznamu — a zasekl se na něm napořád. Tenhle dotaz proto běžné případy (cron × tlačítko,
+     * dva běhy po sobě) odchytí dřív; index zůstává pojistkou pro skutečný souběh.
+     */
+    private function jeJizOdeslano(AbstractMail $eMail, string $class): bool
+    {
+        $key = $eMail->getDeliveryKey();
+        if (null === $key || null !== $eMail->getId()) {
+            return false;
+        }
+        $existing = $this->em->getRepository($eMail::class)->findOneBy(['deliveryKey' => $key]);
+        if (null === $existing) {
+            return false;
+        }
+        $this->logger->info(sprintf('E-mail (%s) se neodesílá podruhé — klíč „%s" už v databázi je.', $class, $key));
+
+        return true;
     }
 
     /**

@@ -52,6 +52,25 @@ final readonly class DeliveryKey implements Stringable
         return new self($value);
     }
 
+    /**
+     * Klíč, jen když jsou všechny části známé — jinak `null` (bez klíče).
+     *
+     * Chybějící identifikátor nesmí skončit nulou: `payment:0:0` by si vzala první taková zpráva
+     * a každou další by databáze odmítla, takže by se tiše neodeslaly.
+     *
+     * @param int|string|null ...$parts
+     */
+    public static function ofOrNull(string $purpose, int|string|null ...$parts): ?self
+    {
+        foreach ($parts as $part) {
+            if (null === $part || '' === trim((string) $part) || '0' === trim((string) $part)) {
+                return null;
+            }
+        }
+
+        return self::of($purpose, ...$parts);
+    }
+
     public function __toString(): string
     {
         return $this->value;

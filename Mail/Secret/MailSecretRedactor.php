@@ -103,6 +103,48 @@ final class MailSecretRedactor
     }
 
     /**
+     * Heslo ve STARÉ uložené kopii, která ještě nemá značku `data-sensitive`.
+     *
+     * Používá to jednorázová migrace nad e-maily uloženými od 18. 6. 2026. Rozpoznává se podle
+     * místa (pole s písmem `monospace`) i podle tvaru hodnoty: vygenerované heslo má vždy malá
+     * i velká písmena a číslice ({@see \OswisOrg\OswisCoreBundle\Utils\StringUtils::generatePassword()}).
+     * Díky tomu se nesáhne na variabilní symbol ani číslo účtu — ta jsou jen číselná.
+     *
+     * @return array{0: string, 1: list<string>} tělo bez hesel a hesla, která se našla
+     */
+    public function redactLegacyPassword(string $html): array
+    {
+        if ('' === trim($html)) {
+            return [$html, []];
+        }
+        try {
+            $document = HTMLDocument::createFromString($html, LIBXML_NOERROR);
+        } catch (Throwable) {
+            return [$html, []];
+        }
+        $found = [];
+        foreach ($document->querySelectorAll('div,span,td,p') as $element) {
+            if (!str_contains($element->getAttribute('style') ?? '', 'monospace')) {
+                continue;
+            }
+            $value = trim((string) $element->textContent);
+            if (!self::looksLikeGeneratedPassword($value)) {
+                continue;
+            }
+            $found[] = $value;
+            $element->textContent = self::PLACEHOLDER_VALUE;
+        }
+
+        return [[] === $found ? $html : $document->saveHtml(), array_values(array_unique($found))];
+    }
+
+    /** 6–20 znaků, jen písmena a číslice, a zároveň malé písmeno + velké písmeno + číslice. */
+    public static function looksLikeGeneratedPassword(string $value): bool
+    {
+        return 1 === preg_match('~^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z0-9]{6,20}$~', $value);
+    }
+
+    /**
      * Marked element → its links lose the address and the text, everything else keeps its markup.
      * An element with no link inside loses its text only (the password case).
      *
