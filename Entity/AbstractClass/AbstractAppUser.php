@@ -10,6 +10,7 @@ namespace OswisOrg\OswisCoreBundle\Entity\AbstractClass;
 
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUserRole;
 use OswisOrg\OswisCoreBundle\Interfaces\AddressBook\PersonInterface;
+use OswisOrg\OswisCoreBundle\Mail\Secret\SecretCarrierInterface;
 use OswisOrg\OswisCoreBundle\Traits\User\UserTrait;
 use Symfony\Component\Security\Core\User\EquatableInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -18,7 +19,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * Abstract class containing basic properties for user of application.
  * @author Jakub Zak <mail@jakubzak.eu>
  */
-abstract class AbstractAppUser implements UserInterface, EquatableInterface, PersonInterface
+abstract class AbstractAppUser implements UserInterface, EquatableInterface, PersonInterface, SecretCarrierInterface
 {
     use UserTrait;
 
@@ -67,6 +68,19 @@ abstract class AbstractAppUser implements UserInterface, EquatableInterface, Per
     public function eraseCredentials(): void
     {
         $this->plainPassword = null;
+    }
+
+    /**
+     * A generated password is mailed to the person once and stays valid until they change it,
+     * so it must never remain in the stored copy of that mail.
+     *
+     * @return list<string>
+     */
+    public function getMailSecrets(): array
+    {
+        $plainPassword = $this->plainPassword;
+
+        return null === $plainPassword || '' === $plainPassword ? [] : [$plainPassword];
     }
 
     public function hasRole(string $roleName): bool

@@ -16,7 +16,6 @@ use OswisOrg\OswisCoreBundle\Exceptions\NotFoundException;
 use OswisOrg\OswisCoreBundle\Exceptions\NotImplementedException;
 use OswisOrg\OswisCoreBundle\Exceptions\OswisException;
 use Psr\Log\LoggerInterface;
-use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class AppUserEditService
@@ -25,7 +24,6 @@ class AppUserEditService
         protected UserPasswordHasherInterface $hasher,
         protected EntityManagerInterface $em,
         protected LoggerInterface $logger,
-        protected MailerInterface $mailer,
         protected AppUserService $appUserService,
         protected AppUserMailService $appUserMailService,
     ) {

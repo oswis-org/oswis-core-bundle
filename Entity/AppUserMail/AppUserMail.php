@@ -19,6 +19,7 @@ use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\JoinColumn;
 use Doctrine\ORM\Mapping\ManyToOne;
 use Doctrine\ORM\Mapping\Table;
+use Doctrine\ORM\Mapping\UniqueConstraint;
 use OswisOrg\OswisCoreBundle\Entity\AbstractClass\AbstractMail;
 use OswisOrg\OswisCoreBundle\Entity\AbstractClass\AbstractToken;
 use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser;
@@ -56,6 +57,7 @@ use OswisOrg\OswisCoreBundle\Exceptions\InvalidTypeException;
 #[SearchAnnotation(['id', 'token'])]
 #[Entity]
 #[Table(name: 'core_app_user_mail')]
+#[UniqueConstraint(name: 'uniq_app_user_mail_delivery_key', columns: ['delivery_key'])]
 #[Cache(usage: 'NONSTRICT_READ_WRITE', region: 'core_app_user')]
 class AppUserMail extends AbstractMail
 {

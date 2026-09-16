@@ -83,7 +83,6 @@ services:
             - '@security.user_password_hasher'
             - '@doctrine.orm.entity_manager'
             - '@monolog.logger'
-            - '@mailer.mailer'
             - '@oswis_org_oswis_core.app_user_service'
             - '@oswis_org_oswis_core.app_user_mail_service'
     OswisOrg\OswisCoreBundle\Service\AppUserEditService:
@@ -97,7 +96,6 @@ services:
         arguments:
             - '@doctrine.orm.entity_manager'
             - '@monolog.logger'
-            - '@mailer.mailer'
             - '@oswis_org_oswis_core.app_user_service'
             - '@oswis_org_oswis_core.app_user_mail_service'
     OswisOrg\OswisCoreBundle\Service\AppUserEditRequestService:
@@ -461,6 +459,7 @@ services:
     OswisOrg\OswisCoreBundle\Form\Type\MailBodyType:
         autowire: true
         autoconfigure: true
+    OswisOrg\OswisCoreBundle\Mail\Secret\MailSecretRedactor: ~
     OswisOrg\OswisCoreBundle\Mail\Rendering\MailBodySanitizer: ~
     OswisOrg\OswisCoreBundle\Mail\Rendering\MjmlBodySplitter: ~
     OswisOrg\OswisCoreBundle\Mail\Rendering\MailRenderer:

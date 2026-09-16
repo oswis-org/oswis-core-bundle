@@ -17,14 +17,12 @@ use OswisOrg\OswisCoreBundle\Exceptions\OswisException;
 use OswisOrg\OswisCoreBundle\Exceptions\UserNotFoundException;
 use OswisOrg\OswisCoreBundle\Exceptions\UserNotUniqueException;
 use Psr\Log\LoggerInterface;
-use Symfony\Component\Mailer\MailerInterface;
 
 class AppUserEditRequestService
 {
     public function __construct(
         protected EntityManagerInterface $em,
         protected LoggerInterface $logger,
-        protected MailerInterface $mailer,
         protected AppUserService $appUserService,
         protected AppUserMailService $appUserMailService,
     ) {

@@ -20,6 +20,7 @@ use Doctrine\ORM\Mapping\Table;
 use Exception;
 use OswisOrg\OswisCoreBundle\Enum\AppUserEditTypeEnum;
 use OswisOrg\OswisCoreBundle\Interfaces\Common\BasicInterface;
+use OswisOrg\OswisCoreBundle\Mail\Secret\SecretCarrierInterface;
 use OswisOrg\OswisCoreBundle\Traits\Common\BasicTrait;
 use OswisOrg\OswisCoreBundle\Utils\StringUtils;
 use Symfony\Component\Validator\Constraints\NotBlank;
@@ -48,7 +49,7 @@ use Symfony\Component\Validator\Constraints\NotBlank;
         ),
     ]
 )]
-class AppUserEditRequest implements BasicInterface
+class AppUserEditRequest implements BasicInterface, SecretCarrierInterface
 {
     public const int DEFAULT_VALID_HOURS = 24;
 
@@ -127,6 +128,17 @@ class AppUserEditRequest implements BasicInterface
     public function getToken(): ?string
     {
         return $this->token;
+    }
+
+    /**
+     * Same reason as {@see \OswisOrg\OswisCoreBundle\Entity\AbstractClass\AbstractToken::getMailSecrets()}:
+     * this token opens the account's credentials, so it must not stay in the stored mail copy.
+     *
+     * @return list<string>
+     */
+    public function getMailSecrets(): array
+    {
+        return '' === $this->token ? [] : [$this->token];
     }
 
     public function getUsedAt(): ?DateTime

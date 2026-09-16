@@ -14,6 +14,7 @@ use Exception;
 use OswisOrg\OswisCoreBundle\Exceptions\InvalidTypeException;
 use OswisOrg\OswisCoreBundle\Exceptions\TokenInvalidException;
 use OswisOrg\OswisCoreBundle\Interfaces\Common\TokenInterface;
+use OswisOrg\OswisCoreBundle\Mail\Secret\SecretCarrierInterface;
 use OswisOrg\OswisCoreBundle\Traits\AddressBook\EmailTrait;
 use OswisOrg\OswisCoreBundle\Traits\Common\BasicTrait;
 use OswisOrg\OswisCoreBundle\Traits\Common\TypeTrait;
@@ -23,7 +24,7 @@ use OswisOrg\OswisCoreBundle\Utils\StringUtils;
  * Abstract class containing basic properties for token.
  * @author Jakub Zak <mail@jakubzak.eu>
  */
-abstract class AbstractToken implements TokenInterface
+abstract class AbstractToken implements TokenInterface, SecretCarrierInterface
 {
     public const DEFAULT_VALID_HOURS = 24;
 
@@ -95,6 +96,17 @@ abstract class AbstractToken implements TokenInterface
     public function getToken(): string
     {
         return $this->token;
+    }
+
+    /**
+     * The token itself never belongs in a stored mail copy — whoever reads it there could use
+     * the link (verify a registration, take over an account) while it is still valid.
+     *
+     * @return list<string>
+     */
+    public function getMailSecrets(): array
+    {
+        return '' === $this->token ? [] : [$this->token];
     }
 
     public function canBeUsed(): bool

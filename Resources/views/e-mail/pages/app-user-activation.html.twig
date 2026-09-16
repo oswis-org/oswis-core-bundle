@@ -18,13 +18,8 @@
             Ještě je nutné provést aktivaci uživatelského účtu —
             klikni{{ f ? 'te' : '' }} na tlačítko níže:
         </mj-text>
-        <mj-button href="{{ tokenUrl }}" background-color="#006FAD" color="#ffffff" font-weight="700" font-size="16px" inner-padding="14px 24px" border-radius="4px">
-            Aktivovat účet
-        </mj-button>
-        <mj-text font-size="11px" color="#666666">
-            Pokud tlačítko nefunguje, zkopíruj{{ f ? 'te' : '' }} si tuto adresu do prohlížeče:<br>
-            <a href="{{ tokenUrl }}" style="color:#006FAD; word-break:break-all;">{{ tokenUrl }}</a>
-        </mj-text>
+        {% include '@OswisOrgOswisCore/e-mail/parts/token-link.html.twig'
+            with {url: tokenUrl, label: 'Aktivovat účet', formal: f} only %}
         {% if appUserToken.validHours|default %}
             <mj-text font-size="11px" color="#888888">
                 Odkaz je platný {{ appUserToken.validHours }} hodin od vygenerování.
@@ -39,10 +34,8 @@
     </mj-text>
 
     {% if appUser.plainPassword|default %}
-        <mj-text>Bylo nastaveno nové, náhodně vygenerované heslo:</mj-text>
-        <mj-text font-family="monospace" font-size="16px" background-color="#f0f0f0" padding="10px 20px" align="center">
-            {{ appUser.plainPassword }}
-        </mj-text>
+        {% include '@OswisOrgOswisCore/e-mail/parts/generated-password.html.twig'
+            with {password: appUser.plainPassword} only %}
     {% elseif appUser.password|default %}
         <mj-text font-size="12px" color="#666666">
             Heslo bylo nastaveno uživatelem při registraci.

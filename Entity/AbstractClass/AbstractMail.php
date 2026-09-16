@@ -12,6 +12,7 @@ use DateTime;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping\Column;
 use LogicException;
+use OswisOrg\OswisCoreBundle\Enum\Mail\MailDeliveryStatus;
 use OswisOrg\OswisCoreBundle\Exceptions\InvalidTypeException;
 use OswisOrg\OswisCoreBundle\Exceptions\OswisException;
 use OswisOrg\OswisCoreBundle\Interfaces\Common\BasicInterface;
@@ -30,6 +31,28 @@ abstract class AbstractMail implements BasicInterface
 
     #[Column(type: 'datetime', nullable: true)]
     protected ?DateTime $sent = null;
+
+    /**
+     * Where this delivery stands. `sent` stays the timestamp of SMTP acceptance (every existing
+     * query `sent IS NOT NULL` keeps its meaning); the status additionally distinguishes
+     * "sending / uncertain", "bounced" and "cancelled" — see {@see MailDeliveryStatus}.
+     */
+    #[Column(type: 'string', length: 16, enumType: MailDeliveryStatus::class, options: ['default' => 'queued'])]
+    protected MailDeliveryStatus $status = MailDeliveryStatus::QUEUED;
+
+    /** How many times this delivery was handed to SMTP (an automatic retry reuses the record). */
+    #[Column(type: 'integer', options: ['default' => 0])]
+    protected int $attemptCount = 0;
+
+    /**
+     * Idempotency key of an AUTOMATIC send, unique per table — the database, not code discipline,
+     * is what prevents a second delivery of the same thing (cron × button × parallel run). Manual
+     * sends and resends leave it NULL, and NULL repeats freely in a unique index.
+     *
+     * Shape: `purpose:id[:id…]`, built by {@see \OswisOrg\OswisCoreBundle\Mail\Delivery\DeliveryKey}.
+     */
+    #[Column(type: 'string', length: 191, nullable: true)]
+    protected ?string $deliveryKey = null;
 
     #[Column(type: 'string', nullable: true)]
     protected ?string $recipientName = null;
@@ -106,6 +129,99 @@ abstract class AbstractMail implements BasicInterface
     public function isSent(): bool
     {
         return (bool)$this->getSent();
+    }
+
+    public function getStatus(): MailDeliveryStatus
+    {
+        return $this->status;
+    }
+
+    public function getAttemptCount(): int
+    {
+        return $this->attemptCount;
+    }
+
+    public function getDeliveryKey(): ?string
+    {
+        return $this->deliveryKey;
+    }
+
+    /**
+     * Key of an automatic send; may be set only before the first attempt, because it is what
+     * a concurrent sender collides with. Manual sends keep it NULL.
+     */
+    public function setDeliveryKey(?string $deliveryKey): void
+    {
+        if (0 < $this->attemptCount) {
+            throw new LogicException('Klíč jedinečnosti nelze změnit po pokusu o odeslání.');
+        }
+        $this->deliveryKey = $deliveryKey;
+    }
+
+    /** About to hand the message to SMTP — recorded (and committed) BEFORE the send. */
+    public function markSending(): void
+    {
+        $this->changeStatus(MailDeliveryStatus::SENDING);
+        $this->attemptCount++;
+        $this->statusMessage = null;
+    }
+
+    /** SMTP accepted the message. */
+    public function markSent(?DateTime $sentAt = null): void
+    {
+        $this->changeStatus(MailDeliveryStatus::SENT);
+        $this->setSent($sentAt ?? new DateTime());
+    }
+
+    /** SMTP refused the message, or it could not be rendered — an automatic retry is allowed. */
+    public function markFailed(string $reason): void
+    {
+        $this->changeStatus(MailDeliveryStatus::FAILED);
+        $this->setStatusMessage($reason);
+    }
+
+    /** The message was accepted and came back later (DSN from the recipient's server). */
+    public function markBounced(string $reason): void
+    {
+        $this->changeStatus(MailDeliveryStatus::BOUNCED);
+        $this->setStatusMessage($reason);
+    }
+
+    /** A queued (or failed) delivery the team called off; nothing will be sent. */
+    public function markCancelled(?string $reason = null): void
+    {
+        $this->changeStatus(MailDeliveryStatus::CANCELLED);
+        if (null !== $reason) {
+            $this->setStatusMessage($reason);
+        }
+    }
+
+    /**
+     * Status of an unfinished delivery that nobody is working on any more.
+     *
+     * A record left in SENDING means the process died between handing the message to SMTP and
+     * writing the result: the message may or may not have gone out. Such a delivery is never
+     * retried automatically — the team checks the archive mailbox and decides.
+     */
+    public function isUncertain(?DateTime $now = null, int $staleMinutes = 10): bool
+    {
+        if (MailDeliveryStatus::SENDING !== $this->status) {
+            return false;
+        }
+        $updated = $this->getUpdatedAt() ?? $this->getCreatedAt();
+
+        return null === $updated
+               || $updated->getTimestamp() < ($now ?? new DateTime())->getTimestamp() - $staleMinutes * 60;
+    }
+
+    private function changeStatus(MailDeliveryStatus $target): void
+    {
+        if (!$this->status->canTransitionTo($target)) {
+            throw new LogicException(
+                sprintf('E-mail nelze převést ze stavu „%s" do „%s".', $this->status->value, $target->value),
+            );
+        }
+        $this->status = $target;
     }
 
     public function getSent(): ?DateTime

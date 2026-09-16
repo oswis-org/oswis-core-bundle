@@ -31,9 +31,24 @@ final class MailMarkupPolicy
     /**
      * Třídy s významem v `mj-style` šablony `message.html.twig`.
      *
+     * `oswis-secret` navíc označuje celou součástku (typicky `mj-button`), jejíž vlastní atributy
+     * MJML zahodí — v uložené kopii se z ní odeberou odkazy
+     * ({@see \OswisOrg\OswisCoreBundle\Mail\Secret\MailSecretRedactor}).
+     *
      * @var list<string>
      */
-    public const array CLASSES = ['warning', 'highlight', 'token-box'];
+    public const array CLASSES = ['warning', 'highlight', 'token-box', 'oswis-secret'];
+
+    /**
+     * Atributy povolené na KAŽDÉM prvku slovníku.
+     *
+     * `data-sensitive` označuje místo s tajným údajem (heslo, jednorázový odkaz), které se
+     * neuloží do kopie e-mailu. Musí projít čištěním, jinak by značka z textů psaných v editoru
+     * a z kampaní zmizela dřív, než se e-mail uloží.
+     *
+     * @var list<string>
+     */
+    public const array GLOBAL_ATTRIBUTES = ['data-sensitive'];
 
     /** @var list<string> */
     public const array CSS_PROPERTIES = [
@@ -80,7 +95,12 @@ final class MailMarkupPolicy
     /** @return array<string, list<string>> */
     public static function allowedElements(): array
     {
-        return self::EDITOR_ELEMENTS + self::PROTECTED_ELEMENTS + [MailBlockRenderer::PLACEHOLDER_ELEMENT => ['data-key']];
+        $elements = self::EDITOR_ELEMENTS + self::PROTECTED_ELEMENTS;
+        foreach ($elements as $element => $attributes) {
+            $elements[$element] = array_values(array_unique([...$attributes, ...self::GLOBAL_ATTRIBUTES]));
+        }
+
+        return $elements + [MailBlockRenderer::PLACEHOLDER_ELEMENT => ['data-key']];
     }
 
     public static function isAllowedClass(string $class): bool

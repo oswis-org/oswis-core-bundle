@@ -1,0 +1,19 @@
+{#
+    Tlačítko s jednorázovým odkazem + záložní adresa k překopírování.
+
+    Jedno místo pro všechny e-maily s odkazem (ověření přihlášky, aktivace účtu, změna hesla,
+    změna údajů, pokračování v přihlášce) — dřív byla tahle dvojice v pěti šablonách zkopírovaná.
+
+    Označení `oswis-secret` / `data-sensitive` je to podstatné: odeslaná zpráva má odkaz normálně,
+    ale do uložené kopie e-mailu se adresa nedostane, takže ji v historii nikdo nepoužije
+    ({@see \OswisOrg\OswisCoreBundle\Mail\Secret\MailSecretRedactor}).
+
+    Parametry: url (adresa), label (text tlačítka), formal (vykání).
+#}
+<mj-button href="{{ url }}" css-class="oswis-secret" background-color="#006FAD" color="#ffffff" font-weight="700" font-size="16px" inner-padding="14px 24px" border-radius="4px">
+    {{ label }}
+</mj-button>
+<mj-text font-size="11px" color="#666666">
+    Pokud tlačítko nefunguje, zkopíruj{{ formal|default(false) ? 'te' : '' }} si tuto adresu do prohlížeče:<br>
+    <a href="{{ url }}" data-sensitive="link" style="color:#006FAD; word-break:break-all;">{{ url }}</a>
+</mj-text>
