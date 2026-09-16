@@ -91,10 +91,7 @@
         #}
         <twig:OswisOrgOswisCore:Admin:Modal id="{{ id }}-dlg-link" title="Odkaz" :fade="false" data-dialog="link">
             <twig:block name="body">
-                <div class="mb-2"><label class="form-label" for="{{ eid }}-link-href">Adresa</label>
-                    <input class="form-control" id="{{ eid }}-link-href" data-field="href" type="text" inputmode="url"
-                           placeholder="https://…" autocomplete="off" data-initial-focus aria-describedby="{{ eid }}-link-computed">
-                    <div class="form-text" id="{{ eid }}-link-computed" data-computed-hint hidden>Adresa se počítá v kódu (Twig) — změnit ji jde v režimu kódu.</div></div>
+                {% include '@OswisOrgOswisCore/mail/parts/link-target.html.twig' with { eid: eid, prefix: 'link', config: config } only %}
                 <div class="mb-2"><label class="form-label" for="{{ eid }}-link-title">Popisek při najetí myší (nepovinné)</label>
                     <input class="form-control" id="{{ eid }}-link-title" data-field="title" type="text" autocomplete="off"></div>
                 <div class="text-danger small" data-dialog-error role="alert"></div>
@@ -164,10 +161,7 @@
             <twig:block name="body">
                 <div class="mb-2"><label class="form-label" for="{{ eid }}-button-text">Text tlačítka</label>
                     <input class="form-control" id="{{ eid }}-button-text" data-field="text" type="text" autocomplete="off" data-initial-focus></div>
-                <div class="mb-2"><label class="form-label" for="{{ eid }}-button-href">Adresa</label>
-                    <input class="form-control" id="{{ eid }}-button-href" data-field="href" type="text" inputmode="url"
-                           placeholder="https://…" autocomplete="off" aria-describedby="{{ eid }}-button-computed">
-                    <div class="form-text" id="{{ eid }}-button-computed" data-computed-hint hidden>Adresa se počítá v kódu (Twig) — změnit ji jde v režimu kódu.</div></div>
+                {% include '@OswisOrgOswisCore/mail/parts/link-target.html.twig' with { eid: eid, prefix: 'button', config: config } only %}
                 <div class="mb-2"><label class="form-label" for="{{ eid }}-button-title">Popisek při najetí myší (nepovinné)</label>
                     <input class="form-control" id="{{ eid }}-button-title" data-field="title" type="text" autocomplete="off"></div>
                 <div class="text-danger small" data-dialog-error role="alert"></div>

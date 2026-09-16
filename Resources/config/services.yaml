@@ -17,6 +17,8 @@ services:
             tags: [ 'oswis.mail_block_provider' ]
         OswisOrg\OswisCoreBundle\Mail\Catalog\MailCatalogProviderInterface:
             tags: [ 'oswis.mail_catalog_provider' ]
+        OswisOrg\OswisCoreBundle\Mail\Link\MailLinkTargetProviderInterface:
+            tags: [ 'oswis.mail_link_target_provider' ]
 
     ### Search Filter
     #    oswis_org_oswis_core.search_filter:
@@ -457,6 +459,18 @@ services:
         public: true
         arguments:
             $providers: !tagged_iterator oswis.mail_catalog_provider
+    # Cíle odkazů v textu mailu (`{{ odkaz('…') }}`) — stránky, které opravdu máme.
+    OswisOrg\OswisCoreBundle\Mail\Link\CoreLinkTargetProvider:
+        autowire: true
+        tags: [ 'oswis.mail_link_target_provider' ]
+    OswisOrg\OswisCoreBundle\Mail\Link\MailLinkResolver:
+        autowire: true
+        public: true
+    OswisOrg\OswisCoreBundle\Mail\Link\MailLinkTargetRegistry:
+        autowire: true
+        public: true
+        arguments:
+            $providers: !tagged_iterator oswis.mail_link_target_provider
     # Nastavení editoru textu mailu (katalog, bloky, pravidla čištění) — spec e-mailů §4.1
     OswisOrg\OswisCoreBundle\Mail\Editor\MailEditorConfig:
         autowire: true

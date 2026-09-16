@@ -7,7 +7,10 @@ namespace OswisOrg\OswisCoreBundle\Mail\Editor;
 use OswisOrg\OswisCoreBundle\Mail\Block\MailBlockRegistry;
 use OswisOrg\OswisCoreBundle\Mail\Catalog\MailCatalog;
 use OswisOrg\OswisCoreBundle\Mail\Catalog\MailCatalogItem;
+use OswisOrg\OswisCoreBundle\Mail\Link\MailLinkResolver;
+use OswisOrg\OswisCoreBundle\Mail\Link\MailLinkTargetRegistry;
 use OswisOrg\OswisCoreBundle\Mail\Markup\MailMarkupPolicy;
+use OswisOrg\OswisCoreBundle\Mail\Rendering\MailRenderingException;
 
 /**
  * Nastavení editoru textu mailu — katalog proměnných a podmínek, vložené bloky a pravidla čištění
@@ -25,6 +28,8 @@ final class MailEditorConfig
     public function __construct(
         private readonly MailCatalog $catalog,
         private readonly MailBlockRegistry $blocks,
+        private readonly MailLinkTargetRegistry $linkTargets,
+        private readonly MailLinkResolver $linkResolver,
     ) {
     }
 
@@ -37,6 +42,8 @@ final class MailEditorConfig
      *     classes: list<string>,
      *     alignments: list<string>,
      *     linkSchemes: list<string>,
+     *     linkTargets: list<array<string, mixed>>,
+     *     linkTargetGroups: array<string, list<array<string, mixed>>>,
      * }
      */
     public function toArray(): array
@@ -66,6 +73,14 @@ final class MailEditorConfig
             $blocks[] = ['key' => $block->key, 'label' => $block->label, 'template' => $block->template];
         }
 
+        $linkTargets = $this->linkTargetsWithUrls();
+        // Cíle po skupinách kvůli `optgroup` v nabídce — Twig filtr pro seskupení nemá.
+        $linkTargetGroups = [];
+        foreach ($linkTargets as $target) {
+            $group = $target['group'];
+            $linkTargetGroups[is_string($group) ? $group : ''][] = $target;
+        }
+
         return [
             'variables'      => $variables,
             'variableGroups' => $variableGroups,
@@ -74,6 +89,43 @@ final class MailEditorConfig
             'classes'        => self::EDITOR_CLASSES,
             'alignments'     => self::ALIGNMENTS,
             'linkSchemes'    => MailMarkupPolicy::LINK_SCHEMES,
+            'linkTargets'    => $linkTargets,
+            'linkTargetGroups' => $linkTargetGroups,
         ];
+    }
+
+    /**
+     * Cíle odkazů i s hotovou adresou — dialog tak rovnou ukáže, kam odkaz povede. Cíl, u kterého
+     * adresa nejde složit (smazaná stránka, změněná routa), se z nabídky vynechá: kvůli jedné
+     * položce nemá editor přestat fungovat.
+     *
+     * @return list<array<string, mixed>>
+     */
+    private function linkTargetsWithUrls(): array
+    {
+        $targets = [];
+        foreach ($this->linkTargets->all() as $target) {
+            $item = $target->toArray();
+            if (null === $target->parameter) {
+                try {
+                    $item['url'] = $this->linkResolver->url($target->key);
+                } catch (MailRenderingException) {
+                    continue;
+                }
+            } else {
+                $options = [];
+                foreach ($target->options as $option) {
+                    try {
+                        $options[] = [...$option, 'url' => $this->linkResolver->url($target->key, $option['value'])];
+                    } catch (MailRenderingException) {
+                        continue;
+                    }
+                }
+                $item['options'] = $options;
+            }
+            $targets[] = $item;
+        }
+
+        return $targets;
     }
 }

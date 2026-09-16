@@ -1,0 +1,46 @@
+{#
+    Výběr cíle odkazu — TÝŽ pro odkaz i pro tlačítko (připomínky 3 a 8 z 14. 9.).
+
+    Buď ruční adresa, nebo stránka z nabídky; u stránky se neukládá hotová adresa, ale zápis
+    `{{ '{{ odkaz(…) }}' }}`, který se dopočítá až při odeslání — odkaz tak nezastará a dialog ho
+    umí přečíst zpátky. Nabídku plní poskytovatelé v modulech (core: portál a zkrácené odkazy,
+    kalendář: akce a přihlášky), core sám o Seznamováku nic neví.
+#}
+{#
+    Parametry: eid (identifikátor editoru), prefix ('link' | 'button'), config.
+#}
+    <div class="mb-2">
+        <label class="form-label" for="{{ eid }}-{{ prefix }}-kind">Kam odkaz vede?</label>
+        <select class="form-select" id="{{ eid }}-{{ prefix }}-kind" data-link-kind data-initial-focus>
+            <option value="" data-hint="Webová adresa, e-mail (mailto:) nebo telefon (tel:).">Webová adresa, e-mail nebo telefon</option>
+            {% for group, targets in config.linkTargetGroups|default({}) %}
+                <optgroup label="{{ group }}">
+                    {% for target in targets %}
+                        <option value="{{ target.key }}" data-hint="{{ target.hint|default('') }}"
+                                data-url="{{ target.url|default('') }}">{{ target.label }}</option>
+                    {% endfor %}
+                </optgroup>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="mb-2" data-link-url>
+        <label class="form-label" for="{{ eid }}-{{ prefix }}-href">Adresa</label>
+        <input class="form-control" id="{{ eid }}-{{ prefix }}-href" data-field="href" type="text" inputmode="url"
+               placeholder="https://…" autocomplete="off" aria-describedby="{{ eid }}-{{ prefix }}-computed">
+        <div class="form-text" id="{{ eid }}-{{ prefix }}-computed" data-computed-hint hidden>Adresa se počítá v kódu (Twig) — změnit ji jde v režimu kódu.</div>
+    </div>
+    {% for target in config.linkTargets|default([]) %}
+        {% if target.parameter %}
+            <div class="mb-2" data-link-options="{{ target.key }}" hidden>
+                <label class="form-label" for="{{ eid }}-{{ prefix }}-{{ target.key }}">{{ target.label }}</label>
+                <select class="form-select" id="{{ eid }}-{{ prefix }}-{{ target.key }}" data-link-value="{{ target.key }}">
+                    {% for option in target.options %}
+                        <option value="{{ option.value }}" data-url="{{ option.url|default('') }}">{{ option.label }}</option>
+                    {% else %}
+                        <option value="">Zatím tu nic není</option>
+                    {% endfor %}
+                </select>
+            </div>
+        {% endif %}
+    {% endfor %}
+    <p class="form-text mt-0" data-link-hint aria-live="polite"></p>
