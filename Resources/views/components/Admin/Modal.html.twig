@@ -13,6 +13,9 @@
       size           – null | 'sm' | 'lg' | 'xl' (Bootstrap `modal-{size}`).
       scrollable     – dlouhý obsah roluje uvnitř okna, ne celá stránka.
       staticBackdrop – true = klepnutí mimo okno nezavře (jen pro nedokončené nevratné akce).
+      fade           – prolnutí při otevření (výchozí ano). Vypíná se tam, kde se okno otevírá pořád
+                       dokola a musí navazovat akce hned (dialogy editoru): během prolnutí stín
+                       pohlcuje klepnutí a okno nejde hned znovu otevřít.
       closeLabel     – popisek křížku pro čtečky.
       attributes     – cokoli navíc na kořenovém prvku (např. `data-dialog="link"`).
 
@@ -20,8 +23,8 @@
     formuláře zprávy) a vnořený formulář prohlížeč zahodí — Enter by pak odeslal formulář kolem.
     Pole proto nemají `name` a tlačítka jsou `type="button"`; hlídá `MailerUsageRuleTest`-like test
     `AdminModalKomponentaTest` v aplikaci. -#}
-{%- props id, title = null, size = null, scrollable = false, staticBackdrop = false, closeLabel = 'Zavřít' -%}
-<div class="modal fade" id="{{ id }}" tabindex="-1" aria-hidden="true"
+{%- props id, title = null, size = null, scrollable = false, staticBackdrop = false, fade = true, closeLabel = 'Zavřít' -%}
+<div class="modal{{ fade ? ' fade' : '' }}" id="{{ id }}" tabindex="-1" aria-hidden="true"
      {%- if title is not null %} aria-labelledby="{{ id }}-title"{% endif %}
      {%- if staticBackdrop %} data-bs-backdrop="static" data-bs-keyboard="false"{% endif %}
      {{ attributes }}>
