@@ -1,0 +1,40 @@
+{#- Modální okno administrace (Bootstrap 5). JEDNA podoba pro celý systém — dialogy editoru mailu
+    i budoucí potvrzení nevratných akcí (dnes 36× nativní `confirm()`, který neřekne, co se stane).
+
+    Použití:
+        <twig:OswisOrgOswisCore:Admin:Modal id="odkaz" title="Odkaz">
+            <twig:block name="body">…</twig:block>
+            <twig:block name="footer"><button type="button" class="btn btn-primary">Použít</button></twig:block>
+        </twig:OswisOrgOswisCore:Admin:Modal>
+
+    Props:
+      id             – základ identifikátorů (povinné); okno má id `{id}`, nadpis `{id}-title`.
+      title          – nadpis okna (v hlavičce, čte ho `aria-labelledby`).
+      size           – null | 'sm' | 'lg' | 'xl' (Bootstrap `modal-{size}`).
+      scrollable     – dlouhý obsah roluje uvnitř okna, ne celá stránka.
+      staticBackdrop – true = klepnutí mimo okno nezavře (jen pro nedokončené nevratné akce).
+      closeLabel     – popisek křížku pro čtečky.
+      attributes     – cokoli navíc na kořenovém prvku (např. `data-dialog="link"`).
+
+    ⚠️ Uvnitř okna NESMÍ být `<form>`: modal bývá vložený do jiného formuláře (editor mailu je uvnitř
+    formuláře zprávy) a vnořený formulář prohlížeč zahodí — Enter by pak odeslal formulář kolem.
+    Pole proto nemají `name` a tlačítka jsou `type="button"`; hlídá `MailerUsageRuleTest`-like test
+    `AdminModalKomponentaTest` v aplikaci. -#}
+{%- props id, title = null, size = null, scrollable = false, staticBackdrop = false, closeLabel = 'Zavřít' -%}
+<div class="modal fade" id="{{ id }}" tabindex="-1" aria-hidden="true"
+     {%- if title is not null %} aria-labelledby="{{ id }}-title"{% endif %}
+     {%- if staticBackdrop %} data-bs-backdrop="static" data-bs-keyboard="false"{% endif %}
+     {{ attributes }}>
+    <div class="modal-dialog{{ size ? ' modal-' ~ size : '' }}{{ scrollable ? ' modal-dialog-scrollable' : '' }}">
+        <div class="modal-content">
+            {%- if title is not null -%}
+                <div class="modal-header">
+                    <h2 class="modal-title h5" id="{{ id }}-title">{{ title }}</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{{ closeLabel }}"></button>
+                </div>
+            {%- endif -%}
+            <div class="modal-body">{% block body %}{% endblock %}</div>
+            <div class="modal-footer">{% block footer %}{% endblock %}</div>
+        </div>
+    </div>
+</div>
