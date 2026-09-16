@@ -138,8 +138,9 @@ final class MailSecretRedactor
         }
         // Úryvek zůstane úryvkem: parser kolem něj doplní `html`/`body`, ale do uložené kopie
         // patří jen to, co přišlo (celý e-mail z MJML svoje `<html>` má).
-        if (!str_contains(strtolower($html), '<html')) {
-            return $document->body?->innerHTML ?? $document->saveHtml();
+        $body = $document->body;
+        if (null !== $body && !str_contains(strtolower($html), '<html')) {
+            return $body->innerHTML;
         }
 
         return $document->saveHtml();

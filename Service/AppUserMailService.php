@@ -81,6 +81,46 @@ class AppUserMailService
         return $appUserEMail;
     }
 
+    /**
+     * Account mail whose text is a FILE template — system flows with a fixed wording (the
+     * "continue your registration" login link) have no admin-editable category in the database.
+     *
+     * Everything else stays the same as for database-driven mails: the copy is stored (without the
+     * secrets), the delivery has a state and shows up in the person's history. Before 16. 9. 2026
+     * this flow handed the message straight to the mailer, so nothing about it was ever recorded.
+     *
+     * @param array<string, mixed> $extraData
+     *
+     * @throws InvalidTypeException
+     * @throws OswisException
+     */
+    public function sendFromFileTemplate(
+        AppUser $appUser,
+        string $type,
+        string $template,
+        string $subject,
+        array $extraData = [],
+        ?AppUserToken $appUserToken = null,
+    ): AppUserMail {
+        if (null !== $appUserToken && $appUserToken->getAppUser() !== $appUser) {
+            throw new OswisException('Token není kompatibilní s uživatelem.');
+        }
+        $appUserEMail = new AppUserMail($appUser, $subject, $type, $appUserToken);
+        $appUserEMail->setPastMails($this->appUserMailRepository->findByAppUser($appUser));
+        $this->em->persist($appUserEMail);
+        $this->em->flush();
+        $this->mailService->sendEMail($appUserEMail, $template, array_merge([
+            'appUser'      => $appUser,
+            'category'     => null,
+            'type'         => $type,
+            'appUserToken' => $appUserToken,
+            'isIS'         => false,
+        ], $extraData));
+        $this->em->flush();
+
+        return $appUserEMail;
+    }
+
     public function getCategoryByType(?string $type): ?AppUserMailCategory
     {
         return $type ? $this->categoryRepository->findByType($type) : null;

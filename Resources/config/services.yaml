@@ -138,6 +138,10 @@ services:
         alias: oswis_org_oswis_core.mail_service
         public: true
 
+    OswisOrg\OswisCoreBundle\Service\SystemMailService:
+        autowire: true
+        public: true
+
     oswis_org_oswis_core.app_user_mail_service:
         class: OswisOrg\OswisCoreBundle\Service\AppUserMailService
         autowire: true
@@ -460,6 +464,13 @@ services:
         autowire: true
         autoconfigure: true
     OswisOrg\OswisCoreBundle\Mail\Secret\MailSecretRedactor: ~
+    OswisOrg\OswisCoreBundle\Mail\Delivery\SentMailRegistry: ~
+    OswisOrg\OswisCoreBundle\EventSubscriber\UnrecordedMailGuard:
+        autowire: true
+        autoconfigure: true
+        arguments:
+            $connection: '@doctrine.dbal.default_connection'
+            $logger: '@monolog.logger'
     OswisOrg\OswisCoreBundle\Mail\Rendering\MailBodySanitizer: ~
     OswisOrg\OswisCoreBundle\Mail\Rendering\MjmlBodySplitter: ~
     OswisOrg\OswisCoreBundle\Mail\Rendering\MailRenderer:

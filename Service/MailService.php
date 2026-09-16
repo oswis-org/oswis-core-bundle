@@ -7,9 +7,11 @@ declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Service;
 
+use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Doctrine\ORM\EntityManagerInterface;
 use Exception;
 use OswisOrg\OswisCoreBundle\Entity\AbstractClass\AbstractMail;
+use OswisOrg\OswisCoreBundle\Mail\Delivery\SentMailRegistry;
 use OswisOrg\OswisCoreBundle\Mail\Secret\MailSecretRedactor;
 use OswisOrg\OswisCoreBundle\Mailer\CistyTextKonvertor;
 use Psr\Log\LoggerInterface;
@@ -47,6 +49,7 @@ class MailService
         protected BodyRendererInterface $bodyRenderer,
         protected MailSecretRedactor $secretRedactor,
         protected CistyTextKonvertor $plainTextConverter,
+        protected SentMailRegistry $sentMailRegistry,
     ) {
     }
 
@@ -75,6 +78,16 @@ class MailService
         try {
             $eMail->markSending();
             $this->em->flush();
+        } catch (UniqueConstraintViolationException $exception) {
+            // Klíč jedinečnosti: totéž už někdo odeslal (druhý běh cronu, tlačítko v administraci).
+            // Není to chyba — je to přesně ta pojistka, kvůli které klíč existuje.
+            $this->logger->info(sprintf(
+                'E-mail (%s) se neodeslal podruhé — klíč „%s" už v databázi je.',
+                $class,
+                (string) $eMail->getDeliveryKey(),
+            ));
+
+            return $eMail;
         } catch (Throwable $exception) {
             // Fail closed: without a committed record we do not send at all, otherwise nobody
             // would know the message went out (and the change it announces may not be saved either).
@@ -84,6 +97,9 @@ class MailService
 
             return $eMail;
         }
+        // Pojistka ({@see UnrecordedMailGuard}) se po odeslání ptá, jestli měla zpráva záznam —
+        // zapsat se tedy musí DŘÍV, než odejde.
+        $this->sentMailRegistry->remember($eMail->getMessageID());
         try {
             $this->mailer->send($mail);
         } catch (Exception|TransportExceptionInterface $exception) {

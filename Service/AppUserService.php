@@ -24,10 +24,6 @@ use OswisOrg\OswisCoreBundle\Exceptions\UserNotUniqueException;
 use OswisOrg\OswisCoreBundle\Repository\AppUserRepository;
 use OswisOrg\OswisCoreBundle\Utils\StringUtils;
 use Psr\Log\LoggerInterface;
-use Symfony\Bridge\Twig\Mime\TemplatedEmail;
-use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
-use Symfony\Component\Mailer\MailerInterface;
-use Symfony\Component\Mime\Address;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 use function random_int;
@@ -69,7 +65,6 @@ class AppUserService
         private readonly AppUserMailService $appUserMailService,
         private readonly AppUserTypeService $appUserTypeService,
         private readonly AppUserRepository $appUserRepository,
-        private readonly MailerInterface $mailer,
     ) {
     }
 
@@ -155,12 +150,14 @@ class AppUserService
      * and bounces them onto the registration form for the given offer.
      *
      * Used when a public registration submission collides with an existing
-     * AppUser (returning participant). Bypasses the DB-driven mail-category
-     * dispatch on purpose: this is a system-level flow with a fixed
-     * template, not an admin-customisable transactional mail.
+     * AppUser (returning participant). The text is a file template, not an
+     * admin-customisable one from the database — but the mail itself goes the
+     * common way ({@see AppUserMailService::sendFromFileTemplate()}), so it is
+     * stored, has a delivery state and shows up in the person's history.
+     * Until 16. 9. 2026 it went straight to the mailer and left no trace.
      *
      * @throws InvalidTypeException
-     * @throws TransportExceptionInterface
+     * @throws OswisException
      */
     public function sendRegistrationLoginLink(
         AppUser $appUser,
@@ -177,26 +174,28 @@ class AppUserService
         $this->em->persist($appUser);
         $this->em->flush();
 
-        $recipient = (string) $appUser->getEmail();
-        $email = (new TemplatedEmail())
-            ->to(new Address($recipient, $appUser->getFullName()))
-            ->subject('Pokračování v přihlášce na akci')
-            ->htmlTemplate('@OswisOrgOswisCore/e-mail/pages/registration-login.html.twig')
-            ->context([
-                'appUser'      => $appUser,
-                'appUserToken' => $appUserToken,
-                'rangeSlug'    => $rangeSlug,
+        $mail = $this->appUserMailService->sendFromFileTemplate(
+            $appUser,
+            self::REGISTRATION_LOGIN,
+            '@OswisOrgOswisCore/e-mail/pages/registration-login.html.twig',
+            'Pokračování v přihlášce na akci',
+            [
+                'rangeSlug' => $rangeSlug,
                 // Explicit formal flag — AppUser entity has no `formal` field,
                 // so the parent app-user.html.twig template falls back to
                 // formal "Vy" by default. The caller knows the registration
                 // context (per ParticipantCategory) and passes the right tone.
-                'f'            => $formal,
-            ]);
-        $this->mailer->send($email);
-
-        $this->logger->info(
-            "Sent registration-login link to user ".$appUser->getId()." for range $rangeSlug.",
+                'f'         => $formal,
+            ],
+            $appUserToken,
         );
+
+        $this->logger->info(sprintf(
+            'Registration-login link for user %s, range %s: %s.',
+            $appUser->getId() ?? '?',
+            $rangeSlug,
+            $mail->isSent() ? 'SENT' : 'NOT DELIVERED',
+        ));
     }
 
     /**
