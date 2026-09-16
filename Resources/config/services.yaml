@@ -450,6 +450,8 @@ services:
         public: true
     OswisOrg\OswisCoreBundle\Twig\Extension\MailBlockExtension:
         tags: [ twig.extension ]
+    OswisOrg\OswisCoreBundle\Twig\Extension\MailFailureReasonExtension:
+        tags: [ twig.extension ]
     OswisOrg\OswisCoreBundle\Mail\Catalog\MailCatalog:
         autowire: true
         public: true

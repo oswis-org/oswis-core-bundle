@@ -9,9 +9,14 @@ declare(strict_types=1);
 namespace OswisOrg\OswisCoreBundle\Entity\AbstractClass;
 
 use DateTime;
+use DateTimeInterface;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping\Column;
 use LogicException;
+use OswisOrg\OswisCoreBundle\Entity\AppUser\AppUser;
+use OswisOrg\OswisCoreBundle\Enum\Communication\CommunicationChannel;
+use OswisOrg\OswisCoreBundle\Enum\Communication\CommunicationDirection;
+use OswisOrg\OswisCoreBundle\Interfaces\Communication\CommunicationEntryInterface;
 use OswisOrg\OswisCoreBundle\Enum\Mail\MailDeliveryStatus;
 use OswisOrg\OswisCoreBundle\Exceptions\InvalidTypeException;
 use OswisOrg\OswisCoreBundle\Exceptions\OswisException;
@@ -24,7 +29,7 @@ use Symfony\Component\Mime\Address;
 /**
  * @author Jakub Zak <mail@jakubzak.eu>
  */
-abstract class AbstractMail implements BasicInterface
+abstract class AbstractMail implements BasicInterface, CommunicationEntryInterface
 {
     use BasicTrait;
     use TypeTrait;
@@ -134,6 +139,63 @@ abstract class AbstractMail implements BasicInterface
     public function getStatus(): MailDeliveryStatus
     {
         return $this->status;
+    }
+
+    /**
+     * Kdy se to stalo — čas odeslání, a dokud žádný není, čas vzniku záznamu.
+     *
+     * Dřív se vracel jen `sent`, takže neodeslaný pokus neměl v historii kam sednout. Tím, že
+     * záznam vzniká ještě před odesláním, je takových víc než dřív a v historii patří.
+     */
+    public function getOccurredAt(): ?DateTimeInterface
+    {
+        return $this->getSent() ?? $this->getCreatedAt();
+    }
+
+    /** Pošta z OSWIS je vždy odchozí. */
+    public function getDirection(): CommunicationDirection
+    {
+        return CommunicationDirection::OUT;
+    }
+
+    public function getChannel(): CommunicationChannel
+    {
+        return CommunicationChannel::SYSTEM_MAIL;
+    }
+
+    /** Přihláška, ke které e-mail patří; u pošty k účtu a systémové žádná není. */
+    public function getParticipant(): ?object
+    {
+        return null;
+    }
+
+    public function getSummary(): ?string
+    {
+        return null;
+    }
+
+    /**
+     * Ukázat člověku v jeho vlastním přehledu? Jen to, co mu opravdu odešlo — neúspěšný pokus
+     * je věc týmu, ne účastníka.
+     */
+    public function isPublicForParticipant(): bool
+    {
+        return $this->isSent();
+    }
+
+    public function getInReplyTo(): ?string
+    {
+        return null;
+    }
+
+    public function getThreadKey(): ?string
+    {
+        return null;
+    }
+
+    public function getAuthorAppUser(): ?AppUser
+    {
+        return null;
     }
 
     public function getAttemptCount(): int
