@@ -67,6 +67,8 @@ class AppUserMail extends AbstractMail
     public const string TYPE_PASSWORD_CHANGE_REQUEST = 'password-change-request';
     public const string TYPE_USER_EDIT_REQUEST = 'user-edit-request';
     public const string TYPE_USER_EDIT = 'user-edit';
+    /** Přihlášení odkazem („Pokračování v přihlášce") — od 16. 9. 2026 se ukládá jako e-mail k účtu. */
+    public const string TYPE_REGISTRATION_LOGIN = 'registration-login';
 
     #[ManyToOne(targetEntity: AppUser::class, fetch: 'EAGER')]
     #[JoinColumn(name: 'app_user_id', referencedColumnName: 'id')]
@@ -107,6 +109,7 @@ class AppUserMail extends AbstractMail
             self::TYPE_PASSWORD_CHANGE_REQUEST,
             self::TYPE_USER_EDIT_REQUEST,
             self::TYPE_USER_EDIT,
+            self::TYPE_REGISTRATION_LOGIN,
         ];
     }
 

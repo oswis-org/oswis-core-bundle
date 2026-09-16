@@ -127,8 +127,14 @@ final class MailSecretRedactor
                 $links[] = $element;
             }
             foreach ($links as $link) {
+                // Tajná je ADRESA, ne popisek: „Ověřit přihlášku" na tlačítku ať v uložené kopii
+                // zůstane (tým pak ví, co člověku odešlo), jen odkaz nikam nevede. Text se nahradí
+                // tam, kde je jím sama adresa — to je záložní řádek „zkopíruj si tuto adresu".
+                $text = trim((string) $link->textContent);
                 $link->setAttribute('href', '#');
-                $link->textContent = self::PLACEHOLDER_LINK;
+                if (str_contains($text, '://') || '' === $text) {
+                    $link->textContent = self::PLACEHOLDER_LINK;
+                }
             }
             if ([] === $links) {
                 $element->textContent = 'link' === $element->getAttribute(self::ATTRIBUTE)

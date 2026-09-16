@@ -51,7 +51,7 @@ final readonly class UnrecordedMailGuard implements EventSubscriberInterface
     public function onSent(SentMessageEvent $event): void
     {
         $message = $event->getMessage()->getOriginalMessage();
-        $this->record($message, $event->getMessage()->getMessageId(), MailDeliveryStatus::SENT, null);
+        $this->record($message, $this->messageIdOf($message), MailDeliveryStatus::SENT, null);
     }
 
     public function onFailed(FailedMessageEvent $event): void
@@ -59,10 +59,23 @@ final readonly class UnrecordedMailGuard implements EventSubscriberInterface
         $message = $event->getMessage();
         $this->record(
             $message,
-            $message instanceof Message ? $message->getHeaders()->get('Message-ID')?->getBodyAsString() : null,
+            $this->messageIdOf($message),
             MailDeliveryStatus::FAILED,
             $event->getError()->getMessage(),
         );
+    }
+
+    /**
+     * Identifikátor ZPRÁVY (hlavička Message-ID), ne identifikátor od poštovního serveru.
+     *
+     * `SentMessage::getMessageId()` vrací id přidělené SMTP serverem — jiné číslo, které v záznamu
+     * nemáme. Podle něj pojistka hlásila jako „mimo službu" i e-maily, které službou prošly.
+     */
+    private function messageIdOf(object $message): ?string
+    {
+        return $message instanceof Message
+            ? $message->getHeaders()->get('Message-ID')?->getBodyAsString()
+            : null;
     }
 
     private function record(object $message, ?string $messageId, MailDeliveryStatus $status, ?string $reason): void
