@@ -19,15 +19,22 @@ final readonly class CoreLinkTargetProvider implements MailLinkTargetProviderInt
 
     public function getLinkTargets(): iterable
     {
-        // JEN kořen portálu, bez výběru stránky: `/portal/{foo}` přesměrovává na adresu aplikace
-        // a cestu přitom ZAHODÍ (`PortalWebController`), takže „Přehled" i „Mapa" by skončily stejně.
-        // Odkaz přímo na stránku v portálu vyžaduje předání cesty — to patří k práci na portálu.
+        // Stránky odpovídají routám aplikace (`portal.routes.ts`). Přesměrování na adresu aplikace
+        // nese cestu dál (`PortalWebController`) a nepřihlášeného si aplikace po přihlášení vrátí
+        // tam, kam mířil — takže odkaz opravdu skončí na vybrané stránce.
         yield new MailLinkTarget(
             key: 'portal',
             label: 'Portál účastníka (aplikace)',
             group: 'Portál',
             route: 'oswis_org_oswis_core_portal',
-            hint: 'Otevře aplikaci; po přihlášení tam každý vidí svoje.',
+            parameter: 'foo',
+            options: [
+                ['value' => 'overview', 'label' => 'Přehled'],
+                ['value' => 'calendar', 'label' => 'Program'],
+                ['value' => 'map', 'label' => 'Mapa'],
+                ['value' => 'participants', 'label' => 'Moje přihláška'],
+            ],
+            hint: 'Po přihlášení každý uvidí svoje.',
         );
 
         yield new MailLinkTarget(
