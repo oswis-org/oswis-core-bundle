@@ -71,7 +71,14 @@
     {% if app.request.attributes.get('_route') != 'oswis_org_oswis_core_web_admin_homepage' %}
         {% set crumbList = crumbs|default([]) %}
         {% if crumbList is empty %}
-            {% set crumbTitle = block('html_title')|split(' :: ')|first|split(' · ')|first|trim %}
+            {# `block()` vrací UŽ VYKRESLENÝ (tedy escapovaný) text, takže uvozovka v názvu sem přišla
+               jako `&quot;` a při vypsání se escapovala podruhé — v drobečkách pak svítilo
+               „…tipů.&quot;)". Proto se entity vrátí na znaky; escapování si pak udělá výpis sám.
+
+               ZÁMĚRNĚ se nebere proměnná `page_title`: 20+ admin stránek si `html_title` skládá
+               z něčeho jiného (`title`, `pageTitle`, natvrdo), takže by se jim text v drobečkách
+               tiše změnil. Opravuje se escapování, ne zdroj titulku. #}
+            {% set crumbTitle = block('html_title')|replace({'&quot;': '"', '&#039;': "'", '&amp;': '&'})|split(' :: ')|first|split(' · ')|first|trim %}
             {% if crumbTitle %}{% set crumbList = [{ 'label': crumbTitle }] %}{% endif %}
         {% endif %}
         {% embed '@OswisOrgOswisCore/web/parts/breadcrumbs.html.twig' %}
