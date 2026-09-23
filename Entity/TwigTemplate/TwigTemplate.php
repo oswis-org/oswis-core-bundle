@@ -88,10 +88,35 @@ class TwigTemplate implements NameableInterface, TextValueInterface
     #[Column(type: 'string', length: 16, nullable: true)]
     protected ?string $kind = null;
 
+    /**
+     * Předmět e-mailu jako Twig („Infomail – {{ akce }}"), nebo NULL = dosavadní chování: název šablony
+     * a za něj název akce, který doplní odesílající služba (23. 9. 2026 — akce v předmětu jako proměnná,
+     * ne natvrdo lepená přípona). Bloky předmět nemají.
+     */
+    #[Column(type: 'string', length: 255, nullable: true)]
+    protected ?string $subject = null;
+
     /** @return list<string> */
     public static function getAllowedKinds(): array
     {
         return [self::KIND_SYSTEM, self::KIND_CAMPAIGN, self::KIND_SNIPPET, self::KIND_PAGE, self::KIND_PDF];
+    }
+
+    public function getSubject(): ?string
+    {
+        return $this->subject;
+    }
+
+    public function setSubject(?string $subject): void
+    {
+        $subject = null === $subject ? null : trim($subject);
+        $this->subject = '' === $subject ? null : $subject;
+    }
+
+    /** Má šablona vlastní předmět? Jinak platí název šablony + akce ({@see getSubject()}). */
+    public function hasSubject(): bool
+    {
+        return null !== $this->subject;
     }
 
     public function getKind(): ?string

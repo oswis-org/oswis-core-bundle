@@ -22,6 +22,7 @@ use OswisOrg\OswisCoreBundle\Exceptions\NotImplementedException;
 use OswisOrg\OswisCoreBundle\Exceptions\OswisException;
 use OswisOrg\OswisCoreBundle\Exceptions\TokenInvalidException;
 use OswisOrg\OswisCoreBundle\Interfaces\Mail\MailCategoryInterface;
+use OswisOrg\OswisCoreBundle\Mail\Rendering\MailRenderer;
 use OswisOrg\OswisCoreBundle\Repository\AppUserMailCategoryRepository;
 use OswisOrg\OswisCoreBundle\Repository\AppUserMailGroupRepository;
 use OswisOrg\OswisCoreBundle\Repository\AppUserMailRepository;
@@ -33,7 +34,8 @@ class AppUserMailService
         protected EntityManagerInterface $em,
         protected AppUserMailGroupRepository $groupRepository,
         protected AppUserMailCategoryRepository $categoryRepository,
-        protected AppUserMailRepository $appUserMailRepository
+        protected AppUserMailRepository $appUserMailRepository,
+        protected MailRenderer $mailRenderer,
     ) {
     }
 
@@ -62,8 +64,6 @@ class AppUserMailService
                 = $group->getTwigTemplate())) {
             throw new NotFoundException('Šablona e-mailu nebyla nalezena.');
         }
-        $title = $twigTemplate->getName() ?? 'Změna u uživatelského účtu';
-        $appUserEMail = new AppUserMail($appUser, $title, $type, $appUserToken);
         $data = [
             'appUser'      => $appUser,
             'category'     => $category,
@@ -71,6 +71,12 @@ class AppUserMailService
             'appUserToken' => $appUserToken,
             'isIS'         => $isIS,
         ];
+        $title = $this->mailRenderer->renderTemplateSubject(
+            $twigTemplate->getSubject(),
+            $data,
+            $twigTemplate->getName() ?? 'Změna u uživatelského účtu',
+        );
+        $appUserEMail = new AppUserMail($appUser, $title, $type, $appUserToken);
         $appUserEMail->setPastMails($this->appUserMailRepository->findByAppUser($appUser));
         $this->em->persist($appUserEMail);
         $this->em->flush();
@@ -159,8 +165,6 @@ class AppUserMailService
                 = $group->getTwigTemplate())) {
             throw new NotFoundException('Šablona e-mailu nebyla nalezena.');
         }
-        $title = $twigTemplate->getName() ?? 'Změna u uživatelského účtu';
-        $appUserEMail = new AppUserEditMail($title, $type, $userEditRequest, $userEdit);
         $data = [
             'appUser'         => $appUser,
             'category'        => $category,
@@ -168,6 +172,12 @@ class AppUserMailService
             'userEditRequest' => $userEditRequest,
             'userEdit'        => $userEdit,
         ];
+        $title = $this->mailRenderer->renderTemplateSubject(
+            $twigTemplate->getSubject(),
+            $data,
+            $twigTemplate->getName() ?? 'Změna u uživatelského účtu',
+        );
+        $appUserEMail = new AppUserEditMail($title, $type, $userEditRequest, $userEdit);
         $appUserEMail->setPastMails($this->appUserMailRepository->findByAppUser($appUser));
         $this->em->persist($appUserEMail);
         $this->em->flush();

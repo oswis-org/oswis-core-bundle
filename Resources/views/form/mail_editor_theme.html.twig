@@ -11,3 +11,12 @@
         label: label|default('Text zprávy'),
     } only %}
 {% endblock %}
+
+{# Motiv pole MailSubjectType — předmět s nabídkou „Vložit údaj" (ovládá Stimulus `mail-subject`). #}
+{% block mail_subject_widget %}
+    {% include '@OswisOrgOswisCore/mail/subject.html.twig' with {
+        input: block('form_widget_simple'),
+        id: id,
+        groups: variable_groups,
+    } only %}
+{% endblock %}

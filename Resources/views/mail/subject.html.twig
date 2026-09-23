@@ -1,0 +1,19 @@
+{#
+    Předmět mailu s nabídkou „Vložit údaj" (vloží `{{ výraz }}` na místo kurzoru).
+    `input` = hotové <input> pole (z formuláře, nebo ručně psané HTML), `id` = jeho id, `groups` = skupiny
+    proměnných z MailEditorConfig (`variableGroups`). Bez JS zůstane obyčejné textové pole.
+#}
+<div class="input-group mail-subject" data-controller="mail-subject" data-mail-subject-input-value="{{ id }}">
+    {{ input|raw }}
+    <select class="form-select mail-subject__insert" aria-label="Vložit údaj"
+            data-action="change->mail-subject#insert">
+        <option value="">Vložit údaj…</option>
+        {% for group, items in groups %}
+            <optgroup label="{{ group }}">
+                {% for item in items %}
+                    <option value="{{ item.expression }}">{{ item.label }}</option>
+                {% endfor %}
+            </optgroup>
+        {% endfor %}
+    </select>
+</div>

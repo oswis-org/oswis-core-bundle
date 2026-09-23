@@ -490,6 +490,10 @@ services:
     OswisOrg\OswisCoreBundle\Form\Type\MailBodyType:
         autowire: true
         autoconfigure: true
+    # Předmět mailu s „Vložit údaj" (šablony, 23. 9. 2026)
+    OswisOrg\OswisCoreBundle\Form\Type\MailSubjectType:
+        autowire: true
+        autoconfigure: true
     OswisOrg\OswisCoreBundle\Mail\Secret\MailSecretRedactor: ~
     OswisOrg\OswisCoreBundle\Mail\Delivery\SentMailRegistry: ~
     OswisOrg\OswisCoreBundle\EventSubscriber\UnrecordedMailGuard:

@@ -15,6 +15,9 @@ final class MailRenderer
 {
     public const string WRAPPER_TEMPLATE = '@OswisOrgOswisCore/e-mail/pages/body.html.twig';
 
+    /** Sloupec `subject` záznamu mailu je VARCHAR(255). */
+    public const int SUBJECT_MAX_LENGTH = 255;
+
     public function __construct(
         private readonly Environment $twig,
         private readonly MailBodySanitizer $sanitizer,
@@ -62,6 +65,27 @@ final class MailRenderer
         $plain = html_entity_decode(strip_tags($subject), ENT_QUOTES | ENT_HTML5, 'UTF-8');
 
         return trim((string) preg_replace('/\s+/u', ' ', $plain));
+    }
+
+    /**
+     * Předmět mailu ze šablony: vlastní předmět šablony (Twig), jinak `$fallback` — dosavadní předmět,
+     * který skládá odesílající služba (název šablony + akce). Jediné místo, kde se o tom rozhoduje,
+     * pro maily k účtu i k přihláškám (23. 9. 2026).
+     *
+     * Visící oddělovač na konci se ořízne: „Infomail – {{ akce }}" u přihlášky bez akce dá „Infomail",
+     * ne „Infomail –" (dosavadní přípona se v tom případě taky nepřidala). Délka je omezená sloupcem
+     * předmětu v záznamu mailu.
+     *
+     * @param array<string, mixed> $context
+     */
+    public function renderTemplateSubject(?string $subjectTwig, array $context, string $fallback): string
+    {
+        if (null === $subjectTwig || '' === trim($subjectTwig)) {
+            return $fallback;
+        }
+        $subject = (string) preg_replace('/[\s\x{2013}\x{2014}\-:,|]+$/u', '', $this->renderSubject($subjectTwig, $context));
+
+        return mb_substr('' === $subject ? $fallback : $subject, 0, self::SUBJECT_MAX_LENGTH);
     }
 
     /**
