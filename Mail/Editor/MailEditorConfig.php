@@ -10,6 +10,7 @@ use OswisOrg\OswisCoreBundle\Mail\Catalog\MailCatalogItem;
 use OswisOrg\OswisCoreBundle\Mail\Link\MailLinkResolver;
 use OswisOrg\OswisCoreBundle\Mail\Link\MailLinkTargetRegistry;
 use OswisOrg\OswisCoreBundle\Mail\Markup\MailMarkupPolicy;
+use OswisOrg\OswisCoreBundle\Mail\Parent\MailParentRegistry;
 use OswisOrg\OswisCoreBundle\Mail\Rendering\MailRenderingException;
 
 /**
@@ -30,6 +31,7 @@ final class MailEditorConfig
         private readonly MailBlockRegistry $blocks,
         private readonly MailLinkTargetRegistry $linkTargets,
         private readonly MailLinkResolver $linkResolver,
+        private readonly MailParentRegistry $parents,
     ) {
     }
 
@@ -44,6 +46,7 @@ final class MailEditorConfig
      *     linkSchemes: list<string>,
      *     linkTargets: list<array<string, mixed>>,
      *     linkTargetGroups: array<string, list<array<string, mixed>>>,
+     *     regionLabels: array<string, string>,
      * }
      */
     public function toArray(): array
@@ -91,6 +94,8 @@ final class MailEditorConfig
             'linkSchemes'    => MailMarkupPolicy::LINK_SCHEMES,
             'linkTargets'    => $linkTargets,
             'linkTargetGroups' => $linkTargetGroups,
+            // Popisky úseků šablony („Tělo e-mailu" místo `{% block content_inner %}`) z obálek.
+            'regionLabels'   => $this->parents->popiskyBloku(),
         ];
     }
 

@@ -14,6 +14,7 @@ use OswisOrg\OswisCoreBundle\Twig\Extension\MjmlExtension;
 use Twig\Environment;
 use Twig\Error\Error as TwigError;
 use Twig\Error\SyntaxError;
+use Twig\Node\BlockReferenceNode;
 use Twig\Node\Expression\ConstantExpression;
 use Twig\Node\Expression\FunctionExpression;
 use Twig\Node\Expression\Variable\AssignContextVariable;
@@ -119,6 +120,7 @@ final class MailValidator
             return $result;
         }
         /** @var list<ModuleNode> $modules */
+        $this->warnDeadBlocks($modules[0], $recipients[0]['context'] ?? [], $result);
         $unknown = $this->collectVariables($modules, $recipients[0]['context'] ?? [])['unknown'];
         $parts = ['V šabloně' => fn (array $context): string => $this->twig->createTemplate($source)->render($context)];
         if (null !== $subject) {
@@ -146,6 +148,65 @@ final class MailValidator
         }
 
         return $this->validateTemplateSource($source, $recipients, $subject);
+    }
+
+    /**
+     * Blok, který obálka (ani její předkové) nevykresluje, se ZTRATÍ — Twig na to neupozorní.
+     *
+     * PROČ: překlep v názvu bloku nebo blok přenesený z jiné obálky znamená text, který se do mailu
+     * nedostane, a nic nespadne. Kontrolují se jen bloky NEJVYŠŠÍ úrovně: vnořený blok (např.
+     * `message_footer` uvnitř `content_inner`) se vykreslí spolu s blokem, ve kterém leží, a v obálce
+     * být nemusí. Rodič šablony musí být pevný řetězec. Obálka sama ale smí mít rodiče dynamického
+     * (`participant-universal` si ho volí podle typu mailu) — proto kontext vzorového příjemce; když ani
+     * s ním rodiče určit nejde, kontrola se vynechá (nesmí shodit uložení šablony).
+     *
+     * @param array<string, mixed> $context
+     */
+    private function warnDeadBlocks(ModuleNode $module, array $context, MailValidationResult $result): void
+    {
+        $parent = $module->hasNode('parent') ? $module->getNode('parent') : null;
+        if (!$parent instanceof ConstantExpression || !is_string($name = $parent->getAttribute('value'))) {
+            return;
+        }
+        try {
+            $wrapper = $this->twig->load($name);
+        } catch (TwigError) {
+            return; // neexistující obálku nahlásí vykreslení
+        }
+        $blocks = $module->getNode('blocks');
+        $nested = [];
+        foreach ($blocks as $block) {
+            self::collectBlockReferences($block, $nested, true);
+        }
+        foreach ($blocks as $blockName => $block) {
+            $blockName = (string) $blockName;
+            try {
+                $known = isset($nested[$blockName]) || $wrapper->hasBlock($blockName, $context);
+            } catch (TwigError) {
+                return; // rodiče obálky nejde určit — raději nic, než planý poplach
+            }
+            if (!$known) {
+                $result->warning(sprintf(
+                    'Blok „%s" obálka nevykresluje, takže se jeho obsah do e-mailu nedostane (překlep v názvu, nebo blok z jiné obálky?).',
+                    $blockName,
+                ));
+            }
+        }
+    }
+
+    /**
+     * Jména bloků, na které se odkazuje UVNITŘ jiného bloku (vnořené bloky).
+     *
+     * @param array<string, true> $names
+     */
+    private static function collectBlockReferences(Node $node, array &$names, bool $isRoot = false): void
+    {
+        if (!$isRoot && $node instanceof BlockReferenceNode && is_string($name = $node->getAttribute('name'))) {
+            $names[$name] = true;
+        }
+        foreach ($node as $child) {
+            self::collectBlockReferences($child, $names);
+        }
     }
 
     /** @return \Closure(array<string, mixed>): string */
