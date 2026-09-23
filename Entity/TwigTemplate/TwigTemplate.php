@@ -68,6 +68,15 @@ class TwigTemplate implements NameableInterface, TextValueInterface
     use NameableTrait;
     use TextValueTrait;
 
+    /**
+     * RODIČ šablony — Twig šablona (soubor, nebo jiná šablona z databáze), ze které tahle vychází.
+     * Do zdroje se doplní sám jako `{% extends '…' %}` ({@see slozitZdroj()}), text šablony pak obsahuje
+     * jen bloky, které rodiči přepisuje. Prázdný text = mail přesně podle rodiče.
+     *
+     * ⚠️ Do 23. 9. 2026 pole znamenalo „MÍSTO obsahu": vykreslil se rovnou soubor a text z databáze se
+     * nepoužil vůbec (načítač ho dokonce odmítal). Nový význam je pro všech 34 šablon výstupově totožný —
+     * měřeno v RodicSablonyVyjdeStejneTest (aplikace). Sloupec si nechává původní jméno.
+     */
     #[Column(type: 'string', nullable: true)]
     protected ?string $regularTemplateName = null;
 
@@ -127,8 +136,36 @@ class TwigTemplate implements NameableInterface, TextValueInterface
         return $updatedAt?->getTimestamp() <= ($timestamp ?? time());
     }
 
+    /**
+     * Jméno, pod kterým se šablona vykreslí — VŽDY slug, takže ji načte DatabaseLoader a doplní rodiče.
+     * (Dřív se u šablony s cestou vracela cesta a vykreslil se rovnou soubor bez obsahu z databáze.)
+     */
     final public function getTemplateName(): string
     {
-        return $this->getRegularTemplateName() ?? $this->getSlug();
+        return $this->getSlug();
+    }
+
+    /** Zdroj, jak ho uvidí Twig: rodič z pole + text šablony. */
+    final public function getSlozenyZdroj(): string
+    {
+        return self::slozitZdroj($this->getRegularTemplateName(), $this->getTextValue());
+    }
+
+    /**
+     * JEDINÉ místo, kde se rodič doplňuje do zdroje — používá ho načítač (i pro otisk cache), kontrola
+     * i náhled, aby všichni viděli totéž, co odejde.
+     *
+     * Když text `extends` už obsahuje (kampaně před převodem, nebo ruční zápis), podruhé se nepřidá:
+     * dvojí `extends` by Twig odmítl.
+     */
+    public static function slozitZdroj(?string $rodic, ?string $text): string
+    {
+        $text ??= '';
+        $rodic = null === $rodic ? '' : trim($rodic);
+        if ('' === $rodic || 1 === preg_match('/^\s*\{%-?\s*extends\b/', $text)) {
+            return $text;
+        }
+
+        return "{% extends '".str_replace("'", "\\'", $rodic)."' %}".$text;
     }
 }

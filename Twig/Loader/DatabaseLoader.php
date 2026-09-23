@@ -22,15 +22,9 @@ class DatabaseLoader implements LoaderInterface
         if (null === $row) {
             throw new LoaderError(sprintf('Template "%s" does not exist in TwigTemplateRepository.', $name));
         }
-        if (null !== $row['regularTemplateName']) {
-            throw new LoaderError(sprintf(
-                'Template "%s" is only reference to regular template "%s".',
-                $name,
-                $row['regularTemplateName'],
-            ));
-        }
-
-        return new Source($row['textValue'] ?? '', $name);
+        // Rodič („Vychází z") se doplní sem — dřív šablona s cestou k souboru znamenala „místo obsahu"
+        // a načítač ji odmítal; odeslání šlo rovnou na soubor. Výstup je pro všech 34 šablon totožný.
+        return new Source(TwigTemplate::slozitZdroj($row['regularTemplateName'], $row['textValue']), $name);
     }
 
     final public function getTemplate(string $name): ?TwigTemplate
@@ -40,19 +34,18 @@ class DatabaseLoader implements LoaderInterface
 
     final public function exists(string $name): bool
     {
-        $row = $this->repository->findLoaderRowBySlug($name);
-
-        return null !== $row && null === $row['regularTemplateName'];
+        return null !== $this->repository->findLoaderRowBySlug($name);
     }
 
     /**
-     * Klíč = název + id + otisk OBSAHU.
+     * Klíč = název + id + otisk SLOŽENÉHO obsahu (rodič + text).
      *
      * PROČ: Twig pojmenuje třídu zkompilované šablony podle tohoto klíče
      * (`Environment::getTemplateClass`). Na produkci je `auto_reload` vypnutý, `isFresh()` se tedy
      * nevolá — s klíčem jen podle názvu se po úpravě textu brala stará zkompilovaná verze až do
      * dalšího nasazení (nalezeno 13. 9. 2026). Otisk obsahu (ne `updatedAt`) funguje i pro dvě
-     * úpravy v téže sekundě a pro změnu mimo ORM.
+     * úpravy v téže sekundě a pro změnu mimo ORM. Rodič do otisku vstupuje taky — jinak by jeho změna
+     * na produkci nezabrala až do dalšího nasazení.
      */
     final public function getCacheKey(string $name): string
     {
@@ -61,7 +54,7 @@ class DatabaseLoader implements LoaderInterface
             throw new LoaderError(sprintf('Template "%s" does not exist in TwigTemplateRepository.', $name));
         }
 
-        return $name.'#'.$row['id'].'#'.hash('xxh3', $row['textValue'] ?? '');
+        return $name.'#'.$row['id'].'#'.hash('xxh3', TwigTemplate::slozitZdroj($row['regularTemplateName'], $row['textValue']));
     }
 
     /** Každá změna obsahu = nový klíč = nová třída; při zapnutém `auto_reload` stačí existence. */

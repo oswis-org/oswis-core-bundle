@@ -6,7 +6,7 @@
     Parametry: name, id, value, config (MailEditorConfig::toArray()), required (bool), rows (int),
     label (popisek pro čtečky), preview (nepovinné — náhled vedle textu: {url, recipients: [{id, label}],
     subjectField: id pole předmětu, templateField: id výběru kampaně, document: text je celý Twig dokument
-    — neuložená kampaň z obrazovky šablon}).
+    — neuložená kampaň z obrazovky šablon, parentField: id pole s rodičem „Vychází z"}).
 #}
 {#
     Tlačítko panelu. `toggle` = přepínač se stavem aria-pressed. Příkazy obsluhuje kontroler
@@ -30,6 +30,7 @@
     previewSubjectField: previewConfig ? previewConfig.subjectField|default('') : '',
     previewTemplateField: previewConfig ? previewConfig.templateField|default('') : '',
     previewDocument: previewConfig ? previewConfig.document|default(false) : false,
+    previewParentField: previewConfig ? previewConfig.parentField|default('') : '',
 }) }}>
     <div class="mail-editor__main">
         <div class="mail-editor__toolbar btn-toolbar" role="toolbar" aria-label="Formátování textu"
