@@ -6,7 +6,8 @@
     Parametry: name, id, value, config (MailEditorConfig::toArray()), required (bool), rows (int),
     label (popisek pro čtečky), preview (nepovinné — náhled vedle textu: {url, recipients: [{id, label}],
     subjectField: id pole předmětu, templateField: id výběru kampaně, document: text je celý Twig dokument
-    — neuložená kampaň z obrazovky šablon, parentField: id pole s rodičem „Vychází z"}).
+    — neuložená kampaň z obrazovky šablon, parentField: id pole s rodičem „Vychází z", valuesUrl: hodnoty
+    údajů příjemce pro dialog „Vložit údaj" — POST s týmž tokenem jako náhled).
 #}
 {#
     Tlačítko panelu. `toggle` = přepínač se stavem aria-pressed. Příkazy obsluhuje kontroler
@@ -31,6 +32,7 @@
     previewTemplateField: previewConfig ? previewConfig.templateField|default('') : '',
     previewDocument: previewConfig ? previewConfig.document|default(false) : false,
     previewParentField: previewConfig ? previewConfig.parentField|default('') : '',
+    previewValuesUrl: previewConfig ? previewConfig.valuesUrl|default('') : '',
 }) }}>
     <div class="mail-editor__main">
         <div class="mail-editor__toolbar btn-toolbar" role="toolbar" aria-label="Formátování textu"
@@ -111,17 +113,30 @@
                 <label class="form-label" for="{{ eid }}-variable-search">Hledat</label>
                 <input class="form-control mb-2" id="{{ eid }}-variable-search" type="search" data-dialog-search
                        autocomplete="off" data-initial-focus aria-describedby="{{ eid }}-variable-hint">
-                <div class="form-text mt-0 mb-1" id="{{ eid }}-variable-hint">Enter vloží první nalezený.</div>
+                {# Ukázka hodnot a počty prázdných dotahuje kontroler (valuesUrl) pro příjemce z náhledu. #}
+                <div class="form-text mt-0 mb-1" id="{{ eid }}-variable-hint">Šipkami vybereš, Enterem vložíš.
+                    <span data-variable-sample hidden></span></div>
                 <div class="mail-editor__dialog-list">
                     {% for group, items in config.variableGroups %}
                         <div role="group" aria-labelledby="{{ eid }}-vg-{{ loop.index }}" data-dialog-group>
                             <div class="mail-editor__dialog-group" id="{{ eid }}-vg-{{ loop.index }}">{{ group }}</div>
-                            {% for item in items %}
-                                <button type="button" class="btn btn-sm btn-outline-primary m-1" data-dialog-action="insert"
-                                        data-expression="{{ item.expression }}" data-search="{{ item.label }} {{ item.chip }} {{ item.expression }}"
-                                        title="{{ '{{ ' ~ item.expression ~ ' }}' }}">{{ item.label }}</button>
-                            {% endfor %}
+                            <div class="list-group">
+                                {% for item in items %}
+                                    <button type="button" class="list-group-item list-group-item-action mail-editor__variable"
+                                            data-dialog-action="insert" data-expression="{{ item.expression }}"
+                                            data-search="{{ item.label }} {{ item.chip }} {{ item.expression }}"
+                                            title="{{ '{{ ' ~ item.expression ~ ' }}' }}">
+                                        <span class="mail-editor__variable-head">
+                                            <span class="mail-editor__variable-label">{{ item.label }}</span>
+                                            <span class="badge text-bg-light mail-editor__variable-value" data-variable-value hidden></span>
+                                        </span>
+                                        <small class="mail-editor__variable-warning text-warning-emphasis" data-variable-warning hidden></small>
+                                    </button>
+                                {% endfor %}
+                            </div>
                         </div>
+                    {% else %}
+                        <p class="small text-muted my-2">Tahle zpráva nemá údaje příjemce k vložení — nevztahuje se k přihlášce. Vlastní výraz jde vložit níže.</p>
                     {% endfor %}
                     <p class="small text-muted my-2" data-dialog-empty hidden>Nic nenalezeno — zkus jiné slovo nebo vlastní výraz.</p>
                 </div>
