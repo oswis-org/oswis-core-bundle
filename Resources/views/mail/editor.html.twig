@@ -33,6 +33,7 @@
     previewDocument: previewConfig ? previewConfig.document|default(false) : false,
     previewParentField: previewConfig ? previewConfig.parentField|default('') : '',
     previewValuesUrl: previewConfig ? previewConfig.valuesUrl|default('') : '',
+    previewAudienceUrl: previewConfig ? previewConfig.audienceUrl|default('') : '',
 }) }}>
     <div class="mail-editor__main">
         <div class="mail-editor__toolbar btn-toolbar" role="toolbar" aria-label="Formátování textu"
@@ -153,16 +154,46 @@
                 <button type="button" class="btn btn-outline-danger" data-dialog-action="remove" data-edit-only hidden>Odebrat údaj</button>
             </twig:block>
         </twig:OswisOrgOswisCore:Admin:Modal>
-        <twig:OswisOrgOswisCore:Admin:Modal id="{{ id }}-dlg-condition" title="Podmínka" scrollable :fade="false" data-dialog="condition">
+        {% set hotove %}
+            <div class="d-grid gap-1">
+                {% for item in config.conditions %}
+                    <button type="button" class="btn btn-outline-primary text-start" data-dialog-action="apply"
+                            data-cond="{{ item.expression }}" aria-pressed="false" title="{{ '{% if ' ~ item.expression ~ ' %}' }}"
+                            {{- loop.first and config.audience|default([]) is empty ? ' data-initial-focus' : '' }}>{{ item.label }}</button>
+                {% endfor %}
+            </div>
+        {% endset %}
+        <twig:OswisOrgOswisCore:Admin:Modal id="{{ id }}-dlg-condition" title="Komu se text zobrazí" scrollable :fade="false"
+                                            size="{{ config.audience|default([]) is not empty ? 'lg' : '' }}"
+                                            data-dialog="condition" data-title-edit="Změnit, komu se text zobrazí">
             <twig:block name="body">
-                <p class="small text-muted">Vybrané odstavce uvidí jen příjemci, pro které podmínka platí.</p>
-                <div class="d-grid gap-1">
-                    {% for item in config.conditions %}
-                        <button type="button" class="btn btn-outline-primary text-start" data-dialog-action="apply"
-                                data-cond="{{ item.expression }}" aria-pressed="false" title="{{ '{% if ' ~ item.expression ~ ' %}' }}"
-                                {{- loop.first ? ' data-initial-focus' : '' }}>{{ item.label }}</button>
-                    {% endfor %}
-                </div>
+                <p class="small text-muted">Vybrané odstavce uvidí jen příjemci, na které sedí pravidla.</p>
+                {% if config.audience|default([]) is not empty %}
+                    {# Stavebnice (dávka 2c, bod 7): řádky staví AudienceBuilder (aplikace); uloží se jako
+                       {% if pravidla("…") %} — výraz filtru přihlášek. #}
+                    <section class="mb-3" data-audience aria-labelledby="{{ eid }}-audience-heading">
+                        <h3 class="h6" id="{{ eid }}-audience-heading">Pravidla</h3>
+                        <div data-audience-rows></div>
+                        <div class="d-flex flex-wrap gap-2 align-items-center mb-2">
+                            <div class="btn-group" role="group" aria-label="Jak pravidla spojit">
+                                <button type="button" class="btn btn-sm btn-outline-primary active" data-join="and" aria-pressed="true">a zároveň</button>
+                                <button type="button" class="btn btn-sm btn-outline-primary" data-join="or" aria-pressed="false">nebo</button>
+                            </div>
+                            <button type="button" class="btn btn-sm btn-outline-primary" data-audience-add>
+                                <twig:ux:icon name="tabler:plus" aria-hidden="true" /> Přidat pravidlo</button>
+                        </div>
+                        <div class="alert alert-info py-2 mb-2" data-audience-count role="status" hidden></div>
+                        <div class="form-check mb-2" data-audience-else-wrap>
+                            <input class="form-check-input" type="checkbox" id="{{ eid }}-audience-else" data-audience-else>
+                            <label class="form-check-label" for="{{ eid }}-audience-else">Ostatním zobrazit jiný text
+                                <small class="text-muted">(přidá se druhý blok pro ty, na které pravidla nesedí)</small></label>
+                        </div>
+                        <button type="button" class="btn btn-primary" data-dialog-action="audience">Použít pravidla</button>
+                    </section>
+                    <details class="mt-2"><summary>Hotové podmínky</summary>{{ hotove }}</details>
+                {% else %}
+                    {{ hotove }}
+                {% endif %}
                 <details class="mt-2"><summary>Vlastní podmínka (pokročilé)</summary>
                     <label class="form-label mt-1" for="{{ eid }}-cond-custom">Podmínka Twigu</label>
                     <input class="form-control" id="{{ eid }}-cond-custom" data-field="customCond" data-enter="custom" type="text"

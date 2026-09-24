@@ -21,6 +21,8 @@ services:
             tags: [ 'oswis.mail_link_target_provider' ]
         OswisOrg\OswisCoreBundle\Mail\Parent\MailParentProviderInterface:
             tags: [ 'oswis.mail_parent_provider' ]
+        OswisOrg\OswisCoreBundle\Mail\Audience\MailAudienceProviderInterface:
+            tags: [ 'oswis.mail_audience_provider' ]
 
     ### Search Filter
     #    oswis_org_oswis_core.search_filter:
@@ -482,6 +484,12 @@ services:
         public: true
         arguments:
             $providers: !tagged_iterator oswis.mail_parent_provider
+    # Údaje stavebnice podmínky v editoru mailu (dávka 2c, bod 7; slovník dodávají moduly)
+    OswisOrg\OswisCoreBundle\Mail\Audience\MailAudienceRegistry:
+        autowire: true
+        public: true
+        arguments:
+            $providers: !tagged_iterator oswis.mail_audience_provider
     # Nastavení editoru textu mailu (katalog, bloky, pravidla čištění) — spec e-mailů §4.1
     OswisOrg\OswisCoreBundle\Mail\Editor\MailEditorConfig:
         autowire: true

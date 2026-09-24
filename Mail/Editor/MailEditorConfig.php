@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace OswisOrg\OswisCoreBundle\Mail\Editor;
 
+use OswisOrg\OswisCoreBundle\Mail\Audience\MailAudienceField;
+use OswisOrg\OswisCoreBundle\Mail\Audience\MailAudienceRegistry;
 use OswisOrg\OswisCoreBundle\Mail\Block\MailBlockRegistry;
 use OswisOrg\OswisCoreBundle\Mail\Catalog\MailCatalog;
 use OswisOrg\OswisCoreBundle\Mail\Catalog\MailCatalogItem;
@@ -32,6 +34,7 @@ final class MailEditorConfig
         private readonly MailLinkTargetRegistry $linkTargets,
         private readonly MailLinkResolver $linkResolver,
         private readonly MailParentRegistry $parents,
+        private readonly MailAudienceRegistry $audience,
     ) {
     }
 
@@ -47,6 +50,7 @@ final class MailEditorConfig
      *     linkTargets: list<array<string, mixed>>,
      *     linkTargetGroups: array<string, list<array<string, mixed>>>,
      *     regionLabels: array<string, string>,
+     *     audience: list<array{key: string, label: string, type: string, options: list<array{value: string, label: string, group?: string}>}>,
      * }
      */
     public function toArray(): array
@@ -96,6 +100,8 @@ final class MailEditorConfig
             'linkTargetGroups' => $linkTargetGroups,
             // Popisky úseků šablony („Tělo e-mailu" místo `{% block content_inner %}`) z obálek.
             'regionLabels'   => $this->parents->popiskyBloku(),
+            // Údaje stavebnice podmínky („Zbývá zaplatit je více než 0"); prázdné = jen hotové podmínky.
+            'audience'       => array_map(static fn (MailAudienceField $field): array => $field->toArray(), $this->audience->all()),
         ];
     }
 
