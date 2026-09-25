@@ -12,6 +12,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Exception;
 use OswisOrg\OswisCoreBundle\Entity\AbstractClass\AbstractMail;
 use OswisOrg\OswisCoreBundle\Mail\Delivery\SentMailRegistry;
+use OswisOrg\OswisCoreBundle\Mail\Rendering\NonBreakingSpaces;
 use OswisOrg\OswisCoreBundle\Mail\Secret\MailSecretRedactor;
 use OswisOrg\OswisCoreBundle\Mailer\CistyTextKonvertor;
 use Psr\Log\LoggerInterface;
@@ -73,6 +74,11 @@ class MailService
             // via Messenger, where the mailer listener would otherwise render in the
             // worker) — so we can persist exactly what we deliver for the admin timeline.
             $this->bodyRenderer->render($mail);
+            // České nedělitelné mezery — do odeslaného mailu i do uložené kopie (25. 9. 2026).
+            $html = $mail->getHtmlBody();
+            if (is_string($html)) {
+                $mail->html(NonBreakingSpaces::apply($html));
+            }
             $this->storeRenderedBody($eMail, $mail, $data);
         } catch (Throwable $exception) {
             $this->logger->error("E-mail ($class) NOT rendered: ".$exception->getMessage());
