@@ -58,6 +58,7 @@ final class MailValidator
     public function validateMessage(string $subject, string $body, array $recipients): MailValidationResult
     {
         $result = new MailValidationResult();
+        self::checkUnclosedTags($body, $result);
         $subjectModule = $this->parse('předmět', $subject, $result);
         $bodyModule = $this->parse('text', $body, $result);
         if (null === $subjectModule || null === $bodyModule) {
@@ -112,6 +113,7 @@ final class MailValidator
     public function validateTemplateSource(string $source, array $recipients, ?string $subject = null): MailValidationResult
     {
         $result = new MailValidationResult();
+        self::checkUnclosedTags($source, $result);
         $modules = [$this->parse('šablona', $source, $result)];
         if (null !== $subject) {
             $modules[] = $this->parse('předmět', $subject, $result);
@@ -430,6 +432,14 @@ final class MailValidator
         }
 
         return $expressions;
+    }
+
+    /** Značka bez zavírací „>" rozsype mail (viz {@see UnclosedTags}) — chyba, ne varování. */
+    private static function checkUnclosedTags(string $source, MailValidationResult $result): void
+    {
+        foreach (UnclosedTags::messages($source) as $message) {
+            $result->error($message);
+        }
     }
 
     /** @param list<string> $keys */
