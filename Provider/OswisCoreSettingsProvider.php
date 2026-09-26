@@ -32,6 +32,9 @@ class OswisCoreSettingsProvider
 
     protected array $angularAdmin = [];
 
+    /** @var array<string, string|null> barvy podle role (uzel `colors`), viz {@see getColors()} */
+    protected array $colors = [];
+
     /**
      * @param array                                                                                                                                                                       $app
      * @param array{name?: string, email?: string, web?: string, phone?: string}                                                                                                          $admin
@@ -46,7 +49,8 @@ class OswisCoreSettingsProvider
         array $email,
         array $web,
         array $adminIPs,
-        array $angularAdmin
+        array $angularAdmin,
+        array $colors = [],
     ) {
         $this->app = $app;
         $this->admin = $admin;
@@ -54,6 +58,8 @@ class OswisCoreSettingsProvider
         $this->web = $web;
         $this->adminIPs = $adminIPs;
         $this->angularAdmin = $angularAdmin;
+        /** @var array<string, string|null> $colors */
+        $this->colors = $colors;
     }
 
     final public function getArray(): array
@@ -65,6 +71,7 @@ class OswisCoreSettingsProvider
             'web'           => $this->getWeb(),
             'admin_ips'     => $this->getAdminIPs(),
             'angular_admin' => $this->getAngularAdmin(),
+            'colors'        => $this->getColors(),
         ];
     }
 
@@ -92,6 +99,34 @@ class OswisCoreSettingsProvider
     final public function getWeb(): array
     {
         return $this->web;
+    }
+
+    /**
+     * Barvy podle role pro šablony (`{{ oswis.colors.primary }}`) — jediné místo, kde barvy mailů žijí.
+     *
+     * `primary` bez vlastní hodnoty = `web.color`; `primary_tint` je z ní dopočítaná desetina
+     * (podklad bloku s tokenem) — ve tvaru, který šablony měly natvrdo.
+     *
+     * @return array<string, string>
+     */
+    final public function getColors(): array
+    {
+        $barvy = array_filter($this->colors, static fn (mixed $barva): bool => is_string($barva) && '' !== $barva);
+        $web = $this->web['color'] ?? null;
+        $barvy['primary'] ??= is_string($web) && '' !== $web ? $web : '#006FAD';
+        $barvy['primary_tint'] = self::tint($barvy['primary'], '0.1');
+
+        return $barvy;
+    }
+
+    /** `#006FAD` + `0.1` → `rgba(0, 111, 173, 0.1)`; jiný zápis než #rrggbb se vrátí beze změny. */
+    private static function tint(string $hex, string $alpha): string
+    {
+        if (1 !== preg_match('/^#([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})$/i', $hex, $m)) {
+            return $hex;
+        }
+
+        return sprintf('rgba(%d, %d, %d, %s)', hexdec($m[1]), hexdec($m[2]), hexdec($m[3]), $alpha);
     }
 
     final public function getAdminIPs(): array

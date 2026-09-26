@@ -39,7 +39,7 @@
             {% include '@OswisOrgOswisCore/e-mail/parts/token-link.html.twig'
                 with {url: tokenUrl, label: propertyName2|default('Pokračovat'), formal: f} only %}
             {% if appUserToken.validHours|default %}
-                <mj-text font-size="11px" color="#888888">
+                <mj-text font-size="11px" color="{{ oswis.colors.faint }}">
                     Odkaz je platný {{ appUserToken.validHours }} hodin od vygenerování.
                 </mj-text>
             {% endif %}
@@ -47,7 +47,7 @@
             <mj-text>
                 Odkaz pro nastavení{{ propertyName }} se z neočekávaných důvodů nepodařilo vygenerovat.
             </mj-text>
-            <mj-text font-size="11px" color="#888888">
+            <mj-text font-size="11px" color="{{ oswis.colors.faint }}">
                 Kontaktuj{{ f ? 'te' : '' }} nás, prosím, pro vyřešení situace.
             </mj-text>
         {% endif %}

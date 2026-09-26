@@ -10,10 +10,10 @@
 
     Parametry: url (adresa), label (text tlačítka), formal (vykání).
 #}
-<mj-button href="{{ url }}" css-class="oswis-secret" background-color="#006FAD" color="#ffffff" font-weight="700" font-size="16px" inner-padding="14px 24px" border-radius="4px">
+<mj-button href="{{ url }}" css-class="oswis-secret" background-color="{{ oswis.colors.primary }}" color="{{ oswis.colors.on_primary }}" font-weight="700" font-size="16px" inner-padding="14px 24px" border-radius="4px">
     {{ label }}
 </mj-button>
-<mj-text font-size="11px" color="#666666">
+<mj-text font-size="11px" color="{{ oswis.colors.muted }}">
     Pokud tlačítko nefunguje, zkopíruj{{ formal|default(false) ? 'te' : '' }} si tuto adresu do prohlížeče:<br>
-    <a href="{{ url }}" data-sensitive="link" style="color:#006FAD; word-break:break-all;">{{ url }}</a>
+    <a href="{{ url }}" data-sensitive="link" style="color:{{ oswis.colors.primary }}; word-break:break-all;">{{ url }}</a>
 </mj-text>

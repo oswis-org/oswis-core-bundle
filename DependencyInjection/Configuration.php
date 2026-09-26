@@ -31,6 +31,7 @@ class Configuration implements ConfigurationInterface
             $this->addWebConfig($rootNode);
             $this->addAdminIPs($rootNode);
             $this->addAngularAdmin($rootNode);
+            $this->addColorsConfig($rootNode);
         }
 
         return $treeBuilder;
@@ -247,6 +248,43 @@ class Configuration implements ConfigurationInterface
                  ->end()
                  ->end()
                  ->end();
+    }
+
+    /**
+     * Barvy mailů (a dalších výstupů) podle ROLE — jediný zdroj, ze kterého čtou šablony (`oswis.colors.*`).
+     *
+     * `primary` bez hodnoty = `web.color` (barva tématu je jedna). Výchozí hodnoty jsou přesně ty, které
+     * byly do 25. 9. 2026 v šablonách natvrdo — převod na role vzhled nezměnil (ověřeno otisky).
+     * Tři odstíny šedé zůstaly zvlášť schválně: sloučit je = změnit vzhled, to je samostatné rozhodnutí.
+     */
+    private function addColorsConfig(NodeDefinition $rootNode): void
+    {
+        $barvy = [
+            'primary'           => [null, 'Hlavní barva (nadpisy, tlačítka, odkazy); prázdná = web.color.'],
+            'on_primary'        => ['#ffffff', 'Text na hlavní barvě (tlačítko).'],
+            'text'              => ['#103010', 'Běžný text mailu.'],
+            'muted'             => ['#666666', 'Vedlejší text (poznámky pod obsahem).'],
+            'faint'             => ['#888888', 'Drobné písmo (patička, upozornění k odkazu).'],
+            'small'             => ['#606060', 'Značka <small> v textu.'],
+            'surface'           => ['#ffffff', 'Podklad obsahu mailu.'],
+            'background'        => ['#f5f5f5', 'Pozadí kolem obsahu mailu.'],
+            'border'            => ['#dddddd', 'Oddělovače.'],
+            'code_background'   => ['#f0f0f0', 'Podklad vygenerovaného hesla.'],
+            'token_border'      => ['lightgrey', 'Rámeček bloku s tokenem.'],
+            'danger'            => ['red', 'Chyba, upozornění (.warning, .error-box, záporná platba).'],
+            'danger_background' => ['#f08080', 'Podklad chybového bloku (.error-box).'],
+            'error_note'        => ['grey', 'Poznámka v chybovém bloku (která šablona chyběla).'],
+            'danger_tint'       => ['rgba(255,50,50,.2)', 'Jemný podklad chybného řádku (report plateb).'],
+            'success'           => ['green', 'V pořádku (report plateb).'],
+            'success_tint'      => ['rgba(50,255,50,.2)', 'Jemný podklad řádku v pořádku (report plateb).'],
+            'frame'             => ['black', 'Rámeček tabulky reportu.'],
+            'table_border'      => ['grey', 'Čára mezi řádky tabulky reportu.'],
+        ];
+        $uzly = $rootNode->children()->arrayNode('colors')->info('Barvy podle role (maily).')->addDefaultsIfNotSet()->children();
+        foreach ($barvy as $role => [$vychozi, $popis]) {
+            $uzly = $uzly->scalarNode($role)->info($popis)->defaultValue($vychozi)->end();
+        }
+        $uzly->end()->end()->end();
     }
 
     private function addAdminIPs(ArrayNodeDefinition $rootNode): void

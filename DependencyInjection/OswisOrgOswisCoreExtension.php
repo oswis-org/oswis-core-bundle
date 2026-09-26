@@ -58,6 +58,7 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
         $definition->setArgument(3, $config['web']);
         $definition->setArgument(4, $config['admin_ips']);
         $definition->setArgument(5, $config['angular_admin']);
+        $definition->setArgument(6, $config['colors']);
     }
 
     final public function prepend(ContainerBuilder $container): void

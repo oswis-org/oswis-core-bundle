@@ -24,7 +24,7 @@
     {% if tokenUrl %}
         {% include '@OswisOrgOswisCore/e-mail/parts/token-link.html.twig'
             with {url: tokenUrl, label: 'Pokračovat v přihlášce', formal: f} only %}
-        <mj-text font-size="11px" color="#888888">
+        <mj-text font-size="11px" color="{{ oswis.colors.faint }}">
             Odkaz je jednorázový a platí {{ appUserToken.validHours|default(24) }} hodin.
             Pokud {{ f ? 'jste' : 'jsi' }} tuto akci nevyvolal{{ a }} {{ f ? 'sami' : 'sám' }},
             tento e-mail prosím ignoruj{{ f ? 'te' : '' }} — nikdo se k {{ f ? 'Vašemu' : 'Tvému' }} účtu nedostal.
