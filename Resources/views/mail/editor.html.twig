@@ -35,6 +35,14 @@
     previewValuesUrl: previewConfig ? previewConfig.valuesUrl|default('') : '',
     previewAudienceUrl: previewConfig ? previewConfig.audienceUrl|default('') : '',
 }) }}>
+    {# Barvy bloku upozornění z palety core (oswis.colors) — editor ho kreslí stejně jako mail. #}
+    <style>
+        .mail-editor {
+            --mail-callout-pozor-bar: {{ oswis.colors.callout_pozor_bar }}; --mail-callout-pozor-bg: {{ oswis.colors.callout_pozor_background }}; --mail-callout-pozor-title: {{ oswis.colors.callout_pozor_title }};
+            --mail-callout-info-bar: {{ oswis.colors.callout_info_bar }}; --mail-callout-info-bg: {{ oswis.colors.callout_info_background }}; --mail-callout-info-title: {{ oswis.colors.callout_info_title }};
+            --mail-callout-text: {{ oswis.colors.text }};
+        }
+    </style>
     <div class="mail-editor__main">
         <div class="mail-editor__toolbar btn-toolbar" role="toolbar" aria-label="Formátování textu"
              aria-controls="{{ id }}-surface" data-mail-editor-target="toolbar">
@@ -55,7 +63,7 @@
                 {{ t.tool('alignJustify', 'Zarovnat do bloku', 'tabler:align-justified') }}
             </div>
             <div class="btn-group me-1 mb-1" role="group" aria-label="Zvýraznění">
-                {{ t.tool('warning', 'Upozornění', 'tabler:alert-triangle') }}
+                {{ t.tool('callout', 'Upozornění', 'tabler:alert-triangle', null, false) }}
                 {{ t.tool('highlight', 'Zvýraznění', 'tabler:highlight') }}
                 {{ t.tool('small', 'Malé písmo', 'tabler:text-size') }}
             </div>
@@ -218,6 +226,24 @@
             <twig:block name="footer">
                 <button type="button" class="btn btn-link me-auto" data-dialog-action="cancel">Zrušit</button>
                 <button type="button" class="btn btn-primary" data-dialog-action="apply">Použít</button>
+            </twig:block>
+        </twig:OswisOrgOswisCore:Admin:Modal>
+        <twig:OswisOrgOswisCore:Admin:Modal id="{{ id }}-dlg-callout" title="Upozornění" :fade="false" data-dialog="callout" data-title-edit="Změnit podobu upozornění">
+            <twig:block name="body">
+                <p class="small text-muted">Vybrané odstavce se zobrazí v barevném rámečku. Název podoby doplní systém.</p>
+                {% for variant, popis in {pozor: ['Pozor', 'Co se stane, když něco neudělá.'], info: ['Dobré vědět', 'Doplňující informace.']} %}
+                    <button type="button" class="btn d-block w-100 text-start mb-2 p-0 border-0" data-dialog-action="insert"
+                            data-variant="{{ variant }}"{{ loop.first ? ' data-initial-focus' : '' }}>
+                        <span class="mail-callout mail-callout--{{ variant }} d-block m-0">
+                            <span class="mail-callout__title d-block">{{ popis[0] }}</span>
+                            <span class="d-block">{{ popis[1] }}</span>
+                        </span>
+                    </button>
+                {% endfor %}
+                <div class="text-danger small" data-dialog-error role="alert"></div>
+            </twig:block>
+            <twig:block name="footer">
+                <button type="button" class="btn btn-link" data-dialog-action="cancel">Zrušit</button>
             </twig:block>
         </twig:OswisOrgOswisCore:Admin:Modal>
         <twig:OswisOrgOswisCore:Admin:Modal id="{{ id }}-dlg-block" title="Vložený blok" :fade="false" data-dialog="block">

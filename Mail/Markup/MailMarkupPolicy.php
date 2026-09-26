@@ -37,7 +37,11 @@ final class MailMarkupPolicy
      *
      * @var list<string>
      */
-    public const array CLASSES = ['warning', 'highlight', 'token-box', 'oswis-secret'];
+    public const array CLASSES = [
+        'warning', 'highlight', 'token-box', 'oswis-secret',
+        // Blok upozornění (tabulka proužek + obsah, název podoby v <strong>) — spec 2026-09-16 §2.5.
+        'oswis-callout', 'oswis-callout--pozor', 'oswis-callout--info', 'oswis-callout__bar', 'oswis-callout__body', 'oswis-callout__title',
+    ];
 
     /**
      * Atributy povolené na KAŽDÉM prvku slovníku.
@@ -87,8 +91,9 @@ final class MailMarkupPolicy
      */
     private const array PROTECTED_ELEMENTS = [
         'b' => ['class'], 'i' => [], 'h4' => ['style'], 'div' => ['style', 'class'], 'hr' => [], 'blockquote' => [],
-        'table' => ['style', 'class', 'width'], 'thead' => [], 'tbody' => [], 'tr' => ['style'],
-        'td' => ['style', 'colspan', 'rowspan', 'width', 'align'], 'th' => ['style', 'colspan', 'rowspan', 'width', 'align'],
+        // `role` = `presentation` u bloku upozornění (čtečka ho nehlásí jako tabulku dat), `class` u td = jeho buňky.
+        'table' => ['style', 'class', 'width', 'role'], 'thead' => [], 'tbody' => [], 'tr' => ['style'],
+        'td' => ['style', 'colspan', 'rowspan', 'width', 'align', 'class'], 'th' => ['style', 'colspan', 'rowspan', 'width', 'align'],
         'img' => ['src', 'alt', 'width', 'height', 'style'],
     ];
 

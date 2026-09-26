@@ -105,7 +105,8 @@ class OswisCoreSettingsProvider
      * Barvy podle role pro šablony (`{{ oswis.colors.primary }}`) — jediné místo, kde barvy mailů žijí.
      *
      * `primary` bez vlastní hodnoty = `web.color`; `primary_tint` je z ní dopočítaná desetina
-     * (podklad bloku s tokenem) — ve tvaru, který šablony měly natvrdo.
+     * (podklad bloku s tokenem) — ve tvaru, který šablony měly natvrdo. Proužek upozornění
+     * „Dobré vědět" bez vlastní hodnoty = `primary`.
      *
      * @return array<string, string>
      */
@@ -115,6 +116,7 @@ class OswisCoreSettingsProvider
         $web = $this->web['color'] ?? null;
         $barvy['primary'] ??= is_string($web) && '' !== $web ? $web : '#006FAD';
         $barvy['primary_tint'] = self::tint($barvy['primary'], '0.1');
+        $barvy['callout_info_bar'] ??= $barvy['primary'];
 
         return $barvy;
     }

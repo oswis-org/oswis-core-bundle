@@ -46,6 +46,19 @@ falls back to whatever is reachable on the bound `contact` / `appUser`.
                 padding: 0.5em 1em; margin-top: 0.3em; word-break: break-all;
                 font-family: monospace; font-size: 0.85em;
             }
+            {# Blok upozornění: tabulka o dvou buňkách (proužek + obsah) — Outlook kreslí obarvenou
+               buňku spolehlivě, rámeček ne. Zápis skládá editor (twig-bridge.ts), spec 2026-09-16 §2.5. #}
+            .oswis-callout { width: 100%; border-collapse: collapse; margin: 0.6em 0; }
+            .oswis-callout__bar { width: 4px; padding: 0; }
+            .oswis-callout__body { padding: 0.6em 1em; }
+            .oswis-callout__body p { margin: 0.3em 0 0; }
+            .oswis-callout__title { display: block; font-weight: bold; }
+            .oswis-callout--pozor .oswis-callout__bar { background-color: {{ oswis.colors.callout_pozor_bar }}; }
+            .oswis-callout--pozor .oswis-callout__body { background-color: {{ oswis.colors.callout_pozor_background }}; }
+            .oswis-callout--pozor .oswis-callout__title { color: {{ oswis.colors.callout_pozor_title }}; }
+            .oswis-callout--info .oswis-callout__bar { background-color: {{ oswis.colors.callout_info_bar }}; }
+            .oswis-callout--info .oswis-callout__body { background-color: {{ oswis.colors.callout_info_background }}; }
+            .oswis-callout--info .oswis-callout__title { color: {{ oswis.colors.callout_info_title }}; }
         </mj-style>
     </mj-head>
 

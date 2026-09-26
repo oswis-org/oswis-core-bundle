@@ -279,6 +279,13 @@ class Configuration implements ConfigurationInterface
             'success_tint'      => ['rgba(50,255,50,.2)', 'Jemný podklad řádku v pořádku (report plateb).'],
             'frame'             => ['black', 'Rámeček tabulky reportu.'],
             'table_border'      => ['grey', 'Čára mezi řádky tabulky reportu.'],
+            // Blok upozornění (spec 2026-09-16 §2.5): paleta UP, kontrast ověřen výpočtem (KontrastUpozorneniTest).
+            'callout_pozor_bar'        => ['#B62846', 'Upozornění „Pozor": proužek (červená LF).'],
+            'callout_pozor_background' => ['#FBEAEE', 'Upozornění „Pozor": podklad.'],
+            'callout_pozor_title'      => ['#8E1F37', 'Upozornění „Pozor": nadpis.'],
+            'callout_info_bar'         => [null, 'Upozornění „Dobré vědět": proužek; prázdný = primary.'],
+            'callout_info_background'  => ['#E7F3FA', 'Upozornění „Dobré vědět": podklad.'],
+            'callout_info_title'       => ['#00527F', 'Upozornění „Dobré vědět": nadpis.'],
         ];
         $uzly = $rootNode->children()->arrayNode('colors')->info('Barvy podle role (maily).')->addDefaultsIfNotSet()->children();
         foreach ($barvy as $role => [$vychozi, $popis]) {
