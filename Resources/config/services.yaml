@@ -355,6 +355,14 @@ services:
     OswisOrg\OswisCoreBundle\EventSubscriber\MailerSubscriber:
         alias: oswis_org_oswis_core.mailer_subscriber
         public: true
+    ## Podpis DKIM odchozí pošty až nad hotovou zprávou (priorita −128) — 27. 9. 2026
+    OswisOrg\OswisCoreBundle\EventSubscriber\MailDkimSubscriber:
+        autowire: true
+        public: true
+        tags: [ 'kernel.event_subscriber' ]
+        arguments:
+            - '@oswis_org_oswis_core.oswis_core_settings_provider'
+            - '@logger'
 
     oswis_org_oswis_core.api_docs_access_listener:
         class: OswisOrg\OswisCoreBundle\EventListener\ApiDocsAccessListener

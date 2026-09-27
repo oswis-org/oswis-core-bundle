@@ -11,6 +11,7 @@ use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Doctrine\ORM\EntityManagerInterface;
 use Exception;
 use OswisOrg\OswisCoreBundle\Entity\AbstractClass\AbstractMail;
+use OswisOrg\OswisCoreBundle\Mail\Delivery\MailRetryPolicy;
 use OswisOrg\OswisCoreBundle\Mail\Delivery\SentMailRegistry;
 use OswisOrg\OswisCoreBundle\Mail\Rendering\NonBreakingSpaces;
 use OswisOrg\OswisCoreBundle\Mail\Secret\MailSecretRedactor;
@@ -64,8 +65,18 @@ class MailService
         $class = get_class($eMail);
         // Ptát se na klíč PŘED `persist()`: jinak by záznam zůstal v jednotce práce a volající by
         // ho svým `flush()` stejně zapsal — a narazil na unikátní index (a zavřel EntityManager).
-        if ($this->jeJizOdeslano($eMail, $class)) {
-            return $eMail;
+        if (null !== ($existujici = $this->seStejnymKlicem($eMail))) {
+            if (!MailRetryPolicy::smiZnovu($existujici)) {
+                $this->logger->info(sprintf('E-mail (%s) se neodesílá podruhé — klíč „%s" už v databázi je (stav %s).', $class, (string) $eMail->getDeliveryKey(), $existujici->getStatus()->value));
+
+                // Volající dostane SKUTEČNÝ záznam (odeslaný, nejistý, čekající na další pokus),
+                // ne nový neuložený objekt, který by lhal „neodesláno".
+                return $existujici;
+            }
+            // Odmítnuté doručení se zkusí znovu jako TENTÝŽ záznam (FAILED → SENDING): žádný
+            // nový řádek, klíč jedinečnosti zůstává a zdvojení nehrozí (MailRetryPolicy).
+            $this->logger->info(sprintf('E-mail (%s) se zkouší znovu (%d. pokus) — klíč „%s".', $class, $existujici->getAttemptCount() + 1, (string) $eMail->getDeliveryKey()));
+            $eMail = $existujici;
         }
         $this->em->persist($eMail);
         try {
@@ -144,26 +155,22 @@ class MailService
     }
 
     /**
-     * Existuje už doručení s týmž klíčem jedinečnosti?
+     * Doručení s týmž klíčem jedinečnosti, pokud už existuje.
      *
      * Poslední slovo má unikátní index v databázi, ale narazit na něj bolí: Doctrine při porušení
      * indexu ZAVŘE EntityManager, takže by hromadná rozesílka spadla a příští běh by začal na témže
-     * záznamu — a zasekl se na něm napořád. Tenhle dotaz proto běžné případy (cron × tlačítko,
-     * dva běhy po sobě) odchytí dřív; index zůstává pojistkou pro skutečný souběh.
+     * záznamu. Tenhle dotaz proto běžné případy (cron × tlačítko, dva běhy po sobě) odchytí dřív;
+     * index zůstává pojistkou pro skutečný souběh. Co s nalezeným záznamem, rozhodne MailRetryPolicy.
      */
-    private function jeJizOdeslano(AbstractMail $eMail, string $class): bool
+    private function seStejnymKlicem(AbstractMail $eMail): ?AbstractMail
     {
         $key = $eMail->getDeliveryKey();
         if (null === $key || null !== $eMail->getId()) {
-            return false;
+            return null;
         }
         $existing = $this->em->getRepository($eMail::class)->findOneBy(['deliveryKey' => $key]);
-        if (null === $existing) {
-            return false;
-        }
-        $this->logger->info(sprintf('E-mail (%s) se neodesílá podruhé — klíč „%s" už v databázi je.', $class, $key));
 
-        return true;
+        return $existing instanceof AbstractMail ? $existing : null;
     }
 
     /**

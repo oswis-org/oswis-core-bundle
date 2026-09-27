@@ -23,7 +23,7 @@ class OswisCoreSettingsProvider
     /** @var array{name?: string, email?: string, web?: string, phone?: string} $admin */
     protected array $admin = [];
 
-    /** @var array{address?: string, name?: string, reply_path?: string, return_path?: string, archive_address?: string, archive_name?: string, default_subject?: string, logo?: string} $email */
+    /** @var array{address?: string, name?: string, reply_path?: string, return_path?: string, archive_address?: string, archive_name?: string, default_subject?: string, logo?: string, dkim?: array{key_path?: ?string, domain?: ?string, selector?: ?string}} $email */
     protected array $email = [];
 
     protected array $web = [];
@@ -38,7 +38,7 @@ class OswisCoreSettingsProvider
     /**
      * @param array                                                                                                                                                                       $app
      * @param array{name?: string, email?: string, web?: string, phone?: string}                                                                                                          $admin
-     * @param array{address?: string, name?: string, reply_path?: string, return_path?: string, archive_address?: string, archive_name?: string, default_subject?: string, logo?: string} $email
+     * @param array{address?: string, name?: string, reply_path?: string, return_path?: string, archive_address?: string, archive_name?: string, default_subject?: string, logo?: string, dkim?: array{key_path?: ?string, domain?: ?string, selector?: ?string}} $email
      * @param array                                                                                                                                                                       $web
      * @param array                                                                                                                                                                       $adminIPs
      * @param array                                                                                                                                                                       $angularAdmin
@@ -89,7 +89,7 @@ class OswisCoreSettingsProvider
     }
 
     /**
-     * @return array{address?: string, name?: string, reply_path?: string, return_path?: string, archive_address?: string, archive_name?: string, default_subject?: string, logo?: string}
+     * @return array{address?: string, name?: string, reply_path?: string, return_path?: string, archive_address?: string, archive_name?: string, default_subject?: string, logo?: string, dkim?: array{key_path?: ?string, domain?: ?string, selector?: ?string}}
      */
     final public function getEmail(): array
     {

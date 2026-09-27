@@ -43,8 +43,9 @@ class SystemMailService
         }
         // `persist()` dělá `MailService` — až po kontrole klíče jedinečnosti, aby se záznam,
         // který se nemá poslat podruhé, vůbec nedostal do jednotky práce.
-        $this->mailService->sendEMail($mail, $template, $data);
+        // Vrátit záznam, který se SKUTEČNĚ použil — při opakování nebo duplicitě je to ten starší.
+        $zaznam = $this->mailService->sendEMail($mail, $template, $data);
 
-        return $mail;
+        return $zaznam instanceof SystemMail ? $zaznam : $mail;
     }
 }
