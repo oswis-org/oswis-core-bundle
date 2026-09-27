@@ -379,6 +379,13 @@ abstract class AbstractMail implements BasicInterface, CommunicationEntryInterfa
     public function setMessageID(?string $messageID = null): void
     {
         if (!empty($this->getMessageID())) {
+            // Záznam z databáze (opakování odmítnutého doručení, MailRetryPolicy) už ID má, ale
+            // zprávu skládá znovu — bez hlavičky by Symfony vygenerovalo jiné ID a pojistka
+            // UnrecordedMailGuard by zprávu vzala za odeslanou mimo MailService (27. 9. 2026).
+            if (null !== $this->templatedEmail && !$this->templatedEmail->getHeaders()->has('Message-ID')) {
+                $this->templatedEmail->getHeaders()->addIdHeader('Message-ID', (string) $this->getMessageID());
+            }
+
             return;
         }
         // Symfony\Mime\Message::generateMessageId() requires a From / Sender
