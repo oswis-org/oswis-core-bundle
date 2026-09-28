@@ -17,8 +17,9 @@ use Psr\Log\LoggerInterface;
  *   (kurzor zůstane); zbytek do tvrdého limitu je rezerva pro systémové maily (registrace, platby).
  *
  * Hodnoty jsou v prostředí (`OSWIS_MAIL_DAILY_LIMIT`, `OSWIS_MAIL_DAILY_BULK_LIMIT`) — navýšení = změna
- * proměnné, bez nasazení. **0 = bez limitu.** Den se počítá v Europe/Prague: cron běží v UTC a „dnes"
- * podle systémového času by se po půlnoci v Praze přepínalo o hodinu či dvě později.
+ * proměnné, bez nasazení. **0 = bez limitu.** Den se počítá výslovně v Europe/Prague: `bin/console` i web si
+ * pražský čas nastavují samy (od 25. 5. 2026), ale holé CLI na serveru má UTC — „dnes" tak nezávisí na tom,
+ * odkud se služba zavolá.
  *
  * Chyba databáze počítadla nesmí zastavit poštu: `record()` ji jen zaloguje, `sentToday()` pak vrátí 0.
  */
