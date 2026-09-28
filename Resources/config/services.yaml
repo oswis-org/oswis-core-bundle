@@ -2,6 +2,10 @@
 
 parameters:
     locale: 'cs'
+    # Denní limit odeslaných e-mailů (spec e-mailů §5.5, rozhodnutí 28. 9. 2026) — přepíše prostředí
+    # OSWIS_MAIL_DAILY_LIMIT / OSWIS_MAIL_DAILY_BULK_LIMIT; 0 = bez limitu.
+    oswis_core.mail_daily_limit: 1000
+    oswis_core.mail_daily_bulk_limit: 800
     doctrine_behaviors_blameable_user_entity: OswisOrg\OswisCoreBundle\Entity\AppUser
 
 services:
@@ -502,6 +506,13 @@ services:
     OswisOrg\OswisCoreBundle\Mail\Editor\MailEditorConfig:
         autowire: true
         public: true
+    # Denní limit odeslaných e-mailů (dávka 3.1)
+    OswisOrg\OswisCoreBundle\Mail\Quota\MailDailyQuota:
+        autowire: true
+        public: true
+        arguments:
+            $hardLimit: '%env(int:default:oswis_core.mail_daily_limit:OSWIS_MAIL_DAILY_LIMIT)%'
+            $bulkLimit: '%env(int:default:oswis_core.mail_daily_bulk_limit:OSWIS_MAIL_DAILY_BULK_LIMIT)%'
     # Obrázky v textu mailu (dávka 2b, spec §4.5): ukládání přes GD do veřejného adresáře aplikace
     OswisOrg\OswisCoreBundle\Mail\Image\MailImageStore:
         arguments:

@@ -13,6 +13,7 @@ use Exception;
 use OswisOrg\OswisCoreBundle\Entity\AbstractClass\AbstractMail;
 use OswisOrg\OswisCoreBundle\Mail\Delivery\MailRetryPolicy;
 use OswisOrg\OswisCoreBundle\Mail\Delivery\SentMailRegistry;
+use OswisOrg\OswisCoreBundle\Mail\Quota\MailDailyQuota;
 use OswisOrg\OswisCoreBundle\Mail\Rendering\NonBreakingSpaces;
 use OswisOrg\OswisCoreBundle\Mail\Secret\MailSecretRedactor;
 use OswisOrg\OswisCoreBundle\Mailer\CistyTextKonvertor;
@@ -52,6 +53,8 @@ class MailService
         protected MailSecretRedactor $secretRedactor,
         protected CistyTextKonvertor $plainTextConverter,
         protected SentMailRegistry $sentMailRegistry,
+        /** Denní limit (spec §5.5); bez něj se nepočítá ani neomezuje (testy, které službu skládají ručně). */
+        protected ?MailDailyQuota $quota = null,
     ) {
     }
 
@@ -97,6 +100,15 @@ class MailService
 
             return $eMail;
         }
+        // Denní limit — tvrdá pojistka proti nehodě (hromadné se zastaví už na svém nižším limitu). Nad ním
+        // neodejde nic; záznam to vysvětlí a mezi neodeslanými jde poslat znovu, až se limit uvolní.
+        if (null !== $this->quota && !$this->quota->systemAllowed()) {
+            $reason = sprintf('Denní limit odeslaných e-mailů (%d) je vyčerpán — neodesláno. Pošli znovu zítra, nebo zvyš OSWIS_MAIL_DAILY_LIMIT.', $this->quota->hardLimit());
+            $this->logger->critical("E-mail ($class): ".$reason);
+            $this->markFailed($eMail, $class, $reason);
+
+            return $eMail;
+        }
         try {
             $eMail->markSending();
             $this->em->flush();
@@ -132,6 +144,7 @@ class MailService
         }
         // Od tohoto bodu je zpráva FYZICKY doručena mailerem. Cokoli se pokazí dál se už nedá vzít
         // zpět — jde jen o to, aby se o tom vědělo a aby to neshodilo zbytek běhu.
+        $this->quota?->record();
         $eMail->markSent();
         try {
             $this->em->flush();
