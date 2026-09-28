@@ -496,7 +496,7 @@ final class MailValidator
                 $scheme = parse_url($url, PHP_URL_SCHEME);
                 $scheme = is_string($scheme) ? strtolower($scheme) : '';
                 if ('http' === $scheme) {
-                    $result->warning(sprintf('Odkaz „%s" není zabezpečený (http) — použij https.', $url));
+                    $result->warning(sprintf('%s „%s" není zabezpečený (http) — použij https.', 'src' === $attr ? 'Obrázek' : 'Odkaz', $url));
                 } elseif (!in_array($scheme, $schemes, true)) {
                     $result->error(sprintf('Adresa „%s" má nepovolený tvar (musí začínat https://, u odkazu i mailto: nebo tel:) — při odeslání by se odstranila.', $url));
                 }

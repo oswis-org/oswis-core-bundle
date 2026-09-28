@@ -249,8 +249,8 @@
                     <input class="form-control" id="{{ eid }}-image-alt" data-field="alt" type="text" autocomplete="off" maxlength="200">
                     <div class="form-text">Co na obrázku je — přečte ho čtečka a uvidí ho, kdo má obrázky v poště vypnuté.</div></div>
                 <div class="mb-2"><label class="form-label" for="{{ eid }}-image-width">Šířka v pixelech (nepovinné)</label>
-                    <input class="form-control" id="{{ eid }}-image-width" data-field="width" type="number" min="20" max="600" step="1" inputmode="numeric">
-                    <div class="form-text">Prázdné = celá šířka mailu (600 px). Menší obrázek se neroztáhne.</div></div>
+                    <input class="form-control" id="{{ eid }}-image-width" data-field="width" type="number" min="1" max="600" step="1" inputmode="numeric">
+                    <div class="form-text">Prázdné = celá šířka mailu (600 px). U menšího obrázku se předvyplní jeho skutečná šířka, aby se v mailu neroztáhl.</div></div>
                 <div class="text-danger small" data-dialog-error role="alert"></div>
             </twig:block>
             <twig:block name="footer">
