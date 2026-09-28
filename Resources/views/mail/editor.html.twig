@@ -23,6 +23,7 @@
 {% endmacro %}
 {% import _self as t %}
 {% set previewConfig = preview|default(null) %}
+{# imageUrl/imageToken: obrázky (dávka 2b) — nahrání z dialogu i ze schránky, na každé stránce s editorem. #}
 <div class="mail-editor{{ previewConfig ? ' mail-editor--with-preview' : '' }}" {{ stimulus_controller('mail-editor', {
     config: config,
     label: label|default('Text zprávy'),
@@ -34,6 +35,8 @@
     previewParentField: previewConfig ? previewConfig.parentField|default('') : '',
     previewValuesUrl: previewConfig ? previewConfig.valuesUrl|default('') : '',
     previewAudienceUrl: previewConfig ? previewConfig.audienceUrl|default('') : '',
+    imageUrl: path('oswis_org_oswis_core_web_admin_mail_image'),
+    imageToken: csrf_token('mail_image'),
 }) }}>
     {# Barvy bloku upozornění z palety core (oswis.colors) — editor ho kreslí stejně jako mail. #}
     <style>
@@ -72,6 +75,7 @@
                 {{ t.tool('variable', 'Údaj příjemce', 'tabler:braces', null, false) }}
                 {{ t.tool('condition', 'Podmínka', 'tabler:filter', null, false) }}
                 {{ t.tool('button', 'Tlačítko', 'tabler:hand-click', null, false) }}
+                {{ t.tool('image', 'Obrázek', 'tabler:photo', null, false) }}
                 {{ t.tool('divider', 'Oddělovač', 'tabler:separator', null, false) }}
                 {{ t.tool('block', 'Vložený blok', 'tabler:layout-rows', null, false) }}
             </div>
@@ -83,6 +87,8 @@
                 {{ t.tool('code', 'Kód', 'tabler:code', null, true) }}
             </div>
         </div>
+        {# Hláška editoru (nepovedené nahrání obrázku ze schránky apod.) — ne `alert()`. #}
+        <div class="alert alert-warning py-1 px-2 small mb-1" role="alert" data-mail-editor-target="notice" hidden></div>
         <div class="mail-editor__frame">
             <div class="mail-editor__fixed" aria-hidden="true">Ahoj [Oslovení]! (při vykání Dobrý den) — doplní systém</div>
             <div class="mail-editor__surface" id="{{ id }}-surface" data-mail-editor-target="surface"></div>
@@ -221,6 +227,30 @@
                 {% include '@OswisOrgOswisCore/mail/parts/link-target.html.twig' with { eid: eid, prefix: 'button', config: config } only %}
                 <div class="mb-2"><label class="form-label" for="{{ eid }}-button-title">Popisek při najetí myší (nepovinné)</label>
                     <input class="form-control" id="{{ eid }}-button-title" data-field="title" type="text" autocomplete="off"></div>
+                <div class="text-danger small" data-dialog-error role="alert"></div>
+            </twig:block>
+            <twig:block name="footer">
+                <button type="button" class="btn btn-link me-auto" data-dialog-action="cancel">Zrušit</button>
+                <button type="button" class="btn btn-primary" data-dialog-action="apply">Použít</button>
+            </twig:block>
+        </twig:OswisOrgOswisCore:Admin:Modal>
+        {# Obrázek (dávka 2b): nahraje se hned po výběru souboru; „Použít" vloží hotovou adresu s popisem. #}
+        <twig:OswisOrgOswisCore:Admin:Modal id="{{ id }}-dlg-image" title="Obrázek" :fade="false" data-dialog="image" data-title-edit="Upravit obrázek">
+            <twig:block name="body">
+                <div class="mb-2">
+                    <label class="form-label" for="{{ eid }}-image-file">Soubor (JPG, PNG nebo GIF)</label>
+                    <input class="form-control" id="{{ eid }}-image-file" type="file" accept="image/jpeg,image/png,image/gif" data-image-file data-initial-focus>
+                    <div class="form-text">Obrázek se zmenší na šířku mailu a uloží bez údajů o fotoaparátu a poloze. Vložit ho jde i přímo do textu (Ctrl+V) nebo přetažením.</div>
+                </div>
+                <input type="hidden" data-field="src">
+                <div class="mail-image-dialog__preview mb-2" data-image-preview hidden><img alt=""></div>
+                <div class="small mb-2" role="status" data-image-status></div>
+                <div class="mb-2"><label class="form-label" for="{{ eid }}-image-alt">Popis obrázku (povinný)</label>
+                    <input class="form-control" id="{{ eid }}-image-alt" data-field="alt" type="text" autocomplete="off" maxlength="200">
+                    <div class="form-text">Co na obrázku je — přečte ho čtečka a uvidí ho, kdo má obrázky v poště vypnuté.</div></div>
+                <div class="mb-2"><label class="form-label" for="{{ eid }}-image-width">Šířka v pixelech (nepovinné)</label>
+                    <input class="form-control" id="{{ eid }}-image-width" data-field="width" type="number" min="20" max="600" step="1" inputmode="numeric">
+                    <div class="form-text">Prázdné = celá šířka mailu (600 px). Menší obrázek se neroztáhne.</div></div>
                 <div class="text-danger small" data-dialog-error role="alert"></div>
             </twig:block>
             <twig:block name="footer">

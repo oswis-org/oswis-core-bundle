@@ -6,6 +6,7 @@ namespace OswisOrg\OswisCoreBundle\Mail\Validation;
 
 use OswisOrg\OswisCoreBundle\Mail\Block\MailBlockRegistry;
 use OswisOrg\OswisCoreBundle\Mail\Catalog\MailCatalog;
+use OswisOrg\OswisCoreBundle\Mail\Image\MailImageStore;
 use OswisOrg\OswisCoreBundle\Mail\Markup\MailMarkupPolicy;
 use OswisOrg\OswisCoreBundle\Mail\Rendering\MailBlockRenderer;
 use OswisOrg\OswisCoreBundle\Mail\Rendering\MailRenderer;
@@ -51,6 +52,8 @@ final class MailValidator
         private readonly MailBlockRegistry $blocks,
         private readonly MailCatalog $catalog,
         private readonly MjmlExtension $mjml,
+        /** Dostupnost obrázků nahraných do OSWIS (dávka 2b); bez něj se dostupnost nekontroluje. */
+        private readonly ?MailImageStore $images = null,
     ) {
     }
 
@@ -500,6 +503,17 @@ final class MailValidator
             }
             if ('mj-image' === $name && '' === trim((string) $element->getAttribute('alt'))) {
                 $result->error('Obrázek nemá popis (alt) — bez něj ho neuvidí lidé se čtečkou ani ti, kdo mají obrázky vypnuté.');
+            }
+            // Dostupnost obrázku (spec §3.5) — bez stahování: nahraný do OSWIS = soubor musí existovat;
+            // cizí adresu editor sám nevloží (jen režim kódu) a mail by na ní závisel.
+            $src = trim((string) $element->getAttribute('src'));
+            if ('mj-image' === $name && null !== $this->images && '' !== $src && !str_contains($src, '{{')) {
+                $vlastni = $this->images->ownImageExists($src);
+                if (false === $vlastni) {
+                    $result->error(sprintf('Obrázek „%s" na serveru není (smazaný?) — vlož ho znovu tlačítkem „Obrázek".', $src));
+                } elseif (null === $vlastni) {
+                    $result->warning(sprintf('Obrázek „%s" je z cizí adresy — když ho tam smažou nebo přesunou, v mailu nebude. Bezpečnější je nahrát ho do OSWIS tlačítkem „Obrázek".', $src));
+                }
             }
         }
         foreach (array_unique($removed) as $what) {

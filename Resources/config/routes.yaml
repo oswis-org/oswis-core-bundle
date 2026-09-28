@@ -146,6 +146,12 @@ oswis_org_oswis_core_web_admin_homepage:
     controller: oswis_org_oswis_core.web_admin_controller::showAdminHomepage
     path: "/web_admin"
 
+# Obrázek do textu mailu z editoru (dávka 2b) — POST s CSRF `mail_image`, odpověď JSON.
+oswis_org_oswis_core_web_admin_mail_image:
+    controller: OswisOrg\OswisCoreBundle\Controller\WebAdmin\MailImageController::upload
+    path: "/web_admin/zpravy/obrazek"
+    methods: [ POST ]
+
 oswis_org_oswis_core_web_admin_login:
     controller: oswis_org_oswis_core.web_security_controller::login
     path: "/web_admin/login"

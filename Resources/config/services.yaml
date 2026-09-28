@@ -502,6 +502,15 @@ services:
     OswisOrg\OswisCoreBundle\Mail\Editor\MailEditorConfig:
         autowire: true
         public: true
+    # Obrázky v textu mailu (dávka 2b, spec §4.5): ukládání přes GD do veřejného adresáře aplikace
+    OswisOrg\OswisCoreBundle\Mail\Image\MailImageStore:
+        arguments:
+            $publicDir: '%kernel.project_dir%/public'
+    OswisOrg\OswisCoreBundle\Controller\WebAdmin\MailImageController:
+        autowire: true
+        autoconfigure: true
+        public: true
+        tags: [ 'controller.service_arguments' ]
     # Pole textu mailu s editorem (formuláře „Nová zpráva" aj.)
     OswisOrg\OswisCoreBundle\Form\Type\MailBodyType:
         autowire: true
