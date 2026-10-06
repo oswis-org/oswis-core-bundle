@@ -36,7 +36,7 @@ class MailerSubscriber implements EventSubscriberInterface
             return;
         }
         $this->processFromAddresses($email);
-        $this->processRecipients($email);
+        $this->processRecipients($email, $event->isQueued());
         $coreEmailSettings = $this->coreSettings->getEmail();
         if ($email->getReturnPath() ?? $coreEmailSettings['return_path'] ?? null) {
             $email->returnPath($email->getReturnPath() ?? $coreEmailSettings['return_path'] ?? '');
@@ -132,7 +132,7 @@ class MailerSubscriber implements EventSubscriberInterface
         return false;
     }
 
-    private function processRecipients(Email $email): void
+    private function processRecipients(Email $email, bool $queued = false): void
     {
         $originalRecipients = $email->getTo();
         $email->to();
@@ -142,6 +142,17 @@ class MailerSubscriber implements EventSubscriberInterface
             } catch (LogicException|RfcComplianceException) {
                 $email->addTo($singleTo->getAddress());
             }
+        }
+        // Zkouška sobě (X-OSWIS-No-Archive z AbstractMail::withoutArchiveCopy()) jde bez archivní kopie;
+        // interní hlavička na drát nesmí. Obsluha běží nad zprávou DVAKRÁT (zařazení do fronty a skutečné odeslání
+        // transportem — viz {@see jeMeziPrijemci()}): kdyby se hlavička odstranila už při zařazení, druhý běh by ji
+        // neviděl a archivní kopii přidal (zachytil ZkouskaSobeTest 6. 10. 2026). Odstraní se proto až při odeslání.
+        if ($email->getHeaders()->has('X-OSWIS-No-Archive')) {
+            if (!$queued) {
+                $email->getHeaders()->remove('X-OSWIS-No-Archive');
+            }
+
+            return;
         }
         try {
             $archiveAddress = $this->coreSettings->getArchiveMailerAddress();

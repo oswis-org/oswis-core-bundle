@@ -376,6 +376,23 @@ abstract class AbstractMail implements BasicInterface, CommunicationEntryInterfa
         }
     }
 
+    /**
+     * Bez archivní kopie (zkouška sobě, spec e-mailů §5.3 a): MailerSubscriber pozná interní hlavičku
+     * X-OSWIS-No-Archive, skrytou kopii do archivu nepřidá a hlavičku ze zprávy odstraní.
+     */
+    public function withoutArchiveCopy(): void
+    {
+        try {
+            $templatedEmail = $this->getTemplatedEmail();
+        } catch (OswisException) {
+            return;
+        }
+        $headers = $templatedEmail->getHeaders();
+        if (!$headers->has('X-OSWIS-No-Archive')) {
+            $headers->addTextHeader('X-OSWIS-No-Archive', '1');
+        }
+    }
+
     public function setMessageID(?string $messageID = null): void
     {
         if (!empty($this->getMessageID())) {

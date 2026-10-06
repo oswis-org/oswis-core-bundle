@@ -25,6 +25,8 @@ class SystemMailService
     /**
      * @param array<string, mixed> $data     template context
      * @param string|null          $deliveryKey idempotency key for an automatic send ({@see \OswisOrg\OswisCoreBundle\Mail\Delivery\DeliveryKey})
+     * @param bool                 $archiveCopy false = bez skryté kopie do archivu (zkouška sobě)
+     * @param bool                 $manual      ručně poslaná zpráva (Auto-Submitted: no)
      *
      * @throws InvalidTypeException
      */
@@ -36,10 +38,18 @@ class SystemMailService
         array $data = [],
         ?string $deliveryKey = null,
         ?string $recipientName = null,
+        bool $archiveCopy = true,
+        bool $manual = false,
     ): SystemMail {
         $mail = new SystemMail($subject, $address, $type, $recipientName);
         if (null !== $deliveryKey) {
             $mail->setDeliveryKey($deliveryKey);
+        }
+        if (!$archiveCopy) {
+            $mail->withoutArchiveCopy();
+        }
+        if ($manual) {
+            $mail->markAsManual();
         }
         // `persist()` dělá `MailService` — až po kontrole klíče jedinečnosti, aby se záznam,
         // který se nemá poslat podruhé, vůbec nedostal do jednotky práce.

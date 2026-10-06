@@ -336,6 +336,17 @@ services:
     #### SUBSCRIBERS
     ####
 
+    ### EventSubscriber folder — MUSÍ být PŘED výslovnými definicemi níž (pozdější definice téhož ID vyhrává).
+    ### Dřív stál až na konci souboru a přepsal aliasy (např. třída MailerSubscriber → oswis_org_oswis_core.mailer_subscriber)
+    ### na samostatné služby: čtyři obsluhy (MailerSubscriber, AppUserSubscriber, ExportSubscriber,
+    ### JwtPayloadAttachSubscriber) běžely na každou událost DVAKRÁT — mj. dvě aktivace účtu při POST /api/app_users
+    ### a archivní kopie i u zkoušky sobě. Zachyceno 6. 10. 2026 (ZkouskaSobeTest).
+    ### EventSubscriber folder
+    OswisOrg\OswisCoreBundle\EventSubscriber\:
+        resource: '../../EventSubscriber/*'
+        tags: [ { name: 'kernel.view' } ]
+        public: true
+
     oswis_org_oswis_core.export_subscriber:
         class: OswisOrg\OswisCoreBundle\EventSubscriber\ExportSubscriber
         autowire: true
@@ -345,7 +356,7 @@ services:
             - '@oswis_org_oswis_core.export_service'
             - '@OswisOrg\OswisCoreBundle\Service\CsvExportService'
     OswisOrg\OswisCoreBundle\EventSubscriber\ExportSubscriber:
-        alias: oswis_org_oswis_core.app_user_action_subscriber
+        alias: oswis_org_oswis_core.export_subscriber
         public: true
 
     oswis_org_oswis_core.mailer_subscriber:
@@ -732,11 +743,6 @@ services:
         resource: '../../Traits/*'
         public: true
 
-    ### EventSubscriber folder
-    OswisOrg\OswisCoreBundle\EventSubscriber\:
-        resource: '../../EventSubscriber/*'
-        tags: [ { name: 'kernel.view' } ]
-        public: true
 
 
     OswisOrg\OswisCoreBundle\OpenApi\OpenApiFactory:
