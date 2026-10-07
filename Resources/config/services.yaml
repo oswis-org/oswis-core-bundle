@@ -533,6 +533,21 @@ services:
         autoconfigure: true
         public: true
         tags: [ 'controller.service_arguments' ]
+    # Přílohy zpráv (dávka 3.5): úložiště mimo veřejný web, nahrání a stažení v administraci, veřejný odkaz
+    OswisOrg\OswisCoreBundle\Mail\Attachment\MailAttachmentStore:
+        public: true
+        arguments:
+            $directory: '%kernel.project_dir%/var/mail-prilohy'
+    OswisOrg\OswisCoreBundle\Controller\WebAdmin\MailAttachmentController:
+        autowire: true
+        autoconfigure: true
+        public: true
+        tags: [ 'controller.service_arguments' ]
+    OswisOrg\OswisCoreBundle\Controller\Web\MailAttachmentDownloadController:
+        autowire: true
+        autoconfigure: true
+        public: true
+        tags: [ 'controller.service_arguments' ]
     # Pole textu mailu s editorem (formuláře „Nová zpráva" aj.)
     OswisOrg\OswisCoreBundle\Form\Type\MailBodyType:
         autowire: true

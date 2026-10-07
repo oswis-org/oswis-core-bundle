@@ -22,6 +22,7 @@ use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\BodyRendererInterface;
+use OswisOrg\OswisCoreBundle\Mail\Attachment\AttachedFile;
 use Throwable;
 
 /**
@@ -59,11 +60,13 @@ class MailService
     }
 
     /**
-     * @param array<string, mixed> $data template context
+     * @param array<string, mixed> $data        template context
+     * @param list<AttachedFile>   $attachments soubory přiložené ke zprávě (dávka 3.5); připojí se i při opakovaném
+     *                                          pokusu, kdy se použije starší záznam se stejným klíčem
      *
      * @return AbstractMail the delivery record; its status is the only proof of what happened
      */
-    public function sendEMail(AbstractMail $eMail, string $template, array $data = []): AbstractMail
+    public function sendEMail(AbstractMail $eMail, string $template, array $data = [], array $attachments = []): AbstractMail
     {
         $class = get_class($eMail);
         // Ptát se na klíč PŘED `persist()`: jinak by záznam zůstal v jednotce práce a volající by
@@ -84,6 +87,12 @@ class MailService
         $this->em->persist($eMail);
         try {
             $mail = $eMail->getTemplatedEmail()->htmlTemplate($template)->context($data);
+            foreach ($attachments as $soubor) {
+                if (!is_file($soubor->path)) {
+                    throw new \RuntimeException(sprintf('Příloha „%s" chybí v úložišti.', $soubor->name));
+                }
+                $mail->attachFromPath($soubor->path, $soubor->name, $soubor->mime);
+            }
             // Render now — transport-independent (works even if mail later goes async
             // via Messenger, where the mailer listener would otherwise render in the
             // worker) — so we can persist exactly what we deliver for the admin timeline.

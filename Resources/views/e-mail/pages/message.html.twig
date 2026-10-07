@@ -104,6 +104,18 @@ falls back to whatever is reachable on the bound `contact` / `appUser`.
                     </mj-text>
                 {% endblock content_outer %}
 
+                {# Soubory poslané odkazem (dávka 3.5) — mimo bloky, ať je mají i uložené kampaně, které přepisují obsah. #}
+                {% if prilohyKeStazeni is defined and prilohyKeStazeni is not empty %}
+                    <mj-text>
+                        <p style="margin:0 0 0.3em;"><strong>Ke stažení:</strong></p>
+                        <ul style="margin:0;padding-left:1.2em;">
+                            {% for priloha in prilohyKeStazeni %}
+                                <li><a href="{{ priloha.url }}">{{ priloha.name }}</a> <small>({{ priloha.sizeLabel }})</small></li>
+                            {% endfor %}
+                        </ul>
+                    </mj-text>
+                {% endif %}
+
                 {% block content_footer_outer %}
                     <mj-text>
                         {% block content_footer_inner %}

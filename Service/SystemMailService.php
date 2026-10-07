@@ -27,6 +27,7 @@ class SystemMailService
      * @param string|null          $deliveryKey idempotency key for an automatic send ({@see \OswisOrg\OswisCoreBundle\Mail\Delivery\DeliveryKey})
      * @param bool                 $archiveCopy false = bez skryté kopie do archivu (zkouška sobě)
      * @param bool                 $manual      ručně poslaná zpráva (Auto-Submitted: no)
+     * @param list<\OswisOrg\OswisCoreBundle\Mail\Attachment\AttachedFile> $attachments přiložené soubory
      *
      * @throws InvalidTypeException
      */
@@ -40,6 +41,7 @@ class SystemMailService
         ?string $recipientName = null,
         bool $archiveCopy = true,
         bool $manual = false,
+        array $attachments = [],
     ): SystemMail {
         $mail = new SystemMail($subject, $address, $type, $recipientName);
         if (null !== $deliveryKey) {
@@ -54,7 +56,7 @@ class SystemMailService
         // `persist()` dělá `MailService` — až po kontrole klíče jedinečnosti, aby se záznam,
         // který se nemá poslat podruhé, vůbec nedostal do jednotky práce.
         // Vrátit záznam, který se SKUTEČNĚ použil — při opakování nebo duplicitě je to ten starší.
-        $zaznam = $this->mailService->sendEMail($mail, $template, $data);
+        $zaznam = $this->mailService->sendEMail($mail, $template, $data, $attachments);
 
         return $zaznam instanceof SystemMail ? $zaznam : $mail;
     }

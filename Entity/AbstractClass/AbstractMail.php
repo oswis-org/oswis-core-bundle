@@ -87,6 +87,15 @@ abstract class AbstractMail implements BasicInterface, CommunicationEntryInterfa
     #[Column(type: 'text', nullable: true)]
     protected ?string $body = null;
 
+    /**
+     * Co ke zprávě odešlo navíc (dávka 3.5): přílohy a odkazy ke stažení — ať historie komunikace ukáže i je.
+     * Jen popis (název, velikost, způsob), soubory leží v úložišti příloh. NULL = nic.
+     *
+     * @var list<array{id: int, name: string, size: int, mode: string}>|null
+     */
+    #[Column(type: 'json', nullable: true)]
+    protected ?array $attachments = null;
+
     protected ?TemplatedEmail $templatedEmail = null;
 
     /**
@@ -374,6 +383,18 @@ abstract class AbstractMail implements BasicInterface, CommunicationEntryInterfa
         if (!$headers->has('X-OSWIS-Manual')) {
             $headers->addTextHeader('X-OSWIS-Manual', '1');
         }
+    }
+
+    /** @return list<array{id: int, name: string, size: int, mode: string}> */
+    public function getAttachments(): array
+    {
+        return $this->attachments ?? [];
+    }
+
+    /** @param list<array{id: int, name: string, size: int, mode: string}> $attachments */
+    public function setAttachments(array $attachments): void
+    {
+        $this->attachments = [] === $attachments ? null : $attachments;
     }
 
     /**

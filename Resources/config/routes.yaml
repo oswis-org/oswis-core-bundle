@@ -152,6 +152,27 @@ oswis_org_oswis_core_web_admin_mail_image:
     path: "/web_admin/zpravy/obrazek"
     methods: [ POST ]
 
+# Přílohy zpráv (dávka 3.5): nahrání (POST, CSRF `mail_attachment`, JSON) a stažení správcem.
+oswis_org_oswis_core_web_admin_mail_attachment_upload:
+    controller: OswisOrg\OswisCoreBundle\Controller\WebAdmin\MailAttachmentController::upload
+    path: "/web_admin/zpravy/priloha"
+    methods: [ POST ]
+
+oswis_org_oswis_core_web_admin_mail_attachment_download:
+    controller: OswisOrg\OswisCoreBundle\Controller\WebAdmin\MailAttachmentController::download
+    path: "/web_admin/zpravy/priloha/{id}"
+    methods: [ GET ]
+    requirements:
+        id: '\d+'
+
+# Veřejný odkaz ke stažení přílohy z mailu — bez přihlášení, jen zveřejněné soubory.
+oswis_org_oswis_core_mail_attachment_public:
+    controller: OswisOrg\OswisCoreBundle\Controller\Web\MailAttachmentDownloadController::download
+    path: "/priloha/{token}"
+    methods: [ GET ]
+    requirements:
+        token: '[0-9a-f]{64}'
+
 oswis_org_oswis_core_web_admin_login:
     controller: oswis_org_oswis_core.web_security_controller::login
     path: "/web_admin/login"
