@@ -44,6 +44,7 @@ class OswisOrgOswisCoreExtension extends Extension implements PrependExtensionIn
         $container->registerForAutoconfiguration(RssExtenderInterface::class)->addTag('oswis.rss_extender');
         $container->registerForAutoconfiguration(WebMenuExtenderInterface::class)->addTag('oswis.web_menu_extender');
         $container->registerForAutoconfiguration(UpdateExtenderInterface::class)->addTag('oswis.update_extender');
+        $container->registerForAutoconfiguration(\OswisOrg\OswisCoreBundle\Mail\Attachment\MailAttachmentUsageProviderInterface::class)->addTag('oswis.mail_attachment_usage');
     }
 
     /**

@@ -538,6 +538,18 @@ services:
         public: true
         arguments:
             $directory: '%kernel.project_dir%/var/mail-prilohy'
+    # Úklid nepoužitých příloh: poskytovatelé „kdo soubor používá" se zaregistrují štítkem (rozhraní → autokonfigurace)
+    OswisOrg\OswisCoreBundle\Mail\Attachment\CoreMailAttachmentUsage:
+        autowire: true
+        autoconfigure: true
+    OswisOrg\OswisCoreBundle\Mail\Attachment\MailAttachmentCleanup:
+        autowire: true
+        public: true
+        arguments:
+            $providers: !tagged_iterator oswis.mail_attachment_usage
+    OswisOrg\OswisCoreBundle\Command\MailAttachmentCleanupCommand:
+        autowire: true
+        autoconfigure: true
     OswisOrg\OswisCoreBundle\Controller\WebAdmin\MailAttachmentController:
         autowire: true
         autoconfigure: true
