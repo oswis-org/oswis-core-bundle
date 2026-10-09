@@ -96,6 +96,39 @@ class TwigTemplate implements NameableInterface, TextValueInterface
     #[Column(type: 'string', length: 255, nullable: true)]
     protected ?string $subject = null;
 
+    /**
+     * Revize — ochrana proti souběžným úpravám (dávka 4, spec §6.3): uložení z administrace projde jen s revizí, ze
+     * které autor vycházel ({@see \OswisOrg\OswisCoreBundle\Repository\TwigTemplateRepository::zamknoutRevizi()}).
+     * Úmyslně ne `#[Version]` Doctrine: entita je v L2 cache a verze z cache by mohla být stará — revize se proto
+     * porovnává přímo v databázi jedním příkazem (jako u konceptů zpráv).
+     */
+    #[Column(type: 'integer', options: ['default' => 0])]
+    protected int $revision = 0;
+
+    /** Poznámka k ukládané změně — do záznamu verze ({@see TwigTemplateVersion}); neukládá se do šablony. */
+    private ?string $poznamkaKVerzi = null;
+
+    public function getRevision(): int
+    {
+        return $this->revision;
+    }
+
+    public function setRevision(int $revision): void
+    {
+        $this->revision = $revision;
+    }
+
+    public function getPoznamkaKVerzi(): ?string
+    {
+        return $this->poznamkaKVerzi;
+    }
+
+    public function setPoznamkaKVerzi(?string $poznamka): void
+    {
+        $poznamka = trim($poznamka ?? '');
+        $this->poznamkaKVerzi = '' === $poznamka ? null : mb_substr($poznamka, 0, 255);
+    }
+
     /** @return list<string> */
     public static function getAllowedKinds(): array
     {

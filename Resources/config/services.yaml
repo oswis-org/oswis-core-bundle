@@ -538,6 +538,11 @@ services:
         public: true
         arguments:
             $directory: '%kernel.project_dir%/var/mail-prilohy'
+    # Historie verzí šablon (dávka 4): verze vzniká při každém uložení šablony, které změnilo obsah
+    OswisOrg\OswisCoreBundle\EventListener\TwigTemplateVersionRecorder:
+        autowire: true
+        tags:
+            - { name: 'doctrine.event_listener', event: 'onFlush' }
     # Úklid nepoužitých příloh: poskytovatelé „kdo soubor používá" se zaregistrují štítkem (rozhraní → autokonfigurace)
     OswisOrg\OswisCoreBundle\Mail\Attachment\CoreMailAttachmentUsage:
         autowire: true

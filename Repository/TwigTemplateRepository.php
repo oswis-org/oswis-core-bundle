@@ -73,4 +73,30 @@ class TwigTemplateRepository extends ServiceEntityRepository
 
         return $result instanceof TwigTemplate ? $result : null;
     }
+
+    /**
+     * Zamkne šablonu pro uložení z administrace (dávka 4): v JEDNOM příkazu ověří, že má pořád revizi, ze které autor
+     * vycházel, a revizi zvedne. Souběžné uložení (jiný správce, druhé okno) tak projde jen jedno. Záznam vyřadí z L2
+     * cache, ať další načtení vidí novou revizi.
+     *
+     * @return int|null nová revize, nebo null (šablonu mezitím uložil někdo jiný / neexistuje)
+     */
+    public function zamknoutRevizi(int $id, int $revize): ?int
+    {
+        $zmeneno = $this->getEntityManager()->getConnection()->executeStatement(
+            'UPDATE core_twig_template SET revision = revision + 1 WHERE id = ? AND revision = ?',
+            [$id, $revize],
+        );
+        $this->getEntityManager()->getCache()?->evictEntity(TwigTemplate::class, $id);
+
+        return 1 === $zmeneno ? $revize + 1 : null;
+    }
+
+    /** Revize šablony přímo z databáze (ne z L2 cache) — výchozí bod formuláře. */
+    public function revizeZDatabaze(int $id): int
+    {
+        $revize = $this->getEntityManager()->getConnection()->fetchOne('SELECT revision FROM core_twig_template WHERE id = ?', [$id]);
+
+        return is_numeric($revize) ? (int) $revize : 0;
+    }
 }
